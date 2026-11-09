@@ -33,8 +33,8 @@ const I={
   cal:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
   home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg>'
 };
-const VIEWS=[["sejour","Séjour"],["agenda","Agenda"],["cine","Ciné"],["activites","Activités"],["manger","Manger"],["mer","Mer"]];
-const EXTRA=["recherche","immo","apropos","installer","venir"];
+const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["mer","Marées"],["manger","Manger"],["activites","À faire"]];
+const EXTRA=["recherche","immo","apropos","installer","venir","cine","pratique"];
 const SHORTS=[["Restaurants","manger","restaurant","var(--c-food)","food"],["Huîtres & poisson","manger","huitres","var(--c-food)","food"],["Surf & vent","mer","surf","var(--c-sea)","mer"],["Marées","mer","marees","var(--c-sea)","mer"],["Ciné","cine","","var(--c-cine)","cine"],["Avec les enfants","activites","enfants","var(--c-act)","people"]];
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -48,8 +48,8 @@ function etype(e){ if(e.type&&ETL[e.type]) return e.type; const c=((e.category||
   if(/concert|spectacle|théâtre|ciné|musique/.test(c))return"spectacle"; if(/sport|course|trail|tournoi|match|rando/.test(c))return"sport";
   if(/atelier|stage|cours|conte/.test(c))return"atelier"; if(/nature|arbre|balade|pêche/.test(c))return"nature"; if(/expo|conférence/.test(c))return"expo";
   if(/réunion|cérémonie|vente|armistice|sapins/.test(c))return"vielocale"; return"fete"; }
-const WHO=[["tous","Tous",[0,99]],["petits","Petits",[0,5]],["enfants","6–11",[6,11]],["ados","Ados",[12,17]],["adultes","Adultes",[18,99]]];
-const WHERE=[["ici","À Préf",1.5],["10","≤ 10 km",10],["20","≤ 20 km",22],["tout","Tout",999]];
+const WHO=[["tous","Tous",[0,99]],["petits","Petits",[0,5]],["enfants","Enfants",[6,11]],["ados","Ados",[12,17]],["adultes","Adultes",[18,99]]];
+const WHERE=[["ici","À Préf",1.5],["10","10 km",10],["20","20 km",22],["tout","Partout",999]];
 const TOWN_KM={"Préfailles":0.5,"La Plaine-sur-Mer":2.5,"Saint-Michel-Chef-Chef":7,"Pornic":9,"Saint-Brevin-les-Pins":13,"La Bernerie-en-Retz":14,"Les Moutiers-en-Retz":17,"Chauvé":17,"Saint-Nazaire":20,"Port-Saint-Père":36};
 const TOWNS=Object.keys(TOWN_KM).slice(0,8);
 const SPOTS=[
@@ -114,8 +114,9 @@ function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[
 const saved=(()=>{try{return JSON.parse(sget("cf-stay")||"null")}catch(e){return null}})();
 const S={events:null,cinema:null,immo:null,arrivals:[],assos:null,meta:null,me:null,profiles:{},db:null,err:null,
   from:(saved&&saved.to>=today())?saved.from:defaultStay()[0], to:(saved&&saved.to>=today())?saved.to:defaultStay()[1],
-  who:sget("cf-who")||"tous", where:sget("cf-where")||"20", cat:"tous", kind:"tous", openToday:false, filtOpen:false, onlyStay:false, rideOpen:false, rain:false, actView:"liste", etype:"tous", cineDay:null, tideDay:today(), selPoi:null, more:{}, q:"", editDates:false};
+  who:sget("cf-who")||"tous", where:sget("cf-where")||"20", cat:"tous", kind:"tous", openToday:false, filtOpen:false, onlyStay:false, rideOpen:false, rain:false, actView:"liste", etype:"tous", cineDay:null, tideDay:today(), selPoi:null, more:{}, day:null, when:"tout", cin:sget("pp-cin")||"pref", mk:"tous", q:"", editDates:false};
 if(S.from<today())S.from=today();
+S.mode=(saved&&saved.to>=today())?(sget("pp-mode")||"sejour"):"annee";
 function saveStay(){sset("cf-stay",JSON.stringify({from:S.from,to:S.to}));}
 function presets(){const t=today(),[f,to]=defaultStay(),nf=addDays(f,7),y=+t.slice(0,4);
   return [["Ce week-end",f,to],["Week-end prochain",nf,addDays(nf,2)],["Vacances de Noël",`${y}-12-19`,`${y+1}-01-03`],["Réveillon",`${y}-12-30`,`${y+1}-01-02`]].filter(p=>p[2]>=t);}
@@ -162,7 +163,7 @@ const whereOpts=WHERE.map(([k,l])=>[k,k==="ici"?"Préfailles (≤ 3 km)":l]);
 const whoOpts=WHO.map(([k,l])=>[k,{tous:"tout le monde",petits:"tout-petits",enfants:"enfants 6–11",ados:"ados",adultes:"adultes"}[k]]);
 const FILT='<svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
 function panel(typeLabel,typeRow,extra=""){
-  const sum=`${WHERE.find(w=>w[0]===S.where)[1]==="Tout"?"Partout":WHERE.find(w=>w[0]===S.where)[1]} · ${WHO.find(w=>w[0]===S.who)[1]==="Tous"?"tout le monde":WHO.find(w=>w[0]===S.who)[1]}${S.rain?" · s'il pleut":""}${S.onlyStay?" · mes dates":""}`;
+  const sum=`${WHERE.find(w=>w[0]===S.where)[1]} · ${WHO.find(w=>w[0]===S.who)[1]==="Tous"?"tout le monde":WHO.find(w=>w[0]===S.who)[1]}${S.rain?" · s'il pleut":""}${S.onlyStay?" · mes dates":""}`;
   if(!S.filtOpen) return `<button class="fsum" id="fsum">${FILT}<span class="ft">Filtres<span class="fs">${esc(sum)}</span></span><span class="chev">⌄</span></button>`;
   return `<div class="planner"><button class="fsum" id="fsum" style="border:0;padding:0;background:none">${FILT}<span class="ft">Filtres</span><span class="chev">⌃</span></button>
     <div class="seglab">Jusqu'où</div>
@@ -179,20 +180,22 @@ function loadingOr(list,msg){if(S.err)return`<div class="empty">${esc(S.err)}</d
 
 /* ---------- render ---------- */
 function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)||EXTRA.includes(h)?h:"sejour";}
-function rail(){const c=curView();const r=$("#rail");r.innerHTML=VIEWS.map(([id,l])=>`<a href="#${id}" ${id===c?'aria-current="page"':""}>${l}</a>`).join("");
-  const a=r.querySelector('[aria-current]');if(a){if(r.scrollWidth>r.clientWidth+2){const L=a.offsetLeft-r.clientWidth/2+a.offsetWidth/2;r.scrollTo({left:Math.max(0,L),behavior:"smooth"});}}}
+const TABIC={sejour:I.home,agenda:I.agenda,mer:I.mer,manger:I.manger,activites:I.activites};
+const PARENT={cine:"agenda",pratique:"sejour",venir:"sejour"};
+function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a href="#${id}" ${id===p?'aria-current="page"':""}>${TABIC[id]}<span>${l}</span></a>`).join("");}
+document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
 const after={};
-function render(){rail();const v=curView();document.title=v==='sejour'?'Le Petit Préf':(VIEWS.find(x=>x[0]===v)?.[1]||{recherche:'Rechercher',immo:'Immobilier',apropos:'À propos',installer:'Installer',venir:'Venir'}[v])+' · Le Petit Préf';
+function render(){rail();const v=curView();document.title=v==='sejour'?'Le Petit Préf':(VIEWS.find(x=>x[0]===v)?.[1]||{recherche:'Rechercher',immo:'Immobilier',apropos:'À propos',installer:'Installer',venir:'Cars et trains',cine:'Ciné',pratique:'Pratique'}[v])+' · Le Petit Préf';
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vVenir,immo:vImmo,recherche:vSearch,apropos:vApropos,installer:vInstaller})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vVenir,immo:vImmo,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique})[v]()}</section>`;
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
   window.scrollTo({top:sy,behavior:'instant'});
   after[v]&&after[v]();buildSub();}
 let subObs=null;
-function buildSub(){
+function buildSub(){const o0=$("#subnav");if(o0)o0.remove();return;
   if(subObs){subObs.disconnect();subObs=null;}
   const secs=[...$$("#main [data-sub]")];const old=$("#subnav");if(old)old.remove();
   if(secs.length<3)return;
@@ -218,51 +221,61 @@ function heroWhen(){const t=today(),f=S.from,to=S.to,[wf,wt]=defaultStay();if(f=
   const a=noon(f),b=noon(to);return a.getUTCMonth()===b.getUTCMonth()?`du ${+f.slice(8)} au ${+to.slice(8)} ${F(b,{month:"short"}).replace(".","")}`:`du ${dshort(f)} au ${dshort(to)}`;}
 function heroLine(n){const lows=dayLows(S.from),c=maxCoef(S.from);return [lows.length?`Marée basse ${hm(new Date(lows[0].ms))}${c?" · coef "+c:""}`:"",S.events?`${n} sortie${n>1?"s":""} autour`:""].filter(Boolean).join(" · ");}
 function fresh(){const u=S.meta?.updatedAt;if(!u)return"";const d=ymd(new Date(u));return `<span class="cap">${d===today()?"Mis à jour ce matin":"Mis à jour le "+dshort(d)}</span>`;}
+function picks2(evs,a,b){const sc=e=>(isHere(evKm(e),e.town)?0:(evKm(e)??20)<=10?1:2)*10+((e.end&&e.end>addDays(e.date,7))?5:0),st=e=>evStart(e,a,b)||"";
+  return [...evs].sort((x,y)=>sc(x)-sc(y)||st(x).localeCompare(st(y))).slice(0,6).sort((x,y)=>st(x).localeCompare(st(y)));}
+function nextBig(n){const t=today(),big=[];for(let i=0;i<70&&big.length<n;i++){const d=addDays(t,i),c=maxCoef(d);if(c>=90){const L=big[big.length-1];if(L&&(L[2]||L[0])===addDays(d,-1)){L[2]=d;L[1]=Math.max(L[1],c);}else big.push([d,c,null]);}}return big;}
+function tideOf(d){const ts=tidesOfDay(d);return{bm:ts.filter(e=>e.k==="BM").map(e=>hm(new Date(e.ms))),pm:ts.filter(e=>e.k==="PM").map(e=>hm(new Date(e.ms))),c:maxCoef(d)};}
+const CINF=[["pref","L'Atlantique (Préf)"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
+const cinOK=n=>{const c=S.cin||"pref";return c==="tous"||(c==="pref"&&/Atlantique/i.test(n||""))||(c==="pornic"&&/Toiles|Joseph/i.test(n||""))||(c==="brevin"&&/jade/i.test(n||""));};
+function filmsOn(d,all){const m={};(S.cinema||[]).filter(f=>f.date===d&&(all||cinOK(f.cinema))).forEach(f=>{const k=f.film;(m[k] ||= {film:k,kids:f.kids,times:[],cin:f.cinema}).times.push(...(f.times||[]));});
+  return Object.values(m).sort((a,b)=>(cinKm(a.cin)??99)-(cinKm(b.cin)??99)||(a.times[0]||"").localeCompare(b.times[0]||""));}
+const shortCin=n=>String(n||"").replace(/\s*\(.*\)/,"");
+function pratiqueBlock(){return `<section class="band brume" id="pratique"><h2 class="sec">Urgences et numéros utiles</h2>
+   <div class="pratique">${[["112","Urgences (tout)"],["15","SAMU"],["18","Pompiers"],["196","Secours en mer"],["3237","Pharmacie de garde"],["116 117","Médecin de garde"],["02 40 21 60 37","Mairie de Préfailles"],["02 40 82 04 40","Office de tourisme"]].map(([n,l])=>`<a class="num" href="tel:${n.replace(/\s/g,"")}"><b>${n}</b><span>${l}</span></a>`).join("")}</div>
+   <div class="list">${card({c:"var(--c-act)",ic:I.venir,title:"Cars et trains",meta:"Venir à Préfailles, aller à Pornic ou Saint-Nazaire",href:"#venir"}).replace('target="_blank" rel="noopener"',"")}
+   ${card({c:"var(--c-sea)",ic:I.mer,title:"Qualité des eaux de baignade",meta:"Résultats officiels par plage (ARS)",href:"https://baignades.sante.gouv.fr"})}${card({c:"var(--c-sea)",ic:I.mer,title:"Pêche à pied : règles et tailles",meta:"Tailles minimales, quantités, zones fermées",href:"https://www.pecheapied-responsable.fr"})}${card({c:"var(--buoy)",ic:I.umb,title:"Vigilance météo",meta:"Alertes vent, vagues-submersion, orages",href:"https://vigilance.meteofrance.fr"})}</div></section>`;}
+function vPratique(){return `<div class="vhead"><div><h1>Pratique</h1><p class="lede">Urgences, santé, transports et informations officielles.</p></div></div>${pratiqueBlock()}`;}
 function vSejour(){
-  const days=range(S.from,S.to),nights=days.length-1;
-  const evs=eventsIn(S.from,S.to).filter(e=>evFits(e,S.who)&&fitsWhere(evKm(e),e.town));
-  const acts=ACTS.filter(a=>fitsWho(a,S.who)&&fitsWhere(a.dist,a.town)&&a.cat!=="marche");
-  const openAct=acts.map(a=>({a,od:days.filter(d=>openOn(a,d)),unk:openOn(a,days[0])===null})).filter(x=>x.od.length||x.unk);
-  const films=(S.cinema||[]).filter(f=>f.date>=S.from&&f.date<=S.to);
-  const arr=(S.arrivals||[]).filter(a=>a.date>=S.from&&a.date<=S.to);
-  const gm=days.map(d=>maxCoef(d)).filter(c=>c>=90);
-  const far=S.to>addDays(today(),45);
-  const pre=presets();
-  return `<div class="hero"><img src="images/accueil.jpg" alt="Coucher de soleil sur une plage de Préfailles, pêcherie sur pilotis au loin"><span class="ttl"><b>Préfailles, ${heroWhen()}</b><span>${heroLine(evs.length)}</span></span>${fresh()}</div>
-  <div class="planner">
-    <button class="when" id="whenBtn" aria-expanded="${S.editDates}">${I.cal}<span style="flex:1;min-width:0"><span class="d">${dshort(S.from)}${days.length>1?` → ${dshort(S.to)}`:""}</span><br><span class="s">${days.length>1?`${nights} nuit${nights>1?"s":""} · `:""}Modifier les dates</span></span><span class="chev">${S.editDates?"⌃":"⌄"}</span></button>
-    ${S.editDates?`<div class="editor"><div class="dates"><label for="pFrom">Arrivée<input type="date" id="pFrom" value="${S.from}" min="${today()}"></label><label for="pTo">Départ<input type="date" id="pTo" value="${S.to}" min="${S.from}"></label></div>
-      <div class="scroller">${pre.map(([l,a,b])=>`<button class="chip" data-pre="${a}|${b}" aria-pressed="${S.from===a&&S.to===b}">${l}</button>`).join("")}</div></div>`:""}
-    <div class="seglab">Avec qui</div>
-    <div class="seg" role="group" aria-label="Avec qui">${WHO.map(([k,l])=>`<button data-who="${k}" aria-pressed="${S.who===k}">${l}</button>`).join("")}</div>
-    <div class="seglab">Jusqu'où</div>
-    <div class="seg" role="group" aria-label="Distance">${WHERE.map(([k,l])=>`<button data-where="${k}" aria-pressed="${S.where===k}">${l}</button>`).join("")}</div>
-  </div>
-  <div class="tiles">
-    <a class="tile" href="#s-ev"><b>${S.events===null?"…":evs.length}</b><span>sortie${evs.length>1?"s":""}</span></a>
-    <a class="tile" href="#cine">${S.cinema===null?"<b>…</b><span>films</span>":films.length?`<b>${new Set(films.map(f=>f.film)).size}</b><span>films</span>`:`<b>–</b><span>ciné à venir</span>`}</a>
-    <a class="tile" href="#s-act"><b>${openAct.length}</b><span>activité${openAct.length>1?"s":""}</span></a>
-    <a class="tile" href="#mer"><b>${days.map(maxCoef).filter(Boolean).length?Math.max(...days.map(maxCoef).filter(Boolean)):"–"}</b><span>marée (coef)</span></a>
-  </div>
-  
-  <div class="block" hidden><div class="shorts">${SHORTS.map(([l,v,p,c,ic],i)=>`<a class="short" href="#${v}" data-short="${i}" style="--c:${c}"><span class="si">${I[ic]}</span>${l}</a>`).join("")}</div></div>
-  ${gm.length?`<div class="card" style="--c:var(--buoy)"><span class="ic">${I.mer}</span><span class="tt">Grande marée pendant le séjour</span><span class="mt">Coefficient jusqu'à <b>${Math.max(...gm)}</b> : idéal pour la pêche à pied à marée basse.</span></div>`:""}
-
-  <div class="block" id="s-ev" data-sub="À ne pas manquer" data-subanchor><h2 class="sec">À ne pas manquer</h2>
-  ${S.events===null?`<div class="empty">Chargement de l'agenda…</div>`:evs.length?`<div class="list">${picks(evs).map(e=>eventCard(e,true,S.from)).join("")}</div>${evs.length>6?`<a class="btn ghost" href="#agenda" id="seeAll" style="justify-self:stretch">Voir les ${evs.length} sorties de votre séjour</a>`:""}`:`<div class="empty">Aucun événement daté${S.where!=="tout"?" dans ce rayon":""} pour ces dates.${far?" L'agenda se complète chaque matin, environ 2 mois à l'avance.":""}</div>`}</div>
-
+  const t=today(),stay=S.mode==="sejour"&&S.to>=t;
+  const days=stay?range(S.from>t?S.from:t,S.to).slice(0,21):[t,addDays(t,1)];
+  if(!days.includes(S.day))S.day=days[0];
+  const d=S.day,T=tideOf(t),Td=tideOf(d),big=nextBig(1);
+  const evs=eventsIn(d,d).filter(e=>evFits(e,S.who)&&fitsWhere(evKm(e),e.town)&&onDay(e,d)&&(e.date===d||Array.isArray(e.days)||!e.end||e.end<=addDays(e.date,3)));
+  const fl=filmsOn(d);
+  const mk=ACTS.filter(a=>a.cat==="marche"&&openOn(a,d)&&fitsWhere(TOWN_KM[a.town]??a.dist,a.town));
+  const hu=ACTS.filter(a=>a.cat==="saveurs"&&(a.kind==="huitres"||a.kind==="poisson")&&openOn(a,d)&&fitsWhere(a.dist,a.town));
+  const [wf,wt]=defaultStay(),pa=stay?(S.from>t?S.from:t):wf,pb=stay?S.to:wt;
+  const hl=eventsIn(pa,pb).filter(e=>evFits(e,S.who)&&fitsWhere(evKm(e),e.town));
+  const b=S.meta?.bulletin,bOK=b&&b.date===`${t.slice(8)}/${t.slice(5,7)}`;
+  const dayLbl=x=>x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dshort(x));
+  return `<section class="hero2">
+   <div class="h-top"><h1>Préfailles</h1>${fresh()}</div>
+   <p class="h-date">${cap(dlong(t))}</p>
+   <div class="tide-now"><div><span class="lab">Marée basse</span><b>${T.bm.join(" · ")||"–"}</b></div><div><span class="lab">Pleine mer</span><b>${T.pm.join(" · ")||"–"}</b></div><div><span class="lab">Coefficient</span><b>${T.c??"–"}</b></div></div>
+   ${big.length?`<p class="h-note">Prochaine grande marée : <b>${big[0][2]?`du ${dshort(big[0][0])} au ${dshort(big[0][2])}`:dlong(big[0][0])}</b>, coef ${big[0][1]}. <a href="#mer">Marées ›</a></p>`:""}
+   ${bOK?`<p class="h-note"><b>Glisse :</b> ${esc(String(b.text).split(/(?<=\.)\s/)[0])} <a href="#mer">Détails ›</a></p>`:""}
+  </section>
+  <div class="stayline">${stay?`<span>Votre séjour : <b>${dshort(S.from)} → ${dshort(S.to)}</b></span><button class="lnk" id="editStay">Modifier</button>`:`<span>En vacances ici ?</span><button class="lnk" id="editStay">Indiquez vos dates</button>`}</div>
+  ${S.editDates?`<div class="planner"><div class="dates"><label for="pFrom">Arrivée<input type="date" id="pFrom" value="${S.from}" min="${t}"></label><label for="pTo">Départ<input type="date" id="pTo" value="${S.to}" min="${S.from}"></label></div>
+    <div class="scroller">${presets().map(([l,a,z])=>`<button class="chip" data-pre="${a}|${z}">${l}</button>`).join("")}</div>
+    <div class="bar"><button class="btn sea" id="stayOk">Voir mon séjour</button>${stay?`<button class="btn ghost" id="stayOff">J'habite ici, sans dates</button>`:`<button class="btn ghost" id="stayCancel">Annuler</button>`}</div></div>`:""}
+  ${days.length>1?`<div class="scroller days" role="group" aria-label="Choisir le jour">${days.map(x=>`<button class="chip" data-dsel="${x}" aria-pressed="${x===d}">${dayLbl(x)}</button>`).join("")}</div>`:""}
+  <section class="band peche" id="s-jour"><h2 class="sec">${d===t?"Aujourd'hui":d===addDays(t,1)?"Demain":cap(dlong(d))}</h2>
+   ${d!==t?`<p class="tline">Marée basse <b>${Td.bm.join(" et ")||"de nuit"}</b>${Td.c?` · coefficient ${Td.c}`:""}</p>`:""}
+   ${S.events===null?`<div class="empty">Chargement…</div>`:evs.length?`<div class="list">${evs.slice(0,5).map(e=>eventCard(e,true,d)).join("")}</div>${evs.length>5?`<a class="more" href="#agenda" data-when="${d===t?"auj":d===addDays(t,1)?"dem":"tout"}">Voir les ${evs.length} sorties ›</a>`:""}`:`<p class="note">Pas de sortie datée ${d===t?"aujourd'hui":"ce jour-là"} dans ce rayon. <a href="#agenda">Tout l'agenda ›</a></p>`}
+   <div class="mini"><h3>${I.cine} Ciné ${d===t?"ce soir":"ce jour-là"} · ${esc(CINF.find(c=>c[0]===S.cin)?.[1]||"")}</h3>${fl.length?fl.slice(0,3).map(f=>`<a class="row" href="#cine" data-cine="${d}"><b>${esc(f.film)}</b><span>${f.times.join(", ")}${S.cin==="pref"?"":" · "+esc(shortCin(f.cin))}${f.kids?" · jeune public":""}</span></a>`).join(""):`<p class="note">Pas de séance. <a href="#cine">Voir le programme ›</a></p>`}</div>
+   ${mk.length||hu.length?`<div class="mini"><h3>${I.food} Marchés et huîtres</h3>${mk.length?`<p>Marché : ${mk.map(a=>esc(a.town.replace("-sur-Mer","").replace("Saint-","St-"))).join(" · ")}</p>`:""}${hu.length?`<p>Huîtres ouvertes : ${hu.slice(0,4).map(a=>esc(a.short||a.n)).join(" · ")}${hu.length>4?` <a href="#manger">+${hu.length-4}</a>`:""}</p>`:""}</div>`:""}
+  </section>
+  <section class="block" id="s-ev"><h2 class="sec">${stay?"À ne pas manquer pendant votre séjour":"Ce week-end"}</h2>
+   ${S.events===null?`<div class="empty">Chargement…</div>`:hl.length?`<div class="list">${picks2(hl,pa,pb).map(e=>eventCard(e,true,pa)).join("")}</div>${hl.length>6?`<a class="btn ghost" href="#agenda" id="seeAll" style="justify-self:stretch">Voir les ${hl.length} sorties ${stay?"de votre séjour":"du week-end"}</a>`:""}`:`<div class="empty">Rien d'annoncé pour l'instant. L'agenda se complète chaque matin.</div>`}</section>
+  <section class="block"><h2 class="sec">Des idées</h2><div class="ideas">
+   <a class="idea" href="#activites" data-idea="rain" style="--c:var(--c-act)"><span class="ic">${I.umb}</span><b>Il pleut ?</b><span>Lieux couverts</span></a>
+   <a class="idea" href="#activites" data-idea="kids" style="--c:var(--c-event)"><span class="ic">${I.people}</span><b>Avec les enfants</b><span>Dès 3 ans</span></a>
+   <a class="idea" href="#manger" data-idea="eat" style="--c:var(--c-food)"><span class="ic">${I.food}</span><b>Manger ce soir</b><span>Ouvert aujourd'hui</span></a>
+   <a class="idea" href="#mer" style="--c:var(--c-sea)"><span class="ic">${I.mer}</span><b>Surf et vent</b><span>Bulletin du jour</span></a></div></section>
   ${installBanner()}
-  <div class="block" data-sub="Jour par jour"><h2 class="sec">Jour par jour</h2>${days.map((d,i)=>dayCard(d,acts,i===0)).join("")}</div>
-
-  <div class="block" id="s-act" data-sub="Ouvert"><h2 class="sec">Ouvert pendant votre séjour <span class="count">${openAct.length}</span></h2>
-   <div class="bar"><button class="tog" id="rainChip" aria-pressed="${S.rain}">${I.umb}S'il pleut</button></div>
-   ${groupActs(openAct.filter(x=>!S.rain||x.a.rain),days)}</div>
-
-  <div class="block" data-sub="Pratique"><h2 class="sec">Pratique & urgences</h2>
-   <a class="card" href="#venir" style="--c:var(--c-act)"><span class="ic">${I.venir}</span><span class="tt">Venir à Préfailles</span><span class="rt"><span class="chev">›</span></span><span class="mt">Trains, cars Aléop, navettes de Pornic</span></a>
-   <div class="pratique">${[["112","Urgences (tout)"],["15","SAMU"],["18","Pompiers"],["196","Secours en mer (CROSS)"],["3237","Pharmacie de garde"],["116 117","Médecin de garde"],["02 40 21 60 37","Mairie de Préfailles"],["02 40 82 04 40","Office de tourisme"]].map(([n,l])=>`<a class="num" href="tel:${n.replace(/\s/g,"")}"><b>${n}</b><span>${l}</span></a>`).join("")}</div>
-   <div class="grid2">${card({c:"var(--c-sea)",ic:I.mer,title:"Qualité des eaux de baignade",meta:"Résultats officiels par plage (ARS)",href:"https://baignades.sante.gouv.fr"})}${card({c:"var(--c-sea)",ic:I.mer,title:"Pêche à pied : règles et tailles",meta:"Tailles minimales, quantités, zones fermées",href:"https://www.pecheapied-responsable.fr"})}${card({c:"var(--buoy)",ic:I.umb,title:"Vigilance météo",meta:"Alertes vent, vagues-submersion, orages",href:"https://vigilance.meteofrance.fr"})}</div></div>
-  <div class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos, à jour chaque matin. Mets-le sur ton écran d'accueil.")}</div></div>`;
+  ${pratiqueBlock()}
+  <section class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos, à jour chaque matin. Mets-le sur ton écran d'accueil.")}</div></section>`;
 }
 function dayCard(d,acts,open){
   const tides=tidesOfDay(d),c=maxCoef(d),lows=dayLows(d);
@@ -290,30 +303,38 @@ function groupActs(list,days){
     const inner=`<div class="grid2">${L.map(x=>actCard(x.a,x,days)).join("")}</div>`;
     return `<details><summary><h2 class="sec" style="display:inline-flex"><span class="dot" style="background:${CATCOL(k)}"></span>${CATS[k]} <span class="count">${L.length}</span></h2></summary><div style="margin-top:8px">${inner}</div></details>`;}).join("");}
 after.sejour=()=>{
-  $("#whenBtn").onclick=()=>{S.editDates=!S.editDates;render();};
-  const f=$("#pFrom"),t=$("#pTo");
-  if(f)f.onchange=()=>{if(!f.value)return;S.from=f.value;if(S.to<S.from)S.to=addDays(S.from,2);saveStay();render();};
-  if(t)t.onchange=()=>{if(!t.value)return;S.to=t.value<S.from?S.from:t.value;saveStay();render();};
-  $$("[data-pre]").forEach(b=>b.onclick=()=>{[S.from,S.to]=b.dataset.pre.split("|");S.editDates=false;saveStay();render();});
-  $$("[data-who]").forEach(b=>b.onclick=()=>{S.who=b.dataset.who;sset("cf-who",S.who);render();});
-  $$("[data-where]").forEach(b=>b.onclick=()=>{S.where=b.dataset.where;sset("cf-where",S.where);render();});
-  {const rc=$("#rainChip");if(rc)rc.onclick=()=>{S.rain=!S.rain;render();};}
+  const go=()=>{S.mode="sejour";sset("pp-mode","sejour");saveStay();S.editDates=false;S.day=null;render();window.scrollTo({top:0,behavior:"instant"});};
+  const es=$("#editStay");if(es)es.onclick=()=>{S.editDates=!S.editDates;render();};
+  const f=$("#pFrom"),tt=$("#pTo");
+  if(f)f.onchange=()=>{if(!f.value)return;S.from=f.value;if(S.to<S.from){S.to=addDays(S.from,2);if(tt)tt.value=S.to;}if(tt)tt.min=S.from;};
+  if(tt)tt.onchange=()=>{if(!tt.value)return;S.to=tt.value<S.from?S.from:tt.value;};
+  const ok=$("#stayOk");if(ok)ok.onclick=go;
+  const off=$("#stayOff");if(off)off.onclick=()=>{S.mode="annee";sset("pp-mode","annee");try{localStorage.removeItem("cf-stay")}catch(e){}S.editDates=false;S.day=null;render();};
+  const cc=$("#stayCancel");if(cc)cc.onclick=()=>{S.editDates=false;render();};
+  $$("[data-pre]").forEach(b=>b.onclick=()=>{[S.from,S.to]=b.dataset.pre.split("|");go();});
+  $$("[data-dsel]").forEach(b=>b.onclick=()=>{S.day=b.dataset.dsel;render();});
+  $$("[data-idea]").forEach(a=>a.onclick=()=>{const k=a.dataset.idea;if(k==="rain"){S.rain=true;S.cat="tous";}if(k==="kids"){S.who="enfants";sset("cf-who","enfants");S.cat="tous";}if(k==="eat"){S.openToday=true;S.mk="tous";}});
   $$("[data-cine]").forEach(a=>a.onclick=()=>{S.cineDay=a.dataset.cine;});
-  $$("[data-short]").forEach(a=>a.onclick=()=>{const [,v,p]=SHORTS[+a.dataset.short];
-    if(v==="manger"){S.kind=p;} if(v==="mer")S.merFocus=p; if(v==="activites"&&p==="enfants"){S.who="enfants";sset("cf-who","enfants");S.cat="tous";}});
-  {const sa=$("#seeAll");if(sa)sa.onclick=()=>{S.onlyStay=true;};}
-  $$(".tile").forEach(a=>a.onclick=e=>{if(/^#(cine|mer)$/.test(a.getAttribute("href")))return;e.preventDefault();const el=document.querySelector(a.getAttribute("href"));if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});
+  $$("[data-when]").forEach(a=>a.onclick=()=>{S.when=a.dataset.when;});
+  const sa=$("#seeAll");if(sa)sa.onclick=()=>{S.when=S.mode==="sejour"?"sejour":"we";};
   bindInstall();
 };
 
 /* ===== Agenda ===== */
+const WHEN=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],["sejour","Mon séjour"]];
+function whenOK(e){const w=S.when||"tout",t=today();if(w==="tout")return true;let a,b;
+  if(w==="auj")a=b=t;else if(w==="dem")a=b=addDays(t,1);else if(w==="we")[a,b]=defaultStay();else if(w==="sem"){a=t;b=addDays(t,6);}else{a=S.from;b=S.to;}
+  return e.date<=b&&(e.end||e.date)>=a&&!!evStart(e,a,b);}
+const segAC=v=>`<div class="seg segnav" role="group" aria-label="Agenda ou ciné"><a href="#agenda" aria-pressed="${v==="agenda"}">Sorties</a><a href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div>`;
 function vAgenda(){
   const t=today();
-  const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&evFits(e,S.who)&&fitsWhere(evKm(e),e.town)&&(!S.onlyStay||(e.date<=S.to&&(e.end||e.date)>=S.from)));
+  const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&evFits(e,S.who)&&fitsWhere(evKm(e),e.town)&&whenOK(e));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype).sort((a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||"")));
   const G=horizonGroups(list,t);
-  return `<div class="vhead"><div><h1>Agenda</h1><p class="lede">Fêtes, concerts, lotos, brocantes, ateliers : tout ce qui est daté autour de Préfailles.</p></div></div>
-  ${panel("Type d'événement",[["tous","Tout"],...ETYPES].map(([k,l])=>{const n=k==="tous"?base.length:base.filter(e=>etype(e)===k).length;return n||k==="tous"?`<button class="chip" data-et="${k}" aria-pressed="${S.etype===k}">${l}<span class="n">${n}</span></button>`:"";}).join(""),`<button class="tog" id="onlyStay" aria-pressed="${S.onlyStay}" style="justify-self:start">Seulement mes dates (${dshort(S.from)} → ${dshort(S.to)})</button>`)}
+  return `<div class="vhead"><div><h1>Agenda</h1><p class="lede">Fêtes, concerts, lotos, brocantes, ateliers autour de Préfailles.</p></div></div>
+  ${segAC("agenda")}
+  <div class="scroller" role="group" aria-label="Quand">${WHEN.filter(w=>w[0]!=="sejour"||S.mode==="sejour").map(([k,l])=>`<button class="chip" data-wh="${k}" aria-pressed="${(S.when||"tout")===k}">${l}</button>`).join("")}</div>
+  ${panel("Type d'événement",[["tous","Tout"],...ETYPES].map(([k,l])=>{const n=k==="tous"?base.length:base.filter(e=>etype(e)===k).length;return n||k==="tous"?`<button class="chip" data-et="${k}" aria-pressed="${S.etype===k}">${l}<span class="n">${n}</span></button>`:"";}).join(""),``)}
   <div class="resline">${list.length} événement${list.length>1?"s":""} à venir · <a href="#cine" style="color:var(--c-act);font-weight:700;text-decoration:none">Programme ciné ›</a></div>
   ${loadingOr(S.events,"Aucun événement à venir pour l'instant.")??(G.length?G.map(([l,es,i],gi)=>`<div class="block" data-sub="${esc(l)}" data-n="${es.length}" ${gi===0?"data-subanchor":""}><h2 class="sec">${esc(l)} <span class="count">${es.length}</span></h2>${i?`<p class="note">${i}</p>`:""}<div class="list">${(S.more[l]?es:es.slice(0,15)).map(e=>eventCard(e,true)).join("")}</div>${!S.more[l]&&es.length>15?`<button class="btn ghost" data-more="${esc(l)}" style="justify-self:stretch">Afficher les ${es.length-15} autres</button>`:""}</div>`).join(""):`<div class="empty">Rien pour ce filtre. Ouvrez les filtres et essayez « Tout ».</div>`)}`;
 }
@@ -333,26 +354,28 @@ function horizonGroups(list,t){
     else add("m"+d.slice(0,7),d.slice(0,7)===t.slice(0,7)?"Plus tard en "+F(noon(d),{month:"long"}):MO(d),e);});
   const L=order.filter(g=>g[0]!=="long").concat(order.filter(g=>g[0]==="long"));
   return L.map(([k,l,es,info])=>[l,es,info]);}
-after.agenda=()=>{bindPanel();$$("[data-more]").forEach(b=>b.onclick=()=>{S.more[b.dataset.more]=true;render();});const os=$("#onlyStay");if(os)os.onclick=()=>{S.onlyStay=!S.onlyStay;render();};$$("[data-et]").forEach(b=>b.onclick=()=>{S.etype=b.dataset.et;render();});};
+after.agenda=()=>{bindPanel();$$("[data-wh]").forEach(b=>b.onclick=()=>{S.when=b.dataset.wh;render();});$$("[data-more]").forEach(b=>b.onclick=()=>{S.more[b.dataset.more]=true;render();});const os=$("#onlyStay");if(os)os.onclick=()=>{S.onlyStay=!S.onlyStay;render();};$$("[data-et]").forEach(b=>b.onclick=()=>{S.etype=b.dataset.et;render();});};
 
 /* ===== Ciné ===== */
 const cinKm=n=>{const c=CINES.find(x=>n&&n.includes(x.n));return c?c.km:null;};
 function vCine(){
-  const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t);const days=[...new Set(list.map(c=>c.date))].sort();
-  const day=days.includes(S.cineDay)?S.cineDay:(days.find(d=>d>=S.from&&d<=S.to)||days[0]);
+  const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(c.cinema));const days=[...new Set(list.map(c=>c.date))].sort();
+  const day=days.includes(S.cineDay)?S.cineDay:(S.mode==="sejour"&&days.find(d=>d>=S.from&&d<=S.to)||days[0]);
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||""));
-  return `<div class="vhead"><div><h1>Ciné</h1><p class="lede">Le programme des cinémas de Préfailles, Pornic et Saint-Brevin, jour par jour.</p></div></div>
+  return `<div class="vhead"><div><h1>Ciné</h1><p class="lede">Le programme jour par jour. Par défaut, L'Atlantique, le cinéma du bourg.</p></div></div>
+  ${segAC("cine")}
+  <div class="scroller" role="group" aria-label="Cinéma">${CINF.map(([k,l])=>`<button class="chip" data-cin="${k}" aria-pressed="${S.cin===k}">${l}</button>`).join("")}</div>
   ${S.cinema===null?`<div class="empty">Chargement…</div>`:days.length?`<div class="scroller">${days.map(d=>`<button class="chip" data-cday="${d}" aria-pressed="${d===day}">${cap(rel(d))}</button>`).join("")}</div>
    <h2 class="sec" data-sub="Programme" data-subanchor>${esc(dlong(day))} <span class="count">${films.length} film${films.length>1?"s":""}</span></h2>
    <div class="list">${films.map(f=>`<article class="film"><div class="ft">${esc(f.film)}</div>
      <div class="bar">${/avant/i.test(f.genre||"")?'<span class="badge hot">Avant-première</span>':""}${f.kids?'<span class="badge kid">Jeune public</span>':""}${f.version?`<span class="badge">${esc(f.version)}</span>`:""}${f.genre?`<span class="muted" style="font-size:13px">${esc(f.genre.replace(/Avant-première,?\s*/i,""))}</span>`:""}</div>
      ${[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>{const k=cinKm(cn);return `<div class="cinrow"><span class="cn">${esc((cn||"").replace(/\s*\(.*\)/,""))}${k!=null?(k<=1?" · à pied":` · ${k} km`):""}</span><span class="times">${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h)).map(s=>`<b class="tm">${esc(s.h)}</b>`).join("")}</span></div>`;}).join("")}</div></article>`).join("")}</div>`
-   :`<div class="empty">Le programme des prochains jours n'est pas encore publié. Il est récupéré chaque matin dès sa parution ; en attendant, voir les liens « Programme » ci-dessous.</div>`}
+   :`<div class="empty">${S.cin==="pref"?"Pas encore de séance publiée à L'Atlantique pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button class="lnk" data-cin="tous">Voir tous les cinémas</button></div>`}
   <h2 class="sec" data-sub="Les cinémas">Les cinémas</h2>
   <div class="grid2">${CINES.map(c=>card({c:"var(--c-cine)",ic:I.cine,title:esc(c.n),right:distBadge(c.km,c.t),meta:esc(c.t),desc:esc(c.d),extra:`<span class="links"><a href="${c.url}" target="_blank" rel="noopener">Programme ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Google Maps ↗</a></span>`})).join("")}</div>`;
 }
-after.cine=()=>$$("[data-cday]").forEach(b=>b.onclick=()=>{S.cineDay=b.dataset.cday;render();});
+after.cine=()=>{$$("[data-cday]").forEach(b=>b.onclick=()=>{S.cineDay=b.dataset.cday;render();});$$("[data-cin]").forEach(b=>b.onclick=()=>{S.cin=b.dataset.cin;sset("pp-cin",S.cin);S.cineDay=null;render();});};
 
 /* ===== Activités ===== */
 function vActs(){
@@ -360,13 +383,14 @@ function vActs(){
   const cnt=k=>k==="tous"?base.length:base.filter(a=>a.cat===k).length;
   const list=base.sort((p,q)=>(p.dist??99)-(q.dist??99));
   const chips=[["tous","Tout",null],...Object.keys(CATS).filter(k=>cnt(k)).map(k=>[k,CATS[k],CATCOL(k)]),["assos","Associations","var(--taupe)"]];
-  return `<div class="vhead"><div><h1>Activités</h1><p class="lede">Sport, sensations, mer, sorties, culture et associations, du plus proche au plus loin. Pour manger et les marchés : onglet Manger.</p></div></div>
+  return `<div class="vhead"><div><h1>À faire</h1><p class="lede">Sorties, sport, nature, culture et associations, du plus proche au plus loin.</p></div></div>
+  <div class="scroller" role="group" aria-label="Catégorie"><button class="chip" id="rainChip2" aria-pressed="${S.rain}">${I.umb} S'il pleut</button>${chips.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${S.cat===k}">${l}</button>`).join("")}</div>
   ${panel("","",
    `<div class="seglab">Affichage</div><div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center"><div class="seg" role="group" aria-label="Affichage"><button data-av="liste" aria-pressed="${S.actView!=="carte"}">Liste</button><button data-av="carte" aria-pressed="${S.actView==="carte"}">Carte</button></div><button class="tog" id="rainChip" aria-pressed="${S.rain}" style="height:40px">${I.umb}S'il pleut</button></div>`)}
   <div class="resline">${list.length} lieu${list.length>1?"x":""} · du plus proche au plus loin de la maison (Préfailles)</div>
   ${S.actView==="carte"?mapSvg(list)+`<div class="bar"><button class="btn ghost" id="kmlBtn">Exporter vers Google Maps</button></div><div class="status" id="kmlStatus" aria-live="polite"></div>`:""}
-  ${list.length?groupByCat(list):`<div class="empty">Rien pour ce filtre. Ouvrez les filtres et essayez « Tout ».</div>`}
-  ${assosBlock()}`;
+  ${S.cat==="assos"?"":list.filter(a=>S.cat==="tous"||a.cat===S.cat).length?groupByCat(list.filter(a=>S.cat==="tous"||a.cat===S.cat)):`<div class="empty">Rien pour ce filtre. Ouvrez les filtres et essayez « Tout ».</div>`}
+  ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}`;
 }
 function groupByCat(list){const g={};list.forEach(a=>(g[a.cat] ||= []).push(a));
   return Object.keys(CATS).filter(k=>g[k]).map(k=>{
@@ -378,7 +402,7 @@ function assosBlock(){const L=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]?
 function kml(){const x=v=>String(v??"").replace(/[<&>]/g,c=>({"<":"&lt;","&":"&amp;",">":"&gt;"}[c]));
   return `<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>Le Petit Préf – autour de Préfailles</name>`+
    Object.keys(CATS).map(k=>`<Folder><name>${x(CATS[k])}</name>`+ACTS.filter(a=>a.cat===k&&a.lat).map(a=>`<Placemark><name>${x(a.n)}</name><description>${x([a.d,a.season,a.tel,a.url].filter(Boolean).join(" · "))}</description><Point><coordinates>${a.lon},${a.lat},0</coordinates></Point></Placemark>`).join("")+`</Folder>`).join("")+`</Document></kml>`;}
-after.activites=()=>{bindPanel();
+after.activites=()=>{bindPanel();{const r2=$("#rainChip2");if(r2)r2.onclick=()=>{S.rain=!S.rain;render();};}
   $$("[data-cat]").forEach(b=>b.onclick=()=>{S.cat=b.dataset.cat;render();});
   {const rc=$("#rainChip");if(rc)rc.onclick=()=>{S.rain=!S.rain;render();};}
   $$("[data-av]").forEach(b=>b.onclick=()=>{S.actView=b.dataset.av;render();});
@@ -412,14 +436,15 @@ function vManger(){
   const cnt=k=>k==="tous"?base.length:base.filter(a=>kindOf(a)===k).length;
   const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
-  return `<div class="vhead"><div><h1>Manger</h1><p class="lede">Restaurants, crêperies, huîtres en direct du producteur, poisson, marchés, boulangeries et bonnes adresses.</p></div></div>
+  return `<div class="vhead"><div><h1>Manger</h1><p class="lede">Restaurants, crêperies, huîtres en direct, marchés, boulangeries.</p></div></div>
+  <div class="scroller" role="group" aria-label="Catégorie">${[["tous","Tout"],...groups].map(([k,l])=>`<button class="chip" data-mk="${k}" aria-pressed="${S.mk===k}">${l}</button>`).join("")}</div>
   <div class="bar"><button class="tog" id="openToday" aria-pressed="${S.openToday}">Ouvert aujourd'hui</button>${S.filtOpen?"":`<button class="tog" id="fsum2">${FILT}${WHERE.find(w=>w[0]===S.where)[1]==="Tout"?"Partout":WHERE.find(w=>w[0]===S.where)[1]}</button>`}</div>
   ${S.filtOpen?`<div class="planner"><div class="seglab">Jusqu'où</div><div class="seg" role="group" aria-label="Distance">${WHERE.map(([k,l])=>`<button data-where="${k}" aria-pressed="${S.where===k}">${l}</button>`).join("")}</div><button class="btn ghost" id="fclose">Fermer</button></div>`:""}
   <div class="resline">${list.length} adresse${list.length>1?"s":""} · triées par distance de la maison${S.openToday?" · ouvertes aujourd'hui (horaires indicatifs)":""}</div>
-  ${list.length?groups.map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="block" data-sub="${l}" data-n="${L.length}"><h2 class="sec"><span class="dot" style="background:${k==="marche"?"var(--c-market)":"var(--c-food)"}"></span>${l} <span class="count">${L.length}</span></h2><div class="grid2">${L.map(a=>{const o=openOn(a,t);return actCardT(a,o);}).join("")}</div></div>`;}).join(""):`<div class="empty">Rien pour ce filtre. Essayez « Jusqu'où : Tout » ou retirez « Ouvert aujourd'hui ».</div>`}`;}
+  ${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="block" data-sub="${l}" data-n="${L.length}"><h2 class="sec"><span class="dot" style="background:${k==="marche"?"var(--c-market)":"var(--c-food)"}"></span>${l} <span class="count">${L.length}</span></h2><div class="grid2">${L.map(a=>{const o=openOn(a,t);return actCardT(a,o);}).join("")}</div></div>`;}).join(""):`<div class="empty">Rien pour ce filtre. Essayez « Jusqu'où : Tout » ou retirez « Ouvert aujourd'hui ».</div>`}`;}
 function actCardT(a,o){const h=actCard(a);const b=o?`<span class="badge open">Ouvert aujourd'hui${o!=="ouvert"&&o!=="matin"?" · "+esc(o):o==="matin"?" · le matin":""}</span>`:o===false?`<span class="badge">Fermé aujourd'hui</span>`:"";
   return b?h.replace('<span class="xt">','<span class="xt">'+b):h;}
-after.manger=()=>{bindPanel();const f2=$("#fsum2");if(f2)f2.onclick=()=>{S.filtOpen=true;render();};const fc=$("#fclose");if(fc)fc.onclick=()=>{S.filtOpen=false;render();};
+after.manger=()=>{bindPanel();$$("[data-mk]").forEach(b=>b.onclick=()=>{S.mk=b.dataset.mk;render();});if(S.kind&&S.kind!=="tous"){S.mk=S.kind;S.kind="tous";render();return;}const f2=$("#fsum2");if(f2)f2.onclick=()=>{S.filtOpen=true;render();};const fc=$("#fclose");if(fc)fc.onclick=()=>{S.filtOpen=false;render();};
   if(S.kind&&S.kind!=="tous"){const k=S.kind;S.kind="tous";setTimeout(()=>{const lab=(MKINDS.find(m=>m[0]===k)||[])[1];const el=[...$$("#main [data-sub]")].find(x=>x.dataset.sub===lab);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-170});},60);}$("#openToday").onclick=()=>{S.openToday=!S.openToday;render();};};
 
 /* ===== Marées ===== */
@@ -438,21 +463,22 @@ function vMer(){
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   const nowT=tidesOfDay(t),nextLow=[...nowT,...tidesOfDay(addDays(t,1))].find(e=>e.k==="BM"&&e.ms>Date.now());
   const big=[];for(let i=0;i<60&&big.length<3;i++){const d=addDays(t,i),c=maxCoef(d);if(c>=90){const L=big[big.length-1];if(L&&(L[2]||L[0])===addDays(d,-1)){L[2]=d;L[1]=Math.max(L[1],c);}else big.push([d,c,null]);}}
-  return `<div class="vhead"><div><h1>Mer</h1><p class="lede">Marée du jour, vagues et vent pour le surf, le wing et le bateau.</p></div></div><div class="banner"><img src="images/mer.jpg" alt="Plage de Préfailles au soleil couchant, villas et promenade"></div>
+  return `<div class="vhead"><div><h1>Marées et mer</h1><p class="lede">Horaires et coefficients, grandes marées, puis vagues et vent pour le surf, le wing et le bateau.</p></div></div><div class="banner"><img src="images/mer.jpg" alt="Plage de Préfailles au soleil couchant, villas et promenade"></div>
   <div class="block" data-sub="Aujourd'hui" data-subanchor>
    <div class="card" style="--c:var(--c-sea)"><span class="ic">${I.mer}</span><span class="tt">Marée du jour · coef ${maxCoef(t)??"–"}</span><span class="mt">${nowT.map(e=>`${e.k==="PM"?"Pleine mer":"Basse mer"} <b>${hm(new Date(e.ms))}</b>`).join(" · ")}</span>${nextLow?`<span class="ds">Prochaine basse mer à <b>${hm(new Date(nextLow.ms))}</b>${ymd(new Date(nextLow.ms))!==t?" demain":""}.</span>`:""}</div>
-   ${big.length?`<div class="card" style="--c:var(--buoy)"><span class="ic">${I.mer}</span><span class="tt">Prochaines grandes marées</span><span class="mt">${big.map(([d,c,e])=>`<b>${e?dshort(d)+" → "+dshort(e):dshort(d)}</b> jusqu'à coef ${c}`).join(" · ")}</span><span class="ds">Idéal pour la pêche à pied autour de la basse mer (règles et tailles : onglet Séjour › Pratique).</span></div>`:""}
+   ${big.length?`<div class="card" style="--c:var(--buoy)"><span class="ic">${I.mer}</span><span class="tt">Prochaines grandes marées</span><span class="mt">${big.map(([d,c,e])=>`<b>${e?dshort(d)+" → "+dshort(e):dshort(d)}</b> jusqu'à coef ${c}`).join(" · ")}</span><span class="ds">Idéal pour la pêche à pied autour de la basse mer (règles et tailles : Aujourd'hui › Urgences et numéros utiles).</span></div>`:""}
   </div>
-  <div class="block" data-sub="Glisse du jour"><h2 class="sec">Glisse du jour</h2>
-  ${b?card({c:"var(--c-sea)",ic:I.mer,title:esc(b.title||"Glisse du jour"),meta:`Bulletin du ${esc(b.date||"")}`,extra:`<span style="font-size:14px">${esc(b.text||"")}</span>`}):`<div class="empty">Le bulletin vagues et vent du jour s'affiche ici après la mise à jour du matin.</div>`}</div>
-  <div class="block" data-sub="Spots"><h2 class="sec">Spots</h2>
-  <div class="grid2">${SPOTS.map(p=>card({c:"var(--c-sea)",ic:I.mer,title:esc(p.n),meta:`<b>${p.what}</b>`,desc:esc(p.d),extra:`<span class="links"><a href="${windy(p.lat,p.lon,"waves")}" target="_blank" rel="noopener">Houle ↗</a><a href="${windy(p.lat,p.lon,"wind")}" target="_blank" rel="noopener">Vent ↗</a>${p.live?`<a href="${p.live}" target="_blank" rel="noopener">Vent observé et prévu ↗</a>`:""}</span>`})).join("")}</div></div>
   <div class="block" data-sub="Marées"><h2 class="sec">Marées · Préfailles</h2>
   <div class="daynav"><button id="tPrev" aria-label="Jour précédent">‹</button><label for="tDate"><span class="lbl">${esc(rel(s)===dshort(s)?cap(dlong(s)):cap(rel(s))+" · "+dshort(s))}</span><input type="date" id="tDate" value="${s}"></label><button id="tNx" aria-label="Jour suivant">›</button></div>
   <div class="week">${week.map(d=>{const c=maxCoef(d);return `<button class="wd ${c>=90?"gm":""} ${d===s?"sel":""}" data-day="${d}"><div class="d">${dname(d)} ${+d.slice(8)}</div><div class="c">${c??"–"}</div></button>`}).join("")}</div>
   <div class="extrema">${ex.map(e=>`<div class="ex"><div class="k">${e.k==="PM"?"Pleine mer":"Basse mer"}</div><div class="v">${hm(new Date(e.ms))}</div><div class="muted mono">${e.h.toFixed(2).replace(".",",")} m${e.coef?` · coef ${e.coef}`:""}</div></div>`).join("")}</div>
   <div class="chart">${tideSvg(s)}</div>
-  <p class="note">Le coefficient mesure l'ampleur de la marée (20 à 120). À partir de 90 (case orangée) : grande marée, la mer descend très bas, idéal pour la pêche à pied. Elle remonte vite : surveillez l'heure.</p></div>`;}
+  <p class="note">Le coefficient mesure l'ampleur de la marée (20 à 120). À partir de 90 (case orangée) : grande marée, la mer descend très bas, idéal pour la pêche à pied. Elle remonte vite : surveillez l'heure.</p></div>
+  <div class="block" data-sub="Glisse du jour"><h2 class="sec">Glisse du jour</h2>
+  ${b?card({c:"var(--c-sea)",ic:I.mer,title:esc(b.title||"Glisse du jour"),meta:`Bulletin du ${esc(b.date||"")}`,extra:`<span style="font-size:14px">${esc(b.text||"")}</span>`}):`<div class="empty">Le bulletin vagues et vent du jour s'affiche ici après la mise à jour du matin.</div>`}</div>
+  <div class="block" data-sub="Spots"><h2 class="sec">Spots</h2>
+  <div class="grid2">${SPOTS.map(p=>card({c:"var(--c-sea)",ic:I.mer,title:esc(p.n),meta:`<b>${p.what}</b>`,desc:esc(p.d),extra:`<span class="links"><a href="${windy(p.lat,p.lon,"waves")}" target="_blank" rel="noopener">Houle ↗</a><a href="${windy(p.lat,p.lon,"wind")}" target="_blank" rel="noopener">Vent ↗</a>${p.live?`<a href="${p.live}" target="_blank" rel="noopener">Vent observé et prévu ↗</a>`:""}</span>`})).join("")}</div></div>
+`;}
 after.mer=()=>{if(S.merFocus){const f=S.merFocus;S.merFocus=null;setTimeout(()=>{const el=[...$$("#main [data-sub]")].find(x=>x.dataset.sub===(f==="marees"?"Marées":"Glisse du jour"));if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-170});},60);}const go=d=>{S.tideDay=d;render();};if(!$("#tPrev"))return;$("#tPrev").onclick=()=>go(addDays(S.tideDay,-1));$("#tNx").onclick=()=>go(addDays(S.tideDay,1));$("#tDate").onchange=e=>{if(e.target.value)go(e.target.value);};$$("[data-day]").forEach(b=>b.onclick=()=>go(b.dataset.day));};
 
 /* ===== Trajets ===== */
@@ -465,7 +491,7 @@ function vVenir(){
   const fromField=k==="pickup"
     ?`<label class="f" for="aWhere">J'arrive à<select class="f" id="aWhere"><option>Gare de Pornic</option><option>Gare de Saint-Nazaire</option><option>Gare de Nantes</option><option>Arrêt de car à Préfailles</option><option>Aéroport de Nantes</option><option>Autre (préciser en note)</option></select></label>`
     :`<label class="f" for="aWhere">${k==="offer"?"Je pars de":"Je pars de"}<input type="text" id="aWhere" placeholder="Ex. Paris, Maisons-Laffitte, Nantes"></label>`;
-  return `<div class="vhead"><div><h1>Venir</h1><p class="lede">Trains et cars pour rejoindre Préfailles, puis les navettes autour de Pornic.</p></div></div>
+  return `<div class="vhead"><div><h1>Cars et trains</h1><p class="lede">Rejoindre Préfailles, aller à Pornic, Nantes ou Saint-Nazaire, les navettes gratuites.</p></div></div>
   <div class="block" data-sub="Trains" data-subanchor><h2 class="sec">Trains</h2><div class="grid2">
    ${T(I.train,"Paris → Pornic","TGV jusqu'à Nantes puis TER · SNCF Connect","https://www.sncf-connect.com/train/horaires/paris/pornic")}
    ${T(I.train,"Nantes → Pornic","TER via Sainte-Pazanne","https://www.sncf-connect.com/train/horaires/nantes/pornic")}
@@ -570,6 +596,36 @@ function vInstaller(){
   <div class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos, à jour chaque matin. Mets-le sur ton écran d'accueil.")}</div></div>`;}
 after.installer=()=>{$$("[data-os]").forEach(b=>b.onclick=()=>{S.os=b.dataset.os;render();});const n=$("#instNow2");if(n)n.onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;render();};
   if(STANDALONE()){const f=$("#fInst");if(f)f.hidden=true;}};
+
+/* ---------- menu (bouton en haut à droite) ---------- */
+const SRCH='<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
+const MENU1=[["sejour","Aujourd'hui","Marée du jour, sorties et ciné du jour",I.home],["agenda","Agenda","Fêtes, lotos, concerts, brocantes",I.agenda],["cine","Ciné","L'Atlantique et les cinémas voisins",I.cine],["mer","Marées et mer","Horaires, coefficients, surf et vent",I.mer],["manger","Manger","Restos, huîtres, marchés, boulangeries",I.manger],["activites","À faire","Sorties, sport, nature, associations",I.activites]];
+const MENU2=[["pratique","Urgences et numéros utiles",I.umb],["venir","Cars et trains",I.venir],["recherche","Rechercher",SRCH],["immo","Immobilier à Préfailles",I.home],["apropos","À propos et contact",I.people]];
+function openMenu(){
+  const c=curView(),v=document.createElement("div");v.className="mn-voile";
+  const it=([h,l,t,ic])=>`<a class="mn-it ${h===c?"on":""}" href="#${h}"><span class="mn-ic">${ic}</span><span><b>${l}</b>${t?`<span>${t}</span>`:""}</span></a>`;
+  v.innerHTML=`<div class="mn-panneau" role="dialog" aria-modal="true" aria-label="Menu">
+   <div class="mn-haut"><b>Le Petit Préf</b><button class="mn-ferme" id="mnClose">Fermer</button></div>
+   ${STANDALONE()?"":`<a class="mn-inst" href="#installer"><span class="ii">${WAVE}</span><span><b>Installer l'app sur votre téléphone</b><span>Une icône sur l'écran d'accueil. Gratuit, sans store.</span></span></a>`}
+   <div class="mn-g">Rubriques</div>${MENU1.map(x=>it(x)).join("")}
+   <div class="mn-g">Pratique</div>${MENU2.map(([h,l,ic])=>it([h,l,"",ic])).join("")}
+   <div class="mn-g">Mes réglages</div>
+   <div class="seg" role="group" aria-label="Je suis"><button data-mmode="annee" aria-pressed="${S.mode!=="sejour"}">J'habite ici</button><button data-mmode="sejour" aria-pressed="${S.mode==="sejour"}">En vacances</button></div>
+   <div class="seglab">Avec qui</div><div class="seg" role="group">${WHO.map(([k,l])=>`<button data-mwho="${k}" aria-pressed="${S.who===k}">${l}</button>`).join("")}</div>
+   <div class="seglab">Jusqu'où</div><div class="seg" role="group">${WHERE.map(([k,l])=>`<button data-mwhere="${k}" aria-pressed="${S.where===k}">${l}</button>`).join("")}</div>
+  </div>`;
+  const close=()=>{v.remove();document.body.style.overflow="";document.removeEventListener("keydown",esc_);const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});};
+  const esc_=e=>{if(e.key==="Escape")close();};
+  v.addEventListener("click",e=>{if(e.target===v||e.target.id==="mnClose"||e.target.closest("a"))close();});
+  document.addEventListener("keydown",esc_);
+  document.body.appendChild(v);document.body.style.overflow="hidden";
+  const re=()=>{close();render();openMenu();};
+  v.querySelectorAll("[data-mwho]").forEach(b=>b.onclick=()=>{S.who=b.dataset.mwho;sset("cf-who",S.who);re();});
+  v.querySelectorAll("[data-mwhere]").forEach(b=>b.onclick=()=>{S.where=b.dataset.mwhere;sset("cf-where",S.where);re();});
+  v.querySelectorAll("[data-mmode]").forEach(b=>b.onclick=()=>{if(b.dataset.mmode==="annee"){S.mode="annee";sset("pp-mode","annee");try{localStorage.removeItem("cf-stay")}catch(e){}S.day=null;re();}
+    else{close();S.editDates=true;if(curView()!=="sejour")location.hash="#sejour";else render();setTimeout(()=>{const e=$("#pFrom");if(e)e.scrollIntoView({block:"center"});},80);}});
+  const f=v.querySelector(".mn-inst,.mn-it");if(f)f.focus({preventScroll:true});}
+{const mb=document.getElementById("menuBtn");if(mb)mb.onclick=openMenu;}
 
 /* ---------- boot ---------- */
 const POS={};let lastView=curView();
