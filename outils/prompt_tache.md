@@ -25,8 +25,8 @@ En priorité les 30 prochains jours, puis les grandes dates : marchés de Noël,
 - `id` = "AAAA-MM-JJ-<atlantique|toiles-de-retz|saint-joseph|cinejade>-film-slug". Champs : `cinema`, `film`, `date`, `times` (liste de "20h30"), `version` (VF/VOST), `genre` (ou mention : ciné-goûter, avant-première, jeune public dès X ans), `kids`.
 - Retire les séances passées. Si une source est inaccessible, garde ses séances déjà présentes.
 
-## 3. `donnees/immo.json` : ventes à Préfailles et La Plaine-sur-Mer
-Portails (SeLoger, Leboncoin, Bien'ici, Orpi, FNAIM, Les Clefs de Chez Moi, Belles Demeures, Square Habitat, Capifrance, PAP) et agences locales. `id` = source + référence (ex. "fnaim-52946729"). Champs : `title`, `price` (nombre), `surface`, `rooms`, `town`, `source`, `url`, `desc`, `foundOn` (date de première détection, ne jamais l'écraser). Retire une annonce seulement avec une preuve claire qu'elle n'existe plus (404, « annonce expirée », absente d'une liste complète). Un blocage (403, captcha) n'est pas une preuve.
+## 3. Immobilier
+Immobilier : abandonné pour l'instant, ne rien faire.
 
 ## 4. `donnees/status.json`
 `{"updatedAt": "<ISO, heure de Paris>", "bulletin": {"date": "JJ/MM", "title": "Glisse du jour", "text": "2–3 phrases"}}` : houle (hauteur, période) et vent (nœuds, direction) aujourd'hui pour Préfailles / Saint-Brevin ; surfable ou non à Saint-Brevin et à la Pointe Saint-Gildas ; wing (≈ 12–25 nœuds) ou bateau ; avis de coup de vent s'il y en a. Sources : windfinder (Saint-Brevin), surfnerd (Préfailles), windmorbihan.com/saint-gildas. Sans prévision fiable : `"bulletin": null`.
@@ -35,6 +35,6 @@ Portails (SeLoger, Leboncoin, Bien'ici, Orpi, FNAIM, Les Clefs de Chez Moi, Bell
 1. `python3 outils/verifier.py`. S'il sort en erreur, corrige ta saisie et relance ; si tu n'y arrives pas, ne publie rien et réponds « ÉCHEC contrôle : » suivi de l'erreur.
 2. `git config user.name "Le Petit Préf"` ; `git config user.email "noreply@lepetitpref.fr"`. Aucune ligne Co-Authored-By.
 3. `git add donnees` ; commit « Données du <date> » ; `git fetch origin main` ; si main a avancé, `git rebase origin/main` et relance le contrôle ; puis `git push origin HEAD:main`.
-4. Réponds en 3 lignes : ce qui a été ajouté / retiré (événements, séances, annonces), la ligne du contrôle, et les sources refusées. « ÉCHEC GitHub : <erreur> » si le push a échoué.
+4. Réponds en 3 lignes : ce qui a été ajouté / retiré (événements, séances), la ligne du contrôle, et les sources refusées. « ÉCHEC GitHub : <erreur> » si le push a échoué.
 
 Astuce d'accès : le shell n'a souvent pas accès aux sites ; utilise WebFetch / WebSearch (des sous-agents peuvent paralléliser les recherches).

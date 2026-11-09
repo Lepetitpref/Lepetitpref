@@ -13,8 +13,8 @@ def load(n):
     except Exception as e:
         err.append(f"{n}.json illisible : {e}"); return []
     return v
-ev, ci, im, asso, st = load("events"), load("cinema"), load("immo"), load("assos"), load("status")
-for n, L in [("events", ev), ("cinema", ci), ("immo", im), ("assos", asso)]:
+ev, ci, asso, st = load("events"), load("cinema"), load("assos"), load("status")
+for n, L in [("events", ev), ("cinema", ci), ("assos", asso)]:
     if not isinstance(L, list): err.append(f"{n}.json doit être une liste"); continue
     ids = [x.get("id") for x in L]
     if None in ids or "" in ids: err.append(f"{n}.json : un élément sans id")
@@ -28,10 +28,8 @@ for e in ev:
     if e.get("type") and e["type"] not in TYPES: err.append(f"events {i} : type « {e['type']} » hors liste")
 for c in ci:
     if not D.match(str(c.get("date", ""))) or not isinstance(c.get("times"), list): err.append(f"cinema {c.get('id')} : date ou times invalide")
-for a in im:
-    if not isinstance(a.get("price"), (int, float)) and a.get("price") is not None: err.append(f"immo {a.get('id')} : price doit être un nombre")
 if not isinstance(st, dict) or "updatedAt" not in st: err.append("status.json : updatedAt manquant")
 if err:
     print("\n".join(err)); sys.exit(1)
 today = datetime.date.today().isoformat()
-print(f"OK · {len([e for e in ev if (e.get('end') or e['date'])>=today])} événements à venir · {len([c for c in ci if c['date']>=today])} séances · {len(im)} annonces · bulletin {'oui' if st.get('bulletin') else 'non'}")
+print(f"OK · {len([e for e in ev if (e.get('end') or e['date'])>=today])} événements à venir · {len([c for c in ci if c['date']>=today])} séances · bulletin {'oui' if st.get('bulletin') else 'non'}")
