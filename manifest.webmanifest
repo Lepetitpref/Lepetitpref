@@ -1,0 +1,16 @@
+{
+  "name": "Le Petit Préf",
+  "short_name": "Petit Préf",
+  "description": "Préfailles au jour le jour : marées, sorties, ciné et huîtres. À jour chaque matin.",
+  "lang": "fr",
+  "start_url": "/#sejour",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f3",
+  "theme_color": "#1f5f8b",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
