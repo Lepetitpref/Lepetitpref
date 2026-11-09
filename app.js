@@ -163,13 +163,14 @@ const whereOpts=WHERE.map(([k,l])=>[k,k==="ici"?"Préfailles (≤ 3 km)":l]);
 const whoOpts=WHO.map(([k,l])=>[k,{tous:"tout le monde",petits:"tout-petits",enfants:"enfants 6–11",ados:"ados",adultes:"adultes"}[k]]);
 const FILT='<svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>';
 function panel(typeLabel,typeRow,extra=""){
-  const sum=`${WHERE.find(w=>w[0]===S.where)[1]} · ${WHO.find(w=>w[0]===S.who)[1]==="Tous"?"tout le monde":WHO.find(w=>w[0]===S.who)[1]}${S.rain?" · s'il pleut":""}${S.onlyStay?" · mes dates":""}`;
-  if(!S.filtOpen) return `<button class="fsum" id="fsum">${FILT}<span class="ft">Filtres<span class="fs">${esc(sum)}</span></span><span class="chev">⌄</span></button>`;
+  const cv=curView(),tc=cv==="agenda"?(S.etype==="tous"?"tous types":ETL[S.etype]):cv==="activites"?(S.cat==="tous"?"toutes activités":S.cat==="assos"?"associations":CATS[S.cat]):"";
+  const sum=[WHERE.find(w=>w[0]===S.where)[1]==="Partout"?"partout":"≤ "+WHERE.find(w=>w[0]===S.where)[1],WHO.find(w=>w[0]===S.who)[1]==="Tous"?"tout public":WHO.find(w=>w[0]===S.who)[1].toLowerCase(),tc,S.rain?"s'il pleut":""].filter(Boolean).join(" · ");
+  if(!S.filtOpen) return `<button class="fsum" id="fsum">${FILT}<span class="ft">Filtrer : distance, public, type<span class="fs">${esc(sum)}</span></span><span class="chev">⌄</span></button>`;
   return `<div class="planner"><button class="fsum" id="fsum" style="border:0;padding:0;background:none">${FILT}<span class="ft">Filtres</span><span class="chev">⌃</span></button>
     <div class="seglab">Jusqu'où</div>
     <div class="seg" role="group" aria-label="Distance">${WHERE.map(([k,l])=>`<button data-where="${k}" aria-pressed="${S.where===k}">${l}</button>`).join("")}</div>
-    <div class="seglab">Avec qui</div>
-    <div class="seg" role="group" aria-label="Avec qui">${WHO.map(([k,l])=>`<button data-who="${k}" aria-pressed="${S.who===k}">${l}</button>`).join("")}</div>
+    <div class="seglab">Public</div>
+    <div class="seg" role="group" aria-label="Public">${WHO.map(([k,l])=>`<button data-who="${k}" aria-pressed="${S.who===k}">${l}</button>`).join("")}</div>
     ${typeRow?`<div class="seglab">${typeLabel}</div><div class="scroller">${typeRow}</div>`:""}
     ${extra}
   </div>`;}
@@ -249,8 +250,7 @@ function vSejour(){
   const b=S.meta?.bulletin,bOK=b&&b.date===`${t.slice(8)}/${t.slice(5,7)}`;
   const dayLbl=x=>x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dshort(x));
   return `<section class="hero2">
-   <div class="h-top"><h1>Préfailles</h1>${fresh()}</div>
-   <p class="h-date">${cap(dlong(t))}</p>
+   <div class="hphoto"><img src="images/accueil.jpg" alt="La pêcherie de Préfailles au coucher du soleil" width="1100" height="561"><div class="hov"><h1>Préfailles</h1><p class="h-date">${cap(dlong(t))}</p></div>${fresh()}</div>
    <div class="tide-now"><div><span class="lab">Marée basse</span><b>${T.bm.join(" · ")||"–"}</b></div><div><span class="lab">Pleine mer</span><b>${T.pm.join(" · ")||"–"}</b></div><div><span class="lab">Coefficient</span><b>${T.c??"–"}</b></div></div>
    ${big.length?`<p class="h-note">Prochaine grande marée : <b>${big[0][2]?`du ${dshort(big[0][0])} au ${dshort(big[0][2])}`:dlong(big[0][0])}</b>, coef ${big[0][1]}. <a href="#mer">Marées ›</a></p>`:""}
    ${bOK?`<p class="h-note"><b>Glisse :</b> ${esc(String(b.text).split(/(?<=\.)\s/)[0])} <a href="#mer">Détails ›</a></p>`:""}
@@ -345,14 +345,14 @@ function horizonGroups(list,t){
   const long=e=>e.end&&e.end>addDays(e.date,7);
   const order=[],add=(k,l,e,info)=>{let g=order.find(x=>x[0]===k);if(!g){g=[k,l,[],info];order.push(g);}g[2].push(e);};
   const MO=d=>cap(F(noon(d),{month:"long",year:d.slice(0,4)!==t.slice(0,4)?"numeric":undefined}));
-  list.forEach(e=>{const d=e.date<t?t:e.date;
+  list.forEach(e=>{const d=e.date<t?t:e.date;if(e.date<t&&!long(e)){add("cours","En cours, à plusieurs dates",e,"Commencé avant aujourd'hui : vérifiez les jours exacts dans la fiche.");return;}
     if(long(e)){add("long","Toute la saison",e,"Expositions, cycles et rendez-vous réguliers sur plusieurs semaines.");return;}
     if(d===t)add("t","Aujourd'hui",e);else if(d===tm)add("tm","Demain",e);
     else if(d>=fri&&d<=sun)add("we","Ce week-end",e);
     else if(d<=sunThis)add("sem","Cette semaine",e);
     else if(d>=monNext&&d<=sunNext)add("sem2","Semaine prochaine",e);
     else add("m"+d.slice(0,7),d.slice(0,7)===t.slice(0,7)?"Plus tard en "+F(noon(d),{month:"long"}):MO(d),e);});
-  const L=order.filter(g=>g[0]!=="long").concat(order.filter(g=>g[0]==="long"));
+  const L=order.filter(g=>g[0]!=="long"&&g[0]!=="cours").concat(order.filter(g=>g[0]==="cours"),order.filter(g=>g[0]==="long"));
   return L.map(([k,l,es,info])=>[l,es,info]);}
 after.agenda=()=>{bindPanel();$$("[data-wh]").forEach(b=>b.onclick=()=>{S.when=b.dataset.wh;render();});$$("[data-more]").forEach(b=>b.onclick=()=>{S.more[b.dataset.more]=true;render();});const os=$("#onlyStay");if(os)os.onclick=()=>{S.onlyStay=!S.onlyStay;render();};$$("[data-et]").forEach(b=>b.onclick=()=>{S.etype=b.dataset.et;render();});};
 
@@ -384,8 +384,8 @@ function vActs(){
   const list=base.sort((p,q)=>(p.dist??99)-(q.dist??99));
   const chips=[["tous","Tout",null],...Object.keys(CATS).filter(k=>cnt(k)).map(k=>[k,CATS[k],CATCOL(k)]),["assos","Associations","var(--taupe)"]];
   return `<div class="vhead"><div><h1>À faire</h1><p class="lede">Sorties, sport, nature, culture et associations, du plus proche au plus loin.</p></div></div>
-  <div class="scroller" role="group" aria-label="Catégorie"><button class="chip" id="rainChip2" aria-pressed="${S.rain}">${I.umb} S'il pleut</button>${chips.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${S.cat===k}">${l}</button>`).join("")}</div>
-  ${panel("","",
+  <div class="bar"><button class="chip" id="rainChip2" aria-pressed="${S.rain}">${I.umb} S'il pleut</button>${S.cat!=="tous"?`<button class="chip" data-cat="tous" aria-pressed="true">${esc(S.cat==="assos"?"Associations":CATS[S.cat])} ✕</button>`:""}</div>
+  ${panel("Type d'activité",chips.map(([k,l])=>`<button class="chip" data-cat="${k}" aria-pressed="${S.cat===k}">${l}</button>`).join(""),
    `<div class="seglab">Affichage</div><div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center"><div class="seg" role="group" aria-label="Affichage"><button data-av="liste" aria-pressed="${S.actView!=="carte"}">Liste</button><button data-av="carte" aria-pressed="${S.actView==="carte"}">Carte</button></div><button class="tog" id="rainChip" aria-pressed="${S.rain}" style="height:40px">${I.umb}S'il pleut</button></div>`)}
   <div class="resline">${list.length} lieu${list.length>1?"x":""} · du plus proche au plus loin de la maison (Préfailles)</div>
   ${S.actView==="carte"?mapSvg(list)+`<div class="bar"><button class="btn ghost" id="kmlBtn">Exporter vers Google Maps</button></div><div class="status" id="kmlStatus" aria-live="polite"></div>`:""}

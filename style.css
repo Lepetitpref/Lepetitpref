@@ -358,3 +358,54 @@ h2.sec .count{font-family:var(--sans)}
 .mn-inst .ii svg{width:24px;height:15px;fill:#fff}
 
 .mn-panneau>*{flex-shrink:0}
+
+/* ================= retouches : typo plus fine, photo d'accueil ================= */
+body{font-size:16px;letter-spacing:-.003em}
+h1{font-weight:400;letter-spacing:-.01em}
+h2.sec{font-weight:400;font-size:24px;letter-spacing:-.005em}
+.brand .word{font-weight:400;font-size:22px}
+.menubtn{border:1px solid var(--line);font-weight:600;font-size:15px;min-height:40px;box-shadow:0 1px 2px rgba(20,22,30,.06)}
+.iconbtn{width:40px;height:40px}
+nav.tabs a{font-weight:500;font-size:12.5px;min-height:56px;gap:4px}
+nav.tabs a svg{width:22px;height:22px;stroke-width:1.5}
+nav.tabs a[aria-current="page"]{font-weight:600;background:none;border-bottom-width:2px}
+nav.tabs a[aria-current="page"] svg{stroke-width:1.9}
+.card .tt{font-weight:600;font-size:16px;letter-spacing:-.012em}
+.card .mt{font-size:14px}
+.card .mt b{font-weight:500}
+.card .ds{font-size:14.5px;color:color-mix(in srgb,var(--ink) 88%,var(--muted))}
+.datepill i{font-weight:600}
+.badge{font-weight:500;font-size:12.5px}
+.chip,.tog,.subnav button{font-weight:500;font-size:14.5px}
+.chip[aria-pressed="true"]{font-weight:600}
+.seg button{font-weight:500;font-size:14.5px}
+.seg button[aria-pressed="true"]{font-weight:600}
+.seg.segnav a{font-weight:500}
+.seg.segnav a[aria-pressed="true"]{font-weight:600}
+.dist{font-weight:500}
+.btn{font-weight:600}
+.lnk,.more{font-weight:600}
+.count{font-weight:500}
+.mn-it b,.mn-inst b{font-weight:600;font-size:16px}
+.mn-haut b{font-weight:400}
+.idea b{font-weight:600;font-size:15.5px}
+.mini h3{font-weight:600}
+.mini .row b{font-weight:600;font-size:16px}
+.fsum{font-weight:500}
+.fsum .ft{display:grid;gap:1px}
+.fsum .ft{font-weight:600;font-size:15px}
+.fsum .fs{font-weight:400}
+.stayline,.lnk{font-size:15.5px}
+.tide-now .lab{font-weight:500;font-size:12.5px}
+.tide-now b{font-size:21px;font-weight:400}
+.h-note{font-size:14.5px}
+.hero2{padding:8px 8px 14px;gap:12px}
+.hero2>:not(.hphoto){margin-inline:6px}
+.hphoto{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/8;max-width:100%;background:#cdb894}
+.hphoto img{display:block;width:100%;height:100%;object-fit:cover}
+.hphoto::after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(180deg,transparent,rgba(8,16,24,.6))}
+.hphoto .hov{position:absolute;z-index:1;left:14px;right:14px;bottom:12px;color:#fff}
+.hphoto h1{color:#fff;font-size:36px;line-height:1;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.hphoto .h-date{color:#fff;margin:4px 0 0;font-weight:500;font-size:15.5px;opacity:.95}
+.hphoto .cap{position:absolute;z-index:1;top:10px;right:10px;font-size:12px;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--panel) 88%,transparent);border-radius:999px;padding:3px 10px;text-shadow:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hphoto img{filter:brightness(.9)}}
