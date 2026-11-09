@@ -12,7 +12,8 @@ Site statique (GitHub Pages, domaine lepetitpref.fr) : le carnet de Préfailles 
 - `app.js` : tout le site (vues `vSejour` = accueil « Aujourd'hui », `vAgenda`, `vCine`, `vMer`, `vManger`, `vActs` = « À faire », `vVenir`, `vPratique`, `vInstaller`, `vImmo`, `vApropos`, `vSearch`). Navigation par le hash (`#sejour`, `#agenda`…). Menu façon Concret : `openMenu()`.
 - `style.css` : jetons de couleur dans `:root` (fond #f6f6f3, accent `--sea`, blocs `--fd-ciel` / `--fd-peche` / `--fd-brume` comme sur Concret), Inter Tight + Newsreader.
 - `donnees/*.json` : données réécrites chaque matin par la tâche planifiée (`outils/prompt_tache.md`). Contrôle : `python3 outils/verifier.py`.
-- `sw.js` : hors ligne. **Change la constante `V` à chaque modification de app.js / style.css** pour que les téléphones prennent la nouvelle version.
+- `sw.js` : hors ligne.
+- **Après toute modification de index.html, app.js ou style.css, lance `python3 outils/version.py`** avant le commit : les téléphones et l'app installée se mettent alors à jour seuls (rechargement automatique à l'ouverture, ou bandeau « Une nouvelle version du Petit Préf est en ligne · Mettre à jour »). Pas besoin pour les seules données.
 
 ## Design
 Sobre, dans l'esprit de Concret : une seule couleur d'accent, cartes blanches à filet fin, grands titres en Newsreader, poids de police légers (400–600). Cibles tactiles ≥ 44 px, texte ≥ 14 px. Deux publics : vacanciers (dates de séjour, en option) et habitants (aucune notion de séjour imposée).

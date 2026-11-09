@@ -627,6 +627,20 @@ function openMenu(){
   const f=v.querySelector(".mn-inst,.mn-it");if(f)f.focus({preventScroll:true});}
 {const mb=document.getElementById("menuBtn");if(mb)mb.onclick=openMenu;}
 
+/* ---------- nouvelle version du site ---------- */
+(function(){const vPage=(document.querySelector('meta[name="pp-version"]')||{}).content,t0=Date.now(),reload=/[?&]maj=/.test(location.search);let vu=0,touche=false;
+  ["pointerdown","keydown","scroll"].forEach(e=>addEventListener(e,()=>{touche=true;},{once:true,passive:true}));
+  const go=v=>location.replace(location.pathname+"?maj="+v+location.hash);
+  function check(){if(!vPage||Date.now()-vu<60000||document.getElementById("pp-maj"))return;vu=Date.now();
+    fetch("donnees/version.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(o=>{
+      if(!o||!o.v||o.v===vPage||document.getElementById("pp-maj"))return;let deja=null;try{deja=sessionStorage.getItem("pp-maj-auto");}catch(e){}
+      if(!touche&&!reload&&Date.now()-t0<4000&&deja!==o.v){try{sessionStorage.setItem("pp-maj-auto",o.v);}catch(e){}go(o.v);return;}
+      const b=document.createElement("button");b.type="button";b.id="pp-maj";b.className="pp-maj";b.innerHTML="<span>Une nouvelle version du Petit Préf est en ligne.</span><b>Mettre à jour</b>";
+      b.onclick=()=>{b.disabled=true;go(o.v);};document.body.appendChild(b);}).catch(()=>{});}
+  if(reload)try{history.replaceState(null,"",location.pathname+location.hash);}catch(e){}
+  check();document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")check();});addEventListener("focus",check);
+})();
+
 /* ---------- boot ---------- */
 const POS={};let lastView=curView();
 window.addEventListener("hashchange",()=>{const v=curView();
