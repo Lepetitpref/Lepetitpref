@@ -193,9 +193,13 @@ function statusOf(a,d){const o=openOn(a,d);
 function placeMore(a){const sh=`${a.n} (${a.town})${a.tel?" · "+a.tel:""}`;
   return `${a.d?`<p>${esc(a.d)}</p>`:""}${a.price||a.season?`<span class="row-meta">${esc([a.price,a.season].filter(Boolean).join(" · "))}</span>`:""}
    <span class="row-links">${telLinks(a.tel)}${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a>`:""}<a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a><button type="button" data-share="${esc(sh)}" data-url="${esc(a.url||mapsUrl(a))}">Partager</button></span>`;}
+const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+function schedTxt(a){if(!a.open||!a.open.length)return "";const per=r=>r.from==="01-01"&&r.to==="12-31"?"":(()=>{const[m1,d1]=r.from.split("-").map(Number),[m2,d2]=r.to.split("-").map(Number);const md=(m,d,end)=>d===1&&!end?MOIS[m-1]:(end&&d>=28?MOIS[m-1]:d+" "+MOIS[m-1]);return m1===m2?md(m1,d1)+(d1===1&&d2>=28?"":"–"+d2):md(m1,d1)+" à "+md(m2,d2,true);})();
+  const JN=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"],jours=r=>{const o=[..."1234560"].filter(x=>(r.days||"0123456").includes(x));return o.length===7?"tous les jours":listAnd(o.map(x=>JN[+x]));};
+  return a.open.map(r=>cap(jours(r))+(r.hours?", "+r.hours:"")+(per(r)?" ("+per(r)+")":"")).join(" ; ");}
 function placeRow(a,d,o={}){
   const m=o.metaH??(a.cat==="saveurs"?meta(KIND1[a.kind]||"",esc(townShort(a.town))+(isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)),isHere(a.dist,a.town)?"à pied":""):meta(esc(townShort(a.town)),kmTxt(a.dist,a.town),agesTxt(a),/^Gratuit/.test(a.price||"")?'<span class="ok">Gratuit</span>':""));
-  const lines=o.lines||[statusOf(a,d)];
+  const lines=o.lines||(a.cat==="marche"&&a.open?[statusOf(a,d),[esc(schedTxt(a)),"dim"]]:[statusOf(a,d)]);
   return row({th:thumbOf(a),title:esc(a.n),metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
 function evMore(e){const when=e.end&&e.end!==e.date?`Du ${dshort(e.date)} au ${dshort(e.end)}`:cap(dlong(e.date));
   const sh=`${e.title}\n${when}${e.time?" · "+e.time:""} · ${[e.place,e.town].filter(Boolean).join(", ")}`;
