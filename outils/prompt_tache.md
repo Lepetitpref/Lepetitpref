@@ -47,4 +47,4 @@ Astuce d'accès : le shell n'a souvent pas accès aux sites ; utilise WebFetch /
 Lire le programme mensuel complet (https://www.cinemaprefailles.com/images/PROGRAMME/programmation.pdf) et reprendre toutes les séances à venir du mois, pas seulement la semaine. Cinéma : « L'Atlantique (Préfailles) ».
 
 ## Transports
-`donnees/transports.json` : vérifier une fois par mois les fiches Aléop 303 / 315 et TER Nantes–Pornic (champ `fin` de chaque ligne). Ne jamais inventer d'horaire.
+`donnees/transports.json` : vérifier une fois par mois les fiches Aléop 303 / 315, TER Nantes–Pornic et TER ligne 1 Nantes–Saint-Nazaire (champ `fin` de chaque tronçon `legs`). **Les fiches TER actuelles s'arrêtent le 12 décembre 2026** : dès que les fiches à partir du 13 décembre sont publiées (index https://aleop.paysdelaloire.fr/je-recherche-un-horaire-aleop?field_transport_type=4), régénérer les tronçons avec `outils/transports/` (mode d'emploi : `outils/transports/LISEZMOI.md`) et mettre à jour `fin`, `valid` et `source`. Ne jamais inventer d'horaire.

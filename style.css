@@ -580,3 +580,22 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .tab{min-width:44px;justify-content:center}
 /* toutes les barres de sélection en vert de mer (moins de noir) */
 .seg button[aria-pressed="true"],.seg a[aria-pressed="true"]{background:var(--seagreen);color:var(--seagreen-ink)}
+
+/* Transports : trajets avec correspondances */
+button.tr-nx{width:100%;text-align:left;font:inherit;cursor:pointer}
+.tr-nx.is-on{border-color:var(--seagreen);box-shadow:0 0 0 1px var(--seagreen)}
+.tr-nx-chain{display:flex;flex-direction:column;gap:4px;flex:none}
+.tr-j{padding:8px 0;border-bottom:1px solid var(--line)}
+.tr-list .tr-j:last-child{border-bottom:0}
+.tr-j-top{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;min-height:32px}
+.tr-j-top .note-pill{margin-left:auto}
+.tr-j.is-next{margin:0 -14px;padding:8px 14px;background:var(--accent-soft)}
+.tr-j.is-next .tr-t{color:var(--accent)}
+.tr-j.is-past .tr-t,.tr-j.is-past .tr-t2{color:var(--faint);font-weight:500}
+.tr-steps{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.tr-step{display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.35;color:var(--muted)}
+.tr-step b{color:var(--ink);font-weight:600}
+.tr-step .tr-badge{height:24px;padding:0 6px;font-size:13.5px}
+.tr-walk{display:block;padding-left:4px;font-size:14px;color:var(--warn)}
+.tr-miss{display:flex;gap:8px;align-items:flex-start;margin:8px 0 12px;font-size:14px;color:var(--warn)}
+.tr-line summary{gap:8px}

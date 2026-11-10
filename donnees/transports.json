@@ -64,124 +64,6 @@
     "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
    },
    "note": "La plupart des cars 303 partent de Pornic (Ste-Marie, place de la Marne) ; seuls les départs ci-dessous desservent Préfailles. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).",
-   "sens": [
-    {
-     "de": "Préfailles",
-     "vers": "Nantes",
-     "arret": "Préfailles, Place de la Gare (puis Quirouard +1 min)",
-     "dest": "Nantes, Pirmil (tram 2/3)",
-     "departs": [
-      {
-       "dep": "05h35",
-       "arr": "07h17",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": "Ne circule pas tous les jours de semaine : la fiche a deux départs à 5h50 de Pornic (l'un mardi-jeudi, plus lundi/vendredi pendant les vacances ; l'autre lundi et vendredi hors vacances) et on ne voit pas lequel passe par Préfailles. À vérifier auprès d'Allô Aléop.",
-       "incertain": true
-      },
-      {
-       "dep": "06h45",
-       "arr": "08h27",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": "Pornic Ste-Marie 7h00"
-      },
-      {
-       "dep": "06h45",
-       "arr": "08h27",
-       "jours": "6",
-       "periode": "toujours",
-       "note": "Pornic Ste-Marie 7h00"
-      },
-      {
-       "dep": "10h45",
-       "arr": "12h27",
-       "jours": "60",
-       "periode": "toujours",
-       "note": "Samedi OU dimanche/jour férié : la fiche ne permet pas de savoir lequel. Pornic Ste-Marie 11h00.",
-       "incertain": true
-      },
-      {
-       "dep": "19h15",
-       "arr": "20h57",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés. Pornic Ste-Marie 19h30"
-      }
-     ]
-    },
-    {
-     "de": "Nantes",
-     "vers": "Préfailles",
-     "arret": "Nantes, Pirmil",
-     "dest": "Préfailles, Place de la Gare (Quirouard 1 min avant)",
-     "departs": [
-      {
-       "dep": "12h30",
-       "arr": "13h58",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h00",
-       "arr": "18h28",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h15",
-       "arr": "19h43",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "12h30",
-       "arr": "13h58",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h00",
-       "arr": "18h28",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h15",
-       "arr": "19h43",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h30",
-       "arr": "10h58",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "12h30",
-       "arr": "13h58",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "17h00",
-       "arr": "18h28",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      }
-     ]
-    }
-   ],
    "debut": "2026-08-31",
    "fin": "2027-07-02"
   },
@@ -197,290 +79,6 @@
     "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
    },
    "note": "Terminus à Préfailles, Place de la Gare. À Pornic, arrêts Terres Jarries, Le Sandier, Théâtre St-Gilles (pas Ste-Marie ni la gare). Correspondance possible avec la ligne 303 ou le TER à Pornic. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).",
-   "sens": [
-    {
-     "de": "Préfailles",
-     "vers": "Saint-Nazaire",
-     "arret": "Préfailles, Place de la Gare (puis Quirouard +1 min)",
-     "dest": "Saint-Nazaire, gare SNCF",
-     "departs": [
-      {
-       "dep": "05h50",
-       "arr": "06h55",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "06h35",
-       "arr": "07h40",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "07h45",
-       "arr": "08h50",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h20",
-       "arr": "10h25",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h50",
-       "arr": "10h55",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "10h55",
-       "arr": "12h00",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "13h05",
-       "arr": "14h10",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "15h10",
-       "arr": "16h15",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h55",
-       "arr": "20h00",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "06h10",
-       "arr": "07h15",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "07h40",
-       "arr": "08h45",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h12",
-       "arr": "10h17",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h30",
-       "arr": "12h35",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "14h10",
-       "arr": "15h15",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "16h35",
-       "arr": "17h40",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h55",
-       "arr": "20h00",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h57",
-       "arr": "12h43",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche/fériés : la fiche n'indique pas d'arrivée à Saint-Nazaire pour ce car ; heure = Saint-Brevin, Fontaine."
-      },
-      {
-       "dep": "16h15",
-       "arr": "17h20",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "18h55",
-       "arr": "20h00",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      }
-     ]
-    },
-    {
-     "de": "Saint-Nazaire",
-     "vers": "Préfailles",
-     "arret": "Saint-Nazaire, gare SNCF",
-     "dest": "Préfailles, Place de la Gare (Quirouard 1 min avant)",
-     "departs": [
-      {
-       "dep": "07h55",
-       "arr": "09h00",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "08h30",
-       "arr": "09h35",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h10",
-       "arr": "10h15",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h55",
-       "arr": "13h00",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "13h30",
-       "arr": "14h35",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "16h30",
-       "arr": "17h35",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h10",
-       "arr": "18h18",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h45",
-       "arr": "18h50",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "20h20",
-       "arr": "21h25",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "07h55",
-       "arr": "09h00",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h00",
-       "arr": "10h05",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h15",
-       "arr": "12h20",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "12h55",
-       "arr": "14h00",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "15h25",
-       "arr": "16h30",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h45",
-       "arr": "18h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "20h05",
-       "arr": "21h10",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h00",
-       "arr": "12h05",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "14h07",
-       "arr": "14h55",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche/fériés : part de Saint-Brevin, Fontaine (pas de Saint-Nazaire)."
-      },
-      {
-       "dep": "17h45",
-       "arr": "18h50",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      }
-     ]
-    }
-   ],
    "debut": "2026-08-31",
    "fin": "2027-07-02"
   },
@@ -496,255 +94,21 @@
     "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
    },
    "note": "Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole. Possible remplacement par car le dimanche 15 nov. au matin (signalé par l-itineraire.com) : vérifier avant de partir.",
-   "sens": [
-    {
-     "de": "Pornic",
-     "vers": "Nantes",
-     "arret": "Pornic, gare SNCF",
-     "dest": "Nantes, gare SNCF",
-     "departs": [
-      {
-       "dep": "06h24",
-       "arr": "07h29",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "07h09",
-       "arr": "08h18",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "08h27",
-       "arr": "09h28",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h50",
-       "arr": "12h50",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "13h51",
-       "arr": "14h51",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "16h09",
-       "arr": "17h15",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h54",
-       "arr": "19h03",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "07h40",
-       "arr": "08h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "10h50",
-       "arr": "11h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "13h50",
-       "arr": "14h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h40",
-       "arr": "18h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h40",
-       "arr": "19h50",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h09",
-       "arr": "10h20",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "14h50",
-       "arr": "15h50",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "16h50",
-       "arr": "17h50",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "19h40",
-       "arr": "20h50",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      }
-     ]
-    },
-    {
-     "de": "Nantes",
-     "vers": "Pornic",
-     "arret": "Nantes, gare SNCF",
-     "dest": "Pornic, gare SNCF",
-     "departs": [
-      {
-       "dep": "07h05",
-       "arr": "08h17",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "12h29",
-       "arr": "13h30",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "14h30",
-       "arr": "15h31",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "16h32",
-       "arr": "17h40",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "17h48",
-       "arr": "18h52",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "18h41",
-       "arr": "19h44",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "20h15",
-       "arr": "21h14",
-       "jours": "12345",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h09",
-       "arr": "10h13",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "11h09",
-       "arr": "12h10",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "12h09",
-       "arr": "13h08",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "15h09",
-       "arr": "16h10",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "19h09",
-       "arr": "20h15",
-       "jours": "6",
-       "periode": "toujours",
-       "note": ""
-      },
-      {
-       "dep": "09h09",
-       "arr": "10h13",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "12h09",
-       "arr": "13h08",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "15h09",
-       "arr": "16h10",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "17h09",
-       "arr": "18h10",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      },
-      {
-       "dep": "21h13",
-       "arr": "22h14",
-       "jours": "0",
-       "periode": "toujours",
-       "note": "Dimanche et jours fériés"
-      }
-     ]
-    }
-   ],
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  },
+  {
+   "id": "TER1",
+   "mode": "train",
+   "nom": "TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic",
+   "trajet": "Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic",
+   "prix": "Tarif TER (non relevé sur une source officielle). Les trains numérotés sur 4 chiffres sont des TGV INOUI venant de Paris : billet TGV avec réservation.",
+   "valid": "31 août – 12 décembre 2026 (nouveaux horaires à partir du 13 décembre 2026)",
+   "source": {
+    "n": "Fiche horaire TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic (31/08 – 12/12/2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36732/download?token=ea-RDuXy"
+   },
+   "note": "La gare de Saint-Nazaire est le terminus du car 315 (arrêt « Gare SNCF »).",
    "debut": "2026-08-31",
    "fin": "2026-12-12"
   }
@@ -762,8 +126,7 @@
   }
  ],
  "manques": [
-  "Ligne 303 : le départ de Préfailles à 5h35 (lun-ven) n'est pas attribuable à un jour précis depuis le texte de la fiche (deux colonnes à 5h50 avec renvois A/B) ; marqué incertain.",
-  "Ligne 303 : le départ de Préfailles à 10h45 le week-end figure dans la grille « Sam / Dim & JF » sans qu'on puisse dire s'il circule le samedi ou le dimanche ; marqué incertain.",
+  "Horaires des cars 303 et 315 extraits automatiquement des fiches officielles (position de chaque colonne dans le PDF), y compris les renvois A/B ; les deux départs autrefois « incertains » sont tranchés : 5h35 = lundi et vendredi en période scolaire ; 10h45 = dimanche et jours fériés.",
   "Ligne 315 : dimanche, le car de 11h57 n'a pas d'heure d'arrivée à Saint-Nazaire dans le texte de la fiche (seulement Saint-Brevin Fontaine 12h43).",
   "TER : horaires valables jusqu'au 12 décembre 2026 seulement ; la fiche à partir du 13 décembre 2026 n'a pas été trouvée. Les horaires du lundi au vendredi viennent des journées des 10, 12, 13, 16 et 17 nov. 2026 ; un train circulant seulement certains jours de semaine n'aurait pas été repéré.",
   "TER : pas de prix officiel du billet Pornic – Nantes trouvé (les comparateurs affichent 9 à 16 €).",
@@ -784,5 +147,2524 @@
  ],
  "sansService": [
   "2027-05-01"
- ]
+ ],
+ "legs": [
+  {
+   "id": "303-pref-pornic",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Pornic",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "05h35",
+     "arr": "05h56",
+     "jours": "15",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "06h45",
+     "arr": "07h06",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h45",
+     "arr": "07h06",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h45",
+     "arr": "11h06",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h36",
+     "jours": "0",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "303-pref-nantes",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Nantes",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Nantes, Pirmil (tram 2 et 3)",
+   "departs": [
+    {
+     "dep": "05h35",
+     "arr": "07h17",
+     "jours": "15",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "06h45",
+     "arr": "08h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h45",
+     "arr": "08h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h45",
+     "arr": "12h27",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "20h57",
+     "jours": "0",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "303-pornic-nantes",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Nantes",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Nantes, Pirmil (tram 2 et 3)",
+   "departs": [
+    {
+     "dep": "05h56",
+     "arr": "07h17",
+     "jours": "15",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "05h56",
+     "arr": "07h17",
+     "jours": "234",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h21",
+     "arr": "07h42",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h36",
+     "arr": "07h57",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "06h51",
+     "arr": "08h12",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "06h51",
+     "arr": "08h12",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h06",
+     "arr": "08h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h06",
+     "arr": "08h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h21",
+     "arr": "08h42",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h36",
+     "arr": "08h57",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "07h51",
+     "arr": "09h12",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "08h06",
+     "arr": "09h27",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "08h21",
+     "arr": "09h42",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "08h36",
+     "arr": "09h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h06",
+     "arr": "10h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h06",
+     "arr": "10h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h36",
+     "arr": "10h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h06",
+     "arr": "12h27",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h06",
+     "arr": "12h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h06",
+     "arr": "12h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h36",
+     "arr": "13h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h36",
+     "arr": "13h57",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h06",
+     "arr": "15h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h06",
+     "arr": "15h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h36",
+     "arr": "16h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h06",
+     "arr": "18h27",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h06",
+     "arr": "18h27",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h51",
+     "arr": "19h12",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h51",
+     "arr": "19h12",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "17h51",
+     "arr": "19h12",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h36",
+     "arr": "19h57",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h36",
+     "arr": "19h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h36",
+     "arr": "19h57",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h36",
+     "arr": "20h57",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h36",
+     "arr": "20h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h36",
+     "arr": "21h57",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h36",
+     "arr": "21h57",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "303-nantes-pornic",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Nantes",
+   "a": "Pornic",
+   "arret_de": "Nantes, Pirmil",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "06h30",
+     "arr": "07h37",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h00",
+     "arr": "09h07",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "08h00",
+     "arr": "09h07",
+     "jours": "12345",
+     "periode": "vacances"
+    },
+    {
+     "dep": "08h00",
+     "arr": "09h07",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h30",
+     "arr": "10h37",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h30",
+     "arr": "10h37",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h30",
+     "arr": "10h37",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "12h07",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "12h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "12h07",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h45",
+     "arr": "12h52",
+     "jours": "12345",
+     "periode": "vacances"
+    },
+    {
+     "dep": "11h45",
+     "arr": "12h52",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h37",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h37",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h37",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h00",
+     "arr": "15h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h00",
+     "arr": "15h07",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h30",
+     "arr": "16h37",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "16h00",
+     "arr": "17h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h00",
+     "arr": "17h07",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h15",
+     "arr": "17h22",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "16h30",
+     "arr": "17h37",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h45",
+     "arr": "17h52",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h07",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h07",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h15",
+     "arr": "18h22",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "17h30",
+     "arr": "18h37",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h52",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "18h00",
+     "arr": "19h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h15",
+     "arr": "19h22",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h15",
+     "arr": "19h22",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h30",
+     "arr": "19h37",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "19h00",
+     "arr": "20h07",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h00",
+     "arr": "20h07",
+     "jours": "6",
+     "periode": "vacances"
+    },
+    {
+     "dep": "19h30",
+     "arr": "20h37",
+     "jours": "12345",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "19h30",
+     "arr": "20h37",
+     "jours": "6",
+     "periode": "scolaire"
+    },
+    {
+     "dep": "21h00",
+     "arr": "22h07",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "303-nantes-pref",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Nantes",
+   "a": "Préfailles",
+   "arret_de": "Nantes, Pirmil",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "09h30",
+     "arr": "10h58",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h58",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h58",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h28",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h28",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h00",
+     "arr": "18h28",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h15",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h15",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "303-pornic-pref",
+   "ligne": "303",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Préfailles",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "10h37",
+     "arr": "10h58",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h37",
+     "arr": "13h58",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h37",
+     "arr": "13h58",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h37",
+     "arr": "13h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h07",
+     "arr": "18h28",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h07",
+     "arr": "18h28",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h07",
+     "arr": "18h28",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h22",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h22",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315-pref-pornic",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Pornic",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "05h50",
+     "arr": "06h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h10",
+     "arr": "06h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h35",
+     "arr": "06h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h40",
+     "arr": "08h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h45",
+     "arr": "08h05",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h12",
+     "arr": "09h32",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h20",
+     "arr": "09h40",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h50",
+     "arr": "10h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h55",
+     "arr": "11h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h30",
+     "arr": "11h50",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h57",
+     "arr": "12h17",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h05",
+     "arr": "13h25",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h10",
+     "arr": "14h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h10",
+     "arr": "15h30",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h15",
+     "arr": "16h35",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h35",
+     "arr": "16h55",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h15",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h15",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315-pref-stnaz",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Saint-Nazaire",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Saint-Nazaire, gare SNCF",
+   "departs": [
+    {
+     "dep": "05h50",
+     "arr": "06h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h10",
+     "arr": "07h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h35",
+     "arr": "07h40",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h40",
+     "arr": "08h45",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h45",
+     "arr": "08h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h12",
+     "arr": "10h17",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h20",
+     "arr": "10h25",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h50",
+     "arr": "10h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h55",
+     "arr": "12h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h35",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h05",
+     "arr": "14h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h10",
+     "arr": "15h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h10",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h15",
+     "arr": "17h20",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h40",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "20h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "20h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "20h00",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315-stnaz-pref",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Nazaire",
+   "a": "Préfailles",
+   "arret_de": "Saint-Nazaire, gare SNCF",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "07h55",
+     "arr": "09h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h55",
+     "arr": "09h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h30",
+     "arr": "09h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h00",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h10",
+     "arr": "10h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "12h05",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "12h20",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h55",
+     "arr": "13h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h55",
+     "arr": "14h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h30",
+     "arr": "14h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h25",
+     "arr": "16h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h30",
+     "arr": "17h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h10",
+     "arr": "18h18",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h50",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h05",
+     "arr": "21h10",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h20",
+     "arr": "21h25",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315-pornic-pref",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Préfailles",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "08h41",
+     "arr": "09h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h41",
+     "arr": "09h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h16",
+     "arr": "09h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h46",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h56",
+     "arr": "10h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h46",
+     "arr": "12h05",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h01",
+     "arr": "12h20",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h41",
+     "arr": "13h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h41",
+     "arr": "14h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h16",
+     "arr": "14h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h36",
+     "arr": "14h55",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h11",
+     "arr": "16h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h16",
+     "arr": "17h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h59",
+     "arr": "18h18",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h31",
+     "arr": "18h50",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h31",
+     "arr": "18h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h31",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h51",
+     "arr": "21h10",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "21h06",
+     "arr": "21h25",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "ter-pornic-nantes",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Pornic",
+   "a": "Nantes",
+   "arret_de": "Pornic, gare SNCF",
+   "arret_a": "Nantes, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h24",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "06h28",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h09",
+     "arr": "08h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h16",
+     "arr": "08h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h40",
+     "arr": "08h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859284/859134"
+    },
+    {
+     "dep": "08h25",
+     "arr": "09h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h27",
+     "arr": "09h28",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h20",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859286/859136"
+    },
+    {
+     "dep": "10h50",
+     "arr": "11h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859288"
+    },
+    {
+     "dep": "11h50",
+     "arr": "12h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859262"
+    },
+    {
+     "dep": "13h50",
+     "arr": "14h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859290"
+    },
+    {
+     "dep": "13h51",
+     "arr": "14h51",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859266"
+    },
+    {
+     "dep": "14h50",
+     "arr": "15h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859292"
+    },
+    {
+     "dep": "16h09",
+     "arr": "17h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859272"
+    },
+    {
+     "dep": "16h50",
+     "arr": "17h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859294"
+    },
+    {
+     "dep": "17h40",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859282/859148"
+    },
+    {
+     "dep": "17h54",
+     "arr": "19h03",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859274"
+    },
+    {
+     "dep": "18h40",
+     "arr": "19h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859296/859144"
+    },
+    {
+     "dep": "18h45",
+     "arr": "19h45",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859206",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "20h39",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "20h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "sauf": [
+      "2026-11-01"
+     ]
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire TER Aléop Nantes – Ste-Pazanne – Pornic (31/08 – 12/12/2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  },
+  {
+   "id": "ter-nantes-pornic",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Nantes",
+   "a": "Pornic",
+   "arret_de": "Nantes, gare SNCF",
+   "arret_a": "Pornic, gare SNCF",
+   "departs": [
+    {
+     "dep": "07h05",
+     "arr": "08h17",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h07",
+     "arr": "08h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h13",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h13",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "11h09",
+     "arr": "12h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859285"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h08",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h08",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h29",
+     "arr": "13h30",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859265"
+    },
+    {
+     "dep": "14h30",
+     "arr": "15h31",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859269"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "16h32",
+     "arr": "17h40",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859273/859123"
+    },
+    {
+     "dep": "17h09",
+     "arr": "18h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859291"
+    },
+    {
+     "dep": "17h48",
+     "arr": "18h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859275"
+    },
+    {
+     "dep": "18h41",
+     "arr": "19h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859277"
+    },
+    {
+     "dep": "19h09",
+     "arr": "20h15",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859293/859145"
+    },
+    {
+     "dep": "20h15",
+     "arr": "21h14",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859281"
+    },
+    {
+     "dep": "21h13",
+     "arr": "22h14",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859295"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire TER Aléop Nantes – Ste-Pazanne – Pornic (31/08 – 12/12/2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
+   },
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  },
+  {
+   "id": "ter1-stnaz-nantes",
+   "ligne": "TER 1",
+   "mode": "train",
+   "de": "Saint-Nazaire",
+   "a": "Nantes",
+   "arret_de": "Saint-Nazaire, gare SNCF",
+   "arret_a": "Nantes, gare SNCF",
+   "departs": [
+    {
+     "dep": "05h13",
+     "arr": "05h54",
+     "jours": "1",
+     "periode": "toujours",
+     "train": "858050"
+    },
+    {
+     "dep": "05h23",
+     "arr": "05h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8900",
+     "tgv": true
+    },
+    {
+     "dep": "06h08",
+     "arr": "06h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858052"
+    },
+    {
+     "dep": "06h08",
+     "arr": "06h46",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858052"
+    },
+    {
+     "dep": "06h34",
+     "arr": "07h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858004"
+    },
+    {
+     "dep": "06h48",
+     "arr": "07h42",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858048"
+    },
+    {
+     "dep": "07h04",
+     "arr": "07h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858054"
+    },
+    {
+     "dep": "07h34",
+     "arr": "08h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858006"
+    },
+    {
+     "dep": "08h10",
+     "arr": "08h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858056"
+    },
+    {
+     "dep": "08h11",
+     "arr": "08h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "860004"
+    },
+    {
+     "dep": "08h11",
+     "arr": "08h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "860004"
+    },
+    {
+     "dep": "08h23",
+     "arr": "08h58",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8912",
+     "tgv": true
+    },
+    {
+     "dep": "08h23",
+     "arr": "08h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8912",
+     "tgv": true
+    },
+    {
+     "dep": "08h23",
+     "arr": "08h58",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8912",
+     "tgv": true
+    },
+    {
+     "dep": "08h36",
+     "arr": "09h26",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858008"
+    },
+    {
+     "dep": "09h10",
+     "arr": "09h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858058"
+    },
+    {
+     "dep": "10h01",
+     "arr": "10h43",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858060"
+    },
+    {
+     "dep": "10h05",
+     "arr": "10h43",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858060"
+    },
+    {
+     "dep": "10h15",
+     "arr": "10h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858012"
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858062"
+    },
+    {
+     "dep": "11h24",
+     "arr": "11h59",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8916",
+     "tgv": true
+    },
+    {
+     "dep": "11h24",
+     "arr": "11h59",
+     "jours": "1",
+     "periode": "toujours",
+     "train": "8904",
+     "tgv": true
+    },
+    {
+     "dep": "11h24",
+     "arr": "11h59",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8916",
+     "tgv": true
+    },
+    {
+     "dep": "12h10",
+     "arr": "12h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858064"
+    },
+    {
+     "dep": "12h15",
+     "arr": "13h12",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858042"
+    },
+    {
+     "dep": "12h30",
+     "arr": "13h28",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858098"
+    },
+    {
+     "dep": "12h36",
+     "arr": "13h26",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858016"
+    },
+    {
+     "dep": "13h10",
+     "arr": "13h48",
+     "jours": "1234",
+     "periode": "toujours",
+     "train": "858066"
+    },
+    {
+     "dep": "13h10",
+     "arr": "13h48",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "858066"
+    },
+    {
+     "dep": "13h10",
+     "arr": "13h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858066"
+    },
+    {
+     "dep": "13h34",
+     "arr": "14h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858018"
+    },
+    {
+     "dep": "14h23",
+     "arr": "14h58",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8922",
+     "tgv": true
+    },
+    {
+     "dep": "14h23",
+     "arr": "14h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8922",
+     "tgv": true
+    },
+    {
+     "dep": "14h23",
+     "arr": "14h58",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8922",
+     "tgv": true
+    },
+    {
+     "dep": "14h51",
+     "arr": "15h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858044"
+    },
+    {
+     "dep": "15h10",
+     "arr": "15h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858070"
+    },
+    {
+     "dep": "15h36",
+     "arr": "16h26",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858020"
+    },
+    {
+     "dep": "16h10",
+     "arr": "16h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858072"
+    },
+    {
+     "dep": "16h10",
+     "arr": "16h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858072"
+    },
+    {
+     "dep": "16h10",
+     "arr": "16h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858072"
+    },
+    {
+     "dep": "16h34",
+     "arr": "17h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858024"
+    },
+    {
+     "dep": "17h10",
+     "arr": "17h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858074"
+    },
+    {
+     "dep": "17h10",
+     "arr": "17h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858074"
+    },
+    {
+     "dep": "17h23",
+     "arr": "17h58",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8926",
+     "tgv": true
+    },
+    {
+     "dep": "17h23",
+     "arr": "17h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8926",
+     "tgv": true
+    },
+    {
+     "dep": "17h23",
+     "arr": "17h58",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8926",
+     "tgv": true
+    },
+    {
+     "dep": "17h30",
+     "arr": "18h27",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858046"
+    },
+    {
+     "dep": "17h30",
+     "arr": "18h27",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858046"
+    },
+    {
+     "dep": "17h36",
+     "arr": "18h28",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858026"
+    },
+    {
+     "dep": "18h10",
+     "arr": "18h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858076"
+    },
+    {
+     "dep": "18h10",
+     "arr": "18h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858076"
+    },
+    {
+     "dep": "18h10",
+     "arr": "18h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858076"
+    },
+    {
+     "dep": "18h36",
+     "arr": "19h30",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858028"
+    },
+    {
+     "dep": "19h07",
+     "arr": "19h49",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "860018"
+    },
+    {
+     "dep": "19h10",
+     "arr": "19h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858078"
+    },
+    {
+     "dep": "19h12",
+     "arr": "19h49",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "860014"
+    },
+    {
+     "dep": "19h24",
+     "arr": "19h58",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8930",
+     "tgv": true,
+     "sauf": [
+      "2026-11-11"
+     ]
+    },
+    {
+     "dep": "20h10",
+     "arr": "20h48",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858080"
+    },
+    {
+     "dep": "20h27",
+     "arr": "21h07",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "857394"
+    },
+    {
+     "dep": "21h09",
+     "arr": "21h58",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "858040"
+    },
+    {
+     "dep": "21h26",
+     "arr": "22h01",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8934",
+     "tgv": true,
+     "sauf": [
+      "2026-11-11"
+     ]
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic (31/08 – 12/12/2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36732/download?token=ea-RDuXy"
+   },
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  },
+  {
+   "id": "ter1-nantes-stnaz",
+   "ligne": "TER 1",
+   "mode": "train",
+   "de": "Nantes",
+   "a": "Saint-Nazaire",
+   "arret_de": "Nantes, gare SNCF",
+   "arret_a": "Saint-Nazaire, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h31",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858003"
+    },
+    {
+     "dep": "07h09",
+     "arr": "07h47",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858055"
+    },
+    {
+     "dep": "07h34",
+     "arr": "08h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858005"
+    },
+    {
+     "dep": "07h46",
+     "arr": "08h43",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858099"
+    },
+    {
+     "dep": "08h09",
+     "arr": "08h47",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858057"
+    },
+    {
+     "dep": "08h34",
+     "arr": "09h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858007"
+    },
+    {
+     "dep": "09h00",
+     "arr": "09h37",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "857385"
+    },
+    {
+     "dep": "09h04",
+     "arr": "09h41",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "857387"
+    },
+    {
+     "dep": "09h09",
+     "arr": "09h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858059"
+    },
+    {
+     "dep": "09h26",
+     "arr": "10h00",
+     "jours": "1",
+     "periode": "toujours",
+     "train": "8901",
+     "tgv": true
+    },
+    {
+     "dep": "10h13",
+     "arr": "10h52",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "860003"
+    },
+    {
+     "dep": "10h13",
+     "arr": "10h52",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "860003"
+    },
+    {
+     "dep": "10h15",
+     "arr": "10h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858061"
+    },
+    {
+     "dep": "10h34",
+     "arr": "11h29",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858049"
+    },
+    {
+     "dep": "11h09",
+     "arr": "11h46",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858063"
+    },
+    {
+     "dep": "11h09",
+     "arr": "11h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858063"
+    },
+    {
+     "dep": "11h09",
+     "arr": "11h46",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858063"
+    },
+    {
+     "dep": "11h34",
+     "arr": "12h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858009"
+    },
+    {
+     "dep": "12h00",
+     "arr": "12h36",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8913",
+     "tgv": true
+    },
+    {
+     "dep": "12h00",
+     "arr": "12h36",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8913",
+     "tgv": true
+    },
+    {
+     "dep": "12h00",
+     "arr": "12h36",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8913",
+     "tgv": true
+    },
+    {
+     "dep": "12h34",
+     "arr": "13h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858015"
+    },
+    {
+     "dep": "13h00",
+     "arr": "13h43",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8917",
+     "tgv": true
+    },
+    {
+     "dep": "13h09",
+     "arr": "13h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858067"
+    },
+    {
+     "dep": "13h22",
+     "arr": "14h19",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858043"
+    },
+    {
+     "dep": "13h34",
+     "arr": "14h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858017"
+    },
+    {
+     "dep": "14h09",
+     "arr": "14h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858069"
+    },
+    {
+     "dep": "14h09",
+     "arr": "14h48",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858069"
+    },
+    {
+     "dep": "14h34",
+     "arr": "15h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858011"
+    },
+    {
+     "dep": "15h00",
+     "arr": "15h36",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8921",
+     "tgv": true
+    },
+    {
+     "dep": "15h00",
+     "arr": "15h36",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8921",
+     "tgv": true
+    },
+    {
+     "dep": "15h00",
+     "arr": "15h36",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8921",
+     "tgv": true
+    },
+    {
+     "dep": "16h09",
+     "arr": "16h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858073"
+    },
+    {
+     "dep": "16h09",
+     "arr": "16h46",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858073"
+    },
+    {
+     "dep": "16h20",
+     "arr": "17h17",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858045"
+    },
+    {
+     "dep": "16h36",
+     "arr": "17h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858023"
+    },
+    {
+     "dep": "17h09",
+     "arr": "17h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858075"
+    },
+    {
+     "dep": "17h21",
+     "arr": "18h17",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858041"
+    },
+    {
+     "dep": "17h34",
+     "arr": "18h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858025"
+    },
+    {
+     "dep": "17h51",
+     "arr": "18h29",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "860123"
+    },
+    {
+     "dep": "17h51",
+     "arr": "18h29",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "860123"
+    },
+    {
+     "dep": "18h06",
+     "arr": "18h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858077"
+    },
+    {
+     "dep": "18h38",
+     "arr": "19h27",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858027"
+    },
+    {
+     "dep": "18h46",
+     "arr": "19h45",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858097"
+    },
+    {
+     "dep": "18h46",
+     "arr": "19h45",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858097"
+    },
+    {
+     "dep": "19h09",
+     "arr": "19h46",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "858079"
+    },
+    {
+     "dep": "19h22",
+     "arr": "20h11",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "858039"
+    },
+    {
+     "dep": "19h40",
+     "arr": "20h29",
+     "jours": "1234",
+     "periode": "toujours",
+     "train": "858029"
+    },
+    {
+     "dep": "19h40",
+     "arr": "20h27",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "858051"
+    },
+    {
+     "dep": "20h00",
+     "arr": "20h34",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8905",
+     "tgv": true
+    },
+    {
+     "dep": "20h00",
+     "arr": "20h34",
+     "jours": "14",
+     "periode": "toujours",
+     "train": "8905",
+     "tgv": true
+    },
+    {
+     "dep": "20h00",
+     "arr": "20h37",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "8927",
+     "tgv": true
+    },
+    {
+     "dep": "20h09",
+     "arr": "20h48",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858095"
+    },
+    {
+     "dep": "20h09",
+     "arr": "20h53",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "860007"
+    },
+    {
+     "dep": "20h09",
+     "arr": "20h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "860007"
+    },
+    {
+     "dep": "21h00",
+     "arr": "21h37",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "8931",
+     "tgv": true
+    },
+    {
+     "dep": "21h00",
+     "arr": "21h37",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "8931",
+     "tgv": true
+    },
+    {
+     "dep": "21h00",
+     "arr": "21h37",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "8931",
+     "tgv": true
+    },
+    {
+     "dep": "21h34",
+     "arr": "22h19",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "858089"
+    },
+    {
+     "dep": "22h05",
+     "arr": "22h42",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "8935",
+     "tgv": true
+    },
+    {
+     "dep": "22h13",
+     "arr": "22h55",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "858091"
+    },
+    {
+     "dep": "22h13",
+     "arr": "22h55",
+     "jours": "1234",
+     "periode": "toujours",
+     "train": "858091"
+    },
+    {
+     "dep": "22h13",
+     "arr": "22h55",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "858091"
+    },
+    {
+     "dep": "23h00",
+     "arr": "23h37",
+     "jours": "5",
+     "periode": "toujours",
+     "train": "8937",
+     "tgv": true
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic (31/08 – 12/12/2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36732/download?token=ea-RDuXy"
+   },
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  }
+ ],
+ "correspondances": {
+  "Pornic": {
+   "car-car": 3,
+   "car-train": 12,
+   "train-car": 12,
+   "note": "À Pornic, l'arrêt de car Théâtre St-Gilles est à environ 600 m de la gare SNCF (≈ 10 min à pied, d'après OpenStreetMap)."
+  },
+  "Saint-Nazaire": {
+   "car-train": 8,
+   "train-car": 8,
+   "note": "Le car 315 part de la gare SNCF de Saint-Nazaire et y arrive."
+  }
+ }
 }

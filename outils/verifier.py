@@ -29,6 +29,14 @@ for e in ev:
 for c in ci:
     if not D.match(str(c.get("date", ""))) or not isinstance(c.get("times"), list): err.append(f"cinema {c.get('id')} : date ou times invalide")
 if not isinstance(st, dict) or "updatedAt" not in st: err.append("status.json : updatedAt manquant")
+try:
+    TR=json.load(open(ROOT / "transports.json", encoding="utf-8")) if (ROOT / "transports.json").exists() else {}
+    HM=re.compile(r"^\d\d[h]\d\d$")
+    for L in TR.get("legs",[]):
+        for x in L.get("departs",[]):
+            if not HM.match(x.get("dep","")) or not HM.match(x.get("arr","")) or not re.fullmatch(r"[0-6]+",str(x.get("jours",""))):err.append(f"transports {L.get('id')} : départ mal formé {x}");break
+            if x["arr"]<x["dep"] and not x["arr"].startswith("00"):err.append(f"transports {L.get('id')} : arrivée avant départ {x['dep']}→{x['arr']}");break
+except Exception as e:err.append(f"transports.json illisible : {e}")
 if err:
     print("\n".join(err)); sys.exit(1)
 today = datetime.date.today().isoformat()

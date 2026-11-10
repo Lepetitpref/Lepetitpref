@@ -671,36 +671,56 @@ function feriesOf(T){return new Set(T.feries||[]);}
 function departsOn(T,L,sn,d){if(d<L.debut||d>L.fin)return null;if((T.sansService||[]).includes(d))return[];
   const w=feriesOf(T).has(d)?"0":String(dow(d));const vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
   return sn.departs.filter(x=>x.jours.includes(w)&&(x.periode==="toujours"||(x.periode==="vacances")===vac||(x.periode==="scolaire"&&!vac))).sort((a,b)=>a.dep.localeCompare(b.dep));}
-function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;const dir=S.trDir||0;
+/* trajets : tronçons (legs) extraits des fiches officielles, enchaînés avec un temps de correspondance */
+const TRDEST=["Pornic","Nantes","Saint-Nazaire"];
+const tmn=x=>+x.slice(0,2)*60+ +x.slice(3,5);
+function legDeps(T,L,d){if(d<L.debut||d>L.fin)return null;if((T.sansService||[]).includes(d))return[];
+  const w=feriesOf(T).has(d)?"0":String(dow(d)),vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
+  return L.departs.filter(x=>{if(x.sauf&&x.sauf.includes(d))return false;if(x.seulement)return (x.aussi||[]).includes(d);if(x.aussi&&x.aussi.includes(d))return true;
+    if(x.du&&d<x.du)return false;if(x.au&&d>x.au)return false;
+    return x.jours.includes(w)&&(x.periode==="toujours"||(x.periode==="vacances"?vac:!vac));});}
+function journeys(T,d,from,to){const legs=T.legs||[],C=T.correspondances||{},out=[];let missing=[];
+  const md=L=>L.mode==="train"?"train":"car";
+  legs.filter(L=>L.de===from&&L.a===to).forEach(L=>{const dep=legDeps(T,L,d);if(dep===null){missing.push(L);return;}dep.forEach(x=>out.push({dep:x.dep,arr:x.arr,steps:[{L,x}]}));});
+  TRDEST.concat(["Préfailles"]).filter(h=>h!==from&&h!==to&&C[h]).forEach(h=>{
+    legs.filter(L=>L.de===from&&L.a===h).forEach(L1=>{const d1=legDeps(T,L1,d);if(d1===null){missing.push(L1);return;}
+      legs.filter(L=>L.de===h&&L.a===to).forEach(L2=>{const d2=legDeps(T,L2,d);if(d2===null){missing.push(L2);return;}
+        const tr=C[h][md(L1)+"-"+md(L2)]??5;
+        d1.forEach(x1=>{const x2=d2.filter(y=>tmn(y.dep)>=tmn(x1.arr)+tr).sort((a,b)=>tmn(a.dep)-tmn(b.dep))[0];
+          if(x2&&tmn(x2.dep)-tmn(x1.arr)<=120)out.push({dep:x1.dep,arr:x2.arr,steps:[{L:L1,x:x1},{L:L2,x:x2,wait:tmn(x2.dep)-tmn(x1.arr),at:h}]});});});});});
+  /* on garde les trajets utiles : pas un autre qui part plus tard et arrive plus tôt ; à égalité, le plus simple */
+  const keep=out.filter(j=>!out.some(k=>k!==j&&tmn(k.dep)>=tmn(j.dep)&&tmn(k.arr)<=tmn(j.arr)&&(tmn(k.dep)>tmn(j.dep)||tmn(k.arr)<tmn(j.arr)||k.steps.length<j.steps.length)));
+  const seen=new Set();const res=keep.sort((a,b)=>tmn(a.dep)-tmn(b.dep)||tmn(a.arr)-tmn(b.arr)).filter(j=>{const k=j.dep+j.arr;if(seen.has(k))return false;seen.add(k);return true;});
+  return{list:res,missing:[...new Set(missing)]};}
+function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;const dir=S.trDir||0,dest=S.trTo||"Pornic";
   const days=range(t,addDays(t,6));const nowHM=hm(new Date());
   if(S.transports===null)return pageHead("Transports","")+`<section class="sec">${loadingTxt}</section>`;
-  if(!T||!T.lignes)return pageHead("Transports","")+`<p class="empty">Horaires indisponibles.</p>`;
-  const fer=feriesOf(T).has(d),isT=d===t;
-  const mn=x=>+x.slice(0,2)*60+ +x.slice(3,5),hh=x=>x.replace(/^0/,"");
-  const dur=(a,b)=>{const m=mn(b)-mn(a);return m>=60?`${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`:`${m} min`;};
-  const inTxt=x=>{const m=mn(x.dep)-mn(nowHM);return m<60?`dans ${m} min`:`dans ${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`;};
-  const badge=L=>`<span class="tr-badge${L.mode==="train"?" is-train":""}">${L.mode==="train"?ic("train","i-s")+"TER":ic("bus","i-s")+esc(L.id)}</span>`;
-  const info=x=>(x.note&&!/^Dimanche et jours fériés$/.test(x.note))||x.incertain?`<span class="tr-note${x.incertain?" warn":""}">${x.incertain?"À confirmer : jour exact non précisé sur la fiche, appelez Allô Aléop.":esc(x.note)}</span>`:"";
-  /* en haut : le prochain départ de chaque ligne */
-  const nexts=T.lignes.map(L=>{const sn=L.sens[dir],dep=departsOn(T,L,sn,d)||[],fut=isT?dep.filter(x=>x.dep>=nowHM):dep;return{L,sn,x:fut[0],y:fut[1]};});
-  const top=`<div class="tr-next">${nexts.map(({L,sn,x,y})=>`<a class="tr-nx" href="#venir" data-act="trgo" data-v="${esc(L.id)}">${badge(L)}<span class="tr-nx-m"><span class="tr-nx-to">${esc(sn.de)} → ${esc(sn.vers)}</span><small>${x?`${isT?inTxt(x):"premier départ"}${y?` · puis ${hh(y.dep)}`:""}`:`plus de départ ${isT?"aujourd'hui":"ce jour-là"}`}</small></span><b class="tr-nx-t">${x?hh(x.dep):"–"}</b></a>`).join("")}</div>`;
-  /* une carte par ligne */
-  const card=L=>{const sn=L.sens[dir],dep=departsOn(T,L,sn,d);let body;
-    if(dep===null)body=`<p class="empty">${d>L.fin?`Horaires après le ${dshort(L.fin)} pas encore intégrés.`:"Hors période de la fiche horaire."} <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">Fiche officielle ↗</a></p>`;
-    else if(!dep.length)body=`<p class="empty">Pas de départ ce jour-là.</p>`;
-    else{const past=isT?dep.filter(x=>x.dep<nowHM):[],fut=dep.filter(x=>!past.includes(x)),nx=isT?fut[0]:null;
-      const li=x=>`<li class="tr-row${x===nx?" is-next":""}${past.includes(x)?" is-past":""}"><b class="tr-t">${hh(x.dep)}</b><span class="tr-arr" aria-hidden="true"></span><span class="tr-t2">${hh(x.arr)}</span><small class="tr-d">${dur(x.dep,x.arr)}</small>${x===nx?'<span class="note-pill ok">Prochain</span>':""}${info(x)}</li>`;
-      body=`${past.length?`<details class="tr-past"><summary>${past.length} départ${past.length>1?"s":""} déjà passé${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(li).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(li).join("")}</ul>`:`<p class="empty">Plus de départ aujourd'hui.</p>`}`;}
-    return `<article class="tr-card" id="tr-${esc(L.id)}"><header class="tr-head">${badge(L)}<div class="tr-head-m"><h2 class="tr-title">${esc(sn.de)} → ${esc(sn.vers)}</h2><p class="tr-sub">${esc(sn.arret)} → ${esc(sn.dest)}</p></div></header>
-     <p class="tr-cols" aria-hidden="true"><span>Départ</span><span>Arrivée</span></p>${body}
-     <details class="tr-more"><summary>Tarifs et infos de la ligne</summary><p class="row-meta">${esc(L.trajet)}</p><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">source ↗</a></p></details></article>`;};
-  return `${pageHead("Transports","Cars et trains depuis Préfailles, horaires intégrés.")}
+  if(!T||!T.legs)return pageHead("Transports","")+`<p class="empty">Horaires indisponibles.</p>`;
+  const fer=feriesOf(T).has(d),isT=d===t,hh=x=>x.replace(/^0/,"");
+  const dur=m=>m>=60?`${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`:`${m} min`;
+  const inTxt=x=>{const m=tmn(x)-tmn(nowHM);return m<60?`dans ${m} min`:`dans ${dur(m)}`;};
+  const badge=(L,x)=>`<span class="tr-badge${L.mode==="train"?" is-train":""}">${L.mode==="train"?ic("train","i-s")+(x&&x.tgv?"TGV":"TER"):ic("bus","i-s")+esc(L.ligne)}</span>`;
+  const od=p=>dir?[p,"Préfailles"]:["Préfailles",p];
+  const J=p=>journeys(T,d,...od(p));
+  /* en haut : le prochain trajet vers chaque destination */
+  const top=`<div class="tr-next">${TRDEST.map(p=>{const {list}=J(p),fut=isT?list.filter(j=>j.dep>=nowHM):list,x=fut[0],y=fut[1];
+    return `<button type="button" class="tr-nx${p===dest?" is-on":""}" data-act="trto" data-v="${p}" aria-pressed="${p===dest}"><span class="tr-nx-chain">${x?x.steps.map(s=>badge(s.L,s.x)).join(""):""}</span><span class="tr-nx-m"><span class="tr-nx-to">${dir?`${esc(p)} → Préfailles`:`Préfailles → ${esc(p)}`}</span><small>${x?`${isT?inTxt(x.dep):"premier départ"} · arrivée ${hh(x.arr)}${y?` · puis ${hh(y.dep)}`:""}`:`plus de trajet ${isT?"aujourd'hui":"ce jour-là"}`}</small></span><b class="tr-nx-t">${x?hh(x.dep):"–"}</b></button>`;}).join("")}</div>`;
+  /* la liste des trajets vers la destination choisie */
+  const {list,missing}=J(dest);const past=isT?list.filter(j=>j.dep<nowHM):[],fut=list.filter(j=>!past.includes(j)),nx=isT?fut[0]:null;
+  const stepTxt=(s,i,arr)=>`${s.wait!=null?`<span class="tr-walk">Changement à ${esc(s.at)} · ${dur(s.wait)}${s.at==="Pornic"&&arr[i-1].L.mode!==s.L.mode?" (dont ≈ 10 min à pied arrêt ↔ gare)":""}</span>`:""}<span class="tr-step">${badge(s.L,s.x)}<span><b>${hh(s.x.dep)}</b> ${esc(s.L.arret_de)} → <b>${hh(s.x.arr)}</b> ${esc(s.L.arret_a)}${s.x.tgv?` <span class="tr-note warn">TGV : billet et réservation TGV.</span>`:""}</span></span>`;
+  const row=j=>`<li class="tr-j${j===nx?" is-next":""}${past.includes(j)?" is-past":""}"><div class="tr-j-top"><b class="tr-t">${hh(j.dep)}</b><span class="tr-arr" aria-hidden="true"></span><span class="tr-t2">${hh(j.arr)}</span><small class="tr-d">${dur(tmn(j.arr)-tmn(j.dep))}${j.steps.length>1?" · 1 correspondance":" · direct"}</small>${j===nx?'<span class="note-pill ok">Prochain</span>':""}</div><div class="tr-steps">${j.steps.map(stepTxt).join("")}</div></li>`;
+  const corrNote=(T.correspondances||{})[dest]?.note||(dir?"":(T.correspondances||{})["Pornic"]?.note);
+  const miss=missing.filter(L=>d>L.fin);
+  const body=`${past.length?`<details class="tr-past"><summary>${past.length} trajet${past.length>1?"s":""} déjà parti${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(row).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(row).join("")}</ul>`:`<p class="empty">${isT&&list.length?"Plus de trajet aujourd'hui.":"Pas de trajet ce jour-là."}</p>`}
+   ${miss.length?`<p class="tr-miss">${ic("info","i-s")}<span>${[...new Set(miss.map(L=>L.ligne.startsWith("TER")?"Trains":"Car "+L.ligne))].join(", ")} : horaires après le ${dshort(miss[0].fin)} pas encore publiés.</span></p>`:""}`;
+  return `${pageHead("Transports","Cars et trains depuis Préfailles, correspondances comprises.")}
   <div class="filters">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
   <div class="seg-wrap"><div class="seg" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div>
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
-  <h2 class="tr-sec">${isT?"Prochains départs":"Premiers départs"}</h2>
+  <h2 class="tr-sec">${isT?"Prochains trajets":"Premiers trajets"}</h2>
   ${top}
-  ${T.lignes.map(card).join("")}
+  <article class="tr-card" id="tr-liste"><header class="tr-head"><div class="tr-head-m"><h2 class="tr-title">${dir?`${esc(dest)} → Préfailles`:`Préfailles → ${esc(dest)}`}</h2><p class="tr-sub">${list.length} trajet${list.length>1?"s":""} ${isT?"aujourd'hui":"ce jour-là"}, directs ou avec une correspondance${corrNote?`. ${esc(corrNote)}`:""}</p></div></header>${body}</article>
+  ${sec("Lignes et tarifs","",T.lignes.map(L=>`<details class="tr-more tr-line"><summary>${L.mode==="train"?ic("train","i-s"):ic("bus","i-s")} ${esc(L.nom)}</summary><p class="row-meta">${esc(L.trajet)}</p><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">fiche officielle ↗</a></p></details>`).join(""))}
   ${sec("Bon à savoir","",`<ul class="tips"><li>${esc(T.tarifs?.actuel||"")}</li>${T.tarifs&&T.tarifs["a_partir_du_2027-01-04"]?`<li><b>À partir du 4 janvier 2027 :</b> ${esc(T.tarifs["a_partir_du_2027-01-04"])}</li>`:""}<li>Renseignements Aléop : <a href="tel:0969391414">09 69 39 14 14</a> (lun–ven 8h–19h, sam 8h–12h).</li><li>Navettes gratuites de l'été (Pornic Agglo) : horaires 2027 pas encore publiés.</li></ul>`)}
   <p class="foot">Horaires repris des fiches officielles Aléop et TER (Région Pays de la Loire), à titre indicatif : grèves, travaux et jours fériés peuvent les changer.</p>`;}
 
@@ -922,7 +942,7 @@ const ACT={
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
   trdir:v=>{S.trDir=+v;render();},
-  trgo:v=>{const el=document.getElementById("tr-"+v);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});},
+  trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{S.when=v;S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
   cin:v=>{S.cin=v;sset("pp-cin",v);S.cineDay=null;if(curView()==="cine")render();},
   cday:v=>{S.cineDay=v;if(curView()==="cine")render();},

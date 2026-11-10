@@ -26,7 +26,7 @@ Sobre, dans l'esprit de Concret : une seule couleur d'accent, listes denses à f
 ## Ajouts de novembre 2026
 - Onglets : Aujourd'hui, Agenda, Mer, Manger, Transports (#venir). Dans Agenda, une barre « Sorties · À faire · Ciné » (`segAC`) mène à #agenda, #activites et #cine (PARENT → agenda).
 - Manger : distance propre, Préfailles par défaut (`S.mWhere`, clé `pp-mwhere`), indépendante de la distance globale.
-- Transports : « Prochains départs » en haut, sens « Partir de / Rentrer à Préfailles » (`S.trDir`), une carte `.tr-card` par ligne, départs passés repliés.
+- Transports : trajets calculés (`journeys()`) à partir des tronçons `legs` de `donnees/transports.json` (car 303, 315, TER Pornic–Nantes, TER 1 Saint-Nazaire–Nantes), extraits des fiches officielles par `outils/transports/` (voir son LISEZMOI). Correspondances à Pornic (arrêt Théâtre St-Gilles ↔ gare, 12 min car↔train) et à Saint-Nazaire (gare, 8 min), réglées dans `transports.json` → `correspondances`. Destinations Pornic / Nantes / Saint-Nazaire (`S.trTo`), sens `S.trDir`. Trains 4 chiffres = TGV (réservation).
 - Distance globale `S.where` (ici / 10 / 20 km, défaut 20, clé `cf-where`) : réglée en haut de l'accueil, appliquée partout.
 - Code couleur des puces : bleu (`.chip-q`) = quand, pastels (`.chip-k k-sea|food|act|nat`) = quoi, contour (`.chip`) = filtres. Barres `.filters` collantes sous les onglets.
 - Météo, vent, houle, température de l'eau : Open-Meteo appelé depuis le téléphone (p2b_wx.js, cache `pp-wx` 1 h). Spots dans `SPOTSX` (orientation `face`, fenêtre de houle `swell`) ; verdicts calculés par `judge()`.
