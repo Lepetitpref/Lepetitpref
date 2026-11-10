@@ -219,7 +219,7 @@ function card({c="",ic:icn="",title,meta:m="",desc="",extra="",href="",right=""}
   return row({th,title,metaH:m,lines:desc?[[desc,""]]:[],tag:"div"});}
 /* couleur du liseré d'un bloc, d'après son titre */
 const secCol=t=>{t=String(t).replace(/<[^>]+>/g,"").toLowerCase();
-  return /ciné|film|séance/.test(t)?"--i-cine":/manger|resto|table|marché|huître|saveur|boulang/.test(t)?"--i-food":/transport|trajet|ligne|car |cars|train/.test(t)?"--seagreen":/urgence|sécurité|numéro|santé|pratique|attention|vigilance/.test(t)?"--warn":/nature|balade|sentier|vélo/.test(t)?"--i-nat":/mer|marée|glisse|spot|surf|pêche|plage|bateau|voile/.test(t)?"--i-sea":"--i-act";};
+  return /ciné|film|séance/.test(t)?"--i-cine":/manger|déjeuner|dîner|resto|table|marché|huître|saveur|boulang/.test(t)?"--i-food":/transport|trajet|ligne|car |cars|train/.test(t)?"--seagreen":/urgence|sécurité|numéro|santé|pratique|attention|vigilance/.test(t)?"--warn":/nature|balade|sentier|vélo/.test(t)?"--i-nat":/mer|marée|glisse|spot|surf|pêche|plage|bateau|voile/.test(t)?"--i-sea":"--i-act";};
 const sec=(title,link="",body="",note="")=>`<section class="sec blk" style="--c:var(${secCol(title)})"><div class="sec-head"><h2 class="sec-title">${title}</h2>${link}</div>${note?`<p class="sec-note">${note}</p>`:""}${body}</section>`;
 const secLink=(href,txt,act="")=>`<a class="sec-link" href="${href}"${act}>${txt}</a>`;
 const chip=(label,pressed,attrs)=>`<button type="button" class="chip" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
@@ -621,7 +621,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const r=(href,title,meta,act="")=>row({href,title,metaH:meta,act});
   return `<div class="hero"><img src="images/mer.jpg" alt="La grande plage de Préfailles, ses villas et la promenade au soleil couchant" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">Préfailles</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1></div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
-  <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à Préfailles et autour : les sorties, les activités et le ciné, la mer et ses spots, où manger, comment venir. Tout est mis à jour chaque matin.</p>
+  <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à Préfailles et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.</p>
   <h2 class="home-h">Aujourd'hui à Préfailles et aux alentours</h2>
   ${homeNow(t)}
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
@@ -654,7 +654,7 @@ function openTiles(d,zoneTxt){const rain=isRain(d);
     rain?`Lieux couverts ${zoneTxt}.`:`${zoneTxt[0].toUpperCase()+zoneTxt.slice(1)}, plus plages et sentiers en accès libre.`);}
 function restosOn(d){return ACTS.filter(a=>isResto(a)&&openOn(a,d)&&inZone(a)).sort((a,b)=>placeKm(a)-placeKm(b));}
 function eatSec(d,skip){const L=restosOn(d).filter(a=>a!==skip);
-  return sec(`Manger ${ceJour(d)}`,secLink("#manger",`${L.length} table${L.length>1?"s":""}`,` data-act="eat" data-v="${d}"`),L.length?`<ul class="list">${L.slice(0,3).map(a=>placeRow(a,d)).join("")}</ul>`:`<p class="empty">Aucune table ouverte ${zoneTxt()} d'après nos horaires.</p>`);}
+  return sec(d===today()?(new Date().getHours()<15?"Où déjeuner aujourd'hui":"Où dîner ce soir"):`Où déjeuner, où dîner ${ceJour(d)}`,secLink("#manger",`${L.length} table${L.length>1?"s":""}`,` data-act="eat" data-v="${d}"`),L.length?`<ul class="list">${L.slice(0,3).map(a=>placeRow(a,d)).join("")}</ul>`:`<p class="empty">Aucune table ouverte ${zoneTxt()} d'après nos horaires.</p>`);}
 const zoneTxt=()=>S.where==="ici"?"à Préfailles":S.where==="10"?"à moins de 10 km":"à moins de 20 km";
 function cineSec(d,title){const films=(S.cinema||[]).filter(f=>f.date>=d&&cinOK(f.cinema,"pref")).sort((a,b)=>(a.date+(a.times||[""])[0]).localeCompare(b.date+(b.times||[""])[0],undefined,{numeric:true})).slice(0,4);
   return sec(title||"Ciné à Préfailles",secLink("#cine","Programme",' data-act="cin" data-v="pref"'),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc((f.times||[]).join(", ")),esc((f.genre||"").replace(/,.*/,"").toLowerCase()),f.kids?"jeune public":""),href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>`:`<p class="empty">Pas de séance publiée pour les prochains jours.</p>`);}
