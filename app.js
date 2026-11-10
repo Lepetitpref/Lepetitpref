@@ -415,10 +415,11 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":`Agenda : ${list.length} sortie${list.length>1?"s":""} à venir autour de Préfailles`)}
-  ${segAC("agenda")}${whoBar()}${progSec()}
+  ${segAC("agenda")}${whoBar()}
   <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
    ${frow("frow","Type d'activité",types.map(([k,l])=>kchip(k==="tous"?"Toutes les sorties":l,S.etype===k,`data-act="etype" data-v="${k}"`,ETK[k]||"ink")).join(""))}
    ${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
+  ${progSec()}
   <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
     +(longs.length?`<div class="group"><h2 class="group-title">En cours, toute la saison</h2><span class="group-count">${longs.length}</span></div><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul>`:"")
     :`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
@@ -672,7 +673,7 @@ function program(d,g){
     if(mk)cand.push({slots:["matin"],score:-3,html:placeRow(mk,d,{metaH:meta(esc(openOn(mk,d)),isHere(placeKm(mk),mk.town)?"à pied":esc(townShort(mk.town))),lines:[]})});}
   evOnDay(d).filter(e=>!evIsLong(e)&&evInZone(e)).forEach(e=>{const rg=evRange(e),f=fitAges(rg,g);
     if(f==="none"||(!adults&&f==="neutral"))return;if(rain&&/^(nature|sport)$/.test(etype(e)))return;
-    const h=hourOf(e.time),slot=h==null?"aprem":h<12?"matin":h<18?"aprem":"soir";
+    const h=hourOf(e.time),slot=h==null?"aprem":h<12?"matin":h<18?"aprem":"soir";if(slot==="soir"&&!evSoir(e))return;
     const sc=(isHere(evKm(e),e.town)?0:(evKm(e)??20)<=10?1:2)*4+(f==="some"?4:0)+(adults&&e.kids&&!rg?6:0)+(adults&&rg&&rg[1]<=17?8:0)+(etype(e)==="vielocale"?3:0);
     cand.push({slots:[slot],score:sc,html:evRow(e,{g,lead:"none"}),ev:e});});
   const seen={};
