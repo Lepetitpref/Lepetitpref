@@ -728,3 +728,6 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 .door-go{display:inline-flex;align-items:center;gap:2px;font-size:14px;font-weight:600;color:var(--c);white-space:nowrap}
 .door-go .i{width:16px;height:16px}
 .subnav .seg button{font-size:14px;padding:0 4px}
+
+/* Transports : le sens reste collé en haut, sous les jours */
+.tr-dir-seg{padding:6px var(--gutter) 0}

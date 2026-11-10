@@ -771,8 +771,7 @@ function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=
    ${miss.length?`<p class="tr-miss">${ic("info","i-s")}<span>${[...new Set(miss.map(L=>L.ligne.startsWith("TER")?"Trains":"Car "+L.ligne))].join(", ")} : horaires après le ${dshort(miss[0].fin)} pas encore publiés.</span></p>`:""}`;
   return `${pageHead("Transports","Cars et trains depuis Préfailles, correspondances comprises.")}
   ${segTr()}
-  <div class="filters solo">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
-  <div class="seg-wrap"><div class="seg" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div>
+  <div class="filters solo">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}<div class="tr-dir-seg"><div class="seg seg-s" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div></div>
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
   <h2 class="tr-sec">${isT?"Prochains trajets":"Premiers trajets"}</h2>
   ${top}
