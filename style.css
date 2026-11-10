@@ -534,7 +534,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .sec-title .i{color:var(--accent);vertical-align:-2px}
 
 /* accueil : la distance sélectionnée en terre cuite (moins de noir) */
-.seg-where button[aria-pressed="true"],.seg-temps button[aria-pressed="true"]{background:var(--seagreen);color:var(--seagreen-ink)}
+.seg-where button[aria-pressed="true"],.seg-temps button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 /* surf heure par heure */
 .hstrip{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;margin:4px 0 8px}
 .hstrip span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:14px;color:var(--muted)}
@@ -579,11 +579,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* onglets : zone tactile ≥ 44 px même pour « Mer » */
 .tab{min-width:44px;justify-content:center}
 /* toutes les barres de sélection en vert de mer (moins de noir) */
-.seg button[aria-pressed="true"],.seg a[aria-pressed="true"]{background:var(--seagreen);color:var(--seagreen-ink)}
+.seg button[aria-pressed="true"],.seg a[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 
 /* Transports : trajets avec correspondances */
 button.tr-nx{width:100%;text-align:left;font:inherit;cursor:pointer}
-.tr-nx.is-on{border-color:var(--seagreen);box-shadow:0 0 0 1px var(--seagreen)}
+.tr-nx.is-on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .tr-nx-chain{display:flex;flex-direction:column;gap:4px;flex:none}
 .tr-j{padding:8px 0;border-bottom:1px solid var(--line)}
 .tr-list .tr-j:last-child{border-bottom:0}
@@ -651,7 +651,7 @@ details:not(.row-d)[open] > summary::after{transform:rotate(-135deg);margin-top:
 .filters{margin:10px var(--gutter) 0;padding:6px 0;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-l);box-shadow:0 -10px 0 var(--bg),0 2px 8px rgba(20,22,28,.05);overflow:hidden}
 .filters .frow{padding:3px 12px}
 .filters .chips{margin:0;padding-left:12px;padding-right:12px}
-.chip[aria-pressed="true"],.chip-k.k-ink[aria-pressed="true"]{background:var(--seagreen);border-color:var(--seagreen);color:var(--seagreen-ink)}
+.chip[aria-pressed="true"],.chip-k.k-ink[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 
 /* ===== en-tête FIXE (plus fiable que sticky sur iPhone) : logo + onglets toujours visibles ===== */
 .topbar{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:7}
