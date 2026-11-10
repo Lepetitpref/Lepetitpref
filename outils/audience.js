@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+// Audience du Petit Préf pour le tableau de bord de l'éditeur (artifact « Le Petit Préf, audience »), jamais affichée sur le site.
+// Lit les totaux du compteur de Concret (clés « quiz-pp-… », écrites par app.js : ppVue / ppHit) et écrit des JSON HORS du dépôt.
+//   node outils/audience.js <dossier hors dépôt>
+// Écrit : jours.json (14 derniers jours), pages.json (vues par rubrique depuis le début), resume.json.
+var cp = require('child_process'), fs = require('fs'), path = require('path');
+var API = 'https://compteur.square-brook-9d65.workers.dev/get?n=1&k=';
+var out = process.argv[2];
+if (!out) { console.error('usage : node outils/audience.js <dossier hors dépôt>'); process.exit(2); }
+if (path.resolve(out).indexOf(path.resolve(__dirname, '..') + path.sep) === 0) { console.error('Le dossier doit être hors du dépôt.'); process.exit(2); }
+fs.mkdirSync(out, { recursive: true });
+function lire(k) {
+  return new Promise(function (ok) {
+    cp.execFile('curl', ['-sS', '-m', '30', API + encodeURIComponent('quiz-pp-' + k)], function (e, o) {
+      if (e) return ok(null); try { ok(JSON.parse(o).v[0] || 0); } catch (x) { ok(null); }
+    });
+  });
+}
+async function tout(ks) { var o = []; for (var i = 0; i < ks.length; i += 24) o = o.concat(await Promise.all(ks.slice(i, i + 24).map(lire))); return o; }
+var jour = function (n) { return new Date(Date.now() - n * 864e5).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' }); };
+var VUES = ['sejour', 'agenda', 'activites', 'cine', 'mer', 'spots', 'manger', 'venir', 'peche', 'pratique', 'recherche', 'installer', 'apropos'];
+var NOMS = { sejour: "Aujourd'hui", agenda: 'Agenda', activites: 'À faire', cine: 'Ciné', mer: 'Mer', spots: 'Spots et glisse', manger: 'Manger', venir: 'Transports', peche: 'Pêche à pied', pratique: 'Pratique', recherche: 'Recherche', installer: "Installer l'app", apropos: 'À propos' };
+var CH = ['appareils', 'appareils-nouveaux', 'vues', 'app', 'partage', 'profil-habitant', 'profil-visite', 'profil-aucun', 'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s'];
+var ecrire = function (n, v) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(v, null, 1)); };
+(async function () {
+  var ds = []; for (var n = 13; n >= 0; n--) ds.push(jour(n));
+  var ks = []; ds.forEach(function (d) { CH.forEach(function (c) { ks.push(c + '-' + d); }); });
+  var v = await tout(ks), jours = ds.map(function (d, i) {
+    var r = { jour: d }; CH.forEach(function (c, j) { r[c.replace(/-/g, '_')] = v[i * CH.length + j]; });
+    r.appareils_revenus = r.appareils == null ? null : Math.max(0, r.appareils - (r.appareils_nouveaux || 0)); return r;
+  });
+  var pv = await tout(VUES.map(function (x) { return 'vue-' + x; }));
+  var pages = VUES.map(function (x, i) { return { rubrique: NOMS[x], vues: pv[i] }; }).sort(function (a, b) { return (b.vues || 0) - (a.vues || 0); });
+  var total = await lire('appareils');
+  var s7 = function (k) { return jours.slice(-7).reduce(function (a, r) { return a + (r[k] || 0); }, 0); };
+  ecrire('jours', jours); ecrire('pages', pages);
+  ecrire('resume', [{ maj: new Date().toISOString(), appareils_depuis_debut: total, appareils_7j: s7('appareils'), nouveaux_7j: s7('appareils_nouveaux'), vues_7j: s7('vues'), partages_7j: s7('partage'), app_7j: s7('app') }]);
+  console.log('OK', out, 'appareils depuis le début :', total);
+})();

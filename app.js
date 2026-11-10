@@ -705,7 +705,7 @@ function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
   return `${pageHead(curView()==="spots"?"Spots et glisse":"Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
-  <div class="filters">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
+  <div class="filters solo">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
   ${merTop(s)}
   ${glisseSec(s)}
   ${spotsSec(s)}
@@ -762,7 +762,7 @@ function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=
   const body=`${past.length?`<details class="tr-past"><summary>${past.length} trajet${past.length>1?"s":""} déjà parti${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(row).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(row).join("")}</ul>`:`<p class="empty">${isT&&list.length?"Plus de trajet aujourd'hui.":"Pas de trajet ce jour-là."}</p>`}
    ${miss.length?`<p class="tr-miss">${ic("info","i-s")}<span>${[...new Set(miss.map(L=>L.ligne.startsWith("TER")?"Trains":"Car "+L.ligne))].join(", ")} : horaires après le ${dshort(miss[0].fin)} pas encore publiés.</span></p>`:""}`;
   return `${pageHead("Transports","Cars et trains depuis Préfailles, correspondances comprises.")}
-  <div class="filters">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
+  <div class="filters solo">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
   <div class="seg-wrap"><div class="seg" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div>
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
   <h2 class="tr-sec">${isT?"Prochains trajets":"Premiers trajets"}</h2>
@@ -829,7 +829,7 @@ function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="
   <p><b>Contenus.</b> Les événements, séances de cinéma, horaires et adresses sont repris des sites des communes, offices de tourisme, cinémas, associations et transporteurs, qui restent la référence ; chaque fiche renvoie à sa source. Ils sont mis à jour automatiquement chaque matin et peuvent contenir des erreurs : vérifiez avant de vous déplacer.</p>
   <p><b>Marées.</b> Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.</p>
   <p><b>Photos et logo.</b> © Le Petit Préf, tous droits réservés.</p>
-  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie, ni mesure d'audience. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
+  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
   <p><b>Liens.</b> Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.</p></div></div>`;}
 /* ===== Recherche ===== */
 function vSearch(){
@@ -967,6 +967,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
    <p class="menu-group">Affichage</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Thème">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([k,l])=>`<button type="button" aria-pressed="${themeNow()===k}" data-m="theme" data-v="${k}">${l}</button>`).join("")}</div></div>
    ${STANDALONE()?"":`<a class="invite" href="#installer" style="display:flex;gap:12px;align-items:center;margin-top:22px;margin-bottom:8px;min-height:56px">${ic("install")}<span style="flex:1"><span class="invite-title" style="display:block">Installer l'app</span><span class="row-meta">Une icône sur l'écran d'accueil, sans store.</span></span>${ic("chev","i-s dim")}</a>`}
+   <p class="menu-ver">Version du site : ${esc(((document.querySelector('meta[name="pp-version"]')||{}).content||"").replace(/^(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d)$/,"$3/$2 à $4h$5"))}</p>
   </div>`;
   v.addEventListener("click",e=>{const b=e.target.closest("[data-m]");
     if(b){const m=b.dataset.m;if(m==="close"){closeOverlays();const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}
@@ -1026,7 +1027,26 @@ function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.inn
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
 const TITLES={spots:"Spots et glisse",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
-function render(){rail();const v=curView();document.title=v==="sejour"?"Le Petit Préf":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
+/* ---------- audience : totaux seulement, comme Concret (même compteur, clés « quiz-pp-… ») ----------
+   Rien qui identifie la personne : ni cookie, ni adresse IP gardée, ni identifiant envoyé. Le navigateur garde seulement le jour de sa
+   dernière visite comptée. Seulement sur lepetitpref.fr ; lepetitpref.fr/?moi=1 retire les appareils de l'éditeur (?moi=0 les remet). */
+const PPC="https://compteur.square-brook-9d65.workers.dev/hit?n=1&i=0&k=";
+const ppJour=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"});
+const ppOn=(()=>{try{const m=/[?&]moi=([01])/.exec(location.search);if(m){if(m[1]==="1")localStorage.setItem("pp-editeur","1");else localStorage.removeItem("pp-editeur");}
+  return /(^|\.)lepetitpref\.fr$/.test(location.hostname)&&localStorage.getItem("pp-editeur")!=="1"&&!!window.fetch;}catch(e){return false;}})();
+function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k),{method:"POST",cache:"no-store",keepalive:true}).catch(()=>{});}catch(e){}}
+const ppVu={};
+function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vues-"+j);}
+  if(ppVu._jour)return;ppVu._jour=1;
+  try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour");
+    if(!prem){ppHit("appareils");ppHit("appareils-nouveaux-"+j);}
+    if(der!==j){ppHit("appareils-"+j);if(STANDALONE())ppHit("app-"+j);ppHit("profil-"+(GR.habitant?"habitant":gActive()?"visite":"aucun")+"-"+j);}
+    localStorage.setItem("pp-appareil",prem||j);localStorage.setItem("pp-appareil-jour",j);}catch(e){}
+  let t=0,d=document.visibilityState==="visible"?Date.now():0;const faits={};
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
+    [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
+document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
+function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
