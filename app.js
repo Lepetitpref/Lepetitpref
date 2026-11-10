@@ -1032,7 +1032,6 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
    <p class="menu-group">Affichage</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Thème">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([k,l])=>`<button type="button" aria-pressed="${themeNow()===k}" data-m="theme" data-v="${k}">${l}</button>`).join("")}</div></div>
    <p class="menu-ver">Version du site : ${esc(((document.querySelector('meta[name="pp-version"]')||{}).content||"").replace(/^(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d)$/,"$3/$2 à $4h$5"))}</p>
-   <p class="menu-ver"><button type="button" class="lnk" id="ppMoi">${(()=>{try{return localStorage.getItem("pp-editeur")==="1"}catch(e){return false}})()?"Cet appareil n'est pas compté dans l'audience · Le compter à nouveau":"Ne pas compter cet appareil dans l'audience"}</button></p>
   </div>`;
   v.addEventListener("click",e=>{const b=e.target.closest("[data-m]");
     if(b){const m=b.dataset.m;if(m==="close"){closeOverlays();const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}
@@ -1175,5 +1174,3 @@ render();
 })();
 if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
 
-document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("#ppMoi");if(!b)return;try{const off=localStorage.getItem("pp-editeur")==="1";if(off)localStorage.removeItem("pp-editeur");else localStorage.setItem("pp-editeur","1");
-  b.textContent=off?"Cet appareil est de nouveau compté (dès la prochaine ouverture)":"C'est noté : cet appareil n'est plus compté";}catch(x){}});
