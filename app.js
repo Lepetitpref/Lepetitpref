@@ -77,7 +77,7 @@ function openOn(a,s){if(!a.open||!a.open.length)return null;const md=s.slice(5),
   for(const r of a.open){const inR=r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to);if(inR&&(!r.days||r.days.includes(d)))return r.hours||"ouvert";}return a.partial?null:false;}
 const fitsWho=(a,w)=>{const r=WHO.find(x=>x[0]===w)[2];return !a.ages||overlap(a.ages,r);};
 const fitsWhere=(k,town,w=S.where)=>w==="ici"?isHere(k,town):(k==null||k<=WHERE.find(x=>x[0]===w)[2]);
-const agesTxt=a=>a.ages?(a.ages[1]>=99?`dès ${a.ages[0]} ans`:`${a.ages[0]}–${a.ages[1]} ans`):"";
+const agesTxt=a=>a.ages?(a.ages[1]>=99?(a.ages[0]>0?`dès ${a.ages[0]} ans`:""):`${a.ages[0]}–${a.ages[1]} ans`):"";
 function evFits(e,w){if(w==="tous")return true;const r=WHO.find(x=>x[0]===w)[2];if(e.ageMin!=null||e.ageMax!=null)return overlap([e.ageMin??0,e.ageMax??99],r);if(w==="adultes")return true;return !!e.kids;}
 const SITE="https://lepetitpref.fr";
 const SHI='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
@@ -309,7 +309,7 @@ const SPOTSX=[
 const ACTL={surf:"Surf",kite:"Kite",wing:"Wing",voile:"Voile et bateau",paddle:"Paddle"};
 const angDiff=(a,b)=>Math.abs(((a-b)%360+540)%360-180);
 function windRel(sp,wd){const x=angDiff(wd,sp.face);return x<=30?"on":x<=75?"sideon":x<=105?"side":x<=145?"sideoff":"off";}
-const RELTXT={on:"de face",sideon:"travers-face",side:"travers",sideoff:"travers-terre",off:"de terre (offshore)"};
+const RELTXT={on:"de face",sideon:"travers-face",side:"travers",sideoff:"travers-terre",off:"de terre, offshore"};
 function swellAt(sp,s){if(!s||s.hs==null)return null;const dir=s.swd??s.sd;let f=.25;
   const[a,b]=sp.swell;if(dir>=a&&dir<=b)f=1;else if(Math.min(angDiff(dir,a),angDiff(dir,b))<=20)f=.6;
   return Math.max(0,(s.hs)*f*(sp.shelter??1));}
@@ -322,6 +322,7 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     const clean=k<8||rel==="off"||rel==="sideoff";const messy=k>=14&&(rel==="on"||rel==="sideon");
     if(H<.7)return[clean?1:0,`Petit (${r1(H)} m)${clean?", pour débuter":""}`];
     if(messy)return[1,`${r1(H)} m mais haché par le vent`];
+    if((rel==="off"||rel==="sideoff")&&g>=25)return[1,`${r1(H)} m, fort vent de terre (rafales ${r0(g)} nds) : confirmés`];
     return[T>=8||clean?2:1,`${r1(H)} m${T?` · ${r0(T)} s`:""}${clean?", mer lisse":""}`];}
   if(act==="kite"||act==="wing"){const lo=act==="kite"?14:12,hi=act==="kite"?30:28;
     if(rel==="off")return[0,"Vent de terre : dangereux"];
@@ -648,7 +649,7 @@ function glisseSec(d){if(!wxDay(d))return"";
   const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
   const yes=best.filter(x=>x.b.j[0]>0),no=best.filter(x=>x.b.j[0]===0);
   const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
-  const rows=yes.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""]],href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
+  const rows=yes.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""],sp.lvl?[`Niveau : ${esc(sp.lvl)}`,""]:null].filter(Boolean),href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
   const nos=no.length?`<li class="row glisse-non"><span class="row-main"><span class="row-meta">${no.map(x=>ACTL[x.a].replace(" et bateau","")).join(", ")} : non (${[...new Set(no.map(x=>x.b.j[1].toLowerCase()))].join(" ; ")})</span></span></li>`:"";
   return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${rows}${nos}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
 function spotsSec(d){const has=!!wxDay(d);

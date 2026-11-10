@@ -646,3 +646,9 @@ details:not(.row-d)[open] > summary::after{transform:rotate(-135deg);margin-top:
 .chip-q{min-height:44px}
 .chip-q small,.sea-hours small,.sea-hours div,.spot-act small{font-size:14px}
 .sea-c span{font-size:14px}
+
+/* filtres : un cadre blanc, détaché de la page ; sélections en vert de mer plutôt qu'en noir */
+.filters{margin:10px var(--gutter) 0;padding:6px 0;background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-l);box-shadow:0 -10px 0 var(--bg),0 2px 8px rgba(20,22,28,.05);overflow:hidden}
+.filters .frow{padding:3px 12px}
+.filters .chips{margin:0;padding-left:12px;padding-right:12px}
+.chip[aria-pressed="true"],.chip-k.k-ink[aria-pressed="true"]{background:var(--seagreen);border-color:var(--seagreen);color:var(--seagreen-ink)}
