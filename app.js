@@ -547,7 +547,7 @@ const wdName=d=>F(noon(d),{weekday:"long"});
 const dayWord=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":wdName(d);
 const ceJour=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":"ce "+wdName(d);
 function homeDays(){const g=gActive(),t=today();return g?gDays():range(t,addDays(t,6));}
-const SHARE_TXT="Le Petit Préf : la mer et les marées, les sorties, le ciné et les restos autour de Préfailles. Gratuit, sans pub.";
+const SHARE_TXT="Le Petit Préf : la mer et les marées, les sorties, le ciné, les activités, les restos et les transports autour de Préfailles. Gratuit, sans pub.";
 function whoBar(){const g=gActive();
   if(g)return `<div class="whobar"><div class="who-card"><span class="who-ic">${ic("people")}</span><div class="who-txt"><span class="who-k">Vous êtes en visite</span><b>${esc(gWho(g,GR.actif))}</b><span>${esc(gWhen())}</span></div></div>
    <div class="who-acts"><button type="button" class="who-btn is-main" data-act="who">${ic("people","i-s")}Modifier qui vient</button><button type="button" class="who-btn" data-act="local">${ic("home","i-s")}J'habite ici</button></div></div>`;
