@@ -787,3 +787,5 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoration:underline;text-underline-offset:2px}
 .subnav .seg a[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
 #main h1:focus{outline:none}
+.grps .group-note{margin:0;padding:10px 14px;font-size:15px;line-height:1.45;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c,var(--i-act));border-top:0;border-bottom:0}
+.group-note b{color:var(--ink);font-weight:600}
