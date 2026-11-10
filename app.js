@@ -81,7 +81,7 @@ const agesTxt=a=>a.ages?(a.ages[1]>=99?(a.ages[0]>0?`dès ${a.ages[0]} ans`:""):
 function evFits(e,w){if(w==="tous")return true;const r=WHO.find(x=>x[0]===w)[2];if(e.ageMin!=null||e.ageMax!=null)return overlap([e.ageMin??0,e.ageMax??99],r);if(w==="adultes")return true;return !!e.kids;}
 const SITE="https://lepetitpref.fr";
 const SHI='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
-function shareBtns(text,link){const t=text+"\n\nTrouvé sur Le Petit Préf → "+SITE+(link?"\n"+link:"");const enc=encodeURIComponent(t);
+function shareBtns(text,link){const t=text+"\n\n"+(link&&!/^https:\/\/lepetitpref\.fr\/?$/.test(link)?"Trouvé sur Le Petit Préf\n"+link:SITE);const enc=encodeURIComponent(t);
   return `<span class="share"><a class="sh wa" href="https://wa.me/?text=${enc}" target="_blank" rel="noopener">${SHI}WhatsApp</a><button class="sh" data-copy="${esc(t)}">Copier</button></span>`;}
 function toast(m){const d=document.createElement("div");d.className="toast";d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;e.preventDefault();const txt=b.dataset.copy;
@@ -162,9 +162,11 @@ function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[
 
 /* ---------- partage et copie ---------- */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-share]");if(!b)return;e.preventDefault();
-  const text=b.dataset.share+"\n\nTrouvé sur Le Petit Préf → "+SITE,url=b.dataset.url||undefined;
+  /* le lien n'apparaît qu'une fois : celui de la chose partagée, sinon celui du site */
+  const url=b.dataset.url||SITE,site=/^https:\/\/lepetitpref\.fr\/?(#.*)?$/.test(url);
+  const text=b.dataset.share+(site?"":"\n\nTrouvé sur Le Petit Préf");
   if(navigator.share){navigator.share({text,url}).catch(()=>{});return;}
-  try{navigator.clipboard.writeText(text+(url?"\n"+url:"")).then(()=>toast("Copié : collez-le dans votre groupe"),()=>{fallbackCopy(text);toast("Copié");});}catch(_){fallbackCopy(text);toast("Copié");}});
+  try{navigator.clipboard.writeText(text+"\n"+url).then(()=>toast("Copié : collez-le dans votre groupe"),()=>{fallbackCopy(text+"\n"+url);toast("Copié");});}catch(_){fallbackCopy(text+"\n"+url);toast("Copié");}});
 
 /* ---------- composants ---------- */
 function row({lead="",leadCls="",th="",title,metaH="",lines=[],more="",href="",ext=false,tag="li",act=""}){
@@ -545,7 +547,7 @@ const wdName=d=>F(noon(d),{weekday:"long"});
 const dayWord=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":wdName(d);
 const ceJour=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":"ce "+wdName(d);
 function homeDays(){const g=gActive(),t=today();return g?gDays():range(t,addDays(t,6));}
-const SHARE_TXT="Le Petit Préf : marées, sorties, ciné, restos et météo de la mer autour de Préfailles. À jour chaque matin, gratuit, sans pub.";
+const SHARE_TXT="Le Petit Préf : la mer et les marées, les sorties, le ciné et les restos autour de Préfailles. Gratuit, sans pub.";
 function whoBar(){const g=gActive();
   if(g)return `<div class="whobar"><div class="who-card"><span class="who-ic">${ic("people")}</span><div class="who-txt"><span class="who-k">Vous êtes en visite</span><b>${esc(gWho(g,GR.actif))}</b><span>${esc(gWhen())}</span></div></div>
    <div class="who-acts"><button type="button" class="who-btn is-main" data-act="who">${ic("people","i-s")}Modifier qui vient</button><button type="button" class="who-btn" data-act="local">${ic("home","i-s")}J'habite ici</button></div></div>`;
@@ -928,7 +930,7 @@ function vInstaller(){
   <div class="seg osseg" role="group" aria-label="Votre téléphone"><button data-os="ios" aria-pressed="${os==="ios"}">iPhone / iPad</button><button data-os="android" aria-pressed="${os==="android"}">Android</button></div>
   ${os==="ios"?ios:android}
   <p class="callout">Vos dates de séjour et vos filtres restent sur votre téléphone. Le contenu se met à jour tout seul chaque matin.</p>
-  <div class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos, à jour chaque matin. Mets-le sur ton écran d'accueil.")}</div></div>`;}
+  <div class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe Le Petit Préf, le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos. Mets-le sur ton écran d'accueil.")}</div></div>`;}
 after.installer=()=>{$$("[data-os]").forEach(b=>b.onclick=()=>{S.os=b.dataset.os;render();});const n=$("#instNow2");if(n)n.onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;render();};
   if(STANDALONE()){const f=$("#fInst");if(f)f.hidden=true;}};
 
