@@ -51,3 +51,4 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - À faire a 4 sous-rubriques : Agenda · Activités · Ciné · Soirées (`#soirees`, `vSoirees()` : sorties de 18h et plus tard (`evSoir`), filtres Ce soir / Demain soir / Ce week-end / 7 jours (`S.soirWhen`), puis « Où sortir le soir » = fiches ACTS de kind `bar` ou `nuit` et casinos (`NUITS()`)). L'Agenda se prolonge aussi par les Soirées.
 - Manger : sous-rubrique Bars (`kind:"bar"`), exclue de « Produits ».
 - L'onglet Manger s'appelle « Restos » (vue et hash restent `vManger` / `#manger`) ; sous-rubriques Tout · Restaurants · Bars · Marchés · Produits. Un lieu restaurant-bar garde `kind:"restaurant"` et prend `bar:true` (apparaît aussi dans Bars et Soirées).
+- Restos : filtre « Cadre » (Vue sur la mer · Sur la plage · Terrasse, `S.mCadre`, ACT `mcadre`) d'après le champ `cadre:["vue","plage","terrasse"]` des fiches ACTS, posé seulement quand la fiche source le dit.
