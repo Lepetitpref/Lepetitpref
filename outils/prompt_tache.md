@@ -48,14 +48,13 @@ Les fiches des lieux sont dans `app.js` (tableau `ACTS`). Pour les modifier :
 2. `python3 outils/lieux.py remettre /tmp/lieux.json` (il contrôle tout et refuse s'il y a une erreur) ;
 3. puis `python3 outils/version.py` (pour que les téléphones prennent la mise à jour).
 `open` = liste de `{from:"MM-JJ", to:"MM-JJ", days:"0123456" (0 = dimanche), hours:"8h–13h"}` ; `partial:true` si les horaires ne couvrent pas toute l'année. Ne mets que ce qu'une source datée de 2025 ou 2026 dit ; sinon laisse `open` vide (le site affiche « Horaires à vérifier »).
-Rotation, un groupe par jour de la semaine (contrôle les fiches existantes : horaires, saison, fermeture définitive, changement de nom ; ajoute ce qui manque) :
-- lundi : **marchés** (jours, heures, saison été/hiver) de Préfailles, La Plaine, Pornic (centre, Sainte-Marie, Le Clion), Saint-Michel/Tharon, La Bernerie, Les Moutiers, Saint-Brevin, Chauvé ;
-- mardi : restaurants et crêperies de Préfailles et La Plaine ;
-- mercredi : bars, caves, lieux de soirée (Le Canotier, casinos, comedy clubs) ;
-- jeudi : huîtres, poisson, producteurs, boulangeries, glaciers, épiceries ;
-- vendredi : restaurants de Pornic et Saint-Michel ;
-- samedi : activités (horaires d'été/hiver des musées, piscines, écoles de voile, locations) ;
-- dimanche : rien.
+Chaque jour, TOUT est passé en revue (contrôle des fiches existantes : horaires, saison, fermeture définitive, changement de nom ; ajoute ce qui manque). Lance des sous-agents en parallèle, un par groupe :
+- **marchés** (jours, heures, saison été/hiver) de Préfailles, La Plaine, Pornic (centre, Sainte-Marie, Le Clion), Saint-Michel/Tharon, La Bernerie, Les Moutiers, Saint-Brevin, Chauvé ;
+- **soirées** : bars, caves, lieux de soirée (Le Canotier, casinos, comedy clubs, Le Poche), et leurs dates à venir → aussi dans l'agenda (`donnees/events.json`) ;
+- **restaurants et crêperies** de Préfailles, La Plaine, Pornic, Saint-Michel/Tharon ;
+- **produits** : huîtres et zone conchylicole, poisson, producteurs, boulangeries, glaciers, épiceries, caves ;
+- **activités** : horaires d'été/hiver des musées, piscines, écoles de voile, locations, sorties nature.
+Si le temps manque, priorité dans cet ordre : agenda et soirées, marchés, horaires des restos et bars, le reste.
 Sources : API Geotrek du Département (fiches de l'office de tourisme : https://admin-rando.loire-atlantique.fr/api/v2/touristiccontent/?format=json), pornic.com, saint-brevin.com, sites des mairies et des établissements. Le champ `cadre` (vue / plage / terrasse) n'est posé que si une source fiable le dit ET que l'adresse est cohérente (Ô 22, place du Marché, n'a pas de vue mer). Pas de téléphone portable de particulier.
 
 ## 5. Contrôler et publier
