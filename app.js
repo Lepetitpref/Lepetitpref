@@ -150,10 +150,11 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 
 /* ---------- état ---------- */
 const S={events:null,cinema:null,assos:null,meta:null,err:null,
-  where:sget("cf-where")||"20",mWhere:sget("pp-mwhere")||"ici",rainSet:{},openDay:null,
+  where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"pref",mk:"tous",q:"",os:null};
-if(!ZONES.some(w=>w[0]===S.where))S.where="20";
+if(!ZONES.some(w=>w[0]===S.where))S.where="10";
+if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
 const WHO2=()=>[["tous","Tout public"],...(gActive()?[["groupe","Mon groupe"]]:[]),["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
 function actOK(a){if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
@@ -384,7 +385,7 @@ function tile(a,d,href="#activites",act=""){const[c,n]=(TH[a.cat]||["t-act","spa
 /* ===== barres de filtres : bleu = quand, couleurs = quoi, gris = filtres ===== */
 const qchip=(label,pressed,attrs)=>`<button type="button" class="chip chip-q" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
 const kchip=(label,pressed,attrs,k)=>`<button type="button" class="chip chip-k k-${k}" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
-const zoneSel=(w=S.where,chg="where",dflt="20")=>chipSel(w==="ici"?"À Préfailles":"≤ "+w+" km",w,ZONES.map(([k,l])=>[k,k==="ici"?"À Préfailles":"Jusqu'à "+l]),chg,dflt);
+const zoneSel=(w=S.where,chg="where",dflt="10")=>chipSel(w==="ici"?"À Préfailles":"≤ "+w+" km",w,ZONES.map(([k,l])=>[k,k==="ici"?"À Préfailles":"Jusqu'à "+l]),chg,dflt);
 const ETK={fete:"food",brocante:"food",spectacle:"act",jeux:"act",expo:"act",sport:"nat",nature:"nat",atelier:"sea",vielocale:"sea"};
 const CATK={mer:"sea",bienetre:"sea",culture:"sea",nature:"nat",sport:"nat",sortie:"act",sensations:"act",enfants:"act",saveurs:"food",marche:"food",assos:"nat"};
 const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label="${label}">${inner}</div>`;
@@ -404,7 +405,7 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
   const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],...(whenRange("sejour")?[["sejour","Mon séjour"]]:[])];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
-  const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const es=days[k].sort(byTime);shown+=es.length;
+  const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const es=days[k].sort((x,y)=>(isHere(evKm(x),x.town)?0:1)-(isHere(evKm(y),y.town)?0:1)||byTime(x,y));shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":`Agenda : ${list.length} sortie${list.length>1?"s":""} à venir autour de Préfailles`)}
@@ -455,7 +456,7 @@ function vManger(){const t=today(),od=S.openDay||t;
   return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, des plus proches aux plus loin`)}
   ${segMg()}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
-   ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","ici")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}</div>
+   ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}</div>
   <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
@@ -572,17 +573,17 @@ function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[
 function door(id,col,title,txt,rows,href){return `<section class="sec blk door" id="${id}" style="--c:var(${col})"><a class="sec-head door-head" href="${href}"><h2 class="sec-title">${title}</h2><span class="door-go">Ouvrir${ic("chev","i-s")}</span></a><p class="sec-note">${txt}</p><ul class="list">${rows.filter(Boolean).join("")}</ul></section>`;}
 function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   /* À faire */
-  const z20=e=>fitsWhere(evKm(e),e.town,"20");
+  const z20=e=>fitsWhere(evKm(e),e.town,"10");
   const evT=ld?[]:evOnDay(t).filter(e=>z20(e)&&!evIsLong(e));
   const wkP=ld?[]:eventsIn(t,addDays(t,6)).filter(e=>z20(e)&&!evIsLong(e));
-  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,"20")).length;
+  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,"10")).length;
   const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,"pref").filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
   /* Mer */
   let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,t);if(b&&b.j[0]>0&&(!glisse||b.j[0]>glisse.b.j[0]))glisse={a,sp,b};});});}
   const big=nextBig(1)[0];
   /* Manger */
   const eat=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&isHere(a.dist,a.town)&&openOn(a,t));
-  const eat20=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,"20")&&openOn(a,t));
+  const eat20=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,"10")&&openOn(a,t));
   /* Transports */
   let go=null,come=null;try{const T=S.transports;if(T&&T.legs){const now=hm(new Date());
     ["Pornic","Nantes","Saint-Nazaire"].forEach(p=>{const j=journeys(T,t,"Préfailles",p).list.find(x=>x.dep>=now);if(j&&(!go||j.dep<go[1].dep))go=[p,j];
@@ -594,15 +595,15 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   <h2 class="home-h">Aujourd'hui à Préfailles et aux alentours</h2>
   ${homeNow(t)}
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma. Triez selon qui vient : enfants, adultes, habitants.",[
-    r("#agenda",`Agenda <span class="door-n">${ld?"…":evT.length}</span>`,ld?"":`${evT.length?`sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 20 km`,' data-act="when" data-v="auj"'),
-    r("#activites",`Activités <span class="door-n">${nAct}</span>`,"lieux ouverts aujourd'hui à moins de 20 km : nature, sport, sensations, culture, enfants"),
+    r("#agenda",`Agenda <span class="door-n">${ld?"…":evT.length}</span>`,ld?"":`${evT.length?`sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
+    r("#activites",`Activités <span class="door-n">${nAct}</span>`,"lieux ouverts aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants"),
     r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(dname(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
     r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")],"#mer")}
   ${door("d-manger","--i-food","Manger","Restaurants et crêperies, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.",[
-    r("#manger",`Ouvert aujourd'hui <span class="door-n">${eat20.length}</span>`,`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 20 km`,' data-act="mwhere20"')],"#manger")}
+    r("#manger",`Ouvert aujourd'hui <span class="door-n">${eat20.length}</span>`,`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 10 km`,' data-act="mwhere20"')],"#manger")}
   ${door("d-transports","--seagreen","Transports","Les horaires des cars et des trains pour aller à Pornic, Nantes ou Saint-Nazaire, et pour venir à Préfailles, correspondances comprises.",[
     r("#venir","Partir de Préfailles",`vers Pornic, Nantes, Saint-Nazaire${go?` · prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:""}`,' data-act="trdir" data-v="0"'),
     r("#venir","Venir à Préfailles",`depuis Nantes, Pornic, Saint-Nazaire${come?` · prochain départ de ${esc(come[0])} à ${come[1].dep.replace(/^0/,"")}`:""}`,' data-act="trdir" data-v="1"'),
@@ -974,7 +975,7 @@ function whoClick(e){const b=e.target.closest("[data-w]");if(!b||b.tagName==="SE
     GR.actif=DR.type;GR.habitant=false;GR.quand=q;gSave();
     S.day=null;S.who="groupe";closeWho();
     if(curView()!=="agenda")location.hash="#agenda";else{render();window.scrollTo({top:0,behavior:"instant"});}return;}
-  else if(w==="local"){GR.habitant=true;gSave();S.where="ici";sset("cf-where","ici");S.who="tous";S.day=null;closeWho();if(!["agenda","activites","cine"].includes(curView()))location.hash="#agenda";else render();return;}
+  else if(w==="local"){GR.habitant=true;gSave();S.who="tous";S.day=null;closeWho();if(!["agenda","activites","cine"].includes(curView()))location.hash="#agenda";else render();return;}
   drawWho();}
 function whoChange(e){const el=e.target;
   if(el.dataset.w==="age"){DR.enfants[+el.dataset.i].age=+el.value;drawWho();}
@@ -1012,7 +1013,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 /* ---------- actions des vues (délégation) ---------- */
 const ACT={
   who:()=>openWho(),
-  local:()=>{GR.habitant=true;gSave();S.where="ici";sset("cf-where","ici");S.day=null;render();},
+  local:()=>{GR.habitant=true;gSave();S.day=null;render();},
   visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},
   zone:v=>{S.where=v;sset("cf-where",v);render();},
   day:v=>{S.day=v;render();},
@@ -1020,7 +1021,7 @@ const ACT={
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
-  mwhere20:()=>{S.mWhere="20";S.openToday=true;sset("pp-mwhere","20");},
+  mwhere20:()=>{S.mWhere="10";S.openToday=true;sset("pp-mwhere","10");},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
   spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
   trdir:v=>{S.trDir=+v;render();},
@@ -1039,7 +1040,7 @@ const ACT={
   av:v=>{S.actView=v;render();},
   more:v=>{S.more[v]=true;render();},
   tday:v=>{S.tideDay=v;render();},
-  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="20";sset("cf-where","20");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";S.mWhere="20";sset("pp-mwhere","20");render();},
+  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="10";sset("cf-where","10");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";S.mWhere="10";sset("pp-mwhere","10");render();},
   kml:()=>{const st=$("#kmlStatus");
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
