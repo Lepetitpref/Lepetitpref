@@ -6,7 +6,7 @@ const TZ="Europe/Paris", HOME={lat:47.13,lon:-2.22};
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
 const VIEWS=[["sejour","Accueil"],["agenda","À faire"],["mer","Mer"],["manger","Manger"],["venir","Transports"]];
-const EXTRA=["recherche","apropos","installer","activites","cine","pratique","peche","spots"];
+const EXTRA=["recherche","apropos","installer","activites","cine","soirees","pratique","peche","spots"];
 const after={};
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -396,9 +396,9 @@ function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="de
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
 const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
 const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
-const segMg=()=>segBtns("Rubriques de Manger",[["tous","Tout"],["tables","Restos"],["marche","Marchés"],["produits","Produits"]],["tous","tables","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
+const segMg=()=>segBtns("Rubriques de Manger",[["tous","Tout"],["tables","Restos"],["bar","Bars"],["marche","Marchés"],["produits","Produits"]],["tous","tables","bar","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
 const segTr=()=>segBtns("Destinations",[["Pornic","Pornic"],["Nantes","Nantes"],["Saint-Nazaire","Saint-Nazaire"]],S.trTo||"Pornic","trto");
-const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-current="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-current="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-current="${v==="cine"}">Ciné</a></div></div>`;
+const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-current="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-current="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-current="${v==="cine"}">Ciné</a><a class="seg-a" href="#soirees" data-spy="s-soirees" aria-current="${v==="soirees"}">Soirées</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype);
@@ -427,7 +427,28 @@ function faireSuite(){const t=today();
   return `<div id="s-activites" class="part"><h2 class="part-h">Activités</h2><p class="part-sub">Ouvert aujourd'hui, ${zoneTxt()}.</p>
    ${sec("Ouvert aujourd'hui",secLink("#activites","Toutes les activités"),acts.length?`<ul class="list">${acts.map(a=>placeRow(a,t)).join("")}</ul>`:`<p class="empty">Rien d'ouvert aujourd'hui avec ce rayon.</p>`)}</div>
   <div id="s-cine" class="part"><h2 class="part-h">Ciné</h2><p class="part-sub">Les prochaines séances, à Préfailles et dans les salles voisines.</p>
-   ${sec("Prochaines séances",secLink("#cine","Tout le programme"),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc(cinName(f.cin)),esc((f.times||[]).join(", ")),esc(f.genre||"")),href:"#cine"})).join("")}</ul>`:`<p class="empty">Pas de séance annoncée.</p>`)}</div>`;}
+   ${sec("Prochaines séances",secLink("#cine","Tout le programme"),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc(cinName(f.cin)),esc((f.times||[]).join(", ")),esc(f.genre||"")),href:"#cine"})).join("")}</ul>`:`<p class="empty">Pas de séance annoncée.</p>`)}</div>
+  <div id="s-soirees" class="part"><h2 class="part-h">Soirées</h2><p class="part-sub">Ce soir et les prochains soirs, ${zoneTxt()}.</p>
+   ${(()=>{const L=[];for(let i=0;i<7&&L.length<6;i++){const d=addDays(t,i);evOnDay(d).filter(e=>evSoir(e)&&evInZone(e)&&!evIsLong(e)).sort(byTime).forEach(e=>{if(L.length<6)L.push([d,e]);});}
+     return sec("Prochaines soirées",secLink("#soirees","Toutes les soirées"),L.length?`<ul class="list">${L.map(([d,e])=>evRow(e,{lead:"day",day:d})).join("")}</ul>`:`<p class="empty">Pas de soirée annoncée cette semaine.</p>`);})()}</div>`;}
+
+/* ===== Soirées : les sorties de 18h et plus tard, et les lieux où sortir le soir ===== */
+const evSoir=e=>{const h=tShort(e.time);return !!h&&h.padStart(5,"0")>="18h00";};
+const NUITS=()=>ACTS.filter(a=>a.kind==="bar"||a.kind==="nuit"||/casino/i.test(a.n));
+function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():[t,addDays(t,6)];}
+function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
+  const days=range(a,b).map(d=>[d,ld?[]:evOnDay(d).filter(e=>evSoir(e)&&evInZone(e)&&!evIsLong(e)).sort((x,y)=>(isHere(evKm(x),x.town)?0:1)-(isHere(evKm(y),y.town)?0:1)||byTime(x,y))]).filter(([,L])=>L.length);
+  const n=days.reduce((s,[,L])=>s+L.length,0);
+  const lieux=NUITS().filter(x=>fitsWhere(x.dist??TOWN_KM[x.town],x.town)).sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
+  const W=[["soir","Ce soir"],["demain","Demain soir"],["we","Ce week-end"],["7j","7 jours"]];
+  return `${pageHead("À faire",`Soirées : concerts, soirées dansantes, fêtes, spectacles et lieux où sortir le soir, ${zoneTxt()}.`)}
+  ${segAC("soirees")}
+  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(l,(S.soirWhen||"7j")===k,`data-act="soirw" data-v="${k}"`)).join(""))}
+   ${frow("frow","Filtres",zoneSel())}</div>
+  <div id="s-soirees">${ld?`<section class="sec">${loadingTxt}</section>`:days.length?days.map(([d,L])=>`<div class="day" style="margin:12px var(--gutter) 0 !important"><div class="datecol">${dateLead(d,d===t)}</div><ul class="list">${L.map(e=>evRow(e)).join("")}</ul></div>`).join("")
+    :`<section class="sec"><p class="empty">Pas de soirée annoncée ${S.soirWhen==="soir"?"ce soir":"sur cette période"} ${zoneTxt()}. <button type="button" class="lnk" data-act="soirw" data-v="7j">Voir les 7 jours</button></p></section>`}
+  ${sec("Où sortir le soir","",lieux.length?`<ul class="list">${lieux.map(x=>placeRow(x,t)).join("")}</ul>`:`<p class="empty">Aucun lieu ${zoneTxt()}. Élargissez la distance.</p>`,"Bars, bars musicaux, lieux de nuit et casinos, du plus proche au plus loin. Horaires indicatifs : appelez avant.")}</div>
+  <p class="foot">${n} sortie${n>1?"s":""} le soir sur la période. Sources : mairies, offices de tourisme, associations, sites des établissements.</p>`;}
 
 /* ===== Ciné ===== */
 function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(c.cinema));const days=[...new Set(list.map(c=>c.date))].sort();
@@ -445,9 +466,9 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.t==="Préfailles"?"Cinéma de Préfailles (L'Atlantique)":c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
 
 /* ===== Manger ===== */
-const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["biscuiterie","Biscuiteries"]];
+const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["bar","Bars"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
-const mkOK=a=>S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&kindOf(a)!=="marche":kindOf(a)===S.mk;
+const mkOK=a=>S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):kindOf(a)===S.mk;
 function vManger(){const t=today(),od=S.openDay||t;
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
@@ -459,7 +480,7 @@ function vManger(){const t=today(),od=S.openDay||t;
   ${segMg()}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
    ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}</div>
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -596,9 +617,10 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à Préfailles et autour : les sorties, les activités et le ciné, la mer et ses spots, où manger, comment venir. Tout est mis à jour chaque matin.</p>
   <h2 class="home-h">Aujourd'hui à Préfailles et aux alentours</h2>
   ${homeNow(t)}
-  ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma. Triez selon qui vient : enfants, adultes, habitants.",[
+  ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
     r("#agenda",`Agenda <span class="door-n">${ld?"…":evT.length}</span>`,ld?"":`${evT.length?`sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
     r("#activites",`Activités <span class="door-n">${nAct}</span>`,"lieux ouverts aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants"),
+    r("#soirees",`Soirées <span class="door-n">${ld?"…":evT.filter(evSoir).length}</span>`,ld?"":`${evT.filter(evSoir).length?"ce soir":"rien ce soir"} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes, bars`,' data-act="soirw" data-v="soir"'),
     r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
@@ -985,7 +1007,7 @@ function whoChange(e){const el=e.target;
   else if(el.id==="wAu"&&el.value){DR.quand.au=el.value;drawWho();}}
 
 /* ---------- menu (bouton en haut à droite) ---------- */
-const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"]];
+const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"]];
 const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
@@ -993,7 +1015,7 @@ const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{
 function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
 function escKey(e){if(e.key==="Escape"){const had=$("#menu");closeOverlays();if(had){const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}}}
 function openMenu(){closeOverlays();const c=curView(),g=gActive();
-  const COL={sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",recherche:"--muted",apropos:"--muted"};
+  const COL={soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",recherche:"--muted",apropos:"--muted"};
   const it=([h,l,t,i])=>`<li><a class="menu-item" href="#${h}" style="--c:var(${COL[h]||"--accent"})" ${h===c?'aria-current="page"':""}><span class="menu-ic">${ic(i)}</span><span><b>${l}</b>${t?`<small>${t}</small>`:""}</span></a></li>`;
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="brand" href="#sejour">${ic("brand")}Le Petit Préf</a><button type="button" class="menu-btn" data-m="close">${ic("close")}Fermer</button></div>
@@ -1025,6 +1047,7 @@ const ACT={
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
+  soirw:v=>{S.soirWhen=v;render();},
   mwhere20:()=>{S.mWhere="10";S.openToday=true;sset("pp-mwhere","10");},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
   spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
@@ -1058,10 +1081,10 @@ document.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.close
 
 /* ---------- rendu et navigation ---------- */
 function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)||EXTRA.includes(h)?h:"sejour";}
-const PARENT={cine:"agenda",activites:"agenda",pratique:"sejour",peche:"mer",spots:"mer"};
+const PARENT={cine:"agenda",activites:"agenda",soirees:"agenda",pratique:"sejour",peche:"mer",spots:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
-const TITLES={activites:"Activités",cine:"Ciné",mer:"La mer",peche:"Pêche à pied",spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
+const TITLES={soirees:"Soirées",activites:"Activités",cine:"Ciné",mer:"La mer",peche:"Pêche à pied",spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
 /* ---------- audience : totaux seulement, comme Concret (même compteur, clés « quiz-pp-… ») ----------
    Rien qui identifie la personne : ni cookie, ni adresse IP gardée, ni identifiant envoyé. Le navigateur garde seulement le jour de sa
@@ -1087,7 +1110,7 @@ function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer,soirees:vSoirees})[v]()}</section>`;
   if(open.length)$$("#main details summary .row-title").forEach(x=>{if(open.includes(x.textContent))x.closest("details").open=true;});
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}

@@ -48,3 +48,5 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Accessibilité : menu et feuille rendent le reste de la page inerte (`pageInert`), focus sur le h1 à chaque changement de vue, liens de sous-rubriques en `aria-current`, liens soulignés dans le texte. Le bleu secondaire `--sel2` (#2f78ab) garde un contraste ≥ 4,5:1 avec le blanc.
 - Sécurité : verifier.py refuse les liens non http(s) et les âges non numériques dans events.json et assos.json.
 - Anonymat : la carte des activités est centrée sur le bourg (HOME = 47.13, -2.22), libellé « Préfailles », jamais « maison ».
+- À faire a 4 sous-rubriques : Agenda · Activités · Ciné · Soirées (`#soirees`, `vSoirees()` : sorties de 18h et plus tard (`evSoir`), filtres Ce soir / Demain soir / Ce week-end / 7 jours (`S.soirWhen`), puis « Où sortir le soir » = fiches ACTS de kind `bar` ou `nuit` et casinos (`NUITS()`)). L'Agenda se prolonge aussi par les Soirées.
+- Manger : sous-rubrique Bars (`kind:"bar"`), exclue de « Produits ».
