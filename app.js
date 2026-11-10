@@ -248,7 +248,7 @@ function tideCard(s,o={}){const t=today(),now=Date.now();
    ${o.link===false?"":`<a class="tide-link" href="#mer">${o.linkText||"La mer : vent, houle, eau et spots"}${ic("chev","i-s")}</a>`}</div>`;}
 
 /* ---------- météo, vent, houle (Open-Meteo, direct depuis le téléphone) ---------- */
-const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22&hourly=temperature_2m,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&wind_speed_unit=kn&timezone=Europe%2FParis&forecast_days=7";
+const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22&hourly=temperature_2m,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,sunrise,sunset&wind_speed_unit=kn&timezone=Europe%2FParis&forecast_days=7";
 const SEAU="https://marine-api.open-meteo.com/v1/marine?latitude=47.10&longitude=-2.35&hourly=wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,sea_surface_temperature&timezone=Europe%2FParis&forecast_days=7";
 const WX={f:null,m:null,st:"idle",at:0};
 function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))return;WX.tried=Date.now();
@@ -284,15 +284,15 @@ function wxLine(d){const w=wxDay(d);if(!w)return"";const[t,icn]=WMO(w.code);
 
 /* ---------- spots : orientation et lecture automatique des conditions ---------- */
 const SPOTSX=[
- {id:"gildas",n:"Pointe Saint-Gildas",town:"Préfailles",lat:47.1383,lon:-2.2528,face:260,swell:[200,320],acts:["surf","kite","wing"],lvl:"Confirmés",
+ {id:"gildas",n:"Pointe Saint-Gildas",town:"Préfailles",lat:47.1383,lon:-2.2528,face:260,swell:[200,320],acts:["surf","kite","wing"],tide:[.35,1],tideTxt:"mi-marée à marée haute (récif peu profond)",lvl:"Confirmés",
   d:"La pointe prend la houle d'ouest en premier : droite rapide et creuse sur récif. En kite et wing, on part de l'anse de sable qui colle à la direction du vent.",haz:"Rochers partout, fond très peu profond, rafales près des falaises. Vent de nord-est : offshore, retour dangereux."},
- {id:"margaret",n:"Plage de Margaret",town:"Préfailles",lat:47.1247,lon:-2.2161,face:180,swell:[195,275],acts:["surf"],lvl:"Confirmés",
+ {id:"margaret",n:"Plage de Margaret",town:"Préfailles",lat:47.1247,lon:-2.2161,face:180,swell:[195,275],acts:["surf"],tide:[.35,1],tideTxt:"mi-marée à marée haute (récif découvert à basse mer)",lvl:"Confirmés",
   d:"Petite crique entre les falaises, au sud du bourg. Vague de récif par houle d'ouest à sud-ouest, meilleure par vent de nord à nord-est.",haz:"Récif découvert à marée basse, courants, baignade non surveillée. Trop petite pour lancer un kite."},
  {id:"anes",n:"Port-aux-Ânes",town:"Préfailles",lat:47.1412,lon:-2.2349,face:325,swell:[275,345],shelter:.6,acts:["kite","wing"],lvl:"Confirmés",
   d:"Côté nord de la pointe, face à l'estuaire. Le bon plan quand le vent d'ouest à nord-ouest rend la côte sud trop exposée.",haz:"Courants de l'estuaire, pêcheries, sable et rochers. Vent de sud à est : offshore, on ne sort pas."},
- {id:"tharon",n:"Tharon-Plage",town:"Saint-Michel-Chef-Chef",lat:47.1686,lon:-2.1672,face:280,swell:[235,320],shelter:.8,acts:["surf","kite","wing"],lvl:"Intermédiaires",
+ {id:"tharon",n:"Tharon-Plage",town:"Saint-Michel-Chef-Chef",lat:47.1686,lon:-2.1672,face:280,swell:[235,320],shelter:.8,acts:["surf","kite","wing"],tide:[0,.75],tideTxt:"marée basse à mi-marée (shorebreak à marée haute)",lvl:"Intermédiaires",
   d:"Grande plage de sable. Beach break par houle d'ouest ; kite et wing côté nord, près du centre nautique La Cormorane.",haz:"Shorebreak à marée haute, pêcheries. Du 15 juin au 15 septembre (et les week-ends de mai à septembre) : sortie par les chenaux balisés, au-delà des 300 m."},
- {id:"rochelets",n:"Saint-Brevin, Les Rochelets",town:"Saint-Brevin-les-Pins",lat:47.2166,lon:-2.1641,face:260,swell:[235,320],shelter:.85,acts:["surf","kite","wing"],lvl:"Tous niveaux avec école",
+ {id:"rochelets",n:"Saint-Brevin, Les Rochelets",town:"Saint-Brevin-les-Pins",lat:47.2166,lon:-2.1641,face:260,swell:[235,320],shelter:.85,acts:["surf","kite","wing"],tide:[0,1],tideTxt:"à toute marée (le Pointeau à basse mer, les Rochelets à haute mer)",lvl:"Tous niveaux avec école",
   d:"Grande plage avec zone kite dédiée et écoles de surf et de wing. Le Pointeau à marée basse, les Rochelets à marée haute.",haz:"Baïnes à la marée descendante, dalles rocheuses à marée basse. Du 15 mai au 15 septembre : zones balisées, priorité aux écoles."},
  {id:"bourgneuf",n:"Baie de Bourgneuf",town:"Préfailles – Pornic",lat:47.115,lon:-2.12,face:200,swell:[170,260],shelter:.4,acts:["voile","paddle","kite","wing"],lvl:"Tous niveaux",
   d:"Plan d'eau abrité de la houle, de la Grande Plage de Préfailles à la Noëveillard (Pornic). Voile et paddle ; kite à Le Cormier (La Plaine), école sur place.",haz:"Parcs à huîtres et rochers à la marée descendante, trafic du port de Pornic. Vent de nord à nord-est : offshore."}];
@@ -304,7 +304,9 @@ function swellAt(sp,s){if(!s||s.hs==null)return null;const dir=s.swd??s.sd;let f
   const[a,b]=sp.swell;if(dir>=a&&dir<=b)f=1;else if(Math.min(angDiff(dir,a),angDiff(dir,b))<=20)f=.6;
   return Math.max(0,(s.hs)*f*(sp.shelter??1));}
 /* note : 2 bon, 1 possible, 0 non. Renvoie [note, phrase courte] */
-function judge(act,sp,w,s){if(!w)return null;const k=w.w,g=w.g,rel=windRel(sp,w.wd),H=swellAt(sp,s),T=s?(s.swp??s.tp):null;
+function judge(act,sp,w,s,tt){if(!w)return null;
+  if(act==="surf"&&tt&&sp.tide){const r=judge(act,sp,w,s);if(!r||r[0]===0&&/^Plat/.test(r[1]))return r;const[lo,hi]=sp.tide;
+    if(tt.f<lo)return[Math.max(0,r[0]-1),r[1]+" · marée trop basse"];if(tt.f>hi)return[Math.max(0,r[0]-1),r[1]+" · marée trop haute"];return[r[0],r[1]+" · "+tt.txt];}const k=w.w,g=w.g,rel=windRel(sp,w.wd),H=swellAt(sp,s),T=s?(s.swp??s.tp):null;
   if(act==="surf"){if(H==null)return null;
     if(H<.4)return[0,"Plat"];if(H>3)return[1,`Gros (${r1(H)} m), experts`];
     const clean=k<8||rel==="off"||rel==="sideoff";const messy=k>=14&&(rel==="on"||rel==="sideon");
@@ -325,7 +327,22 @@ function judge(act,sp,w,s){if(!w)return null;const k=w.w,g=w.g,rel=windRel(sp,w.
   if(act==="paddle"){const h=H??0;if(k<9&&h<.5)return[2,`Plan d'eau calme, ${r0(k)} nds`];if(k<13&&h<.8)return[1,`Un peu de vent (${r0(k)} nds)`];return[0,`Trop de vent ou de vagues`];}
   return null;}
 const SLOTS=[9,12,15,18];
-function bestOf(act,sp,d){let best=null;for(const h of SLOTS){const w=wxAt(d,h),s=seaAt(d,h)||seaAt(d,h-1)||seaAt(d,h+1);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
+/* marée à une heure : niveau 0 (basse) à 1 (haute), montante ou non */
+const tideEx=d=>[...tidesOfDay(addDays(d,-1)),...tidesOfDay(d),...tidesOfDay(addDays(d,1))];
+function tideAtH(d,h){const ms=new Date(`${d}T${String(h).padStart(2,"0")}:00:00`).getTime();let p=null,n=null;
+  for(const e of tideEx(d)){if(e.ms<=ms)p=e;else if(!n)n=e;}if(!p||!n||p.k===n.k)return null;
+  const lo=p.k==="BM"?p.h:n.h,hi=p.k==="BM"?n.h:p.h,f=(hAt(ms)-lo)/((hi-lo)||1),up=p.k==="BM";
+  return{f,up,txt:f<.25?"marée basse":f>.75?"marée haute":up?"mi-marée montante":"mi-marée descendante"};}
+/* heures de jour (lever +1 h → coucher), sinon 8h–18h */
+function dayHours(d){const D=WX.f&&WX.f.daily,i=D&&D.sunrise?D.time.indexOf(d):-1;if(i<0)return[8,18];return[+D.sunrise[i].slice(11,13)+1,+D.sunset[i].slice(11,13)];}
+/* surf heure par heure : note, marée, vent */
+function surfHours(sp,d){const[a,b]=dayHours(d),out=[];for(let h=a;h<=b;h++){const w=wxAt(d,h),s=seaAt(d,h),tt=tideAtH(d,h),j=judge("surf",sp,w,s,tt);
+  if(j)out.push({h,j,w,s,tt,sc:j[0]*10+(tt&&sp.tide&&tt.f>=sp.tide[0]&&tt.f<=sp.tide[1]?2:0)+(tt&&tt.up?1:0)+(w&&w.w<8?1:0)});}return out;}
+const slotTxt=b=>b.h2!=null&&b.h2>b.h1?`de ${b.h1}h à ${b.h2}h`:`vers ${b.h}h`;
+function bestOf(act,sp,d){
+  if(act==="surf"){const hs=surfHours(sp,d);if(!hs.length)return null;const top=hs.reduce((x,y)=>y.sc>x.sc?y:x);let i=hs.indexOf(top),lo=i,hi=i;
+    while(lo>0&&hs[lo-1].j[0]===top.j[0]&&hs[lo-1].h===hs[lo].h-1)lo--;while(hi<hs.length-1&&hs[hi+1].j[0]===top.j[0]&&hs[hi+1].h===hs[hi].h+1)hi++;
+    return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS){const w=wxAt(d,h),s=seaAt(d,h)||seaAt(d,h-1)||seaAt(d,h+1);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
 const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 
 /* ---------- données utiles aux vues ---------- */
@@ -508,7 +525,7 @@ function homeTop(days,d){const g=gActive(),t=today();
    ${g?`<div class="who-sub"><span><b>${esc(gWho(g,GR.actif))}</b><br>${esc(gWhen())}</span><button type="button" class="lnk" data-act="who">Modifier</button></div>`
      :GR.habitant?"":`<p class="who-sub"><span>En visite ? Dites qui vient et quand : on trie sorties, âges et horaires.</span></p>`}`;
   const bar=`<div class="qbar" role="group" aria-label="Jour">${days.map(x=>`<button type="button" class="q" aria-pressed="${x===d}" data-act="day" data-v="${x}"><b>${x===t?"Auj.":esc(cap(dname(x)))} ${+x.slice(8)}</b>${dsub(x)?`<span>${dsub(x)}</span>`:""}</button>`).join("")}</div>`;
-  const zone=`<div class="ctl-row"><span class="ctl-l">Où</span><div class="seg seg-s" role="group" aria-label="Distance">${ZONES.map(([k,l])=>`<button type="button" aria-pressed="${S.where===k}" data-act="zone" data-v="${k}">${k==="ici"?l:"≤ "+l}</button>`).join("")}</div></div>`;
+  const zone=`<div class="ctl-row"><span class="ctl-l">Où</span><div class="seg seg-s seg-where" role="group" aria-label="Distance">${ZONES.map(([k,l])=>`<button type="button" aria-pressed="${S.where===k}" data-act="zone" data-v="${k}">${k==="ici"?l:"≤ "+l}</button>`).join("")}</div></div>`;
   const rain=isRain(d);
   const wx=`<div class="wx">${wxLine(d)||`<span class="wx-ic">${ic("cloudsun")}</span><span class="wx-txt"><b>Météo</b><span>${WX.st==="err"?"Prévisions indisponibles pour l'instant.":d>addDays(t,6)?"Prévisions à 7 jours seulement.":"Chargement des prévisions…"}</span></span>`}</div>
    <div class="ctl-row"><span class="ctl-l">Temps</span><div class="seg seg-s" role="group" aria-label="Temps">${[[0,"Beau temps"],[1,"S'il pleut"]].map(([v,l])=>`<button type="button" aria-pressed="${!!v===rain}" data-act="pluie" data-v="${v}" data-d="${d}">${v?ic("umb","i-s"):ic("sun","i-s")}${l}</button>`).join("")}</div></div>`;
@@ -617,13 +634,20 @@ function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return 
 function glisseSec(d){if(!wxDay(d))return"";
   const acts=["surf","kite","wing","voile","paddle"];
   const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
-  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${best.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(a==="voile"?"sail":a==="paddle"?"drop":"wave")}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:b.j[0]?meta(esc(sp.n),`vers ${b.h}h`):"",lines:[[esc(b.j[1]),""]]})).join("")}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité, d'après les prévisions.");}
+  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${best.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(a==="voile"?"sail":a==="paddle"?"drop":"wave")}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:b.j[0]?meta(esc(sp.n),slotTxt(b)):"",lines:[[esc(b.j[1]),""]]})).join("")}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité, d'après les prévisions.");}
+function surfSec(d){if(!wxDay(d))return"";
+  const sp=SPOTSX.filter(x=>x.acts.includes("surf")&&x.tide);
+  const rows=sp.map(x=>{const hs=surfHours(x,d);if(!hs.length)return"";const b=bestOf("surf",x,d);
+    const strip=`<div class="hstrip" aria-hidden="true">${hs.map(y=>`<span class="${NOTECLS[y.j[0]]}"><i></i>${y.h}h</span>`).join("")}</div>`;
+    return row({th:`<span class="thumb t-sea">${ic("wave")}</span>`,title:`${esc(x.n)} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,
+      metaH:b.j[0]?meta(slotTxt(b),b.tt?b.tt.txt:""):meta("pas de bon créneau"),lines:[[`Idéal : ${esc(x.tideTxt)}`,""]],more:strip+`<p class="row-meta">Vert : bon · orange : possible · gris : non. Chaque heure combine la houle, le vent et la hauteur d'eau.</p>`});}).join("");
+  return sec("Surf : les bonnes heures","",`<ul class="list">${rows}</ul>`,"La marée change la vague : sur les récifs (Pointe Saint-Gildas, Margaret), évitez la marée basse ; à Tharon, la marée haute fait du shorebreak. Le vent est souvent plus faible le matin. Touchez un spot pour le détail heure par heure.");}
 function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   return sec("Les spots","",`<ul class="list">${SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
     const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):-1;
     const line=has?sm.map(x=>`${ACTL[x.a]} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · "):"";
-    const det=sm.map(x=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${ACTL[x.a]}</b> · ${esc(x.b.j[1])}${x.b.j[0]?` · vers ${x.b.h}h`:""}${x.b.w?`<br><small>Vent ${dirTxt(x.b.w.wd)} ${r0(x.b.w.w)} nds (${RELTXT[windRel(sp,x.b.w.wd)]}), rafales ${r0(x.b.w.g)}${x.b.s&&x.b.s.hs!=null?` · houle au large ${r1(x.b.s.hs)} m, ${r0(x.b.s.swp??x.b.s.tp)} s`:""}</small>`:""}</span></div>`).join("");
+    const det=sm.map(x=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${ACTL[x.a]}</b> · ${esc(x.b.j[1])}${x.b.j[0]?` · ${slotTxt(x.b)}`:""}${x.b.w?`<br><small>Vent ${dirTxt(x.b.w.wd)} ${r0(x.b.w.w)} nds (${RELTXT[windRel(sp,x.b.w.wd)]}), rafales ${r0(x.b.w.g)}${x.b.s&&x.b.s.hs!=null?` · houle au large ${r1(x.b.s.hs)} m, ${r0(x.b.s.swp??x.b.s.tp)} s`:""}</small>`:""}</span></div>`).join("");
     return row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:line?[[esc(line),NOTECLS[Math.max(top,0)]]]:[],
       more:`${det?`<div class="spot-acts">${det}</div>`:""}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a></span>`});}).join("")}</ul>`,
    has?"Touchez un spot pour le détail du jour. Estimations automatiques : regardez toujours la mer avant d'y aller.":"");}
@@ -635,6 +659,7 @@ function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay
   <section class="sec" style="padding-top:12px">${seaCard(s)}</section>
   <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
   ${glisseSec(s)}
+  ${surfSec(s)}
   ${spotsSec(s)}
   ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
