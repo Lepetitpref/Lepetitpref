@@ -391,7 +391,8 @@ const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label
 /* ===== Agenda ===== */
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
-const segAC=v=>`<div class="seg-wrap"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" aria-pressed="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" aria-pressed="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
+const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" aria-pressed="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" aria-pressed="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" aria-pressed="${v==="peche"}">Pêche à pied</a></div></div>`;
+const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" aria-pressed="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" aria-pressed="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype);
@@ -488,7 +489,8 @@ const PECHE={source:"Réglette « Pêche à pied de loisir » du Syndicat mixte 
  regles:["Pas de pêche à moins de 15 m des parcs à huîtres et des bouchots, ni dans leurs allées.","Outils à main seulement (couteau à palourdes, griffe ou serfouette à 3 dents au plus) ; pas d'arrachage.","Ne grattez pas les herbiers de zostères ; laissez les crabes et crevettes porteurs d'œufs.","Certaines zones peuvent être fermées pour raison sanitaire : renseignez-vous en mairie avant de pêcher.","Amende jusqu'à 22 500 € en cas d'infraction."]};
 function goodTides(n){const t=today(),out=[];for(let i=0;i<60&&out.length<n;i++){const d=addDays(t,i),c=maxCoef(d),l=dayLows(d);if(c>=70&&l.length)out.push({d,c,l});}return out;}
 function vPeche(){const T=goodTides(12),g=ACTS.find(a=>/Pêche à pied/.test(a.n));
-  return `${pageHead("Pêche à pied","Les bonnes marées des prochaines semaines, calculées pour Préfailles.")}
+  return `${pageHead("La mer","Pêche à pied : les bonnes marées des prochaines semaines, calculées pour Préfailles.")}
+  ${segMer("peche")}
   ${sec("Prochaines bonnes marées","",T.length?`<ul class="list">${T.map(({d,c,l})=>row({lead:dateLead(d,d===today()),leadCls:"lead-date",title:`Basse mer ${l.map(x=>hm(new Date(x.ms))).join(" et ")}`,metaH:meta(`coef. ${c}`,c>=90?"grande marée":""),lines:[[`Créneau conseillé ${hm(new Date(l[0].ms-75*6e4))}–${hm(new Date(l[0].ms+75*6e4))}`,"ok"]]})).join("")}</ul>`:`<p class="empty">Pas de bonne marée de jour dans les deux prochains mois.</p>`,"Coefficient 70 et plus, basse mer entre 7 h et 19 h. Le créneau va de 1 h 15 avant à 1 h 15 après la basse mer.")}
   ${g?sec("Où aller","",`<ul class="list">${placeRow(g,today())}</ul>`):""}
   ${sec("Sécurité","",`<ul class="tips">
@@ -707,14 +709,13 @@ function merTop(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)||sea
 function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
-  return `${pageHead(curView()==="spots"?"Spots et glisse":"Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
+  const sp=curView()==="spots";
+  return `${pageHead("La mer",sp?"Glisse et spots : où et quand faire du surf, du kite, du wing, de la voile.":"Marées, vent, houle et température de l'eau à Préfailles.")}
+  ${segMer(sp?"spots":"mer")}
   <div class="filters solo">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
-  ${merTop(s)}
-  ${glisseSec(s)}
-  ${spotsSec(s)}
-  <section class="sec" style="padding-top:18px">${seaCard(s)}</section>
-  <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
-  ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}
+  ${sp?glisseSec(s)+spotsSec(s):merTop(s)+`<section class="sec" style="padding-top:18px">${seaCard(s)}</section>`}
+  ${sp?"":`  <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
+  ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}`}
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
 
 /* ===== Transports ===== */
@@ -1061,8 +1062,6 @@ function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?
   window.scrollTo({top:sy,behavior:"instant"});
   after[v]&&after[v]();}
 after.sejour=()=>bindInstall();
-after.spots=()=>{if(S.spotsJump===location.hash)return;S.spotsJump=location.hash;const el=document.getElementById("spots");if(el)requestAnimationFrame(()=>el.scrollIntoView({behavior:"instant",block:"start"}));};
-addEventListener("hashchange",()=>{S.spotsJump=null;});
 
 /* ---------- nouvelle version du site ---------- */
 (function(){const vPage=(document.querySelector('meta[name="pp-version"]')||{}).content,t0=Date.now(),reload=/[?&]maj=/.test(location.search);let vu=0,touche=false;

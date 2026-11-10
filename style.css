@@ -717,3 +717,8 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 .door-n{display:inline-block;min-width:22px;margin-left:4px;padding:0 7px;border-radius:999px;background:color-mix(in srgb,var(--c) 14%,var(--surface));color:var(--c);font-size:14px;font-weight:600;text-align:center}
 .whobar{margin:10px var(--gutter) 0}
 .whobar .who-sub{margin-top:6px}
+
+/* sous-rubriques (À faire, La mer) : toujours visibles sous les onglets ; les jours ou filtres collent juste dessous */
+.subnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:5;margin:0;padding:8px var(--gutter);background:var(--bg)}
+.subnav ~ .filters{top:calc(env(safe-area-inset-top,0px) + var(--hdr) + 60px)}
+.subnav .seg a{font-size:14px;padding:0 4px;text-align:center;line-height:1.15}
