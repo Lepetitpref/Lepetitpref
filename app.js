@@ -546,11 +546,13 @@ const ceJour=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":"ce "+
 function homeDays(){const g=gActive(),t=today();return g?gDays():range(t,addDays(t,6));}
 const SHARE_TXT="Le Petit Préf : marées, sorties, ciné, restos et météo de la mer autour de Préfailles. À jour chaque matin, gratuit, sans pub.";
 function whoBar(){const g=gActive();
-  return `<div class="whobar"><div class="who" role="group" aria-label="Vous êtes">
-    <button type="button" class="who-b" aria-pressed="${!!GR.habitant}" data-act="local">${ic("home","i-s")}J'habite ici</button>
-    <button type="button" class="who-b" aria-pressed="${!!g}" data-act="visit">${ic("people","i-s")}En visite</button></div>
-   ${g?`<div class="who-sub"><span><b>${esc(gWho(g,GR.actif))}</b> · ${esc(gWhen())}</span><button type="button" class="lnk" data-act="who">Modifier</button></div>`
-     :GR.habitant?"":`<p class="who-sub"><span>En visite ? Dites qui vient (enfants, âges) et quand : on trie pour vous.</span></p>`}</div>`;}
+  if(g)return `<div class="whobar"><div class="who-card"><span class="who-ic">${ic("people")}</span><div class="who-txt"><span class="who-k">Vous êtes en visite</span><b>${esc(gWho(g,GR.actif))}</b><span>${esc(gWhen())}</span></div></div>
+   <div class="who-acts"><button type="button" class="who-btn is-main" data-act="who">${ic("people","i-s")}Modifier qui vient</button><button type="button" class="who-btn" data-act="local">${ic("home","i-s")}J'habite ici</button></div></div>`;
+  if(GR.habitant)return `<div class="whobar"><div class="who-card"><span class="who-ic">${ic("home")}</span><div class="who-txt"><span class="who-k">Vous habitez ici</span><b>On vous montre tout, sans dates de séjour</b></div></div>
+   <div class="who-acts"><button type="button" class="who-btn" data-act="visit">${ic("people","i-s")}Je suis en visite</button></div></div>`;
+  return `<div class="whobar"><p class="who-q">Qui êtes-vous ? On trie les sorties selon votre choix.</p><div class="who-acts">
+   <button type="button" class="who-btn" data-act="local">${ic("home","i-s")}J'habite ici</button><button type="button" class="who-btn is-main" data-act="visit">${ic("people","i-s")}Je suis en visite</button></div></div>`;}
+
 /* programme du jour d'un groupe, en tête de l'Agenda */
 function progSec(){const g=gActive();if(!g||S.events===null)return"";const d=today(),P=program(d,g),K=kidsAges(g);
   const slot=(k,l)=>P&&P[k].length?`<div class="slot"><span class="slot-label">${l}</span><ul class="list">${P[k].join("")}</ul></div>`:"";

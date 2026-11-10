@@ -744,3 +744,20 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 .mer-share{display:inline-flex;align-items:center;gap:6px;margin:8px var(--gutter) 0}
 /* accueil : titre du jour sur une ligne */
 .home-h{white-space:nowrap;font-size:min(var(--fs-h2),5vw)}
+
+/* « Qui vient ? » : une carte claire et de vrais boutons */
+.whobar{margin:10px var(--gutter) 0}
+.who-card{display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-l);background:var(--surface)}
+.who-ic{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent)}
+.who-txt{display:flex;flex-direction:column;min-width:0;font-size:15px;line-height:1.3}
+.who-k{font-size:14px;color:var(--muted)}
+.who-txt b{font-weight:600}
+.who-txt span:last-child:not(.who-k){color:var(--muted);font-size:14px}
+.who-q{margin:0 0 6px;font-size:15px;color:var(--muted)}
+.who-acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.who-btn{flex:1 1 140px;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:0 14px;border-radius:12px;border:1.5px solid var(--accent);background:var(--surface);color:var(--accent);font-size:15px;font-weight:600}
+.who-btn.is-main{background:var(--accent);color:var(--accent-ink)}
+
+/* blocs : le titre prend tout le haut du bloc, dans la couleur du liseré, sans second liseré */
+.sec.blk{padding-top:0;overflow:hidden}
+.blk > .sec-head{margin:0 -14px 10px;padding:8px 14px;border-radius:0;box-shadow:none;background:color-mix(in srgb,var(--c,var(--i-act)) 13%,var(--surface))}
