@@ -665,16 +665,42 @@ function spotsSec(d){const has=!!wxDay(d);
     return {top,h:row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
       more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`}).replace('<details class="row-d"',`<details class="row-d" id="spot-${sp.id}"`)};}).sort((a,b)=>(b.top>0)-(a.top>0)).map(x=>x.h).join("");
   return `<section class="sec blk" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
-/* résumé compact en haut de la page Mer : vent, rafales, houle, eau, marées */
+/* résumé compact en haut de la page Mer : chaque case s'ouvre sur le graphique de la journée */
+function hChart(series,{fmt=r0,unit="",arrows=null,sub=null,now=null}={}){
+  const W=340,H=150,P={l:30,r:10,t:18,b:arrows||sub?44:24};
+  const all=series.flatMap(x=>x.v).filter(v=>v!=null);if(!all.length)return `<p class="empty">Prévisions indisponibles pour ce jour.</p>`;
+  let lo=Math.min(...all),hi=Math.max(...all);if(hi-lo<1){hi+=.5;lo-=.5;}const pad=(hi-lo)*.15;lo=Math.max(0,lo-pad);hi+=pad;
+  const X=h=>P.l+(W-P.l-P.r)*h/23,Y=v=>P.t+(H-P.t-P.b)*(1-(v-lo)/(hi-lo));
+  const path=v=>{let d="";v.forEach((y,h)=>{if(y==null)return;d+=(d&&v[h-1]!=null?"L":"M")+X(h).toFixed(1)+" "+Y(y).toFixed(1);});return d;};
+  const v0=series[0].v,first=v0.findIndex(v=>v!=null),last=v0.length-1-[...v0].reverse().findIndex(v=>v!=null);
+  const area=`M${X(first).toFixed(1)} ${(H-P.b).toFixed(1)}`+path(v0).replace(/^M/,"L")+`L${X(last).toFixed(1)} ${(H-P.b).toFixed(1)}Z`;
+  const grid=[lo,(lo+hi)/2,hi].map(v=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="hc-grid"/><text x="${P.l-4}" y="${(Y(v)+4).toFixed(1)}" class="hc-y">${fmt(v)}</text>`).join("");
+  const hrs=[0,6,12,18,23].map(h=>`<text x="${X(h).toFixed(1)}" y="${H-6}" class="hc-x"${h===23?' text-anchor="end"':""}>${h}h</text>`).join("");
+  const lab=[3,6,9,12,15,18,21].filter(h=>v0[h]!=null).map(h=>`<circle cx="${X(h).toFixed(1)}" cy="${Y(v0[h]).toFixed(1)}" r="2.6" class="hc-dot"/><text x="${X(h).toFixed(1)}" y="${(Y(v0[h])-7).toFixed(1)}" class="hc-v">${fmt(v0[h])}</text>`).join("");
+  const arr=arrows?[3,6,9,12,15,18,21].filter(h=>arrows[h]!=null).map(h=>`<g transform="translate(${X(h).toFixed(1)} ${H-27}) rotate(${(arrows[h]+180)%360})"><path d="M0 -6 L0 6 M-3.5 2.5 L0 6 L3.5 2.5" class="hc-arrow"/></g>`).join(""):"";
+  const sb=sub?[3,6,9,12,15,18,21].filter(h=>sub[h]!=null).map(h=>`<text x="${X(h).toFixed(1)}" y="${H-23}" class="hc-x">${sub[h]}</text>`).join(""):"";
+  const nw=now!=null?`<line x1="${X(now).toFixed(1)}" x2="${X(now).toFixed(1)}" y1="${P.t-6}" y2="${H-P.b}" class="hc-now"/>`:"";
+  return `<svg class="hchart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(series.map(x=>x.label).join(", "))} heure par heure">${grid}${nw}<path d="${area}" class="hc-area"/>${series.map((x,i)=>`<path d="${path(x.v)}" class="hc-line${i?" hc-l2":""}"/>`).join("")}${lab}${arr}${sb}${hrs}</svg>
+   ${series.length>1?`<p class="hc-leg">${series.map((x,i)=>`<span class="${i?"l2":"l1"}">${x.label}</span>`).join("")}</p>`:""}`;}
+function merPanel(d,k){const t=today(),now=d===t?new Date().getHours():null,hs=Array.from({length:24},(_,h)=>h);
+  if(k==="vent"||k==="raf"){const w=hs.map(h=>wxAt(d,h));
+    return `<h3 class="mp-h">Vent ${ceJour(d)}, en nœuds</h3>${hChart([{v:w.map(x=>x&&x.w),label:"Vent moyen"},{v:w.map(x=>x&&x.g),label:"Rafales"}],{arrows:w.map(x=>x&&x.wd),now})}<p class="row-meta">Les flèches montrent où va le vent. Force ${(()=>{const v=w.filter(Boolean).map(x=>x.w);return v.length?`${bft(Math.min(...v))} à ${bft(Math.max(...v))}`:"–";})()} sur l'échelle de Beaufort.</p>`;}
+  if(k==="houle"){const m=hs.map(h=>seaAt(d,h));
+    return `<h3 class="mp-h">Houle ${ceJour(d)}, en mètres</h3>${hChart([{v:m.map(x=>x&&x.hs),label:"Houle"}],{fmt:r1,sub:m.map(x=>x&&(x.swp??x.tp)!=null?r0(x.swp??x.tp)+" s":null),arrows:null,now})}<p class="row-meta">Sous la courbe : la période (en secondes). Plus elle est longue, plus les vagues sont puissantes.</p>`;}
+  if(k==="eau"){const M=WX.m;const v=hs.map(h=>{if(!M)return null;const i=hourIdx(M.hourly,d,h);return i<0?null:M.hourly.sea_surface_temperature[i];});
+    return `<h3 class="mp-h">Température de l'eau ${ceJour(d)}, en °C</h3>${hChart([{v,label:"Eau"}],{fmt:r1,now})}`;}
+  return tideCard(d,{big:true,link:false,label:"Marée "+(d===t?"aujourd'hui":dlong(d))});}
 function merTop(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)||seaAt(d,9),ts=tidesOfDay(d),c=maxCoef(d);
   const H=x=>hm(new Date(x.ms)),cells=[];
-  cells.push(["Vent",w?`${r0(w.w)} nds`:"…",w?`${dirTxt(w.wd)} · force ${bft(w.w)}`:""]);
-  cells.push(["Rafales",w?`${r0(w.g)} nds`:"…",w&&w.g>=34?"coup de vent":w&&w.g>=25?"ça souffle":""]);
-  cells.push(["Houle",sm&&sm.hs!=null?`${r1(sm.hs)} m`:"…",sm&&sm.hs!=null?`${r0(sm.swp??sm.tp)} s`:""]);
-  cells.push(["Eau",e!=null?`${r1(e)}°`:"…",e==null?"":e<13?"combi 5/4":e<16?"combi 4/3":e<19?"combi 3/2":"shorty"]);
-  cells.push(["Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–",""]);
-  cells.push(["Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:""]);
-  return `<div class="mer-top" role="list">${cells.map(([l,v,x])=>`<div role="listitem"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}</div>`).join("")}</div>`;}
+  cells.push(["vent","Vent",w?`${r0(w.w)} nds`:"…",w?`${dirTxt(w.wd)} · force ${bft(w.w)}`:""]);
+  cells.push(["raf","Rafales",w?`${r0(w.g)} nds`:"…",w&&w.g>=34?"coup de vent":w&&w.g>=25?"ça souffle":""]);
+  cells.push(["houle","Houle",sm&&sm.hs!=null?`${r1(sm.hs)} m`:"…",sm&&sm.hs!=null?`${r0(sm.swp??sm.tp)} s`:""]);
+  cells.push(["eau","Eau",e!=null?`${r1(e)}°`:"…",e==null?"":e<13?"combi 5/4":e<16?"combi 4/3":e<19?"combi 3/2":"shorty"]);
+  cells.push(["bm","Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–",""]);
+  cells.push(["pm","Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:""]);
+  const k=S.merSel,grp=x=>x==="raf"?"vent":x==="pm"?"bm":x;
+  return `<div class="mer-top">${cells.map(([id,l,v,x])=>`<button type="button" class="mt-c${k&&grp(k)===grp(id)?" is-on":""}" data-act="mersel" data-v="${id}" aria-expanded="${!!k&&grp(k)===grp(id)}"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}<i class="mt-more" aria-hidden="true"></i></button>`).join("")}</div>
+  ${k?`<div class="mer-panel">${merPanel(d,k)}<button type="button" class="lnk mp-close" data-act="mersel" data-v="${k}">Fermer le graphique</button></div>`:`<p class="mt-hint">Touchez une case pour voir la journée heure par heure.</p>`}`;}
 function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
@@ -963,6 +989,7 @@ const ACT={
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
+  mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
   spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},

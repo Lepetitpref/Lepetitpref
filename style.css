@@ -665,3 +665,31 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 .mer-top span{font-size:14px;color:var(--muted)}
 .mer-top b{font:500 19px/1.15 var(--font-title);color:var(--ink)}
 .mer-top small{font-size:14px;color:var(--muted)}
+
+/* page Mer : cases cliquables et graphiques de la journée */
+.mer-top .mt-c{all:unset;box-sizing:border-box;position:relative;display:flex;flex-direction:column;gap:1px;padding:8px 10px 10px;background:var(--surface);min-width:0;min-height:72px;cursor:pointer}
+.mer-top .mt-c:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.mer-top .mt-c.is-on{background:color-mix(in srgb,var(--i-sea) 12%,var(--surface))}
+.mt-more{position:absolute;right:9px;top:12px;width:7px;height:7px;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg)}
+.mt-c.is-on .mt-more{transform:rotate(-135deg);top:15px}
+.mt-c span,.mt-c small{font-size:14px;color:var(--muted)}
+.mt-c b{font:500 19px/1.15 var(--font-title);color:var(--ink)}
+.mt-hint{margin:6px var(--gutter) 0;font-size:14px;color:var(--faint)}
+.mer-panel{margin:8px var(--gutter) 0;padding:10px 12px 6px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--i-sea);border-radius:var(--r-l)}
+.mer-panel .tide{margin:0}
+.mp-h{margin:2px 0 6px;font:500 17px/1.2 var(--font-title)}
+.mp-close{margin-top:2px}
+.hchart{display:block;width:100%;height:auto}
+.hc-grid{stroke:var(--line);stroke-width:1}
+.hc-y{font:13px var(--font-text);fill:var(--faint);text-anchor:end}
+.hc-x{font:14px var(--font-text);fill:var(--muted);text-anchor:middle}
+.hc-v{font:600 14px var(--font-text);fill:var(--ink);text-anchor:middle}
+.hc-area{fill:color-mix(in srgb,var(--i-sea) 14%,transparent)}
+.hc-line{fill:none;stroke:var(--i-sea);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.hc-l2{stroke:var(--warn);stroke-dasharray:4 4;stroke-width:1.8}
+.hc-dot{fill:var(--i-sea)}
+.hc-arrow{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.hc-now{stroke:var(--ink);stroke-width:1;stroke-dasharray:2 3;opacity:.5}
+.hc-leg{display:flex;gap:16px;margin:2px 0 4px;font-size:14px;color:var(--muted)}
+.hc-leg span::before{content:"";display:inline-block;width:16px;height:0;margin-right:6px;vertical-align:middle;border-top:2.2px solid var(--i-sea)}
+.hc-leg .l2::before{border-top:2px dashed var(--warn)}
