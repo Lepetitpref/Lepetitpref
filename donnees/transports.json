@@ -1,0 +1,788 @@
+{
+ "maj": "2026-11-10",
+ "vacancesB": [
+  {
+   "n": "Toussaint",
+   "du": "2026-10-17",
+   "au": "2026-11-01"
+  },
+  {
+   "n": "Noël",
+   "du": "2026-12-19",
+   "au": "2027-01-03"
+  },
+  {
+   "n": "Hiver",
+   "du": "2027-02-20",
+   "au": "2027-03-07"
+  },
+  {
+   "n": "Printemps",
+   "du": "2027-04-17",
+   "au": "2027-05-02"
+  },
+  {
+   "n": "Pont de l'Ascension",
+   "du": "2027-05-06",
+   "au": "2027-05-09"
+  }
+ ],
+ "vacancesB_source": {
+  "n": "Service-public.gouv.fr – calendrier scolaire 2026-2027 (zone B, académie de Nantes) ; pont de l'Ascension d'après les fiches Aléop",
+  "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18563"
+ },
+ "tarifs": {
+  "jusquau": "2027-01-03",
+  "actuel": "Car Aléop (Loire-Atlantique) : ticket à l'unité 2,90 € (valable 2 h, + 1 h de correspondance Naolib/Ycéo) ; tarif réduit 1,50 € (enfants 4-10 ans, familles nombreuses, CMI…) ; carnet de 10 : 24 € ; gratuit moins de 4 ans. Achat : appli WOP M-Ticket ou auprès du conducteur (appoint).",
+  "a_partir_du_2027-01-04": "Nouvelle gamme régionale : billet Aléop dès 2,50 € (hors zone urbaine), 3,40–3,80 € pour un trajet vers Nantes (correspondance Naolib incluse), 3,00–3,40 € vers Saint-Nazaire (Ycéo inclus) ; billet x10 dès 20 € ; Billet Junior (4-11 ans) dès 1,30 € ; Aléop Multi Car 15 €/jour pour 1 à 5 personnes (car), Aléop Multi 35 €/jour (car + train) ; carte Aléop -50 % 15 €/an (10 € moins de 26 ans).",
+  "sources": [
+   {
+    "n": "Aléop – Tickets en Loire-Atlantique",
+    "url": "https://aleop.paysdelaloire.fr/tarifs/tickets-en-loire-atlantique"
+   },
+   {
+    "n": "Aléop – Une nouvelle gamme de titres, identique dans toute la région",
+    "url": "https://aleop.paysdelaloire.fr/cars-aleop-une-nouvelle-gamme-de-titres-identique-dans-toute-la-region"
+   },
+   {
+    "n": "actu44 (3 oct. 2026) – nouvelle grille Aléop",
+    "url": "https://www.actu44.fr/cars-aleop-en-loire-atlantique-la-nouvelle-grille-fait-payer-plus-cher-lacces-a-nantes/"
+   }
+  ]
+ },
+ "contact": "Allô Aléop 0 969 39 14 14 (appel non surtaxé ; lun-ven 8h-19h, sam 8h-12h)",
+ "lignes": [
+  {
+   "id": "303",
+   "mode": "car",
+   "nom": "Car Aléop 303",
+   "trajet": "La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)",
+   "prix": "2,90 € le trajet (correspondance Naolib 1 h incluse) jusqu'au 3 janv. 2027 ; 3,40 à 3,80 € vers Nantes à partir du 4 janv. 2027",
+   "valid": "31 août 2026 – 2 juillet 2027",
+   "source": {
+    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
+   },
+   "note": "La plupart des cars 303 partent de Pornic (Ste-Marie, place de la Marne) ; seuls les départs ci-dessous desservent Préfailles. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).",
+   "sens": [
+    {
+     "de": "Préfailles",
+     "vers": "Nantes",
+     "arret": "Préfailles, Place de la Gare (puis Quirouard +1 min)",
+     "dest": "Nantes, Pirmil (tram 2/3)",
+     "departs": [
+      {
+       "dep": "05h35",
+       "arr": "07h17",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": "Ne circule pas tous les jours de semaine : la fiche a deux départs à 5h50 de Pornic (l'un mardi-jeudi, plus lundi/vendredi pendant les vacances ; l'autre lundi et vendredi hors vacances) et on ne voit pas lequel passe par Préfailles. À vérifier auprès d'Allô Aléop.",
+       "incertain": true
+      },
+      {
+       "dep": "06h45",
+       "arr": "08h27",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": "Pornic Ste-Marie 7h00"
+      },
+      {
+       "dep": "06h45",
+       "arr": "08h27",
+       "jours": "6",
+       "periode": "toujours",
+       "note": "Pornic Ste-Marie 7h00"
+      },
+      {
+       "dep": "10h45",
+       "arr": "12h27",
+       "jours": "60",
+       "periode": "toujours",
+       "note": "Samedi OU dimanche/jour férié : la fiche ne permet pas de savoir lequel. Pornic Ste-Marie 11h00.",
+       "incertain": true
+      },
+      {
+       "dep": "19h15",
+       "arr": "20h57",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés. Pornic Ste-Marie 19h30"
+      }
+     ]
+    },
+    {
+     "de": "Nantes",
+     "vers": "Préfailles",
+     "arret": "Nantes, Pirmil",
+     "dest": "Préfailles, Place de la Gare (Quirouard 1 min avant)",
+     "departs": [
+      {
+       "dep": "12h30",
+       "arr": "13h58",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h00",
+       "arr": "18h28",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h15",
+       "arr": "19h43",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "12h30",
+       "arr": "13h58",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h00",
+       "arr": "18h28",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h15",
+       "arr": "19h43",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h30",
+       "arr": "10h58",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "12h30",
+       "arr": "13h58",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "17h00",
+       "arr": "18h28",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      }
+     ]
+    }
+   ],
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315",
+   "mode": "car",
+   "nom": "Car Aléop 315",
+   "trajet": "Préfailles – La Plaine-sur-Mer – Pornic – Saint-Brevin – Saint-Nazaire",
+   "prix": "2,90 € le trajet jusqu'au 3 janv. 2027 ; 3,00 à 3,40 € vers Saint-Nazaire (Ycéo inclus) à partir du 4 janv. 2027",
+   "valid": "31 août 2026 – 2 juillet 2027 (mêmes horaires en période scolaire et en vacances)",
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "note": "Terminus à Préfailles, Place de la Gare. À Pornic, arrêts Terres Jarries, Le Sandier, Théâtre St-Gilles (pas Ste-Marie ni la gare). Correspondance possible avec la ligne 303 ou le TER à Pornic. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).",
+   "sens": [
+    {
+     "de": "Préfailles",
+     "vers": "Saint-Nazaire",
+     "arret": "Préfailles, Place de la Gare (puis Quirouard +1 min)",
+     "dest": "Saint-Nazaire, gare SNCF",
+     "departs": [
+      {
+       "dep": "05h50",
+       "arr": "06h55",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "06h35",
+       "arr": "07h40",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "07h45",
+       "arr": "08h50",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h20",
+       "arr": "10h25",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h50",
+       "arr": "10h55",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "10h55",
+       "arr": "12h00",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "13h05",
+       "arr": "14h10",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "15h10",
+       "arr": "16h15",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h55",
+       "arr": "20h00",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "06h10",
+       "arr": "07h15",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "07h40",
+       "arr": "08h45",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h12",
+       "arr": "10h17",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h30",
+       "arr": "12h35",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "14h10",
+       "arr": "15h15",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "16h35",
+       "arr": "17h40",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h55",
+       "arr": "20h00",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h57",
+       "arr": "12h43",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche/fériés : la fiche n'indique pas d'arrivée à Saint-Nazaire pour ce car ; heure = Saint-Brevin, Fontaine."
+      },
+      {
+       "dep": "16h15",
+       "arr": "17h20",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "18h55",
+       "arr": "20h00",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      }
+     ]
+    },
+    {
+     "de": "Saint-Nazaire",
+     "vers": "Préfailles",
+     "arret": "Saint-Nazaire, gare SNCF",
+     "dest": "Préfailles, Place de la Gare (Quirouard 1 min avant)",
+     "departs": [
+      {
+       "dep": "07h55",
+       "arr": "09h00",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "08h30",
+       "arr": "09h35",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h10",
+       "arr": "10h15",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h55",
+       "arr": "13h00",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "13h30",
+       "arr": "14h35",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "16h30",
+       "arr": "17h35",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h10",
+       "arr": "18h18",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h45",
+       "arr": "18h50",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "20h20",
+       "arr": "21h25",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "07h55",
+       "arr": "09h00",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h00",
+       "arr": "10h05",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h15",
+       "arr": "12h20",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "12h55",
+       "arr": "14h00",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "15h25",
+       "arr": "16h30",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h45",
+       "arr": "18h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "20h05",
+       "arr": "21h10",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h00",
+       "arr": "12h05",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "14h07",
+       "arr": "14h55",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche/fériés : part de Saint-Brevin, Fontaine (pas de Saint-Nazaire)."
+      },
+      {
+       "dep": "17h45",
+       "arr": "18h50",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      }
+     ]
+    }
+   ],
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "TER",
+   "mode": "train",
+   "nom": "TER Aléop Nantes – Sainte-Pazanne – Pornic",
+   "trajet": "Pornic – Sainte-Pazanne – Nantes",
+   "prix": "Tarif TER (non relevé sur une source officielle) ; à partir du 4 janv. 2027, pass Aléop Multi car + train 35 €/jour pour 1 à 5 personnes",
+   "valid": "31 août – 12 décembre 2026 (nouveaux horaires à partir du 13 décembre 2026)",
+   "source": {
+    "n": "Fiche horaire TER Aléop Nantes – Ste-Pazanne – Pornic (31/08 – 12/12/2026), recoupée avec SNCF Connect et l-itineraire.com (semaine du 10 au 17 nov. 2026)",
+    "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
+   },
+   "note": "Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole. Possible remplacement par car le dimanche 15 nov. au matin (signalé par l-itineraire.com) : vérifier avant de partir.",
+   "sens": [
+    {
+     "de": "Pornic",
+     "vers": "Nantes",
+     "arret": "Pornic, gare SNCF",
+     "dest": "Nantes, gare SNCF",
+     "departs": [
+      {
+       "dep": "06h24",
+       "arr": "07h29",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "07h09",
+       "arr": "08h18",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "08h27",
+       "arr": "09h28",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h50",
+       "arr": "12h50",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "13h51",
+       "arr": "14h51",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "16h09",
+       "arr": "17h15",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h54",
+       "arr": "19h03",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "07h40",
+       "arr": "08h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "10h50",
+       "arr": "11h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "13h50",
+       "arr": "14h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h40",
+       "arr": "18h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h40",
+       "arr": "19h50",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h09",
+       "arr": "10h20",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "14h50",
+       "arr": "15h50",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "16h50",
+       "arr": "17h50",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "19h40",
+       "arr": "20h50",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      }
+     ]
+    },
+    {
+     "de": "Nantes",
+     "vers": "Pornic",
+     "arret": "Nantes, gare SNCF",
+     "dest": "Pornic, gare SNCF",
+     "departs": [
+      {
+       "dep": "07h05",
+       "arr": "08h17",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "12h29",
+       "arr": "13h30",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "14h30",
+       "arr": "15h31",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "16h32",
+       "arr": "17h40",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "17h48",
+       "arr": "18h52",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "18h41",
+       "arr": "19h44",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "20h15",
+       "arr": "21h14",
+       "jours": "12345",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h09",
+       "arr": "10h13",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "11h09",
+       "arr": "12h10",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "12h09",
+       "arr": "13h08",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "15h09",
+       "arr": "16h10",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "19h09",
+       "arr": "20h15",
+       "jours": "6",
+       "periode": "toujours",
+       "note": ""
+      },
+      {
+       "dep": "09h09",
+       "arr": "10h13",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "12h09",
+       "arr": "13h08",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "15h09",
+       "arr": "16h10",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "17h09",
+       "arr": "18h10",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      },
+      {
+       "dep": "21h13",
+       "arr": "22h14",
+       "jours": "0",
+       "periode": "toujours",
+       "note": "Dimanche et jours fériés"
+      }
+     ]
+    }
+   ],
+   "debut": "2026-08-31",
+   "fin": "2026-12-12"
+  }
+ ],
+ "autres": [
+  {
+   "n": "Navettes estivales gratuites Pornic agglo (circuit E La Plaine-sur-Mer ⇄ Préfailles : Les Gauteries, Pointe Saint-Gildas, Plage de la Raize, Bourg)",
+   "valid": "4 juillet – 30 août 2026 (terminé ; horaires 2027 non publiés)",
+   "url": "https://www.pornicagglo.fr/wp-content/uploads/2026/06/Horaires-combines-2026.pdf"
+  },
+  {
+   "n": "Car Aléop E315 Pornic / Saint-Nazaire Express (ne dessert pas Préfailles)",
+   "valid": "31 août 2026 – 2 juillet 2027",
+   "url": "https://aleop.paysdelaloire.fr/file/34864/download?token=i3wTLSjH"
+  }
+ ],
+ "manques": [
+  "Ligne 303 : le départ de Préfailles à 5h35 (lun-ven) n'est pas attribuable à un jour précis depuis le texte de la fiche (deux colonnes à 5h50 avec renvois A/B) ; marqué incertain.",
+  "Ligne 303 : le départ de Préfailles à 10h45 le week-end figure dans la grille « Sam / Dim & JF » sans qu'on puisse dire s'il circule le samedi ou le dimanche ; marqué incertain.",
+  "Ligne 315 : dimanche, le car de 11h57 n'a pas d'heure d'arrivée à Saint-Nazaire dans le texte de la fiche (seulement Saint-Brevin Fontaine 12h43).",
+  "TER : horaires valables jusqu'au 12 décembre 2026 seulement ; la fiche à partir du 13 décembre 2026 n'a pas été trouvée. Les horaires du lundi au vendredi viennent des journées des 10, 12, 13, 16 et 17 nov. 2026 ; un train circulant seulement certains jours de semaine n'aurait pas été repéré.",
+  "TER : pas de prix officiel du billet Pornic – Nantes trouvé (les comparateurs affichent 9 à 16 €).",
+  "Navette Pornic agglo / navette estivale de Préfailles : seule la version été 2026 existe (terminée) ; horaires non repris.",
+  "Calendrier scolaire : relevé sur service-public.gouv.fr ; education.gouv.fr n'a pas pu être consulté. Vacances d'été 2027 : début samedi 3 juillet 2027 (après la classe), date de rentrée 2027 non publiée, donc non incluse."
+ ],
+ "feries": [
+  "2026-11-11",
+  "2026-12-25",
+  "2027-01-01",
+  "2027-03-29",
+  "2027-05-01",
+  "2027-05-06",
+  "2027-05-08",
+  "2027-05-17",
+  "2027-07-14",
+  "2027-08-15"
+ ],
+ "sansService": [
+  "2027-05-01"
+ ]
+}

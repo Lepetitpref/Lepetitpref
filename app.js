@@ -5,7 +5,7 @@ const TZ="Europe/Paris", HOME={lat:47.1315,lon:-2.2180};
 /* ---------- icônes (sprite SVG dans index.html) ---------- */
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
-const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["mer","Marées"],["manger","Manger"],["activites","À faire"]];
+const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["activites","À faire"],["mer","Mer"],["manger","Manger"]];
 const EXTRA=["recherche","apropos","installer","venir","cine","pratique","peche"];
 const after={};
 /* ---------- taxonomy ---------- */
@@ -111,7 +111,8 @@ const KIND1={restaurant:"Restaurant",creperie:"Crêperie",huitres:"Huîtres",poi
 const GKEY="pp-groupe";
 const GTYPES=[["amis","Entre amis"],["famille","En famille"],["couple","En couple"],["solo","Seul·e"]];
 const GDEF={amis:{adultes:4,enfants:[]},famille:{adultes:2,enfants:[]},couple:{adultes:2,enfants:[]},solo:{adultes:1,enfants:[]}};
-const RAYONS=[[1.5,"À pied"],[10,"Vélo · 10 km"],[20,"Voiture · 20 km"]];
+const ZONES=[["ici","Préfailles"],["10","10 km"],["20","20 km"]];
+const RAY=()=>S.where==="ici"?1.5:S.where==="10"?10:20;
 function gLoad(){let g=null;try{g=JSON.parse(sget(GKEY)||"null");}catch(e){}
   if(g&&g.v===1&&g.groupes)return g;
   g={v:1,actif:null,habitant:false,groupes:{},quand:{mode:"weekend",du:null,au:null},rayon:20,pluie:false};
@@ -131,10 +132,10 @@ function gDays(){const t=today(),q=GR.quand||{};let a,b;
 function gWho(g,type){const K=kidsAges(g).sort((a,b)=>a-b),n=g.adultes,A=`${n} adulte${n>1?"s":""}`;
   if(!K.length)return type==="amis"?`${A}, entre amis`:type==="couple"?"En couple":type==="solo"?"Seul·e":A;
   return `${A}, ${K.length>1?`enfants de ${listAnd(K.map(String))} ans`:`un enfant de ${K[0]} an${K[0]>1?"s":""}`}`;}
-function gWhen(){const q=GR.quand||{},d=gDays();const r=GR.rayon<=1.5?"à pied":GR.rayon<=10?"à vélo, 10 km":"en voiture, 20 km";
+function gWhen(){const q=GR.quand||{},d=gDays();
   const sm=(a,b)=>a.slice(0,7)===b.slice(0,7)?`${+a.slice(8)} au ${+b.slice(8)} ${F(noon(b),{month:"short"}).replace(".","")}`:`${dshort(a)} au ${dshort(b)}`;
   const w=q.mode==="dates"&&q.au>=today()?`Séjour du ${sm(q.du,q.au)}`:q.mode==="jour"?"Aujourd'hui":`Week-end du ${sm(d[0],d[d.length-1])}`;
-  return `${w} · ${r}`;}
+  return w;}
 /* adéquation d'âge : "all" | "some" | "none" | "neutral" */
 function evRange(e){if(e.ageMin!=null||e.ageMax!=null)return[e.ageMin??0,e.ageMax??99];return e.kids?[0,99]:null;}
 function fitAges(rg,g){const K=kidsAges(g);
@@ -149,10 +150,10 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 
 /* ---------- état ---------- */
 const S={events:null,cinema:null,assos:null,meta:null,err:null,
-  where:sget("cf-where")||(gActive()?(GR.rayon<=1.5?"ici":GR.rayon<=10?"10":"20"):"20"),
+  where:sget("cf-where")||"20",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
-  cineDay:null,tideDay:today(),selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"pref",mk:"tous",q:"",os:null};
-if(!WHERE.some(w=>w[0]===S.where))S.where="20";
+  cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"pref",mk:"tous",q:"",os:null};
+if(!ZONES.some(w=>w[0]===S.where))S.where="20";
 const WHO2=()=>[["tous","Tout public"],...(gActive()?[["groupe","Mon groupe"]]:[]),["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
 function actOK(a){if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
@@ -244,7 +245,88 @@ function tideCard(s,o={}){const t=today(),now=Date.now();
    <p class="tide-next">${head}</p>${hint?`<p class="tide-hint">${hint}</p>`:""}
    <div class="tide-plot"><svg class="tide-curve" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true"><path class="area" d="${path} L1440 100 L0 100Z"/><path class="wave" d="${path}"/></svg>${dotH}</div>
    <div class="tide-times" style="grid-template-columns:repeat(${Math.max(ts.length,3)},1fr)">${ts.map(e=>`<div class="${s===t&&e.ms<now?"is-past":""}"><span>${e.k==="PM"?"Haute":"Basse"}</span><b>${hm(new Date(e.ms))}</b>${o.big?`<span class="tide-h">${e.h.toFixed(1).replace(".",",")} m${e.coef?" · "+e.coef:""}</span>`:""}</div>`).join("")}</div>
-   ${o.link===false?"":`<a class="tide-link" href="#mer">${o.linkText||"Marées de la semaine, surf et vent"}${ic("chev","i-s")}</a>`}</div>`;}
+   ${o.link===false?"":`<a class="tide-link" href="#mer">${o.linkText||"La mer : vent, houle, eau et spots"}${ic("chev","i-s")}</a>`}</div>`;}
+
+/* ---------- météo, vent, houle (Open-Meteo, direct depuis le téléphone) ---------- */
+const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22&hourly=temperature_2m,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant&wind_speed_unit=kn&timezone=Europe%2FParis&forecast_days=7";
+const SEAU="https://marine-api.open-meteo.com/v1/marine?latitude=47.10&longitude=-2.35&hourly=wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,sea_surface_temperature&timezone=Europe%2FParis&forecast_days=7";
+const WX={f:null,m:null,st:"idle",at:0};
+function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))return;WX.tried=Date.now();
+  try{const c=JSON.parse(sget("pp-wx")||"null");if(c&&Date.now()-c.at<36e5&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;}}catch(e){}
+  WX.st="load";
+  const j=u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.json();});
+  Promise.allSettled([j(WXU),j(SEAU)]).then(([a,b])=>{
+    if(a.status==="fulfilled"&&a.value.hourly){WX.f=a.value;WX.at=Date.now();}
+    if(b.status==="fulfilled"&&b.value.hourly)WX.m=b.value;
+    WX.st=WX.f?"ok":"err";
+    if(a.status==="fulfilled")sset("pp-wx",JSON.stringify({at:WX.at,f:WX.f,m:WX.m}));
+    if(["sejour","mer"].includes(curView()))render();});}
+const WMO=c=>c==null?["",""]:c===0?["Ciel dégagé","sun"]:c===1?["Plutôt ensoleillé","sun"]:c===2?["Éclaircies","cloudsun"]:c===3?["Couvert","cloud"]:c<50?["Brouillard","cloud"]:c<58?["Bruine","rain"]:c<66?[c===61?"Pluie faible":c===65?"Forte pluie":"Pluie","rain"]:c<70?["Pluie verglaçante","rain"]:c<80?["Neige","rain"]:c<83?[c===80?"Quelques averses":"Averses","rain"]:c<90?["Averses de neige","rain"]:["Orages","rain"];
+const DIR16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSO","SO","OSO","O","ONO","NO","NNO"];
+const dirTxt=d=>d==null?"":DIR16[Math.round(((d%360)+360)%360/22.5)%16];
+const DIRLONG={N:"du nord",NNE:"du nord-nord-est",NE:"du nord-est",ENE:"d'est-nord-est",E:"d'est",ESE:"d'est-sud-est",SE:"du sud-est",SSE:"du sud-sud-est",S:"du sud",SSO:"du sud-sud-ouest",SO:"du sud-ouest",OSO:"d'ouest-sud-ouest",O:"d'ouest",ONO:"d'ouest-nord-ouest",NO:"du nord-ouest",NNO:"du nord-nord-ouest"};
+const bft=k=>[1,4,7,11,17,22,28,34,41,48,56,64].findIndex(x=>k<x)<0?12:[1,4,7,11,17,22,28,34,41,48,56,64].findIndex(x=>k<x);
+const r0=x=>x==null?"–":Math.round(x);
+const r1=x=>x==null?"–":(Math.round(x*10)/10).toFixed(1).replace(".",",");
+function wxDay(d){const f=WX.f;if(!f||!f.daily)return null;const i=f.daily.time.indexOf(d);if(i<0)return null;const D=f.daily;
+  return{code:D.weather_code[i],tmax:D.temperature_2m_max[i],tmin:D.temperature_2m_min[i],pp:D.precipitation_probability_max[i],ps:D.precipitation_sum[i],w:D.wind_speed_10m_max[i],g:D.wind_gusts_10m_max[i],wd:D.wind_direction_10m_dominant[i]};}
+function hourIdx(H,d,h){const k=`${d}T${String(h).padStart(2,"0")}:00`;return H.time.indexOf(k);}
+function wxAt(d,h){const f=WX.f;if(!f)return null;const H=f.hourly,i=hourIdx(H,d,h);if(i<0)return null;
+  return{t:H.temperature_2m[i],pp:H.precipitation_probability[i],code:H.weather_code[i],w:H.wind_speed_10m[i],g:H.wind_gusts_10m[i],wd:H.wind_direction_10m[i]};}
+function seaAt(d,h){const m=WX.m;if(!m)return null;const H=m.hourly,i=hourIdx(H,d,h);if(i<0)return null;
+  return{hs:H.wave_height[i],tp:H.wave_period[i],sd:H.wave_direction[i],sw:H.swell_wave_height[i],swp:H.swell_wave_period[i],swd:H.swell_wave_direction[i],sst:H.sea_surface_temperature[i]};}
+function sstNow(d){const m=WX.m;if(!m)return null;const H=m.hourly;const v=H.time.map((t,i)=>t.startsWith(d)?H.sea_surface_temperature[i]:null).filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
+/* pluie : réglage manuel du jour, sinon prévision */
+function wxRainy(d){const w=wxDay(d);if(!w)return false;return (w.pp>=60&&w.ps>=2)||(w.code>=61&&w.ps>=3)||w.code>=95;}
+const isRain=d=>S.rainSet&&d in S.rainSet?S.rainSet[d]:wxRainy(d);
+function wxLine(d){const w=wxDay(d);if(!w)return"";const[t,icn]=WMO(w.code);
+  return `<span class="wx-ic">${ic(icn)}</span><span class="wx-txt"><b>${t}</b><span>${r0(w.tmin)}° à ${r0(w.tmax)}° · vent ${dirTxt(w.wd)} ${r0(w.w)} nds${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}${w.pp>=20?` · pluie ${w.pp} %`:""}</span></span>`;}
+
+/* ---------- spots : orientation et lecture automatique des conditions ---------- */
+const SPOTSX=[
+ {id:"gildas",n:"Pointe Saint-Gildas",town:"Préfailles",lat:47.1383,lon:-2.2528,face:260,swell:[200,320],acts:["surf","kite","wing"],lvl:"Confirmés",
+  d:"La pointe prend la houle d'ouest en premier : droite rapide et creuse sur récif. En kite et wing, on part de l'anse de sable qui colle à la direction du vent.",haz:"Rochers partout, fond très peu profond, rafales près des falaises. Vent de nord-est : offshore, retour dangereux."},
+ {id:"margaret",n:"Plage de Margaret",town:"Préfailles",lat:47.1247,lon:-2.2161,face:180,swell:[195,275],acts:["surf"],lvl:"Confirmés",
+  d:"Petite crique entre les falaises, au sud du bourg. Vague de récif par houle d'ouest à sud-ouest, meilleure par vent de nord à nord-est.",haz:"Récif découvert à marée basse, courants, baignade non surveillée. Trop petite pour lancer un kite."},
+ {id:"anes",n:"Port-aux-Ânes",town:"Préfailles",lat:47.1412,lon:-2.2349,face:325,swell:[275,345],shelter:.6,acts:["kite","wing"],lvl:"Confirmés",
+  d:"Côté nord de la pointe, face à l'estuaire. Le bon plan quand le vent d'ouest à nord-ouest rend la côte sud trop exposée.",haz:"Courants de l'estuaire, pêcheries, sable et rochers. Vent de sud à est : offshore, on ne sort pas."},
+ {id:"tharon",n:"Tharon-Plage",town:"Saint-Michel-Chef-Chef",lat:47.1686,lon:-2.1672,face:280,swell:[235,320],shelter:.8,acts:["surf","kite","wing"],lvl:"Intermédiaires",
+  d:"Grande plage de sable. Beach break par houle d'ouest ; kite et wing côté nord, près du centre nautique La Cormorane.",haz:"Shorebreak à marée haute, pêcheries. Du 15 juin au 15 septembre (et les week-ends de mai à septembre) : sortie par les chenaux balisés, au-delà des 300 m."},
+ {id:"rochelets",n:"Saint-Brevin, Les Rochelets",town:"Saint-Brevin-les-Pins",lat:47.2166,lon:-2.1641,face:260,swell:[235,320],shelter:.85,acts:["surf","kite","wing"],lvl:"Tous niveaux avec école",
+  d:"Grande plage avec zone kite dédiée et écoles de surf et de wing. Le Pointeau à marée basse, les Rochelets à marée haute.",haz:"Baïnes à la marée descendante, dalles rocheuses à marée basse. Du 15 mai au 15 septembre : zones balisées, priorité aux écoles."},
+ {id:"bourgneuf",n:"Baie de Bourgneuf",town:"Préfailles – Pornic",lat:47.115,lon:-2.12,face:200,swell:[170,260],shelter:.4,acts:["voile","paddle","kite","wing"],lvl:"Tous niveaux",
+  d:"Plan d'eau abrité de la houle, de la Grande Plage de Préfailles à la Noëveillard (Pornic). Voile et paddle ; kite à Le Cormier (La Plaine), école sur place.",haz:"Parcs à huîtres et rochers à la marée descendante, trafic du port de Pornic. Vent de nord à nord-est : offshore."}];
+const ACTL={surf:"Surf",kite:"Kite",wing:"Wing",voile:"Voile et bateau",paddle:"Paddle"};
+const angDiff=(a,b)=>Math.abs(((a-b)%360+540)%360-180);
+function windRel(sp,wd){const x=angDiff(wd,sp.face);return x<=30?"on":x<=75?"sideon":x<=105?"side":x<=145?"sideoff":"off";}
+const RELTXT={on:"de face",sideon:"travers-face",side:"travers",sideoff:"travers-terre",off:"de terre (offshore)"};
+function swellAt(sp,s){if(!s||s.hs==null)return null;const dir=s.swd??s.sd;let f=.25;
+  const[a,b]=sp.swell;if(dir>=a&&dir<=b)f=1;else if(Math.min(angDiff(dir,a),angDiff(dir,b))<=20)f=.6;
+  return Math.max(0,(s.hs)*f*(sp.shelter??1));}
+/* note : 2 bon, 1 possible, 0 non. Renvoie [note, phrase courte] */
+function judge(act,sp,w,s){if(!w)return null;const k=w.w,g=w.g,rel=windRel(sp,w.wd),H=swellAt(sp,s),T=s?(s.swp??s.tp):null;
+  if(act==="surf"){if(H==null)return null;
+    if(H<.4)return[0,"Plat"];if(H>3)return[1,`Gros (${r1(H)} m), experts`];
+    const clean=k<8||rel==="off"||rel==="sideoff";const messy=k>=14&&(rel==="on"||rel==="sideon");
+    if(H<.7)return[clean?1:0,`Petit (${r1(H)} m)${clean?", pour débuter":""}`];
+    if(messy)return[1,`${r1(H)} m mais haché par le vent`];
+    return[T>=8||clean?2:1,`${r1(H)} m${T?` · ${r0(T)} s`:""}${clean?", mer lisse":""}`];}
+  if(act==="kite"||act==="wing"){const lo=act==="kite"?14:12,hi=act==="kite"?30:28;
+    if(rel==="off")return[0,"Vent de terre : dangereux"];
+    if(k<lo-2)return[0,"Pas assez de vent"];if(k>hi||g>hi+7)return[0,"Trop fort, rafales"];
+    if(k<lo)return[1,`Juste (${r0(k)} nds), grande aile`];
+    if(rel==="sideoff")return[1,`${r0(k)} nds, vent travers-terre : prudence`];
+    return[2,`${r0(k)} nds ${RELTXT[rel]}${g>k+10?", rafaleux":""}`];}
+  if(act==="voile"){const B=bft(k),Hs=s&&s.hs!=null?s.hs:null;
+    if(B>=6||g>=28)return[0,`Force ${B}, rafales ${r0(g)} nds : on reste au port`];
+    if(B===5||(Hs!=null&&Hs>2))return[1,`Force ${B}${Hs!=null?`, mer ${r1(Hs)} m`:""} : marins confirmés`];
+    if(k<4)return[1,"Pétole : prévoir le moteur"];
+    return[2,`Force ${B}, ${r0(k)} nds ${DIRLONG[dirTxt(w.wd)]||""}`];}
+  if(act==="paddle"){const h=H??0;if(k<9&&h<.5)return[2,`Plan d'eau calme, ${r0(k)} nds`];if(k<13&&h<.8)return[1,`Un peu de vent (${r0(k)} nds)`];return[0,`Trop de vent ou de vagues`];}
+  return null;}
+const SLOTS=[9,12,15,18];
+function bestOf(act,sp,d){let best=null;for(const h of SLOTS){const w=wxAt(d,h),s=seaAt(d,h)||seaAt(d,h-1)||seaAt(d,h+1);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
+const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 
 /* ---------- données utiles aux vues ---------- */
 const WDN={dimanche:0,lundi:1,mardi:2,mercredi:3,jeudi:4,vendredi:5,samedi:6};
@@ -255,10 +337,11 @@ function eventsIn(a,b){const st=e=>evStart(e,a,b)||a;return (S.events||[]).filte
 const byTime=(x,y)=>(tShort(x.time)||"99h").localeCompare(tShort(y.time)||"99h",undefined,{numeric:true});
 const evOnDay=d=>eventsIn(d,d).filter(e=>onDay(e,d)&&(e.date===d||Array.isArray(e.days)||!e.end||e.end<=addDays(e.date,3)));
 function nextBig(n){const t=today(),big=[];for(let i=0;i<70&&big.length<n;i++){const d=addDays(t,i),c=maxCoef(d);if(c>=90){const L=big[big.length-1];if(L&&(L[2]||L[0])===addDays(d,-1)){L[2]=d;L[1]=Math.max(L[1],c);}else big.push([d,c,null]);}}return big;}
-const CINF=[["pref","L'Atlantique"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
+const CINF=[["pref","Préfailles"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
 const cinOK=(n,c=S.cin||"pref")=>c==="tous"||(c==="pref"&&/Atlantique/i.test(n||""))||(c==="pornic"&&/Toiles|Joseph/i.test(n||""))||(c==="brevin"&&/jade/i.test(n||""));
 const cinKm=n=>{const c=CINES.find(x=>n&&n.includes(x.n));return c?c.km:null;};
 const shortCin=n=>String(n||"").replace(/\s*\(.*\)/,"");
+const cinName=n=>/Atlantique/i.test(n||"")?"Préfailles":shortCin(n);
 function filmsOn(d,cin){const m={};(S.cinema||[]).filter(f=>f.date===d&&cinOK(f.cinema,cin)).forEach(f=>{const k=f.film+"|"+f.cinema;(m[k] ||= {film:f.film,genre:f.genre,version:f.version,kids:f.kids,times:[],cin:f.cinema,date:d}).times.push(...(f.times||[]));});
   return Object.values(m).sort((a,b)=>(cinKm(a.cin)??99)-(cinKm(b.cin)??99)||(a.times[0]||"").localeCompare(b.times[0]||"",undefined,{numeric:true}));}
 const within=(k,town,R)=>R<=1.5?isHere(k,town):(k==null||k<=R+2);
@@ -270,92 +353,13 @@ function tile(a,d,href="#activites",act=""){const[c,n]=(TH[a.cat]||["t-act","spa
   const h=o&&!/^(ouvert|week-end)$/.test(o)?esc(o.replace(/ \/ .*/,"").replace(/ et .*/,"")):(/Gratuit/.test(a.price||"")?"Accès libre":(CATS[a.cat]||""));
   return `<a class="tile ${c}" href="${href}"${act}>${ic(th)}<span class="tile-name">${esc(a.short||a.n)}</span><span class="tile-meta">${h}<br>${esc(townShort(a.town))}${isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)}</span></a>`;}
 
-/* ===== Accueil ===== */
-function vSejour(){const g=gActive();return g?vHomeGroup(g):vHomeLocal();}
-function inviteBlock(){if(GR.habitant||gActive())return"";
-  return `<div class="invite"><p class="invite-title">Qui vient à Préfailles ?</p><p class="invite-text">En famille, entre amis, pour le week-end : dites-le en deux touches, on trie sorties, âges et horaires.</p>
-   <div class="invite-actions"><button type="button" class="btn-line" data-act="who" style="display:inline-flex;align-items:center;gap:6px">${ic("people","i-s")}Qui vient ?</button><button type="button" class="btn btn-quiet" data-act="local" style="height:36px;padding:0 10px;font-size:14px">J'habite ici</button></div></div>`;}
-function vHomeLocal(){const t=today(),ld=S.events===null;
-  const near=e=>(evKm(e)??20)<=22;
-  const evT=ld?[]:evOnDay(t).filter(e=>near(e)&&!evIsLong(e)).sort(byTime);
-  const longT=ld?[]:evOnDay(t).filter(e=>near(e)&&evIsLong(e)&&isHere(evKm(e),e.town)).slice(0,1);
-  const wk=ld?[]:eventsIn(addDays(t,1),addDays(t,7)).filter(e=>/^(Préfailles|La Plaine)/.test(e.town||"")&&!evIsLong(e));
-  const wkAll=ld?0:eventsIn(t,addDays(t,6)).filter(e=>near(e)).length;
-  const films=(S.cinema||[]).filter(f=>f.date>=t&&/Atlantique/.test(f.cinema)).sort((a,b)=>(a.date+(a.times||[""])[0]).localeCompare(b.date+(b.times||[""])[0],undefined,{numeric:true})).slice(0,4);
-  const acts=ACTIV().filter(a=>(a.dist??99)<=22),open=acts.filter(a=>openOn(a,t)).sort((a,b)=>(a.dist??99)-(b.dist??99)),libre=acts.filter(a=>openOn(a,t)===null&&/Gratuit/.test(a.price||""));
-  const pick=[];const seen={};for(const a of open){if((seen[a.cat]||0)>=1&&open.length>5)continue;seen[a.cat]=(seen[a.cat]||0)+1;pick.push(a);if(pick.length===4)break;}
-  if(pick.length<4)libre.slice(0,4-pick.length).forEach(a=>pick.push(a));
-  const restos=ACTS.filter(a=>isResto(a)&&openOn(a,t)&&(a.dist??99)<=22).sort((a,b)=>(a.dist??99)-(b.dist??99));
-  return `<div class="hero"><img src="images/accueil.jpg" alt="La pêcherie de Préfailles au coucher du soleil" width="1100" height="561"><div class="hero-txt"><h1 class="hero-title">${cap(dlong(t))}</h1></div></div>
-  ${inviteBlock()}
-  ${tideCard(t)}
-  ${sec("Aujourd'hui",secLink("#agenda","Agenda",' data-act="when" data-v="auj"'),ld?loadingTxt:(evT.length||longT.length)?`<ul class="list">${evT.slice(0,5).map(e=>evRow(e)).join("")}${longT.map(e=>evRow(e)).join("")}</ul>`:`<p class="empty">Pas de sortie datée aujourd'hui dans les environs.</p>`)}
-  ${sec("Cette semaine à Préf",ld?"":secLink("#agenda",`${wkAll} sorties`,' data-act="when" data-v="sem"'),ld?loadingTxt:wk.length?`<ul class="list">${wk.slice(0,5).map(e=>evRow(e,{lead:"day",day:evStart(e,addDays(t,1),addDays(t,7))})).join("")}</ul>`:`<p class="empty">Rien d'annoncé à Préfailles et La Plaine cette semaine.</p>`)}
-  ${sec("Ciné à L'Atlantique",secLink("#cine","Programme",' data-act="cin" data-v="pref"'),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc((f.times||[]).join(", ")),esc((f.genre||"").replace(/,.*/,"").toLowerCase()),f.kids?"jeune public":""),href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>`:`<p class="empty">Pas de séance publiée pour les prochains jours.</p>`)}
-  ${sec("Ouvert aujourd'hui",secLink("#activites","À faire",' data-act="open"'),`<div class="tiles">${pick.map(a=>tile(a,t,"#activites",' data-act="open"')).join("")}<a class="tile tile-more" href="#activites" data-act="open"><span class="tile-name">Les ${open.length} lieux</span><span class="tile-meta">et ${libre.length} en accès libre</span></a></div>`,`${open.length} lieu${open.length>1?"x":""} ouvert${open.length>1?"s":""} ce ${F(noon(t),{weekday:"long"})}, plus plages et sentiers en accès libre.`)}
-  ${sec(`Manger ce ${F(noon(t),{weekday:"long"})}`,secLink("#manger",`${restos.length} table${restos.length>1?"s":""}`,' data-act="eat"'),restos.length?`<ul class="list">${restos.slice(0,3).map(a=>placeRow(a,t)).join("")}</ul>`:`<p class="empty">Aucune table ouverte aujourd'hui d'après nos horaires.</p>`)}
-  ${installBanner()}
-  ${GR.habitant?`<p class="foot" style="padding-bottom:0">En vacances ou en groupe ? <button type="button" class="lnk" data-act="who">Qui vient ?</button></p>`:""}
-  ${sosRow()}`;}
-
-function program(d,g){
-  const K=kidsAges(g),R=GR.rayon||20,rain=!!GR.pluie,adults=!K.length,cand=[];
-  const c=maxCoef(d),lows=dayLows(d);
-  if(!rain&&c>=70&&lows.length){const a=ACTS.find(x=>/Pêche à pied/.test(x.n));if(a){const L=lows[0].ms,h=+hm(new Date(L)).slice(0,2);
-    cand.push({slots:[h<12?"matin":h<18?"aprem":"soir"],score:-10,html:placeRow(a,d,{metaH:meta(`${hm(new Date(L-75*6e4))}–${hm(new Date(L+75*6e4))}`,esc(townShort(a.town))+", "+kmTxt(a.dist,a.town),'<span class="ok">Gratuit</span>'),lines:[K.length?["Pour les deux enfants".replace("les deux enfants",K.length===1?"votre enfant":K.length===2?"les deux enfants":"tous les enfants"),"ok"]:[`Coef. ${c} · autour de la basse mer`,"ok"]]})});}}
-  if(!rain){const mk=ACTS.filter(a=>a.cat==="marche"&&openOn(a,d)&&within(TOWN_KM[a.town]??a.dist,a.town,R)).sort((a,b)=>((a.dist??TOWN_KM[a.town])??99)-((b.dist??TOWN_KM[b.town])??99))[0];
-    if(mk)cand.push({slots:["matin"],score:-3,html:placeRow(mk,d,{metaH:meta(esc(openOn(mk,d)),isHere(mk.dist??TOWN_KM[mk.town],mk.town)?"à pied":esc(townShort(mk.town))),lines:[]})});}
-  evOnDay(d).filter(e=>!evIsLong(e)&&within(evKm(e),e.town,R)).forEach(e=>{const rg=evRange(e),f=fitAges(rg,g);
-    if(f==="none"||(!adults&&f==="neutral"))return;if(rain&&/^(nature|sport)$/.test(etype(e)))return;
-    const h=hourOf(e.time),slot=h==null?"aprem":h<12?"matin":h<18?"aprem":"soir";
-    const sc=(isHere(evKm(e),e.town)?0:(evKm(e)??20)<=10?1:2)*4+(f==="some"?4:0)+(adults&&e.kids&&!rg?6:0)+(adults&&rg&&rg[1]<=17?8:0)+(etype(e)==="vielocale"?3:0);
-    cand.push({slots:[slot],score:sc,html:evRow(e,{g,lead:"none"}).replace('<span class="row-title">',`<span class="row-title">`),ev:e});});
-  const seen={};
-  ACTIV().filter(a=>openOn(a,d)&&!/^Cin[ée]/.test(a.n)&&within(a.dist,a.town,R)&&(!rain||a.rain)).forEach(a=>{const f=fitAges(a.ages||[0,99],g);if(f==="none")return;
-    const sp=hoursSpan(openOn(a,d)),sl=[];if(!sp)sl.push("aprem","matin");else{if(sp[0]<18&&sp[1]>14)sl.push("aprem");if(sp[0]<12)sl.push("matin");if(sp[1]>=20)sl.push("soir");}
-    if(!sl.length)return;
-    const sc=(a.dist??20)/3+(f==="some"?4:0)+(adults&&a.cat==="enfants"?8:0)+(a.cat==="bienetre"&&!adults?5:0)+(/Planète Sauvage/.test(a.n)?4:0);
-    const lines=[statusOf(a,d)];if(K.length)lines.push(fitText(f,a.ages||[0,99],K));
-    cand.push({slots:sl,score:sc,cat:a.cat,html:placeRow(a,d,{lines:K.length?[fitText(f,a.ages||[0,99],K)]:lines}).replace("</span></span><span class=\"row-end\">",`</span></span><span class="row-end">`)});});
-  const r=ACTS.filter(a=>isResto(a)&&evening(openOn(a,d))&&within(a.dist,a.town,R)).sort((a,b)=>(a.dist??99)-(b.dist??99))[0];
-  if(r)cand.push({slots:["soir"],score:-1,html:placeRow(r,d),resto:r});
-  const out={matin:[],aprem:[],soir:[]},capN={matin:2,aprem:3,soir:3};
-  cand.sort((a,b)=>a.score-b.score).forEach(x=>{if(x.cat){if((seen[x.cat]||0)>=2)return;}
-    const s=x.slots.find(k=>out[k].length<capN[k]);if(!s)return;if(x.cat)seen[x.cat]=(seen[x.cat]||0)+1;if(x.resto)out.resto=x.resto;out[s].push(x.html);});
-  return out;}
-
-function vHomeGroup(g){const t=today(),days=gDays(),q=GR.quand||{},K=kidsAges(g),type=GR.actif;
-  if(!days.includes(S.day))S.day=days[0];const d=S.day,ld=S.events===null;
-  const stay=q.mode==="dates"&&q.au>=t,total=stay?range(q.du,q.au).length:0,idx=stay?range(q.du,d).length:0;
-  const wd=F(noon(d),{weekday:"long"});
-  const dsub=x=>x===t?"aujourd'hui":x===addDays(t,1)?"demain":F(noon(x),{weekday:"long"});
-  const bar=days.length<2?"":`<div class="daybar${days.length>4?" is-long":""}" role="group" aria-label="Jour">${days.map(x=>`<button type="button" aria-pressed="${x===d}" data-act="day" data-v="${x}"><b>${dayLbl(x)}</b><span>${dsub(x)}</span></button>`).join("")}</div>`;
-  const P=ld?null:program(d,g);
-  const slot=(k,l)=>P&&P[k].length?`<div class="slot"><span class="slot-label">${l}</span><ul class="list">${P[k].join("")}</ul></div>`:"";
-  const progBody=ld?loadingTxt:(slot("matin","Matin")+slot("aprem","Après-midi")+slot("soir","Soir"))||`<p class="empty">Rien ne colle à vos critères ce jour-là. Élargissez la distance dans « Modifier ».</p>`;
-  const note=`${K.length?`Pour ${K.length>1?listAnd(K.slice().sort((a,b)=>a-b).map(String))+" ans":K[0]+" ans"}`:"Pour adultes"}, ouvert ${d===t?"aujourd'hui":wd}, ${GR.rayon<=1.5?"à pied":"à moins de "+GR.rayon+" km"}${GR.pluie?", à l'abri":""}.`;
-  // ciné
-  const cDays=q.mode==="weekend"?days:[d];let hid=0;
-  const films=cDays.flatMap(x=>filmsOn(x,S.cin==="tous"?"tous":S.cin)).filter(f=>{if(!K.length&&f.kids){hid++;return false;}return true;}).slice(0,4);
-  // manger
-  const restos=ACTS.filter(a=>isResto(a)&&openOn(a,d)&&within(a.dist,a.town,GR.rayon||20)&&!(P&&P.resto===a)).sort((a,b)=>(evening(openOn(b,d))-evening(openOn(a,d)))||((a.dist??99)-(b.dist??99)));
-  // pendant le séjour
-  const rest=days.filter(x=>x!==d);const later=ld||!rest.length?[]:eventsIn(rest[0],rest[rest.length-1]).filter(e=>!evIsLong(e)&&within(evKm(e),e.town,GR.rayon||20)&&rest.some(x=>x>=e.date&&x<=(e.end||e.date)&&onDay(e,x))).filter(e=>{const f=fitAges(evRange(e),g);return K.length?(f==="all"||f==="some"):(f!=="none"&&!(evRange(e)&&evRange(e)[1]<=17));})
-    .sort((a,b)=>((K.length?(fitAges(evRange(a),g)==="all"?0:1):0)-(K.length?(fitAges(evRange(b),g)==="all"?0:1):0))||0).slice(0,12)
-    .sort((a,b)=>(evStart(a,rest[0],rest[rest.length-1])||"").localeCompare(evStart(b,rest[0],rest[rest.length-1])||"")).slice(0,5);
-  const rainy=ACTIV().filter(a=>a.rain&&openOn(a,d)!==false&&within(a.dist,a.town,Math.max(GR.rayon||20,10))&&fitAges(a.ages||[0,99],g)!=="none").sort((a,b)=>(a.dist??99)-(b.dist??99));
-  return `<div class="hero hero-sm"><img src="images/accueil.jpg" alt="" width="1100" height="561"><div class="hero-txt"><h1 class="hero-title">${esc(cap(dlong(d)))}</h1></div></div>
-  <div class="ctx"><span class="ctx-ic">${ic("people","i-s")}</span><div class="ctx-main"><div class="ctx-who">${esc(gWho(g,type))}</div><div class="ctx-when">${esc(gWhen())}${stay?` · jour ${idx} sur ${total}`:""}</div></div><button type="button" class="ctx-edit" data-act="who">Modifier</button></div>
-  ${bar}
-  <div class="seg-wrap"><div class="seg" role="group" aria-label="Météo"><button type="button" aria-pressed="${!GR.pluie}" data-act="pluie" data-v="0">Beau temps</button><button type="button" aria-pressed="${!!GR.pluie}" data-act="pluie" data-v="1">S'il pleut</button></div></div>
-  ${tideCard(d,{label:d===t?"Marée aujourd'hui":"Marée "+wd})}
-  ${sec(K.length||days.length<2?"Votre journée":`${cap(wd)}, à ${g.adultes}`,secLink("#activites","Autres idées",' data-act="grp"'),progBody,note)}
-  ${sec(q.mode==="weekend"?"Ciné ce week-end":d===t?"Ciné aujourd'hui":"Ciné ce jour-là",secLink("#cine","Programme"),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc(f.times.join(", ")),esc(shortCin(f.cin))+(cinKm(f.cin)<=1?", à pied":""),f.kids?"jeune public":""),lines:K.length&&f.kids?[["Séance jeune public","ok"]]:[],href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>${hid?`<p class="sec-note" style="margin-top:4px">${hid} séance${hid>1?"s":""} jeune public masquée${hid>1?"s":""} pour votre groupe.</p>`:""}`:`<p class="empty">Pas de séance publiée${S.cin==="pref"?" à L'Atlantique":""}. <a class="lnk" href="#cine" data-act="cin" data-v="tous">Tous les cinémas</a></p>`)}
-  ${sec(`Où manger ${d===t?"aujourd'hui":wd}`,secLink("#manger",`${restos.length} table${restos.length>1?"s":""}`,' data-act="eat"'),restos.length?`<ul class="list">${restos.slice(0,3).map(a=>placeRow(a,d)).join("")}</ul>`:`<p class="empty">Aucune table ouverte d'après nos horaires.</p>`)}
-  ${later.length?sec(stay?"Pendant votre séjour":q.mode==="weekend"?"Ce week-end aussi":"Bientôt",secLink("#agenda","Agenda",' data-act="when" data-v="'+(stay?"sejour":"we")+'"'),`<ul class="list">${later.map(e=>evRow(e,{g,lead:"day",day:evStart(e,rest[0],rest[rest.length-1])})).join("")}</ul>`):""}
-  ${!GR.pluie&&rainy.length?sec("Si la pluie arrive",secLink("#activites",`${rainy.length} lieux`,' data-act="rain"'),`<div class="tiles">${rainy.slice(0,4).map(a=>tile(a,d,"#activites",' data-act="rain"')).join("")}</div>`):""}
-  ${sosRow()}<p class="foot">${K.length?"Les âges servent à trier, rien ne quitte ce téléphone.":"Programme recalculé à chaque ouverture."}</p>`;}
-
+/* ===== barres de filtres : bleu = quand, couleurs = quoi, gris = filtres ===== */
+const qchip=(label,pressed,attrs)=>`<button type="button" class="chip chip-q" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
+const kchip=(label,pressed,attrs,k)=>`<button type="button" class="chip chip-k k-${k}" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
+const zoneSel=()=>chipSel(S.where==="ici"?"À Préfailles":"≤ "+S.where+" km",S.where,ZONES.map(([k,l])=>[k,k==="ici"?"À Préfailles":"Jusqu'à "+l]),"where","20");
+const ETK={fete:"food",brocante:"food",spectacle:"act",jeux:"act",expo:"act",sport:"nat",nature:"nat",atelier:"sea",vielocale:"sea"};
+const CATK={mer:"sea",bienetre:"sea",culture:"sea",nature:"nat",sport:"nat",sortie:"act",sensations:"act",enfants:"act",saveurs:"food",marche:"food",assos:"nat"};
+const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label="${label}">${inner}</div>`;
 /* ===== Agenda ===== */
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
@@ -367,14 +371,15 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const longs=list.filter(evIsLong),days={};list.filter(e=>!evIsLong(e)).forEach(e=>(days[sd(e)] ||= []).push(e));
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
   const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],...(whenRange("sejour")?[["sejour","Mon séjour"]]:[])];
-  const types=[["tous","Tous les types"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
+  const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
   const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const es=days[k].sort(byTime);shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("Agenda",S.events===null?"":`${list.length} sortie${list.length>1?"s":""} à venir autour de Préfailles`)}
   ${segAC("agenda")}
-  <div class="chips chips-pad" role="group" aria-label="Quand">${W.map(([k,l])=>chip(l,S.when===k,`data-act="when" data-v="${k}"`)).join("")}</div>
-  <div class="chips chips-pad" style="padding-top:6px">${chipSel(S.etype==="tous"?"Type":(ETL[S.etype]||"Type"),S.etype,types,"etype","tous")}${chipSel(S.where==="tout"?"Partout":S.where==="ici"?"À Préf":"≤ "+WHERE.find(w=>w[0]===S.where)[1],S.where,WHERE.map(([k,l])=>[k,k==="ici"?"À Préfailles":k==="tout"?"Partout":"Jusqu'à "+l]),"where","20")}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}</div>
+  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
+   ${frow("frow","Type d'activité",types.map(([k,l])=>kchip(k==="tous"?"Toutes les activités":l,S.etype===k,`data-act="etype" data-v="${k}"`,ETK[k]||"ink")).join(""))}
+   ${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   <section class="sec" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
     +(longs.length?`<div class="group"><h2 class="group-title">En cours, toute la saison</h2><span class="group-count">${longs.length}</span></div><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul>`:"")
     :`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
@@ -385,60 +390,45 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const day=days.includes(S.cineDay)?S.cineDay:days[0];
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
-  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(shortCin(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>esc(s.h)).join(" · ")}</span>`).join("");
-  return `${pageHead("Ciné","Par défaut L'Atlantique, le cinéma du bourg, à pied.")}
+  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>esc(s.h)).join(" · ")}</span>`).join("");
+  return `${pageHead("Ciné","Par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
   ${segAC("cine")}
-  <div class="chips chips-pad" role="group" aria-label="Cinéma">${CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join("")}</div>
-  ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:days.length?`<div class="chips chips-pad" role="group" aria-label="Jour" style="padding-top:6px">${days.map(d=>chip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")}</div>
+  <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
+   ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
+  ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:days.length?`
    ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul>`,`${films.length} film${films.length>1?"s":""}`)}`
-   :sec("Programme","",`<p class="empty">${S.cin==="pref"?"Pas encore de séance publiée à L'Atlantique pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button></p>`)}
-  ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
-
-/* ===== Marées ===== */
-function vMer(){const s=S.tideDay,t=today(),b=S.meta?.bulletin,week=[...Array(7)].map((_,i)=>addDays(s,i-3));
-  const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
-  const big=nextBig(4),bOK=b&&b.date===`${t.slice(8)}/${t.slice(5,7)}`;
-  return `${pageHead("Marées","Horaires et coefficients à Préfailles, grandes marées, glisse du jour.")}
-  <section class="sec" style="padding-top:12px">
-   <div class="daynav"><button type="button" class="icon-btn" data-act="tday" data-v="${addDays(s,-1)}" aria-label="Jour précédent">${ic("left")}</button><label class="lbl">${esc(s===t?"Aujourd'hui · "+dshort(s):cap(dlong(s)))}<input type="date" data-chg="tday" value="${s}" aria-label="Choisir une date"></label><button type="button" class="icon-btn" data-act="tday" data-v="${addDays(s,1)}" aria-label="Jour suivant">${ic("chev")}</button></div>
-   <div class="week">${week.map(d=>{const c=maxCoef(d);return `<button type="button" class="${c>=90?"gm":""}" aria-pressed="${d===s}" data-act="tday" data-v="${d}"><span>${esc(cap(dname(d)))} ${+d.slice(8)}</span><b>${c??"–"}</b></button>`;}).join("")}</div>
-  </section>
-  <div style="margin-top:-8px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée du "+dshort(s)})}</div>
-  <section class="sec" style="padding-top:12px"><p class="textline" style="border-top:0"><small class="dim">Le coefficient va de 20 à 120. À partir de 90 (en orange) : grande marée, la mer descend très bas et remonte vite.</small></p></section>
-  ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`)}
-  ${sec("Glisse du jour","",b?`<div class="prose"><p>${esc(b.text||"")}</p><p class="row-meta">${bOK?"Bulletin de ce matin":"Dernier bulletin, du "+esc(b.date||"")}</p></div>`:`<p class="empty">Le bulletin vagues et vent s'affiche ici après la mise à jour du matin.</p>`)}
-  ${sec("Spots","",`<ul class="list">${SPOTS.map(p=>row({th:`<span class="thumb t-sea">${ic(/Voile/.test(p.what)?"sail":"wave")}</span>`,title:esc(p.n),metaH:esc(p.what),more:`<p>${esc(p.d)}</p><span class="row-links"><a href="${windy(p.lat,p.lon,"waves")}" target="_blank" rel="noopener">Houle ↗</a><a href="${windy(p.lat,p.lon,"wind")}" target="_blank" rel="noopener">Vent ↗</a>${p.live?`<a href="${p.live}" target="_blank" rel="noopener">Vent observé ↗</a>`:""}</span>`})).join("")}</ul>`)}
-  <section class="sec"><ul class="list">${row({th:`<span class="thumb t-sea">${ic("tide")}</span>`,title:"Pêche à pied",metaH:"Les bonnes marées, le créneau conseillé, la sécurité",href:"#peche"})}</ul></section>
-  <p class="foot">Calcul harmonique calé sur les annuaires SHOM de Pornic, à titre indicatif. Ne pas utiliser pour la navigation.</p>`;}
+   :sec("Programme","",`<p class="empty">${S.cin==="pref"?"Pas encore de séance publiée à Préfailles pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button></p>`)}
+  ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.t==="Préfailles"?"Cinéma de Préfailles (L'Atlantique)":c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
 
 /* ===== Manger ===== */
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
-function vManger(){const t=today();
+const mkOK=a=>S.mk==="tables"?isResto(a):kindOf(a)===S.mk;
+function vManger(){const t=today(),od=S.openDay||t;
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town));
-  const base=all.filter(a=>!S.openToday||openOn(a,t));
+  const base=all.filter(a=>!S.openToday||openOn(a,od));
   const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
-  const nOpen=all.filter(a=>openOn(a,t)).length;
+  const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
   return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, des plus proches aux plus loin`)}
-  <div class="chips chips-pad" role="group" aria-label="Catégorie">${[["tous","Tout"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>chip(l,S.mk===k,`data-act="mk" data-v="${k}"`)).join("")}</div>
-  <div class="chips chips-pad" style="padding-top:6px">${chip(`Ouvert aujourd'hui <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chipSel(S.where==="tout"?"Partout":S.where==="ici"?"À Préf":"≤ "+WHERE.find(w=>w[0]===S.where)[1],S.where,WHERE.map(([k,l])=>[k,k==="ici"?"À Préfailles":k==="tout"?"Partout":"Jusqu'à "+l]),"where","20")}</div>
-  <section class="sec" style="padding-top:0">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,t,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
+   ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${zoneSel()}`)}</div>
+  <section class="sec" style="padding-top:0">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
 /* ===== À faire ===== */
-function vActs(){const t=today();
+function vActs(){const t=today(),od=S.openDay||t;
   const pre=ACTIV().filter(a=>actOK(a)&&fitsWhere(a.dist,a.town)&&(!S.free||/Gratuit/.test(a.price||"")));
-  const base=pre.filter(a=>(!S.rain||a.rain)&&(!S.openToday||openOn(a,t)));
+  const base=pre.filter(a=>(!S.rain||a.rain)&&(!S.openToday||openOn(a,od)));
   const list=base.filter(a=>S.cat==="tous"||a.cat===S.cat).sort((p,q)=>(p.dist??99)-(q.dist??99));
-  const nOpen=pre.filter(a=>(!S.rain||a.rain)&&openOn(a,t)).length,nRain=pre.filter(a=>a.rain&&(!S.openToday||openOn(a,t))).length;
+  const nOpen=pre.filter(a=>(!S.rain||a.rain)&&openOn(a,od)).length,nRain=pre.filter(a=>a.rain&&(!S.openToday||openOn(a,od))).length;
   const g={};list.forEach(a=>(g[a.cat] ||= []).push(a));
   const cats=[["tous","Tous les thèmes"],...Object.keys(CATS).filter(k=>k!=="saveurs"&&k!=="marche"&&pre.some(a=>a.cat===k)).map(k=>[k,CATS[k]]),["assos","Associations"]];
   return `${pageHead("À faire",`${list.length} lieu${list.length>1?"x":""}, du plus proche au plus loin`)}
   <div class="seg-wrap"><div class="seg" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
-  <div class="chips chips-pad">${chip(`Ouvert ${F(noon(t),{weekday:"long"})} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}</div>
-  <div class="chips chips-pad" style="padding-top:6px">${chipSel(S.cat==="tous"?"Thème":S.cat==="assos"?"Associations":CATS[S.cat],S.cat,cats,"cat","tous")}${chipSel(S.where==="tout"?"Partout":S.where==="ici"?"À Préf":"≤ "+WHERE.find(w=>w[0]===S.where)[1],S.where,WHERE.map(([k,l])=>[k,k==="ici"?"À Préfailles":k==="tout"?"Partout":"Jusqu'à "+l]),"where","20")}</div>
+  <div class="filters">${frow("frow","Thème",cats.map(([k,l])=>kchip(k==="tous"?"Tout":l,S.cat===k,`data-act="cat" data-v="${k}"`,CATK[k]||"ink")).join(""))}
+   ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
   <section class="sec" style="padding-top:0">${S.cat==="assos"?"":list.length?Object.keys(CATS).filter(k=>g[k]).map(k=>`<div class="group"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul class="list">${g[k].map(a=>placeRow(a,t)).join("")}</ul>`).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
@@ -494,13 +484,184 @@ function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfaill
   ${sec("Mairie et tourisme","",`<ul class="list">${tel("02 40 21 60 37","Mairie de Préfailles")}${tel("02 40 82 04 40","Office de tourisme")}</ul>`)}
   ${sec("Horaires utiles","",`<ul class="list">
    ${mk?row({th:`<span class="thumb t-food">${ic("basket")}</span>`,title:"Marché de Préfailles",metaH:esc(mkTxt),lines:[statusOf(mk,t)]}):""}
-   ${cin?row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:"Cinéma L'Atlantique",metaH:"Séances le week-end, tous les jours en juillet et août",href:"#cine",act:' data-act="cin" data-v="pref"'}):""}
+   ${cin?row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:"Cinéma de Préfailles",metaH:"Séances le week-end, tous les jours en juillet et août",href:"#cine",act:' data-act="cin" data-v="pref"'}):""}
    ${row({th:`<span class="thumb t-sea">${ic("tide")}</span>`,title:"Marée du jour",metaH:lows.length?`Basse mer ${lows.map(l=>hm(new Date(l.ms))).join(" et ")} · coef. ${maxCoef(t)??"–"}`:`Coef. ${maxCoef(t)??"–"}`,href:"#mer"})}
    ${row({th:`<span class="thumb t-sea">${ic("shell")}</span>`,title:"Pêche à pied",metaH:"Bonnes marées, créneau conseillé, sécurité",href:"#peche"})}
-   ${row({th:`<span class="thumb t-nat">${ic("bus")}</span>`,title:"Cars et trains",metaH:"Cars 303 et 315, trains via Pornic ou Saint-Nazaire",href:"#venir"})}</ul>`)}
+   ${row({th:`<span class="thumb t-nat">${ic("bus")}</span>`,title:"Transports",metaH:"Prochains cars 303 et 315, trains de Pornic",href:"#venir"})}</ul>`)}
   ${sec("Mer et météo","",`<p class="textline" style="border-top:0">Baignade : la qualité de l'eau est contrôlée par l'ARS pendant la saison, plage par plage. <a href="https://baignades.sante.gouv.fr" target="_blank" rel="noopener"><small>source officielle ↗</small></a></p>
    <p class="textline">Vigilance météo : vent violent, vagues-submersion et orages pour la Loire-Atlantique. <a href="https://vigilance.meteofrance.fr" target="_blank" rel="noopener"><small>source officielle ↗</small></a></p>`)}
   <p class="foot">Numéros vérifiés à la publication. En cas de doute, le 112 fonctionne partout.</p>`;}
+/* ===== Accueil ===== */
+const placeKm=a=>a.dist??TOWN_KM[a.town];
+const inZone=a=>fitsWhere(placeKm(a),a.town);
+const evInZone=e=>fitsWhere(evKm(e),e.town);
+const wdName=d=>F(noon(d),{weekday:"long"});
+const dayWord=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":wdName(d);
+const ceJour=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":"ce "+wdName(d);
+function homeDays(){const g=gActive(),t=today();return g?gDays():range(t,addDays(t,6));}
+const SHARE_TXT="Le Petit Préf : marées, sorties, ciné, restos et météo de la mer autour de Préfailles. À jour chaque matin, gratuit, sans pub.";
+function homeTop(days,d){const g=gActive(),t=today();
+  const dsub=x=>x===t?"auj.":x===addDays(t,1)?"demain":"";
+  const who=`<div class="who" role="group" aria-label="Vous êtes">
+    <button type="button" class="who-b" aria-pressed="${!!GR.habitant}" data-act="local">${ic("home","i-s")}J'habite ici</button>
+    <button type="button" class="who-b" aria-pressed="${!!g}" data-act="visit">${ic("people","i-s")}En visite</button></div>
+   ${g?`<div class="who-sub"><span><b>${esc(gWho(g,GR.actif))}</b><br>${esc(gWhen())}</span><button type="button" class="lnk" data-act="who">Modifier</button></div>`
+     :GR.habitant?"":`<p class="who-sub"><span>En visite ? Dites qui vient et quand : on trie sorties, âges et horaires.</span></p>`}`;
+  const bar=`<div class="qbar" role="group" aria-label="Jour">${days.map(x=>`<button type="button" class="q" aria-pressed="${x===d}" data-act="day" data-v="${x}"><b>${x===t?"Auj.":esc(cap(dname(x)))} ${+x.slice(8)}</b>${dsub(x)?`<span>${dsub(x)}</span>`:""}</button>`).join("")}</div>`;
+  const zone=`<div class="ctl-row"><span class="ctl-l">Où</span><div class="seg seg-s" role="group" aria-label="Distance">${ZONES.map(([k,l])=>`<button type="button" aria-pressed="${S.where===k}" data-act="zone" data-v="${k}">${k==="ici"?l:"≤ "+l}</button>`).join("")}</div></div>`;
+  const rain=isRain(d);
+  const wx=`<div class="wx">${wxLine(d)||`<span class="wx-ic">${ic("cloudsun")}</span><span class="wx-txt"><b>Météo</b><span>${WX.st==="err"?"Prévisions indisponibles pour l'instant.":d>addDays(t,6)?"Prévisions à 7 jours seulement.":"Chargement des prévisions…"}</span></span>`}</div>
+   <div class="ctl-row"><span class="ctl-l">Temps</span><div class="seg seg-s" role="group" aria-label="Temps">${[[0,"Beau temps"],[1,"S'il pleut"]].map(([v,l])=>`<button type="button" aria-pressed="${!!v===rain}" data-act="pluie" data-v="${v}" data-d="${d}">${v?ic("umb","i-s"):ic("sun","i-s")}${l}</button>`).join("")}</div></div>`;
+  return `<div class="hero"><img src="images/mer.jpg" alt="La grande plage de Préfailles, ses villas et la promenade au soleil couchant" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">Préfailles</div><h1 class="hero-title">${esc(cap(dlong(d)))}</h1></div>
+   <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
+  <div class="ctl">${who}${bar}${zone}${wx}</div>`;}
+
+function vSejour(){wxLoad();const g=gActive(),days=homeDays();if(!days.includes(S.day))S.day=days[0];const d=S.day;
+  return homeTop(days,d)+(g?vHomeGroup(g,d,days):vHomeLocal(d));}
+
+function openTiles(d,zoneTxt){const rain=isRain(d);
+  const acts=ACTIV().filter(a=>inZone(a)&&!/^Cin[ée]/.test(a.n));
+  const open=acts.filter(a=>openOn(a,d)&&(!rain||a.rain)).sort((a,b)=>(a.dist??99)-(b.dist??99));
+  const libre=rain?[]:acts.filter(a=>openOn(a,d)===null&&/Gratuit/.test(a.price||""));
+  const pick=[];const seen={};for(const a of open){if((seen[a.cat]||0)>=1&&open.length>5)continue;seen[a.cat]=(seen[a.cat]||0)+1;pick.push(a);if(pick.length===4)break;}
+  if(pick.length<4)libre.slice(0,4-pick.length).forEach(a=>pick.push(a));
+  const act=` data-act="open" data-v="${d}"`;
+  return sec(rain?`À l'abri ${ceJour(d)}`:`Ouvert ${ceJour(d)}`,secLink("#activites",`${open.length} lieu${open.length>1?"x":""}`,act),
+    pick.length?`<div class="tiles">${pick.map(a=>tile(a,d,"#activites",act)).join("")}<a class="tile tile-more" href="#activites"${act}><span class="tile-name">Tout voir</span><span class="tile-meta">${open.length} ouvert${open.length>1?"s":""}${libre.length?`, ${libre.length} en accès libre`:""}</span></a></div>`:`<p class="empty">Rien d'ouvert ${zoneTxt} d'après nos horaires.</p>`,
+    rain?`Lieux couverts ${zoneTxt}.`:`${zoneTxt[0].toUpperCase()+zoneTxt.slice(1)}, plus plages et sentiers en accès libre.`);}
+function restosOn(d){return ACTS.filter(a=>isResto(a)&&openOn(a,d)&&inZone(a)).sort((a,b)=>placeKm(a)-placeKm(b));}
+function eatSec(d,skip){const L=restosOn(d).filter(a=>a!==skip);
+  return sec(`Manger ${ceJour(d)}`,secLink("#manger",`${L.length} table${L.length>1?"s":""}`,` data-act="eat" data-v="${d}"`),L.length?`<ul class="list">${L.slice(0,3).map(a=>placeRow(a,d)).join("")}</ul>`:`<p class="empty">Aucune table ouverte ${zoneTxt()} d'après nos horaires.</p>`);}
+const zoneTxt=()=>S.where==="ici"?"à Préfailles":S.where==="10"?"à moins de 10 km":"à moins de 20 km";
+function cineSec(d,title){const films=(S.cinema||[]).filter(f=>f.date>=d&&cinOK(f.cinema,"pref")).sort((a,b)=>(a.date+(a.times||[""])[0]).localeCompare(b.date+(b.times||[""])[0],undefined,{numeric:true})).slice(0,4);
+  return sec(title||"Ciné à Préfailles",secLink("#cine","Programme",' data-act="cin" data-v="pref"'),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc((f.times||[]).join(", ")),esc((f.genre||"").replace(/,.*/,"").toLowerCase()),f.kids?"jeune public":""),href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>`:`<p class="empty">Pas de séance publiée pour les prochains jours.</p>`);}
+
+function vHomeLocal(d){const t=today(),ld=S.events===null,rain=isRain(d);
+  const evT=ld?[]:evOnDay(d).filter(e=>evInZone(e)&&!evIsLong(e)&&!(rain&&/^(nature|sport)$/.test(etype(e)))).sort(byTime);
+  const wkA=addDays(d,1),wkB=addDays(d,7);
+  const wk=ld?[]:eventsIn(wkA,wkB).filter(e=>/^Préfailles/.test(e.town||"")&&!evIsLong(e));
+  const whenV=d===t?"auj":d===addDays(t,1)?"dem":"sem";
+  return `${tideCard(d,{label:d===t?undefined:"Marée "+wdName(d)})}
+  ${sec(cap(dayWord(d)),secLink("#agenda","Agenda",` data-act="when" data-v="${whenV}"`),ld?loadingTxt:evT.length?`<ul class="list">${evT.slice(0,6).map(e=>evRow(e)).join("")}</ul>`:`<p class="empty">Pas de sortie datée ${ceJour(d)} ${zoneTxt()}.</p>`)}
+  ${sec("Cette semaine à Préfailles",ld?"":secLink("#agenda",`${wk.length} sortie${wk.length>1?"s":""}`,' data-act="when" data-v="sem" data-z="ici"'),ld?loadingTxt:wk.length?`<ul class="list">${wk.slice(0,5).map(e=>evRow(e,{lead:"day",day:evStart(e,wkA,wkB)})).join("")}</ul>`:`<p class="empty">Rien d'annoncé à Préfailles dans les sept jours.</p>`,"Seulement dans la commune.")}
+  ${cineSec(d)}
+  ${openTiles(d,zoneTxt())}
+  ${eatSec(d)}
+  ${installBanner()}
+  ${sosRow()}`;}
+
+function program(d,g){
+  const K=kidsAges(g),rain=isRain(d),adults=!K.length,cand=[];
+  const c=maxCoef(d),lows=dayLows(d);
+  if(!rain&&c>=70&&lows.length){const a=ACTS.find(x=>/Pêche à pied/.test(x.n));if(a){const L=lows[0].ms,h=+hm(new Date(L)).slice(0,2);
+    cand.push({slots:[h<12?"matin":h<18?"aprem":"soir"],score:-10,html:placeRow(a,d,{metaH:meta(`${hm(new Date(L-75*6e4))}–${hm(new Date(L+75*6e4))}`,esc(townShort(a.town))+", "+kmTxt(a.dist,a.town),'<span class="ok">Gratuit</span>'),lines:[K.length?[K.length===1?"Pour votre enfant":K.length===2?"Pour les deux enfants":"Pour tous les enfants","ok"]:[`Coef. ${c} · autour de la basse mer`,"ok"]]})});}}
+  if(!rain){const mk=ACTS.filter(a=>a.cat==="marche"&&openOn(a,d)&&inZone(a)).sort((a,b)=>(placeKm(a)??99)-(placeKm(b)??99))[0];
+    if(mk)cand.push({slots:["matin"],score:-3,html:placeRow(mk,d,{metaH:meta(esc(openOn(mk,d)),isHere(placeKm(mk),mk.town)?"à pied":esc(townShort(mk.town))),lines:[]})});}
+  evOnDay(d).filter(e=>!evIsLong(e)&&evInZone(e)).forEach(e=>{const rg=evRange(e),f=fitAges(rg,g);
+    if(f==="none"||(!adults&&f==="neutral"))return;if(rain&&/^(nature|sport)$/.test(etype(e)))return;
+    const h=hourOf(e.time),slot=h==null?"aprem":h<12?"matin":h<18?"aprem":"soir";
+    const sc=(isHere(evKm(e),e.town)?0:(evKm(e)??20)<=10?1:2)*4+(f==="some"?4:0)+(adults&&e.kids&&!rg?6:0)+(adults&&rg&&rg[1]<=17?8:0)+(etype(e)==="vielocale"?3:0);
+    cand.push({slots:[slot],score:sc,html:evRow(e,{g,lead:"none"}),ev:e});});
+  const seen={};
+  ACTIV().filter(a=>openOn(a,d)&&!/^Cin[ée]/.test(a.n)&&inZone(a)&&(!rain||a.rain)).forEach(a=>{const f=fitAges(a.ages||[0,99],g);if(f==="none")return;
+    const sp=hoursSpan(openOn(a,d)),sl=[];if(!sp)sl.push("aprem","matin");else{if(sp[0]<18&&sp[1]>14)sl.push("aprem");if(sp[0]<12)sl.push("matin");if(sp[1]>=20)sl.push("soir");}
+    if(!sl.length)return;
+    const sc=(a.dist??20)/3+(f==="some"?4:0)+(adults&&a.cat==="enfants"?8:0)+(a.cat==="bienetre"&&!adults?5:0)+(/Planète Sauvage/.test(a.n)?4:0);
+    cand.push({slots:sl,score:sc,cat:a.cat,html:placeRow(a,d,{lines:K.length?[fitText(f,a.ages||[0,99],K)]:[statusOf(a,d)]})});});
+  const r=ACTS.filter(a=>isResto(a)&&evening(openOn(a,d))&&inZone(a)).sort((a,b)=>(placeKm(a)??99)-(placeKm(b)??99))[0];
+  if(r)cand.push({slots:["soir"],score:-1,html:placeRow(r,d),resto:r});
+  const out={matin:[],aprem:[],soir:[]},capN={matin:2,aprem:3,soir:3};
+  cand.sort((a,b)=>a.score-b.score).forEach(x=>{if(x.cat){if((seen[x.cat]||0)>=2)return;}
+    const s=x.slots.find(k=>out[k].length<capN[k]);if(!s)return;if(x.cat)seen[x.cat]=(seen[x.cat]||0)+1;if(x.resto)out.resto=x.resto;out[s].push(x.html);});
+  return out;}
+
+function vHomeGroup(g,d,days){const t=today(),q=GR.quand||{},K=kidsAges(g),ld=S.events===null,rain=isRain(d);
+  const stay=q.mode==="dates"&&q.au>=t,total=stay?range(q.du,q.au).length:0,idx=stay?range(q.du,d).length:0;
+  const P=ld?null:program(d,g);
+  const slot=(k,l)=>P&&P[k].length?`<div class="slot"><span class="slot-label">${l}</span><ul class="list">${P[k].join("")}</ul></div>`:"";
+  const progBody=ld?loadingTxt:(slot("matin","Matin")+slot("aprem","Après-midi")+slot("soir","Soir"))||`<p class="empty">Rien ne colle à vos critères ce jour-là. Élargissez la distance plus haut.</p>`;
+  const note=`${K.length?`Pour ${K.length>1?listAnd(K.slice().sort((a,b)=>a-b).map(String))+" ans":K[0]+" ans"}`:"Pour adultes"}, ouvert ${dayWord(d)}, ${zoneTxt()}${rain?", à l'abri":""}${stay?` · jour ${idx} sur ${total}`:""}.`;
+  const cDays=q.mode==="weekend"?days.filter(x=>x>=d):[d];let hid=0;
+  const films=cDays.flatMap(x=>filmsOn(x,S.cin==="tous"?"tous":S.cin)).filter(f=>{if(!K.length&&f.kids){hid++;return false;}return true;}).slice(0,4);
+  const rest=days.filter(x=>x>d);const later=ld||!rest.length?[]:eventsIn(rest[0],rest[rest.length-1]).filter(e=>!evIsLong(e)&&evInZone(e)&&rest.some(x=>x>=e.date&&x<=(e.end||e.date)&&onDay(e,x))).filter(e=>{const f=fitAges(evRange(e),g);return K.length?(f==="all"||f==="some"):(f!=="none"&&!(evRange(e)&&evRange(e)[1]<=17));})
+    .sort((a,b)=>((K.length?(fitAges(evRange(a),g)==="all"?0:1):0)-(K.length?(fitAges(evRange(b),g)==="all"?0:1):0))||0).slice(0,12)
+    .sort((a,b)=>(evStart(a,rest[0],rest[rest.length-1])||"").localeCompare(evStart(b,rest[0],rest[rest.length-1])||"")).slice(0,5);
+  return `${tideCard(d,{label:d===t?"Marée aujourd'hui":"Marée "+wdName(d)})}
+  ${sec(`Votre ${wdName(d)}`,secLink("#activites","Autres idées",' data-act="grp"'),progBody,note)}
+  ${sec(q.mode==="weekend"?"Ciné ce week-end":`Ciné ${ceJour(d)}`,secLink("#cine","Programme"),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc(f.times.join(", ")),esc(cinName(f.cin)),f.kids?"jeune public":""),lines:K.length&&f.kids?[["Séance jeune public","ok"]]:[],href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>${hid?`<p class="sec-note" style="margin-top:4px">${hid} séance${hid>1?"s":""} jeune public masquée${hid>1?"s":""} pour votre groupe.</p>`:""}`:`<p class="empty">Pas de séance publiée${S.cin==="pref"?" à Préfailles":""}. <a class="lnk" href="#cine" data-act="cin" data-v="tous">Tous les cinémas</a></p>`)}
+  ${eatSec(d,P&&P.resto)}
+  ${later.length?sec(stay?"Pendant votre séjour":q.mode==="weekend"?"Ce week-end aussi":"Bientôt",secLink("#agenda","Agenda",' data-act="when" data-v="'+(stay?"sejour":"we")+'"'),`<ul class="list">${later.map(e=>evRow(e,{g,lead:"day",day:evStart(e,rest[0],rest[rest.length-1])})).join("")}</ul>`):""}
+  ${openTiles(d,zoneTxt())}
+  ${sosRow()}<p class="foot">${K.length?"Les âges servent à trier, rien ne quitte ce téléphone.":"Programme recalculé à chaque ouverture."}</p>`;}
+
+
+/* ===== Mer : marée, vent, houle, eau, spots ===== */
+function seaCard(d){const w=wxDay(d),t=today();
+  if(!w)return `<div class="sea sea-empty"><p>${WX.st==="err"?"Vent, houle et température de l'eau : prévisions indisponibles pour l'instant (pas de connexion ?).":d>addDays(t,6)?"Vent et houle : prévisions à 7 jours seulement. La marée, elle, est calculée pour toutes les dates.":"Chargement du vent et de la houle…"}</p></div>`;
+  const hs=[9,12,15,18].map(h=>[h,wxAt(d,h),seaAt(d,h)]).filter(x=>x[1]);
+  const sst=sstNow(d),[sky,icn]=WMO(w.code),B=bft(w.w);
+  const sMid=seaAt(d,12)||seaAt(d,15)||seaAt(d,9);
+  const boat=judge("voile",SPOTSX[5],{w:w.w,g:w.g,wd:w.wd},sMid);
+  const cell=(l,v,s2="")=>`<div class="sea-c"><span>${l}</span><b>${v}</b>${s2?`<small>${s2}</small>`:""}</div>`;
+  return `<div class="sea">
+   <div class="sea-top">${ic(icn)}<span><b>${sky}</b> · ${r0(w.tmin)}° à ${r0(w.tmax)}°${w.pp>=20?` · pluie ${w.pp} %`:""}</span></div>
+   <div class="sea-grid">
+    ${cell("Vent",`${r0(w.w)} nds`,`${DIRLONG[dirTxt(w.wd)]||""}, force ${B}`)}
+    ${cell("Rafales",`${r0(w.g)} nds`,w.g>=34?"coup de vent":w.g>=25?"ça souffle":"")}
+    ${cell("Houle",sMid&&sMid.hs!=null?`${r1(sMid.hs)} m`:"–",sMid?`${r0(sMid.swp??sMid.tp)} s, ${DIRLONG[dirTxt(sMid.swd??sMid.sd)]||""}`:"")}
+    ${cell("Eau",sst!=null?`${r1(sst)}°`:"–",sst!=null?(sst<13?"combinaison 5/4 mm":sst<16?"combinaison 4/3 mm":sst<19?"combinaison 3/2 mm":"maillot ou shorty"):"")}</div>
+   ${boat?`<p class="sea-boat ${NOTECLS[boat[0]]}">${ic("sail","i-s")}<span><b>Bateau :</b> ${boat[1]}.</span></p>`:""}
+   <div class="sea-hours">${hs.map(([h,x,s])=>`<div><span>${h}h</span><b>${dirTxt(x.wd)} ${r0(x.w)}</b><small>raf. ${r0(x.g)}${s&&s.hs!=null?` · ${r1(s.hs)} m`:""}</small></div>`).join("")}</div>
+  </div>`;}
+function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return b?{a,b}:null;}).filter(Boolean);}
+function glisseSec(d){if(!wxDay(d))return"";
+  const acts=["surf","kite","wing","voile","paddle"];
+  const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
+  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${best.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(a==="voile"?"sail":a==="paddle"?"drop":"wave")}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:b.j[0]?meta(esc(sp.n),`vers ${b.h}h`):"",lines:[[esc(b.j[1]),""]]})).join("")}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité, d'après les prévisions.");}
+function spotsSec(d){const has=!!wxDay(d);
+  const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
+  return sec("Les spots","",`<ul class="list">${SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
+    const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):-1;
+    const line=has?sm.map(x=>`${ACTL[x.a]} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · "):"";
+    const det=sm.map(x=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${ACTL[x.a]}</b> · ${esc(x.b.j[1])}${x.b.j[0]?` · vers ${x.b.h}h`:""}${x.b.w?`<br><small>Vent ${dirTxt(x.b.w.wd)} ${r0(x.b.w.w)} nds (${RELTXT[windRel(sp,x.b.w.wd)]}), rafales ${r0(x.b.w.g)}${x.b.s&&x.b.s.hs!=null?` · houle au large ${r1(x.b.s.hs)} m, ${r0(x.b.s.swp??x.b.s.tp)} s`:""}</small>`:""}</span></div>`).join("");
+    return row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:line?[[esc(line),NOTECLS[Math.max(top,0)]]]:[],
+      more:`${det?`<div class="spot-acts">${det}</div>`:""}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a></span>`});}).join("")}</ul>`,
+   has?"Touchez un spot pour le détail du jour. Estimations automatiques : regardez toujours la mer avant d'y aller.":"");}
+function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
+  const days=range(t,addDays(t,6));const big=nextBig(4);
+  const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
+  return `${pageHead("Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
+  <div class="filters">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
+  <section class="sec" style="padding-top:12px">${seaCard(s)}</section>
+  <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
+  ${glisseSec(s)}
+  ${spotsSec(s)}
+  ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}
+  <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
+
+/* ===== Transports ===== */
+function feriesOf(T){return new Set(T.feries||[]);}
+function departsOn(T,L,sn,d){if(d<L.debut||d>L.fin)return null;if((T.sansService||[]).includes(d))return[];
+  const w=feriesOf(T).has(d)?"0":String(dow(d));const vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
+  return sn.departs.filter(x=>x.jours.includes(w)&&(x.periode==="toujours"||(x.periode==="vacances")===vac||(x.periode==="scolaire"&&!vac))).sort((a,b)=>a.dep.localeCompare(b.dep));}
+function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;
+  const days=range(t,addDays(t,6));const nowHM=hm(new Date());
+  if(S.transports===null)return pageHead("Transports","")+`<section class="sec">${loadingTxt}</section>`;
+  if(!T||!T.lignes)return pageHead("Transports","")+`<p class="empty">Horaires indisponibles.</p>`;
+  const fer=feriesOf(T).has(d);
+  const lineSec=L=>{const blocks=L.sens.map(sn=>{const dep=departsOn(T,L,sn,d);
+      let body;if(dep===null)body=`<p class="empty">${d>L.fin?`Horaires après le ${dshort(L.fin)} pas encore intégrés.`:"Hors période de la fiche horaire."} <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">Fiche officielle ↗</a></p>`;
+      else if(!dep.length)body=`<p class="empty">Pas de départ ce jour-là.</p>`;
+      else{const nx=d===t?dep.find(x=>x.dep>=nowHM):null;
+        body=`<ul class="list">${dep.map(x=>{const past=d===t&&x.dep<nowHM;return `<li class="row${past?" is-past":""}"><span class="row-lead${x===nx?" is-next":""}">${x.dep.replace(/^0/,"")}</span><span class="row-main"><span class="row-title">Arrivée ${x.arr.replace(/^0/,"")}${x===nx?' <span class="note-pill ok">Prochain</span>':""}</span>${x.note&&!/^Dimanche et jours fériés$/.test(x.note)||x.incertain?`<span class="row-meta ${x.incertain?"warn":""}">${x.incertain?"À confirmer · ":""}${esc(x.incertain?"jour exact non précisé sur la fiche, appelez Allô Aléop":x.note)}</span>`:""}</span></li>`;}).join("")}</ul>`;}
+      return `<div class="tr-dir"><h3 class="tr-h">${esc(sn.de)} → ${esc(sn.vers)}</h3><p class="sec-note" style="margin:0 0 2px">${esc(sn.arret)} → ${esc(sn.dest)}</p>${body}</div>`;}).join("");
+    return sec(`${L.mode==="train"?ic("train","i-s"):ic("bus","i-s")} ${esc(L.nom)}`,"",blocks+`<details class="tr-more"><summary>Tarifs et infos</summary><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">source ↗</a></p></details>`,esc(L.trajet));};
+  return `${pageHead("Transports","Cars et trains depuis Préfailles, horaires intégrés.")}
+  <div class="filters">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
+  ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
+  ${T.lignes.map(lineSec).join("")}
+  ${sec("Bon à savoir","",`<ul class="tips"><li>${esc(T.tarifs?.actuel||"")}</li>${T.tarifs&&T.tarifs["a_partir_du_2027-01-04"]?`<li><b>À partir du 4 janvier 2027 :</b> ${esc(T.tarifs["a_partir_du_2027-01-04"])}</li>`:""}<li>Renseignements Aléop : <a href="tel:0969391414">09 69 39 14 14</a> (lun–ven 8h–19h, sam 8h–12h).</li><li>Navettes gratuites de l'été (Pornic Agglo) : horaires 2027 pas encore publiés.</li></ul>`)}
+  <p class="foot">Horaires repris des fiches officielles Aléop et TER (Région Pays de la Loire), à titre indicatif : grèves, travaux et jours fériés peuvent les changer.</p>`;}
 
 /* ===== Carte et export ===== */
 function kml(){const x=v=>String(v??"").replace(/[<&>]/g,c=>({"<":"&lt;","&":"&amp;",">":"&gt;"}[c]));
@@ -660,7 +821,6 @@ function drawWho(){const sh=$("#who .sheet");if(!sh)return;const sc=sh.scrollTop
      <div class="stepper-row"><span class="stepper-label">Adultes</span>${step("adultes",DR.adultes,1,12)}</div>
      <div class="stepper-row"><span class="stepper-label">Enfants<small>${DR.enfants.length?"Leur âge pendant le séjour":"Ajoutez-les pour trier par âge"}</small></span>${step("enfants",DR.enfants.length,0,8)}</div>
      ${DR.enfants.length?`<div class="ages">${DR.enfants.map((k,i)=>`<label class="age">${k.age<1?"moins d'1 an":k.age+" an"+(k.age>1?"s":"")}${ic("down")}<select data-w="age" data-i="${i}" aria-label="Âge de l'enfant ${i+1}">${[...Array(18)].map((_,a)=>`<option value="${a}" ${a===+k.age?"selected":""}>${a<1?"moins d'1 an":a+" an"+(a>1?"s":"")}</option>`).join("")}</select></label>`).join("")}</div>`:""}</div>
-   <div class="field"><span class="field-label">Pour sortir</span><div class="seg" role="group" aria-label="Distance">${RAYONS.map(([r,l])=>`<button type="button" aria-pressed="${DR.rayon===r}" data-w="r" data-v="${r}">${l}</button>`).join("")}</div></div>
    <div class="sheet-actions"><button type="button" class="btn btn-primary btn-block" data-w="ok">${DR.quand.mode==="weekend"?"Voir notre week-end":"Voir notre programme"}</button><button type="button" class="btn btn-quiet btn-block" data-w="local">J'habite ici, sans groupe</button></div>`;
   sh.scrollTop=sc;}
 function whoClick(e){const b=e.target.closest("[data-w]");if(!b||b.tagName==="SELECT")return;const w=b.dataset.w;
@@ -669,14 +829,13 @@ function whoClick(e){const b=e.target.closest("[data-w]");if(!b||b.tagName==="SE
   else if(w==="q"){const m=b.dataset.v;DR.quand=m==="dates"?{mode:"dates",du:DR.quand.du||today(),au:DR.quand.au||addDays(DR.quand.du||today(),6)}:{mode:m};}
   else if(w==="step"){const d=+b.dataset.d;if(b.dataset.k==="adultes")DR.adultes=Math.max(1,Math.min(12,DR.adultes+d));
     else if(d>0&&DR.enfants.length<8)DR.enfants.push({age:DR.enfants.length?Math.max(0,DR.enfants[DR.enfants.length-1].age-3):8});else if(d<0)DR.enfants.pop();}
-  else if(w==="r")DR.rayon=+b.dataset.v;
   else if(w==="ok"){let q=DR.quand;if(q.mode==="dates"){let a=q.du||today(),z=q.au||a;if(z<a)[a,z]=[z,a];if(z<today()){toast("Ces dates sont passées");return;}q={mode:"dates",du:a,au:z};}
     if(!DR.type)DR.type=DR.enfants.length?"famille":DR.adultes>=3?"amis":DR.adultes===2?"couple":"solo";
     GR.groupes[DR.type]={nom:(GTYPES.find(x=>x[0]===DR.type)||[])[1]||"",adultes:DR.adultes,enfants:DR.enfants.map(k=>({age:+k.age})),type:DR.type};
-    GR.actif=DR.type;GR.habitant=false;GR.quand=q;GR.rayon=DR.rayon;gSave();
-    S.day=null;S.who="groupe";S.where=DR.rayon<=1.5?"ici":DR.rayon<=10?"10":"20";closeWho();
+    GR.actif=DR.type;GR.habitant=false;GR.quand=q;gSave();
+    S.day=null;S.who="groupe";closeWho();
     if(curView()!=="sejour")location.hash="#sejour";else{render();window.scrollTo({top:0,behavior:"instant"});}return;}
-  else if(w==="local"){GR.habitant=true;GR.actif=null;gSave();S.who="tous";S.day=null;closeWho();if(curView()!=="sejour")location.hash="#sejour";else render();return;}
+  else if(w==="local"){GR.habitant=true;gSave();S.who="tous";S.day=null;closeWho();if(curView()!=="sejour")location.hash="#sejour";else render();return;}
   drawWho();}
 function whoChange(e){const el=e.target;
   if(el.dataset.w==="age"){DR.enfants[+el.dataset.i].age=+el.value;drawWho();}
@@ -684,8 +843,8 @@ function whoChange(e){const el=e.target;
   else if(el.id==="wAu"&&el.value){DR.quand.au=el.value;drawWho();}}
 
 /* ---------- menu (bouton en haut à droite) ---------- */
-const MENU1=[["sejour","Aujourd'hui","Marée, sorties et ciné du jour","home"],["agenda","Agenda","Fêtes, lotos, concerts, brocantes","cal"],["cine","Ciné","L'Atlantique et les cinémas voisins","film"],["mer","Marées et mer","Horaires, coefficients, surf et vent","tide"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["activites","À faire","Sorties, sport, nature, associations","compass"]];
-const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["venir","Cars et trains","","bus"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
+const MENU1=[["sejour","Aujourd'hui","Marée, météo, sorties et ciné du jour","home"],["agenda","Agenda","Fêtes, lotos, concerts, brocantes","cal"],["cine","Ciné","Préfailles et les cinémas voisins","film"],["activites","À faire","Sorties, sport, nature, associations","compass"],["mer","Mer","Marée, vent, houle, eau, spots","tide"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Prochains cars et trains","bus"]];
+const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
 function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
@@ -713,24 +872,29 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 /* ---------- actions des vues (délégation) ---------- */
 const ACT={
   who:()=>openWho(),
-  local:()=>{GR.habitant=true;gSave();render();toast("Noté. « Qui vient ? » reste dans le menu.");},
+  local:()=>{GR.habitant=true;gSave();S.day=null;render();},
+  visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},
+  zone:v=>{S.where=v;sset("cf-where",v);render();},
   day:v=>{S.day=v;render();},
-  pluie:v=>{GR.pluie=v==="1";gSave();render();},
-  when:v=>{S.when=v;S.more={};if(curView()==="agenda")render();},
+  pluie:(v,el)=>{S.rainSet[el.dataset.d]=v==="1";render();},
+  etype:v=>{S.etype=v;render();},
+  cat:v=>{S.cat=v;render();},
+  trday:v=>{S.trDay=v;render();},
+  when:(v,el)=>{S.when=v;S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
   cin:v=>{S.cin=v;sset("pp-cin",v);S.cineDay=null;if(curView()==="cine")render();},
   cday:v=>{S.cineDay=v;if(curView()==="cine")render();},
-  open:()=>{S.openToday=true;S.rain=false;S.cat="tous";},
+  open:v=>{S.openToday=true;S.openDay=v||today();S.rain=isRain(S.openDay);S.cat="tous";},
   rain:()=>{S.rain=true;S.openToday=false;S.cat="tous";},
   grp:()=>{S.who="groupe";S.cat="tous";},
-  eat:()=>{S.openToday=true;S.mk="tous";},
+  eat:v=>{S.openToday=true;S.openDay=v||today();S.mk="tables";},
   free:()=>{S.free=!S.free;render();},
-  openT:()=>{S.openToday=!S.openToday;render();},
+  openT:()=>{S.openToday=!S.openToday;if(!S.openToday)S.openDay=null;render();},
   rainT:()=>{S.rain=!S.rain;render();},
   mk:v=>{S.mk=v;render();},
   av:v=>{S.actView=v;render();},
   more:v=>{S.more[v]=true;render();},
   tday:v=>{S.tideDay=v;render();},
-  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="tout";S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";render();},
+  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="20";sset("cf-where","20");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";render();},
   kml:()=>{const st=$("#kmlStatus");
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
@@ -747,14 +911,14 @@ function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)
 const PARENT={cine:"agenda",pratique:"sejour",venir:"sejour",peche:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
-const TITLES={recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Cars et trains",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
+const TITLES={recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
 function render(){rail();const v=curView();document.title=v==="sejour"?"Le Petit Préf":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vVenir,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche})[v]()}</section>`;
   if(open.length)$$("#main details summary .row-title").forEach(x=>{if(open.includes(x.textContent))x.closest("details").open=true;});
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
@@ -788,9 +952,9 @@ window.addEventListener("hashchange",()=>{const v=curView();
 render();
 (async()=>{
   const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();});
-  const names=["events","cinema","assos"];
+  const names=["events","cinema","assos","transports"];
   const res=await Promise.allSettled([...names.map(get),get("status")]);
-  names.forEach((n,k)=>{S[n]=res[k].status==="fulfilled"?res[k].value:[];});
+  names.forEach((n,k)=>{S[n]=res[k].status==="fulfilled"?res[k].value:(n==="transports"?{}:[]);});
   const st=res[names.length];S.meta=st.status==="fulfilled"?st.value:null;
   if(res.every(r=>r.status==="rejected"))S.err="Les données ne se chargent pas. Vérifiez la connexion puis rechargez la page.";
   if(S.meta?.updatedAt){const u=$("#upd");if(u)u.textContent="Agenda et cinéma mis à jour le "+F(new Date(S.meta.updatedAt),{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+".";}

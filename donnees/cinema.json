@@ -1,13 +1,13 @@
 [
  {
-  "id": "2026-11-07-atlantique-digger",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-07-toiles-de-retz-la-detention",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
   "date": "2026-11-07",
-  "film": "Digger",
-  "genre": "Action, comédie",
+  "film": "La Détention",
+  "genre": "Documentaire, échange avec le réalisateur (Journées nationales Prison)",
   "kids": false,
   "times": [
-   "20h30"
+   "20h"
   ],
   "version": "VF"
  },
@@ -139,28 +139,27 @@
   "version": "VF"
  },
  {
-  "id": "2026-11-07-toiles-de-retz-la-detention",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "id": "2026-11-07-atlantique-digger",
+  "cinema": "L'Atlantique (Préfailles)",
   "date": "2026-11-07",
-  "film": "La Détention",
-  "genre": "Documentaire, échange avec le réalisateur (Journées nationales Prison)",
+  "film": "Digger",
+  "genre": "Action, comédie",
   "kids": false,
   "times": [
-   "20h"
+   "20h30"
   ],
   "version": "VF"
  },
  {
-  "id": "2026-11-08-atlantique-les-miserables",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-08-toiles-de-retz-coup-de-coeur-surprise",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
   "date": "2026-11-08",
-  "film": "Les Misérables",
-  "genre": "Drame historique",
-  "kids": false,
+  "film": "Coup de cœur surprise Jeune Public",
+  "genre": "Avant-première surprise, jeune public dès 8 ans",
+  "kids": true,
   "times": [
-   "17h"
-  ],
-  "version": "VF"
+   "15h45"
+  ]
  },
  {
   "id": "2026-11-08-cinejade-karma",
@@ -261,15 +260,16 @@
   "version": "VF"
  },
  {
-  "id": "2026-11-08-toiles-de-retz-coup-de-coeur-surprise",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "id": "2026-11-08-atlantique-les-miserables",
+  "cinema": "L'Atlantique (Préfailles)",
   "date": "2026-11-08",
-  "film": "Coup de cœur surprise Jeune Public",
-  "genre": "Avant-première surprise, jeune public dès 8 ans",
-  "kids": true,
+  "film": "Les Misérables",
+  "genre": "Drame historique",
+  "kids": false,
   "times": [
-   "15h45"
-  ]
+   "17h"
+  ],
+  "version": "VF"
  },
  {
   "id": "2026-11-09-cinejade-clayface",
@@ -464,30 +464,6 @@
   "version": "VOST"
  },
  {
-  "id": "2026-11-11-atlantique-le-monde-a-l-envers",
-  "cinema": "L'Atlantique (Préfailles)",
-  "date": "2026-11-11",
-  "film": "Le Monde à l'envers",
-  "genre": "Jeune public dès 3 ans",
-  "kids": true,
-  "times": [
-   "16h"
-  ],
-  "version": "VF"
- },
- {
-  "id": "2026-11-11-atlantique-ni-vue-ni-connue",
-  "cinema": "L'Atlantique (Préfailles)",
-  "date": "2026-11-11",
-  "film": "Ni vue, ni connue",
-  "genre": "Comédie",
-  "kids": false,
-  "times": [
-   "20h30"
-  ],
-  "version": "VF"
- },
- {
   "id": "2026-11-11-saint-joseph-ducobu-et-le-fantome-de-saint-potache",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
   "date": "2026-11-11",
@@ -522,16 +498,28 @@
   "version": "VOST"
  },
  {
-  "id": "2026-11-12-atlantique-memoire-de-fille",
+  "id": "2026-11-11-le-monde-a-l-envers-prefailles",
+  "date": "2026-11-11",
+  "film": "Le Monde à l'envers",
   "cinema": "L'Atlantique (Préfailles)",
-  "date": "2026-11-12",
-  "film": "Mémoire de fille",
-  "genre": "Drame",
-  "kids": false,
+  "times": [
+   "16h"
+  ],
+  "genre": "Animation",
+  "version": "VF",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-ni-vue-ni-connue-prefailles",
+  "date": "2026-11-11",
+  "film": "Ni vue, ni connue",
+  "cinema": "L'Atlantique (Préfailles)",
   "times": [
    "20h30"
   ],
-  "version": "VF"
+  "genre": "Comédie",
+  "version": "VF",
+  "kids": false
  },
  {
   "id": "2026-11-12-saint-joseph-une-femme-aujourd-hui",
@@ -545,37 +533,136 @@
   "version": "VF"
  },
  {
-  "id": "2026-11-13-atlantique-the-social-reckoning",
+  "id": "2026-11-12-memoire-de-fille-prefailles",
+  "date": "2026-11-12",
+  "film": "Mémoire de fille",
   "cinema": "L'Atlantique (Préfailles)",
-  "date": "2026-11-13",
-  "film": "The Social Reckoning",
-  "genre": "Drame",
-  "kids": false,
   "times": [
    "20h30"
   ],
-  "version": "VOST"
+  "genre": "Drame",
+  "version": "VF",
+  "kids": false
  },
  {
-  "id": "2026-11-14-atlantique-le-corset",
+  "id": "2026-11-13-the-social-reckoning-prefailles",
+  "date": "2026-11-13",
+  "film": "The Social Reckoning",
   "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "20h30"
+  ],
+  "genre": "Drame",
+  "version": "VO",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-le-corset-prefailles",
   "date": "2026-11-14",
   "film": "Le Corset",
-  "genre": "Animation, jeune public dès 6 ans",
-  "kids": true,
+  "cinema": "L'Atlantique (Préfailles)",
   "times": [
    "17h"
-  ]
+  ],
+  "genre": "Animation",
+  "version": "VF",
+  "kids": true
  },
  {
-  "id": "2026-11-15-atlantique-memoire-de-fille",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-15-memoire-de-fille-prefailles",
   "date": "2026-11-15",
   "film": "Mémoire de fille",
-  "genre": "Drame",
-  "kids": false,
+  "cinema": "L'Atlantique (Préfailles)",
   "times": [
    "17h"
-  ]
+  ],
+  "genre": "Drame",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-memoire-de-fille-prefailles",
+  "date": "2026-11-18",
+  "film": "Mémoire de fille",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "16h",
+   "20h30"
+  ],
+  "genre": "Drame",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-une-femme-aujourd-hui-prefailles",
+  "date": "2026-11-20",
+  "film": "Une femme aujourd'hui",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "15h"
+  ],
+  "genre": "Comédie dramatique",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-l-affaire-marie-claire-prefailles",
+  "date": "2026-11-21",
+  "film": "L'Affaire Marie-Claire",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "17h"
+  ],
+  "genre": "Historique, Judiciaire, Thriller",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-le-roi-du-game-prefailles",
+  "date": "2026-11-22",
+  "film": "Le Roi du Game",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "17h"
+  ],
+  "genre": "Comédie",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-l-espece-explosive-prefailles",
+  "date": "2026-11-25",
+  "film": "L'Espèce explosive",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "16h"
+  ],
+  "genre": "Animation, Famille",
+  "version": "VF",
+  "kids": true
+ },
+ {
+  "id": "2026-11-25-moulin-prefailles",
+  "date": "2026-11-25",
+  "film": "Moulin",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "20h30"
+  ],
+  "genre": "Drame, Historique",
+  "version": "VF",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-karma-prefailles",
+  "date": "2026-11-27",
+  "film": "Karma",
+  "cinema": "L'Atlantique (Préfailles)",
+  "times": [
+   "20h30"
+  ],
+  "genre": "Drame, Thriller",
+  "version": "VF",
+  "kids": false
  }
 ]

@@ -22,3 +22,11 @@ Sobre, dans l'esprit de Concret : une seule couleur d'accent, listes denses à f
 
 ## Vérifier avant de pousser
 `node --check app.js`, `python3 outils/verifier.py`, puis ouvrir la page (Playwright, device « iPhone 13 ») et parcourir les 5 rubriques, le menu, la feuille « Qui vient ? », `#peche` et `#pratique` sans erreur console, en clair et en sombre.
+
+## Ajouts de novembre 2026
+- Onglets : Aujourd'hui, Agenda, À faire, Mer, Manger. Transports (#venir) et Ciné (#cine) via le menu et les liens.
+- Distance globale `S.where` (ici / 10 / 20 km, défaut 20, clé `cf-where`) : réglée en haut de l'accueil, appliquée partout.
+- Code couleur des puces : bleu (`.chip-q`) = quand, pastels (`.chip-k k-sea|food|act|nat`) = quoi, contour (`.chip`) = filtres. Barres `.filters` collantes sous les onglets.
+- Météo, vent, houle, température de l'eau : Open-Meteo appelé depuis le téléphone (p2b_wx.js, cache `pp-wx` 1 h). Spots dans `SPOTSX` (orientation `face`, fenêtre de houle `swell`) ; verdicts calculés par `judge()`.
+- Transports : `donnees/transports.json` (fiches Aléop 303, 315 et TER Pornic–Nantes, vacances zone B, jours fériés). Le TER n'est valable que jusqu'au 12/12/2026 : à remplacer par la fiche suivante.
+- Le cinéma de Préfailles s'affiche « Préfailles » (données : « L'Atlantique (Préfailles) »).

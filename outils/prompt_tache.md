@@ -38,3 +38,9 @@ Immobilier : abandonné pour l'instant, ne rien faire.
 4. Réponds en 3 lignes : ce qui a été ajouté / retiré (événements, séances), la ligne du contrôle, et les sources refusées. « ÉCHEC GitHub : <erreur> » si le push a échoué.
 
 Astuce d'accès : le shell n'a souvent pas accès aux sites ; utilise WebFetch / WebSearch (des sous-agents peuvent paralléliser les recherches).
+
+## Cinéma de Préfailles
+Lire le programme mensuel complet (https://www.cinemaprefailles.com/images/PROGRAMME/programmation.pdf) et reprendre toutes les séances à venir du mois, pas seulement la semaine. Cinéma : « L'Atlantique (Préfailles) ».
+
+## Transports
+`donnees/transports.json` : vérifier une fois par mois les fiches Aléop 303 / 315 et TER Nantes–Pornic (champ `fin` de chaque ligne). Ne jamais inventer d'horaire.

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Le Petit Préf</title>
-<meta name="pp-version" content="20261109-2322">
-<meta name="description" content="Marées, sorties, ciné et huîtres autour de Préfailles. À jour chaque matin, gratuit, sans pub.">
+<meta name="pp-version" content="20261110-0802">
+<meta name="description" content="Marée, météo de la mer, sorties, ciné et restos autour de Préfailles. À jour chaque matin, gratuit, sans pub.">
 <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121317" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,10 +16,10 @@
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta property="og:title" content="Le Petit Préf · Préfailles au jour le jour">
-<meta property="og:description" content="Marées, sorties, ciné et huîtres autour de Préfailles. À jour chaque matin, gratuit, sans pub.">
+<meta property="og:description" content="Marée, météo de la mer, sorties, ciné et restos autour de Préfailles. À jour chaque matin, gratuit, sans pub.">
 <meta property="og:site_name" content="Le Petit Préf">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://lepetitpref.fr/images/partage.jpg">
+<meta property="og:image" content="https://lepetitpref.fr/images/partage.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,7 +27,7 @@
 <meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
-<link rel="stylesheet" href="style.css?v=20261109-2322">
+<link rel="stylesheet" href="style.css?v=20261110-0802">
 <script>try{var t=localStorage.getItem("pp-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <style>body{padding-top:env(safe-area-inset-top,0px)}</style>
 </head>
@@ -66,6 +66,10 @@
  <symbol id="i-shell" viewBox="0 0 24 24"><path d="M12 19.5c-4.5 0-8-3-8-7.5C4 7.5 7.6 4.5 12 4.5s8 3 8 7.5c0 4.5-3.5 7.5-8 7.5zM12 19.5V8M8 18l2-9M16 18l-2-9"/></symbol>
  <symbol id="i-share" viewBox="0 0 24 24"><path d="M5 12.5v6a1 1 0 001 1h12a1 1 0 001-1v-6M15.5 7.5L12 4 8.5 7.5M12 4v11"/></symbol>
  <symbol id="i-people2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.5 3.5-5.5 7-5.5s6.3 2 7 5.5"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></symbol>
+ <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10.5a4 4 0 00.4-8 5.5 5.5 0 00-10.6-1.2A4.6 4.6 0 007 18.5z"/></symbol>
+ <symbol id="i-cloudsun" viewBox="0 0 24 24"><path d="M9 4v1.5M3.8 6.2l1 1M2.5 11.5H4M13.6 7.2a4 4 0 00-7.5 2.6"/><path d="M8.5 19.5h9a3.5 3.5 0 00.3-7 4.8 4.8 0 00-9.2-1A4 4 0 008.5 19.5z"/></symbol>
+ <symbol id="i-rain" viewBox="0 0 24 24"><path d="M7 15h10.5a4 4 0 00.4-8A5.5 5.5 0 007.3 5.8 4.6 4.6 0 007 15z"/><path d="M8.5 18l-1 2.5M12.5 18l-1 2.5M16.5 18l-1 2.5"/></symbol>
 </svg>
 <header class="topbar">
   <a class="brand" href="#sejour" aria-label="Le Petit Préf, accueil"><svg class="i" aria-hidden="true"><use href="#i-brand"/></svg>Le Petit Préf</a>
@@ -75,10 +79,10 @@
 <nav class="tabs" id="rail" aria-label="Rubriques"></nav>
 <main id="main"><div class="empty" style="padding:24px 16px">Chargement…</div></main>
 <footer class="site-foot">
-  <nav aria-label="Liens utiles"><a href="#installer" id="fInst">Installer l'app</a><a href="#venir">Venir à Préfailles</a><a href="#peche">Pêche à pied</a><a href="#pratique">Numéros utiles</a><a href="#apropos">Contact et mentions légales</a></nav>
+  <nav aria-label="Liens utiles"><a href="#installer" id="fInst">Installer l'app</a><a href="#venir">Transports</a><a href="#peche">Pêche à pied</a><a href="#pratique">Numéros utiles</a><a href="#apropos">Contact et mentions légales</a></nav>
   <p id="upd">Agenda et cinéma mis à jour chaque matin.</p>
   <p>Marées : calcul harmonique calé sur les annuaires SHOM de Pornic (environ 10 min et 10 cm d'écart). Horaires d'ouverture indicatifs : appelez avant de vous déplacer.</p>
 </footer>
-<script src="app.js?v=20261109-2322"></script>
+<script src="app.js?v=20261110-0802"></script>
 </body>
 </html>
