@@ -76,7 +76,7 @@ ACTS.forEach(a=>{a.dist=(a.lat&&a.lon)?km(HOME,a):(TOWN_KM[a.town]??null);});
 function openOn(a,s){if(!a.open||!a.open.length)return null;const md=s.slice(5),d=String(dow(s));
   for(const r of a.open){const inR=r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to);if(inR&&(!r.days||r.days.includes(d)))return r.hours||"ouvert";}return a.partial?null:false;}
 const fitsWho=(a,w)=>{const r=WHO.find(x=>x[0]===w)[2];return !a.ages||overlap(a.ages,r);};
-const fitsWhere=(k,town)=>S.where==="ici"?isHere(k,town):(k==null||k<=whereMax());
+const fitsWhere=(k,town,w=S.where)=>w==="ici"?isHere(k,town):(k==null||k<=WHERE.find(x=>x[0]===w)[2]);
 const agesTxt=a=>a.ages?(a.ages[1]>=99?`dès ${a.ages[0]} ans`:`${a.ages[0]}–${a.ages[1]} ans`):"";
 function evFits(e,w){if(w==="tous")return true;const r=WHO.find(x=>x[0]===w)[2];if(e.ageMin!=null||e.ageMax!=null)return overlap([e.ageMin??0,e.ageMax??99],r);if(w==="adultes")return true;return !!e.kids;}
 const SITE="https://lepetitpref.fr";
@@ -150,7 +150,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 
 /* ---------- état ---------- */
 const S={events:null,cinema:null,assos:null,meta:null,err:null,
-  where:sget("cf-where")||"20",rainSet:{},openDay:null,
+  where:sget("cf-where")||"20",mWhere:sget("pp-mwhere")||"ici",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"pref",mk:"tous",q:"",os:null};
 if(!ZONES.some(w=>w[0]===S.where))S.where="20";
@@ -373,7 +373,7 @@ function tile(a,d,href="#activites",act=""){const[c,n]=(TH[a.cat]||["t-act","spa
 /* ===== barres de filtres : bleu = quand, couleurs = quoi, gris = filtres ===== */
 const qchip=(label,pressed,attrs)=>`<button type="button" class="chip chip-q" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
 const kchip=(label,pressed,attrs,k)=>`<button type="button" class="chip chip-k k-${k}" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
-const zoneSel=()=>chipSel(S.where==="ici"?"À Préfailles":"≤ "+S.where+" km",S.where,ZONES.map(([k,l])=>[k,k==="ici"?"À Préfailles":"Jusqu'à "+l]),"where","20");
+const zoneSel=(w=S.where,chg="where",dflt="20")=>chipSel(w==="ici"?"À Préfailles":"≤ "+w+" km",w,ZONES.map(([k,l])=>[k,k==="ici"?"À Préfailles":"Jusqu'à "+l]),chg,dflt);
 const ETK={fete:"food",brocante:"food",spectacle:"act",jeux:"act",expo:"act",sport:"nat",nature:"nat",atelier:"sea",vielocale:"sea"};
 const CATK={mer:"sea",bienetre:"sea",culture:"sea",nature:"nat",sport:"nat",sortie:"act",sensations:"act",enfants:"act",saveurs:"food",marche:"food",assos:"nat"};
 const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label="${label}">${inner}</div>`;
@@ -422,14 +422,15 @@ const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperi
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
 const mkOK=a=>S.mk==="tables"?isResto(a):kindOf(a)===S.mk;
 function vManger(){const t=today(),od=S.openDay||t;
-  const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town));
+  /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
+  const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
   const base=all.filter(a=>!S.openToday||openOn(a,od));
   const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
   return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, des plus proches aux plus loin`)}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
-   ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${zoneSel()}`)}</div>
+   ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${zoneSel(S.mWhere,"mwhere","ici")}`)}</div>
   <section class="sec" style="padding-top:0">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
@@ -669,22 +670,36 @@ function feriesOf(T){return new Set(T.feries||[]);}
 function departsOn(T,L,sn,d){if(d<L.debut||d>L.fin)return null;if((T.sansService||[]).includes(d))return[];
   const w=feriesOf(T).has(d)?"0":String(dow(d));const vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
   return sn.departs.filter(x=>x.jours.includes(w)&&(x.periode==="toujours"||(x.periode==="vacances")===vac||(x.periode==="scolaire"&&!vac))).sort((a,b)=>a.dep.localeCompare(b.dep));}
-function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;
+function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;const dir=S.trDir||0;
   const days=range(t,addDays(t,6));const nowHM=hm(new Date());
   if(S.transports===null)return pageHead("Transports","")+`<section class="sec">${loadingTxt}</section>`;
   if(!T||!T.lignes)return pageHead("Transports","")+`<p class="empty">Horaires indisponibles.</p>`;
-  const fer=feriesOf(T).has(d);
-  const lineSec=L=>{const blocks=L.sens.map(sn=>{const dep=departsOn(T,L,sn,d);
-      let body;if(dep===null)body=`<p class="empty">${d>L.fin?`Horaires après le ${dshort(L.fin)} pas encore intégrés.`:"Hors période de la fiche horaire."} <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">Fiche officielle ↗</a></p>`;
-      else if(!dep.length)body=`<p class="empty">Pas de départ ce jour-là.</p>`;
-      else{const nx=d===t?dep.find(x=>x.dep>=nowHM):null;
-        body=`<ul class="list">${dep.map(x=>{const past=d===t&&x.dep<nowHM;return `<li class="row${past?" is-past":""}"><span class="row-lead${x===nx?" is-next":""}">${x.dep.replace(/^0/,"")}</span><span class="row-main"><span class="row-title">Arrivée ${x.arr.replace(/^0/,"")}${x===nx?' <span class="note-pill ok">Prochain</span>':""}</span>${x.note&&!/^Dimanche et jours fériés$/.test(x.note)||x.incertain?`<span class="row-meta ${x.incertain?"warn":""}">${x.incertain?"À confirmer · ":""}${esc(x.incertain?"jour exact non précisé sur la fiche, appelez Allô Aléop":x.note)}</span>`:""}</span></li>`;}).join("")}</ul>`;}
-      return `<div class="tr-dir"><h3 class="tr-h">${esc(sn.de)} → ${esc(sn.vers)}</h3><p class="sec-note" style="margin:0 0 2px">${esc(sn.arret)} → ${esc(sn.dest)}</p>${body}</div>`;}).join("");
-    return sec(`${L.mode==="train"?ic("train","i-s"):ic("bus","i-s")} ${esc(L.nom)}`,"",blocks+`<details class="tr-more"><summary>Tarifs et infos</summary><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">source ↗</a></p></details>`,esc(L.trajet));};
+  const fer=feriesOf(T).has(d),isT=d===t;
+  const mn=x=>+x.slice(0,2)*60+ +x.slice(3,5),hh=x=>x.replace(/^0/,"");
+  const dur=(a,b)=>{const m=mn(b)-mn(a);return m>=60?`${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`:`${m} min`;};
+  const inTxt=x=>{const m=mn(x.dep)-mn(nowHM);return m<60?`dans ${m} min`:`dans ${Math.floor(m/60)} h ${String(m%60).padStart(2,"0")}`;};
+  const badge=L=>`<span class="tr-badge${L.mode==="train"?" is-train":""}">${L.mode==="train"?ic("train","i-s")+"TER":ic("bus","i-s")+esc(L.id)}</span>`;
+  const info=x=>(x.note&&!/^Dimanche et jours fériés$/.test(x.note))||x.incertain?`<span class="tr-note${x.incertain?" warn":""}">${x.incertain?"À confirmer : jour exact non précisé sur la fiche, appelez Allô Aléop.":esc(x.note)}</span>`:"";
+  /* en haut : le prochain départ de chaque ligne */
+  const nexts=T.lignes.map(L=>{const sn=L.sens[dir],dep=departsOn(T,L,sn,d)||[],fut=isT?dep.filter(x=>x.dep>=nowHM):dep;return{L,sn,x:fut[0],y:fut[1]};});
+  const top=`<div class="tr-next">${nexts.map(({L,sn,x,y})=>`<a class="tr-nx" href="#venir" data-act="trgo" data-v="${esc(L.id)}">${badge(L)}<span class="tr-nx-m"><span class="tr-nx-to">${esc(sn.de)} → ${esc(sn.vers)}</span><small>${x?`${isT?inTxt(x):"premier départ"}${y?` · puis ${hh(y.dep)}`:""}`:`plus de départ ${isT?"aujourd'hui":"ce jour-là"}`}</small></span><b class="tr-nx-t">${x?hh(x.dep):"–"}</b></a>`).join("")}</div>`;
+  /* une carte par ligne */
+  const card=L=>{const sn=L.sens[dir],dep=departsOn(T,L,sn,d);let body;
+    if(dep===null)body=`<p class="empty">${d>L.fin?`Horaires après le ${dshort(L.fin)} pas encore intégrés.`:"Hors période de la fiche horaire."} <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">Fiche officielle ↗</a></p>`;
+    else if(!dep.length)body=`<p class="empty">Pas de départ ce jour-là.</p>`;
+    else{const past=isT?dep.filter(x=>x.dep<nowHM):[],fut=dep.filter(x=>!past.includes(x)),nx=isT?fut[0]:null;
+      const li=x=>`<li class="tr-row${x===nx?" is-next":""}${past.includes(x)?" is-past":""}"><b class="tr-t">${hh(x.dep)}</b><span class="tr-arr" aria-hidden="true"></span><span class="tr-t2">${hh(x.arr)}</span><small class="tr-d">${dur(x.dep,x.arr)}</small>${x===nx?'<span class="note-pill ok">Prochain</span>':""}${info(x)}</li>`;
+      body=`${past.length?`<details class="tr-past"><summary>${past.length} départ${past.length>1?"s":""} déjà passé${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(li).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(li).join("")}</ul>`:`<p class="empty">Plus de départ aujourd'hui.</p>`}`;}
+    return `<article class="tr-card" id="tr-${esc(L.id)}"><header class="tr-head">${badge(L)}<div class="tr-head-m"><h2 class="tr-title">${esc(sn.de)} → ${esc(sn.vers)}</h2><p class="tr-sub">${esc(sn.arret)} → ${esc(sn.dest)}</p></div></header>
+     <p class="tr-cols" aria-hidden="true"><span>Départ</span><span>Arrivée</span></p>${body}
+     <details class="tr-more"><summary>Tarifs et infos de la ligne</summary><p class="row-meta">${esc(L.trajet)}</p><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">source ↗</a></p></details></article>`;};
   return `${pageHead("Transports","Cars et trains depuis Préfailles, horaires intégrés.")}
   <div class="filters">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
+  <div class="seg-wrap"><div class="seg" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div>
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
-  ${T.lignes.map(lineSec).join("")}
+  <h2 class="tr-sec">${isT?"Prochains départs":"Premiers départs"}</h2>
+  ${top}
+  ${T.lignes.map(card).join("")}
   ${sec("Bon à savoir","",`<ul class="tips"><li>${esc(T.tarifs?.actuel||"")}</li>${T.tarifs&&T.tarifs["a_partir_du_2027-01-04"]?`<li><b>À partir du 4 janvier 2027 :</b> ${esc(T.tarifs["a_partir_du_2027-01-04"])}</li>`:""}<li>Renseignements Aléop : <a href="tel:0969391414">09 69 39 14 14</a> (lun–ven 8h–19h, sam 8h–12h).</li><li>Navettes gratuites de l'été (Pornic Agglo) : horaires 2027 pas encore publiés.</li></ul>`)}
   <p class="foot">Horaires repris des fiches officielles Aléop et TER (Région Pays de la Loire), à titre indicatif : grèves, travaux et jours fériés peuvent les changer.</p>`;}
 
@@ -905,6 +920,8 @@ const ACT={
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
+  trdir:v=>{S.trDir=+v;render();},
+  trgo:v=>{const el=document.getElementById("tr-"+v);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});},
   when:(v,el)=>{S.when=v;S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
   cin:v=>{S.cin=v;sset("pp-cin",v);S.cineDay=null;if(curView()==="cine")render();},
   cday:v=>{S.cineDay=v;if(curView()==="cine")render();},
@@ -919,12 +936,12 @@ const ACT={
   av:v=>{S.actView=v;render();},
   more:v=>{S.more[v]=true;render();},
   tday:v=>{S.tideDay=v;render();},
-  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="20";sset("cf-where","20");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";render();},
+  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="20";sset("cf-where","20");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";S.mWhere="20";sset("pp-mwhere","20");render();},
   kml:()=>{const st=$("#kmlStatus");
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
