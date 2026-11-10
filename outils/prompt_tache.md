@@ -1,6 +1,6 @@
 # Le Petit Préf · mise à jour quotidienne
 
-Tu mets à jour le site **Le Petit Préf** (https://lepetitpref.fr), le carnet de Préfailles (Loire-Atlantique) pour les vacanciers et les habitants. Travaille en français. Les données sont les fichiers JSON du dossier `donnees/` de ce dépôt. **Ne modifie jamais** `index.html`, `style.css`, `app.js`, `sw.js`, `manifest.webmanifest`, `CNAME` ni `outils/`.
+Tu mets à jour le site **Le Petit Préf** (https://lepetitpref.fr), le carnet de Préfailles (Loire-Atlantique) pour les vacanciers et les habitants. Travaille en français. Les données sont les fichiers JSON du dossier `donnees/` de ce dépôt. **Ne modifie jamais** `index.html`, `style.css`, `sw.js`, `manifest.webmanifest`, `CNAME` ni `outils/`. Dans `app.js`, seules les fiches des lieux (tableau `ACTS`) peuvent changer, et uniquement avec `outils/lieux.py` (section « Lieux, marchés et horaires »).
 
 Règle absolue : n'écris que ce que tu as lu dans une source ; n'invente rien ; en cas de doute, garde l'ancienne valeur.
 
@@ -42,10 +42,26 @@ Immobilier : abandonné pour l'instant, ne rien faire.
 ## 4. `donnees/status.json`
 `{"updatedAt": "<ISO, heure de Paris>", "bulletin": {"date": "JJ/MM", "title": "Glisse du jour", "text": "2–3 phrases"}}` : houle (hauteur, période) et vent (nœuds, direction) aujourd'hui pour Préfailles / Saint-Brevin ; surfable ou non à Saint-Brevin et à la Pointe Saint-Gildas ; wing (≈ 12–25 nœuds) ou bateau ; avis de coup de vent s'il y en a. Sources : windfinder (Saint-Brevin), surfnerd (Préfailles), windmorbihan.com/saint-gildas. Sans prévision fiable : `"bulletin": null`.
 
+## Lieux, marchés et horaires (restos, bars, caves, marchés, producteurs, activités)
+Les fiches des lieux sont dans `app.js` (tableau `ACTS`). Pour les modifier :
+1. `python3 outils/lieux.py sortir /tmp/lieux.json` ; modifie ce fichier (une fiche = un objet : `n`, `short`, `cat`, `kind`, `town`, `addr`, `tel`, `url`, `season`, `d`, `open`, `lat`, `lon`, `cadre`, `bar`…) ;
+2. `python3 outils/lieux.py remettre /tmp/lieux.json` (il contrôle tout et refuse s'il y a une erreur) ;
+3. puis `python3 outils/version.py` (pour que les téléphones prennent la mise à jour).
+`open` = liste de `{from:"MM-JJ", to:"MM-JJ", days:"0123456" (0 = dimanche), hours:"8h–13h"}` ; `partial:true` si les horaires ne couvrent pas toute l'année. Ne mets que ce qu'une source datée de 2025 ou 2026 dit ; sinon laisse `open` vide (le site affiche « Horaires à vérifier »).
+Rotation, un groupe par jour de la semaine (contrôle les fiches existantes : horaires, saison, fermeture définitive, changement de nom ; ajoute ce qui manque) :
+- lundi : **marchés** (jours, heures, saison été/hiver) de Préfailles, La Plaine, Pornic (centre, Sainte-Marie, Le Clion), Saint-Michel/Tharon, La Bernerie, Les Moutiers, Saint-Brevin, Chauvé ;
+- mardi : restaurants et crêperies de Préfailles et La Plaine ;
+- mercredi : bars, caves, lieux de soirée (Le Canotier, casinos, comedy clubs) ;
+- jeudi : huîtres, poisson, producteurs, boulangeries, glaciers, épiceries ;
+- vendredi : restaurants de Pornic et Saint-Michel ;
+- samedi : activités (horaires d'été/hiver des musées, piscines, écoles de voile, locations) ;
+- dimanche : rien.
+Sources : API Geotrek du Département (fiches de l'office de tourisme : https://admin-rando.loire-atlantique.fr/api/v2/touristiccontent/?format=json), pornic.com, saint-brevin.com, sites des mairies et des établissements. Le champ `cadre` (vue / plage / terrasse) n'est posé que si une source fiable le dit ET que l'adresse est cohérente (Ô 22, place du Marché, n'a pas de vue mer). Pas de téléphone portable de particulier.
+
 ## 5. Contrôler et publier
 1. `python3 outils/verifier.py`. S'il sort en erreur, corrige ta saisie et relance ; si tu n'y arrives pas, ne publie rien et réponds « ÉCHEC contrôle : » suivi de l'erreur.
 2. `git config user.name "Le Petit Préf"` ; `git config user.email "noreply@lepetitpref.fr"`. Aucune ligne Co-Authored-By.
-3. `git add donnees` ; commit « Données du <date> » ; `git fetch origin main` ; si main a avancé, `git rebase origin/main` et relance le contrôle ; puis `git push origin HEAD:main`.
+3. `git add donnees` (et, si les lieux ont changé, `git add app.js index.html sw.js donnees/version.json`) ; commit « Données du <date> » ; `git fetch origin main` ; si main a avancé, `git rebase origin/main` et relance le contrôle ; puis `git push origin HEAD:main`.
 4. Réponds en 3 lignes : ce qui a été ajouté / retiré (événements, séances), la ligne du contrôle, et les sources refusées. « ÉCHEC GitHub : <erreur> » si le push a échoué.
 
 Astuce d'accès : le shell n'a souvent pas accès aux sites ; utilise WebFetch / WebSearch (des sous-agents peuvent paralléliser les recherches).
