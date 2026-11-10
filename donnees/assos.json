@@ -557,5 +557,16 @@
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/le-conseil-municipal-des-enfants/",
   "what": "Projets des jeunes élus, cérémonies"
+ },
+ {
+  "id": "enduro-pwaro-la-plaine",
+  "contact": "",
+  "desc": "Association de course à pied qui organise Les Foulées Préfaillaises, chaque été à Préfailles (5 et 10 km, départ du plateau de la Chapelle ; édition 2026 le 26 juillet).",
+  "forWho": "Coureurs",
+  "name": "Enduro'Pwaro",
+  "regular": "",
+  "town": "La Plaine-sur-Mer",
+  "url": "https://en.pornic.com/les-foulees-prefaillaises-la-plaine-sur-mer.html",
+  "what": "Course à pied (Foulées Préfaillaises)"
  }
 ]
