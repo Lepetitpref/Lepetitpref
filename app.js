@@ -602,7 +602,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   /* À faire */
   const z20=e=>fitsWhere(evKm(e),e.town,"10");
   const evT=ld?[]:evOnDay(t).filter(e=>z20(e)&&!evIsLong(e));
-  const nSoir=evT.filter(evSoir).length,barsSoir=NUITS().filter(x=>fitsWhere(x.dist??TOWN_KM[x.town],x.town,"10")&&ouvertTard(x,t)===true);
+  const nSoir=evT.filter(evSoir).length;
   const wkP=ld?[]:eventsIn(t,addDays(t,6)).filter(e=>z20(e)&&!evIsLong(e));
   const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,"10")).length;
   const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,"pref").filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
@@ -625,7 +625,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
     r("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
     r("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants`),
-    r("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"}${barsSoir.length?`, ${barsSoir.length} bar${barsSoir.length>1?"s":""} ouvert${barsSoir.length>1?"s":""} tard`:""} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes, bars`,' data-act="soirw" data-v="soir"'),
+    r("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes ; et les bars où sortir`,' data-act="soirw" data-v="soir"'),
     r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
