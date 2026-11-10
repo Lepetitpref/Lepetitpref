@@ -27,7 +27,7 @@
   --warm:#a3542e; --warm-ink:#ffffff;
   --mint:#e6f0ec;           /* vert d'eau : bloc météo de la page Mer */
   --seagreen:#2d6e63; --seagreen-ink:#ffffff; /* vert de mer : sélections « Où » / « Temps », badge TER */
-  --i-sea:#245f86; --i-food:#a0522d; --i-act:#4a4f9a; --i-nat:#3d6b43;
+  --i-sea:#245f86; --i-food:#a0522d; --i-act:#4a4f9a; --i-nat:#3d6b43; --i-cine:#8a3d6b;
   --c-sea:var(--accent); --c-food:#c0714a; --c-act:#6a6fb8; --c-market:#5c8a5f; --taupe:#8a7f72;
 
   --font-text:"Inter Tight",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -46,7 +46,7 @@
     --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631;
     --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
     --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
-    --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5;
+    --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
     --c-food:#e0a07a; --c-act:#9ea3e6; --c-market:#8fc193; --taupe:#b3a898;
     color-scheme:dark;
   }
@@ -57,7 +57,7 @@
   --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631;
   --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
   --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
-  --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5;
+  --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
   --c-food:#e0a07a; --c-act:#9ea3e6; --c-market:#8fc193; --taupe:#b3a898;
   color-scheme:dark;
 }
@@ -618,3 +618,31 @@ details:not(.row-d)[open] > summary::after{transform:rotate(-135deg);margin-top:
 /* onglets : ne se collent pas quand le texte est agrandi */
 .tabs{gap:10px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
+
+/* ===== blocs : carte blanche, liseré de couleur à gauche, titre sur bandeau teinté (esprit Concret) ===== */
+.sec.blk{margin:18px var(--gutter) 0;padding:4px 14px 6px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c,var(--i-act));border-radius:var(--r-l)}
+.blk > .sec-head{align-items:center;min-height:46px;margin:8px -6px 10px;padding:4px 12px;border-radius:10px;background:color-mix(in srgb,var(--c,var(--i-act)) 11%,var(--surface));box-shadow:inset 4px 0 0 var(--c,var(--i-act))}
+.blk .sec-title{font-size:20px;color:var(--ink)}
+.blk .sec-link{margin:0}
+.blk > .sec-note{margin:0 0 8px}
+.blk .list > li:last-child > .row,.blk .list > .row:last-child{padding-bottom:8px}
+/* listes groupées (Manger, À faire, Agenda) : intertitre + liste = une carte */
+.grps{padding-left:var(--gutter);padding-right:var(--gutter)}
+.grps .group{margin:18px 0 0;padding:10px 14px 10px 16px;border:1px solid var(--line);border-left:4px solid var(--c,var(--i-act));border-bottom:0;border-radius:var(--r-l) var(--r-l) 0 0;background:color-mix(in srgb,var(--c,var(--i-act)) 11%,var(--surface))}
+.grps .group + .list,.grps .group ~ .list{margin:0;padding:0 14px 4px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c,var(--i-act));border-top:0;border-radius:0 0 var(--r-l) var(--r-l)}
+.grps .group-title{font-size:19px}
+.day{margin:12px 0 0 !important;padding:6px 14px 4px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--i-act);border-radius:var(--r-l)}
+/* transports : même liseré */
+.tr-card{border-left:4px solid var(--seagreen)}
+
+/* page Mer (revue UX) */
+#spots{scroll-margin-top:150px}
+.row-d[id^="spot-"]{scroll-margin-top:150px}
+.mer-eau{display:flex;align-items:center;gap:8px;margin:14px var(--gutter) 0;font-size:16px;color:var(--muted)}
+.mer-eau b{color:var(--accent);font-weight:600}
+.mer-eau .i{color:var(--accent)}
+.glisse-non .row-meta{color:var(--faint)}
+.note-pill{font-size:14px}
+.chip-q{min-height:44px}
+.chip-q small,.sea-hours small,.sea-hours div,.spot-act small{font-size:14px}
+.sea-c span{font-size:14px}

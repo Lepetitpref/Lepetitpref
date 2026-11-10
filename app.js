@@ -214,7 +214,10 @@ function card({c="",ic:icn="",title,meta:m="",desc="",extra="",href="",right=""}
   if(extra)return row({th,title,metaH:m,lines:desc?[[desc,""]]:[],more:extra,tag:"div"});
   if(href){const ext=/^https?:/.test(href);return row({th,title:title+(ext?' <span class="dim">↗</span>':""),metaH:m,lines:desc?[[desc,""]]:[],href,ext,tag:"div"});}
   return row({th,title,metaH:m,lines:desc?[[desc,""]]:[],tag:"div"});}
-const sec=(title,link="",body="",note="")=>`<section class="sec"><div class="sec-head"><h2 class="sec-title">${title}</h2>${link}</div>${note?`<p class="sec-note">${note}</p>`:""}${body}</section>`;
+/* couleur du liseré d'un bloc, d'après son titre */
+const secCol=t=>{t=String(t).replace(/<[^>]+>/g,"").toLowerCase();
+  return /ciné|film|séance/.test(t)?"--i-cine":/manger|resto|table|marché|huître|saveur|boulang/.test(t)?"--i-food":/transport|trajet|ligne|car |cars|train/.test(t)?"--seagreen":/urgence|sécurité|numéro|santé|pratique|attention|vigilance/.test(t)?"--warn":/nature|balade|sentier|vélo/.test(t)?"--i-nat":/mer|marée|glisse|spot|surf|pêche|plage|bateau|voile/.test(t)?"--i-sea":"--i-act";};
+const sec=(title,link="",body="",note="")=>`<section class="sec blk" style="--c:var(${secCol(title)})"><div class="sec-head"><h2 class="sec-title">${title}</h2>${link}</div>${note?`<p class="sec-note">${note}</p>`:""}${body}</section>`;
 const secLink=(href,txt,act="")=>`<a class="sec-link" href="${href}"${act}>${txt}</a>`;
 const chip=(label,pressed,attrs)=>`<button type="button" class="chip" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
 const chipSel=(label,val,opts,chg,dflt)=>`<label class="chip chip-sel" ${val!==dflt?'aria-pressed="true"':""}>${label}${ic("down")}<select data-chg="${chg}" aria-label="${esc(label)}">${opts.map(([k,l])=>`<option value="${k}" ${k===val?"selected":""}>${esc(l)}</option>`).join("")}</select></label>`;
@@ -438,7 +441,7 @@ function vManger(){const t=today(),od=S.openDay||t;
   return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, des plus proches aux plus loin`)}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
    ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${zoneSel(S.mWhere,"mwhere","ici")}`)}</div>
-  <section class="sec" style="padding-top:0">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -456,12 +459,12 @@ function vActs(){const t=today(),od=S.openDay||t;
   <div class="filters">${frow("frow","Thème",cats.map(([k,l])=>kchip(k==="tous"?"Tout":l,S.cat===k,`data-act="cat" data-v="${k}"`,CATK[k]||"ink")).join(""))}
    ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
-  <section class="sec" style="padding-top:0">${S.cat==="assos"?"":list.length?Object.keys(CATS).filter(k=>g[k]).map(k=>`<div class="group"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul class="list">${g[k].map(a=>placeRow(a,t)).join("")}</ul>`).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
+  <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?Object.keys(CATS).filter(k=>g[k]).map(k=>`<div class="group" style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})" class="list">${g[k].map(a=>placeRow(a,t)).join("")}</ul>`).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
   <p class="foot">Une info à corriger ? Voir « À propos et contact » dans le menu.</p>`;}
 function assosBlock(){const L=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]??null,a.town)).sort((a,b)=>(TOWN_KM[a.town]??99)-(TOWN_KM[b.town]??99)||(a.name||"").localeCompare(b.name||""));
-  return `<div class="group"><h2 class="group-title">Associations</h2><span class="group-count">${L.length}</span></div>
-   ${S.assos===null?loadingTxt:L.length?`<ul class="list">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta">${esc(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
+  return `<div class="group" style="--c:var(--i-nat)"><h2 class="group-title">Associations</h2><span class="group-count">${L.length}</span></div>
+   ${S.assos===null?loadingTxt:L.length?`<ul class="list" style="--c:var(--i-nat)">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta">${esc(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
 
 /* ===== Pêche à pied ===== */
 /* Tailles minimales et quantités autorisées pour la pêche à pied de loisir.
@@ -636,7 +639,6 @@ function seaCard(d){const w=wxDay(d),t=today();
     ${cell("Rafales",`${r0(w.g)} nds`,w.g>=34?"coup de vent":w.g>=25?"ça souffle":"")}
     ${cell("Houle",sMid&&sMid.hs!=null?`${r1(sMid.hs)} m`:"–",sMid?`${r0(sMid.swp??sMid.tp)} s, ${DIRLONG[dirTxt(sMid.swd??sMid.sd)]||""}`:"")}
     ${cell("Eau",sst!=null?`${r1(sst)}°`:"–",sst!=null?(sst<13?"combinaison 5/4 mm":sst<16?"combinaison 4/3 mm":sst<19?"combinaison 3/2 mm":"maillot ou shorty"):"")}</div>
-   ${boat?`<p class="sea-boat ${NOTECLS[boat[0]]}">${ic("sail","i-s")}<span><b>Bateau :</b> ${boat[1]}.</span></p>`:""}
    <div class="sea-hours">${hs.map(([h,x,s])=>`<div><span>${h}h</span><b>${dirTxt(x.wd)} ${r0(x.w)}</b><small>raf. ${r0(x.g)}${s&&s.hs!=null?` · ${r1(s.hs)} m`:""}</small></div>`).join("")}</div>
    <button type="button" class="sea-share lnk" data-share="${esc(`La mer à Préfailles, ${dlong(d)} : ${sky.toLowerCase()}, vent ${r0(w.w)} nds ${DIRLONG[dirTxt(w.wd)]||""}${sMid&&sMid.hs!=null?`, houle ${r1(sMid.hs)} m`:""}${sst!=null?`, eau ${r1(sst)}°`:""}${(()=>{const l=dayLows(d)[0];return l?`, basse mer à ${hm(new Date(l.ms))}`:"";})()}.`)}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
   </div>`;}
@@ -644,29 +646,34 @@ function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return 
 function glisseSec(d){if(!wxDay(d))return"";
   const acts=["surf","kite","wing","voile","paddle"];
   const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
-  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${best.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(a==="voile"?"sail":a==="paddle"?"drop":"wave")}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:b.j[0]?meta(esc(sp.n),slotTxt(b)):"",lines:[[esc(b.j[1]),""]]})).join("")}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité, d'après les prévisions.");}
+  const yes=best.filter(x=>x.b.j[0]>0),no=best.filter(x=>x.b.j[0]===0);
+  const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
+  const rows=yes.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""]],href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
+  const nos=no.length?`<li class="row glisse-non"><span class="row-main"><span class="row-meta">${no.map(x=>ACTL[x.a].replace(" et bateau","")).join(", ")} : non (${[...new Set(no.map(x=>x.b.j[1].toLowerCase()))].join(" ; ")})</span></span></li>`:"";
+  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${rows}${nos}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
 function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   const rows=SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
     const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):-1;
-    const line=has?sm.map(x=>`${ACTL[x.a]} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · "):"";
+    const line=has?(sm.filter(x=>x.b.j[0]>0).map(x=>`${ACTL[x.a].replace(" et bateau","")} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · ")||"Rien de bon aujourd'hui"):"";
     const surf=has&&sp.acts.includes("surf")&&sp.tide?surfHours(sp,d):[];const sb=surf.length?bestOf("surf",sp,d):null;
     const surfLine=sb&&sb.j[0]?[`Surf ${slotTxt(sb)}${sb.tt?` · ${sb.tt.txt}`:""}`,"ok"]:null;
     const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure</b> · idéal : ${esc(sp.tideTxt)}</p><div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta">Vert : bon · orange : possible · gris : non (houle, vent et hauteur d'eau).</p></div>`:"";
     const det=sm.map(x=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${ACTL[x.a]}</b> · ${esc(x.b.j[1])}${x.b.j[0]?` · ${slotTxt(x.b)}`:""}${x.b.w?`<br><small>Vent ${dirTxt(x.b.w.wd)} ${r0(x.b.w.w)} nds (${RELTXT[windRel(sp,x.b.w.wd)]}), rafales ${r0(x.b.w.g)}${x.b.s&&x.b.s.hs!=null?` · houle au large ${r1(x.b.s.hs)} m, ${r0(x.b.s.swp??x.b.s.tp)} s`:""}</small>`:""}</span></div>`).join("");
     const shTxt=`${sp.n} (${townShort(sp.town)}), ${dlong(d)} : ${line||sp.acts.map(a=>ACTL[a]).join(", ")}${surfLine?". "+surfLine[0]:""}.`;
-    return row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
-      more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`});}).join("");
-  return `<section class="sec" id="spots"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers. La marée change la vague : sur les récifs (Pointe Saint-Gildas, Margaret) et à Saint-Brevin (Rochelets, Ermitage), évitez la marée basse ; à Tharon, la marée haute fait du shorebreak. Le vent est souvent plus faible le matin.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
+    return {top,h:row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
+      more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`}).replace('<details class="row-d"',`<details class="row-d" id="spot-${sp.id}"`)};}).sort((a,b)=>(b.top>0)-(a.top>0)).map(x=>x.h).join("");
+  return `<section class="sec blk" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
 function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
   return `${pageHead(curView()==="spots"?"Spots et glisse":"Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
   <div class="filters">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
-  <section class="sec" style="padding-top:12px">${seaCard(s)}</section>
-  <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
+  ${(()=>{const e=sstNow(s);return e!=null?`<p class="mer-eau">${ic("drop","i-s")}<span><b>Eau ${r1(e)}°</b> · ${e<13?"combinaison 5/4 mm":e<16?"combinaison 4/3 mm":e<19?"combinaison 3/2 mm":"maillot ou shorty"}</span></p>`:"";})()}
   ${glisseSec(s)}
   ${spotsSec(s)}
+  <section class="sec" style="padding-top:18px">${seaCard(s)}</section>
+  <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
   ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
 
@@ -945,6 +952,7 @@ const ACT={
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
+  spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{S.when=v;S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
