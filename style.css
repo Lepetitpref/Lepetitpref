@@ -761,3 +761,13 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 /* blocs : le titre prend tout le haut du bloc, dans la couleur du liseré, sans second liseré */
 .sec.blk{padding-top:0;overflow:hidden}
 .blk > .sec-head{margin:0 -14px 10px;padding:8px 14px;border-radius:0;box-shadow:none;background:color-mix(in srgb,var(--c,var(--i-act)) 13%,var(--surface))}
+
+/* menu en couleur : chaque rubrique a sa pastille, comme ses blocs */
+.menu-ic{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:12px;background:color-mix(in srgb,var(--c,var(--accent)) 15%,var(--surface));color:var(--c,var(--accent))}
+.menu-ic .i{width:20px;height:20px}
+.menu-item[aria-current="page"]{box-shadow:inset 4px 0 0 var(--c,var(--accent));padding-left:10px;margin-left:-10px}
+.menu-item[aria-current="page"] b{color:var(--c,var(--accent))}
+.menu-install{display:flex;align-items:center;gap:12px;margin:14px var(--gutter) 0;padding:12px;border-radius:var(--r-l);border:1.5px solid var(--accent);background:var(--accent-soft);color:var(--ink);--c:var(--accent)}
+.menu-install b{display:block;font-weight:600;font-size:16px;color:var(--accent)}
+.menu-install small{display:block;color:var(--muted);font-size:14px;line-height:1.35}
+.menu-install > .i{margin-left:auto;color:var(--accent);flex:none}
