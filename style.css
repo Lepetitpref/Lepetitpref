@@ -15,6 +15,7 @@
   --line:#e2e2dc;          /* filet */
   --line-strong:#d3d3cb;
   --accent:#1b5b86;        /* bleu de mer (affiné depuis #1f5f8b) */
+  --sel2:#3f86b8; --sel2-ink:#ffffff; /* bleu plus clair : filtres et choix secondaires */
   --accent-ink:#ffffff;
   --accent-soft:#e6f1f6;   /* ciel */
   --sky:#e6f1f6;
@@ -43,7 +44,7 @@
   :root:not([data-theme="light"]){
     --bg:#121317; --surface:#1b1c21; --ink:#ececE7; --muted:#a1a3ab; --faint:#8f919a;
     --line:#2a2b31; --line-strong:#373840;
-    --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631;
+    --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631; --sel2:#356b8f; --sel2-ink:#ffffff;
     --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
     --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
     --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
@@ -54,7 +55,7 @@
 :root[data-theme="dark"]{
   --bg:#121317; --surface:#1b1c21; --ink:#ececE7; --muted:#a1a3ab; --faint:#8f919a;
   --line:#2a2b31; --line-strong:#373840;
-  --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631;
+  --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631; --sel2:#356b8f; --sel2-ink:#ffffff;
   --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
   --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
   --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
@@ -731,3 +732,15 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 
 /* Transports : le sens reste collé en haut, sous les jours */
 .tr-dir-seg{padding:6px var(--gutter) 0}
+
+/* deux bleus : rubriques (barre du haut) en bleu mer plein, filtres et choix secondaires en bleu plus clair */
+.seg button[aria-pressed="true"],.seg a[aria-pressed="true"],.seg-where button[aria-pressed="true"],.seg-temps button[aria-pressed="true"],
+.chip[aria-pressed="true"],.chip-k.k-ink[aria-pressed="true"],.chip-q[aria-pressed="true"]{background:var(--sel2);border-color:var(--sel2);color:var(--sel2-ink)}
+.subnav .seg button[aria-pressed="true"],.subnav .seg a[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+/* pages qui se déroulent (La mer, suite de l'Agenda) */
+.part{scroll-margin-top:170px}
+.part-h{margin:30px var(--gutter) 0;font:400 26px/1.15 var(--font-title);scroll-margin-top:170px}
+.part-sub{margin:4px var(--gutter) 0;color:var(--muted);font-size:15px}
+.mer-share{display:inline-flex;align-items:center;gap:6px;margin:8px var(--gutter) 0}
+/* accueil : titre du jour sur une ligne */
+.home-h{white-space:nowrap;font-size:min(var(--fs-h2),5vw)}
