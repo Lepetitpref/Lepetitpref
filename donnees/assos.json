@@ -1,7 +1,7 @@
 [
  {
   "id": "abacada-prefailles",
-  "contact": "06 62 62 74 49 · ecole.abacada@gmail.com",
+  "contact": "ecole.abacada@gmail.com",
   "desc": "École de musique associative.",
   "forWho": "Enfants et adultes",
   "name": "ABACADA – école de musique",
@@ -12,18 +12,18 @@
  },
  {
   "id": "amicale-petits-mousses",
-  "contact": "06 98 96 24 85 · lespetitsmousses44770@gmail.com",
+  "contact": "lespetitsmousses44770@gmail.com",
   "desc": "Association des parents de l'école de Préfailles, très active pour les animations familiales.",
   "forWho": "Familles",
   "name": "Amicale des Petits Mousses",
   "regular": "",
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-de-vie-locale/",
-  "what": "Animations de l'école : fête de l'école, carnaval, soirées à thème (Tarti'fête), bourses aux jouets"
+  "what": "Animations de l'école : fête de l'école, carnaval, Tarti'fête, vente de sapins, vin chaud au marché, bourses aux jouets ; location de vaisselle (200 couverts : 30 €, caution 350 €), percolateur (10 €) et pêche aux canards"
  },
  {
   "id": "auto-retro-pornic",
-  "contact": "06 08 65 21 10",
+  "contact": "",
   "desc": "Passionnés de voitures anciennes, rassemblements sur le Vieux-Port.",
   "forWho": "Tous publics",
   "name": "Auto Rétro Pornic",
@@ -38,18 +38,18 @@
   "desc": "Bibliothèque associative du bourg : prêt, lectures et cafés littéraires.",
   "forWho": "Tous publics, enfants",
   "name": "Bibliothèque de Préfailles",
-  "regular": "Sept.-juin : lun 16h30-18h, mer et sam 10h30-12h et 17h30-18h30",
+  "regular": "Sept.-juin : lun 16h30-18h, mer et sam 10h30-12h et 17h30-18h30 ; juillet-août : du lundi au samedi 10h30-12h + sam 17h30-18h30 ; l'été, « Raconte-moi une histoire » (4-7 ans) le jeudi à 11h, gratuit sans inscription (programme 2026) ; abonnement 20 € par famille",
   "town": "Préfailles",
   "url": "https://prefailles.bibenligne.fr",
-  "what": "Prêt de livres, lectures, cafés littéraires, animations avec l'école"
+  "what": "Prêt de livres, lectures d'histoires pour les 4-7 ans l'été, cafés littéraires, animations avec l'école"
  },
  {
   "id": "cap-bridge-prefailles",
-  "contact": "06 31 91 08 79 · bridge@clubdesamisdeprefailles.com",
+  "contact": "bridge@clubdesamisdeprefailles.com",
   "desc": "Section bridge du CAP, toute l'année.",
   "forWho": "Joueurs de bridge, tous niveaux",
   "name": "Club des Amis de Préfailles – section bridge",
-  "regular": "Tournoi le mardi 14h30 ; perfectionnement le mardi 10h",
+  "regular": "Toute l'année : tournoi de régularité FFB le mardi 14h30, remise à niveau le mardi 10h ; l'été : tournoi homologué FFB le lundi 20h30 (programme 2026). 2,50 € adhérent, 4 € extérieur ; licence 37 €",
   "town": "Préfailles",
   "url": "https://clubdesamisdeprefailles.com/CAP/Les_Activites/Le_Bridge/",
   "what": "Bridge : tournois de régularité FFB, cours de perfectionnement"
@@ -67,40 +67,40 @@
  },
  {
   "id": "club-amitie-loisirs-prefailles",
-  "contact": "06 80 84 16 70 · b.duf-calp@orange.fr",
+  "contact": "(ou via la mairie 02 40 21 60 37)",
   "desc": "Club des aînés de Préfailles.",
   "forWho": "Retraités",
   "name": "Club Amitié et Loisirs",
   "regular": "Jeudi après-midi, salle annexe de l'Espace culturel",
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-de-loisirs/",
-  "what": "Rencontres, jeux, sorties à la journée, voyages"
+  "what": "Rencontres hebdomadaires des retraités, sorties à la journée et voyages"
  },
  {
   "id": "club-de-voile-de-prefailles",
-  "contact": "06 12 20 98 69 · clubdevoiledeprefailles@gmail.com",
-  "desc": "Le club fait aussi vivre la vie à terre : apéros, dîners, causeries.",
+  "contact": "clubdevoiledeprefailles@gmail.com",
+  "desc": "Club associatif de la Pointe Saint-Gildas, affilié à la FFV depuis 2026 ; il fait aussi vivre la vie à terre : apéros, dîners, conférences.",
   "forWho": "Plaisanciers, familles, tous âges",
   "name": "Club de Voile de Préfailles (CVP)",
-  "regular": "Calendrier interactif et réservations sur le site ; adhésion 2026 sur HelloAsso",
+  "regular": "Adhésion et licence FFV sur HelloAsso (club affilié FFV depuis 2026). L'été 2026 : « jeudis du CVP » de 18h à 20h dans la salle de convivialité du centre nautique, sorties collectives encadrées tous les jours de juin à septembre. Le programme 2027 est en préparation.",
   "town": "Préfailles",
   "url": "https://www.clubdevoileprefailles.fr",
-  "what": "Sorties en groupe, entraînements, régates, raids ; initiation, location dériveur et planche ; swimrun"
+  "what": "Sorties collectives, entraînements, régates, raids en mer, swimrun et raid paddle ; dériveurs Laser mis à disposition des membres (20 € les 2 h) et casiers à voiles (20 € la saison)"
  },
  {
   "id": "club-des-amis-de-prefailles",
-  "contact": "02 40 21 63 62 (l'été) · contact-cap@clubdesamisdeprefailles.com",
+  "contact": "Été (4 juil.-30 août 2026, 9h-20h) : 02 40 21 63 62 ; hors saison : 07 83 73 02 44 (astreinte des bénévoles, SMS pour réserver) · contact-cap@clubdesamisdeprefailles.com",
   "desc": "Le club historique de Préfailles, ouvert aux vacanciers via des adhésions courtes (semaine dès 15 € adulte, 5 € enfant).",
-  "forWho": "Familles, adultes et enfants (whist 7-12 ans)",
-  "name": "Club des Amis de Préfailles (tennis)",
-  "regular": "Adhésion à la semaine ou à la quinzaine possible ; tournois FFT en juillet-août",
+  "forWho": "Familles, enfants dès 5 ans, ados, adultes",
+  "name": "Club des Amis de Préfailles (tennis, padel et animations)",
+  "regular": "L'été (programme 2026) : whist enfants 7-13 ans le mardi 20h30-22h (2 € adhérent, 4 €), bridge le lundi 20h30, dîners ados (dès 15 ans, 5/7 €) et un dîner 12-14 ans en août, rallye de Tonton Mimile 8-12 ans mi-août (5/7 €), méchoui mi-août, apéritif de début de saison début juillet. Vacances scolaires hors été : whist le mardi 18h30-20h (6-12 ans), stage de tennis 8-16 ans (76 € à la Toussaint 2026), cours de tennis dès 5 ans. Adhésion annuelle (juin-mai) obligatoire pour toute activité : adulte 40 €, 12-30 ans 30 €, moins de 12 ans 10 €, famille 100 € ; cotisation tennis à la semaine ou à la quinzaine en plus",
   "town": "Préfailles",
   "url": "https://www.clubdesamisdeprefailles.com",
-  "what": "Tennis (5 courts dont 1 terre battue), padel, tournois FFT, et l'été bridge, whist enfants, beach tennis, ping-pong, échecs"
+  "what": "Tennis (5 courts), padel, bridge, whist pour enfants, ping-pong, beach tennis, échecs, rallye enfants, régate, apéritifs et dîners"
  },
  {
   "id": "comite-fetes-bernerie",
-  "contact": "06 07 47 88 76",
+  "contact": "",
   "desc": "Animations festives et concours de cartes.",
   "forWho": "Tous publics",
   "name": "Comité des Fêtes de La Bernerie-en-Retz",
@@ -111,7 +111,7 @@
  },
  {
   "id": "comite-jumelage-plaine",
-  "contact": "06 79 69 95 34",
+  "contact": "",
   "desc": "Organise des repas dansants avec la commune jumelle du Cantal.",
   "forWho": "Tous publics",
   "name": "Comité de Jumelage de La Plaine-sur-Mer",
@@ -133,14 +133,14 @@
  },
  {
   "id": "ecole-de-voile-prefailles",
-  "contact": "Mairie 02 40 21 60 37",
+  "contact": "02 40 64 77 77 · edv@prefailles.fr",
   "desc": "Centre nautique municipal de Préfailles.",
-  "forWho": "Enfants et adultes",
+  "forWho": "Enfants dès 5 ans, ados et adultes",
   "name": "École de voile de Préfailles (centre nautique municipal)",
-  "regular": "Surtout pendant les vacances scolaires",
+  "regular": "Ouverte de mars au 15 novembre. Voile loisir à l'année : 8–14 ans le mercredi, ados/adultes le samedi (9h30). Stages du lundi au vendredi pendant les vacances scolaires. Balades en goélette : reprise en avril 2027.",
   "town": "Préfailles",
-  "url": "https://www.prefailles.fr/lecole-de-voile/",
-  "what": "Stages et cours de voile, location"
+  "url": "https://www.ecoledevoileprefailles.fr/",
+  "what": "Stages de voile pendant les vacances scolaires (Optimist, catamaran, dériveur), voile loisir à l'année, wing-foil, balades en goélette et en kayak, location de catamaran, kayak et paddle"
  },
  {
   "id": "gaillards-davant",
@@ -162,7 +162,7 @@
   "regular": "",
   "town": "La Plaine-sur-Mer",
   "url": "https://www.associationhirondelle.fr",
-  "what": "Sorties nature pour tous, clubs nature enfants, découverte faune et flore"
+  "what": "Sorties nature pour tous, clubs nature pour les enfants, sensibilisation à l'environnement"
  },
  {
   "id": "jade-echecs-pornic",
@@ -179,16 +179,16 @@
   "id": "la-plaine-conscience",
   "contact": "laplaineconscience@gmail.com",
   "desc": "Bien-être et pratiques corporelles.",
-  "forWho": "Adultes, seniors, enfants",
+  "forWho": "Adultes, seniors, enfants (yoga)",
   "name": "La Plaine Conscience",
   "regular": "Planning sur le site",
   "town": "La Plaine-sur-Mer",
   "url": "https://www.asso-laplaineconscience.org/",
-  "what": "Yoga (dont yoga enfants), Pilates, méditation, sophrologie, gym équilibre seniors"
+  "what": "Conscience corporelle, équilibre pour les seniors, gym pour hommes, méditation, Pilates, sophrologie, yoga (dont yoga enfants)"
  },
  {
   "id": "musics-cool",
-  "contact": "07 81 43 30 11 · contact@musicscool.fr",
+  "contact": "jazzapref@gmail.com (adresse donnée par la mairie)",
   "desc": "Association qui organise les concerts Jazz à Préf à l'Espace culturel.",
   "forWho": "Tous publics",
   "name": "Music's Cool",
@@ -199,18 +199,18 @@
  },
  {
   "id": "nepenthes-theatre",
-  "contact": "06 10 68 16 30 · william.malatrat@gmail.com",
-  "desc": "Ateliers animés par un metteur en scène et comédien.",
-  "forWho": "Adultes",
+  "contact": "compagnie.nepenthes@free.fr",
+  "desc": "Compagnie de théâtre de Préfailles : ateliers « Faire et voir du théâtre », stages enfants-ados (10 participants maximum), spectacles de fin de session.",
+  "forWho": "Enfants dès 5 ans, ados, adultes",
   "name": "Compagnie Népenthès-Théâtre",
-  "regular": "",
+  "regular": "Adultes : jeudi 18h (débutants, 1 h, 140 €) et 19h30 (confirmés, 3 h, 270 €), session sept.-févr. ; ados : mardi 17h45 (2h30, 175 € le trimestre) ; stages des vacances : éveil 5-7 ans (50 €), 8-10 ans et ados (70 €) ; l'été, stage la 2e semaine de juillet (9-13 juillet en 2026) ; Espace culturel",
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-culturelles/",
-  "what": "Ateliers théâtre tous niveaux"
+  "what": "Théâtre : cours adultes (débutants jeudi 18h, confirmés jeudi 19h30), cours ados au trimestre, stages découverte enfants et ados pendant les vacances, spectacles"
  },
  {
   "id": "oceane-fc",
-  "contact": "07 69 31 95 08 · oceanefc.secretariat@gmail.com",
+  "contact": "oceanefc.secretariat@gmail.com",
   "desc": "Club de foot de Préfailles, La Plaine et Saint-Michel.",
   "forWho": "Enfants et adultes",
   "name": "Océane Football Club",
@@ -221,11 +221,11 @@
  },
  {
   "id": "petanque-prefaillaise",
-  "contact": "06 58 34 09 68 · franck.chevillard44@gmail.com",
+  "contact": "Via la mairie : 02 40 21 60 37",
   "desc": "Club de pétanque affilié UFOLEP.",
   "forWho": "Tous publics",
   "name": "Pétanque Préfaillaise",
-  "regular": "Plateau de la Chapelle ; concours le vendredi en été",
+  "regular": "Toute l'année au plateau de la Chapelle ; l'été, concours amical en doublette le vendredi à 14h (inscriptions sur place dès 13h, 6 € par joueur, lot pour tous ; programme 2026)",
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-sportives/",
   "what": "Pétanque toute l'année, concours"
@@ -243,7 +243,7 @@
  },
  {
   "id": "raquette-dor-plaine-prefailles",
-  "contact": "06 11 58 73 69 · roger.provost1953@gmail.com",
+  "contact": "",
   "desc": "Club FFT de La Plaine et Préfailles.",
   "forWho": "Tous",
   "name": "Tennis Raquette d'Or La Plaine-Préfailles",
@@ -254,7 +254,7 @@
  },
  {
   "id": "reveil-plainais",
-  "contact": "06 77 90 74 51",
+  "contact": "",
   "desc": "Fanfare locale qui organise le loto de Noël et le défilé de la Sainte-Cécile.",
   "forWho": "Tous publics",
   "name": "Le Réveil Plainais",
@@ -265,7 +265,7 @@
  },
  {
   "id": "scrabble-cote-de-jade",
-  "contact": "02 40 21 09 80 · gi.lefebvre@orange.fr",
+  "contact": "Via la mairie : 02 40 21 60 37",
   "desc": "Club de Scrabble duplicate accueillant les joueurs de passage.",
   "forWho": "Adultes",
   "name": "Scrabble de la Côte de Jade",
@@ -286,7 +286,7 @@
  },
  {
   "id": "surfrider-pays-de-retz",
-  "contact": "06 95 49 26 27 · antenne44@surfrider.eu",
+  "contact": "antenne44@surfrider.eu",
   "desc": "Ramassages de déchets ouverts à tous sur la côte.",
   "forWho": "Tous publics, familles",
   "name": "Surfrider Foundation – antenne Pays de Retz",
@@ -308,13 +308,255 @@
  },
  {
   "id": "vivre-a-prefailles",
-  "contact": "06 60 31 19 15 · vivreaprefailles44@gmail.com",
+  "contact": "vivreaprefailles44@gmail.com",
   "desc": "Ateliers créatifs et animations ludiques ou culturelles.",
   "forWho": "Adultes",
   "name": "Vivre à Préfailles",
   "regular": "Ateliers mardi et mercredi, salle René Deffain",
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-de-loisirs/",
-  "what": "Couture, peinture, tricot, cartonnage, expositions et animations culturelles"
+  "what": "Couture, peinture, tricot, cartonnage ; ateliers créatifs pour enfants ponctuels ; marché de Noël et expositions-ventes l'été"
+ },
+ {
+  "id": "yoga-harmonie-cote-de-jade",
+  "contact": "yogah44@gmail.com · www.yogaharmonie44.org",
+  "desc": "Cours de yoga à l'année, cours d'essai possible.",
+  "forWho": "Adultes, seniors",
+  "name": "Yoga Harmonie de la Côte de Jade",
+  "regular": "Mardi 16h30, 18h et 19h30 ; jeudi 9h15 yoga sur chaise ; salle multisports, rue de la Renaudière (saison 2026-2027)",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf ; https://www.prefailles.fr/associations-sportives/",
+  "what": "Cours de yoga, dont « yoga sur chaise »"
+ },
+ {
+  "id": "zenergies-de-jade",
+  "contact": "asso.lzdjp@gmail.com",
+  "desc": "Gymnastique d'entretien pour tous.",
+  "forWho": "Adultes, seniors",
+  "name": "Les Zénergies de Jade",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-sportives/",
+  "what": "Gym d'entretien, taï-chi, stretching, gym douce, gym mémoire équilibre"
+ },
+ {
+  "id": "jeong-tong-taekwondo",
+  "contact": "jeongtongtaekwondo44@gmail.com",
+  "desc": "Art martial traditionnel.",
+  "forWho": "Tous publics",
+  "name": "Club Jeong Tong Taekwondo",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-sportives/",
+  "what": "Taekwondo traditionnel"
+ },
+ {
+  "id": "chorale-si-on-chantait",
+  "contact": "Via la mairie : 02 40 21 60 37",
+  "desc": "Chorale de Préfailles (l'annuaire ne donne que des coordonnées personnelles).",
+  "forWho": "Adultes",
+  "name": "Chorale « Si on chantait à Préfailles »",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-culturelles/",
+  "what": "Chorale"
+ },
+ {
+  "id": "eau-en-couleurs",
+  "contact": "Via la mairie : 02 40 21 60 37",
+  "desc": "Association d'aquarellistes amateurs.",
+  "forWho": "Adultes",
+  "name": "Eau en couleurs",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-culturelles/",
+  "what": "Aquarelle amateur"
+ },
+ {
+  "id": "createurs-de-retz",
+  "contact": "lescreateursderetz@gmail.com",
+  "desc": "Promotion des artistes et créateurs locaux par des marchés artisanaux.",
+  "forWho": "Tous publics",
+  "name": "Les Créateurs de Retz",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-culturelles/",
+  "what": "Marchés artisanaux d'artistes et créateurs locaux"
+ },
+ {
+  "id": "rendez-vous-de-l-hetre",
+  "contact": "rendezvousdelhetre@gmail.com · www.rdvh.prefailles.com",
+  "desc": "Rendez-vous artistique annuel, vote du public.",
+  "forWho": "Tous publics",
+  "name": "Le Rendez-vous de l'Hêtre",
+  "regular": "L'été : parcours photo sur le littoral (juillet-septembre) et exposition peinture-sculpture fin juillet (édition 2026 : 7 juil.-29 sept. et 25 juil.-2 août)",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-culturelles/ ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Expositions d'art : peinture, sculpture, photographie"
+ },
+ {
+  "id": "vague-eco-creative",
+  "contact": "vague.eco.creative@gmail.com · ateliers : lesateliersdelavague@gmail.com",
+  "desc": "Collectif de créatrices locales, ateliers savoir-faire.",
+  "forWho": "Adultes, familles",
+  "name": "La Vague éco-créative",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/ ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Événements et ateliers de créateurs (linogravure…), fait main, recyclage"
+ },
+ {
+  "id": "amis-du-semaphore",
+  "contact": "amisdusemaphore@gmail.com",
+  "desc": "Soutien à l'espace muséographique du Sémaphore, conférences (ex. « Éric Tabarly, enfant de Préfailles », été 2026).",
+  "forWho": "Tous publics",
+  "name": "Les Amis du Sémaphore",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/ ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Conférences, expositions, culture maritime"
+ },
+ {
+  "id": "amis-de-l-ancre",
+  "contact": "lesamisdelancre@gmail.com · www.port-lapointe-stgildas.fr",
+  "desc": "Association des usagers du port.",
+  "forWho": "Plaisanciers",
+  "name": "Les Amis de l'Ancre",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/ ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Usagers du port de la Pointe Saint-Gildas ; promenades en bateau à la fête du port"
+ },
+ {
+  "id": "asep-prefailles",
+  "contact": "asep.prefailles@gmail.com · www.asep-prefailles.fr",
+  "desc": "Participe notamment aux opérations de nettoyage avec Hirondelle et Surfrider.",
+  "forWho": "Tous publics",
+  "name": "ASEP – Sauvegarde de l'environnement de Préfailles",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/",
+  "what": "Protection de l'environnement naturel et bâti"
+ },
+ {
+  "id": "pecheurs-a-pied-cote-de-jade",
+  "contact": "appcj@orange.fr · http://appcj.wifeo.com",
+  "desc": "Utile pour la rubrique pêche à pied.",
+  "forWho": "Pêcheurs à pied",
+  "name": "Association des pêcheurs à pied de la Côte de Jade (APPCJ)",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-loisirs/",
+  "what": "Défense et bonnes pratiques de la pêche à pied de loisir"
+ },
+ {
+  "id": "acsa-chiens-sauvetage",
+  "contact": "Via la mairie : 02 40 21 60 37",
+  "desc": "Concours et démonstrations de chiens sauveteurs.",
+  "forWho": "Tous publics",
+  "name": "Action Chiens de Sécurité Aquatique (ACSA)",
+  "regular": "Démonstration à la fête du port (édition 2026 : 2 août, 9h30)",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-loisirs/ ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Sauvetage à l'eau avec chiens (Terre-Neuve…), démonstrations"
+ },
+ {
+  "id": "escale-des-bambins",
+  "contact": "lescaledesbambins44@gmail.com",
+  "desc": "Assistantes maternelles agréées.",
+  "forWho": "Parents de jeunes enfants",
+  "name": "L'Escale des Bambins",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/",
+  "what": "Regroupement des assistantes maternelles de La Plaine et Préfailles"
+ },
+ {
+  "id": "amap-plaine-prefailles",
+  "contact": "amapplaine@gmail.com",
+  "desc": "Contrat direct entre familles et producteurs.",
+  "forWho": "Tous publics",
+  "name": "AMAP La Plaine-sur-Mer – Préfailles",
+  "regular": "Distribution le mardi 18h-19h15, site de l'Ormelette, 2 rue Jean Moulin, La Plaine-sur-Mer",
+  "town": "La Plaine-sur-Mer",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "what": "Paniers de producteurs locaux (légumes, pain, œufs, volaille, miel…)"
+ },
+ {
+  "id": "croix-rouge-cote-de-jade",
+  "contact": "antenne.cotedejade@free.fr",
+  "desc": "Antenne locale ouverte à tous.",
+  "forWho": "Tous publics",
+  "name": "Croix-Rouge – antenne Côte de Jade",
+  "regular": "Jeudi et samedi 14h-17h, 8 rue des Tonneliers, Saint-Michel-Chef-Chef",
+  "town": "Saint-Michel-Chef-Chef",
+  "url": "https://www.prefailles.fr/associations-de-vie-locale/",
+  "what": "Aide alimentaire et vestimentaire, formation aux premiers secours"
+ },
+ {
+  "id": "prefailles-comedy-club",
+  "contact": "09 52 18 86 37 · Instagram @prefailles_comedy_club",
+  "desc": "Scène stand-up du bourg.",
+  "forWho": "Adultes",
+  "name": "Préfailles Comedy Club",
+  "regular": "Environ une fois par mois, 19h et 21h, au Ô 22, place du Marché ; réservation Billetreduc",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf ; https://www.prefailles.fr/medias/2026/04/Prefinfos-mai-juin-2026.pdf",
+  "what": "Soirées stand-up"
+ },
+ {
+  "id": "ecole-multisports-prefailles",
+  "contact": "Inscriptions en ligne : loire-atlantique.fr (animation sportive départementale)",
+  "desc": "Animation sportive départementale à Préfailles, année 2026-2027.",
+  "forWho": "Enfants du CE1 au CM2",
+  "name": "École multisports du Département",
+  "regular": "Vendredi 16h30-18h (CE1 au CM2, 12 places), cour de l'école et salle multisports, depuis le 18 sept. 2026 ; tarif selon quotient familial (0 à 95 €)",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Découverte sportive (biathlon-athlétisme en nov.-déc., gym en janv.-févr., tennis, basket…) et stages des vacances"
+ },
+ {
+  "id": "ccas-prefailles",
+  "contact": "Mairie : 02 40 21 60 37",
+  "desc": "Action sociale de la commune.",
+  "forWho": "Retraités, personnes isolées",
+  "name": "CCAS de Préfailles",
+  "regular": "Permanences sur rendez-vous le mardi matin",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf ; https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Ateliers Bien Vieillir gratuits (nutrition, activité physique adaptée, mémoire), colis de Noël des plus de 80 ans, plan canicule, permanences"
+ },
+ {
+  "id": "marpa-estran",
+  "contact": "02 51 74 94 71",
+  "desc": "Résidence pour l'autonomie ; on peut y déjeuner sans y résider.",
+  "forWho": "Plus de 60 ans",
+  "name": "MARPA de l'Estran",
+  "regular": "",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2015/11/Bulletin-Municipal-ete-2026-Prefailles.pdf",
+  "what": "Déjeuners ouverts aux plus de 60 ans, animations intergénérationnelles"
+ },
+ {
+  "id": "entraide-intergenerationnelle-prefailles",
+  "contact": "Inscription en mairie : 02 40 21 60 37",
+  "desc": "Projet municipal lancé à l'automne 2026.",
+  "forWho": "Enfants de 3 à 16 ans, aînés",
+  "name": "Entraide intergénérationnelle et aide aux devoirs (mairie)",
+  "regular": "Aide aux devoirs le lundi et le mardi (depuis le 2 nov. 2026)",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "what": "Rencontres aînés-jeunes (jouer, créer, s'exprimer, échanger) ; aide aux devoirs par des bénévoles"
+ },
+ {
+  "id": "conseil-municipal-enfants",
+  "contact": "Mairie : 02 40 21 60 37",
+  "desc": "Initiation à la citoyenneté.",
+  "forWho": "Enfants du CE2 à la 6e",
+  "name": "Conseil municipal des enfants",
+  "regular": "Élus pour l'année scolaire",
+  "town": "Préfailles",
+  "url": "https://www.prefailles.fr/le-conseil-municipal-des-enfants/",
+  "what": "Projets des jeunes élus, cérémonies"
  }
 ]
