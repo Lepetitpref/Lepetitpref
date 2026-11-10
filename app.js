@@ -392,6 +392,9 @@ const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
 const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" aria-pressed="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" aria-pressed="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" aria-pressed="${v==="peche"}">Pêche à pied</a></div></div>`;
+const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
+const segMg=()=>segBtns("Rubriques de Manger",[["tous","Tout"],["tables","Restos"],["marche","Marchés"],["produits","Produits"]],["tous","tables","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
+const segTr=()=>segBtns("Destinations",[["Pornic","Pornic"],["Nantes","Nantes"],["Saint-Nazaire","Saint-Nazaire"]],S.trTo||"Pornic","trto");
 const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" aria-pressed="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" aria-pressed="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
@@ -432,7 +435,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
 /* ===== Manger ===== */
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
-const mkOK=a=>S.mk==="tables"?isResto(a):kindOf(a)===S.mk;
+const mkOK=a=>S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&kindOf(a)!=="marche":kindOf(a)===S.mk;
 function vManger(){const t=today(),od=S.openDay||t;
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
@@ -441,9 +444,10 @@ function vManger(){const t=today(),od=S.openDay||t;
   const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
   return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, des plus proches aux plus loin`)}
+  ${segMg()}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
    ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${zoneSel(S.mWhere,"mwhere","ici")}`)}</div>
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k);return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div><ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -554,7 +558,7 @@ function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[
    ${cell("Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:"")}
    ${cell("Pluie",w?`${w.pp??0} %`:"…",w&&w.pp>=60?"prévoir un abri":w?"":"")}
   </a>`;}
-function door(id,col,title,txt,rows){return `<section class="sec blk door" id="${id}" style="--c:var(${col})"><div class="sec-head"><h2 class="sec-title">${title}</h2></div><p class="sec-note">${txt}</p><ul class="list">${rows.filter(Boolean).join("")}</ul></section>`;}
+function door(id,col,title,txt,rows,href){return `<section class="sec blk door" id="${id}" style="--c:var(${col})"><a class="sec-head door-head" href="${href}"><h2 class="sec-title">${title}</h2><span class="door-go">Ouvrir${ic("chev","i-s")}</span></a><p class="sec-note">${txt}</p><ul class="list">${rows.filter(Boolean).join("")}</ul></section>`;}
 function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   /* À faire */
   const evT=ld?[]:evOnDay(t).filter(e=>evInZone(e)&&!evIsLong(e));
@@ -577,15 +581,15 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   ${door("d-faire","--i-act","À faire","L'agenda des sorties datées, les activités et le cinéma, à Préfailles et autour. Triez selon qui vient : enfants, adultes, habitants.",[
     r("#agenda",`Agenda <span class="door-n">${ld?"…":evT.length}</span>`,ld?"":`${evT.length?`sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} cette semaine à Préfailles`,' data-act="when" data-v="auj"'),
     r("#activites",`Activités <span class="door-n">${nAct}</span>`,"lieux ouverts aujourd'hui : nature, sport, sensations, culture"),
-    r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(dname(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')])}
+    r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(dname(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
-    r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")])}
+    r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")],"#mer")}
   ${door("d-manger","--i-food","Manger","Restaurants, crêperies, marchés, huîtres et producteurs, à Préfailles d'abord.",[
-    r("#manger",`Ouvert aujourd'hui à Préfailles <span class="door-n">${eat.length}</span>`,eat.slice(0,3).map(a=>esc(a.short||a.n)).join(" · ")||"voir les adresses et leurs horaires")])}
+    r("#manger",`Ouvert aujourd'hui à Préfailles <span class="door-n">${eat.length}</span>`,eat.slice(0,3).map(a=>esc(a.short||a.n)).join(" · ")||"voir les adresses et leurs horaires")],"#manger")}
   ${door("d-transports","--seagreen","Transports","Cars et trains depuis Préfailles, correspondances comprises.",[
-    r("#venir","Prochains départs",nxt?nxt.map(([p,j])=>`${esc(p)} ${j.dep.replace(/^0/,"")}`).join(" · "):"Pornic, Nantes, Saint-Nazaire")])}
+    r("#venir","Prochains départs",nxt?nxt.map(([p,j])=>`${esc(p)} ${j.dep.replace(/^0/,"")}`).join(" · "):"Pornic, Nantes, Saint-Nazaire")],"#venir")}
   ${installBanner()}
   ${sosRow()}`;}
 
@@ -766,6 +770,7 @@ function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=
   const body=`${past.length?`<details class="tr-past"><summary>${past.length} trajet${past.length>1?"s":""} déjà parti${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(row).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(row).join("")}</ul>`:`<p class="empty">${isT&&list.length?"Plus de trajet aujourd'hui.":"Pas de trajet ce jour-là."}</p>`}
    ${miss.length?`<p class="tr-miss">${ic("info","i-s")}<span>${[...new Set(miss.map(L=>L.ligne.startsWith("TER")?"Trains":"Car "+L.ligne))].join(", ")} : horaires après le ${dshort(miss[0].fin)} pas encore publiés.</span></p>`:""}`;
   return `${pageHead("Transports","Cars et trains depuis Préfailles, correspondances comprises.")}
+  ${segTr()}
   <div class="filters solo">${frow("frow","Jour",days.map(x=>qchip(`${x===t?"Aujourd'hui":x===addDays(t,1)?"Demain":cap(dname(x))+" "+(+x.slice(8))}`,x===d,`data-act="trday" data-v="${x}"`)).join(""))}</div>
   <div class="seg-wrap"><div class="seg" role="group" aria-label="Sens">${[[0,"Partir de Préfailles"],[1,"Rentrer à Préfailles"]].map(([v,l])=>`<button type="button" aria-pressed="${dir===v}" data-act="trdir" data-v="${v}">${l}</button>`).join("")}</div></div>
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
