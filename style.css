@@ -652,3 +652,16 @@ details:not(.row-d)[open] > summary::after{transform:rotate(-135deg);margin-top:
 .filters .frow{padding:3px 12px}
 .filters .chips{margin:0;padding-left:12px;padding-right:12px}
 .chip[aria-pressed="true"],.chip-k.k-ink[aria-pressed="true"]{background:var(--seagreen);border-color:var(--seagreen);color:var(--seagreen-ink)}
+
+/* ===== en-tête FIXE (plus fiable que sticky sur iPhone) : logo + onglets toujours visibles ===== */
+.topbar{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:7}
+.tabs{position:fixed;top:calc(env(safe-area-inset-top,0px) + 56px);left:0;right:0;z-index:6}
+body::before{height:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:5}
+html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
+
+/* page Mer : résumé compact en haut */
+.mer-top{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:12px var(--gutter) 0;border:1px solid var(--line);border-left:4px solid var(--i-sea);border-radius:var(--r-l);overflow:hidden;background:var(--line)}
+.mer-top > div{display:flex;flex-direction:column;gap:1px;padding:8px 10px;background:var(--surface);min-width:0}
+.mer-top span{font-size:14px;color:var(--muted)}
+.mer-top b{font:500 19px/1.15 var(--font-title);color:var(--ink)}
+.mer-top small{font-size:14px;color:var(--muted)}

@@ -665,12 +665,22 @@ function spotsSec(d){const has=!!wxDay(d);
     return {top,h:row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
       more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`}).replace('<details class="row-d"',`<details class="row-d" id="spot-${sp.id}"`)};}).sort((a,b)=>(b.top>0)-(a.top>0)).map(x=>x.h).join("");
   return `<section class="sec blk" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
+/* résumé compact en haut de la page Mer : vent, rafales, houle, eau, marées */
+function merTop(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)||seaAt(d,9),ts=tidesOfDay(d),c=maxCoef(d);
+  const H=x=>hm(new Date(x.ms)),cells=[];
+  cells.push(["Vent",w?`${r0(w.w)} nds`:"…",w?`${dirTxt(w.wd)} · force ${bft(w.w)}`:""]);
+  cells.push(["Rafales",w?`${r0(w.g)} nds`:"…",w&&w.g>=34?"coup de vent":w&&w.g>=25?"ça souffle":""]);
+  cells.push(["Houle",sm&&sm.hs!=null?`${r1(sm.hs)} m`:"…",sm&&sm.hs!=null?`${r0(sm.swp??sm.tp)} s`:""]);
+  cells.push(["Eau",e!=null?`${r1(e)}°`:"…",e==null?"":e<13?"combi 5/4":e<16?"combi 4/3":e<19?"combi 3/2":"shorty"]);
+  cells.push(["Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–",""]);
+  cells.push(["Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:""]);
+  return `<div class="mer-top" role="list">${cells.map(([l,v,x])=>`<div role="listitem"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}</div>`).join("")}</div>`;}
 function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
   return `${pageHead(curView()==="spots"?"Spots et glisse":"Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
   <div class="filters">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
-  ${(()=>{const e=sstNow(s);return e!=null?`<p class="mer-eau">${ic("drop","i-s")}<span><b>Eau ${r1(e)}°</b> · ${e<13?"combinaison 5/4 mm":e<16?"combinaison 4/3 mm":e<19?"combinaison 3/2 mm":"maillot ou shorty"}</span></p>`:"";})()}
+  ${merTop(s)}
   ${glisseSec(s)}
   ${spotsSec(s)}
   <section class="sec" style="padding-top:18px">${seaCard(s)}</section>
