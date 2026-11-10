@@ -433,7 +433,7 @@ function faireSuite(){const t=today();
      return sec("Prochaines soirées",secLink("#soirees","Toutes les soirées"),L.length?`<ul class="list">${L.map(([d,e])=>evRow(e,{lead:"day",day:d})).join("")}</ul>`:`<p class="empty">Pas de soirée annoncée cette semaine.</p>`);})()}</div>`;}
 
 /* ===== Soirées : les sorties de 18h et plus tard, et les lieux où sortir le soir ===== */
-const evSoir=e=>{const h=tShort(e.time);return !!h&&h.padStart(5,"0")>="18h00";};
+const evSoir=e=>{const h=tShort(e.time);if(!h||h.padStart(5,"0")<"18h00")return false;if(!["spectacle","fete","jeux"].includes(e.type))return false;return !/bien-être|débat|conférence|réunion/i.test(e.category||"");};
 const NUITS=()=>ACTS.filter(a=>a.kind==="bar"||a.kind==="nuit"||/casino/i.test(a.n));
 function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():[t,addDays(t,6)];}
 function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
