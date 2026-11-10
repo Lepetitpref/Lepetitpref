@@ -599,3 +599,22 @@ button.tr-nx{width:100%;text-align:left;font:inherit;cursor:pointer}
 .tr-walk{display:block;padding-left:4px;font-size:14px;color:var(--warn)}
 .tr-miss{display:flex;gap:8px;align-items:flex-start;margin:8px 0 12px;font-size:14px;color:var(--warn)}
 .tr-line summary{gap:8px}
+
+/* blocs dépliables : une flèche qui se retourne, partout */
+details > summary{list-style:none}
+details > summary::-webkit-details-marker{display:none}
+details:not(.row-d) > summary{position:relative;padding-right:28px}
+details:not(.row-d) > summary::after{content:"";position:absolute;right:6px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .15s}
+details:not(.row-d)[open] > summary::after{transform:rotate(-135deg);margin-top:-2px}
+.row-d > summary .row-end .i{transform:rotate(90deg);transition:transform .15s}
+.row-d[open] > summary .row-end .i{transform:rotate(-90deg)}
+/* partage */
+.sea-share{display:inline-flex;align-items:center;gap:6px;margin-top:8px}
+.tr-head{flex-wrap:wrap}
+.tr-share{display:inline-flex;align-items:center;gap:6px;margin-top:2px}
+.spot-surf{margin:4px 0 10px}
+.wx-eau{color:var(--accent);font-weight:600}
+
+/* onglets : ne se collent pas quand le texte est agrandi */
+.tabs{gap:10px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}

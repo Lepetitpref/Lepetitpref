@@ -6,7 +6,7 @@ const TZ="Europe/Paris", HOME={lat:47.1315,lon:-2.2180};
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
 const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["mer","Mer"],["manger","Manger"],["venir","Transports"]];
-const EXTRA=["recherche","apropos","installer","activites","cine","pratique","peche"];
+const EXTRA=["recherche","apropos","installer","activites","cine","pratique","peche","spots"];
 const after={};
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -252,15 +252,16 @@ const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22
 const SEAU="https://marine-api.open-meteo.com/v1/marine?latitude=47.10&longitude=-2.35&hourly=wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,sea_surface_temperature&timezone=Europe%2FParis&forecast_days=7";
 const WX={f:null,m:null,st:"idle",at:0};
 function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))return;WX.tried=Date.now();
-  try{const c=JSON.parse(sget("pp-wx")||"null");if(c&&Date.now()-c.at<36e5&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;}}catch(e){}
+  try{const c=JSON.parse(sget("pp-wx")||"null");if(c&&Date.now()-c.at<36e5&&c.f&&c.m){WX.f=c.f;WX.m=c.m;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;}}catch(e){}
   WX.st="load";
   const j=u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.json();});
-  Promise.allSettled([j(WXU),j(SEAU)]).then(([a,b])=>{
+  const sea=()=>j(SEAU).catch(()=>new Promise(r=>setTimeout(r,2500)).then(()=>j(SEAU)));   /* l'API marine échoue parfois : on réessaie une fois */
+  Promise.allSettled([j(WXU),sea()]).then(([a,b])=>{
     if(a.status==="fulfilled"&&a.value.hourly){WX.f=a.value;WX.at=Date.now();}
     if(b.status==="fulfilled"&&b.value.hourly)WX.m=b.value;
     WX.st=WX.f?"ok":"err";
-    if(a.status==="fulfilled")sset("pp-wx",JSON.stringify({at:WX.at,f:WX.f,m:WX.m}));
-    if(["sejour","mer"].includes(curView()))render();});}
+    if(WX.f)sset("pp-wx",JSON.stringify({at:WX.at,f:WX.f,m:WX.m}));
+    if(["sejour","mer","spots"].includes(curView()))render();});}
 const WMO=c=>c==null?["",""]:c===0?["Ciel dégagé","sun"]:c===1?["Plutôt ensoleillé","sun"]:c===2?["Éclaircies","cloudsun"]:c===3?["Couvert","cloud"]:c<50?["Brouillard","cloud"]:c<58?["Bruine","rain"]:c<66?[c===61?"Pluie faible":c===65?"Forte pluie":"Pluie","rain"]:c<70?["Pluie verglaçante","rain"]:c<80?["Neige","rain"]:c<83?[c===80?"Quelques averses":"Averses","rain"]:c<90?["Averses de neige","rain"]:["Orages","rain"];
 const DIR16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSO","SO","OSO","O","ONO","NO","NNO"];
 const dirTxt=d=>d==null?"":DIR16[Math.round(((d%360)+360)%360/22.5)%16];
@@ -280,7 +281,7 @@ function sstNow(d){const m=WX.m;if(!m)return null;const H=m.hourly;const v=H.tim
 function wxRainy(d){const w=wxDay(d);if(!w)return false;return (w.pp>=60&&w.ps>=2)||(w.code>=61&&w.ps>=3)||w.code>=95;}
 const isRain=d=>S.rainSet&&d in S.rainSet?S.rainSet[d]:wxRainy(d);
 function wxLine(d){const w=wxDay(d);if(!w)return"";const[t,icn]=WMO(w.code);
-  return `<span class="wx-ic">${ic(icn)}</span><span class="wx-txt"><b>${t}</b><span>${r0(w.tmin)}° à ${r0(w.tmax)}° · vent ${dirTxt(w.wd)} ${r0(w.w)} nds${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}${w.pp>=20?` · pluie ${w.pp} %`:""}</span></span>`;}
+  return `<span class="wx-ic">${ic(icn)}</span><span class="wx-txt"><b>${t}</b><span>${r0(w.tmin)}° à ${r0(w.tmax)}° · vent ${dirTxt(w.wd)} ${r0(w.w)} nds${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}${w.pp>=20?` · pluie ${w.pp} %`:""}${sstNow(d)!=null?` · <b class="wx-eau">eau ${r0(sstNow(d))}°</b>`:""}</span></span>`;}
 
 /* ---------- spots : orientation et lecture automatique des conditions ---------- */
 const SPOTSX=[
@@ -509,7 +510,7 @@ function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfaill
   ${sec("Mairie et tourisme","",`<ul class="list">${tel("02 40 21 60 37","Mairie de Préfailles")}${tel("02 40 82 04 40","Office de tourisme")}</ul>`)}
   ${sec("Horaires utiles","",`<ul class="list">
    ${mk?row({th:`<span class="thumb t-food">${ic("basket")}</span>`,title:"Marché de Préfailles",metaH:esc(mkTxt),lines:[statusOf(mk,t)]}):""}
-   ${cin?row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:"Cinéma de Préfailles",metaH:"Séances le week-end, tous les jours en juillet et août",href:"#cine",act:' data-act="cin" data-v="pref"'}):""}
+   ${cin?row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:"Cinéma de Préfailles",metaH:"Programme du mois et prochaines séances",href:"#cine",act:' data-act="cin" data-v="pref"'}):""}
    ${row({th:`<span class="thumb t-sea">${ic("tide")}</span>`,title:"Marée du jour",metaH:lows.length?`Basse mer ${lows.map(l=>hm(new Date(l.ms))).join(" et ")} · coef. ${maxCoef(t)??"–"}`:`Coef. ${maxCoef(t)??"–"}`,href:"#mer"})}
    ${row({th:`<span class="thumb t-sea">${ic("shell")}</span>`,title:"Pêche à pied",metaH:"Bonnes marées, créneau conseillé, sécurité",href:"#peche"})}
    ${row({th:`<span class="thumb t-nat">${ic("bus")}</span>`,title:"Transports",metaH:"Prochains cars 303 et 315, trains de Pornic",href:"#venir"})}</ul>`)}
@@ -637,37 +638,34 @@ function seaCard(d){const w=wxDay(d),t=today();
     ${cell("Eau",sst!=null?`${r1(sst)}°`:"–",sst!=null?(sst<13?"combinaison 5/4 mm":sst<16?"combinaison 4/3 mm":sst<19?"combinaison 3/2 mm":"maillot ou shorty"):"")}</div>
    ${boat?`<p class="sea-boat ${NOTECLS[boat[0]]}">${ic("sail","i-s")}<span><b>Bateau :</b> ${boat[1]}.</span></p>`:""}
    <div class="sea-hours">${hs.map(([h,x,s])=>`<div><span>${h}h</span><b>${dirTxt(x.wd)} ${r0(x.w)}</b><small>raf. ${r0(x.g)}${s&&s.hs!=null?` · ${r1(s.hs)} m`:""}</small></div>`).join("")}</div>
+   <button type="button" class="sea-share lnk" data-share="${esc(`La mer à Préfailles, ${dlong(d)} : ${sky.toLowerCase()}, vent ${r0(w.w)} nds ${DIRLONG[dirTxt(w.wd)]||""}${sMid&&sMid.hs!=null?`, houle ${r1(sMid.hs)} m`:""}${sst!=null?`, eau ${r1(sst)}°`:""}${(()=>{const l=dayLows(d)[0];return l?`, basse mer à ${hm(new Date(l.ms))}`:"";})()}.`)}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
   </div>`;}
 function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return b?{a,b}:null;}).filter(Boolean);}
 function glisseSec(d){if(!wxDay(d))return"";
   const acts=["surf","kite","wing","voile","paddle"];
   const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
   return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${best.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(a==="voile"?"sail":a==="paddle"?"drop":"wave")}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:b.j[0]?meta(esc(sp.n),slotTxt(b)):"",lines:[[esc(b.j[1]),""]]})).join("")}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité, d'après les prévisions.");}
-function surfSec(d){if(!wxDay(d))return"";
-  const sp=SPOTSX.filter(x=>x.acts.includes("surf")&&x.tide);
-  const rows=sp.map(x=>{const hs=surfHours(x,d);if(!hs.length)return"";const b=bestOf("surf",x,d);
-    const strip=`<div class="hstrip" aria-hidden="true">${hs.map(y=>`<span class="${NOTECLS[y.j[0]]}"><i></i>${y.h}h</span>`).join("")}</div>`;
-    return row({th:`<span class="thumb t-sea">${ic("wave")}</span>`,title:`${esc(x.n)} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,
-      metaH:b.j[0]?meta(slotTxt(b),b.tt?b.tt.txt:""):meta("pas de bon créneau"),lines:[[`Idéal : ${esc(x.tideTxt)}`,""]],more:strip+`<p class="row-meta">Vert : bon · orange : possible · gris : non. Chaque heure combine la houle, le vent et la hauteur d'eau.</p>`});}).join("");
-  return sec("Surf : les bonnes heures","",`<ul class="list">${rows}</ul>`,"La marée change la vague : sur les récifs (Pointe Saint-Gildas, Margaret) et à Saint-Brevin (Rochelets, Ermitage), évitez la marée basse ; à Tharon, la marée haute fait du shorebreak. Le vent est souvent plus faible le matin. Touchez un spot pour le détail heure par heure.");}
 function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
-  return sec("Les spots","",`<ul class="list">${SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
+  const rows=SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
     const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):-1;
     const line=has?sm.map(x=>`${ACTL[x.a]} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · "):"";
+    const surf=has&&sp.acts.includes("surf")&&sp.tide?surfHours(sp,d):[];const sb=surf.length?bestOf("surf",sp,d):null;
+    const surfLine=sb&&sb.j[0]?[`Surf ${slotTxt(sb)}${sb.tt?` · ${sb.tt.txt}`:""}`,"ok"]:null;
+    const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure</b> · idéal : ${esc(sp.tideTxt)}</p><div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta">Vert : bon · orange : possible · gris : non (houle, vent et hauteur d'eau).</p></div>`:"";
     const det=sm.map(x=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${ACTL[x.a]}</b> · ${esc(x.b.j[1])}${x.b.j[0]?` · ${slotTxt(x.b)}`:""}${x.b.w?`<br><small>Vent ${dirTxt(x.b.w.wd)} ${r0(x.b.w.w)} nds (${RELTXT[windRel(sp,x.b.w.wd)]}), rafales ${r0(x.b.w.g)}${x.b.s&&x.b.s.hs!=null?` · houle au large ${r1(x.b.s.hs)} m, ${r0(x.b.s.swp??x.b.s.tp)} s`:""}</small>`:""}</span></div>`).join("");
-    return row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:line?[[esc(line),NOTECLS[Math.max(top,0)]]]:[],
-      more:`${det?`<div class="spot-acts">${det}</div>`:""}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a></span>`});}).join("")}</ul>`,
-   has?"Touchez un spot pour le détail du jour. Estimations automatiques : regardez toujours la mer avant d'y aller.":"");}
+    const shTxt=`${sp.n} (${townShort(sp.town)}), ${dlong(d)} : ${line||sp.acts.map(a=>ACTL[a]).join(", ")}${surfLine?". "+surfLine[0]:""}.`;
+    return row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
+      more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`});}).join("");
+  return `<section class="sec" id="spots"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers. La marée change la vague : sur les récifs (Pointe Saint-Gildas, Margaret) et à Saint-Brevin (Rochelets, Ermitage), évitez la marée basse ; à Tharon, la marée haute fait du shorebreak. Le vent est souvent plus faible le matin.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
 function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay=s;
   const days=range(t,addDays(t,6));const big=nextBig(4);
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
-  return `${pageHead("Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
+  return `${pageHead(curView()==="spots"?"Spots et glisse":"Mer","Marée, vent, houle et température de l'eau à Préfailles.")}
   <div class="filters">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
   <section class="sec" style="padding-top:12px">${seaCard(s)}</section>
   <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
   ${glisseSec(s)}
-  ${surfSec(s)}
   ${spotsSec(s)}
   ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
@@ -710,12 +708,12 @@ function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=
   const J=p=>journeys(T,d,...od(p));
   /* en haut : le prochain trajet vers chaque destination */
   const top=`<div class="tr-next">${TRDEST.map(p=>{const {list}=J(p),fut=isT?list.filter(j=>j.dep>=nowHM):list,x=fut[0],y=fut[1];
-    return `<button type="button" class="tr-nx${p===dest?" is-on":""}" data-act="trto" data-v="${p}" aria-pressed="${p===dest}"><span class="tr-nx-chain">${x?x.steps.map(s=>badge(s.L,s.x)).join(""):""}</span><span class="tr-nx-m"><span class="tr-nx-to">${dir?`${esc(p)} → Préfailles`:`Préfailles → ${esc(p)}`}</span><small>${x?`${isT?inTxt(x.dep):"premier départ"} · arrivée ${hh(x.arr)}${y?` · puis ${hh(y.dep)}`:""}`:`plus de trajet ${isT?"aujourd'hui":"ce jour-là"}`}</small></span><b class="tr-nx-t">${x?hh(x.dep):"–"}</b></button>`;}).join("")}</div>`;
+    return `<button type="button" class="tr-nx${p===dest?" is-on":""}" data-act="trto" data-v="${p}" aria-pressed="${p===dest}"><span class="tr-nx-chain">${x?x.steps.map(s=>badge(s.L,s.x)).join(""):""}</span><span class="tr-nx-m"><span class="tr-nx-to">${dir?`${esc(p)} → Préfailles`:`Préfailles → ${esc(p)}`}</span><small>${x?`${isT?inTxt(x.dep):"premier départ"} · arrivée ${hh(x.arr)}${y?` · suivant ${hh(y.dep)}`:""}`:`plus de trajet ${isT?"aujourd'hui":"ce jour-là"}`}</small></span><b class="tr-nx-t">${x?hh(x.dep):"–"}</b></button>`;}).join("")}</div>`;
   /* la liste des trajets vers la destination choisie */
   const {list,missing}=J(dest);const past=isT?list.filter(j=>j.dep<nowHM):[],fut=list.filter(j=>!past.includes(j)),nx=isT?fut[0]:null;
   const stepTxt=(s,i,arr)=>`${s.wait!=null?`<span class="tr-walk">Changement à ${esc(s.at)} · ${dur(s.wait)}${s.at==="Pornic"&&arr[i-1].L.mode!==s.L.mode?" (dont ≈ 10 min à pied arrêt ↔ gare)":""}</span>`:""}<span class="tr-step">${badge(s.L,s.x)}<span><b>${hh(s.x.dep)}</b> ${esc(s.L.arret_de)} → <b>${hh(s.x.arr)}</b> ${esc(s.L.arret_a)}${s.x.tgv?` <span class="tr-note warn">TGV : billet et réservation TGV.</span>`:""}</span></span>`;
   const row=j=>`<li class="tr-j${j===nx?" is-next":""}${past.includes(j)?" is-past":""}"><div class="tr-j-top"><b class="tr-t">${hh(j.dep)}</b><span class="tr-arr" aria-hidden="true"></span><span class="tr-t2">${hh(j.arr)}</span><small class="tr-d">${dur(tmn(j.arr)-tmn(j.dep))}${j.steps.length>1?" · 1 correspondance":" · direct"}</small>${j===nx?'<span class="note-pill ok">Prochain</span>':""}</div><div class="tr-steps">${j.steps.map(stepTxt).join("")}</div></li>`;
-  const corrNote=(T.correspondances||{})[dest]?.note||(dir?"":(T.correspondances||{})["Pornic"]?.note);
+  const corrNote=[(T.correspondances||{})[dest]?.note||(T.correspondances||{})["Pornic"]?.note,dest==="Nantes"?"Pirmil : arrêt des cars au sud de la Loire, tram 2 ou 3 pour rejoindre le centre de Nantes":""].filter(Boolean).join(". ");
   const miss=missing.filter(L=>d>L.fin);
   const body=`${past.length?`<details class="tr-past"><summary>${past.length} trajet${past.length>1?"s":""} déjà parti${past.length>1?"s":""}</summary><ul class="tr-list">${past.map(row).join("")}</ul></details>`:""}${fut.length?`<ul class="tr-list">${fut.map(row).join("")}</ul>`:`<p class="empty">${isT&&list.length?"Plus de trajet aujourd'hui.":"Pas de trajet ce jour-là."}</p>`}
    ${miss.length?`<p class="tr-miss">${ic("info","i-s")}<span>${[...new Set(miss.map(L=>L.ligne.startsWith("TER")?"Trains":"Car "+L.ligne))].join(", ")} : horaires après le ${dshort(miss[0].fin)} pas encore publiés.</span></p>`:""}`;
@@ -725,7 +723,7 @@ function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=
   ${fer?`<p class="note" style="margin:12px var(--gutter) 0">${ic("info")}<span>Jour férié : horaires du dimanche.</span></p>`:""}
   <h2 class="tr-sec">${isT?"Prochains trajets":"Premiers trajets"}</h2>
   ${top}
-  <article class="tr-card" id="tr-liste"><header class="tr-head"><div class="tr-head-m"><h2 class="tr-title">${dir?`${esc(dest)} → Préfailles`:`Préfailles → ${esc(dest)}`}</h2><p class="tr-sub">${list.length} trajet${list.length>1?"s":""} ${isT?"aujourd'hui":"ce jour-là"}, directs ou avec une correspondance${corrNote?`. ${esc(corrNote)}`:""}</p></div></header>${body}</article>
+  <article class="tr-card" id="tr-liste"><header class="tr-head"><div class="tr-head-m"><h2 class="tr-title">${dir?`${esc(dest)} → Préfailles`:`Préfailles → ${esc(dest)}`}</h2><button type="button" class="lnk tr-share" data-share="${esc(`${dir?`${dest} → Préfailles`:`Préfailles → ${dest}`}, ${dlong(d)} :\n`+fut.slice(0,6).map(j=>`${hh(j.dep)} → ${hh(j.arr)} (${j.steps.map(s=>(s.L.mode==="train"?(s.x.tgv?"TGV":"TER"):"car "+s.L.ligne)).join(" puis ")})`).join("\n"))}" data-url="${SITE}/#venir">${ic("share","i-s")} Partager ces horaires</button><p class="tr-sub">${list.length} trajet${list.length>1?"s":""} ${isT?"aujourd'hui":"ce jour-là"}, directs ou avec une correspondance${corrNote?`. ${esc(corrNote)}`:""}</p></div></header>${body}</article>
   ${sec("Lignes et tarifs","",T.lignes.map(L=>`<details class="tr-more tr-line"><summary>${L.mode==="train"?ic("train","i-s"):ic("bus","i-s")} ${esc(L.nom)}</summary><p class="row-meta">${esc(L.trajet)}</p><p>${esc(L.prix)}</p>${L.note?`<p>${esc(L.note)}</p>`:""}<p class="row-meta">Fiche horaire valable : ${esc(L.valid)} · <a class="lnk" href="${esc(L.source.url)}" target="_blank" rel="noopener">fiche officielle ↗</a></p></details>`).join(""))}
   ${sec("Bon à savoir","",`<ul class="tips"><li>${esc(T.tarifs?.actuel||"")}</li>${T.tarifs&&T.tarifs["a_partir_du_2027-01-04"]?`<li><b>À partir du 4 janvier 2027 :</b> ${esc(T.tarifs["a_partir_du_2027-01-04"])}</li>`:""}<li>Renseignements Aléop : <a href="tel:0969391414">09 69 39 14 14</a> (lun–ven 8h–19h, sam 8h–12h).</li><li>Navettes gratuites de l'été (Pornic Agglo) : horaires 2027 pas encore publiés.</li></ul>`)}
   <p class="foot">Horaires repris des fiches officielles Aléop et TER (Région Pays de la Loire), à titre indicatif : grèves, travaux et jours fériés peuvent les changer.</p>`;}
@@ -910,7 +908,7 @@ function whoChange(e){const el=e.target;
   else if(el.id==="wAu"&&el.value){DR.quand.au=el.value;drawWho();}}
 
 /* ---------- menu (bouton en haut à droite) ---------- */
-const MENU1=[["sejour","Aujourd'hui","Marée, météo, sorties et ciné du jour","home"],["agenda","Agenda","Fêtes, lotos, concerts, brocantes","cal"],["cine","Ciné","Préfailles et les cinémas voisins","film"],["activites","À faire","Sorties, sport, nature, associations","compass"],["mer","Mer","Marée, vent, houle, eau, spots","tide"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Prochains cars et trains","bus"]];
+const MENU1=[["sejour","Aujourd'hui","Marée, météo, sorties et ciné du jour","home"],["agenda","Agenda","Fêtes, lotos, concerts, brocantes","cal"],["cine","Ciné","Préfailles et les cinémas voisins","film"],["activites","À faire","Sorties, sport, nature, associations","compass"],["mer","Mer","Marée, vent, houle, température de l'eau","tide"],["spots","Spots et glisse","Surf, kite, wing, voile : où et à quelle heure","wave"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Prochains cars et trains","bus"]];
 const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
@@ -977,23 +975,25 @@ document.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.close
 
 /* ---------- rendu et navigation ---------- */
 function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)||EXTRA.includes(h)?h:"sejour";}
-const PARENT={cine:"agenda",activites:"agenda",pratique:"sejour",peche:"mer"};
+const PARENT={cine:"agenda",activites:"agenda",pratique:"sejour",peche:"mer",spots:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
-const TITLES={recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
+const TITLES={spots:"Spots et glisse",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
 function render(){rail();const v=curView();document.title=v==="sejour"?"Le Petit Préf":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer})[v]()}</section>`;
   if(open.length)$$("#main details summary .row-title").forEach(x=>{if(open.includes(x.textContent))x.closest("details").open=true;});
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
   window.scrollTo({top:sy,behavior:"instant"});
   after[v]&&after[v]();}
 after.sejour=()=>bindInstall();
+after.spots=()=>{if(S.spotsJump===location.hash)return;S.spotsJump=location.hash;const el=document.getElementById("spots");if(el)requestAnimationFrame(()=>el.scrollIntoView({behavior:"instant",block:"start"}));};
+addEventListener("hashchange",()=>{S.spotsJump=null;});
 
 /* ---------- nouvelle version du site ---------- */
 (function(){const vPage=(document.querySelector('meta[name="pp-version"]')||{}).content,t0=Date.now(),reload=/[?&]maj=/.test(location.search);let vu=0,touche=false;
