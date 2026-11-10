@@ -15,7 +15,7 @@
   --line:#e2e2dc;          /* filet */
   --line-strong:#d3d3cb;
   --accent:#1b5b86;        /* bleu de mer (affiné depuis #1f5f8b) */
-  --sel2:#3f86b8; --sel2-ink:#ffffff; /* bleu plus clair : filtres et choix secondaires */
+  --sel2:#2f78ab; --sel2-ink:#ffffff; /* bleu plus clair : filtres et choix secondaires */
   --accent-ink:#ffffff;
   --accent-soft:#e6f1f6;   /* ciel */
   --sky:#e6f1f6;
@@ -777,3 +777,13 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 .mapbox .land{fill:color-mix(in srgb,#c9b48f 38%,var(--surface));stroke:color-mix(in srgb,#8a7f72 45%,transparent);stroke-width:1.2}
 
 .dl-m{display:block;font-size:14px;color:var(--muted);line-height:1.1}
+
+/* accessibilité (audit) : contrastes, liens soulignés, liens de barre courants */
+.tide-times .is-past{opacity:1}
+.tide-times .is-past,.tide-times .is-past span,.tide-times .is-past b{color:#62646d}
+:root[data-theme="dark"] .tide-times .is-past,:root[data-theme="dark"] .tide-times .is-past span,:root[data-theme="dark"] .tide-times .is-past b{color:#b6b8bf}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tide-times .is-past,:root:not([data-theme="light"]) .tide-times .is-past span,:root:not([data-theme="light"]) .tide-times .is-past b{color:#b6b8bf}}
+.note-pill.ok{color:color-mix(in srgb,var(--ok) 80%,var(--ink))}
+p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoration:underline;text-underline-offset:2px}
+.subnav .seg a[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
+#main h1:focus{outline:none}

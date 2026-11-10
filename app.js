@@ -392,11 +392,11 @@ const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label
 /* ===== Agenda ===== */
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
-const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-pressed="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-pressed="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-pressed="${v==="peche"}">Pêche à pied</a></div></div>`;
+const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
 const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
 const segMg=()=>segBtns("Rubriques de Manger",[["tous","Tout"],["tables","Restos"],["marche","Marchés"],["produits","Produits"]],["tous","tables","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
 const segTr=()=>segBtns("Destinations",[["Pornic","Pornic"],["Nantes","Nantes"],["Saint-Nazaire","Saint-Nazaire"]],S.trTo||"Pornic","trto");
-const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-pressed="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-pressed="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
+const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-current="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-current="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-current="${v==="cine"}">Ciné</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype);
@@ -940,10 +940,10 @@ function openWho(){const type=gActive()?GR.actif:null;
   if(DR.quand.mode==="dates"&&(!DR.quand.au||DR.quand.au<today()))DR.quand={mode:"weekend"};
   closeOverlays();
   const v=document.createElement("div");v.id="who";v.innerHTML=`<div class="scrim" data-w="close"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="whoT"></div>`;
-  document.body.appendChild(v);document.body.classList.add("locked");document.addEventListener("keydown",escKey);drawWho();
+  document.body.appendChild(v);document.body.classList.add("locked");pageInert(true);document.addEventListener("keydown",escKey);drawWho();
   v.addEventListener("click",whoClick);v.addEventListener("change",whoChange);
   const f=v.querySelector(".sheet button");if(f)f.focus({preventScroll:true});}
-function closeWho(){const v=$("#who");if(v)v.remove();if(!$("#menu")){document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}}
+function closeWho(){const v=$("#who");if(v)v.remove();if(!$("#menu")){pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}}
 function drawWho(){const sh=$("#who .sheet");if(!sh)return;const sc=sh.scrollTop,t=today(),[wf,wt]=defaultStay(),q=DR.quand;
   const step=(k,n,min,max)=>`<div class="stepper"><button type="button" data-w="step" data-k="${k}" data-d="-1" aria-label="Moins" ${n<=min?"disabled":""}><span>${ic("minus","i-s")}</span></button><output aria-live="polite">${n}</output><button type="button" data-w="step" data-k="${k}" data-d="1" aria-label="Plus" ${n>=max?"disabled":""}><span>${ic("plus","i-s")}</span></button></div>`;
   const per=q.mode==="dates"&&q.du&&q.au?(q.du.slice(0,7)===q.au.slice(0,7)?`${dname(q.du)} ${+q.du.slice(8)} → ${dshort(q.au)}`:`${dshort(q.du)} → ${dshort(q.au)}`):"";
@@ -987,7 +987,8 @@ const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","hom
 const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
-function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
+const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{const e=$(q);if(e)e.inert=on;});const mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded",String(!!$("#menu")&&on));};
+function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
 function escKey(e){if(e.key==="Escape"){const had=$("#menu");closeOverlays();if(had){const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}}}
 function openMenu(){closeOverlays();const c=curView(),g=gActive();
   const COL={sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",recherche:"--muted",apropos:"--muted"};
@@ -1007,7 +1008,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
       else if(m==="theme"){setTheme(b.dataset.v);v.querySelectorAll("[data-m=theme]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.v===b.dataset.v));}return;}
     if(e.target.closest("a"))closeOverlays();});
   document.addEventListener("keydown",escKey);
-  document.body.appendChild(v);document.body.classList.add("locked");
+  document.body.appendChild(v);document.body.classList.add("locked");pageInert(true);
   const f=v.querySelector("[data-m=close]");if(f)f.focus({preventScroll:true});}
 {const mb=document.getElementById("menuBtn");if(mb)mb.onclick=openMenu;}
 
@@ -1058,7 +1059,7 @@ function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)
 const PARENT={cine:"agenda",activites:"agenda",pratique:"sejour",peche:"mer",spots:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
-const TITLES={spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
+const TITLES={activites:"Activités",cine:"Ciné",mer:"La mer",peche:"Pêche à pied",spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
 /* ---------- audience : totaux seulement, comme Concret (même compteur, clés « quiz-pp-… ») ----------
    Rien qui identifie la personne : ni cookie, ni adresse IP gardée, ni identifiant envoyé. Le navigateur garde seulement le jour de sa
@@ -1079,7 +1080,7 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
     [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
-function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
+function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
@@ -1100,7 +1101,7 @@ function spyTick(){const L=[...document.querySelectorAll(".subnav [data-spy]")].
   const nav=document.querySelector(".subnav"),lim=(nav?nav.getBoundingClientRect().bottom:160)+90;let cur=L[0];
   L.forEach(a=>{if(document.getElementById(a.dataset.spy).getBoundingClientRect().top<=lim)cur=a;});
   if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=L[L.length-1]&&document.getElementById(L[L.length-1].dataset.spy).getBoundingClientRect().top<innerHeight?L[L.length-1]:cur;
-  L.forEach(a=>a.setAttribute("aria-pressed",String(a===cur)));}
+  L.forEach(a=>a.setAttribute("aria-current",String(a===cur)));}
 let spyRaf=0;addEventListener("scroll",()=>{if(!spyRaf)spyRaf=requestAnimationFrame(()=>{spyRaf=0;spyTick();});},{passive:true});
 
 /* ---------- nouvelle version du site ---------- */
@@ -1123,7 +1124,7 @@ window.addEventListener("hashchange",()=>{const v=curView();
   if(!VIEWS.some(x=>x[0]===v)&&!EXTRA.includes(v)){const el=document.getElementById(location.hash.slice(1));if(el)el.scrollIntoView({behavior:"smooth",block:"start"});return;}
   closeOverlays();
   POS[lastView]=window.scrollY;lastView=v;
-  const go=()=>{render();window.scrollTo({top:POS[v]||0,behavior:"instant"});};
+  const go=()=>{render();window.scrollTo({top:POS[v]||0,behavior:"instant"});const h=$("#main h1");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}};
   if(document.startViewTransition&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.startViewTransition(go);
   else{go();const w=$("#main .view");if(w){w.classList.add("enter");setTimeout(()=>w.classList.remove("enter"),260);}}});
 render();
@@ -1131,7 +1132,7 @@ render();
   const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();});
   const names=["events","cinema","assos","transports"];
   const res=await Promise.allSettled([...names.map(get),get("status")]);
-  names.forEach((n,k)=>{S[n]=res[k].status==="fulfilled"?res[k].value:(n==="transports"?{}:[]);});
+  names.forEach((n,k)=>{const v=res[k].status==="fulfilled"?res[k].value:null;S[n]=n==="transports"?(v&&typeof v==="object"&&!Array.isArray(v)?v:{}):(Array.isArray(v)?v:[]);});
   const st=res[names.length];S.meta=st.status==="fulfilled"?st.value:null;
   if(res.every(r=>r.status==="rejected"))S.err="Les données ne se chargent pas. Vérifiez la connexion puis rechargez la page.";
   if(S.meta?.updatedAt){const u=$("#upd");if(u)u.textContent="Agenda et cinéma mis à jour le "+F(new Date(S.meta.updatedAt),{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+".";}

@@ -44,3 +44,7 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Deux bleus : barre de sous-rubriques en bleu mer plein (`--accent`), filtres et choix secondaires (puces, Partir/Rentrer, Où…) en bleu plus clair (`--sel2`). La distance est le premier filtre partout.
 - Accueil : chiffres des portes comptés à moins de 20 km ; Transports y présente « Partir de Préfailles » et « Venir à Préfailles ».
 - Menu en couleur : chaque entrée a sa pastille (`.menu-ic`, couleur de sa rubrique, table `COL` dans `openMenu`) ; « Installer l'app » est en tête du menu (`.menu-install`, masqué si l'app est déjà installée).
+- Hors ligne : sw.js met en cache la coquille ET les donnees/*.json, attend le réseau 3 s au plus, une entrée par fichier (sans ?v=), jamais version.json ni les réponses en erreur.
+- Accessibilité : menu et feuille rendent le reste de la page inerte (`pageInert`), focus sur le h1 à chaque changement de vue, liens de sous-rubriques en `aria-current`, liens soulignés dans le texte. Le bleu secondaire `--sel2` (#2f78ab) garde un contraste ≥ 4,5:1 avec le blanc.
+- Sécurité : verifier.py refuse les liens non http(s) et les âges non numériques dans events.json et assos.json.
+- Anonymat : la carte des activités est centrée sur le bourg (HOME = 47.13, -2.22), libellé « Préfailles », jamais « maison ».
