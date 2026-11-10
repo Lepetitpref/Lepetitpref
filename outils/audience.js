@@ -3,6 +3,8 @@
 // Lit les totaux du compteur de Concret (clés « quiz-pp-… », écrites par app.js : ppVue / ppHit) et écrit des JSON HORS du dépôt.
 //   node outils/audience.js <dossier hors dépôt>
 // Écrit : jours.json (14 derniers jours), pages.json (vues par rubrique depuis le début), resume.json.
+//   --avant <url du dossier déjà publié> : reprend les jours anciens (plus de 2 jours) déjà relevés, pour ne relire que les 2 derniers
+//   (utilisé par .github/workflows/site.yml, toutes les 15 min, pour ménager le compteur).
 var cp = require('child_process'), fs = require('fs'), path = require('path');
 var API = 'https://compteur.square-brook-9d65.workers.dev/get?n=1&k=';
 var out = process.argv[2];
@@ -18,14 +20,20 @@ function lire(k) {
 }
 async function tout(ks) { var o = []; for (var i = 0; i < ks.length; i += 24) o = o.concat(await Promise.all(ks.slice(i, i + 24).map(lire))); return o; }
 var jour = function (n) { return new Date(Date.now() - n * 864e5).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' }); };
-var VUES = ['sejour', 'agenda', 'activites', 'cine', 'mer', 'spots', 'manger', 'venir', 'peche', 'pratique', 'recherche', 'installer', 'apropos'];
-var NOMS = { sejour: "Aujourd'hui", agenda: 'Agenda', activites: 'À faire', cine: 'Ciné', mer: 'Mer', spots: 'Spots et glisse', manger: 'Manger', venir: 'Transports', peche: 'Pêche à pied', pratique: 'Pratique', recherche: 'Recherche', installer: "Installer l'app", apropos: 'À propos' };
+var VUES = ['sejour', 'agenda', 'activites', 'cine', 'soirees', 'mer', 'spots', 'manger', 'venir', 'peche', 'pratique', 'recherche', 'installer', 'apropos'];
+var NOMS = { sejour: 'Accueil', agenda: 'Agenda', activites: 'Activités', cine: 'Ciné', soirees: 'Soirées', mer: 'Mer', spots: 'Spots et glisse', manger: 'Restos', venir: 'Transports', peche: 'Pêche à pied', pratique: 'Pratique', recherche: 'Recherche', installer: "Installer l'app", apropos: 'À propos' };
 var CH = ['appareils', 'appareils-nouveaux', 'vues', 'app', 'partage', 'profil-habitant', 'profil-visite', 'profil-aucun', 'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s'];
 var ecrire = function (n, v) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(v, null, 1)); };
 (async function () {
   var ds = []; for (var n = 13; n >= 0; n--) ds.push(jour(n));
-  var ks = []; ds.forEach(function (d) { CH.forEach(function (c) { ks.push(c + '-' + d); }); });
-  var v = await tout(ks), jours = ds.map(function (d, i) {
+  var avant = {}, ia = process.argv.indexOf('--avant');
+  if (ia > 0 && process.argv[ia + 1]) {
+    try { var rq = await fetch(process.argv[ia + 1].replace(/\/?$/, '/') + 'jours.json?t=' + Date.now()); if (rq.ok) (await rq.json()).forEach(function (r) { if (r && r.jour && r.vues != null) avant[r.jour] = r; }); } catch (x) {}
+  }
+  var lu = ds.filter(function (d, i) { return i >= ds.length - 2 || !avant[d]; });
+  var ks = []; lu.forEach(function (d) { CH.forEach(function (c) { ks.push(c + '-' + d); }); });
+  var v = await tout(ks), jours = ds.map(function (d) {
+    var i = lu.indexOf(d); if (i < 0) return avant[d];
     var r = { jour: d }; CH.forEach(function (c, j) { r[c.replace(/-/g, '_')] = v[i * CH.length + j]; });
     r.appareils_revenus = r.appareils == null ? null : Math.max(0, r.appareils - (r.appareils_nouveaux || 0)); return r;
   });
