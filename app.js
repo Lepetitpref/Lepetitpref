@@ -5,8 +5,8 @@ const TZ="Europe/Paris", HOME={lat:47.1315,lon:-2.2180};
 /* ---------- icônes (sprite SVG dans index.html) ---------- */
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
-const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["activites","À faire"],["mer","Mer"],["manger","Manger"]];
-const EXTRA=["recherche","apropos","installer","venir","cine","pratique","peche"];
+const VIEWS=[["sejour","Aujourd'hui"],["agenda","Agenda"],["mer","Mer"],["manger","Manger"],["venir","Transports"]];
+const EXTRA=["recherche","apropos","installer","activites","cine","pratique","peche"];
 const after={};
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -380,7 +380,7 @@ const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label
 /* ===== Agenda ===== */
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
-const segAC=v=>`<div class="seg-wrap"><div class="seg" role="group" aria-label="Sorties ou ciné"><a class="seg-a" href="#agenda" aria-pressed="${v==="agenda"}">Sorties</a><a class="seg-a" href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
+const segAC=v=>`<div class="seg-wrap"><div class="seg" role="group" aria-label="Sorties, à faire ou ciné"><a class="seg-a" href="#agenda" aria-pressed="${v==="agenda"}">Sorties</a><a class="seg-a" href="#activites" aria-pressed="${v==="activites"}">À faire</a><a class="seg-a" href="#cine" aria-pressed="${v==="cine"}">Ciné</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype);
@@ -444,7 +444,8 @@ function vActs(){const t=today(),od=S.openDay||t;
   const g={};list.forEach(a=>(g[a.cat] ||= []).push(a));
   const cats=[["tous","Tous les thèmes"],...Object.keys(CATS).filter(k=>k!=="saveurs"&&k!=="marche"&&pre.some(a=>a.cat===k)).map(k=>[k,CATS[k]]),["assos","Associations"]];
   return `${pageHead("À faire",`${list.length} lieu${list.length>1?"x":""}, du plus proche au plus loin`)}
-  <div class="seg-wrap"><div class="seg" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
+  ${segAC("activites")}
+  <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
   <div class="filters">${frow("frow","Thème",cats.map(([k,l])=>kchip(k==="tous"?"Tout":l,S.cat===k,`data-act="cat" data-v="${k}"`,CATK[k]||"ink")).join(""))}
    ${frow("frow","Filtres",`${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
@@ -529,7 +530,7 @@ function homeTop(days,d){const g=gActive(),t=today();
   const zone=`<div class="ctl-row"><span class="ctl-l">Où</span><div class="seg seg-s seg-where" role="group" aria-label="Distance">${ZONES.map(([k,l])=>`<button type="button" aria-pressed="${S.where===k}" data-act="zone" data-v="${k}">${k==="ici"?l:"≤ "+l}</button>`).join("")}</div></div>`;
   const rain=isRain(d);
   const wx=`<div class="wx">${wxLine(d)||`<span class="wx-ic">${ic("cloudsun")}</span><span class="wx-txt"><b>Météo</b><span>${WX.st==="err"?"Prévisions indisponibles pour l'instant.":d>addDays(t,6)?"Prévisions à 7 jours seulement.":"Chargement des prévisions…"}</span></span>`}</div>
-   <div class="ctl-row"><span class="ctl-l">Temps</span><div class="seg seg-s" role="group" aria-label="Temps">${[[0,"Beau temps"],[1,"S'il pleut"]].map(([v,l])=>`<button type="button" aria-pressed="${!!v===rain}" data-act="pluie" data-v="${v}" data-d="${d}">${v?ic("umb","i-s"):ic("sun","i-s")}${l}</button>`).join("")}</div></div>`;
+   <div class="ctl-row"><span class="ctl-l">Temps</span><div class="seg seg-s seg-temps" role="group" aria-label="Temps">${[[0,"Beau temps"],[1,"S'il pleut"]].map(([v,l])=>`<button type="button" aria-pressed="${!!v===rain}" data-act="pluie" data-v="${v}" data-d="${d}">${v?ic("umb","i-s"):ic("sun","i-s")}${l}</button>`).join("")}</div></div>`;
   return `<div class="hero"><img src="images/mer.jpg" alt="La grande plage de Préfailles, ses villas et la promenade au soleil couchant" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">Préfailles</div><h1 class="hero-title">${esc(cap(dlong(d)))}</h1></div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
   <div class="ctl">${who}${bar}${zone}${wx}</div>`;}
@@ -875,7 +876,7 @@ function whoClick(e){const b=e.target.closest("[data-w]");if(!b||b.tagName==="SE
     GR.actif=DR.type;GR.habitant=false;GR.quand=q;gSave();
     S.day=null;S.who="groupe";closeWho();
     if(curView()!=="sejour")location.hash="#sejour";else{render();window.scrollTo({top:0,behavior:"instant"});}return;}
-  else if(w==="local"){GR.habitant=true;gSave();S.who="tous";S.day=null;closeWho();if(curView()!=="sejour")location.hash="#sejour";else render();return;}
+  else if(w==="local"){GR.habitant=true;gSave();S.where="ici";sset("cf-where","ici");S.who="tous";S.day=null;closeWho();if(curView()!=="sejour")location.hash="#sejour";else render();return;}
   drawWho();}
 function whoChange(e){const el=e.target;
   if(el.dataset.w==="age"){DR.enfants[+el.dataset.i].age=+el.value;drawWho();}
@@ -912,7 +913,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 /* ---------- actions des vues (délégation) ---------- */
 const ACT={
   who:()=>openWho(),
-  local:()=>{GR.habitant=true;gSave();S.day=null;render();},
+  local:()=>{GR.habitant=true;gSave();S.where="ici";sset("cf-where","ici");S.day=null;render();},
   visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},
   zone:v=>{S.where=v;sset("cf-where",v);render();},
   day:v=>{S.day=v;render();},
@@ -950,7 +951,7 @@ document.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.close
 
 /* ---------- rendu et navigation ---------- */
 function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)||EXTRA.includes(h)?h:"sejour";}
-const PARENT={cine:"agenda",pratique:"sejour",venir:"sejour",peche:"mer"};
+const PARENT={cine:"agenda",activites:"agenda",pratique:"sejour",peche:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
 const TITLES={recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};

@@ -18,17 +18,19 @@ Site statique (GitHub Pages, domaine lepetitpref.fr) : le carnet de Préfailles 
 - **Après toute modification de index.html, app.js ou style.css, lance `python3 outils/version.py`** avant le commit : les téléphones et l'app installée se mettent alors à jour seuls (rechargement automatique à l'ouverture, ou bandeau « Une nouvelle version du Petit Préf est en ligne · Mettre à jour »). Pas besoin pour les seules données.
 
 ## Design
-Sobre, dans l'esprit de Concret : une seule couleur d'accent, listes denses à filet fin (pas de grosses cartes), titres Newsreader de taille raisonnable, état sélectionné en encre, sauf la distance « Où » de l'accueil en terre cuite (`--warm`, `.seg-where`), poids de police 400–600. Cibles tactiles ≥ 44 px, texte ≥ 14 px. Deux publics : vacanciers (dates de séjour, en option) et habitants (aucune notion de séjour imposée).
+Sobre, dans l'esprit de Concret : une seule couleur d'accent, listes denses à filet fin (pas de grosses cartes), titres Newsreader de taille raisonnable, barres de sélection `.seg` en vert de mer (`--seagreen`), puce « Tout » en encre, puces de date en bleu, poids de police 400–600. Cibles tactiles ≥ 44 px, texte ≥ 14 px. Deux publics : vacanciers (dates de séjour, en option) et habitants (aucune notion de séjour imposée).
 
 ## Vérifier avant de pousser
 `node --check app.js`, `python3 outils/verifier.py`, puis ouvrir la page (Playwright, device « iPhone 13 ») et parcourir les 5 rubriques, le menu, la feuille « Qui vient ? », `#peche` et `#pratique` sans erreur console, en clair et en sombre.
 
 ## Ajouts de novembre 2026
-- Onglets : Aujourd'hui, Agenda, À faire, Mer, Manger. Transports (#venir) et Ciné (#cine) via le menu et les liens.
+- Onglets : Aujourd'hui, Agenda, Mer, Manger, Transports (#venir). Dans Agenda, une barre « Sorties · À faire · Ciné » (`segAC`) mène à #agenda, #activites et #cine (PARENT → agenda).
+- Manger : distance propre, Préfailles par défaut (`S.mWhere`, clé `pp-mwhere`), indépendante de la distance globale.
+- Transports : « Prochains départs » en haut, sens « Partir de / Rentrer à Préfailles » (`S.trDir`), une carte `.tr-card` par ligne, départs passés repliés.
 - Distance globale `S.where` (ici / 10 / 20 km, défaut 20, clé `cf-where`) : réglée en haut de l'accueil, appliquée partout.
 - Code couleur des puces : bleu (`.chip-q`) = quand, pastels (`.chip-k k-sea|food|act|nat`) = quoi, contour (`.chip`) = filtres. Barres `.filters` collantes sous les onglets.
 - Météo, vent, houle, température de l'eau : Open-Meteo appelé depuis le téléphone (p2b_wx.js, cache `pp-wx` 1 h). Spots dans `SPOTSX` (orientation `face`, fenêtre de houle `swell`) ; verdicts calculés par `judge()`.
 - Transports : `donnees/transports.json` (fiches Aléop 303, 315 et TER Pornic–Nantes, vacances zone B, jours fériés). Le TER n'est valable que jusqu'au 12/12/2026 : à remplacer par la fiche suivante.
 - Le cinéma de Préfailles s'affiche « Préfailles » (données : « L'Atlantique (Préfailles) »).
-- Page Mer : le bloc météo de la mer (`.sea`) est en pêche (`--peach`), la marée reste en ciel (`--sky`) : jamais deux grands blocs bleus à la suite.
+- Page Mer : le bloc météo de la mer (`.sea`) est en vert d'eau (`--mint`), la marée reste en ciel (`--sky`) : jamais deux grands blocs bleus à la suite.
 - Surf heure par heure : `surfHours()` note chaque heure de jour (lever +1 h → coucher, `sunrise`/`sunset` Open-Meteo) en combinant houle, vent et marée (`tideAtH()` : niveau 0 basse → 1 haute, montante ou non). Chaque spot de surf a une fenêtre `tide:[min,max]` et un texte `tideTxt` ; hors fenêtre, la note baisse d'un cran. Section « Surf : les bonnes heures » (`surfSec`) avec créneau « de Xh à Yh » (`slotTxt`).
