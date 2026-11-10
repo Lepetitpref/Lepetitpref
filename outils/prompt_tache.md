@@ -17,7 +17,7 @@ En priorité les 30 prochains jours, puis les grandes dates : marchés de Noël,
 - Vie locale de Préfailles, à lire à chaque passage :
   - le bulletin municipal **Préf'Infos** (PDF bimestriel, lien sur la page d'accueil de prefailles.fr ; ex. https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf) : rubrique agenda (concerts, Comedy Club, ateliers « Bien Vieillir » du CCAS, spectacles des jeunes, conseils municipaux, Téléthon…). Se lit avec `curl` + `pdftotext -layout` ;
   - l'annuaire des associations (pages « associations culturelles / sportives / loisirs » de prefailles.fr) : met à jour `donnees/assos.json` (activités régulières, jours et heures) ;
-  - le Club de Voile de Préfailles (https://www.clubdevoileprefailles.fr) et l'École de voile municipale (https://www.ecoledevoileprefailles.fr/ : stages des vacances, voile loisir du mercredi et du samedi) ;
+  - le Club de Voile de Préfailles (https://www.clubdevoileprefailles.fr et ses événements HelloAsso https://www.helloasso.com/associations/club-de-voile-de-prefailles : régates, Trophée des côtes préfaillaises, Swimrun de Préfailles, fêtes du club) et l'École de voile municipale (https://www.ecoledevoileprefailles.fr/ : stages des vacances, voile loisir du mercredi et du samedi) ;
   - la Compagnie Népenthès-Théâtre (cours et stages enfants/ados, spectacles à l'Espace culturel) ;
   - les centres aquatiques : Aquacentre de Pornic (pornicagglo.fr : stages de natation des vacances, soirées) et Aquajade à Saint-Brevin (ca-aquajade.com).
   Contacts dans `assos.json` : seulement des mails d'association, des numéros de structure ou la mairie ; **jamais** le portable ou le mail personnel d'un président ou d'un bénévole nommé.
