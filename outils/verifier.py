@@ -29,6 +29,13 @@ for e in ev:
 for c in ci:
     if not D.match(str(c.get("date", ""))) or not isinstance(c.get("times"), list): err.append(f"cinema {c.get('id')} : date ou times invalide")
 if not isinstance(st, dict) or "updatedAt" not in st: err.append("status.json : updatedAt manquant")
+# sécurité : liens http(s) seulement, âges numériques (les données viennent de sites tiers)
+for n, L in [("events", ev), ("assos", asso)]:
+    for x in (L if isinstance(L, list) else []):
+        u = x.get("url")
+        if u and not re.match(r"^https?://", str(u)): err.append(f"{n} {x.get('id')} : lien refusé (http/https seulement)")
+        for k in ("ageMin", "ageMax"):
+            if x.get(k) is not None and not isinstance(x.get(k), (int, float)): err.append(f"{n} {x.get('id')} : {k} doit être un nombre")
 try:
     TR=json.load(open(ROOT / "transports.json", encoding="utf-8")) if (ROOT / "transports.json").exists() else {}
     HM=re.compile(r"^\d\d[h]\d\d$")

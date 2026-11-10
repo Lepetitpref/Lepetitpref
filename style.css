@@ -775,3 +775,5 @@ html body{padding-top:calc(env(safe-area-inset-top,0px) + var(--hdr))}
 /* carte des activités : la mer en bleu clair, la terre plus marquée (et pas l'inverse) */
 .mapbox{background:color-mix(in srgb,var(--i-sea) 16%,var(--surface))}
 .mapbox .land{fill:color-mix(in srgb,#c9b48f 38%,var(--surface));stroke:color-mix(in srgb,#8a7f72 45%,transparent);stroke-width:1.2}
+
+.dl-m{display:block;font-size:14px;color:var(--muted);line-height:1.1}
