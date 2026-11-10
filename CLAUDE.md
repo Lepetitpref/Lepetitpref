@@ -50,3 +50,4 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Anonymat : la carte des activités est centrée sur le bourg (HOME = 47.13, -2.22), libellé « Préfailles », jamais « maison ».
 - À faire a 4 sous-rubriques : Agenda · Activités · Ciné · Soirées (`#soirees`, `vSoirees()` : sorties de 18h et plus tard (`evSoir`), filtres Ce soir / Demain soir / Ce week-end / 7 jours (`S.soirWhen`), puis « Où sortir le soir » = fiches ACTS de kind `bar` ou `nuit` et casinos (`NUITS()`)). L'Agenda se prolonge aussi par les Soirées.
 - Manger : sous-rubrique Bars (`kind:"bar"`), exclue de « Produits ».
+- L'onglet Manger s'appelle « Restos » (vue et hash restent `vManger` / `#manger`) ; sous-rubriques Tout · Restaurants · Bars · Marchés · Produits. Un lieu restaurant-bar garde `kind:"restaurant"` et prend `bar:true` (apparaît aussi dans Bars et Soirées).

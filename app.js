@@ -5,7 +5,7 @@ const TZ="Europe/Paris", HOME={lat:47.13,lon:-2.22};
 /* ---------- icônes (sprite SVG dans index.html) ---------- */
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
-const VIEWS=[["sejour","Accueil"],["agenda","À faire"],["mer","Mer"],["manger","Manger"],["venir","Transports"]];
+const VIEWS=[["sejour","Accueil"],["agenda","À faire"],["mer","Mer"],["manger","Restos"],["venir","Transports"]];
 const EXTRA=["recherche","apropos","installer","activites","cine","soirees","pratique","peche","spots"];
 const after={};
 /* ---------- taxonomy ---------- */
@@ -396,7 +396,7 @@ function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="de
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
 const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
 const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
-const segMg=()=>segBtns("Rubriques de Manger",[["tous","Tout"],["tables","Restos"],["bar","Bars"],["marche","Marchés"],["produits","Produits"]],["tous","tables","bar","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
+const segMg=()=>segBtns("Rubriques de Restos",[["tous","Tout"],["tables","Restaurants"],["bar","Bars"],["marche","Marchés"],["produits","Produits"]],["tous","tables","bar","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
 const segTr=()=>segBtns("Destinations",[["Pornic","Pornic"],["Nantes","Nantes"],["Saint-Nazaire","Saint-Nazaire"]],S.trTo||"Pornic","trto");
 const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-current="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-current="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-current="${v==="cine"}">Ciné</a><a class="seg-a" href="#soirees" data-spy="s-soirees" aria-current="${v==="soirees"}">Soirées</a></div></div>`;
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
@@ -479,7 +479,7 @@ function vManger(){const t=today(),od=S.openDay||t;
   const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
-  return `${pageHead("Manger",`${list.length} adresse${list.length>1?"s":""}, du plus proche au plus loin`)}
+  return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""}, du plus proche au plus loin`)}
   ${segMg()}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
    ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}</div>
@@ -629,7 +629,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
     r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")],"#mer")}
-  ${door("d-manger","--i-food","Manger","Restaurants et crêperies, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.",[
+  ${door("d-manger","--i-food","Restos","Restaurants et crêperies, bars, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.",[
     r("#manger",`Ouvert aujourd'hui <span class="door-n">${eat20.length}</span>`,`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 10 km`,' data-act="mwhere20"')],"#manger")}
   ${door("d-transports","--seagreen","Transports","Les horaires des cars et des trains pour aller à Pornic, Nantes ou Saint-Nazaire, et pour venir à Préfailles, correspondances comprises.",[
     r("#venir","Partir de Préfailles",`vers Pornic, Nantes, Saint-Nazaire${go?` · prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:""}`,' data-act="trdir" data-v="0"'),
@@ -1010,7 +1010,7 @@ function whoChange(e){const el=e.target;
   else if(el.id==="wAu"&&el.value){DR.quand.au=el.value;drawWho();}}
 
 /* ---------- menu (bouton en haut à droite) ---------- */
-const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Manger","Restos, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"]];
+const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Restos","Restaurants, bars, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"]];
 const MENU2=[["pratique","Urgences et numéros utiles","112 · 15 · 18 · 196 en mer · pharmacie 3237","phone"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et contact","","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
