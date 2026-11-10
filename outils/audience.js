@@ -22,9 +22,9 @@ async function tout(ks) { var o = []; for (var i = 0; i < ks.length; i += 24) o 
 var jour = function (n) { return new Date(Date.now() - n * 864e5).toLocaleDateString('sv-SE', { timeZone: 'Europe/Paris' }); };
 var VUES = ['sejour', 'agenda', 'activites', 'cine', 'soirees', 'mer', 'spots', 'manger', 'venir', 'peche', 'pratique', 'recherche', 'installer', 'apropos'];
 var NOMS = { sejour: 'Accueil', agenda: 'Agenda', activites: 'Activités', cine: 'Ciné', soirees: 'Soirées', mer: 'Mer', spots: 'Spots et glisse', manger: 'Restos', venir: 'Transports', peche: 'Pêche à pied', pratique: 'Pratique', recherche: 'Recherche', installer: "Installer l'app", apropos: 'À propos' };
-var CH = ['appareils', 'appareils-nouveaux', 'vues', 'app', 'partage', 'profil-habitant', 'profil-visite', 'profil-aucun', 'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s'];
+var CH = ['appareils', 'appareils-nouveaux', 'vues', 'app', 'partage', 'profil-habitant', 'profil-visite', 'profil-aucun', 'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s', 'installation'];
 // Corrections : appareils de l'éditeur comptés avant leur exclusion (le compteur ne sait pas retirer).
-var CORR = { '2026-11-10': { appareils: -2, appareils_nouveaux: -2, app: -1 } }, CORR_TOTAL = -2;
+var CORR = { '2026-11-10': { appareils: -2, appareils_nouveaux: -2 } }, CORR_TOTAL = -2;
 var ecrire = function (n, v) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(v, null, 1)); };
 (async function () {
   var ds = []; for (var n = 13; n >= 0; n--) ds.push(jour(n));

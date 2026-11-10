@@ -929,7 +929,7 @@ const IN_APP=/FBAN|FBAV|Instagram|WhatsApp|Line\/|GSA\/|Messenger|LinkedInApp|Sn
 const STANDALONE=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
 let deferredPrompt=null;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;if(curView()==="installer"||curView()==="sejour")render();});
-window.addEventListener("appinstalled",()=>{deferredPrompt=null;sset("pp-install","ok");render();});
+window.addEventListener("appinstalled",()=>{deferredPrompt=null;sset("pp-install","ok");ppHit("installation-"+ppJour());render();});
 const WAVE='<svg viewBox="0 0 80 50" aria-hidden="true"><path d="M3 25 C10 14 20 6 32 5 C40 4.5 45 8 46 15 C42 11 34 10 29 15 C24 20 25 30 33 33 C41 36 52 30 60 29 C67 28 73 28 77 29.5 C70 35 60 40 46 43 C32 46 16 42 3 25 Z"/></svg>';
 const SHARE_IC='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
 const PLUS_IC='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>';
