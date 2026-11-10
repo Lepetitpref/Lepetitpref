@@ -623,16 +623,16 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   <h2 class="home-h">Aujourd'hui à Préfailles et aux alentours</h2>
   ${homeNow(t)}
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
-    r("#agenda",`Agenda <span class="door-n">${ld?"…":evT.length}</span>`,ld?"":`${evT.length?`sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
-    r("#activites",`Activités <span class="door-n">${nAct}</span>`,"lieux ouverts aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants"),
-    r("#soirees",`Soirées <span class="door-n">${ld?"…":nSoir+barsSoir.length}</span>`,ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"}${barsSoir.length?`, ${barsSoir.length} bar${barsSoir.length>1?"s":""} ouvert${barsSoir.length>1?"s":""} tard`:""} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes, bars`,' data-act="soirw" data-v="soir"'),
+    r("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
+    r("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants`),
+    r("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"}${barsSoir.length?`, ${barsSoir.length} bar${barsSoir.length>1?"s":""} ouvert${barsSoir.length>1?"s":""} tard`:""} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes, bars`,' data-act="soirw" data-v="soir"'),
     r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
     r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")],"#mer")}
   ${door("d-manger","--i-food","Restos","Restaurants et crêperies, bars, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.",[
-    r("#manger",`Ouvert aujourd'hui <span class="door-n">${eat20.length}</span>`,`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 10 km`,' data-act="mwhere20"')],"#manger")}
+    r("#manger","Ouvert aujourd'hui",`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 10 km`,' data-act="mwhere20"')],"#manger")}
   ${door("d-transports","--seagreen","Transports","Les horaires des cars et des trains pour aller à Pornic, Nantes ou Saint-Nazaire, et pour venir à Préfailles, correspondances comprises.",[
     r("#venir","Partir de Préfailles",`vers Pornic, Nantes, Saint-Nazaire${go?` · prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:""}`,' data-act="trdir" data-v="0"'),
     r("#venir","Venir à Préfailles",`depuis Nantes, Pornic, Saint-Nazaire${come?` · prochain départ de ${esc(come[0])} à ${come[1].dep.replace(/^0/,"")}`:""}`,' data-act="trdir" data-v="1"'),
