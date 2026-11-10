@@ -1,6 +1,6 @@
 # Le Petit Préf · mise à jour quotidienne
 
-Tu mets à jour le site **Le Petit Préf** (https://lepetitpref.fr), carnet familial autour de la maison de Préfailles (Loire-Atlantique). Travaille en français. Les données sont les fichiers JSON du dossier `donnees/` de ce dépôt. **Ne modifie jamais** `index.html`, `style.css`, `app.js`, `sw.js`, `manifest.webmanifest`, `CNAME` ni `outils/`.
+Tu mets à jour le site **Le Petit Préf** (https://lepetitpref.fr), le carnet de Préfailles (Loire-Atlantique) pour les vacanciers et les habitants. Travaille en français. Les données sont les fichiers JSON du dossier `donnees/` de ce dépôt. **Ne modifie jamais** `index.html`, `style.css`, `app.js`, `sw.js`, `manifest.webmanifest`, `CNAME` ni `outils/`.
 
 Règle absolue : n'écris que ce que tu as lu dans une source ; n'invente rien ; en cas de doute, garde l'ancienne valeur.
 
