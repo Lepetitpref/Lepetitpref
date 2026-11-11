@@ -798,3 +798,10 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .nav-off{margin:10px 0 2px;font-size:15px;line-height:1.5;color:var(--muted)}
 .nav-off a{color:var(--accent)}
 .nav-alert{margin:4px 0 10px;padding:10px 12px;border-radius:10px;font-size:15px;line-height:1.45;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--warn) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 45%,var(--line))}
+.nav-ok{margin:4px 0 8px;font-size:15px;font-weight:600;color:var(--ink)}
+.nav-buoy{margin:10px 0;font-size:15px;line-height:1.5;color:var(--ink)}
+.nav-src{font-size:14px;color:var(--muted)}
+.nav-src a,.nav-buoy a,.nav-ok a{color:var(--accent)}
+.nav-bul summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:15px;min-height:44px;display:flex;align-items:center}
+.nav-bul h4{margin:12px 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
+.nav-bul p{margin:3px 0;font-size:15px;line-height:1.45}

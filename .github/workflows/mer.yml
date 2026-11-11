@@ -1,0 +1,36 @@
+# Mer en direct : relit toutes les 3 heures le bulletin météo marine côtier de Météo-France
+# et la houle mesurée par la bouée Candhis du Plateau du Four, puis met à jour donnees/mer.json.
+name: Mer en direct
+on:
+  schedule:
+    - cron: "23 */3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mer
+  cancel-in-progress: true
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Navigateur
+        run: |
+          npm install --no-save --no-package-lock playwright@1.49.1
+          npx playwright install --with-deps chromium
+      - name: Relevé
+        run: node outils/mer-direct.js donnees/mer.json
+      - name: Publier si changé
+        run: |
+          if git diff --quiet -- donnees/mer.json; then echo "Rien de nouveau."; exit 0; fi
+          git config user.name "Le Petit Préf"
+          git config user.email "noreply@lepetitpref.fr"
+          git add donnees/mer.json
+          git commit -m "Mer en direct : bulletin marine et bouée"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0; sleep 5; done
+          exit 1

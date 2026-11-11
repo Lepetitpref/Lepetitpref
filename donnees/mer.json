@@ -1,0 +1,75 @@
+{
+ "maj": "2026-11-11T13:48:05.736Z",
+ "bulletin": {
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du mercredi 11 novembre 2026 à 12H30 légales.",
+  "avis": "Pas d'avis de vent fort en cours ni prévu.",
+  "sections": [
+   {
+    "t": "Situation générale le mercredi 11 novembre 2026 à 06H00 UTC, et évolution",
+    "l": [
+     "Dépression \"BRUNA\" 983 hPa entre les Açores et l'Irlande, se décalant lentement vers le sud-est, prévue 988 hPa au nord-ouest de la Corogne jeudi matin. Thalweg associé progressant sur le golfe de Gascogne. Dépression \"CHARLES\" 994 hPa au nord-est des Canaries se décalant vers le nord-est, traversant la péninsule ibérique à partir de cet après-midi, et prévue 990 hPa dans le golfe du Lion jeudi matin. Dépression secondaire 994 hPa au nord des Cantabriques cette nuit et demain matin. Dorsale se renforçant de l'Islande à l'Angleterre."
+    ]
+   },
+   {
+    "t": "Observations le mercredi 11 novembre 2026 à 09H00 UTC",
+    "l": [
+     "Pointe de Penmarc'h : vent Est 12 nœuds, très nuageux à couvert, visibilité 5 milles. Belle Ile : vent Est-Sud-Est 8 nœuds, nuageux avec éclaircies, visibilité 6 milles. Ile d'Yeu : vent Sud 4 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 8 milles. Groix : vent Sud-Est 10 nœuds, mer peu agitée, très nuageux à couvert, visibilité 4 milles. Pointe de Chemoulin : vent Est 4 nœuds."
+    ]
+   },
+   {
+    "t": "Prévisions pour l'après-midi du mercredi 11 novembre",
+    "l": [
+     "VENT : Sud-Est 2 à 4, revenant Est à Sud-Est en fin de journée.",
+     "MER : agitée et dominée par la houle, localement forte vers Penmarc'h.",
+     "HOULE : longue de Sud-Ouest 1.5 à 2.5 m du sud au nord.",
+     "TEMPS : nuaguex, quelques pluies à l'ouest de Belle-Ile.",
+     "VISIBILITE : bonne, localement moyenne à mauvaise sous pluie."
+    ]
+   },
+   {
+    "t": "Prévisions pour la nuit du mercredi 11 novembre au jeudi 12 novembre",
+    "l": [
+     "VENT : Est 3 à 4, fraîchissant Est à Nord-Est 4 à 5 en milieu de nuit, puis parfois 6 au large en fin de nuit.",
+     "MER : agitée et dominée par la houle.",
+     "HOULE : longue de Sud-Ouest 1.5 à 2.5 m, s'atténuant 1 à 2 m en seconde partie de nuit.",
+     "TEMPS : nuageux, pluies au sud de l'ile d'Yeu en seconde partie de nuit.",
+     "VISIBILITE : bonne, localement mauvaise sous pluie."
+    ]
+   },
+   {
+    "t": "Prévisions pour la journée du jeudi 12 novembre",
+    "l": [
+     "VENT : Nord-Est 5 à 6. Rafales.",
+     "MER : peu agitée à agitée.",
+     "HOULE : longue de Sud-Ouest 1 à 2 m, s'atténuant progressivement 1 à 1.5 m.",
+     "TEMPS : nuageux, pluies au sud de l'ile d'Yeu.",
+     "VISIBILITE : bonne, localement mauvaise sous pluie."
+    ]
+   },
+   {
+    "t": "Tendance pour la nuit du 12 au 13, et la journée du vendredi 13 novembre",
+    "l": [
+     "VENT : Nord-Est 5 à 6, mollissant Est à Nord-Est 4 à 5 le matin.",
+     "MER : peu agitée à agitée.",
+     "HOULE : Ouest à Sud-Ouest s'atténuant 0.5 à 1 m.",
+     "TEMPS : nuageux puis ensoleillé en journée.",
+     "VISIBILITE : bonne."
+    ]
+   }
+  ],
+  "prochain": "Prochain bulletin le mercredi 11 novembre 2026, vers 18H15 légales",
+  "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
+  "lu": "2026-11-11T13:48:13.955Z"
+ },
+ "bouee": {
+  "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
+  "heure": "2026-11-11 14:00",
+  "h13": 1.7,
+  "hmax": 2.9,
+  "t13": 10.7,
+  "dir": 261,
+  "eau": 14.2,
+  "source": "https://candhis.cerema.fr/_public_/campagne.php?Y2FtcD0wNDQwMw=="
+ }
+}
