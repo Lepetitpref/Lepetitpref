@@ -842,11 +842,18 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .leaflet-container{font-family:"Inter Tight",system-ui,sans-serif}
 .tiles-dark{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}
 
-/* drapeau de langue, à côté de la marque */
-.brand{margin-right:0}
-.lang-btn{display:inline-flex;align-items:center;justify-content:center;width:var(--tap,44px);height:var(--tap,44px);margin:0 auto 0 4px;padding:0;border:0;background:none;cursor:pointer;border-radius:10px}
-.lang-btn svg{width:26px;height:18px;border-radius:3px;box-shadow:0 0 0 1px var(--line)}
+/* langue : drapeau + code + flèche, à côté de la marque */
+.brand{margin-right:0;white-space:nowrap}
+.lang-btn{display:inline-flex;align-items:center;gap:5px;height:var(--tap,44px);margin:0 auto 0 12px;padding:0 6px;border:0;background:none;cursor:pointer;border-radius:10px;color:var(--muted);font:600 13px/1 "Inter Tight",system-ui,sans-serif;letter-spacing:.02em}
+.lang-btn .flag{width:18px;height:12px;border-radius:2px;box-shadow:0 0 0 1px var(--line);flex:none}
+.lang-btn .chev{width:10px;height:7px;flex:none;transition:transform .15s}
+.lang-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .lang-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
-.brand{white-space:nowrap}
-@media (max-width:380px){.brand{font-size:19px;gap:6px}.lang-btn{width:38px;margin-left:0}}
-@media (max-width:340px){.brand{font-size:17px}.menu-btn{padding-left:6px;padding-right:6px}}
+.lang-pop{position:fixed;top:calc(env(safe-area-inset-top,0px) + 50px);z-index:20;display:grid;min-width:170px;padding:6px;background:var(--surface,#fff);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.lang-pop button{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 10px;border:0;background:none;border-radius:8px;color:var(--ink,inherit);font:400 15px/1 "Inter Tight",system-ui,sans-serif;cursor:pointer;text-align:left}
+.lang-pop button b{font-weight:600;font-size:13px;color:var(--muted);width:20px}
+.lang-pop button .flag{width:20px;height:14px;border-radius:2px;box-shadow:0 0 0 1px var(--line)}
+.lang-pop button[aria-checked="true"]{background:var(--sel2-bg,rgba(47,120,171,.1));color:var(--accent)}
+.lang-pop button[aria-checked="true"] b{color:var(--accent)}
+@media (max-width:380px){.brand{font-size:19px;gap:6px}.lang-btn{margin-left:6px;padding:0 4px}}
+@media (max-width:340px){.brand{font-size:17px}.menu-btn{padding-left:6px;padding-right:6px}.lang-code{display:none}}

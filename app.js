@@ -1317,11 +1317,23 @@ if(LANG==="en"){document.documentElement.lang="en";
     new MutationObserver(ms=>{ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===1)trTree(x);else if(x.nodeType===3&&x.parentElement)trTree(x.parentElement);}));}).observe(document.body,{childList:true,subtree:true});
   }).catch(()=>{});}
 
-/* drapeau : affiche la langue en cours, un toucher passe à l'autre */
+/* langue : drapeau + code + flèche dans l'en-tête ; un toucher ouvre le choix FR / EN */
 (()=>{const b=document.getElementById("langBtn");if(!b)return;
-  const FR='<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>';
-  const UK='<svg viewBox="0 0 60 40" aria-hidden="true" preserveAspectRatio="none"><clipPath id="ukc"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#C8102E" stroke-width="3"/><path d="M30,0V40M0,20H60" stroke="#fff" stroke-width="12"/><path d="M30,0V40M0,20H60" stroke="#C8102E" stroke-width="7"/></g></svg>';
-  b.innerHTML=LANG==="en"?UK:FR;
-  b.setAttribute("aria-label",LANG==="en"?"English · switch to French":"Français · passer en anglais");
-  b.setAttribute("lang",LANG==="en"?"en":"fr");
-  b.addEventListener("click",()=>{try{localStorage.setItem("pp-lang",LANG==="en"?"fr":"en");}catch(e){}location.reload();});})();
+  const FR='<svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>';
+  const UK=id=>`<svg class="flag" viewBox="0 0 60 40" aria-hidden="true" preserveAspectRatio="none"><clipPath id="${id}"><rect width="60" height="40"/></clipPath><g clip-path="url(#${id})"><rect width="60" height="40" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#C8102E" stroke-width="3"/><path d="M30,0V40M0,20H60" stroke="#fff" stroke-width="12"/><path d="M30,0V40M0,20H60" stroke="#C8102E" stroke-width="7"/></g></svg>`;
+  const CHEV='<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1.5 1.5 6 6l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  b.innerHTML=(LANG==="en"?UK("ukc0"):FR)+`<span class="lang-code">${LANG==="en"?"EN":"FR"}</span>`+CHEV;
+  b.setAttribute("lang","fr");b.setAttribute("aria-haspopup","true");b.setAttribute("aria-expanded","false");
+  b.setAttribute("aria-label",LANG==="en"?"Language: English":"Langue : français");
+  let pop=null;
+  const close=()=>{if(!pop)return;pop.remove();pop=null;b.setAttribute("aria-expanded","false");document.removeEventListener("click",outside,true);};
+  const outside=e=>{if(pop&&!pop.contains(e.target)&&!b.contains(e.target))close();};
+  b.addEventListener("click",()=>{if(pop){close();return;}
+    pop=document.createElement("div");pop.className="lang-pop";pop.setAttribute("role","menu");pop.setAttribute("lang","fr");
+    pop.innerHTML=[["fr",FR,"FR","Français"],["en",UK("ukc1"),"EN","English"]].map(([v,f,c,n])=>`<button type="button" role="menuitemradio" aria-checked="${LANG===v}" data-v="${v}" lang="${v}">${f}<b>${c}</b><span>${n}</span></button>`).join("");
+    b.after(pop);b.setAttribute("aria-expanded","true");
+    const r=b.getBoundingClientRect();pop.style.left=Math.max(8,r.left)+"px";
+    pop.addEventListener("click",e=>{const x=e.target.closest("button[data-v]");if(!x)return;if(x.dataset.v===LANG){close();return;}try{localStorage.setItem("pp-lang",x.dataset.v);}catch(err){}location.reload();});
+    setTimeout(()=>document.addEventListener("click",outside,true));(pop.querySelector('[aria-checked="true"]')||pop.firstChild).focus({preventScroll:true});});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&pop){close();b.focus();}});
+  addEventListener("hashchange",close);})();
