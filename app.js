@@ -202,9 +202,9 @@ function placeRow(a,d,o={}){
   const m=o.metaH??(a.cat==="saveurs"?meta(KIND1[a.kind]||"",esc(townShort(a.town))+(isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)),isHere(a.dist,a.town)?"à pied":""):meta(esc(townShort(a.town)),kmTxt(a.dist,a.town),agesTxt(a),/^Gratuit/.test(a.price||"")?'<span class="ok">Gratuit</span>':""));
   const lines=o.lines||(a.cat==="marche"&&a.open?[statusOf(a,d),[esc(schedTxt(a)),"dim"]]:[statusOf(a,d)]);
   return row({th:thumbOf(a),title:esc(a.n),metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
-/* « Ajouter à mon agenda » : fichier .ics construit sur le téléphone (rien n'est envoyé) */
+/* « Ajouter au calendrier » : fichier .ics construit sur le téléphone (rien n'est envoyé) */
 const icsV=o=>encodeURIComponent(JSON.stringify(o));
-const icsBtn=(o,l="Ajouter à mon agenda")=>`<button type="button" class="ics-btn" data-act="ics" data-v="${icsV(o)}">${ic("cal","i-s")} ${l}</button>`;
+const icsBtn=(o,l="Ajouter au calendrier")=>`<button type="button" class="ics-btn" data-act="ics" data-v="${icsV(o)}">${ic("cal","i-s")} ${l}</button>`;
 function icsFile(o){const p2=n=>String(n).padStart(2,"0"),D=d=>d.replace(/-/g,""),esc2=t=>String(t||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n");
   const hm2=h=>{const m=/(\d{1,2})\s*h\s*(\d{2})?/.exec(h||"");return m?p2(m[1])+p2(m[2]||0)+"00":null;};
   const t=hm2(o.h),st=o.start||(t?`${D(o.d)}T${t}`:null);let dt="";
@@ -217,7 +217,7 @@ function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return
   const txt=icsFile(o),name=(o.t||"evenement").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40).toLowerCase()+".ics";
   const blob=new Blob([txt],{type:"text/calendar;charset=utf-8"});const u=URL.createObjectURL(blob);
   const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),8000);
-  toast("Ouvrez le fichier pour l'ajouter à votre agenda");}
+  toast("Ouvrez le fichier pour l'ajouter au calendrier de votre téléphone");}
 function evMore(e){const when=e.end&&e.end!==e.date?`Du ${dshort(e.date)} au ${dshort(e.end)}`:cap(dlong(e.date));
   const sh=`${e.title}\n${when}${e.time?" · "+e.time:""} · ${[e.place,e.town].filter(Boolean).join(", ")}`;
   return `${e.desc?`<p>${esc(e.desc)}</p>`:""}<span class="row-meta">${meta(esc(when),esc(e.time||""),esc(e.place||""))}</span>
@@ -491,13 +491,13 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const day=days.includes(S.cineDay)?S.cineDay:days[0];
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
-  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} à mon agenda">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
+  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} au calendrier">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
   return `${pageHead("À faire","Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
   ${segAC("cine")}
   <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
   ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:days.length?`
-   ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul><p class="nav-src">Touchez un horaire pour l'ajouter à votre agenda.</p>`,`${films.length} film${films.length>1?"s":""}`)}`
+   ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul><p class="nav-src">Touchez un horaire pour l'ajouter au calendrier de votre téléphone.</p>`,`${films.length} film${films.length>1?"s":""}`)}`
    :sec("Programme","",`<p class="empty">${S.cin==="pref"?"Pas encore de séance publiée à Préfailles pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button></p>`)}
   ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.t==="Préfailles"?"Cinéma de Préfailles (L'Atlantique)":c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
 
