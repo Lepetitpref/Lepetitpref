@@ -111,7 +111,10 @@ const dayLbl=d=>`${cap(dname(d))} ${+d.slice(8)}`;
 const dateLead=(d,today_)=>`<span class="dl${today_?" is-today":""}"><span class="dl-w">${esc(F(noon(d),{weekday:"short"}))}</span><span class="dl-n">${+d.slice(8)}</span>${d.slice(0,7)!==new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"}).slice(0,7)?`<span class="dl-m">${esc(F(noon(d),{month:"short"}))}</span>`:""}</span>`;
 const tShort=t=>{const m=String(t||"").trim().match(/^(\d{1,2})h(\d{2})?/);return m?`${m[1]}h${m[2]||"00"}`:"";};
 const evIsLong=e=>!!(e.end&&e.end>addDays(e.date,7));
-const evDead=e=>/ANNUL/i.test(e.title||"");
+/* un événement d'un seul jour, aujourd'hui, est terminé : fin connue + 30 min, sinon début + 3 h (on ne montre plus le matin ce qui est passé) */
+const evGone=e=>{if((e.end&&e.end!==e.date)||e.date!==today())return false;const sp=hoursSpan(e.time);if(!sp)return false;
+  const m=/(\d{1,2})h(\d{2})/.exec(hm(new Date()));const now=m?+m[1]+ +m[2]/60:0;const fin=sp[1]>sp[0]&&String(e.time).match(/\d{1,2}h/g).length>1?sp[1]+0.5:sp[0]+3;return now>fin;};
+const evDead=e=>/ANNUL/i.test(e.title||"")||evGone(e);
 const evAges=e=>e.ageMin!=null||e.ageMax!=null?(e.ageMax==null?`dès ${e.ageMin} ans`:`${e.ageMin??0}–${e.ageMax} ans`):"";
 const hourOf=s=>{const m=String(s||"").match(/(\d{1,2})h/);return m?+m[1]:null;};
 function hoursSpan(h){const ms=[...String(h||"").matchAll(/(\d{1,2})h(\d{2})?/g)].map(m=>+m[1]+(m[2]?+m[2]/60:0));if(!ms.length)return null;let a=ms[0],b=ms[ms.length-1];if(b<=a)b+=24;return[a,b];}
@@ -1055,7 +1058,7 @@ function vSearch(){
   const t=today();
   let body="";
   if(words.length){
-    const ev=(S.events||[]).filter(e=>(e.end||e.date)>=t&&hit([e.title,e.desc,e.town,e.place,e.category,e.org,ETL[etype(e)]].join(" "))).sort((a,b)=>a.date.localeCompare(b.date));
+    const ev=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&hit([e.title,e.desc,e.town,e.place,e.category,e.org,ETL[etype(e)]].join(" "))).sort((a,b)=>a.date.localeCompare(b.date));
     const fi=[...new Map((S.cinema||[]).filter(c=>c.date>=t&&hit([c.film,c.cinema,c.genre].join(" "))).map(c=>[c.film+c.date,c])).values()];
     const ac=ACTS.filter(a=>a.cat!=="saveurs"&&hit([a.n,a.d,a.town,CATS[a.cat],a.season].join(" "))).sort((p,q)=>(p.dist??99)-(q.dist??99));
     const sv=ACTS.filter(a=>a.cat==="saveurs"&&hit([a.n,a.d,a.town,KINDS[a.kind],"saveurs manger"].join(" "))).sort((p,q)=>(p.dist??99)-(q.dist??99));
