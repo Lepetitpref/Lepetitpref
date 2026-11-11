@@ -1286,7 +1286,7 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
   if(ppVu._jour)return;ppVu._jour=1;
   try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour");
     if(!prem){ppHit("appareils");ppHit("appareils-nouveaux-"+j);}
-    if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);if(STANDALONE())ppHit("app-"+j);ppHit("profil-"+(GR.habitant?"habitant":gActive()?"visite":"aucun")+"-"+j);}
+    if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(STANDALONE())ppHit("app-"+j);ppHit("profil-"+(GR.habitant?"habitant":gActive()?"visite":"aucun")+"-"+j);}
     localStorage.setItem("pp-appareil",prem||j);localStorage.setItem("pp-appareil-jour",j);}catch(e){}
   let t=0,d=document.visibilityState==="visible"?Date.now():0;const faits={};
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
