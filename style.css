@@ -874,3 +874,8 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 @media (max-width:360px){.tabs{gap:14px;justify-content:flex-start}}
 /* onglets : même écart visuel entre les mots (pas de largeur minimale qui élargit « Mer ») */
 .tab{min-width:0;padding:0}
+/* Pratique : numéros d'urgence toujours à portée, en haut */
+.pra-sos{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:10px var(--gutter) 0;padding:4px 14px;border-radius:12px;background:color-mix(in srgb,var(--warn) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 30%,transparent);font-size:14px}
+.pra-sos span{font-weight:600;color:var(--warn)}
+.pra-sos a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--ink);text-decoration:none}
+.pra-sos .lnk{margin-left:auto;min-height:44px}

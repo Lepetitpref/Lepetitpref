@@ -596,7 +596,13 @@
 "Mairie, poste": "Town hall, post",
 "Poubelles": "Bins",
 "Horaires": "Times",
-"Santé": "Health"
+"Santé": "Health",
+"Au quotidien": "Everyday",
+"Urgence": "Emergency",
+"SAMU 15": "Ambulance 15",
+"Pompiers 18": "Fire 18",
+"Tout voir": "See all",
+"Poubelles, horaires utiles, santé, mairie, poste et urgences à Préfailles.": "Bins, useful times, health, town hall, post office and emergencies in Préfailles."
 },
 "rules": [
 [
