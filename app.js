@@ -919,7 +919,7 @@ function departsOn(T,L,sn,d){if(d<L.debut||d>L.fin)return null;if((T.sansService
   const w=feriesOf(T).has(d)?"0":String(dow(d));const vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
   return sn.departs.filter(x=>x.jours.includes(w)&&(x.periode==="toujours"||(x.periode==="vacances")===vac||(x.periode==="scolaire"&&!vac))).sort((a,b)=>a.dep.localeCompare(b.dep));}
 /* trajets : tronçons (legs) extraits des fiches officielles, enchaînés avec un temps de correspondance */
-const TRDEST=BASE.k==="pornic"?["Préfailles","Nantes","Saint-Nazaire"]:["Pornic","Nantes","Saint-Nazaire"];
+const TRDEST=BASE.k==="pornic"?["Nantes","Saint-Nazaire"]:["Pornic","Nantes","Saint-Nazaire"];
 const tmn=x=>+x.slice(0,2)*60+ +x.slice(3,5);
 function legDeps(T,L,d){if(d<L.debut||d>L.fin)return null;if((T.sansService||[]).includes(d))return[];
   const w=feriesOf(T).has(d)?"0":String(dow(d)),vac=(T.vacancesB||[]).some(v=>d>=v.du&&d<=v.au);
