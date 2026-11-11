@@ -112,8 +112,9 @@ const dateLead=(d,today_)=>`<span class="dl${today_?" is-today":""}"><span class
 const tShort=t=>{const m=String(t||"").trim().match(/^(\d{1,2})h(\d{2})?/);return m?`${m[1]}h${m[2]||"00"}`:"";};
 const evIsLong=e=>!!(e.end&&e.end>addDays(e.date,7));
 /* un événement d'un seul jour, aujourd'hui, est terminé : fin connue + 30 min, sinon début + 3 h (on ne montre plus le matin ce qui est passé) */
-const evGone=e=>{if((e.end&&e.end!==e.date)||e.date!==today())return false;const sp=hoursSpan(e.time);if(!sp)return false;
+const passedToday=e=>{const sp=hoursSpan(e.time);if(!sp)return false;
   const m=/(\d{1,2})h(\d{2})/.exec(hm(new Date()));const now=m?+m[1]+ +m[2]/60:0;const fin=sp[1]>sp[0]&&String(e.time).match(/\d{1,2}h/g).length>1?sp[1]+0.5:sp[0]+3;return now>fin;};
+const evGone=e=>(e.end||e.date)===today()&&passedToday(e);
 const evDead=e=>/ANNUL/i.test(e.title||"")||evGone(e);
 const evAges=e=>e.ageMin!=null||e.ageMax!=null?(e.ageMax==null?`dès ${e.ageMin} ans`:`${e.ageMin??0}–${e.ageMax} ans`):"";
 const hourOf=s=>{const m=String(s||"").match(/(\d{1,2})h/);return m?+m[1]:null;};
@@ -409,7 +410,8 @@ const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 const WDN={dimanche:0,lundi:1,mardi:2,mercredi:3,jeudi:4,vendredi:5,samedi:6};
 function evDays(e){if(Array.isArray(e.days))return e.days;const m=String(e.time||"").toLowerCase().match(/\((lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)s?\)/);return m?[WDN[m[1]]]:null;}
 const onDay=(e,d)=>{const w=evDays(e);return !w||w.includes(dow(d));};
-function evStart(e,a,b){if(e.date>=a)return e.date;for(let d=a;d<=b;d=addDays(d,1))if(onDay(e,d))return d;return null;}
+function evStart(e,a,b){const t=today(),skip=d=>d===t&&e.end&&e.end!==e.date&&passedToday(e);
+  if(e.date>=a&&!skip(e.date))return e.date;for(let d=e.date>a?e.date:a;d<=b&&d<=(e.end||e.date);d=addDays(d,1))if(onDay(e,d)&&!skip(d))return d;return null;}
 function eventsIn(a,b){const st=e=>evStart(e,a,b)||a;return (S.events||[]).filter(e=>e.date<=b&&(e.end||e.date)>=a&&evStart(e,a,b)&&!evDead(e)).sort((x,y)=>st(x).localeCompare(st(y))||(tShort(x.time)||"99").localeCompare(tShort(y.time)||"99",undefined,{numeric:true}));}
 const byTime=(x,y)=>(tShort(x.time)||"99h").localeCompare(tShort(y.time)||"99h",undefined,{numeric:true});
 const evOnDay=d=>eventsIn(d,d).filter(e=>onDay(e,d)&&(e.date===d||Array.isArray(e.days)||!e.end||e.end<=addDays(e.date,3)));
