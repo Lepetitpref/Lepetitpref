@@ -41,6 +41,7 @@ const CINES=[
  {n:"Ciné Toiles de Retz",t:"Pornic",km:9,a:"1 rue du Chaudron, 44210 Pornic",d:"Le multisalle de Pornic.",url:"http://www.cinemapornic.fr"},
  {n:"Cinéma Saint-Joseph",t:"Pornic",km:9,a:"Cinéma Saint-Joseph, Pornic",d:"Cinéma associatif du centre de Pornic.",url:"https://en.pornic.com/cinema-in-pornic.html"},
  {n:"Cinéjade",t:"Saint-Brevin-les-Pins",km:13,a:"Cinéjade, Saint-Brevin-les-Pins",d:"Le cinéma de Saint-Brevin.",url:"https://www.saint-brevin.com"}];
+CINES.forEach(c=>{if(TOWN_KM[c.t]!=null)c.km=isBase(c.t)&&BASE.k==="pornic"?1:TOWN_KM[c.t];});CINES.sort((a,b)=>a.km-b.km);
 /* ---------- helpers ---------- */
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -405,7 +406,8 @@ function eventsIn(a,b){const st=e=>evStart(e,a,b)||a;return (S.events||[]).filte
 const byTime=(x,y)=>(tShort(x.time)||"99h").localeCompare(tShort(y.time)||"99h",undefined,{numeric:true});
 const evOnDay=d=>eventsIn(d,d).filter(e=>onDay(e,d)&&(e.date===d||Array.isArray(e.days)||!e.end||e.end<=addDays(e.date,3)));
 function nextBig(n){const t=today(),big=[];for(let i=0;i<70&&big.length<n;i++){const d=addDays(t,i),c=maxCoef(d);if(c>=90){const L=big[big.length-1];if(L&&(L[2]||L[0])===addDays(d,-1)){L[2]=d;L[1]=Math.max(L[1],c);}else big.push([d,c,null]);}}return big;}
-const CINF=[["pref","Préfailles"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
+const CINF=BASE.k==="pornic"?[["pornic","Pornic"],["pref","Préfailles"],["brevin","Saint-Brevin"],["tous","Tous"]]:[["pref","Préfailles"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
+const CIN0=BASE.k==="pornic"?"pornic":"pref";
 const cinOK=(n,c=S.cin||"pref")=>c==="tous"||(c==="pref"&&/Atlantique/i.test(n||""))||(c==="pornic"&&/Toiles|Joseph/i.test(n||""))||(c==="brevin"&&/jade/i.test(n||""));
 const cinKm=n=>{const c=CINES.find(x=>n&&n.includes(x.n));return c?c.km:null;};
 const shortCin=n=>String(n||"").replace(/\s*\(.*\)/,"");
@@ -498,7 +500,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
   const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} au calendrier">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
-  return `${pageHead("À faire","Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
+  return `${pageHead("À faire",BASE.k==="pornic"?"Ciné : par défaut les deux cinémas de Pornic.":"Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
   ${segAC("cine")}
   <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
@@ -658,7 +660,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const nSoir=evT.filter(evSoir).length;
   const wkP=ld?[]:eventsIn(t,addDays(t,6)).filter(e=>z20(e)&&!evIsLong(e));
   const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,"10")).length;
-  const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,"pref").filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
+  const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,CIN0).filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
   /* Mer */
   let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,t);if(b&&b.j[0]>0&&(!glisse||b.j[0]>glisse.b.j[0]))glisse={a,sp,b};});});}
   const big=nextBig(1)[0];
@@ -680,7 +682,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
     r("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
     r("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants`),
     r("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes ; et les bars où sortir`,' data-act="soirw" data-v="soir"'),
-    r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à Préfailles : ${esc(film.f.film)}`:"programme du cinéma de Préfailles et des salles voisines",' data-act="cin" data-v="pref"')],"#agenda")}
+    r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à ${BASE.n} : ${esc(film.f.film)}`:`programme du cinéma de ${BASE.n} et des salles voisines`,` data-act="cin" data-v="${CIN0}"`)],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
     r("#spots","Glisse et spots",glisse?`${ACTL[glisse.a]} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions aujourd'hui":"surf, kite, wing, voile : où et à quelle heure"),
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
@@ -1166,7 +1168,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 
 /* ---------- actions des vues (délégation) ---------- */
 const ACT={
-  base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);ppHit("base-"+v+"-"+ppJour());location.reload();},
+  base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);try{localStorage.removeItem("pp-cin");}catch(e){}ppHit("base-"+v+"-"+ppJour());location.reload();},
   who:()=>openWho(),
   local:()=>{GR.habitant=true;gSave();S.day=null;render();},
   visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},
