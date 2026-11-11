@@ -805,3 +805,8 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .nav-bul summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:15px;min-height:44px;display:flex;align-items:center}
 .nav-bul h4{margin:12px 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
 .nav-bul p{margin:3px 0;font-size:15px;line-height:1.45}
+.spot-cmp{margin:10px 0;font-size:15px;line-height:1.6}
+.spot-cmp a{color:var(--accent);font-weight:600;display:inline-block;padding:6px 0}
+.spot-emb{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.spot-emb .emb-box{flex-basis:100%}
+.spot-emb .emb-box:empty{display:none}
