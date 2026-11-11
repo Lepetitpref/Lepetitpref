@@ -5,7 +5,10 @@ const km=(a,b)=>{const R=6371,t=x=>x*Math.PI/180;const dl=t(b.lat-a.lat),dn=t(b.
 const TZ="Europe/Paris";
 /* point de départ : Préfailles (par défaut) ou Pornic (localStorage pp-base) ; tout est calculé depuis là */
 const BASES={prefailles:{k:"prefailles",n:"Préfailles",s:"Préf",lat:47.13,lon:-2.22,r:1.5},pornic:{k:"pornic",n:"Pornic",s:"Pornic",lat:47.1149,lon:-2.1023,r:3}};
-const BASE=BASES[(()=>{try{return localStorage.getItem("pp-base");}catch(e){return null;}})()]||BASES.prefailles;
+/* un lien partagé depuis Pornic porte ?ici=pornic : celui qui l'ouvre arrive sur Pornic */
+const BASE=BASES[(()=>{let q=null;try{q=new URLSearchParams(location.search).get("ici");}catch(e){}
+  try{if(q&&BASES[q])localStorage.setItem("pp-base",q);return localStorage.getItem("pp-base")||q;}catch(e){return q;}})()]||BASES.prefailles;
+try{const u=new URL(location.href);if(BASE.k==="pornic")u.searchParams.set("ici","pornic");else u.searchParams.delete("ici");if(u.href!==location.href)history.replaceState(history.state,"",u.href);}catch(e){}
 const HOME={lat:BASE.lat,lon:BASE.lon},ORIG=BASE.n,isBase=t=>new RegExp("^"+BASE.n).test(String(t||""));
 /* ---------- icônes (sprite SVG dans index.html) ---------- */
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
@@ -87,9 +90,10 @@ const fitsWho=(a,w)=>{const r=WHO.find(x=>x[0]===w)[2];return !a.ages||overlap(a
 const fitsWhere=(k,town,w=S.where)=>w==="ici"?isHere(k,town):(k==null||k<=WHERE.find(x=>x[0]===w)[2]);
 const agesTxt=a=>a.ages?(a.ages[1]>=99?(a.ages[0]>0?`dès ${a.ages[0]} ans`:""):`${a.ages[0]}–${a.ages[1]} ans`):"";
 function evFits(e,w){if(w==="tous")return true;const r=WHO.find(x=>x[0]===w)[2];if(e.ageMin!=null||e.ageMax!=null)return overlap([e.ageMin??0,e.ageMax??99],r);if(w==="adultes")return true;return !!e.kids;}
-const SITE="https://lepetitpref.fr";
+const SITE="https://lepetitpref.fr",SITEU=SITE+(BASE.k==="pornic"?"/?ici=pornic":"");
+const siteUrl=(h="")=>SITE+"/"+(BASE.k==="pornic"?"?ici=pornic":"")+h;
 const SHI='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
-function shareBtns(text,link){const t=text+"\n\n"+(link&&!/^https:\/\/lepetitpref\.fr\/?$/.test(link)?"Trouvé sur Le Petit Préf\n"+link:SITE);const enc=encodeURIComponent(t);
+function shareBtns(text,link){const t=text+"\n\n"+(link&&!/^https:\/\/lepetitpref\.fr\/?(\?ici=\w+)?$/.test(link)?"Trouvé sur Le Petit Préf\n"+link:SITEU);const enc=encodeURIComponent(t);
   return `<span class="share"><a class="sh wa" href="https://wa.me/?text=${enc}" target="_blank" rel="noopener">${SHI}WhatsApp</a><button class="sh" data-copy="${esc(t)}">Copier</button></span>`;}
 function toast(m){const d=document.createElement("div");d.className="toast";d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;e.preventDefault();const txt=b.dataset.copy;
@@ -171,7 +175,8 @@ function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[
 /* ---------- partage et copie ---------- */
 document.addEventListener("click",e=>{const b=e.target.closest("[data-share]");if(!b)return;e.preventDefault();
   /* le lien n'apparaît qu'une fois : celui de la chose partagée, sinon celui du site */
-  const url=b.dataset.url||SITE,site=/^https:\/\/lepetitpref\.fr\/?(#.*)?$/.test(url);
+  let url=b.dataset.url||SITEU;const site=/^https:\/\/lepetitpref\.fr\/?(\?[^#]*)?(#.*)?$/.test(url);
+  if(site&&BASE.k==="pornic"&&!/ici=/.test(url))url=siteUrl((url.match(/#.*$/)||[""])[0]);
   const text=b.dataset.share+(site?"":"\n\nTrouvé sur Le Petit Préf");
   if(navigator.share){navigator.share({text,url}).catch(()=>{});return;}
   try{navigator.clipboard.writeText(text+"\n"+url).then(()=>toast("Copié : collez-le dans votre groupe"),()=>{fallbackCopy(text+"\n"+url);toast("Copié");});}catch(_){fallbackCopy(text+"\n"+url);toast("Copié");}});
@@ -628,7 +633,7 @@ const wdName=d=>F(noon(d),{weekday:"long"});
 const dayWord=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":wdName(d);
 const ceJour=d=>d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":"ce "+wdName(d);
 function homeDays(){const g=gActive(),t=today();return g?gDays():range(t,addDays(t,6));}
-const SHARE_TXT="Le Petit Préf : la mer et les marées, les sorties, le ciné, les activités, les restos et les transports autour de Préfailles. Gratuit, sans pub.";
+const SHARE_TXT=`Le Petit Préf : la mer et les marées, les sorties, le ciné, les activités, les restos et les transports autour de ${BASE.n}. Gratuit, sans pub.`;
 /* « Je suis à » : Préfailles ou Pornic ; le choix recharge la page */
 const baseSeg=()=>`<div class="seg seg-s" role="group" aria-label="Je suis à">${Object.values(BASES).map(b=>`<button type="button" aria-pressed="${b.k===BASE.k}" data-act="base" data-v="${b.k}">${b.n}</button>`).join("")}</div>`;
 const baseBar=()=>`<div class="base-bar"><span class="base-l">${ic("home","i-s")}Je suis à</span>${baseSeg()}</div>`;
@@ -678,8 +683,8 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const r=(href,title,meta,act="")=>row({href,title,metaH:meta,act});
   return `<div class="hero">${BASE.k==="pornic"?'<img src="images/pornic.jpg" alt="Le port de Pornic, ses quais et son château" width="1000" height="400">':'<img src="images/mer.jpg" alt="La grande plage de Préfailles, ses villas et la promenade au soleil couchant" width="1000" height="400">'}<div class="hero-txt"><div class="hero-kicker">${BASE.n}</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1></div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
-  <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à ${BASE.n} et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.</p>
   ${baseBar()}
+  <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à ${BASE.n} et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.</p>
   <h2 class="home-h">Aujourd'hui à ${BASE.n} et aux alentours</h2>
   ${homeNow(t)}
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
@@ -1174,7 +1179,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 const ACT={
   pjump:v=>{const el=document.getElementById(v);if(!el)return;const nav=document.querySelector(".subnav");const off=nav?(parseFloat(getComputedStyle(nav).top)||0)+nav.offsetHeight+6:160;
     scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});},
-  base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);try{localStorage.removeItem("pp-cin");}catch(e){}ppHit("base-"+v+"-"+ppJour());location.reload();},
+  base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);try{localStorage.removeItem("pp-cin");}catch(e){}ppHit("base-"+v+"-"+ppJour());try{const u=new URL(location.href);if(v==="pornic")u.searchParams.set("ici","pornic");else u.searchParams.delete("ici");if(u.href!==location.href){location.replace(u.href);return;}}catch(e){}location.reload();},
   who:()=>openWho(),
   local:()=>{GR.habitant=true;gSave();S.day=null;render();},
   visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},

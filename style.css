@@ -872,3 +872,5 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 @media (max-width:420px){.tabs{gap:4px}.tab{font-size:14px}}
 .tab{flex:none}
 @media (max-width:360px){.tabs{gap:14px;justify-content:flex-start}}
+/* onglets : même écart visuel entre les mots (pas de largeur minimale qui élargit « Mer ») */
+.tab{min-width:0;padding:0}
