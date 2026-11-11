@@ -1,0 +1,1696 @@
+{
+"exact": {
+"Le Petit Préf": "Le Petit Préf",
+"Menu": "Menu",
+"Accueil": "Home",
+"À faire": "Things to do",
+"Mer": "Sea",
+"Restos": "Food",
+"Transports": "Transport",
+"Partager": "Share",
+"Rechercher": "Search",
+"Rubriques": "Sections",
+"Partager Le Petit Préf": "Share Le Petit Préf",
+"Le Petit Préf, accueil": "Le Petit Préf, home",
+"Fermer": "Close",
+"Qui vient ?": "Who's coming?",
+"Famille, amis, dates : on trie pour vous": "Family, friends, dates: we'll sort things for you",
+"Choisir": "Choose",
+"Installer l'app sur votre téléphone": "Install the app on your phone",
+"Une icône sur l'écran d'accueil, sans store, gratuite : on vous montre comment, sur iPhone et Android.": "An icon on your home screen, no app store, free: we'll show you how, on iPhone and Android.",
+"Le temps du jour et les quatre rubriques": "Today's weather and the four sections",
+"À faire · Agenda": "Things to do · What's on",
+"Sorties datées : fêtes, concerts, brocantes": "Dated events: festivals, concerts, flea markets",
+"À faire · Activités": "Things to do · Activities",
+"Nature, sport, sensations, culture, associations": "Nature, sport, thrills, culture, clubs",
+"À faire · Ciné": "Things to do · Cinema",
+"Préfailles et les cinémas voisins": "Préfailles and nearby cinemas",
+"À faire · Soirées": "Things to do · Evenings",
+"Concerts, soirées dansantes, bars, lieux de nuit": "Concerts, dances, bars, nightlife",
+"Marées, vent, houle, température de l'eau": "Tides, wind, swell, water temperature",
+"Surf, kite, wing, voile : où et à quelle heure": "Surf, kite, wing, sailing: where and when",
+"surf, kite, wing, voile : où et à quelle heure": "surf, kite, wing, sailing: where and when",
+"Restaurants, bars, huîtres, marchés, boulangeries": "Restaurants, bars, oysters, markets, bakeries",
+"Cars et trains, correspondances comprises": "Buses and trains, connections included",
+"Urgences, pharmacie et médecin de garde, mairie, numéros utiles": "Emergencies, duty pharmacy and doctor, town hall, useful numbers",
+"À propos et mentions légales": "About and legal notice",
+"Contact, sources, données personnelles": "Contact, sources, personal data",
+"Auto": "Auto",
+"Clair": "Light",
+"Sombre": "Dark",
+"Affichage": "Display",
+"Thème": "Theme",
+"Installer l'app": "Install the app",
+"Numéros utiles": "Useful numbers",
+"Contact et mentions légales": "Contact and legal notice",
+"Pratique : urgences, santé, numéros utiles": "Practical info: emergencies, health, useful numbers",
+"Liens utiles": "Useful links",
+"Masquer ce message": "Hide this message",
+"La mer en détail": "The sea in detail",
+"Voir": "See",
+"Ouvrir": "Open",
+"Pratique": "Practical info",
+"Une nouvelle version du Petit Préf est en ligne": "A new version of Le Petit Préf is available",
+"Mettre à jour": "Update",
+"rassemble ce qu'il y a à faire à Préfailles et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.": "brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.",
+"Aujourd'hui à Préfailles et aux alentours": "Today in and around Préfailles",
+"Météo": "Weather",
+"Vent": "Wind",
+"Eau": "Water",
+"Basse mer": "Low tide",
+"Pleine mer": "High tide",
+"Pluie": "Rain",
+"prévoir un abri": "plan for shelter",
+"Ciel dégagé": "Clear sky",
+"Plutôt ensoleillé": "Mostly sunny",
+"Éclaircies": "Sunny spells",
+"Couvert": "Overcast",
+"Brouillard": "Fog",
+"Bruine": "Drizzle",
+"Pluie faible": "Light rain",
+"Forte pluie": "Heavy rain",
+"Pluie verglaçante": "Freezing rain",
+"Neige": "Snow",
+"Quelques averses": "A few showers",
+"Averses": "Showers",
+"Averses de neige": "Snow showers",
+"Orages": "Thunderstorms",
+"froide · combi 5/4": "cold · 5/4 wetsuit",
+"fraîche · combi 4/3": "cool · 4/3 wetsuit",
+"bonne · combi 3/2": "pleasant · 3/2 wetsuit",
+"douce": "mild",
+"shorty": "shorty",
+"coup de vent": "gale",
+"ça souffle": "windy",
+"Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.": "Dated events (festivals, concerts, markets, flea markets, workshops), activities and places to visit, the cinema, evenings out. Sort by who's coming: children, adults, locals.",
+"Agenda": "What's on",
+"Activités": "Activities",
+"Soirées": "Evenings",
+"Ciné": "Cinema",
+"programme du cinéma de Préfailles et des salles voisines": "programme for the Préfailles cinema and nearby screens",
+"La mer": "The sea",
+"Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.": "Tides and coefficients, sea weather, board sports and spots, shore fishing.",
+"Glisse et spots": "Board sports & spots",
+"pas de bonnes conditions aujourd'hui": "no good conditions today",
+"Marées et météo de la mer": "Tides and sea weather",
+"vent, rafales, houle, eau heure par heure": "wind, gusts, swell, water hour by hour",
+"Pêche à pied": "Shore fishing",
+"bonnes marées, créneau conseillé, sécurité": "good tides, best time slot, safety",
+"Restaurants et crêperies, bars, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.": "Restaurants and crêperies, bars, markets, oysters and fish, bakeries, producers, with today's opening hours.",
+"Ouvert aujourd'hui": "Open today",
+"Les horaires des cars et des trains pour aller à Pornic, Nantes ou Saint-Nazaire, et pour venir à Préfailles, correspondances comprises.": "Bus and train times to Pornic, Nantes or Saint-Nazaire, and for getting to Préfailles, connections included.",
+"Partir de Préfailles": "Leaving Préfailles",
+"Venir à Préfailles": "Getting to Préfailles",
+"Lignes et tarifs": "Lines and fares",
+"cars Aléop 303 et 315, TER Pornic et Saint-Nazaire, tickets": "Aléop buses 303 and 315, TER trains to Pornic and Saint-Nazaire, tickets",
+"Installer Le Petit Préf": "Install Le Petit Préf",
+"Une icône sur l'écran d'accueil. Gratuit, sans store.": "An icon on your home screen. Free, no app store.",
+"Agenda mis à jour ce matin.": "What's on updated this morning.",
+"Marées : calcul harmonique calé sur les annuaires SHOM de Pornic (environ 10 min et 10 cm d'écart). Horaires d'ouverture indicatifs : appelez avant de vous déplacer.": "Tides: harmonic calculation calibrated on the SHOM tide tables for Pornic (accurate to about 10 min and 10 cm). Opening hours are a guide only: call before you go.",
+"Appeler le SAMU, 15": "Call the SAMU (medical emergencies), 15",
+"Appeler les secours en mer, 196": "Call sea rescue, 196",
+"Qui êtes-vous ? On trie les sorties selon votre choix.": "Who are you? We'll sort events to suit you.",
+"J'habite ici": "I live here",
+"Je suis en visite": "I'm visiting",
+"En visite": "Visiting",
+"Tout": "All",
+"Aujourd'hui": "Today",
+"aujourd'hui": "today",
+"Demain": "Tomorrow",
+"demain": "tomorrow",
+"Ce week-end": "This weekend",
+"Toutes les sorties": "All events",
+"Fêtes & marchés": "Festivals & markets",
+"Concerts & spectacles": "Concerts & shows",
+"Sport": "Sport",
+"Brocantes": "Flea markets",
+"Lotos & cartes": "Bingo & card games",
+"Ateliers": "Workshops",
+"Nature": "Nature",
+"Expos & conf.": "Exhibitions & talks",
+"Vie locale": "Local life",
+"À Préfailles": "In Préfailles",
+"Tout public": "All ages",
+"Tout-petits (0–5)": "Toddlers (0–5)",
+"Enfants (6–11)": "Children (6–11)",
+"Ados": "Teens",
+"Adultes": "Adults",
+"Enfants": "Children",
+"Gratuit": "Free",
+"lun.": "Mon",
+"mar.": "Tue",
+"mer.": "Wed",
+"jeu.": "Thu",
+"ven.": "Fri",
+"sam.": "Sat",
+"dim.": "Sun",
+"janv.": "Jan",
+"févr.": "Feb",
+"mars": "Mar",
+"avr.": "Apr",
+"mai": "May",
+"juin": "Jun",
+"juil.": "Jul",
+"août": "Aug",
+"sept.": "Sep",
+"oct.": "Oct",
+"nov.": "Nov",
+"déc.": "Dec",
+"à pied": "walk",
+"Ajouter à mon agenda": "Add to my calendar",
+"Source ↗": "Source ↗",
+"Expo": "Exhibition",
+"En cours, toute la saison": "Running all season",
+"Ouvert aujourd'hui, à Préfailles.": "Open today, in Préfailles.",
+"Toutes les activités": "All activities",
+"Site ↗": "Website ↗",
+"Itinéraire ↗": "Directions ↗",
+"Les prochaines séances, à Préfailles et dans les salles voisines.": "Upcoming screenings, in Préfailles and at nearby cinemas.",
+"Prochaines séances": "Upcoming screenings",
+"Tout le programme": "Full programme",
+"Prochaines soirées": "Upcoming evenings",
+"Toutes les soirées": "All evening events",
+"Sources : mairies, offices de tourisme, associations.": "Sources: town halls, tourist offices, local associations.",
+"Agenda, activités ou ciné": "What's on, activities or cinema",
+"Quand": "When",
+"Type d'activité": "Type of activity",
+"Filtres": "Filters",
+"Liste": "List",
+"Carte": "Map",
+"Sensations": "Thrills",
+"Mer & glisse": "Sea & board sports",
+"Sorties": "Outings",
+"Pour les petits": "For little ones",
+"Culture & visites": "Culture & visits",
+"Nature & balades": "Nature & walks",
+"Associations": "Clubs & associations",
+"S'il pleut": "If it rains",
+"Horaires à vérifier": "Check opening hours",
+"Accès libre": "Free access",
+"Une info à corriger ? Voir « À propos et contact » dans le menu.": "Something to correct? See “About and contact” in the menu.",
+"Adhésion annuelle 10–20 € · Toute l'année": "Annual membership €10–20 · All year round",
+"Stage 5 × 2 h 30 (2026) : Jardin des mers 5/6 ans 149 €, Optimist 7/9 ans 155 €, catamaran dès 10 ans 189 €, T1 dès 13 ans 230 € (+ passeport voile 14,50 €) ; location paddle 16 €/h, kayak 20 €/h, catamaran T1 49 €/h ; goélette ou kayak accompagné 1 h 30 : 24 € adulte, 17 € enfant · Mars – mi-novembre": "Course of 5 × 2 h 30 (2026): Jardin des mers ages 5/6 €149, Optimist ages 7/9 €155, catamaran ages 10+ €189, T1 ages 13+ €230 (+ sailing passport €14.50); paddleboard hire €16/h, kayak €20/h, T1 catamaran €49/h; schooner or guided kayak trip 1 h 30: €24 adult, €17 child · March – mid-November",
+"Abonnement semaine 3,30 € · Toute l'année": "Weekly pass €3.30 · All year round",
+"20–26 €/pers. · Toute l'année": "€20–26 per person · All year round",
+"Fermé en cette saison · Juillet–août 2026": "Closed this season · July–August 2026",
+"85 € seul ; 58 €/pers. à 2 ; 56 €/pers. à 3 ; Duo privilège 269 € · Juillet–août 2026": "€85 alone; €58 per person for 2; €56 per person for 3; Duo privilège €269 · July–August 2026",
+"Fermé en cette saison · Avril – mi-octobre": "Closed this season · April – mid-October",
+"Gratuit · Toute l'année, par coefficient ≥ 85": "Free · All year round, with a tide coefficient of 85 or more",
+"Adhésion annuelle sur HelloAsso (tarif non lisible) ; Laser 20 € les 2 h (membres) · Toute l'année (adhésion) ; sorties surtout de juin à septembre": "Annual membership on HelloAsso (price not shown); Laser €20 for 2 h (members) · All year round (membership); outings mainly from June to September",
+"Sortie de 1h30 : 24 € (plus de 10 ans), 17 € (moins de 10 ans) · Du 1er mars au 15 novembre": "1h30 trip: €24 (over 10), €17 (under 10) · From 1 March to 15 November",
+"Journée 190 €, demi-journée 120 € (tarifs 2025) · Du 1er mai au 30 septembre 2026": "Full day €190, half day €120 (2025 prices) · From 1 May to 30 September 2026",
+"Fermé en cette saison · Du 5 juin au 30 septembre 2026, tous les jours": "Closed this season · From 5 June to 30 September 2026, every day",
+"Kayak simple 15 € la 1re heure puis 10 € ; double 20 € puis 15 € ; paddle 15 € puis 10 € · Du 5 juin au 30 septembre 2026, tous les jours": "Single kayak €15 the first hour then €10; double €20 then €15; paddleboard €15 then €10 · From 5 June to 30 September 2026, every day",
+"Fermé en cette saison · Avril – septembre, tous les jours": "Closed this season · April – September, every day",
+"balade 13–18 €, coucher de soleil 20–25 €, Noirmoutier 25–35 €, pêche dès 65 € · Avril – septembre, tous les jours": "boat trip €13–18, sunset €20–25, Noirmoutier €25–35, fishing from €65 · April – September, every day",
+"cours collectif 1 h 30 : 50 € ; stage 5 séances 210 € ; Jardin des vagues (5–8 ans, juillet-août) 210 € · Des vacances de Pâques à la Toussaint (fermé de novembre à avril)": "group lesson 1 h 30: €50; 5-session course €210; Jardin des vagues (ages 5–8, July–August) €210 · From the Easter holidays to the All Saints' holidays (closed November to April)",
+"6,50 € ; moins de 14 ans 4 € · Selon le programme": "€6.50; under-14s €4 · Depending on the programme",
+"Fermé en cette saison · Juillet–août": "Closed this season · July–August",
+"Dès 8 € (nocturnes dès 10 €) · Juillet–août": "From €8 (evening sessions from €10) · July–August",
+"Fermé en cette saison · Avril à fin août": "Closed this season · April to end of August",
+"5 €/pers. · Avril à fin août": "€5 per person · April to end of August",
+"9 € adulte, 7 € moins de 13 ans · Toute l'année 2026, tous les jours": "€9 adult, €7 under-13s · All year 2026, every day",
+"Fermé en cette saison · Du 4 juillet au 28 août 2026": "Closed this season · From 4 July to 28 August 2026",
+"7 € adulte, 5 € enfant ; animations 15 € · Toute l'année, sur réservation": "€7 adult, €5 child; activities €15 · All year round, booking required",
+"Fermé en cette saison · Fin mars – 1er novembre": "Closed this season · End of March – 1 November",
+"5 € adulte, famille 15 € · Fin mars – 1er novembre": "€5 adult, family €15 · End of March – 1 November",
+"Fermé en cette saison · Du 17 juillet au 31 août 2026 ; d'octobre à décembre, seulement lors d'événements ponctuels (voir l'agenda)": "Closed this season · From 17 July to 31 August 2026; October to December, only for one-off events (see What's on)",
+"7 € dès 12 ans, 5 € de 3 à 11 ans · Du 17 juillet au 31 août 2026 ; d'octobre à décembre, seulement lors d'événements ponctuels (voir l'agenda)": "€7 ages 12+, €5 ages 3 to 11 · From 17 July to 31 August 2026; October to December, only for one-off events (see What's on)",
+"Cotisation vacancier 8 €/mois · Toute l'année": "Holidaymaker membership €8/month · All year round",
+"5 € dès 8 ans · Visites 2026 terminées, reprise en 2027": "€5 ages 8+ · 2026 tours finished, back in 2027",
+"Visite 5 €, 7–15 ans 3 € · Toute l'année": "Visit €5, ages 7–15 €3 · All year round",
+"Gratuit · Toute l'année": "Free · All year round",
+"8 €, gratuit moins de 10 ans · Visites guidées toute l'année": "€8, free for under-10s · Guided tours all year round",
+"Fermé en cette saison · Juillet–septembre": "Closed this season · July–September",
+"9 € dès 12 ans, 5 € de 3 à 12 ans · Juillet–septembre": "€9 ages 12+, €5 ages 3 to 12 · July–September",
+"Gratuit · Accès libre": "Free · Free access",
+"Entrée 4–17 ans 4,85 €, adulte 5,90 €, moins de 4 ans gratuit (tarifs jusqu'au 27 juin 2027) · Toute l'année ; fermé le 25 décembre 2026 et le 1er janvier 2027, fermeture technique du 4 au 10 janvier 2027": "Entry ages 4–17 €4.85, adult €5.90, under-4s free (prices until 27 June 2027) · All year round; closed 25 December 2026 and 1 January 2027, maintenance closure 4 to 10 January 2027",
+"Fermé en cette saison · Juillet–août, tous les jours": "Closed this season · July–August, every day",
+"Fermé en cette saison · Juin et septembre 2026 : tous les jours 16h–22h ; juillet-août : 11h–23h (selon météo)": "Closed this season · June and September 2026: every day 16h–22h; July–August: 11h–23h (weather permitting)",
+"Fermé en cette saison · Du 3 avril au 30 sept. 2026 : tous les jours 10h–21h30, sauf mauvais temps": "Closed this season · From 3 April to 30 Sept. 2026: every day 10h–21h30, except in bad weather",
+"Fermé en cette saison · Du 1er avril au 30 sept. 2026 : tous les jours 9h30–21h (selon météo et ambiance)": "Closed this season · From 1 April to 30 Sept. 2026: every day 9h30–21h (depending on weather and atmosphere)",
+"Fermé en cette saison · Mi-juin à septembre": "Closed this season · Mid-June to September",
+"Fermé en cette saison · Juin à octobre": "Closed this season · June to October",
+"Fermé en cette saison · Du 10 juin au 30 septembre": "Closed this season · From 10 June to 30 September",
+"Fermé en cette saison · Juillet–août (en 2026 : du 2 juillet à fin août)": "Closed this season · July–August (in 2026: from 2 July to end of August)",
+"Fermé en cette saison · Du 1er avril au 30 septembre 2026": "Closed this season · From 1 April to 30 September 2026",
+"Fermé en cette saison · Février à début novembre": "Closed this season · February to early November",
+"Fermé en cette saison": "Closed this season",
+"Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.": "Cinema: by default the Préfailles cinema, in the village centre, within walking distance.",
+"Jeune public": "Young audiences",
+"Touchez un horaire pour l'ajouter à votre agenda.": "Tap a time to add it to your calendar.",
+"Les cinémas": "The cinemas",
+"Cinéma de Préfailles (L'Atlantique)": "Préfailles cinema (L'Atlantique)",
+"Cinéma associatif du bourg, programme mensuel. 6,50 €, moins de 14 ans 4 €, carte 10 places 55 €.": "Community cinema in the village centre, monthly programme. €6.50, under-14s €4, 10-ticket card €55.",
+"Programme officiel ↗": "Official programme ↗",
+"Le multisalle de Pornic.": "Pornic's multiplex.",
+"Cinéma associatif du centre de Pornic.": "Community cinema in the centre of Pornic.",
+"Le cinéma de Saint-Brevin.": "Saint-Brevin's cinema.",
+"Jour": "Day",
+"Cinéma de Préfailles": "Préfailles cinema",
+"Ce soir": "Tonight",
+"Demain soir": "Tomorrow evening",
+"Où sortir le soir": "Where to go out at night",
+"Bars, bars musicaux, lieux de nuit et casinos, du plus proche au plus loin. Horaires indicatifs : appelez avant.": "Bars, music bars, night venues and casinos, nearest first. Opening hours are a guide only: call ahead.",
+"Restaurant": "Restaurant",
+"Un peu plus loin :": "A little further away:",
+"Marées et météo, glisse et spots, pêche à pied : tout se déroule sur cette page.": "Tides and weather, board sports and spots, shore fishing: it's all on this one page.",
+"Marées et météo": "Tides and weather",
+"Autre date": "Another date",
+"Rafales": "Gusts",
+"Houle": "Swell",
+"Touchez une case pour voir la journée heure par heure.": "Tap a box to see the day hour by hour.",
+"Fermer le graphique": "Close the chart",
+"Partager la mer du jour": "Share today's sea",
+"Marée aujourd'hui": "Tide today",
+"Marée du jour": "Today's tide",
+"Marée": "Tide",
+"Prochaine marée demain": "Next tide tomorrow",
+"Haute": "High",
+"Basse": "Low",
+"Grandes marées": "Spring tides",
+"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.": "The coefficient ranges from 20 to 120. From 90 upwards, the sea goes out a very long way and comes back in fast.",
+"Pas de grande marée dans les dix semaines.": "No spring tides in the next ten weeks.",
+"Mortes-eaux : petite marée, pas de pêche à pied.": "Neap tide: small tide, no shore fishing.",
+"Où et quand faire du surf, du kite, du wing, de la voile aujourd'hui.": "Where and when to surf, kite, wing or sail today.",
+"Glisse aujourd'hui": "Board sports today",
+"Glisse demain": "Board sports tomorrow",
+"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.": "The best spot and the best time for each activity. Tap a line to see the spot.",
+"Surf": "Surf",
+"Bon": "Good",
+"Possible": "Possible",
+"Non": "No",
+"Voile et bateau": "Sailing & boating",
+"Paddle": "Paddle",
+"Kite": "Kite",
+"Wing": "Wing",
+"Pour naviguer": "Going out on the water",
+"Bulletin officiel de Météo-France pour la bande côtière des 20 milles, relu toutes les 3 heures, et houle mesurée par la bouée la plus proche.": "Official Météo-France forecast for the 20-mile coastal strip, checked every 3 hours, and the swell measured by the nearest buoy.",
+"voir sur meteofrance.com ↗": "see on meteofrance.com ↗",
+"Houle mesurée": "Measured swell",
+"Au large, à 40 km à l'ouest-nord-ouest.": "Offshore, 40 km to the west-north-west.",
+"Candhis ↗": "Candhis ↗",
+"Secours en mer :": "Sea rescue:",
+"ou VHF canal 16.": "or VHF channel 16.",
+"Les spots": "The spots",
+"Touchez un spot : conditions du jour, heures de surf, niveau et dangers.": "Tap a spot: today's conditions, surf times, level and hazards.",
+"Rien de bon aujourd'hui": "Nothing good today",
+"Surf heure par heure": "Surf hour by hour",
+"· idéal : mi-marée à marée haute (récif peu profond)": "· ideal: mid tide to high tide (shallow reef)",
+"· idéal : mi-marée à marée haute (récif découvert à basse mer)": "· ideal: mid tide to high tide (reef exposed at low tide)",
+"· idéal : marée basse à mi-marée (shorebreak à marée haute)": "· ideal: low tide to mid tide (shorebreak at high tide)",
+"· idéal : mi-marée à marée haute pour le surf (à marée basse, les hauts-fonds bloquent la houle) ; kite et wing à toute marée": "· ideal: mid tide to high tide for surfing (at low tide the shallows block the swell); kite and wing at any tide",
+"· idéal : mi-marée à marée haute (aucune vague à marée basse)": "· ideal: mid tide to high tide (no waves at low tide)",
+"Vert : bon · orange : possible · gris : non (houle, vent et hauteur d'eau).": "Green: good · orange: possible · grey: no (swell, wind and water depth).",
+"Comparer les prévisions :": "Compare forecasts:",
+"Prévision détaillée : vent et vagues, plusieurs modèles": "Detailed forecast: wind and waves, several models",
+"Chargement des prévisions…": "Loading forecasts…",
+"Niveau :": "Level:",
+"Attention :": "Watch out:",
+"Carte des vagues ↗": "Wave map ↗",
+"Carte du vent ↗": "Wind map ↗",
+"Y aller ↗": "Get there ↗",
+"Confirmés": "Experienced",
+"Intermédiaires": "Intermediate",
+"Tous niveaux": "All levels",
+"Tous niveaux avec école": "All levels, with a school",
+"Débutants à confirmés": "Beginners to experienced",
+"Débutants (surf avec école) ; kite : débutants débrouillés": "Beginners (surf with a school); kite: capable beginners",
+"La pointe prend la houle d'ouest en premier : droite rapide et creuse sur récif. En kite et wing, on part de l'anse de sable qui colle à la direction du vent.": "The point is the first to pick up westerly swell: a fast, hollow right-hander over reef. For kite and wing, launch from whichever sandy cove best matches the wind direction.",
+"Rochers partout, fond très peu profond, rafales près des falaises. Vent de nord-est : offshore, retour dangereux.": "Rocks everywhere, very shallow bottom, gusts near the cliffs. North-easterly wind: offshore, dangerous to get back in.",
+"Petite crique entre les falaises, au sud du bourg. Vague de récif par houle d'ouest à sud-ouest, meilleure par vent de nord à nord-est.": "Small cove between the cliffs, south of the village. Reef wave with a west to south-west swell, best with a north to north-east wind.",
+"Récif découvert à marée basse, courants, baignade non surveillée. Trop petite pour lancer un kite.": "Reef exposed at low tide, currents, unsupervised bathing. Too small to launch a kite.",
+"Grande plage de sable. Beach break par houle d'ouest ; kite et wing côté nord, près du centre nautique La Cormorane.": "Long sandy beach. Beach break with a westerly swell; kite and wing at the north end, near the La Cormorane sailing centre.",
+"Shorebreak à marée haute, pêcheries. Du 15 juin au 15 septembre (et les week-ends de mai à septembre) : sortie par les chenaux balisés, au-delà des 300 m.": "Shorebreak at high tide, fishing huts. From 15 June to 15 September (and weekends from May to September): go out through the marked channels, beyond 300 m.",
+"Bancs de sable et vagues faciles : le spot d'école du surf à Saint-Brevin (écoles sur la plage en juillet-août). En kite et wing, un des rares spots ouverts l'été, dans le couloir balisé ; meilleur vent d'ouest à nord-ouest.": "Sandbanks and easy waves: Saint-Brevin's learn-to-surf spot (schools on the beach in July–August). For kite and wing, one of the few spots open in summer, in the marked corridor; best wind west to north-west.",
+"Spot très fréquenté, baigneurs et surfeurs dans la même zone ; petites dalles rocheuses à marée basse par fort coefficient ; zones de nidification du gravelot balisées. Haute saison (15 juin–15 septembre, plus les week-ends et jours fériés du 1er mai au 30 septembre) : kite seulement entre l'allée des Bouillons et l'allée des Pâquerettes, au-delà des 50 premiers mètres ; surf hors des zones de baignade surveillée.": "Very busy spot, swimmers and surfers in the same area; small rock slabs at low tide on big coefficients; marked plover nesting areas. High season (15 June–15 September, plus weekends and public holidays from 1 May to 30 September): kiting only between allée des Bouillons and allée des Pâquerettes, beyond the first 50 metres; surf outside the supervised bathing areas.",
+"Plan d'eau abrité de la houle, de la Grande Plage de Préfailles à la Noëveillard (Pornic). Voile et paddle ; kite à Le Cormier (La Plaine), école sur place.": "Stretch of water sheltered from the swell, from the Grande Plage in Préfailles to La Noëveillard (Pornic). Sailing and paddleboarding; kiting at Le Cormier (La Plaine), with a school on site.",
+"Parcs à huîtres et rochers à la marée descendante, trafic du port de Pornic. Vent de nord à nord-est : offshore.": "Oyster beds and rocks on the falling tide, boat traffic from Pornic harbour. North to north-east wind: offshore.",
+"Base nautique (centre nautique municipal, écoles de kite et de wing), grands bancs de sable où l'on a pied à marée basse. Le spot d'apprentissage du kite et du wing, et le point de départ du catamaran, de la planche à voile et du paddle. Meilleur vent : sud-ouest à ouest.": "Watersports base (municipal sailing centre, kite and wing schools), large sandbanks where you can stand at low tide. The place to learn kite and wing, and the starting point for catamarans, windsurfing and paddleboarding. Best wind: south-west to west.",
+"Interdit aux pratiquants libres de kite/wing du 15 juin au 15 septembre et les week-ends et jours fériés du 1er mai au 30 septembre (réservé aux écoles entre l'avenue Roger et le chemin de la Marine, 24 ailes maximum). Ne pas décoller près de la digue ou du mur du parking, courant sortant selon la marée, chenal balisé de 30 m devant la cale ouest (navigation et mouillage interdits), véliplanchistes rapides. Bateaux à moteur interdits devant la plage de l'avenue Roger à l'avenue de la Brévinière.": "Closed to independent kite/wing riders from 15 June to 15 September and at weekends and on public holidays from 1 May to 30 September (reserved for schools between avenue Roger and chemin de la Marine, 24 kites maximum). Do not launch near the sea wall or the car park wall; outgoing current depending on the tide; 30 m marked channel in front of the west slipway (no sailing or anchoring); fast windsurfers. Motorboats banned off the beach from avenue Roger to avenue de la Brévinière.",
+"Grande plage où l'école de surf donne rendez-vous (poste de secours, au bout de l'allée André). Petites vagues régulières de la mi-marée à la marée haute. En kite, plan d'eau assez plat à marée basse, vagues de bord à marée haute ; meilleur vent : nord-ouest.": "Long beach where the surf school meets (lifeguard station, at the end of allée André). Small, regular waves from mid tide to high tide. For kiting, fairly flat water at low tide, shore waves at high tide; best wind: north-west.",
+"Souvent vent de mer et petit shorebreak à marée haute. Poteaux fixes reliés par du fil métallique autour de la zone de nidification des gravelots (sous le vent). Qualité de l'eau parfois mauvaise l'été (le Boivre) : baignade possiblement interdite. Haute saison : zones écoles et baignade à respecter ; bateaux à moteur interdits de l'avenue Alexandre-Bernard à l'allée André.": "Often an onshore wind and a small shorebreak at high tide. Fixed posts joined by wire around the plover nesting area (downwind). Water quality sometimes poor in summer (the Boivre stream): swimming may be banned. High season: respect the school and bathing zones; motorboats banned from avenue Alexandre-Bernard to allée André.",
+"Côté nord de la pointe, face à l'estuaire. Le bon plan quand le vent d'ouest à nord-ouest rend la côte sud trop exposée.": "North side of the point, facing the estuary. The go-to spot when a west to north-west wind makes the south coast too exposed.",
+"Courants de l'estuaire, pêcheries, sable et rochers. Vent de sud à est : offshore, on ne sort pas.": "Estuary currents, fishing huts, sand and rocks. South to east wind: offshore, don't go out.",
+"Spot de vagues pour kite et planche, en limite de Saint-Michel-Chef-Chef, au bord de la forêt de la Pierre Attelée. Meilleur vent : sud-sud-ouest.": "Wave spot for kiting and windsurfing, on the edge of Saint-Michel-Chef-Chef, by the Pierre Attelée forest. Best wind: south-south-west.",
+"Rochers et hauts-fonds nombreux, fort courant latéral à la montante, shorebreak, pêcheries ; vent perturbé par la petite falaise dès qu'il a du sud. Kite interdit du 15 juin au 15 septembre et les week-ends et jours fériés du 1er mai au 30 septembre.": "Many rocks and shallows, strong sideways current on the rising tide, shorebreak, fishing huts; the wind is disturbed by the low cliff as soon as it has any south in it. Kiting banned from 15 June to 15 September and at weekends and on public holidays from 1 May to 30 September.",
+"Les bonnes marées des prochaines semaines, calculées pour Préfailles.": "Good tides over the coming weeks, calculated for Préfailles.",
+"Prochaines bonnes marées": "Upcoming good tides",
+"Pas de bonne marée de jour dans les deux prochains mois.": "No good daytime tides in the next two months.",
+"Coefficient 70 et plus, basse mer entre 7 h et 19 h. Le créneau va de 1 h 15 avant à 1 h 15 après la basse mer.": "Coefficient 70 or more, low tide between 7h and 19h. The time slot runs from 1 h 15 before to 1 h 15 after low tide.",
+"grande marée": "spring tide",
+"Où aller": "Where to go",
+"Sécurité": "Safety",
+"Regardez l'heure de la basse mer avant de partir et repartez dès que la mer remonte : par grand coefficient, elle revient vite.": "Check the time of low tide before you set off and head back as soon as the tide turns: on big coefficients it comes back in fast.",
+"Repérez votre chemin de retour. Les chenaux et les cuvettes se remplissent en premier et peuvent vous couper du rivage.": "Keep track of your way back. Channels and hollows fill up first and can cut you off from the shore.",
+"N'y allez pas seul, prévenez quelqu'un, gardez un téléphone chargé dans une poche étanche.": "Don't go alone, tell someone where you're going, and keep a charged phone in a waterproof pouch.",
+"Chaussures fermées : rochers glissants et coquillages coupants.": "Wear closed shoes: slippery rocks and sharp shells.",
+"Brouillard, orage ou vent qui forcit : on remonte tout de suite.": "Fog, a storm or a strengthening wind: head back straight away.",
+"Remettez les rochers retournés à leur place et ne prélevez que ce que vous mangerez.": "Put any rocks you turn over back in place, and only take what you will eat.",
+"Personne en difficulté en mer ou sur l'estran : appelez le": "Someone in trouble at sea or on the foreshore: call",
+"(ou le": "(or",
+"Tailles et quantités": "Sizes and quantities",
+"Espèce": "Species",
+"Taille min.": "Min. size",
+"Quantité": "Quantity",
+"Coque": "Cockle",
+"Palourde japonaise": "Manila clam",
+"Huître creuse": "Pacific oyster",
+"Huître plate": "Flat oyster",
+"Moule": "Mussel",
+"Pignon (telline)": "Wedge clam (telline)",
+"Couteau": "Razor clam",
+"Étrille": "Velvet swimming crab",
+"Crevette grise": "Brown shrimp",
+"Crevette rose": "Common prawn",
+"60 huîtres, 5 kg max.": "60 oysters, 5 kg max.",
+"fiche du Département": "Département fact sheet",
+"Réglette « Pêche à pied de loisir » du Syndicat mixte de la Baie de Bourgneuf (valable en Loire-Atlantique et Vendée), juin 2023, et fiche pêche à pied du Département de Loire-Atlantique. Repères indicatifs : seule la réglementation officielle fait foi (mairie, Affaires maritimes de Saint-Nazaire).": "“Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), June 2023, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).",
+"Voir la réglette ↗": "See the size gauge ↗",
+"Les règles à connaître": "Rules to know",
+"• Pas de pêche à moins de 15 m des parcs à huîtres et des bouchots, ni dans leurs allées.": "• No fishing within 15 m of oyster beds and mussel posts, or in the paths between them.",
+"• Outils à main seulement (couteau à palourdes, griffe ou serfouette à 3 dents au plus) ; pas d'arrachage.": "• Hand tools only (clam knife, rake or hoe with no more than 3 prongs); no ripping things up.",
+"• Ne grattez pas les herbiers de zostères ; laissez les crabes et crevettes porteurs d'œufs.": "• Don't dig in eelgrass beds; leave crabs and shrimps carrying eggs.",
+"• Certaines zones peuvent être fermées pour raison sanitaire : renseignez-vous en mairie avant de pêcher.": "• Some areas may be closed for health reasons: ask at the town hall before fishing.",
+"• Amende jusqu'à 22 500 € en cas d'infraction.": "• Fines of up to €22,500 for breaking the rules.",
+"Certaines zones peuvent être fermées pour raison sanitaire : en cas de doute, appelez la mairie au": "Some areas may be closed for health reasons: if in doubt, call the town hall on",
+"Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.": "Wind, swell and water: Open-Meteo forecasts (Météo-France and European models), refreshed each time you open the page. Tides: harmonic calculation calibrated on the SHOM tide tables for Pornic. A guide only, not for navigation.",
+"Rubriques de la mer": "Sea sections",
+"Choisir une date": "Choose a date",
+"Vent (nœuds)": "Wind (knots)",
+"Vagues (m · période en s)": "Waves (m · period in s)",
+"Vent moyen": "Average wind",
+"Toutes les 2 heures, de 7 h à 21 h. Flèche : sens où va le vent ou la vague. Modèles : AROME (Météo-France, maille 1,3 km), ECMWF (européen), ICON (allemand) ; vagues de Météo-France et GFS-Wave (américain). Quand ils sont d'accord, la prévision est fiable. Vent au spot, vagues dans la baie de Bourgneuf. Données Open-Meteo.": "Every 2 hours, from 7h to 21h. Arrow: the direction the wind or wave is heading. Models: AROME (Météo-France, 1.3 km grid), ECMWF (European), ICON (German); waves from Météo-France and GFS-Wave (American). When they agree, the forecast is reliable. Wind at the spot, waves in the Bay of Bourgneuf. Data from Open-Meteo.",
+"Toutes les 2 heures, de 7 h à 21 h. Flèche : sens où va le vent ou la vague. Modèles : AROME (Météo-France, maille 1,3 km), ECMWF (européen), ICON (allemand) ; vagues de Météo-France et GFS-Wave (américain). Quand ils sont d'accord, la prévision est fiable. Vent au spot, vagues devant Saint-Brevin et Tharon. Données Open-Meteo.": "Every 2 hours, from 7h to 21h. Arrow: the direction the wind or wave is heading. Models: AROME (Météo-France, 1.3 km grid), ECMWF (European), ICON (German); waves from Météo-France and GFS-Wave (American). When they agree, the forecast is reliable. Wind at the spot, waves off Saint-Brevin and Tharon. Data from Open-Meteo.",
+"Toutes les 2 heures, de 7 h à 21 h. Flèche : sens où va le vent ou la vague. Modèles : AROME (Météo-France, maille 1,3 km), ECMWF (européen), ICON (allemand) ; vagues de Météo-France et GFS-Wave (américain). Quand ils sont d'accord, la prévision est fiable. Vent au spot, vagues au large de la Pointe Saint-Gildas. Données Open-Meteo.": "Every 2 hours, from 7h to 21h. Arrow: the direction the wind or wave is heading. Models: AROME (Météo-France, 1.3 km grid), ECMWF (European), ICON (German); waves from Météo-France and GFS-Wave (American). When they agree, the forecast is reliable. Wind at the spot, waves off the Pointe Saint-Gildas. Data from Open-Meteo.",
+"Restaurants": "Restaurants",
+"Bars": "Bars",
+"Marchés": "Markets",
+"Produits": "Local produce",
+"Restos et crêperies": "Restaurants & crêperies",
+"Crêperies": "Crêperies",
+"Huîtres & coquillages": "Oysters & shellfish",
+"Boulangeries": "Bakeries",
+"Glaciers": "Ice cream",
+"Producteurs": "Producers",
+"Vins & caves": "Wine shops",
+"Épiceries fines": "Delis",
+"Courses": "Groceries",
+"Biscuiteries": "Biscuit makers",
+"Vue sur la mer": "Sea view",
+"Sur la plage": "On the beach",
+"Terrasse": "Terrace",
+"Zone conchylicole du Marais, à La Plaine-sur-Mer": "Le Marais shellfish-farming area, in La Plaine-sur-Mer",
+"Horaires indicatifs : appelez avant de vous déplacer.": "Opening hours are a guide only: call before you go.",
+"Rubriques de Restos": "Food sections",
+"Catégorie": "Category",
+"Cadre": "Setting",
+"Cars et trains depuis Préfailles, correspondances comprises.": "Buses and trains from Préfailles, connections included.",
+"Cars et trains vers Préfailles, correspondances comprises.": "Buses and trains to Préfailles, connections included.",
+"Jour férié : horaires du dimanche.": "Public holiday: Sunday timetable.",
+"Prochains trajets": "Next journeys",
+"Partager ces horaires": "Share these times",
+"Prochain": "Next",
+"fiche officielle ↗": "official timetable ↗",
+"Bon à savoir": "Good to know",
+"Renseignements Aléop :": "Aléop information:",
+"(lun–ven 8h–19h, sam 8h–12h).": "(Mon–Fri 8h–19h, Sat 8h–12h).",
+"Horaires repris des fiches officielles Aléop et TER (Région Pays de la Loire), à titre indicatif : grèves, travaux et jours fériés peuvent les changer.": "Times taken from the official Aléop and TER timetables (Pays de la Loire region), as a guide only: strikes, engineering works and public holidays can change them.",
+"Destinations": "Destinations",
+"Sens": "Direction",
+"Partir": "Leaving",
+"Rentrer": "Coming back",
+"premier départ": "first departure",
+"Horaires indisponibles.": "Timetable unavailable.",
+"Urgences, santé, mairie, poste, poubelles et horaires utiles à Préfailles.": "Emergencies, health, town hall, post office, bins and useful times in Préfailles.",
+"Urgences": "Emergencies",
+"Urgences, tous services": "Emergencies, all services",
+"Numéro européen, depuis n'importe quel téléphone": "European number, from any phone",
+"SAMU": "SAMU (ambulance)",
+"Urgence médicale": "Medical emergency",
+"Pompiers": "Fire brigade",
+"Incendie, accident, secours à personne": "Fire, accident, rescue",
+"Police, gendarmerie": "Police, gendarmerie",
+"Secours en mer": "Sea rescue",
+"Personne en difficulté en mer ou sur l'estran": "Someone in trouble at sea or on the foreshore",
+"Urgences par SMS": "Emergencies by text",
+"Pour les personnes sourdes ou malentendantes": "For deaf or hard-of-hearing people",
+"Urgences médicales : où aller": "Medical emergencies: where to go",
+"Il n'y a pas de SOS Médecins à Préfailles (il ne couvre que Nantes et Saint-Nazaire).": "There is no SOS Médecins (home-visit doctors) in Préfailles (it only covers Nantes and Saint-Nazaire).",
+"Avant d'aller aux urgences": "Before going to A&E",
+"De 20 h à 8 h, hors urgence vitale, appelez d'abord le 15 (Loire-Atlantique)": "From 20h to 8h, unless life is at risk, call 15 first (Loire-Atlantique)",
+"Urgences les plus proches : hôpital de Saint-Nazaire": "Nearest A&E: Saint-Nazaire hospital",
+"Cité sanitaire, 11 boulevard Georges Charpak, environ 15 km ; l'hôpital de Pornic n'a pas d'urgences": "Cité sanitaire, 11 boulevard Georges Charpak, about 15 km; Pornic hospital has no A&E",
+"Médecins de garde à l'hôpital de Pornic": "Out-of-hours doctors at Pornic hospital",
+"Lun.–ven. 20h–minuit, sam. 12h–minuit, dim. et fériés 8h–minuit ; appelez le 15 avant de venir": "Mon–Fri 20h–midnight, Sat 12h–midnight, Sun and public holidays 8h–midnight; call 15 before coming",
+"Médecin de garde": "Out-of-hours doctor",
+"Lun.–ven. 20h–minuit, sam. 12h–minuit, dim. et fériés 8h–minuit": "Mon–Fri 20h–midnight, Sat 12h–midnight, Sun and public holidays 8h–midnight",
+"Pharmacie de garde": "Duty pharmacy",
+"Service Résogardes": "Résogardes service",
+"Dentiste de garde": "Emergency dentist",
+"Dimanches et jours fériés, de 8 h à 11 h": "Sundays and public holidays, 8h to 11h",
+"Centre antipoison d'Angers": "Angers poison centre",
+"24 h/24": "24/7",
+"Santé autour de Préfailles": "Health services around Préfailles",
+"À moins de 20 km, du plus proche au plus loin. Horaires des pharmacies non publiés : appelez avant.": "Within 20 km, nearest first. Pharmacy opening hours aren't published: call ahead.",
+"Pharmacies": "Pharmacies",
+"Médecins (cabinets et maisons de santé)": "Doctors (surgeries and health centres)",
+"Cabinet médical de Préfailles": "Préfailles medical practice",
+"Cabinet médical La Piraudière": "La Piraudière medical practice",
+"Cabinet médical de Saint-Michel": "Saint-Michel medical practice",
+"Maison de santé de Pornic": "Pornic health centre",
+"Pôle de santé du Clion": "Le Clion health centre",
+"Cabinet médical de La Bernerie": "La Bernerie medical practice",
+"Cabinet médical de Chauvé": "Chauvé medical practice",
+"Cabinet médical des Moutiers": "Les Moutiers medical practice",
+"Infirmiers": "Nurses",
+"Cabinet infirmier La Plaine–Préfailles": "La Plaine–Préfailles nursing practice",
+"Centre de soins infirmiers de Pornic": "Pornic nursing centre",
+"Dentistes": "Dentists",
+"Cabinet dentaire de Tharon": "Tharon dental practice",
+"Cabinet dentaire du Bocage": "Le Bocage dental practice",
+"Cabinet dentaire des Champs Francs": "Les Champs Francs dental practice",
+"Cabinet dentaire du Moulin de Sang": "Moulin de Sang dental practice",
+"Cabinet dentaire, rue de Nantes": "Dental practice, rue de Nantes",
+"Cabinet dentaire, Frères Lumière": "Dental practice, Frères Lumière",
+"Cabinet dentaire, Médipôle": "Dental practice, Médipôle",
+"Cabinet dentaire de La Bernerie": "La Bernerie dental practice",
+"Kinés": "Physiotherapists",
+"Kinés, boulevard de la Tara": "Physiotherapists, boulevard de la Tara",
+"Kinés, Basse Musse": "Physiotherapists, Basse Musse",
+"Kinés, rue de la Convention": "Physiotherapists, rue de la Convention",
+"Kinés de Tharon": "Tharon physiotherapists",
+"Kinés du Bocage": "Le Bocage physiotherapists",
+"Kinés de Sainte-Marie": "Sainte-Marie physiotherapists",
+"Kinés des Barelles": "Les Barelles physiotherapists",
+"Vétérinaires": "Vets",
+"Clinique vétérinaire de l'Europe": "Clinique vétérinaire de l'Europe (vet)",
+"Clinique vétérinaire du Grand Large": "Clinique vétérinaire du Grand Large (vet)",
+"2 rue du Traité de Rome, Pornic · lun.–sam. 8h30–19h, urgences 24 h/24 au même numéro · 7 km": "2 rue du Traité de Rome, Pornic · Mon–Sat 8h30–19h, emergencies 24/7 on the same number · 7 km",
+"11 avenue de la Plage Éric Tabarly, Préfailles (et 2 rue de la Piraudière, La Plaine) · à pied": "11 avenue de la Plage Éric Tabarly, Préfailles (and 2 rue de la Piraudière, La Plaine) · walk",
+"Défibrillateurs à Préfailles": "Defibrillators in Préfailles",
+"Centre nautique et musée du Sémaphore (Pointe Saint-Gildas) · Espace culturel · Port-Meleu · Mairie (17 Grande Rue) · l'été, les trois postes de secours (Port-Meleu, Grande Plage, Anse du Sud).": "Sailing centre and Sémaphore museum (Pointe Saint-Gildas) · Espace culturel · Port-Meleu · Town hall (17 Grande Rue) · in summer, the three lifeguard stations (Port-Meleu, Grande Plage, Anse du Sud).",
+"Mairie, poste et services": "Town hall, post office and services",
+"Mairie de Préfailles": "Préfailles town hall",
+"17 Grande Rue · lun.–sam. 9h–12h ; objets trouvés à la police municipale (mardi 9h30–12h)": "17 Grande Rue · Mon–Sat 9h–12h; lost property at the municipal police (Tuesday 9h30–12h)",
+"Agence postale de Préfailles": "Préfailles post office",
+"Dans la mairie · lun.–sam. 9h–12h": "In the town hall · Mon–Sat 9h–12h",
+"Office de tourisme de Préfailles": "Préfailles tourist office",
+"29 Grande Rue · hors saison mar.–sam. le matin (et mar., mer., ven. après-midi) ; l'été tous les jours": "29 Grande Rue · off season Tue–Sat mornings (and Tue, Wed, Fri afternoons); in summer every day",
+"Gendarmerie de Pornic": "Pornic gendarmerie",
+"1 rue du Docteur Auguste Guilmin · lun.–sam. 8h–12h et 14h–18h, dim. 9h–12h et 15h–18h": "1 rue du Docteur Auguste Guilmin · Mon–Sat 8h–12h and 14h–18h, Sun 9h–12h and 15h–18h",
+"Distributeur de billets : 17 Grande Rue (à côté de la mairie), 24 h/24. Pas de laverie automatique à Préfailles ni à La Plaine.": "Cash machine: 17 Grande Rue (next to the town hall), 24/7. No launderette in Préfailles or La Plaine.",
+"Poubelles et tri à Préfailles": "Bins and recycling in Préfailles",
+"Source :": "Source:",
+"Ordures ménagères": "Household waste",
+": le": ": on",
+", toute l'année.": ", all year round.",
+"Emballages (bac jaune)": "Packaging (yellow bin)",
+": un mardi sur deux (semaines paires),": ": every other Tuesday (even-numbered weeks),",
+"tous les mardis en juillet et août": "every Tuesday in July and August",
+"Sortez les bacs": "Put the bins out",
+"la veille au soir": "the evening before",
+", poignée vers la route. Collecte assurée les jours fériés, sauf le 25 décembre et le 1er janvier.": ", handle facing the road. Collections go ahead on public holidays, except 25 December and 1 January.",
+"De passage ou collecte manquée": "Just passing through, or missed a collection",
+": déposez vos sacs (50 L maximum) et vos emballages dans un point d'apport volontaire.": ": leave your bags (50 L maximum) and your packaging at a drop-off point.",
+"Carte des points de collecte ↗": "Map of drop-off points ↗",
+"Tri": "Recycling",
+": verre dans la colonne verte (sans bouchons), papiers dans la bleue, emballages en vrac dans le jaune, jamais de sacs au pied des bacs. Médicaments et seringues : en pharmacie.": ": glass in the green bank (without lids), paper in the blue one, loose packaging in the yellow one, and never leave bags at the foot of the bins. Medicines and syringes: take them to a pharmacy.",
+"Déchetteries": "Recycling centres",
+": carte d'accès obligatoire, gratuite, une par foyer (résidences secondaires et locataires compris), à demander en ligne. La plus proche :": ": access card required, free, one per household (second homes and tenants included), apply online. The nearest one:",
+", route de la Génière à La Plaine, lun.–sam. 8h30–12h30 et 14h–18h.": ", route de la Génière in La Plaine, Mon–Sat 8h30–12h30 and 14h–18h.",
+"Horaires utiles": "Useful times",
+"Programme du mois et prochaines séances": "This month's programme and upcoming screenings",
+"Bonnes marées, créneau conseillé, sécurité": "Good tides, best time slot, safety",
+"Prochains cars 303 et 315, trains de Pornic": "Next 303 and 315 buses, trains from Pornic",
+"Mer et météo": "Sea and weather",
+"Baignade : la qualité de l'eau est contrôlée par l'ARS pendant la saison, plage par plage.": "Swimming: water quality is monitored by the ARS (regional health agency) during the season, beach by beach.",
+"source officielle ↗": "official source ↗",
+"Vigilance météo du jour pour la Loire-Atlantique (vent, vagues-submersion, orages) :": "Today's weather warnings for Loire-Atlantique (wind, waves and flooding, storms):",
+"Numéros vérifiés à la publication. En cas de doute, le 112 fonctionne partout.": "Numbers checked when published. If in doubt, 112 works everywhere.",
+"Marché de Préfailles": "Préfailles market",
+"À propos": "About",
+"Un site familial et amical, sans publicité, pour savoir ce qui se passe à Préfailles et autour.": "A friendly, family-run, ad-free site to find out what's going on in and around Préfailles.",
+"Contact": "Contact",
+"Écrire au Petit Préf": "Write to Le Petit Préf",
+"Une erreur, un oubli, une bonne adresse ?": "Spotted a mistake, something missing, or a good place?",
+"Une adresse de contact sera bientôt indiquée ici. En attendant, prévenez la personne qui vous a envoyé le lien : la correction est en ligne le lendemain matin.": "A contact address will be given here soon. In the meantime, let the person who sent you the link know: the fix will be online the next morning.",
+"Mentions légales": "Legal notice",
+"Éditeur.": "Publisher.",
+"Le Petit Préf est un site personnel, gratuit et non commercial, édité par un particulier (éditeur non professionnel au sens de l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004, dont l'identité a été communiquée à l'hébergeur). Directeur de la publication : l'éditeur.": "Le Petit Préf is a personal, free, non-commercial website published by a private individual (a non-professional publisher within the meaning of Article 6-III-2 of French law no. 2004-575 of 21 June 2004, whose identity has been disclosed to the host). Publication director: the publisher.",
+"Hébergement.": "Hosting.",
+"Site hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis). Nom de domaine enregistré chez OVH.": "Site hosted by GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). Domain name registered with OVH.",
+"Contenus.": "Content.",
+"Les événements, séances de cinéma, horaires et adresses sont repris des sites des communes, offices de tourisme, cinémas, associations et transporteurs, qui restent la référence ; chaque fiche renvoie à sa source. Ils sont mis à jour automatiquement chaque matin et peuvent contenir des erreurs : vérifiez avant de vous déplacer.": "Events, cinema screenings, opening hours and addresses are taken from the websites of local councils, tourist offices, cinemas, associations and transport operators, which remain the reference; each entry links to its source. They are updated automatically every morning and may contain mistakes: check before you go.",
+"Marées.": "Tides.",
+"Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.": "Times and heights calculated from the Pornic tide tables (SHOM), as a guide only (accurate to about 10 minutes). Not for navigation.",
+"Photos et logo.": "Photos and logo.",
+"© Le Petit Préf, tous droits réservés.": "© Le Petit Préf, all rights reserved.",
+"Données personnelles.": "Personal data.",
+"Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie.": "The site collects no personal data: no account, no form, no cookie.",
+"Mesure d'audience :": "Audience measurement:",
+"le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), les installations de l'app et les clics sur « Installer ». Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.": "the site only counts totals (pages opened, number of devices per day, shares, visit length in bands), with nothing that identifies you: no cookie, no stored IP address, no identifier. Also counted, always as totals: the type of device (iPhone, Android, tablet, computer), app installs and taps on “Install”. Your browser only keeps the date of your last visit. Your holiday dates and filters stay saved in your browser, on your device only.",
+"Services utilisés par le site.": "Services used by the site.",
+"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).",
+"Liens.": "Links.",
+"Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.": "The publisher is not responsible for the content of other sites linked to.",
+"Le Petit Préf sur votre écran d'accueil": "Le Petit Préf on your home screen",
+"Une icône à côté de vos applis, qui s'ouvre directement sur votre séjour : marée du jour, sorties, films. Rien à télécharger, rien à payer, aucun compte.": "An icon next to your apps that opens straight onto your stay: today's tide, events, films. Nothing to download, nothing to pay, no account.",
+"iPhone / iPad": "iPhone / iPad",
+"Android": "Android",
+"Touchez Partager": "Tap Share",
+"En bas de l'écran dans Safari (en haut sur iPad). Vous ne le voyez pas ? Touchez d'abord": "At the bottom of the screen in Safari (at the top on iPad). Can't see it? First tap",
+"en bas à droite.": "at the bottom right.",
+"Choisissez « Sur l'écran d'accueil »": "Choose “Add to Home Screen”",
+"Faites glisser la liste vers le haut si l'option n'apparaît pas tout de suite. Laissez « Ouvrir en tant qu'app web » activé s'il est proposé.": "Swipe the list up if the option doesn't appear straight away. Leave “Open as Web App” switched on if it's offered.",
+"Touchez « Ajouter »": "Tap “Add”",
+", en haut à droite": ", top right",
+"Cette icône apparaît sur votre écran d'accueil. Elle ouvre Le Petit Préf en plein écran, directement sur votre séjour.": "This icon appears on your home screen. It opens Le Petit Préf full screen, straight onto your stay.",
+"Vos dates de séjour et vos filtres restent sur votre téléphone. Le contenu se met à jour tout seul chaque matin.": "Your holiday dates and filters stay on your phone. The content updates itself every morning.",
+"Envoyer à la famille": "Send to the family",
+"WhatsApp": "WhatsApp",
+"Copier": "Copy",
+"Votre téléphone": "Your phone",
+"Idées": "Ideas",
+"Huîtres, loto, karting, Pornic…": "e.g. huîtres (oysters), loto (bingo), karting, Pornic…"
+},
+"rules": [
+[
+"^(\\d+) sorties? à venir autour de Préfailles$",
+"$1 upcoming events around Préfailles"
+],
+[
+"^Agenda : (\\d+) sorties? à venir autour de Préfailles$",
+"What's on: $1 upcoming events around Préfailles"
+],
+[
+"^1 lieu ouvert aujourd'hui à moins de (\\d+) km : nature, sport, sensations, culture, enfants$",
+"1 place open today within $1 km: nature, sport, thrills, culture, kids"
+],
+[
+"^(\\d+) lieux ouverts aujourd'hui à moins de (\\d+) km : nature, sport, sensations, culture, enfants$",
+"$1 places open today within $2 km: nature, sport, thrills, culture, kids"
+],
+[
+"^1 sortie aujourd'hui",
+"1 event today"
+],
+[
+"^(\\d+) sorties aujourd'hui",
+"$1 events today"
+],
+[
+"^pas de sortie datée aujourd'hui",
+"no dated events today"
+],
+[
+"^pas de sortie annoncée ce soir",
+"nothing announced for tonight"
+],
+[
+"^1 sortie ce soir",
+"1 event tonight"
+],
+[
+"^(\\d+) sorties ce soir",
+"$1 events tonight"
+],
+[
+" · (\\d+) dans les 7 jours, à moins de (\\d+) km$",
+" · $1 in the next 7 days, within $2 km"
+],
+[
+" · (\\d+) soirées dans les 7 jours : concerts, fêtes, soirées dansantes ; et les bars où sortir$",
+" · $1 evening events in the next 7 days: concerts, parties, dances; plus bars to go out to"
+],
+[
+"^Aujourd'hui (\\d{1,2}h\\d{0,2}) à Préfailles : (.+)$",
+"Today $1 in Préfailles: $2"
+],
+[
+"^Demain (\\d{1,2}h\\d{0,2}) à Préfailles : (.+)$",
+"Tomorrow $1 in Préfailles: $2"
+],
+[
+"^(Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche) (\\d{1,2}h\\d{0,2}) à Préfailles : (.+)$",
+"$1 $2 in Préfailles: $3"
+],
+[
+"^prochaine grande marée aujourd'hui, coef\\. (\\d+)$",
+"next spring tide today, coef. $1"
+],
+[
+"^prochaine grande marée (.+), coef\\. (\\d+)$",
+"next spring tide $1, coef. $2"
+],
+[
+"^(\\d+) à Préfailles(.*), (\\d+) à moins de (\\d+) km$",
+"$1 in Préfailles$2, $3 within $4 km"
+],
+[
+"^vers Pornic, Nantes, Saint-Nazaire",
+"to Pornic, Nantes, Saint-Nazaire"
+],
+[
+"^depuis Nantes, Pornic, Saint-Nazaire",
+"from Nantes, Pornic, Saint-Nazaire"
+],
+[
+" · prochain départ de (.+) à (\\d{1,2}h\\d\\d)$",
+" · next departure from $1 at $2"
+],
+[
+" · prochain départ (\\d{1,2}h\\d\\d) pour (.+)$",
+" · next departure $1 to $2"
+],
+[
+"^Agenda et cinéma mis à jour le (.+?),? (?:à|at) (\\d\\d:\\d\\d)\\.$",
+"What's on and cinema updated on $1 at $2."
+],
+[
+"^Agenda mis à jour le (.+)\\.$",
+"What's on updated on $1."
+],
+[
+"^Version du site : (\\d\\d/\\d\\d) à (\\d\\dh\\d\\d)$",
+"Site version: $1 at $2"
+],
+[
+"^Appeler le (\\d+)$",
+"Call $1"
+],
+[
+"^(\\d+) jours$",
+"$1 days"
+],
+[
+"^Jusqu'à (\\d+) km$",
+"Up to $1 km"
+],
+[
+"^Voir jusqu'à (\\d+) km$",
+"Show up to $1 km"
+],
+[
+"^≤ (\\d+) km$",
+"≤ $1 km"
+],
+[
+"^[Dd]ès (\\d+) ans$",
+"ages $1+"
+],
+[
+"^(\\d+)–(\\d+) ans$",
+"ages $1–$2"
+],
+[
+"^jusqu'au (.+)$",
+"until $1"
+],
+[
+"^Du (.+) au (.+)$",
+"From $1 to $2"
+],
+[
+"^Afficher les (\\d+) autres$",
+"Show $1 more"
+],
+[
+"^Voir les (\\d+) autres, plus loin$",
+"See $1 more, further away"
+],
+[
+"^Ouvert aujourd'hui, (.+)\\.$",
+"Open today, $1."
+],
+[
+"^Ce soir et les prochains soirs, (.+)\\.$",
+"Tonight and the coming evenings, $1."
+],
+[
+"^Activités : 1 lieu, du plus proche au plus loin$",
+"Activities: 1 place"
+],
+[
+"^Activités : (\\d+) lieux, du plus proche au plus loin$",
+"Activities: $1 places, nearest first"
+],
+[
+"^1 adresse, du plus proche au plus loin$",
+"1 place"
+],
+[
+"^(\\d+) adresses, du plus proche au plus loin$",
+"$1 places, nearest first"
+],
+[
+"^Fermé en cette saison · (.+)$",
+"Closed this season · $1"
+],
+[
+"^Fermé le (\\p{L}+)$",
+"Closed on $1"
+],
+[
+"^Accès libre · basse mer (.+)$",
+"Free access · low tide $1"
+],
+[
+"^Ouvert · (.+)$",
+"Open · $1"
+],
+[
+"^Ajouter la séance de (\\S+) à mon agenda$",
+"Add the $1 screening to my calendar"
+],
+[
+"^Ajouter la séance de (\\S+) au calendrier$",
+"Add the $1 screening to my calendar"
+],
+[
+"^Soirées : concerts, soirées dansantes, fêtes, spectacles et lieux où sortir le soir, (.+)\\.$",
+"Evenings: concerts, dances, parties, shows and places to go out at night, $1."
+],
+[
+"^(\\d+) sorties? le soir sur la période\\. Sources : mairies, offices de tourisme, associations, sites des établissements\\.$",
+"$1 evening events in this period. Sources: town halls, tourist offices, associations, venue websites."
+],
+[
+"^Auj\\. (\\d+)$",
+"Today $1"
+],
+[
+"^combi (\\d/\\d)$",
+"$1 wetsuit"
+],
+[
+"^Coef\\. (\\d+)",
+"Coef. $1"
+],
+[
+"^Basse mer demain à (\\S+)$",
+"Low tide tomorrow at $1"
+],
+[
+"^Pleine mer demain à (\\S+)$",
+"High tide tomorrow at $1"
+],
+[
+"^Basse mer à (.+?)\\.?$",
+"Low tide at $1"
+],
+[
+"^Pleine mer à (.+?)(\\.?)$",
+"High tide at $1$2"
+],
+[
+"^Basse mer (\\d.*)$",
+"Low tide $1"
+],
+[
+"^Marée (.+)$",
+"Tide $1"
+],
+[
+"^Grande marée : pêche à pied de (\\S+) à (\\S+)\\.$",
+"Spring tide: shore fishing from $1 to $2."
+],
+[
+"^Bon coefficient : pêche à pied de (\\S+) à (\\S+)\\.$",
+"Good coefficient: shore fishing from $1 to $2."
+],
+[
+"^jusqu'à coef\\. (\\d+)$",
+"up to coef. $1"
+],
+[
+"^basse mer (.+)$",
+"low tide $1"
+],
+[
+"^Glisse (.+)$",
+"Board sports $1"
+],
+[
+"^Niveau : (.+)$",
+"Level: $1"
+],
+[
+"^Créneau conseillé (.+)$",
+"Best time $1"
+],
+[
+"^Pêche à pied, coef\\. (\\d+)$",
+"Shore fishing, coef. $1"
+],
+[
+"^Bulletin côtier officiel · (.+) à (\\d{1,2})H(\\d\\d) légales$",
+"Official coastal forecast · $1 at $2h$3 local time"
+],
+[
+"^Prochain bulletin le (.+), vers (\\d{1,2})H(\\d\\d) légales\\. Origine Météo-France ·$",
+"Next forecast on $1, around $2h$3 local time. Source: Météo-France ·"
+],
+[
+"^à la bouée du Plateau du Four \\(Candhis, Cerema\\), ",
+"at the Plateau du Four buoy (Candhis, Cerema), "
+],
+[
+"^à la bouée (.+?), ",
+"at the buoy $1, "
+],
+[
+"(?<=, )aujourd'hui à (\\d{1,2}h\\d\\d) :$",
+"today at $1:"
+],
+[
+"(?<=, )(\\d\\d/\\d\\d) à (\\d{1,2}h\\d\\d) :$",
+"$1 at $2:"
+],
+[
+"\\(vagues max ([\\d,]+) m\\)",
+"(max waves $1 m)"
+],
+[
+", période ([\\d,]+) s",
+", period $1 s"
+],
+[
+" · eau ([\\d,]+) °C",
+" · water $1 °C"
+],
+[
+"^([\\p{L}, ]+) : non \\((.+)\\)$",
+"$1: no ($2)"
+],
+[
+"^Kite et Wing$",
+"Kite and Wing"
+],
+[
+"(?<=^|, )Voile et bateau(?=$|,| et )",
+"Sailing & boating"
+],
+[
+"^((?:Surf|Kite|Wing|Paddle|Sailing & boating)(?:, (?:Surf|Kite|Wing|Paddle|Sailing & boating))*) et (Surf|Kite|Wing|Paddle|Sailing & boating)$",
+"$1 and $2"
+],
+[
+"(?<=^|· |, )(Surf|Kite|Wing|Paddle|Voile|Sailing) : bon(?= ·|$)",
+"$1: good"
+],
+[
+"(?<=^|· |, )(Surf|Kite|Wing|Paddle|Voile|Sailing) : bon(?= ·|$)",
+"$1: good"
+],
+[
+"(?<=^|· |, )(Surf|Kite|Wing|Paddle|Voile|Sailing) : possible(?= ·|$)",
+"$1: possible"
+],
+[
+"^(Surf|Kite|Wing|Paddle|Voile et bateau) bon ",
+"$1 good "
+],
+[
+"^(Surf|Kite|Wing|Paddle|Voile et bateau) possible ",
+"$1 possible "
+],
+[
+"^Dans (\\d+) min$",
+"In $1 min"
+],
+[
+"^dans (\\d+) min",
+"in $1 min"
+],
+[
+"^dans (\\d+) h (\\d+)",
+"in $1 h $2"
+],
+[
+"^premier départ",
+"first departure"
+],
+[
+" · arrivée (\\d{1,2}h\\d\\d)",
+" · arrives $1"
+],
+[
+" · suivant (\\d{1,2}h\\d\\d)",
+" · next $1"
+],
+[
+"^plus de trajet aujourd'hui$",
+"no more journeys today"
+],
+[
+"^plus de trajet ce jour-là$",
+"no journeys that day"
+],
+[
+"^1 trajet déjà parti$",
+"1 journey already gone"
+],
+[
+"^(\\d+) trajets déjà partis$",
+"$1 journeys already gone"
+],
+[
+"^1 trajet (aujourd'hui|ce jour-là), directs ou avec une correspondance",
+"1 journey $1, direct or with one change"
+],
+[
+"^(\\d+) trajets (aujourd'hui|ce jour-là), directs ou avec une correspondance",
+"$1 journeys $2, direct or with one change"
+],
+[
+"(?<=journeys? )ce jour-là",
+"that day"
+],
+[
+"^Demain (?=\\p{Ll}+$)",
+"Tomorrow, "
+],
+[
+"\\. À Pornic, l'arrêt de car Théâtre St-Gilles est à environ (\\d+) m de la gare SNCF \\(≈ (\\d+) min à pied, d'après OpenStreetMap\\)\\.$",
+". In Pornic, the Théâtre St-Gilles bus stop is about $1 m from the SNCF railway station (≈ $2 min walk, according to OpenStreetMap)."
+],
+[
+"^(\\d+) min · direct$",
+"$1 min · direct"
+],
+[
+"^(\\d+) h (\\d+) · direct$",
+"$1 h $2 · direct"
+],
+[
+"(?<!\\d)1 correspondance(?!s)",
+"1 change"
+],
+[
+"(\\d+) correspondances",
+"$1 changes"
+],
+[
+" puis ",
+" then "
+],
+[
+"^Fiche horaire valable : ",
+"Timetable valid: "
+],
+[
+" \\(mêmes horaires en période scolaire et en vacances\\)",
+" (same times in term time and school holidays)"
+],
+[
+"\\(nouveaux horaires à partir du (.+?)\\)",
+"(new timetable from $1)"
+],
+[
+"^À partir du (.+) :$",
+"From $1:"
+],
+[
+"^Navettes gratuites de l'été \\(Pornic Agglo\\) : horaires (\\d{4}) pas encore publiés\\.$",
+"Free summer shuttles (Pornic Agglo): $1 timetable not yet published."
+],
+[
+"^(.+) : horaires après le (.+) pas encore publiés\\.$",
+"$1: timetable after $2 not yet published."
+],
+[
+"^: (\\d+) producteurs y vendent en direct huîtres, moules et coquillages\\. Leurs adresses sont ci-dessous\\.$",
+": $1 producers sell oysters, mussels and shellfish direct. Their addresses are below."
+],
+[
+"^· bacs : (.+)$",
+"· bins: $1"
+],
+[
+"^([NSEO]{1,3}) · force (\\d+)$",
+"$1 · force $2"
+],
+[
+"(?<![\\p{L}])([Ff]orce) (\\d+), rafales (\\d+) nds : on reste au port",
+"$1 $2, gusts $3 kn: stay in port"
+],
+[
+" : marins confirmés",
+": experienced sailors only"
+],
+[
+"(?<=^Force \\d+), mer ([\\d,]+) m",
+", sea $1 m"
+],
+[
+"^(.+), force (\\d+)$",
+"$1, force $2"
+],
+[
+"(?<![\\p{L}])Plat(?![\\p{L}])",
+"Flat"
+],
+[
+"(?<![\\p{L}])plat(?=$|[ ;)·])",
+"flat"
+],
+[
+"[Gg]ros \\(([\\d,]+) m\\), experts",
+"Big ($1 m), experts only"
+],
+[
+"[Pp]etit \\(([\\d,]+) m\\)",
+"Small ($1 m)"
+],
+[
+", pour débuter",
+", good for beginners"
+],
+[
+" m mais haché par le vent",
+" m but choppy from the wind"
+],
+[
+" m, fort vent de terre \\(rafales (\\d+) nds\\) : confirmés",
+" m, strong offshore wind (gusts $1 kn): experienced only"
+],
+[
+", mer lisse",
+", glassy"
+],
+[
+"Vent de terre : dangereux",
+"Offshore wind: dangerous"
+],
+[
+"vent de terre : dangereux",
+"offshore wind: dangerous"
+],
+[
+"Pas assez de vent",
+"Not enough wind"
+],
+[
+"pas assez de vent",
+"not enough wind"
+],
+[
+"Trop fort, rafales",
+"Too strong, gusty"
+],
+[
+"trop fort, rafales",
+"too strong, gusty"
+],
+[
+"[Jj]uste \\((\\d+) nds\\), grande aile",
+"Just enough ($1 kn), big kite"
+],
+[
+"(\\d+) nds, vent travers-terre : prudence",
+"$1 kn, cross-offshore wind: take care"
+],
+[
+", rafaleux",
+", gusty"
+],
+[
+"[Pp]étole : prévoir le moteur",
+"Flat calm: bring the engine"
+],
+[
+"Plan d'eau calme, ",
+"Calm water, "
+],
+[
+"plan d'eau calme, ",
+"calm water, "
+],
+[
+"Un peu de vent \\((\\d+) nds\\)",
+"A bit of wind ($1 kn)"
+],
+[
+"un peu de vent \\((\\d+) nds\\)",
+"a bit of wind ($1 kn)"
+],
+[
+"Trop de vent ou de vagues",
+"Too much wind or too many waves"
+],
+[
+"trop de vent ou de vagues",
+"too much wind or too many waves"
+],
+[
+" · marée trop basse",
+" · tide too low"
+],
+[
+" · marée trop haute",
+" · tide too high"
+],
+[
+"mi-marée montante",
+"mid tide, rising"
+],
+[
+"mi-marée descendante",
+"mid tide, falling"
+],
+[
+"(?<=^|· )marée basse(?= ·|$)",
+"low tide"
+],
+[
+"(?<=^|· )marée haute(?= ·|$)",
+"high tide"
+],
+[
+"(?<=\\d nds \\(|\\d nds )de terre, offshore",
+"offshore"
+],
+[
+"(?<=\\d nds \\(|\\d nds )travers-terre",
+"cross-offshore"
+],
+[
+"(?<=\\d nds \\(|\\d nds )travers-face",
+"cross-onshore"
+],
+[
+"(?<=\\d nds \\(|\\d nds )travers",
+"cross-shore"
+],
+[
+"(?<=\\d nds \\(|\\d nds )de face",
+"onshore"
+],
+[
+", rafales (\\d+)",
+", gusts $1"
+],
+[
+" · houle au large ",
+" · offshore swell "
+],
+[
+"(?<![\\p{L}])de (\\d{1,2}h\\d{0,2}) à (\\d{1,2}h\\d{0,2})",
+"from $1 to $2"
+],
+[
+"(?<![\\p{L}])vers (\\d{1,2}h\\d{0,2})",
+"around $1"
+],
+[
+"\\(et soir ",
+"(and evenings "
+],
+[
+"\\(soir ",
+"(evenings "
+],
+[
+"\\(et (\\d{1,2}h\\d{0,2}–\\d{1,2}h\\d{0,2}) en saison\\)",
+"(and $1 in season)"
+],
+[
+"(?<=\\d{1,2}h\\d{0,2}) et (?=\\d{1,2}h)",
+" and "
+],
+[
+"(?<=\\d{1,2}h\\d{0,2}) et (?=\\d{1,2}h)",
+" and "
+],
+[
+"(?<=\\d) et (?=\\d+h)",
+" and "
+],
+[
+"^Basse mer ",
+"Low tide "
+],
+[
+"à moins de (\\d+) km",
+"within $1 km"
+],
+[
+"(?<=, )à Préfailles(?=\\.$)",
+"in Préfailles"
+],
+[
+"(?<=^|^Wind |^Vent )SSO(?=$| |,| ·)",
+"SSW"
+],
+[
+"(?<=^|^Wind |^Vent )OSO(?=$| |,| ·)",
+"WSW"
+],
+[
+"(?<=^|^Wind |^Vent )ONO(?=$| |,| ·)",
+"WNW"
+],
+[
+"(?<=^|^Wind |^Vent )NNO(?=$| |,| ·)",
+"NNW"
+],
+[
+"(?<=^|^Wind |^Vent )SO(?=$| |,| ·)",
+"SW"
+],
+[
+"(?<=^|^Wind |^Vent )NO(?=$| |,| ·)",
+"NW"
+],
+[
+"(?<=^|^Wind |^Vent )O(?=$| |,| ·)",
+"W"
+],
+[
+"^Vent ",
+"Wind "
+],
+[
+"(?<=(?:[Ll]undi|[Mm]ardi|[Mm]ercredi|[Jj]eudi|[Vv]endredi|[Ss]amedi|[Dd]imanche)) et (?=(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche))",
+" and "
+],
+[
+"\\((\\d+ )?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre) à (\\d+ )?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\\)",
+"($1$2 to $3$4)"
+],
+[
+"\\((\\d+ )?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre) à (\\d+ )?(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\\)",
+"($1$2 to $3$4)"
+],
+[
+"(?<=\\d) ans(?=[,)])",
+" yrs"
+],
+[
+"(?<=(?:[Jj]anvier|[Ff]évrier|[Mm]ars|[Aa]vril|[Mm]ai|[Jj]uin|[Jj]uillet|[Aa]oût|[Ss]eptembre|[Oo]ctobre|[Nn]ovembre|[Dd]écembre)(?: \\d{4})?) à (?=(?:\\d+ |fin |début |mi-)?(?:[Jj]anvier|[Ff]évrier|[Mm]ars|[Aa]vril|[Mm]ai|[Jj]uin|[Jj]uillet|[Aa]oût|[Ss]eptembre|[Oo]ctobre|[Nn]ovembre|[Dd]écembre))",
+" to "
+],
+[
+"(?<=(?:[Jj]anvier|[Ff]évrier|[Mm]ars|[Aa]vril|[Mm]ai|[Jj]uin|[Jj]uillet|[Aa]oût|[Ss]eptembre|[Oo]ctobre|[Nn]ovembre|[Dd]écembre)(?: \\d{4})?) à (?=(?:\\d+ |fin |début |mi-)?(?:[Jj]anvier|[Ff]évrier|[Mm]ars|[Aa]vril|[Mm]ai|[Jj]uin|[Jj]uillet|[Aa]oût|[Ss]eptembre|[Oo]ctobre|[Nn]ovembre|[Dd]écembre))",
+" to "
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un\\.?(?= \\d)",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un\\.(?=[–,)])",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar\\.?(?= \\d)",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar\\.(?=[–,)])",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er\\.?(?= \\d)",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er\\.(?=[–,)])",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu\\.?(?= \\d)",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu\\.(?=[–,)])",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en\\.?(?= \\d)",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en\\.(?=[–,)])",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am\\.?(?= \\d)",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am\\.(?=[–,)])",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im\\.?(?= \\d)",
+"Sun"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im\\.(?=[–,)])",
+"Sun"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Sun"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un\\.?(?= \\d)",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un\\.(?=[–,)])",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ll]un(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Mon"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar\\.?(?= \\d)",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar\\.(?=[–,)])",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]ar(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Tue"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er\\.?(?= \\d)",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er\\.(?=[–,)])",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Mm]er(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Wed"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu\\.?(?= \\d)",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu\\.(?=[–,)])",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Jj]eu(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Thu"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en\\.?(?= \\d)",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en\\.(?=[–,)])",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Vv]en(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Fri"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am\\.?(?= \\d)",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am\\.(?=[–,)])",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Ss]am(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Sat"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im\\.?(?= \\d)",
+"Sun"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im\\.(?=[–,)])",
+"Sun"
+],
+[
+"(?<![\\p{L}\\p{N}])[Dd]im(?=–(?:lun|mar|mer|jeu|ven|sam|dim))",
+"Sun"
+],
+[
+"(?<=\\d )janv(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Jan"
+],
+[
+"(?<=\\d )févr(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Feb"
+],
+[
+"(?<=\\d )avr(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Apr"
+],
+[
+"(?<=\\d )juil(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Jul"
+],
+[
+"(?<=\\d )sept(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Sep"
+],
+[
+"(?<=\\d )oct(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Oct"
+],
+[
+"(?<=\\d )nov(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Nov"
+],
+[
+"(?<=\\d )déc(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Dec"
+],
+[
+"(?<=\\d )janv(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Jan"
+],
+[
+"(?<=\\d )févr(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Feb"
+],
+[
+"(?<=\\d )avr(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Apr"
+],
+[
+"(?<=\\d )juil(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Jul"
+],
+[
+"(?<=\\d )sept(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Sep"
+],
+[
+"(?<=\\d )oct(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Oct"
+],
+[
+"(?<=\\d )nov(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Nov"
+],
+[
+"(?<=\\d )déc(?:\\.(?!$))?(?![\\p{L}\\p{N}])",
+"Dec"
+],
+[
+"(?<=\\d) nds(?![\\p{L}\\p{N}])",
+" kn"
+],
+[
+"(?<=\\d) nds(?![\\p{L}\\p{N}])",
+" kn"
+],
+[
+"(?<=\\d) nds(?![\\p{L}\\p{N}])",
+" kn"
+],
+[
+"(?<=\\d),(?=\\d)",
+"."
+],
+[
+"(?<=\\d),(?=\\d)",
+"."
+],
+[
+"(?<=\\d),(?=\\d)",
+"."
+],
+[
+"(?<= to )fin (?=\\p{L})",
+"the end of "
+],
+[
+"(?<= to )début (?=\\p{L})",
+"early "
+],
+[
+"(?<= to )mi-(?=\\p{L})",
+"mid-"
+],
+[
+"(?<=mid-)mars",
+"March"
+],
+[
+"(?<=mid-)mai",
+"May"
+],
+[
+"(?<=mid-)juin",
+"June"
+],
+[
+" ;(?= )",
+";"
+],
+[
+" ;(?= )",
+";"
+],
+[
+" ;(?= )",
+";"
+],
+[
+"(?<=\\d )mars(?![\\p{L}\\p{N}])",
+"March"
+],
+[
+"(?<=\\d )mai(?![\\p{L}\\p{N}])",
+"May"
+],
+[
+"(?<=\\d )juin(?![\\p{L}\\p{N}])",
+"June"
+],
+[
+"(?<=\\(|\\d )mars(?![\\p{L}\\p{N}])",
+"March"
+],
+[
+"(?<=\\(|\\d )mai(?![\\p{L}\\p{N}])",
+"May"
+],
+[
+"(?<=\\(|\\d )juin(?![\\p{L}\\p{N}])",
+"June"
+],
+[
+"(?<= à | to )mars(?![\\p{L}])",
+"March"
+],
+[
+"(?<= à | to )mai(?![\\p{L}])",
+"May"
+],
+[
+"(?<= à | to )juin(?![\\p{L}])",
+"June"
+]
+],
+"words": {
+"Débutants (surf avec école) ; kite : débutants débrouillés": "Beginners (surf with a school); kite: capable beginners",
+"Tous niveaux avec école": "All levels, with a school",
+"Débutants à confirmés": "Beginners to experienced",
+"Tous niveaux": "All levels",
+"Intermédiaires": "Intermediate",
+"Confirmés": "Experienced",
+"du nord-nord-est": "from the north-north-east",
+"du nord-nord-ouest": "from the north-north-west",
+"du sud-sud-est": "from the south-south-east",
+"du sud-sud-ouest": "from the south-south-west",
+"d'est-nord-est": "from the east-north-east",
+"d'est-sud-est": "from the east-south-east",
+"d'ouest-sud-ouest": "from the west-south-west",
+"d'ouest-nord-ouest": "from the west-north-west",
+"du nord-est": "from the north-east",
+"du nord-ouest": "from the north-west",
+"du sud-est": "from the south-east",
+"du sud-ouest": "from the south-west",
+"du nord": "from the north",
+"du sud": "from the south",
+"d'est": "from the east",
+"d'ouest": "from the west",
+"Voile et bateau": "Sailing & boating",
+"Voile": "Sailing",
+"aujourd'hui": "today",
+"Aujourd'hui": "Today",
+"demain": "tomorrow",
+"Demain": "Tomorrow",
+"· à pied": "· on foot",
+"1er": "1",
+"tous les jours": "every day",
+"Toute l'année": "All year round",
+"toute l'année": "all year round",
+"Lundi": "Monday",
+"Mardi": "Tuesday",
+"Mercredi": "Wednesday",
+"Jeudi": "Thursday",
+"Vendredi": "Friday",
+"Samedi": "Saturday",
+"Dimanche": "Sunday",
+"lundi": "Monday",
+"mardi": "Tuesday",
+"mercredi": "Wednesday",
+"jeudi": "Thursday",
+"vendredi": "Friday",
+"samedi": "Saturday",
+"dimanche": "Sunday",
+"janvier": "January",
+"février": "February",
+"avril": "April",
+"juillet": "July",
+"août": "August",
+"septembre": "September",
+"octobre": "October",
+"novembre": "November",
+"décembre": "December",
+"Janvier": "January",
+"Février": "February",
+"Mars": "March",
+"Avril": "April",
+"Juin": "June",
+"Juillet": "July",
+"Août": "August",
+"Septembre": "September",
+"Octobre": "October",
+"Novembre": "November",
+"Décembre": "December"
+}
+}
