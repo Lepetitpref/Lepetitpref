@@ -1,204 +1,2101 @@
 [
  {
+  "id": "2026-11-11-toiles-de-retz-quelques-mots-d-amour",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-11-11",
+  "times": [
+   "10h40"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-ducobu-et-le-fantome-de-saint-potache",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Ducobu et le fantôme de Saint-Potache",
+  "date": "2026-11-11",
+  "times": [
+   "10h50"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Famille · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-le-corset",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Corset",
+  "date": "2026-11-11",
+  "times": [
+   "11h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille · dès 7 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-le-mystere-lucy-lost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-11",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 8 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-11",
+  "times": [
+   "14h45",
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-11",
+  "times": [
+   "15h",
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-11",
+  "times": [
+   "16h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-11",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-11",
+  "times": [
+   "20h25"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-11",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-la-baleine-et-le-musicien",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Baleine et le musicien",
+  "date": "2026-11-11",
+  "times": [
+   "11h15"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-le-mystere-lucy-lost",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-11",
+  "times": [
+   "11h15"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-11",
+  "times": [
+   "11h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-11",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-la-gradiva",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Gradiva",
+  "date": "2026-11-11",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-wildwood-la-prophetie-de-la-foret",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Wildwood la prophétie de la forêt",
+  "date": "2026-11-11",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Avant-première, Animation, Aventure, Fantastique, Famille",
+  "kids": true
+ },
+ {
+  "id": "2026-11-11-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-11",
+  "times": [
+   "16h10",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-11",
+  "times": [
+   "16h50"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-les-miserables",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Misérables",
+  "date": "2026-11-11",
+  "times": [
+   "16h50"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-11",
+  "times": [
+   "17h55"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-11",
+  "times": [
+   "19h55"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-11-cinejade-ghost-elephants",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Ghost Elephants",
+  "date": "2026-11-11",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
   "id": "2026-11-11-saint-joseph-ducobu-et-le-fantome-de-saint-potache",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "date": "2026-11-11",
   "film": "Ducobu et le fantôme de Saint-Potache",
-  "genre": "Jeune public dès 6 ans",
-  "kids": true,
+  "date": "2026-11-11",
   "times": [
    "15h"
   ],
-  "version": "VF"
+  "version": "VF",
+  "genre": "Comédie, Famille · dès 6 ans",
+  "kids": true
  },
  {
   "id": "2026-11-11-saint-joseph-karma",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "date": "2026-11-11",
   "film": "Karma",
-  "kids": false,
+  "date": "2026-11-11",
   "times": [
    "17h30"
   ],
-  "version": "VF"
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
  },
  {
   "id": "2026-11-11-saint-joseph-minotaure",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "date": "2026-11-11",
   "film": "Minotaure",
-  "kids": false,
+  "date": "2026-11-11",
   "times": [
    "20h30"
   ],
-  "version": "VOST"
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
  },
  {
-  "id": "2026-11-11-le-monde-a-l-envers-prefailles",
-  "date": "2026-11-11",
-  "film": "Le Monde à l'envers",
+  "id": "2026-11-11-atlantique-le-monde-a-l-envers",
   "cinema": "L'Atlantique (Préfailles)",
+  "film": "Le Monde à l'envers",
+  "date": "2026-11-11",
   "times": [
    "16h"
   ],
-  "genre": "Animation",
   "version": "VF",
+  "genre": "Animation, Famille · dès 3 ans, Mois des Tout-Petits",
   "kids": true
  },
  {
-  "id": "2026-11-11-ni-vue-ni-connue-prefailles",
-  "date": "2026-11-11",
-  "film": "Ni vue, ni connue",
+  "id": "2026-11-11-atlantique-ni-vue-ni-connue",
   "cinema": "L'Atlantique (Préfailles)",
+  "film": "Ni vue ni connue",
+  "date": "2026-11-11",
   "times": [
    "20h30"
   ],
-  "genre": "Comédie",
   "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-12",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-12",
+  "times": [
+   "14h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-12",
+  "times": [
+   "14h45",
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-12",
+  "times": [
+   "16h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-12",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-12",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-marie-madeleine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Marie Madeleine",
+  "date": "2026-11-12",
+  "times": [
+   "20h45"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-12",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-12",
+  "times": [
+   "14h"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-12",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-12",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-12",
+  "times": [
+   "15h50",
+   "18h25"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-12",
+  "times": [
+   "16h40"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-la-gradiva",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Gradiva",
+  "date": "2026-11-12",
+  "times": [
+   "17h10"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-minotaure",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Minotaure",
+  "date": "2026-11-12",
+  "times": [
+   "17h55"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-12",
+  "times": [
+   "20h10"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-wicker",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Wicker",
+  "date": "2026-11-12",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Romance, Drame, Fantastique, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-cinejade-la-baleine-et-le-musicien",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Baleine et le musicien",
+  "date": "2026-11-12",
+  "times": [
+   "20h40"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
   "kids": false
  },
  {
   "id": "2026-11-12-saint-joseph-une-femme-aujourd-hui",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "date": "2026-11-12",
   "film": "Une femme aujourd'hui",
-  "kids": false,
-  "times": [
-   "20h30"
-  ],
-  "version": "VF"
- },
- {
-  "id": "2026-11-12-memoire-de-fille-prefailles",
   "date": "2026-11-12",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-12-atlantique-memoire-de-fille",
+  "cinema": "L'Atlantique (Préfailles)",
   "film": "Mémoire de fille",
-  "cinema": "L'Atlantique (Préfailles)",
+  "date": "2026-11-12",
   "times": [
    "20h30"
   ],
-  "genre": "Drame",
   "version": "VF",
+  "genre": "Drame",
   "kids": false
  },
  {
-  "id": "2026-11-13-the-social-reckoning-prefailles",
+  "id": "2026-11-13-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
   "date": "2026-11-13",
-  "film": "The Social Reckoning",
-  "cinema": "L'Atlantique (Préfailles)",
   "times": [
-   "20h30"
+   "14h"
   ],
-  "genre": "Drame",
-  "version": "VO",
+  "version": "VF",
+  "genre": "Drame, Historique",
   "kids": false
  },
  {
-  "id": "2026-11-14-le-corset-prefailles",
-  "date": "2026-11-14",
-  "film": "Le Corset",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-13-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-13",
   "times": [
-   "17h"
+   "14h15"
   ],
-  "genre": "Animation",
   "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-13",
+  "times": [
+   "14h45",
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-13",
+  "times": [
+   "17h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-13",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-toiles-de-retz-le-corset",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Corset",
+  "date": "2026-11-13",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille · dès 7 ans",
   "kids": true
  },
  {
-  "id": "2026-11-15-memoire-de-fille-prefailles",
-  "date": "2026-11-15",
-  "film": "Mémoire de fille",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-13-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-13",
   "times": [
-   "17h"
+   "20h15"
   ],
-  "genre": "Drame",
-  "version": "VF",
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
   "kids": false
  },
  {
-  "id": "2026-11-18-memoire-de-fille-prefailles",
-  "date": "2026-11-18",
-  "film": "Mémoire de fille",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-13-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-13",
   "times": [
-   "16h",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-13",
+  "times": [
+   "14h",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-la-gradiva",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Gradiva",
+  "date": "2026-11-13",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-le-fantome-de-l-opera",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-13",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-13",
+  "times": [
+   "15h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-13",
+  "times": [
+   "16h35",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-minotaure",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Minotaure",
+  "date": "2026-11-13",
+  "times": [
+   "17h10"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-13",
+  "times": [
+   "17h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-wicker",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Wicker",
+  "date": "2026-11-13",
+  "times": [
+   "18h35"
+  ],
+  "version": "VOST",
+  "genre": "Romance, Drame, Fantastique, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-13",
+  "times": [
+   "20h"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-saint-joseph-l-espece-explosive",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "L'Espèce explosive",
+  "date": "2026-11-13",
+  "times": [
    "20h30"
   ],
+  "version": "VF",
+  "genre": "Comédie, Policier",
+  "kids": false
+ },
+ {
+  "id": "2026-11-13-atlantique-the-social-reckoning",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "The Social Reckoning",
+  "date": "2026-11-13",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
   "genre": "Drame",
-  "version": "VF",
   "kids": false
  },
  {
-  "id": "2026-11-20-une-femme-aujourd-hui-prefailles",
-  "date": "2026-11-20",
-  "film": "Une femme aujourd'hui",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-14-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-14",
   "times": [
-   "15h"
+   "13h25",
+   "20h40"
   ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-toiles-de-retz-quelques-mots-d-amour",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-11-14",
+  "times": [
+   "13h35"
+  ],
+  "version": "VF",
   "genre": "Comédie dramatique",
-  "version": "VF",
   "kids": false
  },
  {
-  "id": "2026-11-21-l-affaire-marie-claire-prefailles",
-  "date": "2026-11-21",
+  "id": "2026-11-14-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-14",
+  "times": [
+   "13h45",
+   "16h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-toiles-de-retz-marie-madeleine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Marie Madeleine",
+  "date": "2026-11-14",
+  "times": [
+   "15h45"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-toiles-de-retz-le-mystere-lucy-lost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-14",
+  "times": [
+   "16h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 8 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-14-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-14",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "L'Affaire Marie-Claire",
-  "cinema": "L'Atlantique (Préfailles)",
+  "date": "2026-11-14",
   "times": [
-   "17h"
+   "18h30",
+   "21h10"
   ],
-  "genre": "Historique, Judiciaire, Thriller",
   "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
   "kids": false
  },
  {
-  "id": "2026-11-22-le-roi-du-game-prefailles",
-  "date": "2026-11-22",
-  "film": "Le Roi du Game",
-  "cinema": "L'Atlantique (Préfailles)",
+  "id": "2026-11-14-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-14",
   "times": [
-   "17h"
+   "19h05",
+   "21h"
   ],
+  "version": "VF",
   "genre": "Comédie",
-  "version": "VF",
   "kids": false
  },
  {
-  "id": "2026-11-25-l-espece-explosive-prefailles",
-  "date": "2026-11-25",
-  "film": "L'Espèce explosive",
+  "id": "2026-11-14-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-14",
+  "times": [
+   "14h",
+   "18h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-le-fantome-de-l-opera",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-14",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-14",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-le-mystere-lucy-lost",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-14",
+  "times": [
+   "16h05"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-14-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-14",
+  "times": [
+   "16h40",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-les-miserables",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Misérables",
+  "date": "2026-11-14",
+  "times": [
+   "16h40"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-14",
+  "times": [
+   "18h05"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-14",
+  "times": [
+   "20h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-14",
+  "times": [
+   "20h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-saint-joseph-une-femme-aujourd-hui",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-14",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-saint-joseph-karma",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-14",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-atlantique-le-corset",
   "cinema": "L'Atlantique (Préfailles)",
+  "film": "Le Corset",
+  "date": "2026-11-14",
+  "times": [
+   "17h"
+  ],
+  "version": "VF",
+  "genre": "Animation · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-14-atlantique-minotaure",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Minotaure",
+  "date": "2026-11-14",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-quelques-mots-d-amour",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-11-15",
+  "times": [
+   "10h40"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-le-mystere-lucy-lost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-15",
+  "times": [
+   "10h50"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 8 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-ducobu-et-le-fantome-de-saint-potache",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Ducobu et le fantôme de Saint-Potache",
+  "date": "2026-11-15",
+  "times": [
+   "11h"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Famille · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-15",
+  "times": [
+   "13h30",
+   "20h25"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-15",
+  "times": [
+   "13h40"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-15",
+  "times": [
+   "14h",
+   "18h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-15",
   "times": [
    "16h"
   ],
-  "genre": "Animation, Famille",
   "version": "VF",
-  "kids": true
- },
- {
-  "id": "2026-11-25-moulin-prefailles",
-  "date": "2026-11-25",
-  "film": "Moulin",
-  "cinema": "L'Atlantique (Préfailles)",
-  "times": [
-   "20h30"
-  ],
-  "genre": "Drame, Historique",
-  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
   "kids": false
  },
  {
-  "id": "2026-11-27-karma-prefailles",
-  "date": "2026-11-27",
+  "id": "2026-11-15-toiles-de-retz-le-corset",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Corset",
+  "date": "2026-11-15",
+  "times": [
+   "16h15"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille · dès 7 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-15",
+  "times": [
+   "16h35"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-15",
+  "times": [
+   "18h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-15",
+  "times": [
+   "20h10"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Karma",
-  "cinema": "L'Atlantique (Préfailles)",
+  "date": "2026-11-15",
+  "times": [
+   "20h50"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-la-gradiva",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Gradiva",
+  "date": "2026-11-15",
+  "times": [
+   "11h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-le-mystere-lucy-lost",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-15",
+  "times": [
+   "11h15",
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-15-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-15",
+  "times": [
+   "11h15",
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-15",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-15",
+  "times": [
+   "14h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-camembert",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Camembert",
+  "date": "2026-11-15",
+  "times": [
+   "16h"
+  ],
+  "version": "VF",
+  "genre": "Avant-première, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-15",
+  "times": [
+   "16h50",
+   "18h40"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-15",
+  "times": [
+   "17h25"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-15",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-le-fantome-de-l-opera",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-15",
+  "times": [
+   "20h10"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-cinejade-minotaure",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Minotaure",
+  "date": "2026-11-15",
+  "times": [
+   "20h10"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-saint-joseph-ducobu-et-le-fantome-de-saint-potache",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Ducobu et le fantôme de Saint-Potache",
+  "date": "2026-11-15",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Famille · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-15-saint-joseph-minotaure",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Minotaure",
+  "date": "2026-11-15",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-saint-joseph-primetime",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Primetime",
+  "date": "2026-11-15",
   "times": [
    "20h30"
   ],
-  "genre": "Drame, Thriller",
+  "version": "VOST",
+  "genre": "Policier, Biopic",
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-atlantique-l-espece-explosive",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "L'Espèce explosive",
+  "date": "2026-11-15",
+  "times": [
+   "17h"
+  ],
   "version": "VF",
+  "genre": "Comédie, Policier",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-16",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-16",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-16",
+  "times": [
+   "14h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-16",
+  "times": [
+   "17h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-marie-madeleine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Marie Madeleine",
+  "date": "2026-11-16",
+  "times": [
+   "17h55"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-16",
+  "times": [
+   "18h10"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-16",
+  "times": [
+   "20h15"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-16",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-16",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-le-fantome-de-l-opera",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-16",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-minotaure",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Minotaure",
+  "date": "2026-11-16",
+  "times": [
+   "14h"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-16",
+  "times": [
+   "14h",
+   "18h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-16",
+  "times": [
+   "15h50"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-ghost-elephants",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Ghost Elephants",
+  "date": "2026-11-16",
+  "times": [
+   "16h40"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-16",
+  "times": [
+   "17h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-16",
+  "times": [
+   "17h35"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-karma",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Karma",
+  "date": "2026-11-16",
+  "times": [
+   "20h10"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-16",
+  "times": [
+   "20h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-cinejade-wicker",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Wicker",
+  "date": "2026-11-16",
+  "times": [
+   "20h40"
+  ],
+  "version": "VOST",
+  "genre": "Romance, Drame, Fantastique, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-saint-joseph-la-maison-de-nos-reves",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "La Maison de nos rêves",
+  "date": "2026-11-16",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-saint-joseph-l-espece-explosive",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "L'Espèce explosive",
+  "date": "2026-11-16",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Policier",
+  "kids": false
+ },
+ {
+  "id": "2026-11-16-saint-joseph-une-femme-aujourd-hui",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-16",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-17",
+  "times": [
+   "14h15",
+   "20h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-17",
+  "times": [
+   "14h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-17",
+  "times": [
+   "17h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-17",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-17",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-17",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-toiles-de-retz-marie-madeleine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Marie Madeleine",
+  "date": "2026-11-17",
+  "times": [
+   "20h45"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-le-fantome-de-l-opera",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-17",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-moulin",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Moulin",
+  "date": "2026-11-17",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-un-bon-patron",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Un bon patron",
+  "date": "2026-11-17",
+  "times": [
+   "14h",
+   "18h50"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-17",
+  "times": [
+   "16h",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-les-miserables",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Misérables",
+  "date": "2026-11-17",
+  "times": [
+   "16h40"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-wicker",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Wicker",
+  "date": "2026-11-17",
+  "times": [
+   "16h40"
+  ],
+  "version": "VOST",
+  "genre": "Romance, Drame, Fantastique, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-l-affaire-marie-claire",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-17",
+  "times": [
+   "17h50"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-hope",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hope",
+  "date": "2026-11-17",
+  "times": [
+   "19h55"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-cinejade-la-gradiva",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "La Gradiva",
+  "date": "2026-11-17",
+  "times": [
+   "20h10"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-saint-joseph-karma",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-17",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-saint-joseph-primetime",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Primetime",
+  "date": "2026-11-17",
+  "times": [
+   "18h"
+  ],
+  "version": "VOST",
+  "genre": "Policier, Biopic",
+  "kids": false
+ },
+ {
+  "id": "2026-11-17-saint-joseph-fjord",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Fjord",
+  "date": "2026-11-17",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-saint-joseph-moulin",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-18",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-saint-joseph-le-fantome-de-l-opera",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-18",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-atlantique-chien-bleu",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Chien bleu",
+  "date": "2026-11-18",
+  "times": [
+   "16h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille · dès 3 ans, Mois des Tout-Petits",
+  "kids": true
+ },
+ {
+  "id": "2026-11-18-atlantique-une-femme-aujourd-hui",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-18",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-saint-joseph-la-gradiva",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-19",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-saint-joseph-la-tentazione",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "La Tentazione",
+  "date": "2026-11-20",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-atlantique-justin-le-juste",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Justin le juste",
+  "date": "2026-11-20",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Guerre, Historique · ciné-goûter",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-atlantique-la-gradiva",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "La Gradiva",
+  "date": "2026-11-20",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-21",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-saint-joseph-le-fantome-de-l-opera",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-21",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Romance, Fantastique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-saint-joseph-moulin",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-21",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-atlantique-l-affaire-marie-claire",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-21",
+  "times": [
+   "17h"
+  ],
+  "version": "VF",
+  "genre": "Historique, Judiciaire, Thriller · en présence des réalisateurs",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-atlantique-le-roi-du-game",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Le Roi du game",
+  "date": "2026-11-22",
+  "times": [
+   "17h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-atlantique-un-amour-d-epouvantail",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Un amour d'épouvantail",
+  "date": "2026-11-25",
+  "times": [
+   "16h"
+  ],
+  "version": "VF",
+  "genre": "Animation · dès 3 ans, Mois des Tout-Petits",
+  "kids": true
+ },
+ {
+  "id": "2026-11-25-atlantique-moulin",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Moulin",
+  "date": "2026-11-25",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-atlantique-karma",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Karma",
+  "date": "2026-11-27",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Thriller · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-atlantique-wicker",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Wicker",
+  "date": "2026-11-28",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Comédie, Drame, Fantastique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-atlantique-le-fantome-de-l-opera",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-11-29",
+  "times": [
+   "17h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Fantastique, Romance",
   "kids": false
  }
 ]
