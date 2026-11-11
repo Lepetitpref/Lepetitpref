@@ -830,3 +830,5 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .spot-emb{min-width:0;max-width:100%}
 .emb-box .fc-wrap{max-width:100%}
 .spot-emb .chip{white-space:normal;max-width:100%;text-align:left;height:auto;min-height:44px}
+.ics-btn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;background:none;border:0;padding:10px 0;min-height:44px;font:inherit;font-weight:600;cursor:pointer}
+.ics-t{font:inherit;font-variant-numeric:tabular-nums;color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:8px;padding:6px 9px;min-height:36px;margin:2px 2px 2px 0;cursor:pointer}

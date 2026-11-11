@@ -201,10 +201,26 @@ function placeRow(a,d,o={}){
   const m=o.metaH??(a.cat==="saveurs"?meta(KIND1[a.kind]||"",esc(townShort(a.town))+(isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)),isHere(a.dist,a.town)?"à pied":""):meta(esc(townShort(a.town)),kmTxt(a.dist,a.town),agesTxt(a),/^Gratuit/.test(a.price||"")?'<span class="ok">Gratuit</span>':""));
   const lines=o.lines||(a.cat==="marche"&&a.open?[statusOf(a,d),[esc(schedTxt(a)),"dim"]]:[statusOf(a,d)]);
   return row({th:thumbOf(a),title:esc(a.n),metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
+/* « Ajouter à mon agenda » : fichier .ics construit sur le téléphone (rien n'est envoyé) */
+const icsV=o=>encodeURIComponent(JSON.stringify(o));
+const icsBtn=(o,l="Ajouter à mon agenda")=>`<button type="button" class="ics-btn" data-act="ics" data-v="${icsV(o)}">${ic("cal","i-s")} ${l}</button>`;
+function icsFile(o){const p2=n=>String(n).padStart(2,"0"),D=d=>d.replace(/-/g,""),esc2=t=>String(t||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n");
+  const hm2=h=>{const m=/(\d{1,2})\s*h\s*(\d{2})?/.exec(h||"");return m?p2(m[1])+p2(m[2]||0)+"00":null;};
+  const t=hm2(o.h),st=o.start||(t?`${D(o.d)}T${t}`:null);let dt="";
+  if(o.start&&o.stop)dt=`DTSTART;TZID=Europe/Paris:${o.start}\r\nDTEND;TZID=Europe/Paris:${o.stop}`;
+  else if(st)dt=`DTSTART;TZID=Europe/Paris:${st}`;
+  else{const e=new Date((o.end||o.d)+"T12:00:00Z");e.setUTCDate(e.getUTCDate()+1);dt=`DTSTART;VALUE=DATE:${D(o.d)}\r\nDTEND;VALUE=DATE:${e.toISOString().slice(0,10).replace(/-/g,"")}`;}
+  const now=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Le Petit Pref//FR","CALSCALE:GREGORIAN","BEGIN:VEVENT",`UID:${now}-${Math.random().toString(36).slice(2)}@lepetitpref.fr`,`DTSTAMP:${now}`,dt,`SUMMARY:${esc2(o.t)}`,o.loc?`LOCATION:${esc2(o.loc)}`:"",o.desc?`DESCRIPTION:${esc2(o.desc)}`:"",o.url?`URL:${o.url}`:"","END:VEVENT","END:VCALENDAR"].filter(Boolean).join("\r\n");}
+function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return;}
+  const txt=icsFile(o),name=(o.t||"evenement").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40).toLowerCase()+".ics";
+  const blob=new Blob([txt],{type:"text/calendar;charset=utf-8"});const u=URL.createObjectURL(blob);
+  const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),8000);
+  toast("Ouvrez le fichier pour l'ajouter à votre agenda");}
 function evMore(e){const when=e.end&&e.end!==e.date?`Du ${dshort(e.date)} au ${dshort(e.end)}`:cap(dlong(e.date));
   const sh=`${e.title}\n${when}${e.time?" · "+e.time:""} · ${[e.place,e.town].filter(Boolean).join(", ")}`;
   return `${e.desc?`<p>${esc(e.desc)}</p>`:""}<span class="row-meta">${meta(esc(when),esc(e.time||""),esc(e.place||""))}</span>
-   <span class="row-links">${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:""}<button type="button" data-share="${esc(sh)}" data-url="${esc(e.url||"")}">Partager</button></span>`;}
+   <span class="row-links">${icsBtn({t:e.title,d:e.date,end:e.end&&e.end!==e.date?e.end:null,h:e.time,loc:[e.place,e.town].filter(Boolean).join(", "),desc:e.desc,url:e.url})}${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:""}<button type="button" data-share="${esc(sh)}" data-url="${esc(e.url||"")}">Partager</button></span>`;}
 function evRow(e,o={}){const g=o.g,K=kidsAges(g);
   const place=esc(townShort(e.town)||e.place||""),km=kmTxt(evKm(e),e.town);
   const lead=o.lead==="day"?dateLead(o.day||e.date):o.lead==="none"?"":(tShort(e.time)||(evIsLong(e)?"Expo":"—"));
@@ -474,13 +490,13 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const day=days.includes(S.cineDay)?S.cineDay:days[0];
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
-  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>esc(s.h)).join(" · ")}</span>`).join("");
+  const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} à mon agenda">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
   return `${pageHead("À faire","Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
   ${segAC("cine")}
   <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
   ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:days.length?`
-   ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul>`,`${films.length} film${films.length>1?"s":""}`)}`
+   ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul><p class="nav-src">Touchez un horaire pour l'ajouter à votre agenda.</p>`,`${films.length} film${films.length>1?"s":""}`)}`
    :sec("Programme","",`<p class="empty">${S.cin==="pref"?"Pas encore de séance publiée à Préfailles pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button></p>`)}
   ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.t==="Préfailles"?"Cinéma de Préfailles (L'Atlantique)":c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
 
@@ -549,7 +565,7 @@ function goodTides(n){const t=today(),out=[];for(let i=0;i<60&&out.length<n;i++)
 function vPeche(){return vMer();}
 function pecheBody(){const T=goodTides(12),g=ACTS.find(a=>/Pêche à pied/.test(a.n));
   return `<h2 class="part-h" id="s-peche">Pêche à pied</h2><p class="part-sub">Les bonnes marées des prochaines semaines, calculées pour Préfailles.</p>
-  ${sec("Prochaines bonnes marées","",T.length?`<ul class="list">${T.map(({d,c,l})=>row({lead:dateLead(d,d===today()),leadCls:"lead-date",title:`Basse mer ${l.map(x=>hm(new Date(x.ms))).join(" et ")}`,metaH:meta(`coef. ${c}`,c>=90?"grande marée":""),lines:[[`Créneau conseillé ${hm(new Date(l[0].ms-75*6e4))}–${hm(new Date(l[0].ms+75*6e4))}`,"ok"]]})).join("")}</ul>`:`<p class="empty">Pas de bonne marée de jour dans les deux prochains mois.</p>`,"Coefficient 70 et plus, basse mer entre 7 h et 19 h. Le créneau va de 1 h 15 avant à 1 h 15 après la basse mer.")}
+  ${sec("Prochaines bonnes marées","",T.length?`<ul class="list">${T.map(({d,c,l})=>row({lead:dateLead(d,d===today()),leadCls:"lead-date",title:`Basse mer ${l.map(x=>hm(new Date(x.ms))).join(" et ")}`,metaH:meta(`coef. ${c}`,c>=90?"grande marée":""),lines:[[`Créneau conseillé ${hm(new Date(l[0].ms-75*6e4))}–${hm(new Date(l[0].ms+75*6e4))}`,"ok"],[icsBtn({t:`Pêche à pied, coef. ${c}`,start:`${d.replace(/-/g,"")}T${hm(new Date(l[0].ms-75*6e4)).replace("h","")}00`,stop:`${d.replace(/-/g,"")}T${hm(new Date(l[0].ms+75*6e4)).replace("h","")}00`,loc:"Préfailles",desc:`Basse mer ${hm(new Date(l[0].ms))}. Repartez dès que la mer remonte.`}),""]]})).join("")}</ul>`:`<p class="empty">Pas de bonne marée de jour dans les deux prochains mois.</p>`,"Coefficient 70 et plus, basse mer entre 7 h et 19 h. Le créneau va de 1 h 15 avant à 1 h 15 après la basse mer.")}
   ${g?sec("Où aller","",`<ul class="list">${placeRow(g,today())}</ul>`):""}
   ${sec("Sécurité","",`<ul class="tips">
    <li>Regardez l'heure de la basse mer avant de partir et repartez dès que la mer remonte : par grand coefficient, elle revient vite.</li>
@@ -1120,6 +1136,7 @@ const ACT={
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
+  ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
 
   mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},
