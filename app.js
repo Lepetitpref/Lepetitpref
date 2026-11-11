@@ -26,7 +26,7 @@ function etype(e){ if(e.type&&ETL[e.type]) return e.type; const c=((e.category||
   if(/atelier|stage|cours|conte/.test(c))return"atelier"; if(/nature|arbre|balade|pêche/.test(c))return"nature"; if(/expo|conférence/.test(c))return"expo";
   if(/réunion|cérémonie|vente|armistice|sapins/.test(c))return"vielocale"; return"fete"; }
 const WHO=[["tous","Tous",[0,99]],["petits","Petits",[0,5]],["enfants","Enfants",[6,11]],["ados","Ados",[12,17]],["adultes","Adultes",[18,99]]];
-const WHERE=[["ici","À "+BASE.s,BASE.r],["10","10 km",10],["20","20 km",22],["tout","Partout",999]];
+const WHERE=[["ici","À "+BASE.s,BASE.r],["10","10 km",10],["20","20 km",22],["30","30 km",32],["tout","Partout",999]];
 /* centres des communes ; distances à vol d'oiseau depuis le point de départ */
 const TOWN_LL={"Préfailles":[47.1306,-2.2183],"La Plaine-sur-Mer":[47.139,-2.192],"Saint-Michel-Chef-Chef":[47.1813,-2.1489],"Pornic":[47.1149,-2.1023],"Saint-Brevin-les-Pins":[47.2467,-2.1667],"La Bernerie-en-Retz":[47.0817,-2.0372],"Les Moutiers-en-Retz":[47.0626,-1.9998],"Chauvé":[47.1517,-1.9853],"Saint-Père-en-Retz":[47.2058,-2.0428],"Villeneuve-en-Retz":[47.0431,-1.9506],"Chaumes-en-Retz":[47.1953,-1.9403],"Saint-Hilaire-de-Chaléons":[47.1017,-1.8667],"Sainte-Pazanne":[47.1036,-1.8106],"Saint-Nazaire":[47.2735,-2.2138],"Port-Saint-Père":[47.1328,-1.7497]};
 const TOWN_KM=Object.fromEntries(Object.entries(TOWN_LL).map(([t,[la,lo]])=>[t,isBase(t)?(BASE.k==="prefailles"?0.5:0):Math.round(km(HOME,{lat:la,lon:lo})*(t==="Saint-Nazaire"&&BASE.k==="prefailles"?1.25:1)*10)/10]).sort((a,b)=>a[1]-b[1]));
@@ -119,8 +119,8 @@ const KIND1={restaurant:"Restaurant",creperie:"Crêperie",huitres:"Huîtres",poi
 const GKEY="pp-groupe";
 const GTYPES=[["amis","Entre amis"],["famille","En famille"],["couple","En couple"],["solo","Seul·e"]];
 const GDEF={amis:{adultes:4,enfants:[]},famille:{adultes:2,enfants:[]},couple:{adultes:2,enfants:[]},solo:{adultes:1,enfants:[]}};
-const ZONES=[["ici",BASE.n],["10","10 km"],["20","20 km"]];
-const RAY=()=>S.where==="ici"?BASE.r:S.where==="10"?10:20;
+const ZONES=[["ici",BASE.n],["10","10 km"],["20","20 km"],["30","30 km"]];
+const RAY=()=>S.where==="ici"?BASE.r:S.where==="10"?10:S.where==="30"?30:20;
 function gLoad(){let g=null;try{g=JSON.parse(sget(GKEY)||"null");}catch(e){}
   if(g&&g.v===1&&g.groupes)return g;
   g={v:1,actif:null,habitant:false,groupes:{},quand:{mode:"weekend",du:null,au:null},rayon:20,pluie:false};
@@ -482,7 +482,7 @@ function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
   const days=range(a,b).map(d=>[d,ld?[]:evOnDay(d).filter(e=>evSoir(e)&&evInZone(e)&&!evIsLong(e)).sort((x,y)=>(isHere(evKm(x),x.town)?0:1)-(isHere(evKm(y),y.town)?0:1)||byTime(x,y))]).filter(([,L])=>L.length);
   const n=days.reduce((s,[,L])=>s+L.length,0);
   const lieux=NUITS().filter(x=>fitsWhere(x.dist??TOWN_KM[x.town],x.town)&&soirOuvert(x)).sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
-  const loin=S.where==="20"?[]:NUITS().filter(x=>x.kind==="nuit"||/casino/i.test(x.n)).filter(x=>{const k=x.dist??TOWN_KM[x.town];return !fitsWhere(k,x.town)&&k!=null&&k<=20&&soirOuvert(x);}).sort((p,q)=>(p.dist??99)-(q.dist??99));
+  const loin=S.where==="20"||S.where==="30"?[]:NUITS().filter(x=>x.kind==="nuit"||/casino/i.test(x.n)).filter(x=>{const k=x.dist??TOWN_KM[x.town];return !fitsWhere(k,x.town)&&k!=null&&k<=20&&soirOuvert(x);}).sort((p,q)=>(p.dist??99)-(q.dist??99));
   const loinTxt=loin.length?`<p class="soir-loin">Un peu plus loin : ${loin.map(x=>`<b>${esc(x.short||x.n)}</b> (${esc(x.town.replace("-les-Pins",""))}, ${Math.round(x.dist??TOWN_KM[x.town])} km)`).join(", ")}. <button type="button" class="lnk" data-act="where20">Voir jusqu'à 20 km</button></p>`:"";
   const W=[["soir","Ce soir"],["demain","Demain soir"],["we","Ce week-end"],["7j","7 jours"]];
   return `${pageHead("À faire",`Soirées : concerts, soirées dansantes, fêtes, spectacles et lieux où sortir le soir, ${zoneTxt()}.`)}
@@ -709,7 +709,7 @@ function openTiles(d,zoneTxt){const rain=isRain(d);
 function restosOn(d){return ACTS.filter(a=>isResto(a)&&openOn(a,d)&&inZone(a)).sort((a,b)=>placeKm(a)-placeKm(b));}
 function eatSec(d,skip){const L=restosOn(d).filter(a=>a!==skip);
   return sec(d===today()?(new Date().getHours()<15?"Où déjeuner aujourd'hui":"Où dîner ce soir"):`Où déjeuner, où dîner ${ceJour(d)}`,secLink("#manger",`${L.length} table${L.length>1?"s":""}`,` data-act="eat" data-v="${d}"`),L.length?`<ul class="list">${L.slice(0,3).map(a=>placeRow(a,d)).join("")}</ul>`:`<p class="empty">Aucune table ouverte ${zoneTxt()} d'après nos horaires.</p>`);}
-const zoneTxt=()=>S.where==="ici"?"à "+BASE.n:S.where==="10"?"à moins de 10 km":"à moins de 20 km";
+const zoneTxt=()=>S.where==="ici"?"à "+BASE.n:S.where==="10"?"à moins de 10 km":S.where==="30"?"à moins de 30 km":"à moins de 20 km";
 function cineSec(d,title){const films=(S.cinema||[]).filter(f=>f.date>=d&&cinOK(f.cinema,"pref")).sort((a,b)=>(a.date+(a.times||[""])[0]).localeCompare(b.date+(b.times||[""])[0],undefined,{numeric:true})).slice(0,4);
   return sec(title||"Ciné à Préfailles",secLink("#cine","Programme",' data-act="cin" data-v="pref"'),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc((f.times||[]).join(", ")),esc((f.genre||"").replace(/,.*/,"").toLowerCase()),f.kids?"jeune public":""),href:"#cine",act:` data-act="cday" data-v="${f.date}"`})).join("")}</ul>`:`<p class="empty">Pas de séance publiée pour les prochains jours.</p>`);}
 

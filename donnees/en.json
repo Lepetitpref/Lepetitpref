@@ -588,7 +588,10 @@
 "Port de Pornic : « Chateau de Pornic (33) », Ibex73,": "Pornic harbour: “Chateau de Pornic (33)”, Ibex73,",
 ", licence": ", licence",
 "(image recadrée).": "(cropped).",
-"Ciné : par défaut les deux cinémas de Pornic.": "Cinema: by default, the two cinemas in Pornic."
+"Ciné : par défaut les deux cinémas de Pornic.": "Cinema: by default, the two cinemas in Pornic.",
+"à moins de 30 km": "within 30 km",
+"Jusqu'à 30 km": "Up to 30 km",
+"≤ 30 km": "≤ 30 km"
 },
 "rules": [
 [
