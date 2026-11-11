@@ -37,7 +37,8 @@ const CINES=[
 /* ---------- helpers ---------- */
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const F=(d,o)=>new Intl.DateTimeFormat("fr-FR",{timeZone:TZ,...o}).format(d);
+const LANG=(()=>{try{const v=localStorage.getItem("pp-lang");if(v)return v;}catch(e){}return /^fr/i.test(navigator.language||"fr")?"fr":"en";})();
+const F=(d,o)=>new Intl.DateTimeFormat(LANG==="en"?"en-GB":"fr-FR",{timeZone:TZ,...o}).format(d);
 const ymd=d=>new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
 const hm=d=>F(d,{hour:"2-digit",minute:"2-digit"}).replace(":","h");
 const noon=s=>new Date(s+"T12:00:00Z"), today=()=>ymd(new Date());
@@ -1136,11 +1137,13 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
    <p class="menu-group">Rubriques</p><ul class="menu-list">${MENU1.map(it).join("")}</ul>
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
    <p class="menu-group">Affichage</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Thème">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([k,l])=>`<button type="button" aria-pressed="${themeNow()===k}" data-m="theme" data-v="${k}">${l}</button>`).join("")}</div></div>
+   <p class="menu-group">Langue · Language</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Langue"><button type="button" aria-pressed="${LANG==="fr"}" data-m="lang" data-v="fr" lang="fr">Français</button><button type="button" aria-pressed="${LANG==="en"}" data-m="lang" data-v="en" lang="en">English</button></div>${LANG==="en"?`<p class="menu-ver" style="margin:8px 0 0">Event and place details come from French sources and stay in French.</p>`:""}</div>
    <p class="menu-ver">Version du site : ${esc(((document.querySelector('meta[name="pp-version"]')||{}).content||"").replace(/^(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d)$/,"$3/$2 à $4h$5"))}</p>
   </div>`;
   v.addEventListener("click",e=>{const b=e.target.closest("[data-m]");
     if(b){const m=b.dataset.m;if(m==="close"){closeOverlays();const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}
       else if(m==="who"){closeOverlays();openWho();}
+      else if(m==="lang"){try{localStorage.setItem("pp-lang",b.dataset.v);}catch(x){}location.reload();}
       else if(m==="theme"){setTheme(b.dataset.v);v.querySelectorAll("[data-m=theme]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.v===b.dataset.v));}return;}
     if(e.target.closest("a"))closeOverlays();});
   document.addEventListener("keydown",escKey);
@@ -1227,7 +1230,7 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
     [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
-function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";
+function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
@@ -1293,3 +1296,22 @@ if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceW
 const fcOpen=()=>document.querySelectorAll("details[open] .emb-box:empty").forEach(b=>fcSpot(b.id.slice(4)));
 document.addEventListener("toggle",e=>{if(e.target.open&&e.target.querySelector&&e.target.querySelector(".emb-box"))fcOpen();},true);
 new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empty"))fcOpen();}).observe(document.getElementById("main")||document.body,{childList:true,subtree:true});
+
+/* ===== English : traduction de l'interface (dictionnaire donnees/en.json), les données restent en français ===== */
+var I18N=I18N||{d:null,cache:new Map()};
+function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:t.replace(k,v);}
+  const D=I18N.d;let v=D.exact[k];
+  if(v==null){let x=k,hit=false;for(const [re,rep] of D._rules){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
+    for(const [re,rep] of D._words){if(re.test(x)){x=x.replace(re,rep);hit=true;}}v=hit?x:null;}
+  I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
+function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,[lang=fr],.no-tr"))continue;if(/[A-Za-zÀ-ÿ]/.test(n.nodeValue))todo.push(n);}
+  todo.forEach(n=>{const v=trText(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;});
+  (root.querySelectorAll?root:document).querySelectorAll("[aria-label],[placeholder],[title]").forEach(e=>{["aria-label","placeholder","title"].forEach(a=>{const v=e.getAttribute(a);if(v){const t=trText(v);if(t!==v)e.setAttribute(a,t);}});});}
+if(LANG==="en"){document.documentElement.lang="en";
+  fetch("donnees/en.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{if(!d)return;
+    d._rules=(d.rules||[]).map(([a,b])=>{try{return[new RegExp(a,"u"),b];}catch(e){return null;}}).filter(Boolean);
+    d._words=Object.entries(d.words||{}).sort((a,b)=>b[0].length-a[0].length).map(([a,b])=>[new RegExp("(^|[^\\p{L}])"+a.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?=$|[^\\p{L}])","gu"),"$1"+b]);
+    I18N.d=d;trTree(document.body);document.title=trText(document.title);
+    new MutationObserver(ms=>{ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===1)trTree(x);else if(x.nodeType===3&&x.parentElement)trTree(x.parentElement);}));}).observe(document.body,{childList:true,subtree:true});
+  }).catch(()=>{});}
