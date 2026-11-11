@@ -795,3 +795,6 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .pra-ul{margin:6px 0;padding-left:18px;font-size:15px;line-height:1.5}
 .pra-ul li{margin:6px 0}
 .pra-ul a{color:var(--accent)}
+.nav-off{margin:10px 0 2px;font-size:15px;line-height:1.5;color:var(--muted)}
+.nav-off a{color:var(--accent)}
+.nav-alert{margin:4px 0 10px;padding:10px 12px;border-radius:10px;font-size:15px;line-height:1.45;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--warn) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 45%,var(--line))}

@@ -732,7 +732,10 @@ function glisseSec(d){if(!wxDay(d))return"";
   const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
   const rows=yes.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""],sp.lvl?[`Niveau : ${esc(sp.lvl)}`,""]:null].filter(Boolean),href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
   const nos=no.length?`<li class="row glisse-non"><span class="row-main"><span class="row-meta">${no.map(x=>ACTL[x.a].replace(" et bateau","")).join(", ")} : non (${[...new Set(no.map(x=>x.b.j[1].toLowerCase()))].join(" ; ")})</span></span></li>`:"";
-  return sec(`Glisse ${ceJour(d)}`,"",`<ul class="list">${rows}${nos}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
+  const gmax=Math.max(0,...[...Array(24).keys()].map(h=>(wxAt(d,h)||{}).g||0));
+  const alerte=gmax>=34?`<p class="nav-alert">${ic("wave","i-s")} Rafales prévues jusqu'à ${Math.round(gmax)} nœuds ${ceJour(d)} (prévision Météo-France) : vérifiez s'il y a un avis de coup de vent avant de sortir en mer.</p>`:"";
+  const nav=`<p class="nav-off">Pour naviguer : <a href="https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04" target="_blank" rel="noopener">bulletin météo marine officiel, de Penmarc'h à l'Anse de l'Aiguillon ↗</a>, avec les avis de coup de vent (BMS). Secours en mer : <a href="tel:196">196</a> ou VHF canal 16.</p>`;
+  return sec(`Glisse ${ceJour(d)}`,"",`${alerte}<ul class="list">${rows}${nos}</ul>${nav}`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
 function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   const rows=SPOTSX.map(sp=>{const sm=has?spotSummary(sp,d):[];
