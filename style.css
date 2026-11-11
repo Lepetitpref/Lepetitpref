@@ -832,3 +832,12 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .spot-emb .chip{white-space:normal;max-width:100%;text-align:left;height:auto;min-height:44px}
 .ics-btn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;background:none;border:0;padding:10px 0;min-height:44px;font:inherit;font-weight:600;cursor:pointer}
 .ics-t{font:inherit;font-variant-numeric:tabular-nums;color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent);border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:8px;padding:6px 9px;min-height:36px;margin:2px 2px 2px 0;cursor:pointer}
+/* carte des restos */
+.mmap{height:62vh;min-height:320px;border-radius:12px;border:1px solid var(--line);overflow:hidden;background:var(--surface);z-index:0}
+.map-bar{display:flex;gap:8px;margin:10px 0 4px}
+.pop{display:grid;gap:3px;font:14px/1.35 "Inter Tight",system-ui,sans-serif;color:#1c1d22}
+.pop b{font-size:15px}
+.pop .ok{color:#2e7d4f;font-weight:600}
+.pop a{color:#1d5b86;font-weight:600;margin-top:4px}
+.leaflet-container{font-family:"Inter Tight",system-ui,sans-serif}
+.tiles-dark{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}

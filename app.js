@@ -150,7 +150,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 
 /* ---------- état ---------- */
 const S={events:null,cinema:null,assos:null,meta:null,err:null,
-  where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
+  where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"pref",mk:"tous",q:"",os:null};
 if(!ZONES.some(w=>w[0]===S.where))S.where="10";
@@ -516,8 +516,10 @@ function vManger(){const t=today(),od=S.openDay||t;
   ${segMg()}
   <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
    ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}
-   ${CADRES.length?frow("frow","Cadre",CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")):""}</div>
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+   ${CADRES.length?frow("frow","Cadre",CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")):""}
+   ${frow("frow","Affichage",[["liste","Liste"],["carte","Carte"]].map(([k,l])=>qchip(l,(S.mView||"liste")===k,`data-act="mview" data-v="${k}"`)).join(""))}</div>
+  ${S.mView==="carte"?(S.mapList=list.filter(a=>S.mk==="tous"||mkOK(a)),`<section class="sec" style="padding-top:4px"><div id="mmap" class="mmap" role="region" aria-label="Carte des adresses"></div><div class="map-bar"><button type="button" class="chip" data-act="melocate">${ic("compass","i-s")} Me situer sur la carte</button></div><p class="nav-src">${S.mapList.length} adresse${S.mapList.length>1?"s":""} selon vos filtres. Touchez un point : distance, horaires du jour et itinéraire. Fond de carte © OpenStreetMap.</p></section>`):""}
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -935,6 +937,27 @@ function mapSvg(list){
    ${pts.map(a=>{const i=ACTS.indexOf(a);return `<g class="pin" data-poi="${i}" tabindex="0" role="button" aria-label="${esc(a.n)}"><circle cx="${px(a.lon)}" cy="${py(a.lat)}" r="${S.selPoi===i?9:6}" fill="${CATCOL(a.cat)}"/></g>`}).join("")}
   </svg></div>${sel?actCard(sel):`<p class="note">Touchez un point pour le détail. Le cercle marque 20 km autour de Préfailles.</p>`}`;}
 
+/* ===== Carte des restos (Leaflet, chargé seulement à l'ouverture de la carte) ===== */
+let LMAP=null,LME=null;
+function loadLeaflet(){if(window.L)return Promise.resolve();if(loadLeaflet.p)return loadLeaflet.p;
+  const css=document.createElement("link");css.rel="stylesheet";css.href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";document.head.appendChild(css);
+  return loadLeaflet.p=new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";sc.onload=ok;sc.onerror=()=>{loadLeaflet.p=null;ko();};document.head.appendChild(sc);});}
+const MCOL=a=>{const k=kindOf(a);return k==="marche"?"#2f78ab":(k==="bar"||a.bar&&k!=="restaurant")?"#7b5ea7":(k==="restaurant"||k==="creperie")?"#c0632d":"#3d8b5a";};
+function mapPopup(a,me){const k=a.dist??TOWN_KM[a.town],st=statusOf(a,today());
+  const dMe=me&&a.lat?km(me,a):null;
+  return `<div class="pop"><b>${esc(a.n)}</b><span>${esc(KIND1[a.kind]||(a.cat==="marche"?"Marché":""))} · ${esc(townShort(a.town))}${k!=null?" · "+kmTxt(k,a.town)+(isHere(k,a.town)?"":" de Préfailles"):""}</span>${dMe!=null?`<span><b>À ${dMe<1?Math.round(dMe*1000)+" m":r1(dMe)+" km"} de vous</b></span>`:""}<span class="${st[1]==="ok"?"ok":""}">${st[0]}</span><a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a></div>`;}
+function drawMap(){const el=document.getElementById("mmap");if(!el)return;const list=(S.mapList||[]).filter(a=>a.lat&&a.lon);
+  if(LMAP){LMAP.remove();LMAP=null;}
+  const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
+  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
+  L.circleMarker([HOME.lat,HOME.lon],{radius:5,color:"#1c1d22",weight:2,fillColor:"#fff",fillOpacity:1}).addTo(LMAP).bindTooltip("Préfailles, bourg",{direction:"top"});
+  const pts=list.map(a=>L.circleMarker([a.lat,a.lon],{radius:8,color:"#fff",weight:2,fillColor:MCOL(a),fillOpacity:.95}).addTo(LMAP).bindPopup(()=>mapPopup(a,LME),{maxWidth:240}));
+  if(LME)L.circleMarker([LME.lat,LME.lon],{radius:7,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP).bindTooltip("Vous êtes ici",{direction:"top"});
+  if(pts.length>1)LMAP.fitBounds(L.featureGroup(pts).getBounds().pad(.12),{maxZoom:15});}
+function mapLocate(){if(!navigator.geolocation){toast("Localisation indisponible sur cet appareil");return;}
+  navigator.geolocation.getCurrentPosition(p=>{LME={lat:p.coords.latitude,lon:p.coords.longitude};drawMap();if(LMAP)LMAP.setView([LME.lat,LME.lon],15);toast("Distances depuis votre position dans les fiches de la carte");},()=>toast("Position refusée ou introuvable"),{enableHighAccuracy:true,timeout:10000,maximumAge:60000});}
+after.manger=()=>{if(S.mView!=="carte")return;loadLeaflet().then(drawMap).catch(()=>{const el=document.getElementById("mmap");if(el)el.innerHTML='<p class="empty">La carte ne se charge pas. Vérifiez la connexion.</p>';});};
 /* ===== Trajets ===== */
 const RIDE={pickup:["On vient me chercher","var(--buoy)"],offer:["Je propose des places","var(--here)"],need:["Je cherche une place","var(--c-event)"]};
 const rideKind=a=>a.kind||(a.pickup?"pickup":"arrive");
@@ -973,7 +996,7 @@ function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="
   <p><b>Marées.</b> Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.</p>
   <p><b>Photos et logo.</b> © Le Petit Préf, tous droits réservés.</p>
   <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), les installations de l'app et les clics sur « Installer ». Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
-  <p><b>Services utilisés par le site.</b> Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).</p>
+  <p><b>Services utilisés par le site.</b> Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).</p>
   <p><b>Liens.</b> Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.</p></div></div>`;}
 /* ===== Recherche ===== */
 function vSearch(){
@@ -1137,6 +1160,8 @@ const ACT={
   cat:v=>{S.cat=v;render();},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},
+  melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
 
