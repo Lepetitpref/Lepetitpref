@@ -1382,6 +1382,274 @@
    "fin": "2027-07-02"
   },
   {
+   "id": "315-pornic-stnaz",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Saint-Nazaire",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Saint-Nazaire, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h10",
+     "arr": "06h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h30",
+     "arr": "07h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h55",
+     "arr": "07h40",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h00",
+     "arr": "08h45",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h05",
+     "arr": "08h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h32",
+     "arr": "10h17",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h25",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h25",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h10",
+     "arr": "10h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "12h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h50",
+     "arr": "12h35",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h25",
+     "arr": "14h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h30",
+     "arr": "15h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h30",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h20",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h55",
+     "arr": "17h40",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h15",
+     "arr": "18h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "20h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "20h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "20h00",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
+   "id": "315-stnaz-pornic",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Nazaire",
+   "a": "Pornic",
+   "arret_de": "Saint-Nazaire, gare SNCF",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "07h55",
+     "arr": "08h41",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h55",
+     "arr": "08h41",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h30",
+     "arr": "09h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h00",
+     "arr": "09h46",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h10",
+     "arr": "09h56",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "11h46",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "12h01",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h55",
+     "arr": "12h41",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h55",
+     "arr": "13h41",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h30",
+     "arr": "14h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h25",
+     "arr": "16h11",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h30",
+     "arr": "17h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h10",
+     "arr": "17h59",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h31",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h31",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h31",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h00",
+     "arr": "19h46",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h05",
+     "arr": "20h51",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h20",
+     "arr": "21h06",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ],
+   "source": {
+    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
+    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
+   },
+   "debut": "2026-08-31",
+   "fin": "2027-07-02"
+  },
+  {
    "id": "ter-pornic-nantes",
    "ligne": "TER",
    "mode": "train",

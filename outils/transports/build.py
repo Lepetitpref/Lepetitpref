@@ -69,6 +69,8 @@ legs=[
  {"id":"315-pref-stnaz","ligne":"315","mode":"car","de":"Préfailles","a":"Saint-Nazaire","arret_de":"Préfailles, Place de la Gare","arret_a":"Saint-Nazaire, gare SNCF","departs":car_leg(c315,"Saint-Nazaire","","",P,SN)},
  {"id":"315-stnaz-pref","ligne":"315","mode":"car","de":"Saint-Nazaire","a":"Préfailles","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Préfailles, Place de la Gare","departs":car_leg(c315,"Préfailles","","",SN,P)},
  {"id":"315-pornic-pref","ligne":"315","mode":"car","de":"Pornic","a":"Préfailles","arret_de":"Pornic, Théâtre St-Gilles","arret_a":"Préfailles, Place de la Gare","departs":car_leg(c315,"Préfailles","","",TH,P)},
+ {"id":"315-pornic-stnaz","ligne":"315","mode":"car","de":"Pornic","a":"Saint-Nazaire","arret_de":"Pornic, Théâtre St-Gilles","arret_a":"Saint-Nazaire, gare SNCF","departs":car_leg(c315,"Saint-Nazaire","","",TH,SN)},
+ {"id":"315-stnaz-pornic","ligne":"315","mode":"car","de":"Saint-Nazaire","a":"Pornic","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c315,"Préfailles","","",SN,TH)},
  {"id":"ter-pornic-nantes","ligne":"TER","mode":"train","de":"Pornic","a":"Nantes","arret_de":"Pornic, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cter,"PORNIC","NANTES")},
  {"id":"ter-nantes-pornic","ligne":"TER","mode":"train","de":"Nantes","a":"Pornic","arret_de":"Nantes, gare SNCF","arret_a":"Pornic, gare SNCF","departs":ter_leg(cter,"NANTES","PORNIC")},
  {"id":"ter1-stnaz-nantes","ligne":"TER 1","mode":"train","de":"Saint-Nazaire","a":"Nantes","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cl1,"ST-NAZAIRE","NANTES")},

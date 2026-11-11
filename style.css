@@ -857,3 +857,8 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .lang-pop button[aria-checked="true"] b{color:var(--accent)}
 @media (max-width:380px){.brand{font-size:19px;gap:6px}.lang-btn{margin-left:6px;padding:0 4px}}
 @media (max-width:340px){.brand{font-size:17px}.menu-btn{padding-left:6px;padding-right:6px}.lang-code{display:none}}
+/* « Je suis à » (Préfailles / Pornic) */
+.base-bar{display:flex;align-items:center;gap:10px;margin:14px var(--gutter) 0}
+.base-l{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);white-space:nowrap}
+.base-bar .seg{flex:1;max-width:320px}
+.base-bar .seg button,.menu .seg-s button{min-height:40px}

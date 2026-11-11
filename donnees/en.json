@@ -572,16 +572,26 @@
 "Copier": "Copy",
 "Votre téléphone": "Your phone",
 "Idées": "Ideas",
-"Huîtres, loto, karting, Pornic…": "e.g. huîtres (oysters), loto (bingo), karting, Pornic…"
+"Huîtres, loto, karting, Pornic…": "e.g. huîtres (oysters), loto (bingo), karting, Pornic…",
+"Santé autour de Pornic": "Health services around Pornic",
+"Je suis à": "I'm in",
+"Les distances, l'accueil, les transports et la page Pratique sont calculés depuis là.": "Distances, the home page, transport and the Practical page are worked out from there.",
+"Partir de Pornic": "Leaving Pornic",
+"Venir à Pornic": "Getting to Pornic",
+"Cars et trains depuis Pornic, correspondances comprises.": "Buses and trains from Pornic, connections included.",
+"Aujourd'hui à Pornic et aux alentours": "Today in and around Pornic",
+"Pornic et la Côte de Jade": "Pornic and the Côte de Jade",
+"À Pornic": "In Pornic",
+"Plages": "Beaches"
 },
 "rules": [
 [
-"^(\\d+) sorties? à venir autour de Préfailles$",
-"$1 upcoming events around Préfailles"
+"^(\\d+) sorties? à venir autour de (Préfailles|Pornic)$",
+"$1 upcoming events around $2"
 ],
 [
-"^Agenda : (\\d+) sorties? à venir autour de Préfailles$",
-"What's on: $1 upcoming events around Préfailles"
+"^Agenda : (\\d+) sorties? à venir autour de (Préfailles|Pornic)$",
+"What's on: $1 upcoming events around $2"
 ],
 [
 "^1 lieu ouvert aujourd'hui à moins de (\\d+) km : nature, sport, sensations, culture, enfants$",
