@@ -591,7 +591,12 @@
 "Ciné : par défaut les deux cinémas de Pornic.": "Cinema: by default, the two cinemas in Pornic.",
 "à moins de 30 km": "within 30 km",
 "Jusqu'à 30 km": "Up to 30 km",
-"≤ 30 km": "≤ 30 km"
+"≤ 30 km": "≤ 30 km",
+"Défibrillateurs": "Defibrillators",
+"Mairie, poste": "Town hall, post",
+"Poubelles": "Bins",
+"Horaires": "Times",
+"Santé": "Health"
 },
 "rules": [
 [

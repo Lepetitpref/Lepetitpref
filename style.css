@@ -862,3 +862,13 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .base-l{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);white-space:nowrap}
 .base-bar .seg{flex:1;max-width:320px}
 .base-bar .seg button,.menu .seg-s button{min-height:40px}
+/* Pratique : barre de sous-rubriques qui défile */
+.seg.seg-scroll{overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
+.seg.seg-scroll::-webkit-scrollbar{display:none}
+.subnav .seg.seg-scroll button{flex:0 0 auto;padding:0 12px;white-space:nowrap;scroll-snap-align:start}
+.subnav .seg button[aria-current="true"]{background:var(--accent);color:var(--accent-ink)}
+.anchor{height:0}
+/* six onglets */
+@media (max-width:420px){.tabs{gap:4px}.tab{font-size:14px}}
+.tab{flex:none}
+@media (max-width:360px){.tabs{gap:14px;justify-content:flex-start}}
