@@ -883,3 +883,9 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .frow.ath{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 0 10px}
 .frow.ath::-webkit-scrollbar{display:none}
 .frow.ath .chip{flex:none}
+/* Pratique Pornic : tableau des secteurs de collecte */
+.pra-tw{overflow-x:auto;margin:8px 0}
+.pra-t{width:100%;border-collapse:collapse;font-size:14px;line-height:1.35}
+.pra-t th,.pra-t td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.pra-t thead th{font-weight:600;color:var(--muted);font-size:13px}
+.pra-t tbody th{font-weight:600;white-space:nowrap}
