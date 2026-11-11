@@ -3,6 +3,8 @@
 
   python3 outils/lieux.py sortir <fichier.json>    écrit ACTS dans un fichier lisible (une fiche par objet)
   python3 outils/lieux.py remettre <fichier.json>  contrôle le fichier puis le remet dans app.js
+  python3 outils/lieux.py tranche [jour]           liste les fiches à relire aujourd'hui (rotation : chaque fiche une fois par semaine ;
+                                                   jour = 0 lundi … 6 dimanche, par défaut aujourd'hui)
 
 Après « remettre » : node --check app.js, python3 outils/verifier.py, python3 outils/version.py.
 Contrôles : chaque fiche a n, cat, town ; liens en http(s) ; horaires `open` bien formés
@@ -48,7 +50,19 @@ def controle(acts):
     return err
 
 
+def tranche(j):
+    _, _, _, acts = lire()
+    noms = sorted(a["n"] for a in acts)
+    t = [n for k, n in enumerate(noms) if k % 7 == j]
+    print(f"{len(t)} fiches à relire aujourd'hui (tranche {j}/6) :")
+    print("\n".join(t))
+
+
 def main():
+    if len(sys.argv) >= 2 and sys.argv[1] == "tranche":
+        import datetime
+        tranche(int(sys.argv[2]) if len(sys.argv) > 2 else datetime.date.today().weekday())
+        return
     if len(sys.argv) != 3 or sys.argv[1] not in ("sortir", "remettre"):
         print(__doc__)
         sys.exit(2)

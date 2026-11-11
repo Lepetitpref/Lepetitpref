@@ -3,7 +3,7 @@
 Sort en erreur (code 1) si un fichier est invalide ; sinon imprime une ligne de bilan."""
 import json, sys, re, datetime, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "donnees"
-TOWNS = {"Préfailles","La Plaine-sur-Mer","Pornic","Saint-Michel-Chef-Chef","Saint-Brevin-les-Pins","Chauvé","La Bernerie-en-Retz","Les Moutiers-en-Retz","Villeneuve-en-Retz","Chaumes-en-Retz","Saint-Père-en-Retz","Saint-Hilaire-de-Chaléons","Sainte-Pazanne"}
+TOWNS = {"Préfailles","La Plaine-sur-Mer","Pornic","Saint-Michel-Chef-Chef","Saint-Brevin-les-Pins","Chauvé","La Bernerie-en-Retz","Les Moutiers-en-Retz","Villeneuve-en-Retz","Chaumes-en-Retz","Saint-Père-en-Retz","Saint-Hilaire-de-Chaléons","Sainte-Pazanne","Corsept","Saint-Viaud","Vue","Paimbœuf"}
 TYPES = {"fete","spectacle","sport","brocante","jeux","atelier","nature","expo","vielocale"}
 D = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 err = []
