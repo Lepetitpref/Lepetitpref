@@ -1316,3 +1316,12 @@ if(LANG==="en"){document.documentElement.lang="en";
     I18N.d=d;trTree(document.body);document.title=trText(document.title);
     new MutationObserver(ms=>{ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===1)trTree(x);else if(x.nodeType===3&&x.parentElement)trTree(x.parentElement);}));}).observe(document.body,{childList:true,subtree:true});
   }).catch(()=>{});}
+
+/* drapeau : affiche la langue en cours, un toucher passe à l'autre */
+(()=>{const b=document.getElementById("langBtn");if(!b)return;
+  const FR='<svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>';
+  const UK='<svg viewBox="0 0 60 40" aria-hidden="true" preserveAspectRatio="none"><clipPath id="ukc"><rect width="60" height="40"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="40" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#C8102E" stroke-width="3"/><path d="M30,0V40M0,20H60" stroke="#fff" stroke-width="12"/><path d="M30,0V40M0,20H60" stroke="#C8102E" stroke-width="7"/></g></svg>';
+  b.innerHTML=LANG==="en"?UK:FR;
+  b.setAttribute("aria-label",LANG==="en"?"English · switch to French":"Français · passer en anglais");
+  b.setAttribute("lang",LANG==="en"?"en":"fr");
+  b.addEventListener("click",()=>{try{localStorage.setItem("pp-lang",LANG==="en"?"fr":"en");}catch(e){}location.reload();});})();
