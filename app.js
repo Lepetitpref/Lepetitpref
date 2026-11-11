@@ -258,19 +258,27 @@ function tideCard(s,o={}){const t=today(),now=Date.now();
    ${o.link===false?"":`<a class="tide-link" href="#mer">${o.linkText||"La mer : vent, houle, eau et spots"}${ic("chev","i-s")}</a>`}</div>`;}
 
 /* ---------- météo, vent, houle (Open-Meteo, direct depuis le téléphone) ---------- */
-const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22&hourly=temperature_2m,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,sunrise,sunset&wind_speed_unit=kn&timezone=Europe%2FParis&forecast_days=7";
+const WXU="https://api.open-meteo.com/v1/forecast?latitude=47.13&longitude=-2.22&hourly=temperature_2m,precipitation_probability,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,sunrise,sunset&models=meteofrance_seamless,best_match&wind_speed_unit=kn&timezone=Europe%2FParis&forecast_days=7";
 const SEAU="https://marine-api.open-meteo.com/v1/marine?latitude=47.10&longitude=-2.35&hourly=wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction,sea_surface_temperature&timezone=Europe%2FParis&forecast_days=7";
-const WX={f:null,m:null,st:"idle",at:0};
+/* houle par zone (modèle de vagues Météo-France) : 0 = large de la Pointe Saint-Gildas, 1 = Saint-Brevin / Tharon, 2 = baie de Bourgneuf */
+const SEAZ="https://marine-api.open-meteo.com/v1/marine?latitude=47.13,47.21,47.09&longitude=-2.29,-2.21,-2.21&hourly=wave_height,wave_period,wave_direction,swell_wave_height,swell_wave_period,swell_wave_direction&models=meteofrance_wave&timezone=Europe%2FParis&forecast_days=7";
+const SPOTZ={gildas:0,anes:0,margaret:2,bourgneuf:2,tharon:1,rochelets:1,pointeau:1,ermitage:1,roussellerie:1};
+/* deux modèles demandés : Météo-France d'abord, l'autre comble les heures manquantes */
+function mergeModels(j){if(!j)return j;for(const part of ["hourly","daily"]){const H=j[part];if(!H)continue;
+  Object.keys(H).filter(k=>k.endsWith("_meteofrance_seamless")).forEach(k=>{const b=k.replace(/_meteofrance_seamless$/,""),alt=H[b+"_best_match"]||[];H[b]=H[k].map((v,i)=>v==null?(alt[i]??null):v);});}
+  return j;}
+const WX={f:null,m:null,z:null,st:"idle",at:0};
 function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))return;WX.tried=Date.now();
-  try{const c=JSON.parse(sget("pp-wx")||"null");if(c&&Date.now()-c.at<36e5&&c.f&&c.m){WX.f=c.f;WX.m=c.m;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.at=c.at;}}catch(e){}
+  try{const c=JSON.parse(sget("pp-wx")||"null");if(c&&Date.now()-c.at<36e5&&c.f&&c.m&&c.z){WX.f=c.f;WX.m=c.m;WX.z=c.z;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.z=c.z||null;WX.at=c.at;}}catch(e){}
   WX.st="load";
   const j=u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.json();});
   const sea=()=>j(SEAU).catch(()=>new Promise(r=>setTimeout(r,2500)).then(()=>j(SEAU)));   /* l'API marine échoue parfois : on réessaie une fois */
-  Promise.allSettled([j(WXU),sea()]).then(([a,b])=>{
-    if(a.status==="fulfilled"&&a.value.hourly){WX.f=a.value;WX.at=Date.now();}
+  Promise.allSettled([j(WXU),sea(),j(SEAZ)]).then(([a,b,z])=>{
+    if(a.status==="fulfilled"&&a.value.hourly){WX.f=mergeModels(a.value);WX.at=Date.now();}
     if(b.status==="fulfilled"&&b.value.hourly)WX.m=b.value;
+    if(z.status==="fulfilled"&&Array.isArray(z.value))WX.z=z.value;
     WX.st=WX.f?"ok":"err";
-    if(WX.f)sset("pp-wx",JSON.stringify({at:WX.at,f:WX.f,m:WX.m}));
+    if(WX.f)sset("pp-wx",JSON.stringify({at:WX.at,f:WX.f,m:WX.m,z:WX.z}));
     if(["sejour","mer","spots"].includes(curView()))render();});}
 const WMO=c=>c==null?["",""]:c===0?["Ciel dégagé","sun"]:c===1?["Plutôt ensoleillé","sun"]:c===2?["Éclaircies","cloudsun"]:c===3?["Couvert","cloud"]:c<50?["Brouillard","cloud"]:c<58?["Bruine","rain"]:c<66?[c===61?"Pluie faible":c===65?"Forte pluie":"Pluie","rain"]:c<70?["Pluie verglaçante","rain"]:c<80?["Neige","rain"]:c<83?[c===80?"Quelques averses":"Averses","rain"]:c<90?["Averses de neige","rain"]:["Orages","rain"];
 const DIR16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSO","SO","OSO","O","ONO","NO","NNO"];
@@ -284,8 +292,10 @@ function wxDay(d){const f=WX.f;if(!f||!f.daily)return null;const i=f.daily.time.
 function hourIdx(H,d,h){const k=`${d}T${String(h).padStart(2,"0")}:00`;return H.time.indexOf(k);}
 function wxAt(d,h){const f=WX.f;if(!f)return null;const H=f.hourly,i=hourIdx(H,d,h);if(i<0)return null;
   return{t:H.temperature_2m[i],pp:H.precipitation_probability[i],code:H.weather_code[i],w:H.wind_speed_10m[i],g:H.wind_gusts_10m[i],wd:H.wind_direction_10m[i]};}
-function seaAt(d,h){const m=WX.m;if(!m)return null;const H=m.hourly,i=hourIdx(H,d,h);if(i<0)return null;
-  return{hs:H.wave_height[i],tp:H.wave_period[i],sd:H.wave_direction[i],sw:H.swell_wave_height[i],swp:H.swell_wave_period[i],swd:H.swell_wave_direction[i],sst:H.sea_surface_temperature[i]};}
+function seaAt(d,h,z=0){const m=WX.m;const Z=WX.z&&WX.z[z]&&WX.z[z].hourly;
+  const from=H=>{const i=hourIdx(H,d,h);return i<0?null:{hs:H.wave_height[i],tp:H.wave_period[i],sd:H.wave_direction[i],sw:H.swell_wave_height[i],swp:H.swell_wave_period[i],swd:H.swell_wave_direction[i]};};
+  let r=Z?from(Z):null;if(r&&r.hs==null)r=null;if(!r&&m)r=from(m.hourly);if(!r)return null;
+  if(m){const i=hourIdx(m.hourly,d,h);r.sst=i<0?null:m.hourly.sea_surface_temperature[i];}return r;}
 function sstNow(d){const m=WX.m;if(!m)return null;const H=m.hourly;const v=H.time.map((t,i)=>t.startsWith(d)?H.sea_surface_temperature[i]:null).filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;}
 /* pluie : réglage manuel du jour, sinon prévision */
 function wxRainy(d){const w=wxDay(d);if(!w)return false;return (w.pp>=60&&w.ps>=2)||(w.code>=61&&w.ps>=3)||w.code>=95;}
@@ -354,13 +364,13 @@ function tideAtH(d,h){const ms=new Date(`${d}T${String(h).padStart(2,"0")}:00:00
 /* heures de jour (lever +1 h → coucher), sinon 8h–18h */
 function dayHours(d){const D=WX.f&&WX.f.daily,i=D&&D.sunrise?D.time.indexOf(d):-1;if(i<0)return[8,18];return[+D.sunrise[i].slice(11,13)+1,+D.sunset[i].slice(11,13)];}
 /* surf heure par heure : note, marée, vent */
-function surfHours(sp,d){const[a,b]=dayHours(d),out=[];for(let h=a;h<=b;h++){const w=wxAt(d,h),s=seaAt(d,h),tt=tideAtH(d,h),j=judge("surf",sp,w,s,tt);
+function surfHours(sp,d){const[a,b]=dayHours(d),out=[];for(let h=a;h<=b;h++){const w=wxAt(d,h),s=seaAt(d,h,SPOTZ[sp.id]??0),tt=tideAtH(d,h),j=judge("surf",sp,w,s,tt);
   if(j)out.push({h,j,w,s,tt,sc:j[0]*10+(tt&&sp.tide&&tt.f>=sp.tide[0]&&tt.f<=sp.tide[1]?2:0)+(tt&&tt.up?1:0)+(w&&w.w<8?1:0)});}return out;}
 const slotTxt=b=>b.h2!=null&&b.h2>b.h1?`de ${b.h1}h à ${b.h2}h`:`vers ${b.h}h`;
 function bestOf(act,sp,d){
   if(act==="surf"){const hs=surfHours(sp,d);if(!hs.length)return null;const top=hs.reduce((x,y)=>y.sc>x.sc?y:x);let i=hs.indexOf(top),lo=i,hi=i;
     while(lo>0&&hs[lo-1].j[0]===top.j[0]&&hs[lo-1].h===hs[lo].h-1)lo--;while(hi<hs.length-1&&hs[hi+1].j[0]===top.j[0]&&hs[hi+1].h===hs[hi].h+1)hi++;
-    return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS){const w=wxAt(d,h),s=seaAt(d,h)||seaAt(d,h-1)||seaAt(d,h+1);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
+    return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS){const z=SPOTZ[sp.id]??0,w=wxAt(d,h),s=seaAt(d,h,z)||seaAt(d,h-1,z)||seaAt(d,h+1,z);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
 const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 
 /* ---------- données utiles aux vues ---------- */
