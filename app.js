@@ -554,8 +554,11 @@ function vActs(){const t=today(),od=S.openDay||t;
   <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?Object.keys(CATS).filter(k=>g[k]).map(k=>`<div class="group" style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})" class="list">${g[k].map(a=>placeRow(a,t)).join("")}</ul>`).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
   <p class="foot">Une info à corriger ? Voir « À propos et contact » dans le menu.</p>`;}
-function assosBlock(){const L=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]??null,a.town)).sort((a,b)=>(TOWN_KM[a.town]??99)-(TOWN_KM[b.town]??99)||(a.name||"").localeCompare(b.name||""));
+const ATH=[["tous","Tout"],["sport","Sport"],["culture","Culture"],["loisirs","Loisirs"],["nature","Nature"],["solidarite","Solidarité"],["enfance","Enfance et parents"],["vie","Vie locale"]];
+function assosBlock(){const L0=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]??null,a.town)),th=S.athm||"tous";
+  const L=L0.filter(a=>th==="tous"||a.th===th).sort((a,b)=>(TOWN_KM[a.town]??99)-(TOWN_KM[b.town]??99)||(a.name||"").localeCompare(b.name||""));
   return `<div class="group" style="--c:var(--i-nat)"><h2 class="group-title">Associations</h2><span class="group-count">${L.length}</span></div>
+   ${L0.length>12?`<div class="frow ath" role="group" aria-label="Thème des associations">${ATH.filter(([k])=>k==="tous"||L0.some(a=>a.th===k)).map(([k,l])=>chip(`${l} <span class="chip-count">${k==="tous"?L0.length:L0.filter(a=>a.th===k).length}</span>`,th===k,`data-act="athm" data-v="${k}"`)).join("")}</div>`:""}
    ${S.assos===null?loadingTxt:L.length?`<ul class="list" style="--c:var(--i-nat)">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta">${esc(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
 
 /* ===== Pêche à pied ===== */
@@ -1178,6 +1181,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
 
 /* ---------- actions des vues (délégation) ---------- */
 const ACT={
+  athm:v=>{S.athm=v;render();},
   pjump:v=>{const el=document.getElementById(v);if(!el)return;const nav=document.querySelector(".subnav");const off=nav?(parseFloat(getComputedStyle(nav).top)||0)+nav.offsetHeight+6:160;
     scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});},
   base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);try{localStorage.removeItem("pp-cin");}catch(e){}ppHit("base-"+v+"-"+ppJour());try{const u=new URL(location.href);if(v==="pornic")u.searchParams.set("ici","pornic");else u.searchParams.delete("ici");if(u.href!==location.href){location.replace(u.href);return;}}catch(e){}location.reload();},

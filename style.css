@@ -879,3 +879,7 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .pra-sos span{font-weight:600;color:var(--warn)}
 .pra-sos a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--ink);text-decoration:none}
 .pra-sos .lnk{margin-left:auto;min-height:44px}
+/* associations : puces de thème qui défilent */
+.frow.ath{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 0 10px}
+.frow.ath::-webkit-scrollbar{display:none}
+.frow.ath .chip{flex:none}
