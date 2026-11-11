@@ -725,6 +725,22 @@
   "url": "https://www.saint-brevin.com/exposition-de-champignons.html"
  },
  {
+  "id": "2026-11-14-loups-garous-mediatheque-pornic",
+  "title": "Jeu : Les Loups-Garous de Thiercelieux à la médiathèque",
+  "date": "2026-11-14",
+  "time": "15h et 16h30",
+  "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
+  "town": "Pornic",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Médiathèque de Pornic; Le Carrousel du Jeu",
+  "desc": "Parties du jeu d'ambiance et de bluff Les Loups-Garous de Thiercelieux avec le Carrousel du Jeu, en famille dès 10 ans; gratuit sur réservation au 02 40 82 65 90.",
+  "url": "https://www.pornic.com/soiree-loups-garous-de-thiercelieux-pornic.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 10
+ },
+ {
   "id": "2026-11-14-challans-comedy-pornic",
   "category": "Stand-up",
   "date": "2026-11-14",
@@ -779,6 +795,21 @@
   "town": "Pornic",
   "type": "brocante",
   "url": "https://brocabrac.fr/44/pornic/1402692-vide-grenier-des-coques-en-bois"
+ },
+ {
+  "id": "2026-11-15-dansant-tendanse-brevin",
+  "title": "Après-midi dansant avec l'orchestre Tendanse",
+  "date": "2026-11-15",
+  "time": "14h30",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Thé dansant",
+  "org": "Le Canotier",
+  "desc": "Après-midi dansant (ouverture des portes 13h30); entrée 14 €, réservation au 02 52 80 00 75.",
+  "url": "https://www.le-canotier.net/évènement/2026-11-15-apres-midi-dansant-orchestre-tendanse/",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-15-football-r3-pornic-foot-pornic",
@@ -980,18 +1011,18 @@
  {
   "id": "2026-11-18-mercredi-bricole-biscuits-pornic",
   "ageMin": 5,
-  "category": "Atelier cuisine enfants",
+  "category": "Atelier nature enfants",
   "date": "2026-11-18",
-  "desc": "Les enfants confectionnent des petits biscuits à personnaliser (chocolat, vanille, épices) et repartent avec leur sachet, boisson chaude offerte; 10 €, dès 5-6 ans, réservation.",
+  "desc": "Atelier d'une heure avec les Ateliers de Maia : fabriquer des boules de graisse et leur support pour nourrir les oiseaux en hiver, boisson chaude offerte; 10 €, adultes et enfants dès 5 ans, réservation.",
   "free": false,
   "kids": true,
   "org": "Les Ateliers de Maia",
   "place": "Les Hameaux Bio (Biocoop), 1 rue du Traité de Lisbonne, ZA de l'Europe",
   "time": "16h–17h",
-  "title": "Atelier « Mon mercredi bricole » : petits gâteaux d'automne",
+  "title": "Atelier « Mon mercredi bricole » : boule de graisse pour oiseaux",
   "town": "Pornic",
   "type": "atelier",
-  "url": "https://en.pornic.com/atelier-mon-mercredi-bricole-pornic.html"
+  "url": "https://www.pornic.com/atelier-mon-mercredi-bricole-boule-de-graisse-pour-oiseaux-pornic.html"
  },
  {
   "id": "2026-11-18-conf-peinture-pornic",
@@ -1135,6 +1166,23 @@
   "kids": false
  },
  {
+  "id": "2026-11-20-zumba-baby-pornic",
+  "title": "Zumba baby – Mois des tout-petits",
+  "date": "2026-11-20",
+  "time": "10h45",
+  "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Mois des tout-petits",
+  "org": "Médiathèque de Pornic; Training Family",
+  "desc": "Séance de danse et de rythme pour les 1–3 ans avec Training Family, gratuite sur réservation au 02 40 82 65 90.",
+  "url": "https://www.pornic.com/zumba-baby-pour-le-mois-des-tout-petits-pornic.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 1,
+  "ageMax": 3
+ },
+ {
   "id": "2026-11-20-ateliers-tricot-brevin",
   "category": "Atelier tricot",
   "date": "2026-11-20",
@@ -1236,6 +1284,22 @@
   "url": "https://www.jds.fr/saint-nazaire/manifestations/soiree-zen-1818880_A"
  },
  {
+  "id": "2026-11-20-loup-en-slip-pornic",
+  "title": "Théâtre jeune public : Le Loup en slip",
+  "date": "2026-11-20",
+  "time": "20h",
+  "place": "Théâtre Saint-Gilles, rue de Verdun",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Spectacle familial",
+  "org": "Médiathèque de Pornic; Cie CréACT'itude",
+  "desc": "Spectacle familial de 55 minutes d'après la bande dessinée, une fable sur la peur de l'autre; dès 5 ans, gratuit sur réservation (mediatheque-pornic.fr).",
+  "url": "https://www.pornic.fr/evenement/le-loup-en-slip/",
+  "free": true,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
   "id": "2026-11-20-cine-echange-premieres-lunes-brevin",
   "category": "Ciné-débat",
   "date": "2026-11-20",
@@ -1276,6 +1340,22 @@
   "town": "Pornic",
   "type": "spectacle",
   "url": "https://www.fest.fr/concertino-adelaide-ferriere-2688995.html"
+ },
+ {
+  "id": "2026-11-20-theatre-forum-violences-pornic",
+  "title": "Théâtre-forum : Ensemble, tout est possible !",
+  "date": "2026-11-20",
+  "time": "20h30",
+  "place": "Amphithéâtre Thomas Narcejac, rue Rostislaw Loukianoff",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Théâtre-forum",
+  "org": "Pornic Agglo Pays de Retz (CISPD); Cie Live Comedy",
+  "desc": "Soirée de théâtre interactif sur les violences faites aux femmes, avec des professionnels pour répondre aux questions; dès 14 ans, entrée libre, renseignements au 02 51 74 07 16.",
+  "url": "https://www.pornic.fr/evenement/ensemble-tout-est-possible-2/",
+  "free": true,
+  "kids": false,
+  "ageMin": 14
  },
  {
   "id": "2026-11-20-circuit-motricite-pornic",
@@ -1678,6 +1758,21 @@
   "kids": false
  },
  {
+  "id": "2026-11-24-balade-joa-brevin",
+  "title": "La Balade JOA : à la découverte des villas brevinoises",
+  "date": "2026-11-24",
+  "time": "10h",
+  "place": "Devant le casino JOA côté mer, 55 boulevard de l'Océan",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "nature",
+  "category": "Balade",
+  "org": "Casino JOA; Les Pieds Futés",
+  "desc": "Balade accompagnée de 3 à 4 km sur la plage et le sentier côtier, pause gourmande offerte à la fin; gratuit, inscription à l'accueil du casino ou au 02 28 53 20 00.",
+  "url": "https://www.saint-brevin.com/la-balades-joa.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-24-visite-interieur-chateau-pornic",
   "ageMin": 10,
   "category": "Visite guidée",
@@ -1906,6 +2001,36 @@
   "kids": false
  },
  {
+  "id": "2026-11-27-apres-midi-dansant-pornic",
+  "title": "Après-midi dansant seniors",
+  "date": "2026-11-27",
+  "time": "14h",
+  "place": "Salle Joséphine Baker, rue Sainte-Victoire",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Danse",
+  "org": "Kadanses A2 Events",
+  "desc": "Après-midi dansant de 14h à 18h pour les seniors, avec chanteuse et taxis danseurs; 5 € (10 € hors Pornic), préinscription obligatoire par SMS (numéro sur la page de la ville).",
+  "url": "https://www.pornic.fr/evenement/apres-midi-dansant-a-pornic/",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-cine-conf-rwanda-pornic",
+  "title": "Ciné-conférence : Rwanda, le paradis retrouvé",
+  "date": "2026-11-27",
+  "time": "15h",
+  "place": "Ciné Toiles de Retz, rue du Chaudron",
+  "town": "Pornic",
+  "type": "expo",
+  "category": "Ciné-conférence",
+  "org": "Pornic Évasions; Altaïr Conférences",
+  "desc": "Film documentaire présenté sur scène par son réalisateur, sur le pardon et la reconstruction au Rwanda; billetterie sur place.",
+  "url": "https://www.pornic.fr/evenement/rwanda-le-paradis-retrouve/",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-27-conference-livre-comme-compagnon-moutiers",
   "category": "Conférence",
   "date": "2026-11-27",
@@ -1994,6 +2119,21 @@
   "url": "https://www.prefailles.fr/agenda/soiree-tartifete/"
  },
  {
+  "id": "2026-11-27-anniversaire-casino-pornic",
+  "title": "Soirée des 8 ans du Casino de Pornic",
+  "date": "2026-11-27",
+  "time": "19h30",
+  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Soirée",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Soirée anniversaire avec open bar, cocktail dînatoire, animations, concerts live et cadeaux à gagner; inscription gratuite.",
+  "url": "https://casino-pornic.partouche.com/agenda/13679/anniversaire-du-casino-de-pornic",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-27-sous-le-sapin-brevin",
   "category": "Théâtre",
   "date": "2026-11-27",
@@ -2061,6 +2201,21 @@
   "town": "Saint-Michel-Chef-Chef",
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-pour-le-mois-des-tout-petits-si-j-osais-st-michel-chef-chef.html"
+ },
+ {
+  "id": "2026-11-28-atelier-cecile-lacharme-pornic",
+  "title": "Atelier pédagogique avec Cécile Lacharme",
+  "date": "2026-11-28",
+  "time": "10h",
+  "place": "École municipale de musique, salle Belle-Île, place de la Marne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Rencontre musicale",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Rencontre de 10h à 12h avec la violoncelliste (parcours, pédales d'effets, loopstation, démonstrations en live), avant son concert du soir; gratuit sur inscription (billetweb).",
+  "url": "https://www.pornic.fr/evenement/atelier-pedagogique-avec-cecile-lacharme/",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2026-11-28-marche-noel-residence-plaine",
@@ -2152,6 +2307,22 @@
   "url": "https://en.pornic.com/noel-au-bourg.html"
  },
  {
+  "id": "2026-11-28-loups-garous-mediatheque-pornic",
+  "title": "Jeu : Les Loups-Garous de Thiercelieux à la médiathèque",
+  "date": "2026-11-28",
+  "time": "15h et 16h30",
+  "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
+  "town": "Pornic",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Médiathèque de Pornic; Le Carrousel du Jeu",
+  "desc": "Parties du jeu d'ambiance et de bluff Les Loups-Garous de Thiercelieux avec le Carrousel du Jeu, en famille dès 10 ans; gratuit sur réservation au 02 40 82 65 90.",
+  "url": "https://www.pornic.com/soiree-loups-garous-de-thiercelieux-pornic.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 10
+ },
+ {
   "id": "2026-11-28-stand-up-prefailles",
   "title": "Stand-up du Préfailles Comedy Club",
   "date": "2026-11-28",
@@ -2161,8 +2332,8 @@
   "type": "spectacle",
   "category": "Humour",
   "org": "Préfailles Comedy Club",
-  "desc": "Deux séances de stand-up à 19h et 21h; renseignements au 09 52 18 86 37 (Instagram @prefailles_comedy_club).",
-  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "desc": "Spectacle de stand-up « Nouvelle vague et grandes marées », deux séances à 19h et 21h; 10 € (groupes 8 €) en prévente sur Billetreduc, 13 € sur place; réservations au 09 52 18 86 37.",
+  "url": "https://www.prefailles.fr/agenda/spectacle-stand-up-nouvelle-vague-et-grandes-maree/",
   "free": false,
   "kids": false
  },
@@ -2387,6 +2558,23 @@
   "url": "https://en.pornic.com/exposition-bicentenaire-de-la-photographie-la-bernerie-en-retz.html"
  },
  {
+  "id": "2026-12-02-contes-noel-gourmands-plaine",
+  "title": "Contes de Noël gourmands",
+  "date": "2026-12-02",
+  "time": "11h",
+  "place": "Médiathèque Joseph Rousse, 1 rue de la Libération",
+  "town": "La Plaine-sur-Mer",
+  "type": "spectacle",
+  "category": "Contes",
+  "org": "Médiathèque Joseph Rousse",
+  "desc": "Contes musicaux de 45 minutes sur les traditions de Noël du Nord par la conteuse Noémie Truffaut; gratuit sur inscription, de 4 à 11 ans.",
+  "url": "https://www.pornic.com/contes-de-noel-gourmands-la-plaine-sur-mer.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 4,
+  "ageMax": 11
+ },
+ {
   "id": "2026-12-02-heure-conte-bernerie",
   "ageMax": 8,
   "ageMin": 3,
@@ -2434,16 +2622,16 @@
   "id": "2026-12-03-apres-midi-dansant-canotier-brevin",
   "category": "Thé dansant",
   "date": "2026-12-03",
-  "desc": "Après-midi dansant avec l'orchestre Véronique Cadanse (ouverture 13h30); 14 € avec boisson et collation, réservation au 02 52 80 00 75.",
+  "desc": "Après-midi dansant avec l'orchestre Electropic (ouverture 13h30); entrée 14 €, réservation au 02 52 80 00 75.",
   "free": false,
   "kids": false,
   "org": "Le Canotier",
   "place": "Le Canotier, 7 avenue des Frères Lumière",
   "time": "14h30",
-  "title": "Après-midi dansant au Canotier",
+  "title": "Après-midi dansant avec l'orchestre Electropic",
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
-  "url": "https://www.saint-brevin.com/apres-midi-dansant-avec-l-orchestre-veronique-cadanse.html"
+  "url": "https://www.le-canotier.net/évènement/2026-12-03-apres-midi-dansant-orchestre-veronique-cadanse/"
  },
  {
   "id": "2026-12-03-cine-conf-argentine-brevin",
@@ -2471,6 +2659,21 @@
   "town": "Saint-Michel-Chef-Chef",
   "type": "atelier",
   "url": "https://en.pornic.com/repair-cafe-de-tharon-pornic.html"
+ },
+ {
+  "id": "2026-12-03-conseil-communautaire-pornic",
+  "title": "Conseil communautaire de Pornic Agglo",
+  "date": "2026-12-03",
+  "time": "19h",
+  "place": "Communauté d'agglomération Pornic Agglo Pays de Retz",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Conseil",
+  "org": "Pornic Agglo Pays de Retz",
+  "desc": "Séance publique du conseil communautaire.",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2026-12-04-bien-vieillir-prefailles",
@@ -2606,6 +2809,21 @@
   "url": "https://en.pornic.com/christmas-at-pornic-castle-pornic.html"
  },
  {
+  "id": "2026-12-05-telethon-chauve",
+  "title": "Animations au profit du Téléthon",
+  "date": "2026-12-05",
+  "time": "10h",
+  "place": "Complexe sportif du Pinier",
+  "town": "Chauvé",
+  "type": "fete",
+  "category": "Téléthon",
+  "org": "Associations de Chauvé (la Clef des familles, Liâne, pétanque chauvéenne)",
+  "desc": "De 10h à 12h histoires à bouger, lecture, créativité et balade avec les ânes (5 € par famille), puis de 14h30 à 17h cornhole au profit de l'AFM-Téléthon.",
+  "url": "https://www.pornic.com/animations-au-profit-du-telethon-chauve.html",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-12-05-marche-noel-plaine",
   "category": "Marché de Noël",
   "date": "2026-12-05",
@@ -2648,6 +2866,21 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://en.pornic.com/guided-tour-pornic-medieval-maritime-city-pornic.html"
+ },
+ {
+  "id": "2026-12-05-traversee-givree-pornic",
+  "title": "La traversée givrée du cœur (Téléthon)",
+  "date": "2026-12-05",
+  "time": "15h",
+  "place": "Plage de la Noëveillard",
+  "town": "Pornic",
+  "type": "sport",
+  "category": "Nage solidaire",
+  "org": "Pornic Nordic; Swim for the Planet",
+  "desc": "Arrivée vers 15h de nageurs en maillot partis de Noirmoutier (environ 15 km en eau froide, selon la météo) au profit du Téléthon; village d'animations, baignade publique et restauration sur place.",
+  "url": "https://www.pornic.fr/evenement/la-traversee-givree-du-coeur/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-05-cyclistes-brillez-bernerie",
@@ -2783,6 +3016,21 @@
   "url": "https://www.pornic.com/les-p-tits-cinephiles-et-atelier-la-bernerie-en-retz-1-1-1.html"
  },
  {
+  "id": "2026-12-06-guinguette-thony-coue-brevin",
+  "category": "Thé dansant",
+  "date": "2026-12-06",
+  "desc": "Après-midi dansant (ouverture des portes 13h30, début 14h30); entrée 14 €, réservation au 02 52 80 00 75.",
+  "free": false,
+  "kids": false,
+  "org": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "time": "14h30",
+  "title": "Après-midi dansant avec l'orchestre Thony Coué",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "url": "https://www.le-canotier.net/évènement/2026-12-06-apres-midi-dansant-orchestre-thony-coue/"
+ },
+ {
   "id": "2026-12-06-football-r3-pornic-foot-pornic",
   "category": "Football",
   "date": "2026-12-06",
@@ -2796,21 +3044,6 @@
   "town": "Pornic",
   "type": "sport",
   "url": "https://en.pornic.com/match-de-football-r3-pornic-foot-challans-fc-2-pornic.html"
- },
- {
-  "id": "2026-12-06-guinguette-thony-coue-brevin",
-  "category": "Bal / guinguette",
-  "date": "2026-12-06",
-  "desc": "Soirée dansante (ouverture 19h), 14 € selon l'annonce, qui mentionne aussi un horaire de 14h30 : vérifier au 02 52 80 00 75.",
-  "free": false,
-  "kids": false,
-  "org": "Le Canotier",
-  "place": "Le Canotier, 7 avenue des Frères Lumière",
-  "time": "20h",
-  "title": "Soirée guinguette avec l'orchestre Thony Coué",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "url": "https://www.saint-brevin.com/soiree-guinguette-avec-l-orchestre-thony-coue.html"
  },
  {
   "id": "2026-12-06-vide-grenier-mi-careme-pornic",
@@ -2920,6 +3153,37 @@
   "url": "https://www.fest.fr/repair-cafe-de-pornic-2664914.html"
  },
  {
+  "id": "2026-12-08-spectacle-noel-prefailles",
+  "title": "Spectacle de Noël « Un très heureux Noël »",
+  "date": "2026-12-08",
+  "time": "18h30",
+  "place": "Espace culturel, 8 rue du Docteur Guépin",
+  "town": "Préfailles",
+  "type": "spectacle",
+  "category": "Spectacle enfants",
+  "org": "Mairie de Préfailles; Compagnie Léz'Arts vivants",
+  "desc": "Spectacle familial de 18h30 à 19h30 (date avancée du 15 au 8 décembre), tout public; gratuit dans la limite des places disponibles, infos mairie au 02 40 21 60 37.",
+  "url": "https://www.prefailles.fr/agenda/spectacle-de-noel/",
+  "free": true,
+  "kids": true,
+  "ageMin": 3
+ },
+ {
+  "id": "2026-12-09-jeux-societe-plaine",
+  "title": "Jeux de société à la médiathèque",
+  "date": "2026-12-09",
+  "time": "10h30",
+  "place": "Médiathèque Joseph Rousse, 1 rue de la Libération",
+  "town": "La Plaine-sur-Mer",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Médiathèque Joseph Rousse; Jade or Jouer",
+  "desc": "Moment convivial autour de jeux de société avec l'association Jade or Jouer, de 10h30 à 12h, tout public; gratuit sur inscription.",
+  "url": "https://www.pornic.com/jeux-de-societe-la-plaine-sur-mer.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-12-09-contes-musiques-gourmandes-pornic",
   "category": "Spectacle enfants",
   "date": "2026-12-09",
@@ -3004,6 +3268,21 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
   "url": "https://www.jds.fr/saint-nazaire/manifestations/christmas-party-1742757_A"
+ },
+ {
+  "id": "2026-12-11-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-11",
+  "time": "20h",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-11-edgar-yves-pornic",
@@ -3107,6 +3386,21 @@
   "url": "https://www.fest.fr/feu-d-artifice-de-noel-2726742.html"
  },
  {
+  "id": "2026-12-12-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-12",
+  "time": "20h",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-12-mon-premier-cinema-prefailles",
   "title": "Festival « Mon premier cinéma »",
   "date": "2026-12-12",
@@ -3167,6 +3461,21 @@
   "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-emmanuel-rolland-1745915_A"
  },
  {
+  "id": "2026-12-13-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-13",
+  "time": "15h30",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-13-concert-noel-bernerie",
   "category": "Concert",
   "date": "2026-12-13",
@@ -3207,6 +3516,36 @@
   "url": "https://www.fest.fr/vide-grenier-par-le-secours-catholique-2431553.html"
  },
  {
+  "id": "2026-12-14-vada-pause-cafe-plaine",
+  "title": "VADA : pause-café",
+  "date": "2026-12-14",
+  "time": "10h",
+  "place": "Pôle associatif de l'Ormelette, 2 rue Jean Moulin",
+  "town": "La Plaine-sur-Mer",
+  "type": "vielocale",
+  "category": "Rencontre",
+  "org": "Commune de La Plaine-sur-Mer (VADA)",
+  "desc": "Moment convivial gratuit de 10h à 12h, proposé les 2e et 4e lundis du mois; renseignements en mairie au 02 40 21 50 14.",
+  "url": "https://www.laplainesurmer.fr/agenda/vada-pause-cafe/",
+  "free": true,
+  "kids": false
+ },
+ {
+  "id": "2026-12-14-karaoke-canotier-brevin",
+  "title": "Karaoké Party au Canotier",
+  "date": "2026-12-14",
+  "time": "20h",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Karaoké",
+  "org": "Le Canotier",
+  "desc": "Karaoké sans concours, seul ou à plusieurs; entrée libre, consommation obligatoire (bar et planches apéritives).",
+  "url": "https://www.le-canotier.net/évènement/karaoke-party-9/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-14-broderie-moutiers",
   "ageMin": 10,
   "category": "Broderie",
@@ -3236,22 +3575,6 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "spectacle",
   "url": "https://www.saint-brevin.com/ballet-casse-noisette.html"
- },
- {
-  "id": "2026-12-15-spectacle-noel-prefailles",
-  "ageMin": 3,
-  "category": "Spectacle enfants",
-  "date": "2026-12-15",
-  "desc": "Spectacle familial de 50 minutes mêlant humour, magie et chansons pour fêter la fin d'année, gratuit dans la limite des places disponibles, dès 3 ans; infos mairie au 02 40 21 60 37.",
-  "free": true,
-  "kids": true,
-  "org": "Mairie de Préfailles; Compagnie Léz'Arts vivants",
-  "place": "Espace Culturel, rue du Docteur Guépin",
-  "time": "18h30",
-  "title": "Spectacle de Noël « Un très heureux Noël »",
-  "town": "Préfailles",
-  "type": "spectacle",
-  "url": "https://en.pornic.com/spectacle-de-noel-prefailles.html"
  },
  {
   "id": "2026-12-17-atelier-ecriture-bernerie",
@@ -3310,6 +3633,21 @@
   "town": "La Bernerie-en-Retz",
   "type": "expo",
   "url": "https://mairie-labernerie.fr/evenement/rencontre-expo-photo/"
+ },
+ {
+  "id": "2026-12-18-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-18",
+  "time": "20h",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-18-spectacle-jeunes-theatre-prefailles",
@@ -3391,6 +3729,23 @@
   "url": "https://www.atlantic-loire-valley.com/festivals-and-events/un-noel-feerique-a-pornic-7"
  },
  {
+  "id": "2026-12-19-pr-paillette-brevin",
+  "title": "Spectacle enfants : Pr Paillette – La Fabrique à Cadeaux",
+  "date": "2026-12-19",
+  "time": "15h",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Spectacle enfants",
+  "org": "Le Canotier",
+  "desc": "Spectacle de Noël d'une heure pour les 3–10 ans : le Pr Paillette doit réparer l'étoile du Nord pour sauver la fabrique à cadeaux du Père Noël; 9 € (tarif unique), réservation au 02 52 80 00 75 ou en ligne.",
+  "url": "https://www.le-canotier.net/évènement/pr-paillette-la-fabrique-a-cadeaux/",
+  "free": false,
+  "kids": true,
+  "ageMin": 3,
+  "ageMax": 10
+ },
+ {
   "id": "2026-12-19-pere-noel-tharon",
   "ageMax": 10,
   "ageMin": 0,
@@ -3435,6 +3790,21 @@
   "free": true
  },
  {
+  "id": "2026-12-19-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-19",
+  "time": "20h",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-19-vin-chaud-petits-mousses",
   "title": "Vente de vin chaud de l'Amicale des Petits Mousses",
   "date": "2026-12-19",
@@ -3463,6 +3833,21 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
   "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-damien-roy-1747391_A"
+ },
+ {
+  "id": "2026-12-20-dinde-novembre-brevin",
+  "title": "Théâtre : Une Dinde en Novembre",
+  "date": "2026-12-20",
+  "time": "15h30",
+  "place": "Maison des Jeunes – Espace Boby-Lapointe, 108 avenue Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Association Ça Troupe énormément",
+  "desc": "Comédie familiale de Stéphane Mézille jouée par sept comédiens amateurs; 8 €, 5 € pour les moins de 12 ans, billetterie en ligne, par téléphone ou sur place.",
+  "url": "https://www.saint-brevin.com/theatre-une-dinde-en-novembre.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-20-apres-midi-latino-brevin",
@@ -3571,6 +3956,23 @@
   "url": "https://en.pornic.com/guided-tour-pornic-medieval-maritime-city-pornic.html"
  },
  {
+  "id": "2026-12-23-pr-paillette-brevin",
+  "title": "Spectacle enfants : Pr Paillette – La Fabrique à Cadeaux",
+  "date": "2026-12-23",
+  "time": "10h30 et 15h",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Spectacle enfants",
+  "org": "Le Canotier",
+  "desc": "Spectacle de Noël d'une heure pour les 3–10 ans : le Pr Paillette doit réparer l'étoile du Nord pour sauver la fabrique à cadeaux du Père Noël; 9 € (tarif unique), réservation au 02 52 80 00 75 ou en ligne.",
+  "url": "https://www.le-canotier.net/évènement/pr-paillette-la-fabrique-a-cadeaux-2/",
+  "free": false,
+  "kids": true,
+  "ageMin": 3,
+  "ageMax": 10
+ },
+ {
   "id": "2026-12-26-visite-port-ville-haute-pornic",
   "category": "Visite guidée",
   "date": "2026-12-26",
@@ -3642,6 +4044,21 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
   "url": "https://www.fest.fr/reveillon-de-la-saint-sylvestre-2675005.html"
+ },
+ {
+  "id": "2026-12-31-reveillon-casino-pornic",
+  "title": "Réveillon de la Saint-Sylvestre au Casino de Pornic",
+  "date": "2026-12-31",
+  "time": "20h30",
+  "place": "Casino Partouche, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Réveillon",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Dîner gastronomique du Nouvel An au restaurant du casino (entrées, plat, fromage, dessert), 135 € avec 20 € de crédits de jeu offerts; sur réservation.",
+  "url": "https://casino-pornic.partouche.com/agenda/13325/diner-st-sylvestre---restaurant",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-04-expo-reel-bernerie",
@@ -3822,6 +4239,21 @@
   "town": "Pornic",
   "type": "spectacle",
   "url": "https://www.fest.fr/spectacle-de-mister-fred-connexions-2724329.html"
+ },
+ {
+  "id": "2027-01-14-permanence-veolia-prefailles",
+  "title": "Permanence Veolia (factures d'eau)",
+  "date": "2027-01-14",
+  "time": "9h",
+  "place": "Salle du Conseil municipal, mairie, 17 Grande Rue",
+  "town": "Préfailles",
+  "type": "vielocale",
+  "category": "Permanence",
+  "org": "Veolia Eau",
+  "desc": "Permanence de 9h à 12h pour répondre aux questions sur les factures d'eau.",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2027-01-15-bien-vieillir-prefailles",
@@ -4087,5 +4519,20 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "spectacle",
   "url": "https://www.saint-brevin.com/concert-un-autre-paradis-blanc-concert-michel-berger.html"
+ },
+ {
+  "id": "2027-02-09-conf-patrimoine-industriel-brevin",
+  "title": "Conférence : la valorisation du patrimoine industriel",
+  "date": "2027-02-09",
+  "time": "15h",
+  "place": "Salle Étoile de Jade, avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "expo",
+  "category": "Conférence",
+  "org": "Université Permanente, antenne de Saint-Brevin",
+  "desc": "Conférence d'1h30 sur la transformation de l'île de Nantes, de la friche industrielle à l'économie créative; 8 € la séance, gratuit pour les adhérents de l'Université Permanente.",
+  "url": "https://www.saint-brevin.com/conference-la-valorisation-du-patrimoine-industriel.html",
+  "free": false,
+  "kids": false
  }
 ]
