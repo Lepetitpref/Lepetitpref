@@ -810,3 +810,5 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .spot-emb{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
 .spot-emb .emb-box{flex-basis:100%}
 .spot-emb .emb-box:empty{display:none}
+.emb-fr{width:100%;border:0;border-radius:10px;background:#fff;display:block}
+.emb-h{margin:8px 0 4px;font-size:14px;font-weight:600;color:var(--muted)}

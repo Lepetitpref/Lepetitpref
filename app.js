@@ -1092,8 +1092,9 @@ const ACT={
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
   emb:v=>{const[k,id]=v.split("|"),e=SPOTEMB[id],box=document.getElementById("emb-"+id);if(!e||!box)return;
-    const src=k==="wg"?`https://www.windguru.cz/widget-fcst-iframe.php?s=${e[0]}&m=100&uid=wg_fwdg_${e[0]}_100_pp&wj=knots&tj=c&waj=m&tij=cm&odh=0&doh=24&fhours=96&hrsm=1&vt=forecasts&lng=fr&idbs=1&p=WINDSPD,GUST,SMER,HTSGW,PERPW,DIRPW`:`https://www.surf-forecast.com/breaks/${e[1]}/forecasts/widget/a`;
-    box.innerHTML=`<iframe src="${src}" title="${k==="wg"?"Prévision Windguru":"Prévision Surf-Forecast"}" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:${k==="wg"?380:560}px;border:0;border-radius:10px;background:#fff"></iframe><p class="nav-src">${k==="wg"?"Module officiel de Windguru (vent en nœuds, houle en mètres).":"Module officiel de Surf-Forecast (en anglais)."+(e[1]==="Prefaille"?" Spot de référence : Préfailles.":" Spot de référence : Saint-Brevin l'Ermitage.")}</p>`;},
+    const wg=(m,pp,t)=>`<iframe src="https://www.windguru.cz/widget-fcst-iframe.php?s=${e[0]}&m=${m}&uid=wg_${e[0]}_${m}&wj=knots&tj=c&waj=m&tij=cm&odh=0&doh=24&fhours=96&hrsm=1&vt=forecasts&lng=fr&idbs=1&p=${pp}" title="${t}" loading="lazy" referrerpolicy="no-referrer" class="emb-fr" style="height:${m===100?150:160}px"></iframe>`;
+    box.innerHTML=k==="wg"?`<p class="emb-h">Vent (nœuds)</p>${wg(100,"WINDSPD,GUST,SMER","Windguru, vent")}<p class="emb-h">Vagues (m, s)</p>${wg(84,"HTSGW,PERPW,DIRPW","Windguru, vagues")}<p class="nav-src">Module officiel de Windguru. Touchez ▶ pour les légendes, glissez vers la gauche pour les heures suivantes.</p>`
+      :`<iframe src="https://www.surf-forecast.com/breaks/${e[1]}/forecasts/widget/a" title="Prévision Surf-Forecast" loading="lazy" referrerpolicy="no-referrer" class="emb-fr" style="height:430px"></iframe><p class="nav-src">Module officiel de Surf-Forecast (en anglais, hauteurs en pieds). Spot de référence : ${e[1]==="Prefaille"?"Préfailles":"Saint-Brevin l'Ermitage"}.</p>`;},
   mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{S.mWhere="10";S.openToday=true;sset("pp-mwhere","10");},
