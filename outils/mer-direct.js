@@ -14,7 +14,8 @@ try { avant = JSON.parse(fs.readFileSync(OUT, 'utf8')); } catch (e) {}
 
 async function bulletin() {
   const { chromium } = require('playwright');
-  const b = await chromium.launch();
+  // Sur GitHub, on utilise le Chrome déjà installé sur la machine (pas de téléchargement).
+  const b = await chromium.launch(process.env.PP_CHROME ? { channel: 'chrome' } : {});
   try {
     const p = await b.newPage();
     await p.goto(BMS, { waitUntil: 'networkidle', timeout: 60000 });

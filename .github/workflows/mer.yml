@@ -19,11 +19,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Navigateur
-        run: |
-          npm install --no-save --no-package-lock playwright@1.49.1
-          npx playwright install --with-deps chromium
+      - name: Playwright (sans télécharger de navigateur : Chrome est déjà sur la machine)
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npm install --no-save --no-package-lock playwright@1.49.1
       - name: Relevé
+        env:
+          PP_CHROME: "1"
         run: node outils/mer-direct.js donnees/mer.json
       - name: Publier si changé
         run: |
