@@ -169,9 +169,9 @@ const S={events:null,cinema:null,assos:null,meta:null,err:null,
   where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||(BASE.k==="pornic"?"pornic":"pref"),mk:"tous",q:"",os:null};
-if(!ZONES.some(w=>w[0]===S.where))S.where="10";
+if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.who="tous";
 if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
-const WHO2=()=>[["tous","Tout public"],...(gActive()?[["groupe","Mon groupe"],["definir","Modifier mon groupe…"]]:[["definir","Mon groupe (enfants, âges)…"]]),["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
+const WHO2=()=>[["tous","Tout public"],["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
 function actOK(a){if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
 function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[t,dow(t)===6?addDays(t,1):t];while(dow(d)!==5)d=addDays(d,1);return[d,addDays(d,2)];}
@@ -555,7 +555,7 @@ function vActs(){const t=today(),od=S.openDay||t;
   ${segAC("activites")}
   <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
   <div class="filters">${frow("frow","Thème",cats.map(([k,l])=>kchip(k==="tous"?"Tout":l,S.cat===k,`data-act="cat" data-v="${k}"`,CATK[k]||"ink")).join(""))}
-   ${frow("frow","Filtres",`${zoneSel()}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
+   ${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
   <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?Object.keys(CATS).filter(k=>g[k]).map(k=>`<div class="group" style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})" class="list">${g[k].map(a=>placeRow(a,t)).join("")}</ul>`).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
@@ -1187,7 +1187,6 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
   const it=([h,l,t,i])=>`<li><a class="menu-item" href="#${h}" style="--c:var(${COL[h]||"--accent"})" ${h===c?'aria-current="page"':""}><span class="menu-ic">${ic(i)}</span><span><b>${l}</b>${t?`<small>${t}</small>`:""}</span></a></li>`;
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="brand" href="#sejour">${ic("brand")}Le Petit Préf</a><button type="button" class="menu-btn" data-m="close">${ic("close")}Fermer</button></div>
-   <div class="group-card"><span class="ctx-ic">${ic("people","i-s")}</span><div class="ctx-main">${g?`<div class="ctx-who">${esc(gWho(g,GR.actif))}</div><div class="ctx-when">${esc(gWhen())}</div>`:`<div class="ctx-who">${GR.habitant?"J'habite ici":"Qui vient ?"}</div><div class="ctx-when">${GR.habitant?"Accueil sans groupe ni dates":"Famille, amis, dates : on trie pour vous"}</div>`}</div><button type="button" class="ctx-edit" data-m="who">${g?"Modifier":"Choisir"}</button></div>
    ${STANDALONE()?"":`<a class="menu-install" href="#installer"><span class="menu-ic">${ic("install")}</span><span><b>Installer l'app sur votre téléphone</b><small>Une icône sur l'écran d'accueil, sans store, gratuite : on vous montre comment, sur iPhone et Android.</small></span>${ic("chev","i-s")}</a>`}
    <p class="menu-group">Rubriques</p><ul class="menu-list">${MENU1.map(it).join("")}</ul>
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
@@ -1255,7 +1254,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{if(v==="definir"){setTimeout(openWho,0);return;}S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
