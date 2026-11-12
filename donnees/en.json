@@ -621,7 +621,8 @@
 "Du": "From",
 "au": "to",
 "Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.": "Open an event and tap “Add to calendar” to put it in your phone.",
-"Ciné : toutes les salles, de la plus proche à la plus loin.": "Cinema: every cinema, nearest first."
+"Ciné : toutes les salles, de la plus proche à la plus loin.": "Cinema: every cinema, nearest first.",
+"Toutes les adresses": "All places"
 },
 "rules": [
 [
@@ -1695,6 +1696,18 @@
 [
 "^Pas de séance publiée (pour cette salle )?le (.+?)( \\(programme connu jusqu'au (.+)\\))?\\. $",
 "No screening published $1on $2."
+],
+[
+"^(\\d+) adresses?$",
+"$1 places"
+],
+[
+"^(\\d+) adresses? · (\\d+) ouverts?$",
+"$1 places · $2 open"
+],
+[
+"^(\\d+) ouverts? sur (\\d+)$",
+"$1 open of $2"
 ]
 ],
 "words": {

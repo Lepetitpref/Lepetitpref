@@ -526,6 +526,17 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["bar","Bars"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["courses","Courses"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
 const mkOK=a=>S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
+/* Restos : grille des types d'adresses (selon la rubrique), comme dans Activités */
+const MSECT=["tous","tables","produits"];
+const MIC={restaurant:"fork",creperie:"fork",bar:"spark",huitres:"shell",poisson:"wave",marche:"basket",boulangerie:"basket",glacier:"drop",producteur:"leaf",cave:"drop",epicerie:"basket",courses:"basket",biscuiterie:"basket"};
+function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.mk;
+  const inSec=k=>sec==="tous"||!sec||(sec==="tables"&&(k==="restaurant"||k==="creperie"))||(sec==="produits"&&!["restaurant","creperie","marche","bar"].includes(k));
+  const of=k=>base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
+  const ks=MKINDS.slice(1).filter(([k])=>inSec(k)&&of(k).length);if(ks.length<2&&!cur)return"";
+  const back=S.mkSec&&S.mkSec!==S.mk?S.mkSec:"tous";
+  return `<div class="acgrid" role="group" aria-label="Types d'adresses">${ks.map(([k,l])=>{const L=of(k),o=L.filter(a=>openOn(a,od)).length;
+    return `<button type="button" class="actile" data-act="mk" data-v="${cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||"fork")}</span><span class="actile-t"><b>${esc(l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
+  ${cur?`<p class="ac-back"><button type="button" class="lnk" data-act="mk" data-v="${back}">${ic("left","i-s")}Toutes les adresses</button></p>`:""}`;}
 function vManger(){const t=today(),od=S.openDay||t;
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
@@ -536,12 +547,13 @@ function vManger(){const t=today(),od=S.openDay||t;
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
   return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""}, du plus proche au plus loin`)}
   ${segMg()}
-  <div class="filters">${frow("frow","Catégorie",[["tous","Tout"],["tables","Restos et crêperies"],...MKINDS.slice(1).filter(([k])=>all.some(a=>kindOf(a)===k))].map(([k,l])=>kchip(l,S.mk===k,`data-act="mk" data-v="${k}"`,k==="tous"?"ink":"food")).join(""))}
-   ${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}
+  <div class="filters">${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}
    ${CADRES.length?frow("frow","Cadre",CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")):""}
-   ${frow("frow","Affichage",[["liste","Liste"],["carte","Carte"]].map(([k,l])=>qchip(l,(S.mView||"liste")===k,`data-act="mview" data-v="${k}"`)).join(""))}</div>
+</div>
+  ${mGrid(base,od)}
+  <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage">${[["liste","Liste"],["carte","Carte"]].map(([k,l])=>`<button type="button" aria-pressed="${(S.mView||"liste")===k}" data-act="mview" data-v="${k}">${l}</button>`).join("")}</div></div>
   ${S.mView==="carte"?(S.mapList=list.filter(a=>S.mk==="tous"||mkOK(a)),`<section class="sec" style="padding-top:4px"><div id="mmap" class="mmap" role="region" aria-label="Carte des adresses"></div><div class="map-bar"><button type="button" class="chip" data-act="melocate">${ic("compass","i-s")} Me situer sur la carte</button></div><p class="nav-src">${S.mapList.length} adresse${S.mapList.length>1?"s":""} selon vos filtres. Touchez un point : distance, horaires du jour et itinéraire. Fond de carte © OpenStreetMap.</p></section>`):""}
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${L.map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${(MSECT.includes(S.mk)?L.slice(0,4):L).map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>${MSECT.includes(S.mk)&&L.length>4?`<button type="button" class="ac-more" data-act="mkgo" data-v="${k}">Voir les ${L.length-4} autres · ${esc(l)}${ic("chev","i-s")}</button>`:""}`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -1259,7 +1271,8 @@ const ACT={
   free:()=>{S.free=!S.free;render();},
   openT:()=>{S.openToday=!S.openToday;if(!S.openToday)S.openDay=null;render();},
   rainT:()=>{S.rain=!S.rain;render();},
-  mk:v=>{S.mk=v;render();},
+  mk:v=>{if(MSECT.includes(v)||v==="bar"||v==="marche")S.mkSec=v;S.mk=v;render();},
+  mkgo:v=>{S.mk=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   av:v=>{S.actView=v;render();},
   more:v=>{S.more[v]=true;render();},
   tday:v=>{S.tideDay=v;render();},
