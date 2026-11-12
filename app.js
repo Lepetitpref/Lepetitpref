@@ -467,8 +467,8 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(k==="dates"?`${ic("cal","i-s")}${l}`:l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
    ${S.when==="dates"?datesRow():""}
    ${frow("frow","Filtres",`${chipSel(S.etype==="tous"?"Toutes les sorties":(ETL[S.etype]||"Toutes les sorties"),S.etype,types.map(([k,l])=>[k,k==="tous"?"Toutes les sorties":l]),"etype","tous")}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
-  <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
-    +(longs.length?`<div class="group"><h2 class="group-title">En cours, toute la saison</h2><span class="group-count">${longs.length}</span></div><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul>`:"")
+  <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?(longs.length?`<details class="ev-long"><summary><span class="ev-long-ic">${ic("cal","i-s")}</span><span class="ev-long-t"><b>En ce moment : expos et rendez-vous sur plusieurs semaines</b><small>${longs.length} en cours · toucher pour voir</small></span></summary><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul></details>`:"")
+    +dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
     :`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   ${faireSuite()}
   <p class="foot">Sources : mairies, offices de tourisme, associations.</p>`;}

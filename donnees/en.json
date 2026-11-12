@@ -622,7 +622,8 @@
 "au": "to",
 "Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.": "Open an event and tap “Add to calendar” to put it in your phone.",
 "Ciné : toutes les salles, de la plus proche à la plus loin.": "Cinema: every cinema, nearest first.",
-"Toutes les adresses": "All places"
+"Toutes les adresses": "All places",
+"En ce moment : expos et rendez-vous sur plusieurs semaines": "Right now: exhibitions and events running for several weeks"
 },
 "rules": [
 [
@@ -1708,6 +1709,10 @@
 [
 "^(\\d+) ouverts? sur (\\d+)$",
 "$1 open of $2"
+],
+[
+"^(\\d+) en cours · toucher pour voir$",
+"$1 running · tap to see"
 ]
 ],
 "words": {

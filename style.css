@@ -919,3 +919,13 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .asso-ct a{font-weight:600;color:var(--accent)}
 /* iPhone : garder l'en-tête et les onglets affichés pendant le défilement des longues pages (calque à part) */
 .topbar,.tabs{transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+/* Agenda : expos et rendez-vous longs, repliés sous les filtres */
+.ev-long{margin:0 0 12px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--i-act);border-radius:12px;overflow:hidden}
+.ev-long>summary{display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 12px;cursor:pointer;list-style:none}
+.ev-long>summary::-webkit-details-marker{display:none}
+.ev-long-ic{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:9px;background:color-mix(in srgb,var(--i-act) 14%,transparent);color:var(--i-act)}
+.ev-long-t{display:grid;gap:2px;flex:1;min-width:0}
+.ev-long-t b{font-weight:600;font-size:15px;line-height:1.25}
+.ev-long-t small{font-size:14px;color:var(--muted)}
+
+.ev-long>.list{border-top:1px solid var(--line);margin:0;padding:0 12px}
