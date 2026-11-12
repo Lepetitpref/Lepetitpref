@@ -889,3 +889,14 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .pra-t th,.pra-t td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .pra-t thead th{font-weight:600;color:var(--muted);font-size:13px}
 .pra-t tbody th{font-weight:600;white-space:nowrap}
+/* Activités : grille des types */
+.acgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px var(--gutter) 4px}
+.actile{display:flex;align-items:center;gap:8px;min-height:58px;padding:8px 8px;text-align:left;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:12px;color:var(--ink);cursor:pointer}
+.actile-ic{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:9px;background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)}
+.actile-ic .i{width:19px;height:19px}
+.actile-t{display:grid;gap:2px;min-width:0}
+.actile-t b{font-weight:600;font-size:15px;line-height:1.2}
+.actile-t small{font-size:14px;color:var(--muted);line-height:1.25}
+.actile[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.ac-back{margin:6px var(--gutter) 0}
+.ac-more{display:flex;align-items:center;gap:6px;min-height:44px;margin:0 0 8px;padding:0 4px;background:none;border:0;color:var(--accent);font-weight:600;font-size:15px;cursor:pointer}

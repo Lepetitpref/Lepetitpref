@@ -613,7 +613,9 @@
 "Marée (calculée à Préfailles)": "Tide (worked out for Préfailles)",
 "Mon groupe": "My group",
 "Modifier mon groupe…": "Edit my group…",
-"Mon groupe (enfants, âges)…": "My group (children, ages)…"
+"Mon groupe (enfants, âges)…": "My group (children, ages)…",
+"Pour les enfants": "For children",
+"Tous les types": "All types"
 },
 "rules": [
 [
@@ -1663,6 +1665,26 @@
 [
 "(?<= à | to )juin(?![\\p{L}])",
 "June"
+],
+[
+"^(\\d+) lieux?$",
+"$1 places"
+],
+[
+"^(\\d+) lieux? · (\\d+) ouverts? aujourd'hui$",
+"$1 places · $2 open today"
+],
+[
+"^(\\d+) associations$",
+"$1 clubs"
+],
+[
+"^Voir les (\\d+) autres · (.+)$",
+"See the other $1 · $2"
+],
+[
+"^(\\d+) lieux? · (\\d+) ouverts?$",
+"$1 places · $2 open"
 ]
 ],
 "words": {
