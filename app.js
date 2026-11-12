@@ -1306,7 +1306,7 @@ const TITLES={soirees:"Soirées",activites:"Activités",cine:"Ciné",mer:"La mer
 const PPC="https://compteur.square-brook-9d65.workers.dev/hit?n=1&i=0&k=";
 const ppJour=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"});
 const ppOn=(()=>{try{const m=/[?&]moi=([01])/.exec(location.search);if(m){if(m[1]==="1")localStorage.setItem("pp-editeur","1");else localStorage.removeItem("pp-editeur");}
-  return /(^|\.)lepetitpref\.fr$/.test(location.hostname)&&localStorage.getItem("pp-editeur")!=="1"&&!!window.fetch;}catch(e){return false;}})();
+  return /(^|\.)lepetitpref\.fr$/.test(location.hostname)&&localStorage.getItem("pp-editeur")!=="1"&&!!window.fetch&&!navigator.webdriver&&!/bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|whatsapp/i.test(navigator.userAgent||"");}catch(e){return false;}})();
 function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k),{method:"POST",cache:"no-store",keepalive:true}).catch(()=>{});}catch(e){}}
 const ppVu={};
 /* type d'appareil (totaux seulement) : iphone, android, tablette, ordi */
