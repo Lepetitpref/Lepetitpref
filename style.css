@@ -940,3 +940,5 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .cform-s{margin:0;font-size:15px;color:var(--ink)}
 .cform-s:empty{display:none}
 .cform-n{margin:0;font-size:14px;color:var(--muted)}
+.menu-contact{border-color:color-mix(in srgb,var(--taupe,var(--accent)) 35%,var(--line));background:var(--surface)}
+.menu-contact b{color:var(--ink)}

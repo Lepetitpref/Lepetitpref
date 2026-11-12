@@ -1244,6 +1244,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="brand" href="#sejour">${ic("brand")}Le Petit Préf</a><button type="button" class="menu-btn" data-m="close">${ic("close")}Fermer</button></div>
    ${STANDALONE()?"":`<a class="menu-install" href="#installer"><span class="menu-ic">${ic("install")}</span><span><b>Installer l'app sur votre téléphone</b><small>Une icône sur l'écran d'accueil, sans store, gratuite : on vous montre comment, sur iPhone et Android.</small></span>${ic("chev","i-s")}</a>`}
+   <a class="menu-install menu-contact" href="#apropos"><span class="menu-ic">${ic("info")}</span><span><b>Nous écrire</b><small>Une erreur, un oubli, un événement à ajouter : le formulaire, ou contact@lepetitpref.fr</small></span>${ic("chev","i-s")}</a>
    <p class="menu-group">Rubriques</p><ul class="menu-list">${MENU1.map(it).join("")}</ul>
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
    <p class="menu-group">Affichage</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Thème">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([k,l])=>`<button type="button" aria-pressed="${themeNow()===k}" data-m="theme" data-v="${k}">${l}</button>`).join("")}</div></div>
