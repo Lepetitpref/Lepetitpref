@@ -457,7 +457,7 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const sd=e=>evStart(e,a>t?a:t,b)||t;
   const longs=list.filter(evIsLong),days={};list.filter(e=>!evIsLong(e)).forEach(e=>(days[sd(e)] ||= []).push(e));
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
-  const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],["dates","Mes dates"]];
+  const W=[["tout","Tout"],...(S.when==="auj"?[["auj","Aujourd'hui"]]:[]),["dem","Demain"],...(S.when==="we"?[["we","Ce week-end"]]:[]),["sem","7 jours"],["dates","Mes dates"]];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
   const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>band(x)-band(y)||byTime(x,y));shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
