@@ -917,3 +917,5 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .subnav .seg a[aria-current="true"],.subnav .seg button[aria-current="true"],.subnav .seg button[aria-pressed="true"]{color:var(--accent-ink)}
 .subnav .seg{background:color-mix(in srgb,var(--ink) 9%,transparent)}
 .asso-ct a{font-weight:600;color:var(--accent)}
+/* iPhone : garder l'en-tête et les onglets affichés pendant le défilement des longues pages (calque à part) */
+.topbar,.tabs{transform:translateZ(0);-webkit-transform:translateZ(0);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
