@@ -586,11 +586,15 @@ function vActs(){const t=today(),od=S.openDay||t;
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
   <p class="foot">Une info à corriger ? Voir « À propos et contact » dans le menu.</p>`;}
 const ATH=[["tous","Tout"],["sport","Sport"],["culture","Culture"],["loisirs","Loisirs"],["nature","Nature"],["solidarite","Solidarité"],["enfance","Enfance et parents"],["vie","Vie locale"]];
+/* contact d'association : téléphones, e-mails et sites deviennent des liens (appeler, écrire, ouvrir) */
+const linkify=t=>esc(t).replace(/https?:\/\/[^\s<]+/g,u=>`<a href="${u}" target="_blank" rel="noopener">${u.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"")} ↗</a>`)
+  .replace(/(?<![\w@.\/])([\w.+-]+@[\w-]+\.[\w.-]+)/g,'<a href="mailto:$1">$1</a>')
+  .replace(/(?<![\d\w])(0[1-9](?:[ .]?\d\d){4})(?!\d)/g,m=>`<a href="tel:${m.replace(/\D/g,"")}">${m}</a>`);
 function assosBlock(){const L0=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]??null,a.town)),th=S.athm||"tous";
   const L=L0.filter(a=>th==="tous"||a.th===th).sort((a,b)=>(TOWN_KM[a.town]??99)-(TOWN_KM[b.town]??99)||(a.name||"").localeCompare(b.name||""));
   return `<div class="group" style="--c:var(--i-nat)"><h2 class="group-title">Associations</h2><span class="group-count">${L.length}</span></div>
    ${L0.length>12?`<div class="frow ath" role="group" aria-label="Thème des associations">${ATH.filter(([k])=>k==="tous"||L0.some(a=>a.th===k)).map(([k,l])=>chip(`${l} <span class="chip-count">${k==="tous"?L0.length:L0.filter(a=>a.th===k).length}</span>`,th===k,`data-act="athm" data-v="${k}"`)).join("")}</div>`:""}
-   ${S.assos===null?loadingTxt:L.length?`<ul class="list" style="--c:var(--i-nat)">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta">${esc(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
+   ${S.assos===null?loadingTxt:L.length?`<ul class="list" style="--c:var(--i-nat)">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta asso-ct">${linkify(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
 
 /* ===== Pêche à pied ===== */
 /* Tailles minimales et quantités autorisées pour la pêche à pied de loisir.

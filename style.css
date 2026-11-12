@@ -916,3 +916,4 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .subnav .seg a,.subnav .seg button{font-weight:600;color:var(--ink);font-size:15px}
 .subnav .seg a[aria-current="true"],.subnav .seg button[aria-current="true"],.subnav .seg button[aria-pressed="true"]{color:var(--accent-ink)}
 .subnav .seg{background:color-mix(in srgb,var(--ink) 9%,transparent)}
+.asso-ct a{font-weight:600;color:var(--accent)}
