@@ -1193,7 +1193,7 @@ function openMenu(){closeOverlays();const c=curView(),g=gActive();
    <p class="menu-group">Pratique</p><ul class="menu-list">${MENU2.map(it).join("")}</ul>
    <p class="menu-group">Affichage</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Thème">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([k,l])=>`<button type="button" aria-pressed="${themeNow()===k}" data-m="theme" data-v="${k}">${l}</button>`).join("")}</div></div>
    <p class="menu-group">Je suis à</p><div style="margin:0 var(--gutter)">${baseSeg().replace(/data-act="base"/g,'data-m="base"')}<p class="menu-ver" style="margin:8px 0 0">Les distances, l'accueil, les transports et la page Pratique sont calculés depuis là.</p></div>
-   <p class="menu-group">Langue · Language</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Langue"><button type="button" aria-pressed="${LANG==="fr"}" data-m="lang" data-v="fr" lang="fr">Français</button><button type="button" aria-pressed="${LANG==="en"}" data-m="lang" data-v="en" lang="en">English</button></div>${LANG==="en"?`<p class="menu-ver" style="margin:8px 0 0">Event and place details come from French sources and stay in French.</p>`:""}</div>
+   <p class="menu-group">Langue · Language</p><div style="margin:0 var(--gutter)"><div class="seg" role="group" aria-label="Langue"><button type="button" aria-pressed="${LANG==="fr"}" data-m="lang" data-v="fr" lang="fr">Français</button><button type="button" aria-pressed="${LANG==="en"}" data-m="lang" data-v="en" lang="en">English</button></div>${LANG==="en"?`<p class="menu-ver" style="margin:8px 0 0">Events, places and clubs are translated from French sources; names stay in French.</p>`:""}</div>
    <p class="menu-ver">Version du site : ${esc(((document.querySelector('meta[name="pp-version"]')||{}).content||"").replace(/^(\d{4})(\d\d)(\d\d)-(\d\d)(\d\d)$/,"$3/$2 à $4h$5"))}</p>
   </div>`;
   v.addEventListener("click",e=>{const b=e.target.closest("[data-m]");
@@ -1362,18 +1362,21 @@ new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empt
 
 /* ===== English : traduction de l'interface (dictionnaire donnees/en.json), les données restent en français ===== */
 var I18N=I18N||{d:null,cache:new Map()};
-function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:t.replace(k,v);}
+function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.data&&I18N.data[k])return t.replace(k,I18N.data[k]);if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:t.replace(k,v);}
   const D=I18N.d;let v=D.exact[k];
   if(v==null){let x=k,hit=false;for(const [re,rep] of D._rules){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
     for(const [re,rep] of D._words){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
     v=hit&&(x.match(/(?<![\p{L}'’])(de|du|des|le|la|les|et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à)(?!\p{L})/gu)||[]).length<1?x:null;}
   I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
 function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
-  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,[lang=fr],.no-tr"))continue;if(/[A-Za-zÀ-ÿ]/.test(n.nodeValue))todo.push(n);}
-  todo.forEach(n=>{const v=trText(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;});
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ]/.test(n.nodeValue))todo.push(n);}
+  /* contenus (événements, lieux, associations) : seulement la traduction entière de donnees/en-data.json, jamais de mot à mot */
+  todo.forEach(n=>{const fr=n.parentElement.closest("[lang=fr]");let v;
+    if(fr){const k=n.nodeValue.replace(/\s+/g," ").trim(),x=I18N.data&&I18N.data[k];v=x?n.nodeValue.replace(k,x):n.nodeValue;}else v=trText(n.nodeValue);
+    if(v!==n.nodeValue)n.nodeValue=v;});
   (root.querySelectorAll?root:document).querySelectorAll("[aria-label],[placeholder],[title]").forEach(e=>{["aria-label","placeholder","title"].forEach(a=>{const v=e.getAttribute(a);if(v){const t=trText(v);if(t!==v)e.setAttribute(a,t);}});});}
 if(LANG==="en"){document.documentElement.lang="en";
-  fetch("donnees/en.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{if(!d)return;
+  Promise.all(["donnees/en.json","donnees/en-data.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null))).then(([d,dd])=>{if(!d)return;I18N.data=dd||{};
     d._rules=(d.rules||[]).map(([a,b])=>{try{return[new RegExp(a,"u"),b];}catch(e){return null;}}).filter(Boolean);
     d._words=Object.entries(d.words||{}).map(([a,b])=>[new RegExp("(?<![\\p{L}\\p{N}])"+a.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![\\p{L}\\p{N}])","gu"),b.replace(/\$/g,"$$$$")]);
     I18N.d=d;trTree(document.body);document.title=trText(document.title);

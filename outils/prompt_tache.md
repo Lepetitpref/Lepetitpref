@@ -57,6 +57,9 @@ Organisation (il y a plus de 600 fiches et 400 associations : on ne peut pas tou
 Si le temps manque, priorité dans cet ordre : agenda et soirées, marchés, horaires des restos et bars, le reste.
 Sources : API Geotrek du Département (fiches de l'office de tourisme : https://admin-rando.loire-atlantique.fr/api/v2/touristiccontent/?format=json), pornic.com, saint-brevin.com, sites des mairies et des établissements. Le champ `cadre` (vue / plage / terrasse) n'est posé que si une source fiable le dit ET que l'adresse est cohérente (Ô 22, place du Marché, n'a pas de vue mer). Pas de téléphone portable de particulier.
 
+## Version anglaise des contenus
+Après avoir mis à jour les événements, les lieux, les associations et le cinéma : `python3 outils/traduire.py manque /tmp/a-traduire.json` liste les textes nouveaux. Traduis-les toi-même en anglais britannique (règles en tête de `outils/traduire.py` : garder les noms propres, les heures « 20h30 », les prix en « €8 » ; « vide-grenier » → « car boot sale », « pêche à pied » → « shore fishing »…), écris un objet {"texte français": "English"} et ajoute-le avec `python3 outils/traduire.py ajouter <fichier>` (il écrit `donnees/en-data.json`). Une traduction manquante n'est pas grave : le texte reste en français.
+
 ## 5. Contrôler et publier
 1. `python3 outils/verifier.py`. S'il sort en erreur, corrige ta saisie et relance ; si tu n'y arrives pas, ne publie rien et réponds « ÉCHEC contrôle : » suivi de l'erreur.
 2. `git config user.name "Le Petit Préf"` ; `git config user.email "noreply@lepetitpref.fr"`. Aucune ligne Co-Authored-By.
