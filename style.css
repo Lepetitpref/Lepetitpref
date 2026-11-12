@@ -929,3 +929,14 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .ev-long-t small{font-size:14px;color:var(--muted)}
 
 .ev-long>.list{border-top:1px solid var(--line);margin:0;padding:0 12px}
+/* formulaire de contact (À propos) */
+.cform{display:grid;gap:12px;margin:8px 0 4px;padding:14px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px}
+.cform-t{margin:0;font-size:15px;line-height:1.45;color:var(--ink)}
+.cform label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--ink)}
+.cform select,.cform textarea,.cform input[type="email"]{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);font:400 16px var(--font-text)}
+.cform textarea{resize:vertical;line-height:1.4}
+.cform .btn{min-height:46px;justify-self:start;padding:0 22px}
+.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cform-s{margin:0;font-size:15px;color:var(--ink)}
+.cform-s:empty{display:none}
+.cform-n{margin:0;font-size:14px;color:var(--muted)}

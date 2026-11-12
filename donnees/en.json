@@ -625,7 +625,17 @@
 "Toutes les adresses": "All places",
 "En ce moment : expos et rendez-vous sur plusieurs semaines": "Right now: exhibitions and events running for several weeks",
 "Corrections, oublis, événements à ajouter : on répond et on corrige en général le lendemain matin.": "Corrections, omissions, events to add: we reply and usually fix things by the next morning.",
-"Une info à corriger ? Écrivez à": "Something to correct? Write to"
+"Une info à corriger ? Écrivez à": "Something to correct? Write to",
+"Une erreur, un oubli, un événement ou une bonne adresse ? Deux lignes suffisent.": "A mistake, something missing, an event or a good address? Two lines are enough.",
+"C'est à propos de": "It's about",
+"Une erreur à corriger": "A mistake to fix",
+"Un événement à ajouter": "An event to add",
+"Une bonne adresse à ajouter": "A good place to add",
+"Autre chose": "Something else",
+"Votre message": "Your message",
+"Votre e-mail (facultatif, pour qu'on vous réponde)": "Your email (optional, so we can reply)",
+"Envoyer": "Send",
+"Ou directement :": "Or directly:"
 },
 "rules": [
 [

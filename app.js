@@ -596,6 +596,18 @@ function assosBlock(){const L0=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]
    ${L0.length>12?`<div class="frow ath" role="group" aria-label="Thème des associations">${ATH.filter(([k])=>k==="tous"||L0.some(a=>a.th===k)).map(([k,l])=>chip(`${l} <span class="chip-count">${k==="tous"?L0.length:L0.filter(a=>a.th===k).length}</span>`,th===k,`data-act="athm" data-v="${k}"`)).join("")}</div>`:""}
    ${S.assos===null?loadingTxt:L.length?`<ul class="list" style="--c:var(--i-nat)">${L.map(a=>row({th:`<span class="thumb t-nat">${ic("people")}</span>`,title:esc(a.name),metaH:meta(esc(a.what||""),esc(townShort(a.town))),more:`${a.desc?`<p>${esc(a.desc)}</p>`:""}${a.regular?`<span class="row-meta">${esc(a.regular)}</span>`:""}${a.forWho?`<span class="row-meta">${esc(a.forWho)}</span>`:""}${a.contact?`<span class="row-meta asso-ct">${linkify(a.contact)}</span>`:""}${a.url?`<span class="row-links"><a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a></span>`:""}`})).join("")}</ul>`:`<p class="empty">Aucune association dans ce rayon.</p>`}`;}
 
+/* formulaire de contact : envoi par Web3Forms si la clé est réglée (WEB3KEY), sinon ouverture d'un e-mail prérempli */
+const WEB3KEY="";
+document.addEventListener("submit",e=>{const f=e.target.closest("#cform");if(!f)return;e.preventDefault();
+  const st=document.getElementById("cformS"),fd=new FormData(f),msg=(fd.get("message")||"").trim();
+  if(msg.length<3){st.textContent="Écrivez quelques mots avant d'envoyer.";return;}
+  if(fd.get("botcheck"))return;
+  const sujet=fd.get("sujet"),mail=(fd.get("email")||"").trim();
+  if(!WEB3KEY){location.href=`mailto:contact@lepetitpref.fr?subject=${encodeURIComponent("Le Petit Préf · "+sujet)}&body=${encodeURIComponent(msg+(mail?"\n\n"+mail:""))}`;st.textContent="Votre application d'e-mail s'ouvre avec le message prêt : il ne reste qu'à envoyer.";return;}
+  const b=f.querySelector("button");b.disabled=true;st.textContent="Envoi…";
+  fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:WEB3KEY,subject:"Le Petit Préf · "+sujet,from_name:"Le Petit Préf",message:msg,email:mail||undefined,page:location.hash})})
+   .then(r=>r.json()).then(r=>{if(r.success){f.reset();st.textContent="Merci, c'est envoyé ! On regarde ça très vite.";}else throw 0;})
+   .catch(()=>{st.innerHTML='Envoi impossible pour le moment. Écrivez à <a href="mailto:contact@lepetitpref.fr">contact@lepetitpref.fr</a>.';}).finally(()=>{b.disabled=false;});});
 /* ===== Pêche à pied ===== */
 /* Tailles minimales et quantités autorisées pour la pêche à pied de loisir.
    À remplir uniquement avec des données vérifiées (réglementation en vigueur pour la Loire-Atlantique).
@@ -1072,7 +1084,16 @@ after.venir=()=>{};
 /* ===== À propos ===== */
 function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="lede">Un site familial et amical, sans publicité, pour savoir ce qui se passe à Préfailles et autour.</p></div></div>
  <div class="block" data-sub="Contact" data-subanchor><h2 class="sec">Contact</h2>
-  ${card({c:"var(--taupe)",ic:I.home,title:"Écrire au Petit Préf",meta:"Une erreur, un oubli, une bonne adresse ?",extra:`<span style="font-size:15px"><a href="mailto:contact@lepetitpref.fr?subject=Le%20Petit%20Pr%C3%A9f" style="font-weight:600">contact@lepetitpref.fr</a><br>Corrections, oublis, événements à ajouter : on répond et on corrige en général le lendemain matin.</span>`})}</div>
+  <form class="cform" id="cform" novalidate>
+   <p class="cform-t"><b>Écrire au Petit Préf</b><br>Une erreur, un oubli, un événement ou une bonne adresse ? Deux lignes suffisent.</p>
+   <label>C'est à propos de<select name="sujet"><option>Une erreur à corriger</option><option>Un événement à ajouter</option><option>Une bonne adresse à ajouter</option><option>Autre chose</option></select></label>
+   <label>Votre message<textarea name="message" rows="4" required placeholder="Ex. : le marché de La Plaine est aussi le dimanche l'été."></textarea></label>
+   <label>Votre e-mail (facultatif, pour qu'on vous réponde)<input type="email" name="email" autocomplete="email" placeholder="vous@exemple.fr"></label>
+   <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+   <button type="submit" class="btn">Envoyer</button>
+   <p class="cform-s" id="cformS" role="status" aria-live="polite"></p>
+   <p class="cform-n">Ou directement : <a href="mailto:contact@lepetitpref.fr?subject=Le%20Petit%20Pr%C3%A9f">contact@lepetitpref.fr</a></p>
+  </form>
  <div class="block" data-sub="Mentions légales"><h2 class="sec">Mentions légales</h2><div class="legal">
   <p><b>Éditeur.</b> Le Petit Préf est un site personnel, gratuit et non commercial, édité par un particulier (éditeur non professionnel au sens de l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004, dont l'identité a été communiquée à l'hébergeur). Directeur de la publication : l'éditeur. Contact : <a href="mailto:contact@lepetitpref.fr">contact@lepetitpref.fr</a>.</p>
   <p><b>Hébergement.</b> Site hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis). Nom de domaine enregistré chez OVH.</p>
