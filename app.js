@@ -525,17 +525,22 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
 /* ===== Manger ===== */
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["bar","Bars"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["courses","Courses"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
-const mkOK=a=>S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
+/* types de cuisine des restaurants, d'après le nom et la description (une adresse peut en avoir plusieurs) */
+const CUIS=[["pizza","Pizzas",/pizz/i,"fork"],["mer","Poisson et fruits de mer",/poisson|fruits de mer|huîtres|moules|crustac|plateau|homard|langoust|plancha/i,"shell"],["snack","Burgers et snacks",/burger|snack|sandwich|fish & chips|hot-?dog|kebab|frites/i,"fork"],["monde","Cuisine du monde",/sushi|asiat|vietnam|chinois|japon|indien|tapas|maroc|libanais|mexic|kebab|wok|créole|italien|thaï/i,"compass"]];
+const hasCuis=(a,k)=>a.cat==="saveurs"&&a.kind==="restaurant"&&(CUIS.find(c=>c[0]===k)||[])[2]?.test(a.n+" "+(a.d||""));
+const mkOK=a=>S.mk.startsWith("t:")?hasCuis(a,S.mk.slice(2)):S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
 /* Restos : grille des types d'adresses (selon la rubrique), comme dans Activités */
 const MSECT=["tous","tables","produits"];
 const MIC={restaurant:"fork",creperie:"fork",bar:"spark",huitres:"shell",poisson:"wave",marche:"basket",boulangerie:"basket",glacier:"drop",producteur:"leaf",cave:"drop",epicerie:"basket",courses:"basket",biscuiterie:"basket"};
 function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.mk;
   const inSec=k=>sec==="tous"||!sec||(sec==="tables"&&(k==="restaurant"||k==="creperie"))||(sec==="produits"&&!["restaurant","creperie","marche","bar"].includes(k));
-  const of=k=>base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
-  const ks=MKINDS.slice(1).filter(([k])=>inSec(k)&&of(k).length);if(ks.length<2&&!cur)return"";
+  const of=k=>k.startsWith("t:")?base.filter(a=>hasCuis(a,k.slice(2))):base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
+  let ks=MKINDS.slice(1).filter(([k])=>inSec(k)&&of(k).length);
+  if(inSec("restaurant")){const cz=CUIS.map(([k,l])=>["t:"+k,l]).filter(([k])=>base.some(a=>hasCuis(a,k.slice(2))));const i=ks.findIndex(([k])=>k==="creperie");ks.splice(i<0?1:i+1,0,...cz);}
+  if(ks.length<2&&!cur)return"";
   const back=S.mkSec&&S.mkSec!==S.mk?S.mkSec:"tous";
   return `<div class="acgrid" role="group" aria-label="Types d'adresses">${ks.map(([k,l])=>{const L=of(k),o=L.filter(a=>openOn(a,od)).length;
-    return `<button type="button" class="actile" data-act="mk" data-v="${cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||"fork")}</span><span class="actile-t"><b>${esc(l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
+    return `<button type="button" class="actile" data-act="mk" data-v="${cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||(CUIS.find(c=>"t:"+c[0]===k)||[])[3]||"fork")}</span><span class="actile-t"><b>${esc(l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
   ${cur?`<p class="ac-back"><button type="button" class="lnk" data-act="mk" data-v="${back}">${ic("left","i-s")}Toutes les adresses</button></p>`:""}`;}
 function vManger(){const t=today(),od=S.openDay||t;
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
@@ -543,7 +548,8 @@ function vManger(){const t=today(),od=S.openDay||t;
   const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre)));
   const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))).length]).filter(x=>x[2]);
   const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
-  const groups=MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
+  const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
+  const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
   return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""}, du plus proche au plus loin`)}
   ${segMg()}
@@ -553,7 +559,7 @@ function vManger(){const t=today(),od=S.openDay||t;
   ${mGrid(base,od)}
   <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage">${[["liste","Liste"],["carte","Carte"]].map(([k,l])=>`<button type="button" aria-pressed="${(S.mView||"liste")===k}" data-act="mview" data-v="${k}">${l}</button>`).join("")}</div></div>
   ${S.mView==="carte"?(S.mapList=list.filter(a=>S.mk==="tous"||mkOK(a)),`<section class="sec" style="padding-top:4px"><div id="mmap" class="mmap" role="region" aria-label="Carte des adresses"></div><div class="map-bar"><button type="button" class="chip" data-act="melocate">${ic("compass","i-s")} Me situer sur la carte</button></div><p class="nav-src">${S.mapList.length} adresse${S.mapList.length>1?"s":""} selon vos filtres. Touchez un point : distance, horaires du jour et itinéraire. Fond de carte © OpenStreetMap.</p></section>`):""}
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${(MSECT.includes(S.mk)?L.slice(0,4):L).map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>${MSECT.includes(S.mk)&&L.length>4?`<button type="button" class="ac-more" data-act="mkgo" data-v="${k}">Voir les ${L.length-4} autres · ${esc(l)}${ic("chev","i-s")}</button>`:""}`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=k.startsWith("t:")?list.filter(a=>hasCuis(a,k.slice(2))):list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${(MSECT.includes(S.mk)?L.slice(0,4):L).map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>${MSECT.includes(S.mk)&&L.length>4?`<button type="button" class="ac-more" data-act="mkgo" data-v="${k}">Voir les ${L.length-4} autres · ${esc(l)}${ic("chev","i-s")}</button>`:""}`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 

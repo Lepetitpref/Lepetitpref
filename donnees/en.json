@@ -635,7 +635,11 @@
 "Votre message": "Your message",
 "Votre e-mail (facultatif, pour qu'on vous réponde)": "Your email (optional, so we can reply)",
 "Envoyer": "Send",
-"Ou directement :": "Or directly:"
+"Ou directement :": "Or directly:",
+"Pizzas": "Pizzas",
+"Poisson et fruits de mer": "Fish and seafood",
+"Burgers et snacks": "Burgers and snacks",
+"Cuisine du monde": "World cuisine"
 },
 "rules": [
 [
