@@ -1265,7 +1265,7 @@ const ACT={
   spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
-  when:(v,el)=>{S.when=v;S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
+  when:(v,el)=>{S.when=v;S.whenKeep=curView()!=="agenda";S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
   cin:v=>{S.cin=v;sset("pp-cin",v);S.cineDay=null;if(curView()==="cine")render();},
   cday:v=>{S.cineDay=v;if(curView()==="cine")render();},
   open:v=>{S.openToday=true;S.openDay=v||today();S.rain=isRain(S.openDay);S.cat="tous";},
@@ -1322,7 +1322,9 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
     [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
-function render(){rail();const v=curView();ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
+function render(){rail();const v=curView();
+  /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */
+  if(v==="agenda"&&S.lastView!=="agenda"){if(!S.whenKeep)S.when="tout";}S.whenKeep=false;S.lastView=v;ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
