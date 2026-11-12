@@ -256,7 +256,7 @@
 "Un peu plus loin :": "A little further away:",
 "Marées et météo, glisse et spots, pêche à pied : tout se déroule sur cette page.": "Tides and weather, board sports and spots, shore fishing: it's all on this one page.",
 "Marées et météo": "Tides and weather",
-"Autre date": "Another date",
+"Autre date": "Other date",
 "Rafales": "Gusts",
 "Houle": "Swell",
 "Touchez une case pour voir la journée heure par heure.": "Tap a box to see the day hour by hour.",
@@ -1691,6 +1691,10 @@
 [
 "^(\\d+) lieux? · (\\d+) ouverts?$",
 "$1 places · $2 open"
+],
+[
+"^Pas de séance publiée (pour cette salle )?le (.+?)( \\(programme connu jusqu'au (.+)\\))?\\. $",
+"No screening published $1on $2."
 ]
 ],
 "words": {

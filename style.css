@@ -909,3 +909,6 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 /* barre de filtres teintée pour qu'elle ressorte (puces blanches dedans) */
 .filters:not(.solo){background:color-mix(in srgb,var(--sel2) 9%,var(--surface));border-color:color-mix(in srgb,var(--sel2) 30%,var(--line))}
 .filters:not(.solo) .chip:not([aria-pressed="true"]){background:var(--surface)}
+/* puce « Autre date » : le champ date est invisible par-dessus la puce (un toucher ouvre le calendrier du téléphone) */
+.chip-sel{position:relative}
+.chip-sel input[type="date"]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;border:0;padding:0}

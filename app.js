@@ -465,7 +465,7 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   return `${pageHead("À faire",S.events===null?"":`Agenda : ${list.length} sortie${list.length>1?"s":""} à venir autour de ${BASE.n}`)}
   ${segAC("agenda")}
   <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(k==="dates"?`${ic("cal","i-s")}${l}`:l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
-   ${S.when==="dates"?(()=>{const [du,au]=whenRange("dates");return `<div class="frow ag-dates"><label>Du <input type="date" data-chg="adu" value="${du}" min="${t}"></label><label>au <input type="date" data-chg="aau" value="${au}" min="${du}"></label></div><p class="ag-dates-n">Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.</p>`;})():""}
+   ${S.when==="dates"?datesRow():""}
    ${frow("frow","Filtres",`${chipSel(S.etype==="tous"?"Toutes les sorties":(ETL[S.etype]||"Toutes les sorties"),S.etype,types.map(([k,l])=>[k,k==="tous"?"Toutes les sorties":l]),"etype","tous")}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
     +(longs.length?`<div class="group"><h2 class="group-title">En cours, toute la saison</h2><span class="group-count">${longs.length}</span></div><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul>`:"")
@@ -489,17 +489,18 @@ const evSoir=e=>{const h=tShort(e.time);if(!h||h.padStart(5,"0")<"18h00")return 
 function ouvertTard(a,t){if(a.soir===false)return false;const h=openOn(a,t);if(h===null||h===false)return h;const m=[...String(h).matchAll(/(\d{1,2})h/g)].map(x=>+x[1]);const e=m.length?m[m.length-1]:24;return e>=22||e<6;}
 function soirOuvert(a){if(a.soir===false)return false;const r=soirRange();let any=false;for(let t=r[0];t<=r[1];t=addDays(t,1)){const h=openOn(a,t);if(h===null)return true;if(h===false)continue;const m=[...String(h).matchAll(/(\d{1,2})h/g)].map(x=>+x[1]);const e=m.length?m[m.length-1]:24;if(e>=22||e<6)any=true;}return any;}
 const NUITS=()=>ACTS.filter(a=>a.kind==="bar"||a.bar||a.kind==="nuit"||/casino/i.test(a.n));
-function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():[t,addDays(t,6)];}
+function datesRow(){const t=today(),[du,au]=whenRange("dates");return `<div class="frow ag-dates"><label>Du <input type="date" data-chg="adu" value="${du}" min="${t}"></label><label>au <input type="date" data-chg="aau" value="${au}" min="${du}"></label></div><p class="ag-dates-n">Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.</p>`;}
+function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():w==="dates"?whenRange("dates"):[t,addDays(t,6)];}
 function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
   const days=range(a,b).map(d=>[d,ld?[]:evOnDay(d).filter(e=>evSoir(e)&&evInZone(e)&&!evIsLong(e)).sort((x,y)=>(isHere(evKm(x),x.town)?0:1)-(isHere(evKm(y),y.town)?0:1)||byTime(x,y))]).filter(([,L])=>L.length);
   const n=days.reduce((s,[,L])=>s+L.length,0);
   const lieux=NUITS().filter(x=>fitsWhere(x.dist??TOWN_KM[x.town],x.town)&&soirOuvert(x)).sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const loin=S.where==="20"||S.where==="30"?[]:NUITS().filter(x=>x.kind==="nuit"||/casino/i.test(x.n)).filter(x=>{const k=x.dist??TOWN_KM[x.town];return !fitsWhere(k,x.town)&&k!=null&&k<=20&&soirOuvert(x);}).sort((p,q)=>(p.dist??99)-(q.dist??99));
   const loinTxt=loin.length?`<p class="soir-loin">Un peu plus loin : ${loin.map(x=>`<b>${esc(x.short||x.n)}</b> (${esc(x.town.replace("-les-Pins",""))}, ${Math.round(x.dist??TOWN_KM[x.town])} km)`).join(", ")}. <button type="button" class="lnk" data-act="where20">Voir jusqu'à 20 km</button></p>`:"";
-  const W=[["soir","Ce soir"],["demain","Demain soir"],["we","Ce week-end"],["7j","7 jours"]];
+  const W=[["soir","Ce soir"],["demain","Demain"],["7j","7 jours"],["dates","Mes dates"]];
   return `${pageHead("À faire",`Soirées : concerts, soirées dansantes, fêtes, spectacles et lieux où sortir le soir, ${zoneTxt()}.`)}
   ${segAC("soirees")}
-  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(l,(S.soirWhen||"7j")===k,`data-act="soirw" data-v="${k}"`)).join(""))}
+  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(k==="dates"?`${ic("cal","i-s")}${l}`:l,(S.soirWhen||"7j")===k,`data-act="soirw" data-v="${k}"`)).join(""))}${S.soirWhen==="dates"?datesRow():""}
    ${frow("frow","Filtres",zoneSel())}</div>
   <div id="s-soirees">${ld?`<section class="sec">${loadingTxt}</section>`:days.length?days.map(([d,L])=>`<div class="day" style="margin:12px var(--gutter) 0 !important"><div class="datecol">${dateLead(d,d===t)}</div><ul class="list">${L.map(e=>evRow(e)).join("")}</ul></div>`).join("")
     :`<section class="sec"><p class="empty">Pas de soirée annoncée ${S.soirWhen==="soir"?"ce soir":"sur cette période"} ${zoneTxt()}. <button type="button" class="lnk" data-act="soirw" data-v="7j">Voir les 7 jours</button></p></section>`}
@@ -508,17 +509,17 @@ function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
 
 /* ===== Ciné ===== */
 function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(c.cinema));const days=[...new Set(list.map(c=>c.date))].sort();
-  const day=days.includes(S.cineDay)?S.cineDay:days[0];
+  const day=S.cineDay&&S.cineDay>=t?S.cineDay:t;
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
   const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} au calendrier">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
   return `${pageHead("À faire","Ciné : toutes les salles, de la plus proche à la plus loin.")}
   ${segAC("cine")}
-  <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
+  <div class="filters">${frow("frow","Jour",`${[t,addDays(t,1)].map(d=>qchip(d===t?"Aujourd'hui":"Demain",d===day,`data-act="cday" data-v="${d}"`)).join("")}<label class="chip chip-q chip-sel" ${day&&day>addDays(t,1)?'aria-pressed="true"':""}>${ic("cal","i-s")}${day&&day>addDays(t,1)?esc(cap(dshort(day))):"Autre date"}<input type="date" data-chg="cday" value="${day||t}" min="${t}"${days.length?` max="${days[days.length-1]}"`:""} aria-label="Choisir une date"></label>`)}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
-  ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:days.length?`
+  ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:films.length?`
    ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}</span></li>`).join("")}</ul><p class="nav-src">Touchez un horaire pour l'ajouter au calendrier de votre téléphone.</p>`,`${films.length} film${films.length>1?"s":""}`)}`
-   :sec("Programme","",`<p class="empty">${S.cin==="pref"?"Pas encore de séance publiée à Préfailles pour les prochains jours.":"Pas de séance publiée pour ce cinéma."} <button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button></p>`)}
+   :sec("Programme","",`<p class="empty">Pas de séance publiée ${S.cin==="tous"?"":"pour cette salle "}le ${esc(dlong(day))}${days.length?` (programme connu jusqu'au ${esc(dshort(days[days.length-1]))})`:""}. ${S.cin==="tous"?"":`<button type="button" class="lnk" data-act="cin" data-v="tous">Voir tous les cinémas</button>`}</p>`)}
   ${sec("Les cinémas","",`<ul class="list">${CINES.map(c=>row({th:`<span class="thumb t-act">${ic("film")}</span>`,title:esc(c.t==="Préfailles"?"Cinéma de Préfailles (L'Atlantique)":c.n),metaH:meta(esc(townShort(c.t)),c.km<=1?"à pied":c.km+" km"),more:`<p>${esc(c.d)}</p><span class="row-meta">${esc(c.a)}</span><span class="row-links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Programme officiel ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.a)}" target="_blank" rel="noopener">Itinéraire ↗</a></span>`})).join("")}</ul>`)}`;}
 
 /* ===== Manger ===== */
@@ -1267,7 +1268,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={cday:v=>{if(v)S.cineDay=v;},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
