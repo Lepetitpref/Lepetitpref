@@ -101,8 +101,7 @@
   "id": "2026-11-05-visite-distillerie-168-pornic",
   "category": "Visite d'entreprise",
   "date": "2026-11-05",
-  "desc": "Visite commentée d'une heure de la distillerie, les mardis, jeudis et certains vendredis jusqu'au 1er décembre, réservation obligatoire (billets aux offices de tourisme).",
-  "end": "2026-12-01",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale, réservation obligatoire (billets aux offices de tourisme).",
   "free": false,
   "kids": false,
   "org": "Distillerie 168",
@@ -117,8 +116,7 @@
   "id": "2026-11-05-visite-guidee-pornic-cite-pornic",
   "category": "Visite guidée",
   "date": "2026-11-05",
-  "desc": "Visite commentée d'1h30 de la vieille ville et du port, le 5 novembre à 10h30 puis les 14, 20 et 28 novembre à 14h30, sur réservation à l'office de tourisme.",
-  "end": "2026-11-28",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port, sur réservation à l'office de tourisme.",
   "free": false,
   "kids": true,
   "org": "Office de tourisme Destination Pornic",
@@ -133,8 +131,7 @@
   "id": "2026-11-06-atelier-entretenir-ses-arbres-pornic",
   "category": "Atelier jardin",
   "date": "2026-11-06",
-  "desc": "Atelier pratique pour apprendre à soigner et tailler ses arbres fruitiers, les 6, 7 et 27 novembre (16h-18h) et le 28 novembre (14h-16h), sur réservation.",
-  "end": "2026-11-28",
+  "desc": "Atelier pratique pour apprendre à soigner et tailler ses arbres fruitiers, sur réservation.",
   "free": false,
   "kids": false,
   "org": "Éco-Domaine La Fontaine",
@@ -165,8 +162,7 @@
   "id": "2026-11-07-atelier-je-cree-mon-pornic",
   "category": "Atelier jardin",
   "date": "2026-11-07",
-  "desc": "Atelier pour apprendre les bases d'un potager en permaculture, les samedis 7 et 28 novembre de 10h à 11h30, sur réservation.",
-  "end": "2026-11-28",
+  "desc": "Atelier pour apprendre les bases d'un potager en permaculture, sur réservation.",
   "free": false,
   "kids": false,
   "org": "Éco-Domaine La Fontaine",
@@ -181,8 +177,7 @@
   "id": "2026-11-07-yoga-tim-eco-domaine-pornic",
   "category": "Yoga",
   "date": "2026-11-07",
-  "desc": "Séances de yoga d'1h30 avec Tim les 7, 15, 21 et 29 novembre et le 5 décembre, de 10h à 11h30, sur réservation.",
-  "end": "2026-12-05",
+  "desc": "Séance de yoga d'1h30 avec Tim, sur réservation.",
   "free": false,
   "kids": false,
   "org": "Éco-Domaine La Fontaine",
@@ -215,8 +210,7 @@
   "ageMin": 6,
   "category": "Balade animaux",
   "date": "2026-11-07",
-  "desc": "Randonnée d'1h30 sur le sentier côtier avec les ânes et le cheval du domaine, les 7 et 21 novembre à 14h et les 14 et 28 novembre à 10h, dès 6 ans accompagné, réservation au 02 51 74 08 08.",
-  "end": "2026-11-28",
+  "desc": "Randonnée d'1h30 sur le sentier côtier avec les ânes et le cheval du domaine, dès 6 ans accompagné, réservation au 02 51 74 08 08.",
   "free": false,
   "kids": true,
   "org": "Éco-Domaine La Fontaine",
@@ -432,14 +426,31 @@
   "ageMin": 0,
   "category": "Contes",
   "date": "2026-11-12",
-  "desc": "Spectacle de contes du Mois des tout-petits.",
+  "desc": "Contes, chansons et instruments envoûtants avec Anne Tessier pour les 0–3 ans; entrée libre sur réservation.",
   "kids": true,
-  "place": "",
+  "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
   "time": "10h30",
   "title": "Contes pour les tout-petits : Nuage blanc",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-de-contes-pour-le-mois-des-tout-petits-nuage-blanc-2726723.html"
+  "url": "https://www.pornic.fr/evenement/nuage-blanc/",
+  "org": "Médiathèque de Pornic (Mois des tout-petits)",
+  "free": true
+ },
+ {
+  "id": "2026-11-12-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-12",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
  },
  {
   "id": "2026-11-12-yoga-bebe-plaine",
@@ -521,6 +532,21 @@
   "url": "https://en.pornic.com/visite-guidee-35-ans-de-la-thalassotherapie-bien-etre-d-antan-les-bains-de-mer-et-les-sources-ferrugineuses-du-19-siecle-pornic.html"
  },
  {
+  "id": "2026-11-13-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-13",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "16h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
   "id": "2026-11-13-bourse-jouets-poulbots-brevin",
   "category": "Bourse aux jouets",
   "date": "2026-11-13",
@@ -552,13 +578,17 @@
   "id": "2026-11-13-moliere-pornic",
   "category": "Théâtre",
   "date": "2026-11-13",
-  "desc": "Pièce de théâtre autour de Molière.",
-  "place": "",
+  "desc": "Trois comédiens et un musicien traversent la vie et l'œuvre de Molière (compagnie Grand Tigre), dès 10 ans; 19,50 €, réduit 16,50 €, moins de 25 ans 6,50 €, billets sur Billetweb, à l'office de tourisme et à l'Espace culturel Leclerc.",
+  "place": "Théâtre Saint-Gilles, rue de Verdun",
   "time": "20h30",
   "title": "Théâtre : M.O.L.I.E.R.E.",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/theatre-moliere-2689007.html"
+  "url": "https://www.pornic.fr/evenement/m-o-l-i-e-r-e/",
+  "org": "Ville de Pornic",
+  "free": false,
+  "kids": false,
+  "ageMin": 10
  },
  {
   "id": "2026-11-13-johnny-brevin",
@@ -653,6 +683,22 @@
   "url": "https://www.pornic.com/spectacle-pour-le-mois-des-tout-petits-nuage-blanc-st-michel-chef-chef.html"
  },
  {
+  "id": "2026-11-14-balade-anes-sentier-douaniers-pornic",
+  "ageMin": 6,
+  "category": "Balade animaux",
+  "date": "2026-11-14",
+  "desc": "Randonnée d'1h30 sur le sentier côtier avec les ânes et le cheval du domaine, dès 6 ans accompagné, réservation au 02 51 74 08 08.",
+  "free": false,
+  "kids": true,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine, chemin des Noëlles",
+  "time": "10h–11h30",
+  "title": "Balade sur le sentier des douaniers avec ânes et cheval",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/randonnee-sur-le-sentier-des-douaniers-avec-nos-anes-et-notre-cheval-pornic.html"
+ },
+ {
   "id": "2026-11-14-sainte-cecile-plaine",
   "category": "Défilé musical",
   "date": "2026-11-14",
@@ -728,6 +774,21 @@
   "url": "https://www.saint-brevin.com/exposition-de-champignons.html"
  },
  {
+  "id": "2026-11-14-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-11-14",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
+ },
+ {
   "id": "2026-11-14-loups-garous-mediatheque-pornic",
   "title": "Jeu : Les Loups-Garous de Thiercelieux à la médiathèque",
   "date": "2026-11-14",
@@ -778,13 +839,16 @@
   "id": "2026-11-14-akim-omiri-pornic",
   "category": "Humour",
   "date": "2026-11-14",
-  "desc": "Spectacle d'humour.",
-  "place": "Casino Partouche",
+  "desc": "Deuxième spectacle de l'humoriste, qui passe au crible réseaux sociaux, cancel culture et complotisme; à partir de 30 €.",
+  "place": "Casino de Pornic, rue du Canal",
   "time": "20h30",
   "title": "Akim Omiri – « Contexte »",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/akim-omiri---contexte---tournee-2276504.html"
+  "url": "https://casino-pornic.partouche.com/spectacles/10999/akim-omiri-contexte",
+  "org": "Casino de Pornic",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-15-vide-grenier-coques-pornic",
@@ -798,6 +862,21 @@
   "town": "Pornic",
   "type": "brocante",
   "url": "https://brocabrac.fr/44/pornic/1402692-vide-grenier-des-coques-en-bois"
+ },
+ {
+  "id": "2026-11-15-yoga-tim-eco-domaine-pornic",
+  "category": "Yoga",
+  "date": "2026-11-15",
+  "desc": "Séance de yoga d'1h30 (postures, respiration, relaxation), 15 personnes maximum, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "10h–11h30",
+  "title": "Yoga avec Tim à l'Éco-Domaine",
+  "town": "Pornic",
+  "type": "sport",
+  "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
  },
  {
   "id": "2026-11-15-dansant-tendanse-brevin",
@@ -935,6 +1014,21 @@
   "url": "https://www.prefailles.fr/agenda/port-meleu-parlons-en/"
  },
  {
+  "id": "2026-11-17-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-17",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
   "id": "2026-11-17-jeux-sapin-plaine",
   "category": "Jeux de société",
   "date": "2026-11-17",
@@ -1031,13 +1125,16 @@
   "id": "2026-11-18-conf-peinture-pornic",
   "category": "Conférence",
   "date": "2026-11-18",
-  "desc": "Conférence d'histoire de l'art.",
-  "place": "",
+  "desc": "Christian Davy retrace 25 000 ans de peinture murale, de la préhistoire à l'art urbain; 5 €, gratuit pour les adhérents.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
   "time": "18h",
   "title": "Conférence : 25 000 ans de peinture murale en Pays de la Loire",
   "town": "Pornic",
   "type": "expo",
-  "url": "https://www.fest.fr/conference-25-000-ans-de-peinture-murale-dans-le-pdl-2704858.html"
+  "url": "https://www.pornic.fr/evenement/25-000-ans-de-peinture-murale-dans-les-pays-de-la-loire/",
+  "org": "Pornic Histoire",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-18-conf-reves-pornic",
@@ -1097,6 +1194,36 @@
   "url": "https://unidivers.fr/event/cine-conference-australie-saint-brevin-les-pins-loire-atlantique-2026-11-19/"
  },
  {
+  "id": "2026-11-19-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-19",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
+  "id": "2026-11-19-cyclistes-brillez-lycee-pornic",
+  "title": "Cyclistes, brillez ! (lycée du Pays de Retz)",
+  "date": "2026-11-19",
+  "time": "11h–14h",
+  "place": "Lycée du Pays de Retz",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Vélo",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Stand de Pornic agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux vélos en Retz, équipement offert et conseils pour rouler de nuit; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez-2/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-19-atelier-ecriture-bibliotheque-bernerie",
   "category": "Atelier d'écriture",
   "date": "2026-11-19",
@@ -1139,19 +1266,6 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "atelier",
   "url": "https://www.saint-brevin.com/mois-des-tout-petits-pate-a-patouiller.html"
- },
- {
-  "id": "2026-11-20-eolevoce-pornic",
-  "category": "Spectacle",
-  "date": "2026-11-20",
-  "desc": "",
-  "end": "2026-11-22",
-  "place": "",
-  "time": "",
-  "title": "Spectacle Éolevoce : Nouveau Souffle",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-eolevoce-nouveau-souffle-2605663.html"
  },
  {
   "id": "2026-11-20-bien-vieillir-prefailles",
@@ -1216,6 +1330,21 @@
   "url": "https://www.saint-brevin.com/jardinez-malin-1.html"
  },
  {
+  "id": "2026-11-20-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-11-20",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
+ },
+ {
   "id": "2026-11-20-conference-histoire-ecriture-moutiers",
   "category": "Conférence",
   "date": "2026-11-20",
@@ -1263,13 +1392,16 @@
   "id": "2026-11-20-soiree-dansante-bernerie",
   "category": "Soirée dansante",
   "date": "2026-11-20",
-  "desc": "Soirée dansante.",
-  "place": "",
+  "desc": "Rock, salsa, bachata, swing, tango, danses de salon et en ligne de 19h à 23h; 10 € avec un plat et une boisson à partager (sinon 8 € de plus), dress code rouge, rose ou orange.",
+  "place": "Salle des fêtes, rue Jeanne d'Arc",
   "time": "19h",
-  "title": "Soirée dansante",
+  "title": "Soirée dansante Éveil Multidanses",
   "town": "La Bernerie-en-Retz",
   "type": "fete",
-  "url": "https://www.fest.fr/soiree-dansante-2690648.html"
+  "url": "https://mairie-labernerie.fr/evenement/soiree-dansante-eveil-multidanses/",
+  "org": "Éveil Multidanses",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-20-soiree-zen-aquajade-brevin",
@@ -1318,6 +1450,21 @@
   "url": "https://www.fest.fr/cine-echange-premieres-lunes-2715329.html"
  },
  {
+  "id": "2026-11-20-eolevoce-pornic",
+  "category": "Spectacle",
+  "date": "2026-11-20",
+  "desc": "Nouveau show d'Éolevoce : 130 choristes et 8 musiciens reprennent la chanson française récente (aussi les 21 et 22/11); 12 à 28 €, gratuit moins de 5 ans.",
+  "place": "Casino Partouche, rue du Canal",
+  "time": "20h30",
+  "title": "Spectacle Éolevoce : Nouveau Souffle",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
+  "org": "Éolevoce",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-11-20-concert-patrons-brevin",
   "category": "Concert",
   "date": "2026-11-20",
@@ -1336,13 +1483,16 @@
   "id": "2026-11-20-concertino-ferriere-pornic",
   "category": "Concert",
   "date": "2026-11-20",
-  "desc": "Percussions classiques dans la série des Concertinos.",
-  "place": "",
+  "desc": "Concert-apéritif de la percussionniste Adélaïde Ferrière (marimba), Victoire de la musique classique 2026; 26 €, 5 € moins de 18 ans et étudiants de moins de 25 ans.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
   "time": "20h30",
   "title": "Concertino : Adélaïde Ferrière",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/concertino-adelaide-ferriere-2688995.html"
+  "url": "https://www.pornic.fr/evenement/adelaide-ferriere-marimba-et-percussions/",
+  "org": "Musica Pornic",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-20-theatre-forum-violences-pornic",
@@ -1432,13 +1582,46 @@
   "id": "2026-11-21-self-defense-bernerie",
   "category": "Stage",
   "date": "2026-11-21",
-  "desc": "Stage d'initiation à la self-défense.",
-  "place": "",
+  "desc": "Matinée d'initiation à la self-défense, de 10h30 à 12h, pour acquérir des réflexes simples et efficaces.",
+  "place": "Salle Jean Varnier, rue de Prigny",
   "time": "10h30",
   "title": "Stage de self-défense",
-  "town": "La Bernerie-en-Retz",
+  "town": "Les Moutiers-en-Retz",
   "type": "atelier",
-  "url": "https://www.fest.fr/stage-de-self-defense-2685596.html"
+  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/stage-self-defense/",
+  "org": "Karaté Club les Moutiers",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-yoga-tim-eco-domaine-pornic",
+  "category": "Yoga",
+  "date": "2026-11-21",
+  "desc": "Séance de yoga d'1h30 (postures, respiration, relaxation), 15 personnes maximum, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "10h–11h30",
+  "title": "Yoga avec Tim à l'Éco-Domaine",
+  "town": "Pornic",
+  "type": "sport",
+  "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
+ },
+ {
+  "id": "2026-11-21-portes-ouvertes-sablons-pornic",
+  "title": "Portes ouvertes de l'école des Sablons",
+  "date": "2026-11-21",
+  "time": "10h–12h",
+  "place": "École des Sablons, rue des Terres Nobles",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Portes ouvertes",
+  "org": "École des Sablons",
+  "desc": "Les familles découvrent l'école, ses locaux et l'équipe éducative; contact 02 40 21 32 54.",
+  "url": "https://www.pornic.fr/evenement/lecole-des-sablons-ouvre-ses-portes-au-public/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-11-21-salon-bien-etre-plaine",
@@ -1515,6 +1698,22 @@
   "url": "https://www.pornic.com/marche-de-noel-a-la-residence-saint-gildas-pornic.html"
  },
  {
+  "id": "2026-11-21-balade-anes-sentier-douaniers-pornic",
+  "ageMin": 6,
+  "category": "Balade animaux",
+  "date": "2026-11-21",
+  "desc": "Randonnée d'1h30 sur le sentier côtier avec les ânes et le cheval du domaine, dès 6 ans accompagné, réservation au 02 51 74 08 08.",
+  "free": false,
+  "kids": true,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine, chemin des Noëlles",
+  "time": "14h–15h30",
+  "title": "Balade sur le sentier des douaniers avec ânes et cheval",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/randonnee-sur-le-sentier-des-douaniers-avec-nos-anes-et-notre-cheval-pornic.html"
+ },
+ {
   "id": "2026-11-22-marche-noel-st-michel",
   "category": "Marché",
   "date": "2026-11-21",
@@ -1574,6 +1773,21 @@
   "url": "https://www.saint-brevin.com/spectacle-en-pleine-tempete.html"
  },
  {
+  "id": "2026-11-21-eolevoce-pornic",
+  "title": "Spectacle Éolevoce : Nouveau Souffle",
+  "date": "2026-11-21",
+  "time": "20h30",
+  "place": "Casino Partouche, rue du Canal",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Show musical",
+  "org": "Éolevoce",
+  "desc": "130 choristes et 8 musiciens reprennent la chanson française récente; 12 à 28 €, gratuit moins de 5 ans, billets en ligne, à l'Espace culturel Leclerc et dans les offices de tourisme.",
+  "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-11-21-jardinez-malin-distribution-gratuite-brevin",
   "category": "Environnement / jardin",
   "date": "2026-11-21",
@@ -1620,6 +1834,22 @@
   "url": "https://www.jds.fr/saint-nazaire/manifestations/yoga-et-relaxation-meditation-1829984_A"
  },
  {
+  "id": "2026-11-22-gadoue-pornic",
+  "category": "Spectacle enfants",
+  "date": "2026-11-22",
+  "desc": "Un jongleur en costume sur une piste de boue blanche (Le Jardin des Délices), 30 min, dès 4 ans; 7 €, réduit 4 €, moins de 25 ans 3 €.",
+  "kids": true,
+  "place": "Salle Joséphine Baker, rue Sainte-Victoire",
+  "time": "11h et 15h",
+  "title": "Spectacle jeune public : Gadoue",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.fr/evenement/gadoue/",
+  "org": "Ville de Pornic",
+  "free": false,
+  "ageMin": 4
+ },
+ {
   "id": "2026-11-22-dansant-a4-brevin",
   "category": "Thé dansant",
   "date": "2026-11-22",
@@ -1653,26 +1883,31 @@
   "id": "2026-11-22-dimanche-theatre-bernerie",
   "category": "Théâtre",
   "date": "2026-11-22",
-  "desc": "Après-midi théâtre.",
-  "place": "",
+  "desc": "Tragi-comédie de Samuel Valensi et Paul-Eloi Forget : une maire rurale face à un projet d'antennes-relais, de 15h à 16h30; 5 €.",
+  "place": "Salle Jean Varnier, 31 bis rue de Prigny",
   "time": "15h",
-  "title": "Un dimanche au théâtre",
-  "town": "La Bernerie-en-Retz",
+  "title": "Un dimanche au théâtre : « Coupures »",
+  "town": "Les Moutiers-en-Retz",
   "type": "spectacle",
-  "url": "https://www.fest.fr/un-dimanche-au-theatre-2667288.html"
+  "url": "https://www.pornic.com/un-dimanche-au-theatre-1-1.html",
+  "org": "Compagnies Choreia et Bel Viaggio",
+  "free": false,
+  "kids": false
  },
  {
-  "id": "2026-11-22-gadoue-pornic",
-  "category": "Spectacle enfants",
+  "id": "2026-11-22-eolevoce-pornic",
+  "title": "Spectacle Éolevoce : Nouveau Souffle",
   "date": "2026-11-22",
-  "desc": "Spectacle jeune public.",
-  "kids": true,
-  "place": "",
-  "time": "15h",
-  "title": "Spectacle jeune public : Gadoue",
+  "time": "16h",
+  "place": "Casino Partouche, rue du Canal",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-gadoue-2680686.html"
+  "category": "Show musical",
+  "org": "Éolevoce",
+  "desc": "Dernière des trois représentations : 130 choristes et 8 musiciens; 12 à 28 €, gratuit moins de 5 ans.",
+  "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-11-22-auto-retro-pornic",
@@ -1687,6 +1922,21 @@
   "town": "Pornic",
   "type": "expo",
   "url": "https://www.fest.fr/auto-retro-rassemblement-de-vehicules-anciens-2431137.html"
+ },
+ {
+  "id": "2026-11-22-salon-producteurs-sainte-marie-pornic",
+  "title": "Salon des producteurs et savoir-faire du Pays de Retz",
+  "date": "2026-11-22",
+  "time": "9h30–13h30",
+  "place": "Salle polyvalente de Sainte-Marie",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Salon",
+  "org": "Confrérie de la Tête de Veau",
+  "desc": "5e édition : producteurs, artisans et savoir-faire du territoire à rencontrer; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/salon-des-producteurs-et-savoir-faire-du-pays-de-retz/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-11-22-vide-grenier-chauve",
@@ -1779,6 +2029,21 @@
   "kids": false
  },
  {
+  "id": "2026-11-24-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-24",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
   "id": "2026-11-24-visite-interieur-chateau-pornic",
   "ageMin": 10,
   "category": "Visite guidée",
@@ -1856,12 +2121,12 @@
  },
  {
   "id": "2026-11-25-spectacle-tout-petits-bocal-pornic",
-  "ageMax": 6,
+  "ageMax": 3,
   "ageMin": 0,
   "category": "Spectacle jeune public",
   "date": "2026-11-25",
-  "desc": "Deux danseuses-chanteuses mêlent voix, textes et percussions sur objets du quotidien dans un spectacle poétique pour petits et grands, renseignements au 02 40 82 65 90.",
-  "free": false,
+  "desc": "Deux danseuses-chanteuses (compagnie Icidence) mêlent voix, textes et percussions d'objets du quotidien, pour les 0–3 ans; entrée libre sur réservation.",
+  "free": true,
   "kids": true,
   "org": "Médiathèque de Pornic (Mois des tout-petits)",
   "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
@@ -1869,7 +2134,7 @@
   "title": "Spectacle tout-petits : Bocal",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-pour-le-mois-des-tout-petits-bocal-2726754.html"
+  "url": "https://www.pornic.fr/evenement/bocal/"
  },
  {
   "id": "2026-11-25-mercredi-bricole-origami-pornic",
@@ -1886,18 +2151,6 @@
   "town": "Pornic",
   "type": "atelier",
   "url": "https://en.pornic.com/atelier-mon-mercredi-bricole-deco-de-noel-en-origami-pornic.html"
- },
- {
-  "id": "2026-11-26-mister-fred-pornic",
-  "category": "Spectacle",
-  "date": "2026-11-26",
-  "desc": "Spectacle (aussi le 14 janvier 2027).",
-  "place": "",
-  "time": "",
-  "title": "Spectacle de Mister Fred : Connexions",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-de-mister-fred-connexions-2724329.html"
  },
  {
   "id": "2026-11-26-bus-numerique-prefailles",
@@ -1932,6 +2185,21 @@
   "url": "https://www.pornic.com/atelier-rencontre-mamans-et-bebes-la-plaine-sur-mer.html"
  },
  {
+  "id": "2026-11-26-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-11-26",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
   "id": "2026-11-26-soiree-zen-aquacentre-pornic",
   "title": "Soirée zen à l'Aquacentre",
   "date": "2026-11-26",
@@ -1943,6 +2211,36 @@
   "org": "Aquacentre (Pornic agglo Pays de Retz)",
   "desc": "De 18h à 22h, saunas, hammam et jacuzzis éphémères, prestations bien-être (relaxation, massage, shiatsu, aqua-yoga) et buffet ; 15 € (bassins + détente + buffet) ou 20 € avec une prestation ; réservé aux adultes, réservations à partir du 16 novembre au 02 40 82 32 33.",
   "url": "https://www.pornicagglo.fr/evenement/soiree-zen-detendez-vous-a-laquacentre/",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-conseil-municipal-bernerie",
+  "title": "Conseil municipal n°7",
+  "date": "2026-11-26",
+  "time": "19h",
+  "place": "",
+  "town": "La Bernerie-en-Retz",
+  "type": "vielocale",
+  "category": "Conseil municipal",
+  "org": "Mairie de La Bernerie-en-Retz",
+  "desc": "Séance publique du conseil municipal.",
+  "url": "https://mairie-labernerie.fr/evenement/conseil-municipal-n7/",
+  "free": true,
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-mister-fred-pornic",
+  "category": "Magie / mentalisme",
+  "date": "2026-11-26",
+  "desc": "Spectacle de magie pour adultes mêlant mentalisme, humour et participation du public (aussi le 14 janvier 2027); 20 €, réduit 15 €, réservation sur Billetweb.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
+  "time": "20h30",
+  "title": "Spectacle de Mister Fred : Connexions",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.fr/evenement/connexions/",
+  "org": "Mister Fred",
   "free": false,
   "kids": false
  },
@@ -2035,6 +2333,21 @@
   "url": "https://www.pornic.fr/evenement/rwanda-le-paradis-retrouve/",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-11-27-atelier-arbres-fruitiers-pornic",
+  "category": "Atelier jardin",
+  "date": "2026-11-27",
+  "desc": "Atelier pratique de 2 h pour apprendre à soigner et tailler ses arbres fruitiers, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "16h–18h",
+  "title": "Atelier : entretenir ses arbres fruitiers",
+  "town": "Pornic",
+  "type": "atelier",
+  "url": "https://www.pornic.com/atelier-prendre-soin-de-ses-arbres-fruitiers-pornic.html"
  },
  {
   "id": "2026-11-27-conference-livre-comme-compagnon-moutiers",
@@ -2140,6 +2453,21 @@
   "kids": false
  },
  {
+  "id": "2026-11-27-nuit-devouement-benevolat-pornic",
+  "title": "Nuit départementale du dévouement et du bénévolat",
+  "date": "2026-11-27",
+  "time": "20h",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Cérémonie",
+  "org": "S.E.D. Pays de la Loire",
+  "desc": "22e édition : bénévoles et associations récompensés, en présence du champion de ski nautique Patrice Martin, intermèdes musicaux; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/nuit-departementale-du-devouement-et-du-benevolat-2/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-27-sous-le-sapin-brevin",
   "category": "Théâtre",
   "date": "2026-11-27",
@@ -2155,13 +2483,17 @@
   "id": "2026-11-27-voltige-pornic",
   "category": "Théâtre",
   "date": "2026-11-27",
-  "desc": "Pièce de théâtre.",
-  "place": "",
+  "desc": "Entre théâtre et danse, le destin de Dorine Bourneton, première femme paraplégique pilote de voltige, dès 12 ans; 19,50 €, réduit 16,50 €, moins de 25 ans 6,50 €.",
+  "place": "Théâtre Saint-Gilles, rue de Verdun",
   "time": "20h30",
   "title": "Théâtre : Voltige",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/theatre-voltige-2688996.html"
+  "url": "https://www.pornic.fr/evenement/voltige/",
+  "org": "Ville de Pornic",
+  "free": false,
+  "kids": false,
+  "ageMin": 12
  },
  {
   "id": "2026-11-28-marche-noel-st-michel",
@@ -2256,18 +2588,51 @@
  },
  {
   "id": "2026-11-28-reves-histoires-pornic",
-  "ageMax": 6,
+  "ageMax": 3,
   "ageMin": 0,
   "category": "Contes",
   "date": "2026-11-28",
-  "desc": "Spectacle de clôture du Mois des tout-petits.",
+  "desc": "Une histoire sans cesse détournée par des bruits et des odeurs curieuses, avec Thérèse Fournier et Marie Quinquenel, pour les 0–3 ans; entrée libre sur réservation.",
   "kids": true,
-  "place": "",
+  "place": "Médiathèque Armel de Wismes, 35 rue Tartifume",
   "time": "10h45",
   "title": "Spectacle tout-petits : Des rêves plein les histoires",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-pour-le-mois-des-tout-petits-des-reves-plein-les-histoires-2726738.html"
+  "url": "https://www.pornic.fr/evenement/des-reves-plein-les-histoires/",
+  "free": true,
+  "org": "Médiathèque de Pornic (Mois des tout-petits)"
+ },
+ {
+  "id": "2026-11-28-atelier-potager-permaculture-pornic",
+  "category": "Atelier jardin",
+  "date": "2026-11-28",
+  "desc": "Matinée pour découvrir les bases d'un potager en permaculture avec un paysan-permaculteur, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "10h–11h30",
+  "title": "Atelier : je crée mon potager en permaculture",
+  "town": "Pornic",
+  "type": "atelier",
+  "url": "https://www.pornic.com/atelier-je-fais-mon-potager-en-permaculture-a-l-eco-domaine-la-fontaine-pornic.html"
+ },
+ {
+  "id": "2026-11-28-balade-anes-sentier-douaniers-pornic",
+  "ageMin": 6,
+  "category": "Balade animaux",
+  "date": "2026-11-28",
+  "desc": "Randonnée d'1h30 sur le sentier côtier avec les ânes et le cheval du domaine, dès 6 ans accompagné, réservation au 02 51 74 08 08.",
+  "free": false,
+  "kids": true,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine, chemin des Noëlles",
+  "time": "10h–11h30",
+  "title": "Balade sur le sentier des douaniers avec ânes et cheval",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/randonnee-sur-le-sentier-des-douaniers-avec-nos-anes-et-notre-cheval-pornic.html"
  },
  {
   "id": "2026-11-28-conversation-anglais-plaine",
@@ -2299,6 +2664,36 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
   "url": "https://www.saint-brevin.com/marche-de-noel-de-l-ecole-de-la-pierre-attelee.html"
+ },
+ {
+  "id": "2026-11-28-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-11-28",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
+ },
+ {
+  "id": "2026-11-28-atelier-arbres-fruitiers-pornic",
+  "category": "Atelier jardin",
+  "date": "2026-11-28",
+  "desc": "Atelier pratique de 2 h pour apprendre à soigner et tailler ses arbres fruitiers, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "14h–16h",
+  "title": "Atelier : entretenir ses arbres fruitiers",
+  "town": "Pornic",
+  "type": "atelier",
+  "url": "https://www.pornic.com/atelier-prendre-soin-de-ses-arbres-fruitiers-pornic.html"
  },
  {
   "id": "2026-11-26-noel-au-bourg-bernerie",
@@ -2349,13 +2744,17 @@
   "id": "2026-11-28-cecile-lacharme-pornic",
   "category": "Concert",
   "date": "2026-11-28",
-  "desc": "",
-  "place": "Amphithéâtre Thomas Narcejac",
+  "desc": "Concert immersif de violoncelle et pédales d'effets, spatialisé, dès 8 ans, 1h15; 15 €, réduit 11 €.",
+  "place": "Amphithéâtre Thomas Narcejac, rue Rostislaw Loukianoff",
   "time": "20h30",
   "title": "Concert : Cécile Lacharme",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/concert-cecile-lacharme-2665021.html"
+  "url": "https://www.pornic.fr/evenement/cecile-lacharme-concert-immersif/",
+  "org": "Pornic agglo Pays de Retz",
+  "free": false,
+  "kids": false,
+  "ageMin": 8
  },
  {
   "id": "2026-11-28-fest-noz-telethon-bernerie",
@@ -2444,6 +2843,21 @@
   "url": "https://brocabrac.fr/44/chauve/1417143-marche-de-noel-du-pot-aux-fleurs",
   "free": true,
   "kids": false
+ },
+ {
+  "id": "2026-11-29-yoga-tim-eco-domaine-pornic",
+  "category": "Yoga",
+  "date": "2026-11-29",
+  "desc": "Séance de yoga d'1h30 (postures, respiration, relaxation), 15 personnes maximum, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "10h–11h30",
+  "title": "Yoga avec Tim à l'Éco-Domaine",
+  "town": "Pornic",
+  "type": "sport",
+  "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
  },
  {
   "id": "2026-11-29-marche-noel-moutiers",
@@ -2566,6 +2980,36 @@
   "url": "https://en.pornic.com/exposition-bicentenaire-de-la-photographie-la-bernerie-en-retz.html"
  },
  {
+  "id": "2026-12-01-visite-distillerie-168-pornic",
+  "category": "Visite d'entreprise",
+  "date": "2026-12-01",
+  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
+  "free": false,
+  "kids": false,
+  "org": "Distillerie 168",
+  "place": "Distillerie 168, Les Réautés",
+  "time": "11h",
+  "title": "Visite de la Distillerie 168",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
+ },
+ {
+  "id": "2026-12-01-cyclistes-brillez-gare-pornic",
+  "title": "Cyclistes, brillez ! (place de la Gare)",
+  "date": "2026-12-01",
+  "time": "17h30–19h30",
+  "place": "Place de la Gare",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Vélo",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Stand de Pornic agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux vélos en Retz, équipement offert et conseils pour rouler de nuit; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez-3/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-02-contes-noel-gourmands-plaine",
   "title": "Contes de Noël gourmands",
   "date": "2026-12-02",
@@ -2625,6 +3069,21 @@
   "town": "Saint-Michel-Chef-Chef",
   "type": "fete",
   "url": "https://www.fest.fr/lancement-des-illuminations-de-noel-de-saint-michel-chef-chef-2734544.html"
+ },
+ {
+  "id": "2026-12-03-cyclistes-brillez-lycee-pornic",
+  "title": "Cyclistes, brillez ! (lycée, rue Georges Charpak)",
+  "date": "2026-12-03",
+  "time": "11h–14h",
+  "place": "Lycée, rue Georges Charpak",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Vélo",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Stand de Pornic agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux vélos en Retz, équipement offert et conseils pour rouler de nuit; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez-5/",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2026-12-03-apres-midi-dansant-canotier-brevin",
@@ -2790,15 +3249,19 @@
  },
  {
   "id": "2026-12-04-elu-martinez-pornic",
-  "category": "Spectacle",
+  "category": "Magie / humour",
   "date": "2026-12-04",
-  "desc": "Spectacle à Pornic.",
-  "place": "",
+  "desc": "Magie, mentalisme et humour avec François Martinez, 1h15, dès 7 ans; 19,50 €, réduit 16,50 €, moins de 25 ans 6,50 €.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
   "time": "20h30",
   "title": "Spectacle : L'élu, de François Martinez",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-l-elu-de-francois-martinez-2732624.html"
+  "url": "https://www.pornic.fr/evenement/lelu/",
+  "org": "Ville de Pornic",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
  },
  {
   "id": "2026-12-05-noel-chateau-pornic",
@@ -2830,6 +3293,21 @@
   "url": "https://www.pornic.com/animations-au-profit-du-telethon-chauve.html",
   "free": false,
   "kids": true
+ },
+ {
+  "id": "2026-12-05-yoga-tim-eco-domaine-pornic",
+  "category": "Yoga",
+  "date": "2026-12-05",
+  "desc": "Séance de yoga d'1h30 (postures, respiration, relaxation), 15 personnes maximum, sur réservation.",
+  "free": false,
+  "kids": false,
+  "org": "Éco-Domaine La Fontaine",
+  "place": "Éco-Domaine La Fontaine",
+  "time": "10h–11h30",
+  "title": "Yoga avec Tim à l'Éco-Domaine",
+  "town": "Pornic",
+  "type": "sport",
+  "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
  },
  {
   "id": "2026-12-05-marche-noel-plaine",
@@ -2874,6 +3352,21 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://en.pornic.com/guided-tour-pornic-medieval-maritime-city-pornic.html"
+ },
+ {
+  "id": "2026-12-05-marche-noel-residence-soleil-bernerie",
+  "title": "Marché de Noël de la Résidence du Soleil",
+  "date": "2026-12-05",
+  "time": "14h–18h",
+  "place": "Résidence du Soleil",
+  "town": "La Bernerie-en-Retz",
+  "type": "fete",
+  "category": "Marché de Noël",
+  "org": "Résidence du Soleil",
+  "desc": "Créations, idées-cadeaux et décorations de Noël dans une ambiance conviviale.",
+  "url": "https://mairie-labernerie.fr/evenement/marche-de-noel-residence-du-soleil/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-05-traversee-givree-pornic",
@@ -3227,13 +3720,16 @@
   "id": "2026-12-09-conf-rue-source-pornic",
   "category": "Conférence",
   "date": "2026-12-09",
-  "desc": "Conférence d'histoire locale sur les commerces et entreprises de la rue de la Source.",
-  "place": "Espace culturel du Val Saint-Martin",
+  "desc": "Guy Bonnamy raconte les commerces, entreprises et habitants de la rue de la Source dans les années 1950-60; 5 €, gratuit pour les adhérents.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
   "time": "18h",
   "title": "Conférence : la vie sociale rue de la Source (années 1950-60)",
   "town": "Pornic",
   "type": "expo",
-  "url": "https://www.fest.fr/conference-la-vie-sociale-rue-de-la-source-ses-commerces-ses-entreprises-da-2704859.html"
+  "url": "https://www.pornic.fr/evenement/la-vie-sociale-rue-de-la-source-ses-commerces-ses-entreprises-dans-les-annees-1950-60/",
+  "org": "Pornic Histoire",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-10-conf-guingouin-pornic",
@@ -3399,6 +3895,21 @@
   "ageMin": 15
  },
  {
+  "id": "2026-12-12-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-12-12",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
+ },
+ {
   "id": "2026-12-12-feu-artifice-noel-bernerie",
   "category": "Feu d'artifice",
   "date": "2026-12-12",
@@ -3505,13 +4016,14 @@
   "id": "2026-12-13-concert-noel-bernerie",
   "category": "Concert",
   "date": "2026-12-13",
-  "desc": "",
-  "place": "",
+  "desc": "Concert de Noël à l'église, de 17h à 20h.",
+  "place": "Église, rue Jean Duplessis",
   "time": "17h",
   "title": "Concert de Noël",
   "town": "La Bernerie-en-Retz",
   "type": "spectacle",
-  "url": "https://www.fest.fr/concert-de-noel-2430801.html"
+  "url": "https://mairie-labernerie.fr/evenement/concert-de-noel-3/",
+  "kids": true
  },
  {
   "id": "2026-12-13-mon-premier-cinema-prefailles",
@@ -3773,8 +4285,6 @@
  },
  {
   "id": "2026-12-19-pere-noel-tharon",
-  "ageMax": 10,
-  "ageMin": 0,
   "category": "Fête",
   "date": "2026-12-19",
   "desc": "Arrivée du Père Noël par la mer après le feu d'artifice (vers 17h45-18h), avec baptêmes à poney, châteaux gonflables, sculpteur de ballons, maquillage et goûter offerts aux enfants, vin et chocolat chauds, puis défilé de tracteurs et concert Barakazic place de la Poste; gratuit; repli au parking de l'ancienne poste (avenue Ernest Chevrier) en cas de mauvais temps.",
@@ -3945,10 +4455,10 @@
   "org": "Office de tourisme intercommunal de Pornic",
   "place": "Départ Office de tourisme, place de la Gare",
   "time": "16h30–18h",
-  "title": "Visite guidée spéciale : Pornic, même pas peur !",
+  "title": "Visite guidée : Pornic, frissons de Noël",
   "town": "Pornic",
   "type": "nature",
-  "url": "https://en.pornic.com/special-guided-tour-pornic-not-even-scared-pornic.html"
+  "url": "https://www.pornic.com/visite-guidee-pornic-frissons-de-noel-pornic.html"
  },
  {
   "id": "2026-12-23-poney-sainte-marie",
@@ -3971,7 +4481,7 @@
   "id": "2026-12-23-visite-cite-medievale-vacances-pornic",
   "category": "Visite guidée",
   "date": "2026-12-23",
-  "desc": "Balade guidée d'1h30 des quais au château et à la vieille ville, le 23 décembre à 10h30 et le 29 décembre à 14h30; réservation à l'office de tourisme au 02 40 82 04 40.",
+  "desc": "Balade guidée d'1h30 des quais au château et à la vieille ville (10h30–12h); réservation à l'office de tourisme au 02 40 82 04 40.",
   "free": false,
   "kids": true,
   "org": "Office de tourisme intercommunal de Pornic",
@@ -4013,6 +4523,21 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://en.pornic.com/guided-tour-pornic-from-the-harbour-to-the-upper-town-in-45-minutes-flat-pornic.html"
+ },
+ {
+  "id": "2026-12-29-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-12-29",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
  },
  {
   "id": "2026-12-29-stand-up-prefailles",
@@ -4084,6 +4609,21 @@
   "org": "Casino Partouche de Pornic",
   "desc": "Dîner gastronomique du Nouvel An au restaurant du casino (entrées, plat, fromage, dessert), 135 € avec 20 € de crédits de jeu offerts; sur réservation.",
   "url": "https://casino-pornic.partouche.com/agenda/13325/diner-st-sylvestre---restaurant",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-12-31-cabaret-st-sylvestre-casino-pornic",
+  "title": "Dîner-spectacle cabaret de la Saint-Sylvestre",
+  "date": "2026-12-31",
+  "time": "20h30",
+  "place": "Casino de Pornic, rue du Canal",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Réveillon",
+  "org": "Casino de Pornic",
+  "desc": "Dîner du Nouvel An boissons comprises, show de la troupe Les Swings puis soirée dansante avec DJ après minuit, en salle de spectacle; tarif unique 180 €, sur réservation.",
+  "url": "https://casino-pornic.partouche.com/spectacles/13324/diner-spectacle-cabaret-st-sylvestre",
   "free": false,
   "kids": false
  },
@@ -4232,6 +4772,21 @@
   "url": "https://en.pornic.com/atelier-motricite-libre-de-3-a-6-ans-chauve.html"
  },
  {
+  "id": "2027-01-09-match-impro-retzplicants-pornic",
+  "title": "Match d'improvisation des Retzplicants",
+  "date": "2027-01-09",
+  "time": "20h30",
+  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Théâtre d'impro",
+  "org": "Compagnie La Retzgie (Saint-Michel-Chef-Chef)",
+  "desc": "Match d'improvisation entre les Retzplicants et une autre troupe; 12 €, réduit 8 €.",
+  "url": "https://www.pornicagglo.fr/wp-content/uploads/2026/09/AMPHITHEATRE-programme26-27.pdf",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2027-01-12-balade-joa-brevin",
   "category": "Balade",
   "date": "2027-01-12",
@@ -4259,13 +4814,16 @@
   "id": "2027-01-14-garou-pornic",
   "category": "Concert",
   "date": "2027-01-14",
-  "desc": "",
-  "place": "",
+  "desc": "Garou seul en scène avec piano et guitare revisite 30 ans de carrière; 50 à 70 € selon la catégorie.",
+  "place": "Casino de Pornic, rue du Canal",
   "time": "20h",
   "title": "Garou en solo",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/garou---solo---tournee-2349573.html"
+  "url": "https://casino-pornic.partouche.com/spectacles/11901/garou-solo",
+  "org": "Casino de Pornic",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-14-spectacle-mister-fred-connexions-pornic",
@@ -4438,25 +4996,29 @@
   "id": "2027-01-28-blandine-lehout-pornic",
   "category": "Humour",
   "date": "2027-01-28",
-  "desc": "Spectacle d'humour.",
-  "place": "Casino Partouche",
+  "desc": "Seule en scène plein d'autodérision sur la vie de couple et de jeune parent; 31 à 39 € selon la catégorie.",
+  "place": "Casino de Pornic, rue du Canal",
   "time": "20h30",
   "title": "Blandine Lehout – « La Vie de ta mère »",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.fest.fr/blandine-lehout-dans-la-vie-de-ta-mere---tournee-2312221.html"
+  "url": "https://casino-pornic.partouche.com/spectacles/11316/blandine-lehout-la-vie-de-ta-mere",
+  "org": "Casino de Pornic",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-29-michel-maurice-bernerie",
   "category": "Rencontre",
   "date": "2027-01-29",
-  "desc": "Rencontre à la bibliothèque.",
-  "place": "",
+  "desc": "Rencontre avec Michel Maurice à la bibliothèque, de 18h à 19h30.",
+  "place": "Bibliothèque Olympe de Gouges, 3 chaussée du Pays de Retz",
   "time": "18h",
   "title": "Rencontre avec Michel Maurice",
   "town": "La Bernerie-en-Retz",
   "type": "expo",
-  "url": "https://www.fest.fr/rencontre-avec-michel-maurice-2665043.html"
+  "url": "https://mairie-labernerie.fr/evenement/rencontre-avec-michel-maurice/",
+  "org": "Bibliothèque de La Bernerie"
  },
  {
   "id": "2027-01-29-vie-parisienne-treteaux-pornic",
@@ -4589,6 +5151,21 @@
   "org": "Université Permanente, antenne de Saint-Brevin",
   "desc": "Conférence d'1h30 sur la transformation de l'île de Nantes, de la friche industrielle à l'économie créative; 8 € la séance, gratuit pour les adhérents de l'Université Permanente.",
   "url": "https://www.saint-brevin.com/conference-la-valorisation-du-patrimoine-industriel.html",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2027-02-10-conf-ia-conscience-pornic",
+  "title": "Conférence : l'IA générative a-t-elle une conscience ?",
+  "date": "2027-02-10",
+  "time": "15h",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Conférence",
+  "org": "Université permanente",
+  "desc": "Xavier Aimé, chercheur en ingénierie des connaissances, interroge l'idée d'une conscience des IA, de 15h à 16h30; 8 €, gratuit pour les adhérents.",
+  "url": "https://www.pornic.com/conference-l-ia-generative-a-t-elle-une-conscience-pornic.html",
   "free": false,
   "kids": false
  }
