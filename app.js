@@ -169,7 +169,7 @@ const S={events:null,cinema:null,assos:null,meta:null,err:null,
   where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||(BASE.k==="pornic"?"pornic":"pref"),mk:"tous",q:"",os:null};
-if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.who="tous";
+if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.who="tous";try{const q=JSON.parse(sget("pp-dates")||"null");if(q){S.du=q.du;S.au=q.au;}}catch(e){}
 if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
 const WHO2=()=>[["tous","Tout public"],["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
@@ -444,6 +444,7 @@ const CATK={plage:"sea",mer:"sea",bienetre:"sea",culture:"sea",nature:"nat",spor
 const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label="${label}">${inner}</div>`;
 /* ===== Agenda ===== */
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
+  if(w==="dates"){const du=S.du&&S.du>t?S.du:t,au=S.au&&S.au>=du?S.au:addDays(du,6);return[du,au];}
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
 const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
 const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
@@ -456,14 +457,15 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const sd=e=>evStart(e,a>t?a:t,b)||t;
   const longs=list.filter(evIsLong),days={};list.filter(e=>!evIsLong(e)).forEach(e=>(days[sd(e)] ||= []).push(e));
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
-  const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],...(whenRange("sejour")?[["sejour","Mon séjour"]]:[])];
+  const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],["dates","Mes dates"]];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
   const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>band(x)-band(y)||byTime(x,y));shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":`Agenda : ${list.length} sortie${list.length>1?"s":""} à venir autour de ${BASE.n}`)}
   ${segAC("agenda")}
-  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
+  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(k==="dates"?`${ic("cal","i-s")}${l}`:l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
+   ${S.when==="dates"?(()=>{const [du,au]=whenRange("dates");return `<div class="frow ag-dates"><label>Du <input type="date" data-chg="adu" value="${du}" min="${t}"></label><label>au <input type="date" data-chg="aau" value="${au}" min="${du}"></label></div><p class="ag-dates-n">Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.</p>`;})():""}
    ${frow("frow","Type d'activité",types.map(([k,l])=>kchip(k==="tous"?"Toutes les sorties":l,S.etype===k,`data-act="etype" data-v="${k}"`,ETK[k]||"ink")).join(""))}
    ${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?dayBlocks+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
@@ -545,10 +547,11 @@ function vManger(){const t=today(),od=S.openDay||t;
 
 /* ===== À faire ===== */
 /* Activités : grille des types (du plus demandé au moins demandé), puis chaque type en 4 lieux + « Voir les autres » */
-const ACORD=["mer","sensations","culture","enfants","nature","sport","bienetre","sortie","plage"];
+const ACORD=["mer","sensations","culture","nature","sport","bienetre","sortie","plage"];
+const gk=a=>a.cat==="enfants"?"sortie":a.cat;
 const ACIC={mer:"wave",sensations:"spark",culture:"sail",enfants:"people",nature:"leaf",sport:"bike",bienetre:"drop",sortie:"film",plage:"shell",assos:"people"};
-const ACLBL={enfants:"Pour les enfants"};
-function actGrid(base,od){const n=k=>base.filter(a=>a.cat===k).length,o=k=>base.filter(a=>a.cat===k&&openOn(a,od)).length;
+const ACLBL={sortie:"Sorties et loisirs"};
+function actGrid(base,od){const n=k=>base.filter(a=>gk(a)===k).length,o=k=>base.filter(a=>gk(a)===k&&openOn(a,od)).length;
   const ks=ACORD.filter(k=>n(k)),na=(S.assos||[]).filter(a=>fitsWhere(TOWN_KM[a.town]??null,a.town)).length;
   const tile=(k,l,cnt,sub)=>`<button type="button" class="actile" data-act="cat" data-v="${S.cat===k?"tous":k}" aria-pressed="${S.cat===k}" style="--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})"><span class="actile-ic">${ic(ACIC[k]||"compass")}</span><span class="actile-t"><b>${esc(l)}</b><small>${cnt}${sub?` · ${sub}`:""}</small></span></button>`;
   return `<div class="acgrid" role="group" aria-label="Types d'activités">${ks.map(k=>{const x=o(k);return tile(k,ACLBL[k]||CATS[k],`${n(k)} lieu${n(k)>1?"x":""}`,x?`${x} ouvert${x>1?"s":""}`:"");}).join("")}${na?tile("assos","Associations",`${na} associations`,""):""}</div>
@@ -556,18 +559,18 @@ function actGrid(base,od){const n=k=>base.filter(a=>a.cat===k).length,o=k=>base.
 function vActs(){const t=today(),od=S.openDay||t;
   const pre=ACTIV().filter(a=>actOK(a)&&fitsWhere(a.dist,a.town)&&(!S.free||/Gratuit/.test(a.price||"")));
   const base=pre.filter(a=>(!S.rain||a.rain)&&(!S.openToday||openOn(a,od)));
-  const list=base.filter(a=>S.cat==="tous"||a.cat===S.cat).sort((p,q)=>(p.dist??99)-(q.dist??99));
+  if(S.cat==="enfants")S.cat="sortie";const list=base.filter(a=>S.cat==="tous"||gk(a)===S.cat).sort((p,q)=>(p.dist??99)-(q.dist??99));
   const nOpen=pre.filter(a=>(!S.rain||a.rain)&&openOn(a,od)).length,nRain=pre.filter(a=>a.rain&&(!S.openToday||openOn(a,od))).length;
-  const g={};list.forEach(a=>(g[a.cat] ||= []).push(a));
+  const g={};list.forEach(a=>(g[gk(a)] ||= []).push(a));
   const cats=[["tous","Tous les thèmes"],...Object.keys(CATS).filter(k=>k!=="saveurs"&&k!=="marche"&&pre.some(a=>a.cat===k)).map(k=>[k,CATS[k]]),["assos","Associations"]];
   return `${pageHead("À faire",`Activités : ${list.length} lieu${list.length>1?"x":""}, du plus proche au plus loin`)}
   ${segAC("activites")}
-  <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
-  ${actGrid(base,od)}
   <div class="filters">${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
+  ${actGrid(base,od)}
+  <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
   <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?ACORD.filter(k=>g[k]).map(k=>{const c=`--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})`,all=S.cat!=="tous",L=all?g[k]:g[k].slice(0,4);
-    return `<div class="group" style="${c}"><h2 class="group-title">${CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="${c}" class="list">${L.map(a=>placeRow(a,t)).join("")}</ul>${!all&&g[k].length>4?`<button type="button" class="ac-more" data-act="catgo" data-v="${k}">Voir les ${g[k].length-4} autres · ${esc(CATS[k])}${ic("chev","i-s")}</button>`:""}`;}).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
+    return `<div class="group" style="${c}"><h2 class="group-title">${ACLBL[k]||CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="${c}" class="list">${L.map(a=>placeRow(a,t)).join("")}</ul>${!all&&g[k].length>4?`<button type="button" class="ac-more" data-act="catgo" data-v="${k}">Voir les ${g[k].length-4} autres · ${esc(ACLBL[k]||CATS[k])}${ic("chev","i-s")}</button>`:""}`;}).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
   <p class="foot">Une info à corriger ? Voir « À propos et contact » dans le menu.</p>`;}
 const ATH=[["tous","Tout"],["sport","Sport"],["culture","Culture"],["loisirs","Loisirs"],["nature","Nature"],["solidarite","Solidarité"],["enfance","Enfance et parents"],["vie","Vie locale"]];
@@ -1265,7 +1268,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});

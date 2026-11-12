@@ -900,3 +900,9 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .actile[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
 .ac-back{margin:6px var(--gutter) 0}
 .ac-more{display:flex;align-items:center;gap:6px;min-height:44px;margin:0 0 8px;padding:0 4px;background:none;border:0;color:var(--accent);font-weight:600;font-size:15px;cursor:pointer}
+/* Agenda : mes dates */
+.ag-dates{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ag-dates label{display:flex;align-items:center;gap:6px;font-size:15px;color:var(--ink)}
+.ag-dates input{min-height:44px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+.ag-dates-n{margin:2px var(--gutter) 4px;font-size:14px;color:var(--muted)}
+.filters .ag-dates-n{margin:2px 12px 6px}

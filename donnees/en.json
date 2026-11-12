@@ -615,7 +615,12 @@
 "Modifier mon groupe…": "Edit my group…",
 "Mon groupe (enfants, âges)…": "My group (children, ages)…",
 "Pour les enfants": "For children",
-"Tous les types": "All types"
+"Tous les types": "All types",
+"Mes dates": "My dates",
+"Sorties et loisirs": "Outings and leisure",
+"Du": "From",
+"au": "to",
+"Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.": "Open an event and tap “Add to calendar” to put it in your phone."
 },
 "rules": [
 [
