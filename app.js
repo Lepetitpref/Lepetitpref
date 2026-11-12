@@ -171,7 +171,7 @@ const S={events:null,cinema:null,assos:null,meta:null,err:null,
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||(BASE.k==="pornic"?"pornic":"pref"),mk:"tous",q:"",os:null};
 if(!ZONES.some(w=>w[0]===S.where))S.where="10";
 if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
-const WHO2=()=>[["tous","Tout public"],...(gActive()?[["groupe","Mon groupe"]]:[]),["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
+const WHO2=()=>[["tous","Tout public"],...(gActive()?[["groupe","Mon groupe"],["definir","Modifier mon groupe…"]]:[["definir","Mon groupe (enfants, âges)…"]]),["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
 function actOK(a){if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
 function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[t,dow(t)===6?addDays(t,1):t];while(dow(d)!==5)d=addDays(d,1);return[d,addDays(d,2)];}
@@ -1255,7 +1255,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{if(v==="definir"){setTimeout(openWho,0);return;}S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
