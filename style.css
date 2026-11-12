@@ -906,3 +906,6 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .ag-dates input{min-height:44px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
 .ag-dates-n{margin:2px var(--gutter) 4px;font-size:14px;color:var(--muted)}
 .filters .ag-dates-n{margin:2px 12px 6px}
+/* barre de filtres teintée pour qu'elle ressorte (puces blanches dedans) */
+.filters:not(.solo){background:color-mix(in srgb,var(--sel2) 9%,var(--surface));border-color:color-mix(in srgb,var(--sel2) 30%,var(--line))}
+.filters:not(.solo) .chip:not([aria-pressed="true"]){background:var(--surface)}
