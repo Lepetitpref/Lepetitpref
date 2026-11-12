@@ -584,7 +584,7 @@ function vActs(){const t=today(),od=S.openDay||t;
   <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?ACORD.filter(k=>g[k]).map(k=>{const c=`--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})`,all=S.cat!=="tous",L=all?g[k]:g[k].slice(0,4);
     return `<div class="group" style="${c}"><h2 class="group-title">${ACLBL[k]||CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="${c}" class="list">${L.map(a=>placeRow(a,t)).join("")}</ul>${!all&&g[k].length>4?`<button type="button" class="ac-more" data-act="catgo" data-v="${k}">Voir les ${g[k].length-4} autres · ${esc(ACLBL[k]||CATS[k])}${ic("chev","i-s")}</button>`:""}`;}).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
   ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
-  <p class="foot">Une info à corriger ? Voir « À propos et contact » dans le menu.</p>`;}
+  <p class="foot">Une info à corriger ? Écrivez à <a href="mailto:contact@lepetitpref.fr">contact@lepetitpref.fr</a>.</p>`;}
 const ATH=[["tous","Tout"],["sport","Sport"],["culture","Culture"],["loisirs","Loisirs"],["nature","Nature"],["solidarite","Solidarité"],["enfance","Enfance et parents"],["vie","Vie locale"]];
 /* contact d'association : téléphones, e-mails et sites deviennent des liens (appeler, écrire, ouvrir) */
 const linkify=t=>esc(t).replace(/https?:\/\/[^\s<]+/g,u=>`<a href="${u}" target="_blank" rel="noopener">${u.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"")} ↗</a>`)
@@ -1072,9 +1072,9 @@ after.venir=()=>{};
 /* ===== À propos ===== */
 function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="lede">Un site familial et amical, sans publicité, pour savoir ce qui se passe à Préfailles et autour.</p></div></div>
  <div class="block" data-sub="Contact" data-subanchor><h2 class="sec">Contact</h2>
-  ${card({c:"var(--taupe)",ic:I.home,title:"Écrire au Petit Préf",meta:"Une erreur, un oubli, une bonne adresse ?",extra:`<span style="font-size:14px">Une adresse de contact sera bientôt indiquée ici. En attendant, prévenez la personne qui vous a envoyé le lien : la correction est en ligne le lendemain matin.</span>`})}</div>
+  ${card({c:"var(--taupe)",ic:I.home,title:"Écrire au Petit Préf",meta:"Une erreur, un oubli, une bonne adresse ?",extra:`<span style="font-size:15px"><a href="mailto:contact@lepetitpref.fr?subject=Le%20Petit%20Pr%C3%A9f" style="font-weight:600">contact@lepetitpref.fr</a><br>Corrections, oublis, événements à ajouter : on répond et on corrige en général le lendemain matin.</span>`})}</div>
  <div class="block" data-sub="Mentions légales"><h2 class="sec">Mentions légales</h2><div class="legal">
-  <p><b>Éditeur.</b> Le Petit Préf est un site personnel, gratuit et non commercial, édité par un particulier (éditeur non professionnel au sens de l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004, dont l'identité a été communiquée à l'hébergeur). Directeur de la publication : l'éditeur.</p>
+  <p><b>Éditeur.</b> Le Petit Préf est un site personnel, gratuit et non commercial, édité par un particulier (éditeur non professionnel au sens de l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004, dont l'identité a été communiquée à l'hébergeur). Directeur de la publication : l'éditeur. Contact : <a href="mailto:contact@lepetitpref.fr">contact@lepetitpref.fr</a>.</p>
   <p><b>Hébergement.</b> Site hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis). Nom de domaine enregistré chez OVH.</p>
   <p><b>Contenus.</b> Les événements, séances de cinéma, horaires et adresses sont repris des sites des communes, offices de tourisme, cinémas, associations et transporteurs, qui restent la référence ; chaque fiche renvoie à sa source. Ils sont mis à jour automatiquement chaque matin et peuvent contenir des erreurs : vérifiez avant de vous déplacer.</p>
   <p><b>Marées.</b> Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.</p>
