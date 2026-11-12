@@ -168,7 +168,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 const S={events:null,cinema:null,assos:null,meta:null,err:null,
   where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
-  cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||(BASE.k==="pornic"?"pornic":"pref"),mk:"tous",q:"",os:null};
+  cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"tous",mk:"tous",q:"",os:null};
 if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.who="tous";try{const q=JSON.parse(sget("pp-dates")||"null");if(q){S.du=q.du;S.au=q.au;}}catch(e){}
 if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
 const WHO2=()=>[["tous","Tout public"],["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
@@ -418,7 +418,7 @@ function eventsIn(a,b){const st=e=>evStart(e,a,b)||a;return (S.events||[]).filte
 const byTime=(x,y)=>(tShort(x.time)||"99h").localeCompare(tShort(y.time)||"99h",undefined,{numeric:true});
 const evOnDay=d=>eventsIn(d,d).filter(e=>onDay(e,d)&&(e.date===d||Array.isArray(e.days)||!e.end||e.end<=addDays(e.date,3)));
 function nextBig(n){const t=today(),big=[];for(let i=0;i<70&&big.length<n;i++){const d=addDays(t,i),c=maxCoef(d);if(c>=90){const L=big[big.length-1];if(L&&(L[2]||L[0])===addDays(d,-1)){L[2]=d;L[1]=Math.max(L[1],c);}else big.push([d,c,null]);}}return big;}
-const CINF=BASE.k==="pornic"?[["pornic","Pornic"],["pref","Préfailles"],["brevin","Saint-Brevin"],["tous","Tous"]]:[["pref","Préfailles"],["pornic","Pornic"],["brevin","Saint-Brevin"],["tous","Tous"]];
+const CINF=BASE.k==="pornic"?[["tous","Tous"],["pornic","Pornic"],["pref","Préfailles"],["brevin","Saint-Brevin"]]:[["tous","Tous"],["pref","Préfailles"],["pornic","Pornic"],["brevin","Saint-Brevin"]];
 const CIN0=BASE.k==="pornic"?"pornic":"pref";
 const cinOK=(n,c=S.cin||"pref")=>c==="tous"||(c==="pref"&&/Atlantique/i.test(n||""))||(c==="pornic"&&/Toiles|Joseph/i.test(n||""))||(c==="brevin"&&/jade/i.test(n||""));
 const cinKm=n=>{const c=CINES.find(x=>n&&n.includes(x.n));return c?c.km:null;};
@@ -512,7 +512,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const byFilm={};list.filter(c=>c.date===day).forEach(c=>{(byFilm[c.film] ||= {film:c.film,genre:c.genre,version:c.version,kids:c.kids,seances:[]}).seances.push(...(c.times||[]).map(h=>({h,cin:c.cinema})));});
   const films=Object.values(byFilm).sort((a,b)=>Math.min(...a.seances.map(s=>cinKm(s.cin)??99))-Math.min(...b.seances.map(s=>cinKm(s.cin)??99))||(a.seances[0]?.h||"").localeCompare(b.seances[0]?.h||"",undefined,{numeric:true}));
   const times=f=>[...new Set(f.seances.map(s=>s.cin))].sort((a,b)=>(cinKm(a)??99)-(cinKm(b)??99)).map(cn=>`<span class="times">${S.cin==="pref"?"":`<span>${esc(cinName(cn))}</span>`}${f.seances.filter(s=>s.cin===cn).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} au calendrier">${esc(s.h)}</button>`).join(" ")}</span>`).join("");
-  return `${pageHead("À faire",BASE.k==="pornic"?"Ciné : par défaut les deux cinémas de Pornic.":"Ciné : par défaut le cinéma de Préfailles, dans le bourg, à pied.")}
+  return `${pageHead("À faire","Ciné : toutes les salles, de la plus proche à la plus loin.")}
   ${segAC("cine")}
   <div class="filters">${days.length?frow("frow","Jour",days.map(d=>qchip(cap(rel(d)),d===day,`data-act="cday" data-v="${d}"`)).join("")):""}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
