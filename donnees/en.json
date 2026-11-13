@@ -645,7 +645,6 @@
 "Vous êtes ici": "You are here",
 "Écrire": "Write",
 "Plus": "More",
-"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).",
 "Immobilier": "Property",
 "Ventes réelles et prix au m²": "Actual sales and price per m²",
 "Maison, prix au m²": "House, price per m²",
@@ -673,9 +672,28 @@
 "Voir les ventes": "See the sales",
 "On n'affiche ni nom ni numéro de rue ; les parcelles viennent du cadastre.": "No names or house numbers are shown; plots come from the land register (cadastre).",
 "Zoomez pour voir les prix sur les parcelles.": "Zoom in to see prices on the plots.",
-"Touchez une parcelle pour le détail des ventes.": "Tap a plot for the details of its sales."
+"Touchez une parcelle pour le détail des ventes.": "Tap a plot for the details of its sales.",
+"Chercher": "Search",
+"Chercher une adresse": "Search an address",
+"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab)."
 },
 "rules": [
+[
+"^Une adresse à (Préfailles|Pornic)$",
+"An address in $1"
+],
+[
+"^Parcelle (\\w+) (\\d+)(.*)$",
+"Plot $1 $2$3"
+],
+[
+"^Adresse introuvable à (.+)$",
+"Address not found in $1"
+],
+[
+"^Recherche indisponible : vérifiez la connexion$",
+"Search unavailable: check your connection"
+],
 [
 "^et (\\d+) autres ventes$",
 "and $1 more sales"

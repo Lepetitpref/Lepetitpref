@@ -201,7 +201,7 @@ def parcelles(dossier, k, c, ventes_c):
             continue
         geo = ft["geometry"]
         polys = geo["coordinates"] if geo["type"] == "MultiPolygon" else [geo["coordinates"]]
-        out[pid] = [[[round(x[1], 5), round(x[0], 5)] for x in poly[0]] for poly in polys]
+        out[pid] = {"s": ft["properties"].get("contenance"), "g": [[[round(x[1], 5), round(x[0], 5)] for x in poly[0]] for poly in polys]}
     f = os.path.join(ICI, "..", "donnees", f"parcelles-{k}.json")
     try:
         if json.load(open(f, encoding="utf-8")) == out:
