@@ -976,3 +976,6 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .im-bar span{position:relative;padding-left:8px;font-size:13px;line-height:20px;color:var(--ink);font-weight:500}
 .im-leg{display:flex;gap:16px;margin:10px 0 0;font-size:14px;color:var(--muted)}
 .im-leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.im-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.im-head .page-head{flex:1;min-width:0}
+.im-share{flex:none;margin:22px var(--gutter) 0 0;gap:6px}

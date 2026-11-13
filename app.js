@@ -1047,7 +1047,9 @@ const med=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.lengt
 function loadVentes(){if(S.ventes||loadVentes.p)return;loadVentes.p=fetch("donnees/ventes.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json();})
   .then(v=>{S.ventes=v;if(curView()==="immobilier")render();}).catch(()=>{loadVentes.p=null;S.ventesErr=1;if(curView()==="immobilier")render();});}
 const imSurf=v=>v.t==="T"?v.tr:v.s;
-function imList(){const C=S.ventes?.communes?.[BASE.k];if(!C)return[];return C.ventes.filter(v=>(S.imT==="tous"||v.t===S.imT)&&(S.imY==="tous"||v.d.startsWith(S.imY)));}
+const IMQ=(()=>{try{const q=new URLSearchParams(location.search).get("immo");return BASES[q]?q:null;}catch(e){return null;}})();
+const imB=()=>BASES[S.imC]||BASE;
+function imList(){const C=S.ventes?.communes?.[imB().k];if(!C)return[];return C.ventes.filter(v=>(S.imT==="tous"||v.t===S.imT)&&(S.imY==="tous"||v.d.startsWith(S.imY)));}
 function imStats(C){const ys=[...new Set(C.ventes.map(v=>v.d.slice(0,4)))].sort();
   const per=(y,t)=>C.ventes.filter(v=>v.t===t&&v.d.startsWith(y)&&imSurf(v));
   return ys.map(y=>({y,M:med(per(y,"M").map(v=>v.p/v.s)),A:med(per(y,"A").map(v=>v.p/v.s)),nM:per(y,"M").length,nA:per(y,"A").length,n:C.ventes.filter(v=>v.d.startsWith(y)).length,pM:med(per(y,"M").map(v=>v.p))}));}
@@ -1055,9 +1057,10 @@ function imRow(v){const sf=imSurf(v),d=new Date(v.d+"T12:00:00");
   const t=v.t==="T"?`Terrain à bâtir${v.tr?" · "+v.tr+" m²":""}`:`${IMT[v.t]}${v.s?" "+v.s+" m²":""}${v.n?" · "+v.n+(v.n>1?" pièces":" pièce"):""}`;
   const meta=[eur(v.p),sf?eur(v.p/sf)+"/m²":"",v.t==="M"&&v.tr?"terrain "+v.tr+" m²":"",v.neuf?"neuf (sur plan)":""].filter(Boolean).join(" · ");
   return `<li class="row im-row"><span class="im-dot" style="background:${IMCOL[v.t]}" aria-hidden="true"></span><div class="row-main"><span class="row-title">${t}</span><span class="row-meta">${meta}</span><span class="row-meta">${esc(v.r||"Adresse non précisée")} · ${F(d,{day:"numeric",month:"short",year:"numeric"})}</span></div></li>`;}
-function vImmo(){loadVentes();const head=pageHead("Immobilier",`Les ventes réelles à ${BASE.n}, d'après les actes enregistrés par l'État`);
+function vImmo(){loadVentes();const B=imB(),shUrl=SITE+"/?"+(BASE.k==="pornic"?"ici=pornic&":"")+"immo="+B.k+"#immobilier";
+  const head=segBtns("Commune",[["prefailles","Préfailles"],["pornic","Pornic"]],B.k,"imc")+`<div class="im-head">${pageHead("Immobilier",`Les ventes réelles à ${B.n}, d'après les actes enregistrés par l'État`)}<button type="button" class="chip im-share" data-share="Les ventes immobilières à ${B.n}, prix au m² et carte, sur Le Petit Préf" data-url="${shUrl}">${ic("share","i-s")}Partager</button></div>`;
   if(!S.ventes)return head+`<p class="empty" style="padding:18px var(--gutter)">${S.ventesErr?"Les ventes ne se chargent pas. Vérifiez la connexion puis rechargez la page.":"Chargement des ventes…"}</p>`;
-  const C=S.ventes.communes[BASE.k];if(!C)return head+`<p class="empty">Pas de données pour ${BASE.n}.</p>`;
+  const C=S.ventes.communes[B.k];if(!C)return head+`<p class="empty">Pas de données pour ${B.n}.</p>`;
   const st=imStats(C),last=st[st.length-1],prev=st[st.length-2],ys=st.map(x=>x.y).reverse();
   const fin=C.fin?F(new Date(C.fin+"T12:00:00"),{day:"numeric",month:"long",year:"numeric"}):"";
   const evo=(a,b)=>a&&b?`<small>${a>=b?"+":"−"}${Math.abs(Math.round((a/b-1)*100))} % par rapport à ${prev.y}</small>`:"";
@@ -1073,7 +1076,7 @@ function vImmo(){loadVentes();const head=pageHead("Immobilier",`Les ventes réel
 function drawImMap(){const el=document.getElementById("immap");if(!el)return;const list=S.imMap||[];
   if(LMAP){LMAP.remove();LMAP=null;}
   const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
-  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);
+  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([imB().lat,imB().lon],14);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
   const pts=list.slice(0,600).map(v=>{const sf=imSurf(v);return L.circleMarker([v.la,v.lo],{radius:6,color:"#fff",weight:1.5,fillColor:IMCOL[v.t],fillOpacity:.9}).addTo(LMAP).bindPopup(`<div class="pop"><b>${v.t==="T"?"Terrain à bâtir":IMT[v.t]}${v.s?" "+v.s+" m²":""}</b><span>${eur(v.p)}${sf?" · "+eur(v.p/sf)+"/m²":""}</span><span>${esc(v.r||"")} · ${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span></div>`,{maxWidth:240});});
   if(pts.length>1)LMAP.fitBounds(L.featureGroup(pts).getBounds().pad(.08),{maxZoom:15});}
@@ -1272,7 +1275,7 @@ function whoChange(e){const el=e.target;
 
 /* ---------- menu (bouton en haut à droite) ---------- */
 const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Restos","Restaurants, bars, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"],["pratique","Pratique","Urgences, pharmacie et médecin de garde, mairie, numéros utiles","phone"]];
-const MENU2=[["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["immobilier","Immobilier","Ventes réelles et prix au m²","home"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
+const MENU2=[["immobilier","Immobilier","Ventes réelles et prix au m²","home"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
 const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{const e=$(q);if(e)e.inert=on;});const mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded",String(!!$("#menu")&&on));};
@@ -1321,7 +1324,7 @@ const ACT={
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
-  mview:v=>{S.mView=v;sset("pp-mview",v);render();},imt:v=>{S.imT=v;S.imN=30;render();},imv:()=>{S.imV=S.imV==="carte"?"liste":"carte";render();},imn:()=>{S.imN+=30;render();},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},imt:v=>{S.imT=v;S.imN=30;render();},imc:v=>{S.imC=v;S.imN=30;S.imY="tous";render();},imv:()=>{S.imV=S.imV==="carte"?"liste":"carte";render();},imn:()=>{S.imN+=30;render();},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
@@ -1392,7 +1395,8 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
 function render(){rail();const v=curView();
   /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */
-  if(v==="agenda"&&S.lastView!=="agenda"){if(!S.whenKeep)S.when="tout";}S.whenKeep=false;S.lastView=v;ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
+  if(v==="agenda"&&S.lastView!=="agenda"){if(!S.whenKeep)S.when="tout";}
+  if(v==="immobilier"&&S.lastView!=="immobilier")S.imC=(S.lastView==null&&IMQ)||BASE.k;S.whenKeep=false;S.lastView=v;ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
   const keep={},fo=document.activeElement&&document.activeElement.id;
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
