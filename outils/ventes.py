@@ -116,10 +116,14 @@ def brut(dossier, depuis):
     """Fichiers bruts de la DGFiP (publiés avant la version géolocalisée) : ventes postérieures à `depuis`
     (AAAA-MM-JJ), converties au format des fichiers géolocalisés. Positions : centre de la parcelle (cadastre)."""
     import io, zipfile, gzip
-    try:
-        res = json.load(urllib.request.urlopen(API, timeout=60))["resources"]
-    except Exception as e:
-        print("  API data.gouv indisponible", e)
+    res = None
+    for essai in range(3):
+        try:
+            res = json.load(urllib.request.urlopen(API, timeout=60))["resources"]
+            break
+        except Exception as e:
+            print("  API data.gouv indisponible", e)
+    if res is None:
         return {}
     an0 = int(depuis[:4])
     urls = [r["url"] for r in res if r.get("url", "").endswith(".txt.zip")
@@ -204,6 +208,11 @@ def main():
         if avant.get("communes") == sortie["communes"]:
             print("rien de nouveau")
             return
+        for k, c in sortie["communes"].items():
+            v = avant.get("communes", {}).get(k, {})
+            if (c["fin"] or "") < (v.get("fin") or "") or len(c["ventes"]) < len(v.get("ventes", [])) * 0.9:
+                print("ATTENTION", k, ": moins de ventes qu'avant (téléchargement incomplet ?), fichier gardé tel quel")
+                return
     except Exception:
         pass
     with open(SORTIE, "w", encoding="utf-8") as h:
