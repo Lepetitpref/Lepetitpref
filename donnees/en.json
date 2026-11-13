@@ -823,9 +823,14 @@
 "trop peu de ventes pour comparer": "too few sales to compare",
 "Effacer cette adresse": "Clear this address",
 "Aller": "Go",
-"Glissez le doigt pour lire chaque année ; touchez-en une pour voir ses permis, en liste et sur la carte.": "Slide your finger to read each year; tap one to see its permits, as a list and on the map."
+"Glissez le doigt pour lire chaque année ; touchez-en une pour voir ses permis, en liste et sur la carte.": "Slide your finger to read each year; tap one to see its permits, as a list and on the map.",
+"Prix médian d'une maison": "Median house price"
 },
 "rules": [
+[
+"^(\\d+) ventes$",
+"$1 sales"
+],
 [
 "^([+−]\\d+) % sur un an \\(peu de ventes\\)$",
 "$1% over a year (few sales)"
