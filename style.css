@@ -1298,3 +1298,4 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .sf-no{padding-top:10px;padding-bottom:10px}
 .sf-no .sf-word{display:block;margin-top:4px}
 .sf-list>li+li{border-top:1px solid var(--line)}
+.spot-cmp .chip{display:inline-flex;align-items:center;padding:0 14px;line-height:1}

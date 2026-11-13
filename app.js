@@ -379,10 +379,10 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     const off=rel==="off"||rel==="sideoff",onx=rel==="on"||rel==="sideon";
     /* plafonds de vent, quelle que soit la direction */
     if(k>=25||g>=34)return[0,`Vent trop fort (${r0(k)} nds, rafales ${r0(g)}) : on reste à terre`];
-    if(H<.4)return[0,"Plat"];
+    if(H<.4)return[0,"Plat : pas de houle"];
     const P=.49*H*H*(T||6);                        /* puissance de la houle, kW/m */
     let n=P<1.2?0:P>=3&&(T||0)>=8?2:1;
-    if(n===0)return[0,"Trop petit"];
+    if(n===0)return[0,"Trop petit : houle trop faible"];
     if(H>3)return[1,"Gros, experts seulement"];
     if(/Confirm/.test(sp.lvl||"")&&!beg&&n===2&&!(P>=4&&(T||0)>=9))n=1;   /* récif : il faut de la puissance */
     let note="";
@@ -969,7 +969,10 @@ function seaCard(d){const w=wxDay(d),t=today();
    <div class="sea-hours">${hs.map(([h,x,s])=>`<div><span>${h}h</span><b>${dirTxt(x.wd)} ${r0(x.w)}</b><small>raf. ${r0(x.g)}${s&&s.hs!=null?` · ${r1(s.hs)} m`:""}</small></div>`).join("")}</div>
    <button type="button" class="sea-share lnk" data-share="${esc(`La mer à Préfailles, ${dlong(d)} : ${sky.toLowerCase()}, vent ${r0(w.w)} nds ${DIRLONG[dirTxt(w.wd)]||""}${sMid&&sMid.hs!=null?`, houle ${r1(sMid.hs)} m`:""}${sst!=null?`, eau ${r1(sst)}°`:""}${(()=>{const l=dayLows(d)[0];return l?`, basse mer à ${hm(new Date(l.ms))}`:"";})()}.`)}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
   </div>`;}
-function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return b?{a,b}:null;}).filter(Boolean);}
+function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);if(b)return{a,b};
+  /* pas de verdict : soit la journée est finie, soit il manque la prévision de houle ou de vent */
+  const fini=d===today()&&new Date().getHours()>dayHours(d)[1];
+  return{a,b:{j:[0,fini?"Plus de créneau de jour aujourd'hui : regardez demain":"Pas de prévision pour ce spot à cette heure"]}};});}
 /* surf pour débuter : seulement les spots d'école (niveau « Débutants »), petites vagues, peu de vent, marée dans la fenêtre */
 function begJ(sp,x){const w=x.w||{},H=swellAt(sp,x.s),tt=x.tt,k=w.w??99,g=w.g??k,rel=w.wd!=null?windRel(sp,w.wd):"";
   if(H==null||!tt||!sp.tide||tt.f<sp.tide[0]||tt.f>sp.tide[1])return 0;
@@ -999,7 +1002,7 @@ function surfRow(d){const RS=rankSpots("surf",d),top=RS.top;if(!top)return"";con
   const short=n=>esc(n.replace(/^(Saint-Brevin, |Pointe |Plage de )/,"").replace(/-Plage$/,""));
   const slot2=b=>b.h2!=null&&b.h2>b.h1?`${b.h1}h-${b.h2}h`:`${b.h}h`;
   const pill=v=>`<span class="note-pill ${NOTECLS[v]}">${NOTE[v]}</span>`;
-  const SURFW={"Mer lisse":"Glassy","Haché par le vent de mer":"Onshore, haché","Trop petit":"Flat","Plat":"Flat","Clapot, vent de mer":"Onshore, clapot"};
+  const SURFW={"Mer lisse":"Glassy","Haché par le vent de mer":"Onshore, haché","Trop petit : houle trop faible":"Flat","Plat : pas de houle":"Flat","Clapot, vent de mer":"Onshore, clapot"};
   const sw=t=>esc(String(t).split(" · ").map(x=>SURFW[x]||x).join(" · "));
   const lows=dayLows(d),c=maxCoef(d),M=S.mer&&S.mer.bouee,wd=x=>x===today()?"Aujourd'hui":x===addDays(today(),1)?"Demain":cap(dshort(x));
   const met=(sp0,x)=>{const w=x.w||{},sw0=x.s,H=swellAt(sp0,sw0),T=sw0?(sw0.swp??sw0.tp):null,rel=w.wd!=null?windRel(sp0,w.wd):"";
@@ -1086,7 +1089,7 @@ function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   const rows=SPOTSX.map(sp=>({sp,k:km(HOME,sp)})).sort((a,b)=>a.k-b.k).map(({sp,k})=>{const sm=has?spotSummary(sp,d):[];
     const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):-1;
-    const line=has?(sm.filter(x=>x.b.j[0]>0).map(x=>`${ACTL[x.a].replace(" et bateau","")} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · ")||`Rien de bon ${ceJour(d)}`):"";
+    const line=has?sm.map(x=>`${ACTL[x.a].replace(" et bateau","")} : ${NOTE[x.b.j[0]].toLowerCase()}`).join(" · "):"";
     const surf=has&&sp.acts.includes("surf")&&sp.tide?surfHours(sp,d):[];const sb=surf.length?bestOf("surf",sp,d):null;
     const surfLine=sb&&sb.j[0]?[`Surf ${slotTxt(sb)}${sb.tt?` · ${sb.tt.txt}`:""}`,"ok"]:null;
     const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure</b> · idéal : ${esc(sp.tideTxt)}</p><div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}${d===today()&&y.h<new Date().getHours()?" past":""}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta">Vert : bon${/Débutant/.test(sp.lvl||"")?"":" pour confirmés"} · orange : possible · gris : non (houle, vent et hauteur d'eau).${/Débutant/.test(sp.lvl||"")?"":" <b>Pas pour débuter.</b>"}</p></div>`:"";

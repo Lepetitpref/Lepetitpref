@@ -960,7 +960,12 @@
 "Vent d'un seul point de prévision : vérifiez l'anémomètre avant de partir · en mer": "Wind from a single forecast point: check the wind meter before you go · sea rescue",
 "Prochain créneau ·": "Next slot ·",
 "intégrale + chaussons": "full wetsuit + boots",
-"intégrale": "full wetsuit"
+"intégrale": "full wetsuit",
+"Plat : pas de houle": "Flat: no swell",
+"Trop petit : houle trop faible": "Too small: swell too weak",
+"Plus de créneau de jour aujourd'hui : regardez demain": "No daylight slot left today: look at tomorrow",
+"Pas de prévision pour ce spot à cette heure": "No forecast for this spot at this time",
+"Comparer :": "Compare:"
 },
 "rules": [
 [
