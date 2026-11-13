@@ -886,9 +886,71 @@
 "Bonnes marées, créneau conseillé, tailles, sécurité": "Good tides, best time slot, minimum sizes, safety",
 "Les plages, surveillées ou non, chiens": "Beaches, lifeguarded or not, dogs",
 "Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole. Possible remplacement par car le dimanche 15 nov. au matin (signalé par l-itineraire.com) : vérifier avant de partir.": "Pornic station is ~10 km from Préfailles: get there on coach 315 (Théâtre St-Gilles / Terres Jarries stop) or 303. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of Sunday 15 Nov (reported by l-itineraire.com): check before you travel.",
-"Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole.": "Pornic station is ~10 km from Préfailles: get there on coach 315 (Théâtre St-Gilles / Terres Jarries stop) or 303. Naolib tickets are valid on TER trains within Nantes Métropole."
+"Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole.": "Pornic station is ~10 km from Préfailles: get there on coach 315 (Théâtre St-Gilles / Terres Jarries stop) or 303. Naolib tickets are valid on TER trains within Nantes Métropole.",
+"Avec les enfants": "With children",
+"Raccourcis": "Shortcuts",
+"Prochain marché": "Next market",
+"Urgences, pharmacie et médecin de garde, santé, poubelles, mairie et poste.": "Emergencies, duty pharmacy and doctor, health, bins, town hall and post office.",
+"la nuit, le dimanche et les jours fériés : appelez le 3237": "at night, on Sundays and public holidays: call 3237",
+"choisissez votre secteur pour voir vos jours": "choose your sector to see your days",
+"Mon secteur": "My sector",
+"prochaines collectes :": "next collections:",
+"Marées et météo, glisse et spots, pêche à pied : tout se déroule sur cette page. Pour se baigner :": "Tides and weather, board sports and spots, shore fishing: it's all on this page. For swimming:",
+"les plages": "the beaches"
 },
 "rules": [
+[
+"^ordures (\\p{L}+ \\d{1,2} \\S+|aujourd'hui), bac jaune (.+)$",
+"household waste $1, yellow bin $2"
+],
+[
+"^ordures (\\p{L}+ \\d{1,2} \\S+|aujourd'hui)$",
+"household waste $1"
+],
+[
+"^: (aujourd'hui|demain)$",
+": $1"
+],
+[
+"^: (\\p{L}+) (\\d{1,2}) (\\p{L}+) · bac à sortir (\\p{L}+) soir$",
+": $1 $2 $3 · put the bin out on $4 evening"
+],
+[
+"^: (\\p{L}+) (\\d{1,2}) (\\p{L}+) · bac à sortir ce soir$",
+": $1 $2 $3 · put the bin out tonight"
+],
+[
+"^: demain · bac à sortir ce soir$",
+": tomorrow · put the bin out tonight"
+],
+[
+"^ordures (\\p{L}+|aujourd'hui), bac jaune (.+)$",
+"household waste $1, yellow bin $2"
+],
+[
+"^ordures (\\p{L}+|aujourd'hui)$",
+"household waste $1"
+],
+[
+"le même jour$",
+"the same day"
+],
+[
+"^(aujourd'hui|demain|\\p{L}+) (\\d{1,2}h\\d{0,2}\\s*[–-]\\s*\\d{1,2}h\\d{0,2}) · (.+)$",
+"$1 $2 · $3"
+],
+[
+"^\\((il dépend de la rue, )$",
+"(it depends on the street, "
+],
+[
+"^Depuis (Préfailles|Pornic)$",
+"From $1"
+],
+[
+"^Vers (Préfailles|Pornic)$",
+"To $1"
+],
 [
 "^(Préfailles|Pornic) et les cinémas voisins$",
 "$1 and nearby cinemas"

@@ -1126,3 +1126,30 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .mmap{max-height:520px}
 .map-lock{align-items:center;padding:0;background:rgba(0,0,0,.08)}
 .map-done{top:10px;bottom:auto}
+/* accueil : raccourcis */
+.home-quick{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:14px 0 0;padding:2px var(--gutter)}
+.home-quick::-webkit-scrollbar{display:none}
+.hq{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);font:500 15px/1 var(--font-ui,inherit);cursor:pointer}
+.hq .i{color:var(--accent)}
+/* poubelles : prochaine collecte */
+.bin-next{margin:4px 0 10px;padding:10px 12px;border-radius:var(--r-m,10px);background:var(--bg);border:1px solid var(--line)}
+.bin-next p{margin:4px 0;font-size:15px;line-height:1.4}
+.bin-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:7px;vertical-align:1px}
+.bin-sect{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.bin-sect .chip{min-width:44px;min-height:44px;justify-content:center}
+.spot-share{margin:10px 0 0}
+/* petits écrans et zoom fort : barres non collées, en-tête compact */
+/* la pile d'en-têtes collés ne doit pas manger l'écran : sur un téléphone (Safari, barres visibles ≈ 660 px), seuls les onglets et la barre de sous-rubriques restent collés */
+@media (max-height:740px){.filters,.subnav ~ .filters{position:static}}
+@media (max-height:560px){.subnav{position:static}}
+@media (max-width:340px){
+ .topbar{padding-left:8px}
+ .brand{font-size:0;gap:0}
+ .brand .i{width:28px;height:28px}
+ #langBtn .lang-code,#langBtn .chev{display:none}
+ .topbar{gap:2px}
+}
+@media (max-width:260px){
+ .menu-btn{font-size:0;gap:0;padding:0 10px}
+ .menu-btn .i{width:22px;height:22px}
+}
