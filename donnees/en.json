@@ -829,7 +829,8 @@
 "Zone agricoles": "Agricultural zone",
 "Zone naturelles": "Natural zone",
 "Zone urbaine : on peut construire": "Urban zone: building allowed",
-"Zone naturelle : très peu constructible": "Natural zone: very limited building"
+"Zone naturelle : très peu constructible": "Natural zone: very limited building",
+"Effacer l'adresse": "Clear the address"
 },
 "rules": [
 [

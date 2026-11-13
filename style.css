@@ -1107,3 +1107,12 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .plu-res .pra-h{color:var(--c);font-size:18px}
 .plu-tag{margin:6px 0 0}
 .plu-tag span{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--c);color:#fff;font-size:13px;font-weight:600}
+/* Dernières ventes : type de bien sur toute la largeur, année dessous ; choix en bleu clair comme les autres filtres */
+.im-filtbar{flex-wrap:wrap}
+.im-filtbar .im-tseg{flex:1 1 100%}
+.im-tseg button{flex:1 1 0;padding:0 6px;gap:6px;min-width:0}
+.im-tseg button[aria-pressed="true"]{background:var(--sel2);color:#fff;box-shadow:none}
+.im-tseg button[aria-pressed="true"] i{box-shadow:0 0 0 2px #fff}
+.im-filtbar .im-ysel{min-height:36px}
+.im-pinclr{display:flex;justify-content:flex-end;margin:-2px 0 6px}
+.im-pinclr[hidden]{display:none}
