@@ -1020,3 +1020,21 @@ button.im-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px;b
 .leaflet-control-layers{font:14px/1.4 var(--font-ui,system-ui);border-radius:10px!important}
 .leaflet-control-layers label{min-height:28px;display:flex;align-items:center}
 .im-lay{display:flex;gap:8px;margin:0 0 8px}
+/* Pratique : vignettes qui se déplient */
+.actile{position:relative}
+.actile-more{position:absolute;right:10px;top:12px;width:7px;height:7px;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg)}
+.actile[aria-expanded="true"] .actile-more{transform:rotate(-135deg);top:15px}
+.pra-grid .actile{padding-right:20px}
+.pra-call{text-decoration:none}
+.actile-num{margin-left:auto;font:700 18px var(--font-ui,system-ui);color:var(--c);padding-left:6px}
+.pra-hint{font-size:14px;color:var(--muted);margin:4px 0 0}
+.chip-call{display:inline-flex;gap:6px;text-decoration:none;color:var(--accent);font-weight:600}
+.pra-open .pra-tw{margin:6px 0}
+.pra-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pra-grid .actile{min-width:0}
+.pra-call{flex-direction:column;align-items:stretch;gap:6px}
+.pra-call-top{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.pra-call .actile-num{margin:0;padding:0;font-size:22px;line-height:1}
+button.pm-yr{all:unset;box-sizing:border-box;display:grid;grid-template-columns:44px 1fr;column-gap:10px;align-items:center;width:100%;padding:4px 6px;margin:0 -6px;border-radius:8px;cursor:pointer}
+button.pm-yr[aria-pressed="true"]{background:color-mix(in srgb,var(--i-act) 12%,transparent)}
+button.pm-yr:focus-visible{outline:2px solid var(--accent)}

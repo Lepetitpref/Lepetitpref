@@ -71,6 +71,7 @@ def permis(c):
         liste.append({"d": d[:10], "nat": nat, "lg": n(r.get("NB_LGT_TOT_CREES")), "col": n(r.get("NB_LGT_COL_CREES")),
                       "s": n(r.get("SURF_HAB_CREEE")) or None, "x": [l for k, l in (("I_EXTENSION", "extension"), ("I_SURELEVATION", "surélévation"), ("I_PISCINE", "piscine")) if r.get(k) == "true"] or None,
                       "r": rue(r.get("ADR_LIBVOIE_TER") or r.get("ADR_LIEUDIT_TER")),
+                      "_adr": " ".join(x for x in ((r.get("ADR_NUM_TER") or "").strip(), (r.get("ADR_LIBVOIE_TER") or r.get("ADR_LIEUDIT_TER") or "").strip()) if x),
                       "soc": (r.get("DENOM_DEM") or "").strip() or None,
                       "pa": (f"000{sec.rjust(2, '0')}{num.zfill(4)}" if sec and num else None),
                       "etat": {"2": "autorisé", "5": "chantier commencé", "6": "terminé"}.get(r.get("ETAT_DAU"))})
@@ -78,7 +79,54 @@ def permis(c):
     for v in liste:
         for k in [k for k, y in v.items() if y is None]:
             del v[k]
-    return {"annees": [ans[a] for a in sorted(ans)], "recents": liste[:40], "total": len(liste),
+    # position de chaque permis : centre de sa parcelle (cadastre Etalab)
+    try:
+        import gzip
+        cad = json.loads(gzip.decompress(get(f"https://cadastre.data.gouv.fr/bundler/cadastre-etalab/communes/{c}/geojson/parcelles")))
+        cen = {}
+        for ft in cad["features"]:
+            pts = ft["geometry"]["coordinates"]
+            while isinstance(pts[0][0], list):
+                pts = pts[0]
+            cen[ft["id"][5:]] = (round(sum(p[1] for p in pts) / len(pts), 5), round(sum(p[0] for p in pts) / len(pts), 5))
+        sansp = {}
+        for pid, xy in cen.items():
+            sansp.setdefault(pid[3:], []).append(xy)
+        for v in liste:
+            pa = v.get("pa")
+            if pa in cen:
+                v["la"], v["lo"] = cen[pa]
+            elif pa and len(sansp.get(pa[3:], [])) == 1:   # parcelle d'une ancienne commune (préfixe 042…)
+                v["la"], v["lo"] = sansp[pa[3:]][0]
+    except Exception as e:
+        print("  cadastre indisponible", c, e)
+    # parcelles trop récentes pour le cadastre : position de l'adresse (Base Adresse Nationale, géocodage groupé)
+    reste = [v for v in liste if "la" not in v and v.get("_adr")]
+    if reste:
+        try:
+            buf = io.StringIO()
+            w = csv.writer(buf)
+            w.writerow(["i", "adresse", "citycode"])
+            for i, v in enumerate(reste):
+                w.writerow([i, v["_adr"], c])
+            bd = "lpp" + datetime.datetime.now().strftime("%H%M%S%f")
+            body = (f"--{bd}\r\nContent-Disposition: form-data; name=\"data\"; filename=\"a.csv\"\r\nContent-Type: text/csv\r\n\r\n{buf.getvalue()}\r\n"
+                    f"--{bd}\r\nContent-Disposition: form-data; name=\"citycode\"\r\n\r\ncitycode\r\n--{bd}--\r\n").encode()
+            req = urllib.request.Request("https://api-adresse.data.gouv.fr/search/csv/", data=body,
+                                         headers={"Content-Type": f"multipart/form-data; boundary={bd}", "User-Agent": "lepetitpref-donnees"})
+            out = urllib.request.urlopen(req, timeout=180).read().decode("utf-8")
+            for row in csv.DictReader(io.StringIO(out)):
+                try:
+                    if float(row.get("result_score") or 0) >= 0.5 and row.get("latitude"):
+                        v = reste[int(row["i"])]
+                        v["la"], v["lo"] = round(float(row["latitude"]), 5), round(float(row["longitude"]), 5)
+                except (ValueError, IndexError):
+                    pass
+        except Exception as e:
+            print("  géocodage indisponible", c, e)
+    for v in liste:
+        v.pop("_adr", None)
+    return {"annees": [ans[a] for a in sorted(ans)], "recents": liste, "total": len(liste),
             "fin": liste[0]["d"] if liste else None}
 
 

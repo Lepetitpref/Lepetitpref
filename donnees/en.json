@@ -430,10 +430,10 @@
 "Urgence médicale": "Medical emergency",
 "Pompiers": "Fire brigade",
 "Incendie, accident, secours à personne": "Fire, accident, rescue",
-"Police, gendarmerie": "Police, gendarmerie",
+"Police, gendarmerie": "Police",
 "Secours en mer": "Sea rescue",
 "Personne en difficulté en mer ou sur l'estran": "Someone in trouble at sea or on the foreshore",
-"Urgences par SMS": "Emergencies by text",
+"Urgences par SMS": "Emergency by text",
 "Pour les personnes sourdes ou malentendantes": "For deaf or hard-of-hearing people",
 "Urgences médicales : où aller": "Medical emergencies: where to go",
 "Il n'y a pas de SOS Médecins à Préfailles (il ne couvre que Nantes et Saint-Nazaire).": "There is no SOS Médecins (home-visit doctors) in Préfailles (it only covers Nantes and Saint-Nazaire).",
@@ -717,9 +717,70 @@
 "extension": "extension",
 "piscine": "swimming pool",
 "surélévation": "raised storey",
-"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The Land register and Zoning layers, the zone of a tapped spot and plot outlines come from IGN services (data.geopf.fr, apicarto.ign.fr), called only when you use them. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab)."
+"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The Land register and Zoning layers, the zone of a tapped spot and plot outlines come from IGN services (data.geopf.fr, apicarto.ign.fr), called only when you use them. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).",
+"Depuis 1995": "Since 1995",
+"Depuis 2021": "Since 2021",
+"pointillés : estimation": "dotted: estimate",
+"Période": "Period",
+"Voir sur la carte": "See on the map",
+"Touchez une année pour voir tous ses permis, en liste et sur la carte.": "Tap a year to see all its permits, as a list and on the map.",
+"Urgences médicales": "Medical emergencies",
+"Où aller, gardes, antipoison": "Where to go, out-of-hours, poisons",
+"Où trouver un défibrillateur": "Where to find a defibrillator",
+"Touchez une vignette pour voir les adresses et les téléphones, du plus proche au plus loin.": "Tap a tile to see addresses and phone numbers, nearest first.",
+"Touchez une vignette pour le détail.": "Tap a tile for details.",
+"Touchez une vignette pour les horaires et le téléphone.": "Tap a tile for opening hours and the phone number.",
+"Tous services, depuis tout téléphone": "All services, from any phone",
+"Incendie, accident, secours": "Fire, accident, rescue",
+"En mer ou sur l'estran": "At sea or on the foreshore",
+"Sourds et malentendants": "Deaf and hard of hearing",
+"Le mardi, toute l'année": "Tuesdays, all year round",
+"Un mardi sur deux ; chaque mardi l'été": "Every other Tuesday; every Tuesday in summer",
+"Tri, verre, papier": "Sorting, glass, paper",
+"Colonnes verte et bleue": "Green and blue bins",
+"De passage, collecte manquée": "Visiting, missed collection",
+"Points d'apport volontaire": "Drop-off points",
+"Déchetterie": "Recycling centre",
+"Déchèteries": "Recycling centres",
+"La Génière, à La Plaine": "La Génière, in La Plaine",
+"Jours de collecte": "Collection days",
+"Selon le secteur de la rue": "Depends on the street's sector",
+"Mairie": "Town hall",
+"Agence postale": "Post office",
+"Office de tourisme": "Tourist office",
+"Gendarmerie": "Gendarmerie",
+"Distributeur de billets": "Cash machine",
+"17 Grande Rue, 24 h/24": "17 Grande Rue, 24/7",
+"Police municipale": "Municipal police",
+"Mairie annexe": "Town hall annexe",
+"La Poste": "Post office",
+"Mairie de Pornic": "Pornic town hall"
 },
 "rules": [
+[
+"^Une maison à (Préfailles|Pornic) se vendait environ (.+) le m² en (\\d{4}) \\(estimation\\), (.+) en (\\d{4}), (.+) en (\\d{4})\\.$",
+"A house in $1 sold for about $2 per m² in $3 (estimate), $4 in $5, $6 in $7."
+],
+[
+"^Les permis de (\\d{4}) \\((\\d+)\\)$",
+"Permits in $1 ($2)"
+],
+[
+"^Appeler le (.+)$",
+"Call $1"
+],
+[
+"^(\\d+) bureaux et relais$",
+"$1 post offices and relay points"
+],
+[
+"^(\\d+) autour de Pornic$",
+"$1 around Pornic"
+],
+[
+"^Prix médians : la moitié des ventes se fait au-dessus, la moitié en dessous\\. 2010-2020 : Cerema \\(DV3F\\) ; avant 2010, en pointillés : estimation d'après l'indice national des prix des logements anciens hors Île-de-France \\(Notaires-INSEE\\), pas un prix observé ici\\.$",
+"Median prices: half of sales are above, half below. 2010-2020: Cerema (DV3F); before 2010, dotted: estimate based on the national index of existing-home prices outside the Paris region (Notaires-INSEE), not a price observed here."
+],
 [
 "^Permis : Maison neuve$",
 "Permit: new house"
