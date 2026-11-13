@@ -406,6 +406,17 @@ function bestOf(act,sp,d,h0=d===today()?new Date().getHours():-1){
   if(act==="surf"){const hs=surfHours(sp,d).filter(x=>x.h>=h0);if(!hs.length)return null;const top=hs.reduce((x,y)=>y.sc>x.sc?y:x);let i=hs.indexOf(top),lo=i,hi=i;
     while(lo>0&&hs[lo-1].j[0]===top.j[0]&&hs[lo-1].h===hs[lo].h-1)lo--;while(hi<hs.length-1&&hs[hi+1].j[0]===top.j[0]&&hs[hi+1].h===hs[hi].h+1)hi++;
     return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS.filter(h=>h>=h0)){const z=SPOTZ[sp.id]??0,w=wxAt(d,h),s=seaAt(d,h,z)||seaAt(d,h-1,z)||seaAt(d,h+1,z);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
+/* classement objectif des spots pour une activité : la note (Non / Possible / Bon), puis à note égale un score fin
+   (surf : créneau et marée, hauteur proche de 1,3 m, période ; kite et wing : vent travers ou travers-face, force proche de l'idéal, peu de rafales),
+   puis la distance depuis le point de départ. Plus jamais l'ordre de la liste. Renvoie aussi les spots aussi bons que le premier. */
+const RELSC={side:3,sideon:2.5,on:1.5,sideoff:.5,off:0};
+function fineOf(act,sp,b){const w=b.w||{},s=b.s;
+  if(act==="surf"){const H=swellAt(sp,s),T=s?(s.swp??s.tp):null;return (b.sc||0)+(H!=null?-Math.abs(H-1.3)*3:0)+(T?Math.min(T,14)/2:0);}
+  if(act==="kite"||act==="wing"){if(w.w==null)return 0;const id=act==="kite"?20:17;return RELSC[windRel(sp,w.wd)]*2-Math.abs(w.w-id)/3-Math.max(0,(w.g||0)-w.w-8)/3;}
+  return 0;}
+function rankSpots(act,d){const L=SPOTSX.filter(sp=>sp.acts.includes(act)).map(sp=>{const b=bestOf(act,sp,d);return b?{sp,b,f:fineOf(act,sp,b),k:km(HOME,sp)}:null;}).filter(Boolean);
+  L.sort((x,y)=>y.b.j[0]-x.b.j[0]||y.f-x.f||x.k-y.k);const top=L[0];
+  return {L,top,ties:top?L.filter(x=>x!==top&&x.b.j[0]===top.b.j[0]&&Math.abs(x.f-top.f)<.75):[]};}
 const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 
 /* ---------- données utiles aux vues ---------- */
@@ -817,7 +828,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,HW)).length;
   const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,CIN0).filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
   /* Mer */
-  let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,t);if(b&&b.j[0]>0&&(!glisse||b.j[0]>glisse.b.j[0]))glisse={a,sp,b};});});}
+  let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{const R=rankSpots(a,t),x=R.top;if(x&&x.b.j[0]>0&&(!glisse||x.b.j[0]>glisse.b.j[0]))glisse={a,sp:x.sp,b:x.b};});}
   const big=nextBig(1)[0];
   /* Manger */
   const eat=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&isHere(a.dist,a.town)&&openOn(a,t));
@@ -929,10 +940,10 @@ function glisseSec(d){if(!wxDay(d))return"";
   const acts=["surf","kite","wing","voile","paddle"];
   /* aujourd'hui : seulement les heures à venir ; le soir, plus rien à venir → demain */
   const late=d===today()&&new Date().getHours()>=19;if(late&&wxDay(addDays(d,1)))d=addDays(d,1);
-  const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
+  const best=acts.map(a=>{const R=rankSpots(a,d);return R.top?{a,sp:R.top.sp,b:R.top.b,ties:R.ties}:null;}).filter(Boolean);
   const yes=best.filter(x=>x.b.j[0]>0),no=best.filter(x=>x.b.j[0]===0);
   const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
-  const rows=yes.map(({a,sp,b})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""],sp.lvl?[`Niveau : ${esc(sp.lvl)}`,""]:null].filter(Boolean),href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
+  const rows=yes.map(({a,sp,b,ties})=>row({th:`<span class="thumb t-sea">${ic(icA(a))}</span>`,title:`${ACTL[a]} <span class="note-pill ${NOTECLS[b.j[0]]}">${NOTE[b.j[0]]}</span>`,metaH:meta(esc(sp.n),slotTxt(b)),lines:[[esc(b.j[1]),""],ties&&ties.length&&b.j[0]>0?[`Aussi ${NOTE[b.j[0]].toLowerCase()} : ${esc(listAnd(ties.slice(0,3).map(x=>x.sp.n)))}${ties.length>3?` et ${ties.length-3} autre${ties.length>4?"s":""}`:""}`,""]:null,sp.lvl?[`Niveau : ${esc(sp.lvl)}`,""]:null].filter(Boolean),href:"#spots",act:` data-act="spot" data-v="${sp.id}"`})).join("");
   const nos=no.length?`<li class="row glisse-non"><span class="row-main"><span class="row-meta">${no.map(x=>ACTL[x.a].replace(" et bateau","")).join(", ")} : non (${[...new Set(no.map(x=>x.b.j[1].toLowerCase()))].join(" ; ")})</span></span></li>`:"";
   const gmax=Math.max(0,...[...Array(24).keys()].map(h=>(wxAt(d,h)||{}).g||0));
   const alerte=gmax>=34?`<p class="nav-alert">${ic("wave","i-s")} Rafales prévues jusqu'à ${Math.round(gmax)} nœuds ${ceJour(d)} (prévision Météo-France) : vérifiez s'il y a un avis de coup de vent avant de sortir en mer.</p>`:"";
