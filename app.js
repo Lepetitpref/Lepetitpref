@@ -408,8 +408,8 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     if(K?k>30:k>28)return[0,`Trop fort (${r0(k)} nds)`];
     if(K?g>=32:g>=34)return[0,`Rafales trop fortes (${r0(g)} nds)`];
     if(K?(D>=14||ratio>1.8):(D>=15||ratio>2))return[0,`Trop rafaleux (${r0(k)} → ${r0(g)} nds)`];
-    if(/Rochers/.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&(k<12||ratio>=1.5))return[0,`Petit temps vers les rochers (${r0(k)} nds${ratio>=1.5?`, raf. ${r0(g)}`:""}) : si le vent tombe, on dérive sur la côte`];
-    if(/Rochers/.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&k>=15)return[0,`Vent de mer ${r0(k)} nds vers les rochers : ${K?"pas en kite":"pas en wing"}`];
+    if(/rochers|récif/i.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&(k<12||ratio>=1.5))return[0,`Petit temps vers les rochers (${r0(k)} nds${ratio>=1.5?`, raf. ${r0(g)}`:""}) : si le vent tombe, on dérive sur la côte`];
+    if(/rochers|récif/i.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&k>=15)return[0,`Vent de mer ${r0(k)} nds vers les rochers : ${K?"pas en kite":"pas en wing"}`];
     let n=2,why=[];
     if(!K&&k<10){n=1;why.push(ratio>=1.5?"petit temps rafaleux : confirmés":"petit temps : grande aile, confirmés");}
     else if(K?(k<15):(k<14)){n=1;why.push(ratio>=1.5?"vent faible et rafaleux":K?"vent faible : grande aile ou foil":"vent faible : grande aile");}
@@ -464,7 +464,7 @@ function bestOf(act,sp,d,h0=d===today()?new Date().getHours():-1){
     if((act==="kite"||act==="wing")&&c.j[0]>0){const K=act==="kite",G=c.gmax,Wm=c.wmin||1;
       const relm=c.w&&c.w.wd!=null?windRel(sp,c.w.wd):"";
       if(G>=(K?32:34))c.j=[0,`Rafales trop fortes sur le créneau (${r0(G)} nds)`];else if(G/Wm>=(K?1.8:1.9)||G-Wm>=(K?14:16))c.j=[0,`Trop rafaleux sur le créneau (${r0(Wm)} → ${r0(G)} nds)`];
-      else if(/Rochers/.test(sp.haz||"")&&(relm==="on"||relm==="sideon")&&c.wmax>=15)c.j=[0,`Vent de mer jusqu'à ${r0(c.wmax)} nds vers les rochers`];
+      else if(/rochers|récif/i.test(sp.haz||"")&&(relm==="on"||relm==="sideon")&&c.wmax>=15)c.j=[0,`Vent de mer jusqu'à ${r0(c.wmax)} nds vers les rochers`];
       else if(G/Wm>=(K?1.5:1.6)||G-Wm>=(K?10:12)){c.j=[1,c.j[1].replace(/ · vent faible : (grande aile ou foil|foil, grande aile)/,"")+(/rafaleux/.test(c.j[1])?"":" · rafaleux : confirmés")];}}
     const minH=act==="voile"?3:act==="paddle"?1:2;if(c.j[0]>0&&run.length<minH)c.j=[0,`Créneau trop court (${run.length} h)`];
     if(!best||c.j[0]>best.j[0]||(c.j[0]===best.j[0]&&run.length>best.h2-best.h1+1))best=c;i=j+1;}
