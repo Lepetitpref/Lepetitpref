@@ -1304,4 +1304,9 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .hleg i{display:inline-block;width:14px;height:8px;border-radius:3px;background:var(--line-strong)}
 .hleg i.ok{background:var(--ok)}.hleg i.warn{background:var(--warn)}
 .spot-cmp .chip{height:44px;min-height:44px;padding:0 16px;text-decoration:none}
-/* version du site */:root{--pp-v:"20261113-1851"}
+/* boutons Windguru, Surf-Forecast, Windfinder : pleins, couleur mer, sans soulignement */
+.spot-cmp{gap:8px}
+.spot-cmp a.chip{display:inline-flex;align-items:center;gap:6px;height:44px;min-height:44px;padding:0 16px;border:0;border-radius:12px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));color:var(--accent);font-size:15px;font-weight:600;text-decoration:none;line-height:1}
+.spot-cmp a.chip:active{background:color-mix(in srgb,var(--accent) 22%,var(--surface))}
+.spot-cmp a.chip,.spot-cmp a.chip:hover{text-decoration:none!important}
+/* version du site */:root{--pp-v:"20261113-1852"}
