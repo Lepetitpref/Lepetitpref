@@ -942,9 +942,41 @@
 "Vent travers soutenu": "Strong cross-shore wind",
 "Vent fort et rafaleux": "Strong, gusty wind",
 "Fort vent de terre, il pousse vers le large": "Strong offshore wind, it pushes you out to sea",
-"Rien dans les 5 jours.": "Nothing in the next 5 days."
+"Rien dans les 5 jours.": "Nothing in the next 5 days.",
+"Envoyer au groupe": "Send to the group",
+"Kite et wing": "Kite and wing",
+"Glassy": "Glassy",
+"Flat": "Flat",
+"Onshore, haché": "Onshore, choppy",
+"Pour aujourd'hui c'est fini : voici demain. Le bon spot et la bonne heure pour le surf, le kite, le wing et la voile, sur 5 jours.": "Today is over: here is tomorrow. The right spot at the right time for surfing, kiting, winging and sailing, over 5 days.",
+"Le bon spot et la bonne heure pour le surf, le kite, le wing et la voile, sur 5 jours.": "The right spot at the right time for surfing, kiting, winging and sailing, over 5 days.",
+"Houle au large et vent : prévisions Météo-France (Open-Meteo). Comparez avec Windguru dans la fiche du spot.": "Offshore swell and wind: Météo-France forecasts (Open-Meteo). Compare with Windguru in the spot's page."
 },
 "rules": [
+[
+"^Pas assez de vent \\(([\\d,.]+) nds\\)$",
+"Not enough wind ($1 kn)"
+],
+[
+"^Vent de terre \\(([\\d,.]+) nds\\) : on dérive au large, on ne sort pas$",
+"Offshore wind ($1 kn): you drift out to sea, don't go"
+],
+[
+"^Trop fort ou trop rafaleux \\((\\d+) nds, rafales (\\d+)\\)$",
+"Too strong or too gusty ($1 kn, gusts $2)"
+],
+[
+"^Interdit aux pratiquants libres ce jour \\(écoles seulement, arrêté municipal\\)$",
+"Closed to independent riders today (schools only, municipal order)"
+],
+[
+"^Débutants : jamais seul, vérifiez si la plage est surveillée\\. Secours$",
+"Beginners: never alone, check whether the beach is lifeguarded. Emergency"
+],
+[
+"^: débutants seulement en cours avec une école\\. Jamais seul, vent de terre : on ne sort pas, bande des 300 m à 5 nœuds\\. Le vent vient d'un seul point de prévision : vérifiez l'anémomètre ou Windguru avant de partir\\. Secours en mer$",
+": beginners only in lessons with a school. Never alone, offshore wind: don't go out, 5-knot limit within 300 m. The wind comes from a single forecast point: check the wind meter or Windguru before you go. Sea rescue"
+],
 [
 "^Pas (demain|aujourd'hui)$",
 "Not $1"
