@@ -820,6 +820,8 @@ p a:not(.btn):not(.lnk),.row-meta a:not(.btn),.tips a,.textline a{text-decoratio
 .fc .fc-day{color:var(--ink);text-align:left;font-size:13px}
 .fc .fc-l{position:sticky;left:0;z-index:1;text-align:left;background:var(--surface);font-weight:400;color:var(--ink);min-width:78px;max-width:92px;white-space:normal;font-size:12.5px;line-height:1.25;box-shadow:1px 0 0 var(--line)}
 .fc .fc-sec th{background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--ink);font-weight:600;font-size:13px}
+.fc .fc-sec th.fc-l{font-weight:600;font-size:13px;background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
+.fc .fc-sec th small{font-weight:400;color:var(--muted);font-size:12px}
 .fc td{min-width:38px;color:#1c1d22;font-weight:600}
 .fc td small{display:block;font-weight:400;font-size:11px;opacity:.75}
 .fc .fc-g{font-weight:400}
@@ -1391,4 +1393,4 @@ button.wk-c{cursor:pointer}
 .spot-dnav .chip small{font-size:12px;opacity:.85}
 .sa-surf .spot-surf{margin:10px 0 2px;padding:8px 10px 6px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
 .sa-surf .spot-surf .row-meta{margin:0 0 4px}
-/* version du site */:root{--pp-v:"20261113-1956"}
+/* version du site */:root{--pp-v:"20261113-1958"}

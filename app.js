@@ -1196,10 +1196,10 @@ function fcHtml(sp,F){const T=(F.w||F.v).time,now=Date.now();
   const head=`<tr><th class="fc-l"></th>${days.map(g=>`<th colspan="${g.n}" class="fc-day">${esc(cap(F_(g.d)))}</th>`).join("")}</tr><tr><th class="fc-l"></th>${idx.map(i=>`<th>${+T[i].slice(11,13)}h</th>`).join("")}</tr>`;
   const W=F.w,V=F.v;let rows="";
   if(W){const m0=FCM.w[0][0];
-    rows+=`<tr class="fc-sec"><th class="fc-l" colspan="${idx.length+1}">Vent (nœuds)</th></tr>`;
+    rows+=`<tr class="fc-sec"><th class="fc-l">Vent <small>(nœuds)</small></th><th colspan="${idx.length}"></th></tr>`;
     FCM.w.forEach(([m,l],n)=>{if(idx.every(i=>val(W,"wind_speed_10m",m,i)==null))return;rows+=`<tr><th class="fc-l">${n?esc(l):`<b>${esc(l)}</b>`}</th>${idx.map(i=>{const k=val(W,"wind_speed_10m",m,i);return `<td class="${wCol(k)}">${k==null?"–":Math.round(k)}${n===0?arr(val(W,"wind_direction_10m",m,i)):""}</td>`;}).join("")}</tr>`;
       if(n===0)rows+=`<tr><th class="fc-l">Rafales</th>${idx.map(i=>{const g=val(W,"wind_gusts_10m",m0,i);return `<td class="${wCol(g)} fc-g">${g==null?"–":Math.round(g)}</td>`;}).join("")}</tr>`;});}
-  if(V){rows+=`<tr class="fc-sec"><th class="fc-l" colspan="${idx.length+1}">Vagues (m · période en s)</th></tr>`;
+  if(V){rows+=`<tr class="fc-sec"><th class="fc-l">Vagues <small>(m · s)</small></th><th colspan="${idx.length}"></th></tr>`;
     FCM.v.forEach(([m,l],n)=>{if(idx.every(i=>val(V,"wave_height",m,i)==null))return;rows+=`<tr><th class="fc-l">${n?esc(l):`<b>${esc(l)}</b>`}</th>${idx.map(i=>{const h=val(V,"wave_height",m,i),t=val(V,"wave_period",m,i);return `<td class="${vCol(h)}">${h==null?"–":r1(h)}${t!=null?`<small>${Math.round(t)}s</small>`:""}${n===0?arr(val(V,"wave_direction",m,i)):""}</td>`;}).join("")}</tr>`;});}
   return `<div class="fc-wrap"><table class="fc">${head}${rows}</table></div><p class="nav-src">Toutes les 2 heures, de 7 h à 21 h. Lettres : d'où viennent le vent et la vague (NE = du nord-est). Modèles : AROME (Météo-France, maille 1,3 km), ECMWF (européen), ICON (allemand) ; vagues de Météo-France et GFS-Wave (américain). Quand ils sont d'accord, la prévision est fiable. Vent au spot, vagues ${["au large de la Pointe Saint-Gildas","devant Saint-Brevin et Tharon","dans la baie de Bourgneuf"][SPOTZ[sp.id]??0]}. Données Open-Meteo.</p>`;}
 const F_=d=>F(noon(d),{weekday:"short",day:"numeric"});

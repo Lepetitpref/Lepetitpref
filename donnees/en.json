@@ -379,6 +379,8 @@
 "Rubriques de la mer": "Sea sections",
 "Choisir une date": "Choose a date",
 "Vent (nœuds)": "Wind (knots)",
+"Vagues": "Waves",
+"(nœuds)": "(knots)",
 "Vagues (m · période en s)": "Waves (m · period in s)",
 "Vent moyen": "Average wind",
 "Toutes les 2 heures, de 7 h à 21 h. Flèche : sens où va le vent ou la vague. Modèles : AROME (Météo-France, maille 1,3 km), ECMWF (européen), ICON (allemand) ; vagues de Météo-France et GFS-Wave (américain). Quand ils sont d'accord, la prévision est fiable. Vent au spot, vagues dans la baie de Bourgneuf. Données Open-Meteo.": "Every 2 hours, from 7h to 21h. Arrow: the direction the wind or wave is heading. Models: AROME (Météo-France, 1.3 km grid), ECMWF (European), ICON (German); waves from Météo-France and GFS-Wave (American). When they agree, the forecast is reliable. Wind at the spot, waves in the Bay of Bourgneuf. Data from Open-Meteo.",
