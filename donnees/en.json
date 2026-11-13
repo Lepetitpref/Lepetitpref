@@ -754,9 +754,18 @@
 "Police municipale": "Municipal police",
 "Mairie annexe": "Town hall annexe",
 "La Poste": "Post office",
-"Mairie de Pornic": "Pornic town hall"
+"Mairie de Pornic": "Pornic town hall",
+"Depuis 2010": "Since 2010"
 },
 "rules": [
+[
+"^Une maison à (Préfailles|Pornic) se vendait (.+) le m² en (\\d{4}), (.+) en (\\d{4}) \\(prix médians\\)\\.$",
+"A house in $1 sold for $2 per m² in $3, $4 in $5 (median prices)."
+],
+[
+"^Prix médians : la moitié des ventes se fait au-dessus, la moitié en dessous\\. 2010-2020 : Cerema \\(DV3F, ventes réelles\\) ; depuis 2021 : nos ventes DVF\\.$",
+"Median prices: half of sales are above, half below. 2010-2020: Cerema (DV3F, actual sales); since 2021: our DVF sales."
+],
 [
 "^Une maison à (Préfailles|Pornic) se vendait environ (.+) le m² en (\\d{4}) \\(estimation\\), (.+) en (\\d{4}), (.+) en (\\d{4})\\.$",
 "A house in $1 sold for about $2 per m² in $3 (estimate), $4 in $5, $6 in $7."

@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""Prix au m² depuis 1995 à Préfailles et Pornic → donnees/prix-historique.json (à relancer une fois par an).
+"""Prix au m² depuis 2010 à Préfailles et Pornic → donnees/prix-historique.json (à relancer une fois par an).
 
 - 2010 → dernière année : prix médians réels au m² (maisons, appartements) et nombre de ventes,
   Cerema, indicateurs DV3F annuels par commune (API Données foncières, accès libre).
   Quand il y a trop peu de ventes (secret statistique), la valeur annuelle manque : on prend alors
   la moyenne sur 3 ans du Cerema (marquée "t").
-- 1995 → 2009 : ESTIMATION. On part du prix réel de 2010 et on remonte avec l'indice Notaires-INSEE
-  des prix des logements anciens « Province » (INSEE, séries 010567074 maisons et 010567062
-  appartements, Licence Ouverte), en moyenne annuelle. Ce n'est pas un prix observé dans la commune.
 
 Usage : python3 outils/historique.py
 """
@@ -43,10 +40,9 @@ def indice(s):
 
 
 def main():
-    I = {k: indice(s) for k, s in SERIE.items()}
     out = {"maj": datetime.date.today().isoformat(),
            "sources": {"reel": "Cerema, DV3F, indicateurs de prix (2010 et après)",
-                       "estimation": "Indice Notaires-INSEE des prix des logements anciens, Province (avant 2010)"},
+                       },
            "communes": {}}
     for k, c in COMMUNES.items():
         A = {int(x["annee"]): x for x in json.loads(get(API.format(p="annuel", c=c)))["results"]}
@@ -62,15 +58,8 @@ def main():
                 elif an in T and T[an].get(f"pxm2_median_cod{cod}"):
                     serie.setdefault(an, {})[typ] = round(T[an][f"pxm2_median_cod{cod}"])
                     serie[an]["t" + typ] = 1
-            # avant 2010 : estimation à partir du prix réel de la première année connue
-            base = min((a for a in serie if typ in serie[a] and not serie[a].get("t" + typ)), default=None)
-            if base and base in I[typ]:
-                for an in range(1995, base):
-                    if an in I[typ]:
-                        serie.setdefault(an, {})[typ] = round(serie[base][typ] * I[typ][an] / I[typ][base])
-                        serie[an]["e" + typ] = 1
         out["communes"][k] = [{"a": a, **serie[a]} for a in sorted(serie)]
-        print(k, min(serie), "→", max(serie), "·", sum(1 for a in serie if "eM" in serie[a]), "années estimées (maisons)")
+        print(k, min(serie), "→", max(serie))
     with open(SORTIE, "w", encoding="utf-8") as h:
         json.dump(out, h, ensure_ascii=False, separators=(",", ":"))
     print("écrit", os.path.normpath(SORTIE), os.path.getsize(SORTIE) // 1024, "Ko")
