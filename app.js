@@ -856,11 +856,12 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   ${door("d-transports","--seagreen","Transports",`Cars et trains, correspondances comprises.`,[
     v("#venir","Depuis "+BASE.n,go?`prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:`vers ${TRDEST.join(", ")}`,"bus",' data-act="trdir" data-v="0"'),
     v("#venir","Vers "+BASE.n,come?`prochain départ de ${esc(come[0])} à ${come[1].dep.replace(/^0/,"")}`:`depuis ${TRDEST.join(", ")}`,"train",' data-act="trdir" data-v="1"')],"#venir")}
-  ${door("d-pratique","--warn","Pratique","Urgences, santé, poubelles, mairie et poste.",[
+  ${door("d-pratique","--warn","Pratique","Urgences, santé, poubelles, mairie, poste et immobilier.",[
     v("#pratique","Poubelles",om?`ordures ${dd(bo)}${be?` · jaune ${be===bo?"le même jour":dd(be)}`:""}`:"choisissez votre secteur","basket",' data-act="go2" data-v="pratique|p-dechets"'),
     v("tel:3237","Pharmacie de garde","appelez le 3237 (nuit, dimanche, fériés)","plus"),
     v("#pratique","Santé","pharmacies, médecins, dentistes","people",' data-act="go2" data-v="pratique|p-sante"'),
-    v("#pratique","Urgences","112, SAMU 15, pompiers 18, mer 196","phone",' data-act="go2" data-v="pratique|p-urg"')],"#pratique")}
+    v("#pratique","Urgences","112, SAMU 15, pompiers 18, mer 196","phone",' data-act="go2" data-v="pratique|p-urg"'),
+    v("#immobilier","Immobilier",(()=>{const C=S.ventes?.communes?.[BASE.k],r=C?imRoll(C)?.cur:null;return r&&r.M?`maison ${r100(r.M)} le m² (12 derniers mois)`:"ventes réelles, prix au m², permis, PLU";})(),"home")],"#pratique")}
   ${installBanner()}
   ${sosRow()}`;}
 

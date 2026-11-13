@@ -909,7 +909,7 @@
 "appelez le 3237 (nuit, dimanche, fériés)": "call 3237 (nights, Sundays, holidays)",
 "choisissez votre secteur": "choose your sector",
 "Cars et trains, correspondances comprises.": "Coaches and trains, connections included.",
-"Urgences, santé, poubelles, mairie et poste.": "Emergencies, health, bins, town hall and post office.",
+"Urgences, santé, poubelles, mairie et poste.": "Emergencies, health, bins, town hall, post office and property.",
 "Marées, météo de la mer, glisse, pêche à pied et plages.": "Tides, sea weather, board sports, shore fishing and beaches.",
 "Restaurants, bars, marchés et produits, avec leurs horaires du jour (à vérifier en appelant).": "Restaurants, bars, markets and local produce, with today's hours (check by phone).",
 "vent, houle, eau": "wind, swell, water",
@@ -917,9 +917,15 @@
 "surf, kite, wing, voile": "surf, kite, wing, sailing",
 "bonnes marées, sécurité": "good tides, safety",
 "rien ce soir": "nothing tonight",
-"rien de daté aujourd'hui": "nothing scheduled today"
+"rien de daté aujourd'hui": "nothing scheduled today",
+"ventes réelles, prix au m², permis, PLU": "actual sales, price per m², permits, zoning",
+"Urgences, santé, poubelles, mairie, poste et immobilier.": "Emergencies, health, bins, town hall, post office and property."
 },
 "rules": [
+[
+"^maison (.+) le m² \\(12 derniers mois\\)$",
+"house $1 per m² (last 12 months)"
+],
 [
 "^Sorties, activités, soirées et cinéma à moins de (\\d+) km\\.$",
 "Outings, activities, evenings and cinema within $1 km."
