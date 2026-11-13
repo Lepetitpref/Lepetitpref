@@ -468,8 +468,10 @@ function bestOf(act,sp,d,h0=d===today()?new Date().getHours():-1){
   if(best&&best.j[0]>0&&act!=="surf"){const bf=bulDay(d);if(bf&&(bf.max>=6||bf.raf))best.j=[0,`Bulletin Météo-France : ${bf.raf&&bf.max<6?"fortes rafales":"force "+bf.max} ${d===today()?"aujourd'hui":"ce jour-là"}`];}
   /* ça forcit : coup de vent dans les heures qui suivent le créneau → on rentre avant, ou pas de sortie */
   if(best&&best.j[0]>0){const look=act==="voile"?4:3;for(let h=best.h2+1;h<=best.h2+look&&h<=23;h++){const w=wxAt(d,h);if(w&&((w.g||0)>=34||(w.w||0)>=28)){
-      if(act==="voile"){best.j=[0,`Coup de vent à ${h}h (raf. ${r0(w.g)} nds) : on reste au port`];}
+      if(act==="voile"){const end=h-4;if(end-best.h1+1>=3){best.h2=end;best.j=[best.j[0],best.j[1]+` · coup de vent à ${h}h, rentrez avant ${end+1}h`];}else best.j=[0,`Coup de vent à ${h}h (raf. ${r0(w.g)} nds) : on reste au port`];best.coup=true;}
       else{const end=h-2;if(end-best.h1+1<(act==="paddle"?1:2))best.j=[0,`Ça forcit à ${h}h (raf. ${r0(w.g)}) : créneau trop court`];else{best.h2=end;best.j=[Math.min(best.j[0],1),best.j[1]+` · ça forcit : raf. ${r0(w.g)} à ${h}h, rentrez avant ${h-1}h`];best.forcit={h,g:w.g};}}break;}}}
+  /* vent mini/maxi et rafale maxi recalculés sur le créneau final (après « ça forcit ») */
+  if(best&&best.h1!=null){const H=[];for(let h=best.h1;h<=best.h2;h++){const w=wxAt(d,h);if(w)H.push(w);}if(H.length){best.wmin=Math.min(...H.map(x=>x.w||0));best.wmax=Math.max(...H.map(x=>x.w||0));best.gmax=Math.max(...H.map(x=>x.g||0));}}
   return best;}
 /* classement objectif des spots pour une activité : la note (Non / Possible / Bon), puis à note égale un score fin
    (surf : créneau et marée, hauteur proche de 1,3 m, période ; kite et wing : vent travers ou travers-face, force proche de l'idéal, peu de rafales),
@@ -1084,17 +1086,18 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
     return (H!=null?`${r1(H)} m${T?` · ${r0(T)} s`:""} · ${dirTxt(x.s.swd??x.s.sd)}`:"")+(w.w!=null?`<br>${({on:"onshore",sideon:"onshore",side:"side",sideoff:"offshore",off:"offshore"})[rel]||""} ${r0(w.w)} nds${(w.g||0)>=w.w+6?` · raf. ${r0(w.g)}`:""}`:"");};
   /* motif court du « possible » : 2 mots au plus, le coup de vent qui arrive en premier */
   const motif=b=>{if(b.j[0]!==1)return"";const m=String(b.j[1]).split(" · ").slice(1).filter(x=>!/^\d/.test(x)).map(x=>x.replace(/^ça forcit : raf\. \d+ à (\d+h).*$/,"ça forcit à $1").replace(/ : .*$/,""));
-    const f=m.filter(x=>/forcit/.test(x)),o=[...new Set(m.filter(x=>!/forcit/.test(x)))];return m.length?"<br><em>"+esc([...f,...o].slice(0,2).join(" · "))+"</em>":"";};
+    const f=m.filter(x=>/forcit|coup de vent/.test(x)),o0=[...new Set(m.filter(x=>!/forcit|coup de vent/.test(x)))],o=o0.filter(x=>!(x==="rafaleux"&&o0.some(y=>y!==x&&/rafaleux/.test(y))));return m.length?"<br><em>"+esc([...f,...o].slice(0,2).join(" · "))+"</em>":"";};
   const surf=weekTable("wk-surf","Où surfer cette semaine","wave",[
-    {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)} · avec école`);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
-    {l:"Confirmés",f:d=>{const r=rankSpots("surf",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}<br>${swl(r)}`):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
+    {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)}${B.x.tt?` · ${esc(B.x.tt.txt)}`:""} · avec école`,"",d);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
+    {l:"Confirmés",f:d=>{const r=rankSpots("surf",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}<br>${swl(r)}`,"",d):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
     `${t!=null?`<b>Eau ${r0(t)} °C</b> : intégrale${t<15?" + chaussons":""}. `:""}Débutants : avec une école ou un moniteur, jamais seul. Secours <a href="tel:112">112</a>, en mer <a href="tel:196">196</a>.`,
     `Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large.`);
   const kc=a=>({l:a==="kite"?"Kite":"Wing",f:d=>{const r=rankSpots(a,d).top;
-      if(a==="kite"&&r&&r.b.j[0]===0&&/^Foil seulement/.test(r.b.j[1])){const wg=rankSpots("wing",d).top;if(wg&&wg.b.j[0]>0)return `<button type="button" class="wk-c no foil" data-act="spot" data-v="${wg.sp.id}|${d}"><b>Foil : ${esc(spShort(wg.sp.n)).replace(/-/g,"\u2011")}</b><small>${slotH(wg.b)} · ${windTxt(wg.b)}</small></button>`;}return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)}<br>${windTxt(r.b)}${motif(r.b)}`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
+      if(a==="kite"&&r&&r.b.j[0]===0&&/^Foil seulement/.test(r.b.j[1])){const wg=rankSpots("wing",d).top;if(wg&&wg.b.j[0]>0)return `<button type="button" class="wk-c no foil" data-act="spot" data-v="${wg.sp.id}|${d}"><b>Foil : ${esc(spShort(wg.sp.n)).replace(/-/g,"\u2011")}</b><small>${slotH(wg.b)} · ${windTxt(wg.b)}</small></button>`;}if(r&&r.b.j[0]>0)return wkCell(r.b.j[0],r.sp,`${slotH(r.b)}<br>${windTxt(r.b)}${motif(r.b)}`,"",d);
+      const alt=rankSpots(a,d).L.find(x=>!/Vent de terre|Interdit/.test(x.b.j[1]));return wkCell(0,null,"",alt?`${spShort(alt.sp.n)} : ${reasonShort(alt.b.j[1]).toLowerCase()}`:r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
   const kw=weekTable("wk-kite","Où kiter et winger cette semaine","sail",[kc("kite"),kc("wing")],
     `Pour pratiquants autonomes ; débutants : seulement en cours avec une école. Vent de terre : on ne sort pas. Près du bord, vitesse limitée à 5 nœuds dans la bande des 300 m : on traverse par le chenal balisé. Jamais seul, retour avant la nuit. Le vent vient d'un seul point de prévision : vérifiez l'anémomètre. En mer <a href="tel:196">196</a>.`);
-  const pc={l:"Paddle",f:d=>{const r=rankSpots("paddle",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${windTxt(r.b)}`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}};
+  const pc={l:"Paddle",f:d=>{const r=rankSpots("paddle",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${windTxt(r.b)}${motif(r.b)}`,"",d):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}};
   const pd=weekTable("wk-paddle","Paddle","drop",[pc],"");
   return surf+kw+pd;}
 /* un spot pour débuter en surf : seulement les spots « Débutants », même règle que begSurf */
@@ -1190,10 +1193,10 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map(d=>{const r=rankSpots("voile",d).top,b=r&&r.b,w=b&&b.w,bf=bulF(d);
       let v=b?b.j[0]:0;const fmax=b?bft(b.wmax??w.w):null;if(bf&&bf.max>=6)v=0;else if(bf&&fmax!=null&&bf.max>fmax)v=Math.min(v,1);
       const dl=d===t?"Aujourd'hui":d===addDays(t,1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
-      const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}${(b.gmax||0)>=34?" (F8)":""}`:"";
+      const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}`:"";
       const tdd=tidesOfDay(d),tl=tdd.length?`<br>${tdd.map(x=>`${x.k==="PM"?"PM":"BM"} ${hm(new Date(x.ms))}`).join(" · ")} · coef. ${maxCoef(d)}`:"";
-      const head=v===0?`On reste au port${fmax!=null?` · force ${fmax}`:""}`:`Force ${fmax} · ${dirTxt(w.wd)}`;
-      const why=v===0?(bf&&bf.max>=6?`bulletin : ${esc(bf.txt)}`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · mer ${r1(b.s.hs)} m`:""}${bf&&bf.max>fmax?` · bulletin : force ${bf.max}`:""}`;
+      const head=v===0?`On reste au port${fmax!=null&&!(b&&b.coup)?` · force ${fmax}`:""}`:`Force ${fmax} · ${dirTxt(w.wd)}`;
+      const why=v===0?(bf&&bf.max>=6?`bulletin : ${esc(bf.txt)}`:b&&b.coup?esc(String(b.j[1])):b&&/^Force/.test(b.j[1])?`force ${fmax}, rafales ${r0(b.gmax||w.g)} nds`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · mer ${r1(b.s.hs)} m`:""}${bf&&bf.max>fmax?` · bulletin : force ${bf.max}`:""}`;
       return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0?NOTECLS[v]:"no"}"><b>${head}</b><small>${why}${v===0&&b&&w?` · ${ws}`:""}${tl}</small></span></div>`;}).join("")}</div>`:"";
   return `<section class="sec blk nav-blk" id="nav" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic("sail")}Pour naviguer</h2></div><div class="nav-in">
     ${state}${tide}${voile}${bul}${buoy}
