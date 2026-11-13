@@ -1,5 +1,5 @@
 // Le Petit Préf : hors ligne. Coquille et données en cache, données toujours fraîches quand le réseau répond.
-const V = "pp-20261113-1845";
+const V = "pp-20261113-1848";
 const SHELL = ["./", "index.html", "style.css", "app.js", "manifest.webmanifest", "images/mer.jpg", "images/pornic.jpg", "icons/icon-192.png",
   "donnees/events.json", "donnees/cinema.json", "donnees/assos.json", "donnees/transports.json", "donnees/status.json"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting())); });
@@ -14,6 +14,12 @@ self.addEventListener("fetch", e => {
   const req = fresh ? new Request(u.href, { cache: "no-cache", credentials: "same-origin" }) : e.request;
   const key = u.origin + u.pathname;   // une seule entrée par fichier, sans les ?v= / ?maj=
   const fromCache = () => caches.match(key).then(r => r || caches.match(e.request, { ignoreSearch: true })).then(r => r || caches.match("index.html"));
+  // app.js et style.css d'une version donnée (?v=) : on attend le réseau ; l'ancienne copie ne sert que hors ligne
+  // (sinon un réseau lent mélangeait le nouveau code et l'ancienne feuille de style : page sans mise en forme)
+  if (u.searchParams.has("v") && /\.(css|js)$/.test(u.pathname)) {
+    e.respondWith(fetch(e.request).then(r => { if (r.ok) { const c = r.clone(); caches.open(V).then(x => x.put(key, c)); } return r; }).catch(() => fromCache().then(r => r || Response.error())));
+    return;
+  }
   // réseau d'abord, mais au bout de 3 s on sert la copie gardée si elle existe
   e.respondWith(new Promise(resolve => {
     let done = false;

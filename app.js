@@ -1868,6 +1868,11 @@ function spyTick(){const L=[...document.querySelectorAll(".subnav [data-spy]")].
 let spyRaf=0;addEventListener("scroll",()=>{if(!spyRaf)spyRaf=requestAnimationFrame(()=>{spyRaf=0;spyTick();});},{passive:true});
 
 /* ---------- nouvelle version du site ---------- */
+/* la feuille de style doit être de la même version que la page : sinon (copie ancienne servie par un réseau lent), on la recharge, 3 fois au plus */
+(function cssCheck(n){const want=(document.querySelector('meta[name="pp-version"]')||{}).content;if(!want)return;
+  const got=getComputedStyle(document.documentElement).getPropertyValue("--pp-v").replace(/["']/g,"").trim();if(got===want||n>=3)return;
+  const l=document.querySelector('link[rel="stylesheet"][href*="style.css"]');if(!l)return;const nl=l.cloneNode();nl.href="style.css?v="+want+"&r="+Date.now();
+  nl.onload=()=>{l.remove();setTimeout(()=>cssCheck(n+1),50);};nl.onerror=()=>setTimeout(()=>cssCheck(n+1),2000);l.after(nl);})(0);
 (function(){const vPage=(document.querySelector('meta[name="pp-version"]')||{}).content,t0=Date.now(),reload=/[?&]maj=/.test(location.search);let vu=0,touche=false;
   ["pointerdown","keydown","scroll"].forEach(e=>addEventListener(e,()=>{touche=true;},{once:true,passive:true}));
   const go=v=>location.replace(location.pathname+"?maj="+v+location.hash);
