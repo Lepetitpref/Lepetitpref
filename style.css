@@ -1384,4 +1384,11 @@ button.wk-c{cursor:pointer}
 .wk-c em{font-style:normal;font-weight:600}
 .wk-c.foil{text-align:left;cursor:pointer}
 .wk-c.foil b{color:var(--muted)}
-/* version du site */:root{--pp-v:"20261113-1945"}
+/* fiche de spot : jour au choix, barre du surf dans la carte Surf, sur fond blanc */
+.spot-dnav{display:flex;gap:6px;overflow-x:auto;margin:0 0 10px;padding:2px 0 4px;scrollbar-width:none}
+.spot-dnav::-webkit-scrollbar{display:none}
+.spot-dnav .chip{flex:none;display:flex;flex-direction:column;align-items:center;line-height:1.15;min-height:44px;padding:4px 12px}
+.spot-dnav .chip small{font-size:12px;opacity:.85}
+.sa-surf .spot-surf{margin:10px 0 2px;padding:8px 10px 6px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.sa-surf .spot-surf .row-meta{margin:0 0 4px}
+/* version du site */:root{--pp-v:"20261113-1956"}
