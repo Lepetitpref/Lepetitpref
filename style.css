@@ -1060,3 +1060,5 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .imc-tip{position:absolute;top:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:13px;box-shadow:0 3px 10px rgba(0,0,0,.12);pointer-events:none;display:flex;flex-direction:column;gap:2px;white-space:nowrap}
 .imc-tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
 .pop .pop-plu{margin-top:6px;padding-top:6px;border-top:1px solid #e3e3e3;font-size:13px}
+.pra-grid .pra-open{grid-column:1/-1;margin:2px 0 6px;padding:10px 12px;background:color-mix(in srgb,var(--c) 6%,var(--surface));border-radius:10px}
+.acgrid-one{grid-template-columns:1fr}

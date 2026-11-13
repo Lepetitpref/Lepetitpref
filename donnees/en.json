@@ -783,9 +783,17 @@
 "Zones et règlement": "Zones and regulations",
 "Zone du PLU…": "Zoning…",
 "règlement ↗": "regulations ↗",
-"Pas assez de ventes": "Not enough sales"
+"Pas assez de ventes": "Not enough sales",
+"Dans quelle zone est mon adresse ?": "Which zone is my address in?",
+"Ma zone": "My zone",
+"Recherche de la zone…": "Looking up the zone…",
+"Zone introuvable pour cette adresse.": "No zone found for this address."
 },
 "rules": [
+[
+"^Votre adresse à (Préfailles|Pornic)$",
+"Your address in $1"
+],
 [
 "^Maison (.+)/m²$",
 "House $1/m²"
