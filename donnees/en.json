@@ -645,9 +645,86 @@
 "Vous êtes ici": "You are here",
 "Écrire": "Write",
 "Plus": "More",
-"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab)."
+"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).",
+"Immobilier": "Property",
+"Ventes réelles et prix au m²": "Actual sales and price per m²",
+"Maison, prix au m²": "House, price per m²",
+"Appartement, au m²": "Flat, per m²",
+"Maison, prix médian": "House, median price",
+"Maisons": "Houses",
+"Appartements": "Flats",
+"Terrains": "Plots",
+"Toutes les années": "All years",
+"Prix au m² par année": "Price per m² by year",
+"Valeur du milieu : la moitié des ventes se fait au-dessus, la moitié en dessous.": "Median value: half of sales are above it, half below.",
+"Chaque point est placé à environ 100 m près, sans le numéro de la maison.": "Each dot is placed to within about 100 m, without the house number.",
+"Aucune vente pour ce choix.": "No sales for this choice.",
+"Chargement des ventes…": "Loading sales…",
+"Les ventes ne se chargent pas. Vérifiez la connexion puis rechargez la page.": "Sales are not loading. Check your connection, then reload the page.",
+"Terrain à bâtir": "Building plot",
+"Maison": "House",
+"Appartement": "Flat",
+"Adresse non précisée": "Address not given",
+"Prix médian au m² par année": "Median price per m² by year",
+"Carte des ventes": "Map of sales"
 },
 "rules": [
+[
+"^Les ventes réelles à (Préfailles|Pornic), d'après les actes enregistrés par l'État$",
+"Actual property sales in $1, from deeds registered by the State"
+],
+[
+"^(\\d+) ventes?$",
+"$1 sales"
+],
+[
+"^(\\d+) ventes en (\\d{4})$",
+"$1 sales in $2"
+],
+[
+"^([−+]\\d+) % par rapport à (\\d{4})$",
+"$1% vs $2"
+],
+[
+"^Prix médians de (\\d{4})\\. Dernière vente connue : (.+)\\.$",
+"Median prices for $1. Latest known sale: $2."
+],
+[
+"^Voir (\\d+) ventes de plus$",
+"Show $1 more sales"
+],
+[
+"^Maison (\\d+) m² · (\\d+) pièces?$",
+"House $1 m² · $2 rooms"
+],
+[
+"^Appartement (\\d+) m² · (\\d+) pièces?$",
+"Flat $1 m² · $2 rooms"
+],
+[
+"^Maison (\\d+) m²$",
+"House $1 m²"
+],
+[
+"^Appartement (\\d+) m²$",
+"Flat $1 m²"
+],
+[
+"^Terrain à bâtir · (\\d+) m²$",
+"Building plot · $1 m²"
+],
+[
+"^(.*) · terrain (\\d+) m²$",
+"$1 · plot $2 m²"
+],
+[
+"^(.*) · terrain (\\d+) m² · neuf \\(sur plan\\)$",
+"$1 · plot $2 m² · new build (off plan)"
+],
+[
+"^(.*) · neuf \\(sur plan\\)$",
+"$1 · new build (off plan)"
+],
 [
 "^(\\d+) sorties? à venir autour de (Préfailles|Pornic)$",
 "$1 upcoming events around $2"

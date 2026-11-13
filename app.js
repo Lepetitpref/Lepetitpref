@@ -14,7 +14,7 @@ const HOME={lat:BASE.lat,lon:BASE.lon},ORIG=BASE.n,isBase=t=>new RegExp("^"+BASE
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
 const VIEWS=[["sejour","Accueil"],["agenda","À faire"],["mer","Mer"],["manger","Restos"],["venir","Transports"],["pratique","Pratique"]];
-const EXTRA=["recherche","apropos","installer","activites","cine","soirees","peche","spots"];
+const EXTRA=["recherche","apropos","installer","activites","cine","soirees","peche","spots","immobilier"];
 const after={};
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",plage:"Plages",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -165,7 +165,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
   return[pre?pre+w:cap(w),"warn"];}
 
 /* ---------- état ---------- */
-const S={events:null,cinema:null,assos:null,meta:null,err:null,
+const S={imT:"tous",imY:"tous",imV:"liste",imN:30,events:null,cinema:null,assos:null,meta:null,err:null,
   where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"tous",mk:"tous",q:"",os:null};
@@ -1039,6 +1039,46 @@ function mapSvg(list){
    ${pts.map(a=>{const i=ACTS.indexOf(a);return `<g class="pin" data-poi="${i}" tabindex="0" role="button" aria-label="${esc(a.n)}"><circle cx="${px(a.lon)}" cy="${py(a.lat)}" r="${S.selPoi===i?9:6}" fill="${CATCOL(a.cat)}"/></g>`}).join("")}
   </svg></div>${sel?actCard(sel):`<p class="note">Touchez un point pour le détail. Le cercle marque 20 km autour de ${BASE.n}.</p>`}`;}
 
+/* ===== Immobilier : ventes réelles (DVF, données publiques de l'État), chargées à l'ouverture de la page ===== */
+const IMT={M:"Maison",A:"Appartement",T:"Terrain à bâtir"},IMCOL={M:"#c0632d",A:"#2f78ab",T:"#3d8b5a"};
+const eur=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g," ")+" €";
+const keur=n=>n>=1e6?(Math.round(n/1e5)/10).toLocaleString(LANG==="en"?"en-GB":"fr-FR")+" M€":Math.round(n/1e3)+" k€";
+const med=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
+function loadVentes(){if(S.ventes||loadVentes.p)return;loadVentes.p=fetch("donnees/ventes.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json();})
+  .then(v=>{S.ventes=v;if(curView()==="immobilier")render();}).catch(()=>{loadVentes.p=null;S.ventesErr=1;if(curView()==="immobilier")render();});}
+const imSurf=v=>v.t==="T"?v.tr:v.s;
+function imList(){const C=S.ventes?.communes?.[BASE.k];if(!C)return[];return C.ventes.filter(v=>(S.imT==="tous"||v.t===S.imT)&&(S.imY==="tous"||v.d.startsWith(S.imY)));}
+function imStats(C){const ys=[...new Set(C.ventes.map(v=>v.d.slice(0,4)))].sort();
+  const per=(y,t)=>C.ventes.filter(v=>v.t===t&&v.d.startsWith(y)&&imSurf(v));
+  return ys.map(y=>({y,M:med(per(y,"M").map(v=>v.p/v.s)),A:med(per(y,"A").map(v=>v.p/v.s)),nM:per(y,"M").length,nA:per(y,"A").length,n:C.ventes.filter(v=>v.d.startsWith(y)).length,pM:med(per(y,"M").map(v=>v.p))}));}
+function imRow(v){const sf=imSurf(v),d=new Date(v.d+"T12:00:00");
+  const t=v.t==="T"?`Terrain à bâtir${v.tr?" · "+v.tr+" m²":""}`:`${IMT[v.t]}${v.s?" "+v.s+" m²":""}${v.n?" · "+v.n+(v.n>1?" pièces":" pièce"):""}`;
+  const meta=[eur(v.p),sf?eur(v.p/sf)+"/m²":"",v.t==="M"&&v.tr?"terrain "+v.tr+" m²":"",v.neuf?"neuf (sur plan)":""].filter(Boolean).join(" · ");
+  return `<li class="row im-row"><span class="im-dot" style="background:${IMCOL[v.t]}" aria-hidden="true"></span><div class="row-main"><span class="row-title">${t}</span><span class="row-meta">${meta}</span><span class="row-meta">${esc(v.r||"Adresse non précisée")} · ${F(d,{day:"numeric",month:"short",year:"numeric"})}</span></div></li>`;}
+function vImmo(){loadVentes();const head=pageHead("Immobilier",`Les ventes réelles à ${BASE.n}, d'après les actes enregistrés par l'État`);
+  if(!S.ventes)return head+`<p class="empty" style="padding:18px var(--gutter)">${S.ventesErr?"Les ventes ne se chargent pas. Vérifiez la connexion puis rechargez la page.":"Chargement des ventes…"}</p>`;
+  const C=S.ventes.communes[BASE.k];if(!C)return head+`<p class="empty">Pas de données pour ${BASE.n}.</p>`;
+  const st=imStats(C),last=st[st.length-1],prev=st[st.length-2],ys=st.map(x=>x.y).reverse();
+  const fin=C.fin?F(new Date(C.fin+"T12:00:00"),{day:"numeric",month:"long",year:"numeric"}):"";
+  const evo=(a,b)=>a&&b?`<small>${a>=b?"+":"−"}${Math.abs(Math.round((a/b-1)*100))} % par rapport à ${prev.y}</small>`:"";
+  const top=`<div class="mer-top im-top"><div><span>Maison, prix au m²</span><b>${last.M?eur(last.M):"–"}</b>${evo(last.M,prev?.M)}</div><div><span>Appartement, au m²</span><b>${last.A?eur(last.A):"–"}</b>${evo(last.A,prev?.A)}</div><div><span>Maison, prix médian</span><b>${last.pM?keur(last.pM):"–"}</b><small>${last.n} ventes en ${last.y}</small></div></div>
+  <p class="mt-hint">Prix médians de ${last.y}. Dernière vente connue : ${fin}.</p>`;
+  const mx=Math.max(...st.flatMap(x=>[x.M||0,x.A||0]));
+  const bars=sec("Prix au m² par année","",`<div class="im-bars" role="img" aria-label="Prix médian au m² par année">${st.map(x=>`<div class="im-yr"><b>${x.y}</b><div class="im-bar"><i style="width:${x.M?Math.round(x.M/mx*100):0}%;background:${IMCOL.M}"></i><span>${x.M?eur(x.M):"–"}</span></div><div class="im-bar"><i style="width:${x.A?Math.round(x.A/mx*100):0}%;background:${IMCOL.A}"></i><span>${x.A?eur(x.A):"–"}</span></div></div>`).join("")}</div><p class="im-leg"><span><i style="background:${IMCOL.M}"></i>Maisons</span><span><i style="background:${IMCOL.A}"></i>Appartements</span></p>`,"Valeur du milieu : la moitié des ventes se fait au-dessus, la moitié en dessous.");
+  const L=imList(),n=S.imN||30;
+  const filt=`<div class="filters">${frow("frow","Type",[["tous","Tout"],["M","Maisons"],["A","Appartements"],["T","Terrains"]].map(([k,l])=>chip(l,S.imT===k,`data-act="imt" data-v="${k}"`)).join(""))}${frow("frow","Année",chipSel(S.imY==="tous"?"Toutes les années":S.imY,S.imY,[["tous","Toutes les années"],...ys.map(y=>[y,y])],"imy","tous")+chip(`${ic("compass","i-s")} ${S.imV==="carte"?"Liste":"Carte"}`,S.imV==="carte",`data-act="imv"`))}</div>`;
+  const body=S.imV==="carte"?(S.imMap=L.filter(v=>v.la),`<section class="sec" style="padding-top:4px"><div id="immap" class="mmap" role="region" aria-label="Carte des ventes"></div><p class="mt-hint">Chaque point est placé à environ 100 m près, sans le numéro de la maison.</p></section>`)
+    :sec(`${L.length} vente${L.length>1?"s":""}`,"",L.length?`<ul class="list">${L.slice(0,n).map(imRow).join("")}</ul>${L.length>n?`<button type="button" class="chip im-more" data-act="imn">Voir ${Math.min(30,L.length-n)} ventes de plus</button>`:""}`:`<p class="empty">Aucune vente pour ce choix.</p>`);
+  return head+top+filt+body+bars+`<p class="note" style="margin:14px var(--gutter)">${ic("info","i-s")}<span>Source : <a href="https://explore.data.gouv.fr/fr/immobilier" target="_blank" rel="noopener">Demandes de valeurs foncières</a> (DGFiP, Licence Ouverte), publiées deux fois par an par l'État. Ce sont des ventes signées chez le notaire, pas des annonces. On n'affiche ni nom ni numéro de rue. Ventes de 2021 au ${fin}.</span></p>`;}
+function drawImMap(){const el=document.getElementById("immap");if(!el)return;const list=S.imMap||[];
+  if(LMAP){LMAP.remove();LMAP=null;}
+  const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
+  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
+  const pts=list.slice(0,600).map(v=>{const sf=imSurf(v);return L.circleMarker([v.la,v.lo],{radius:6,color:"#fff",weight:1.5,fillColor:IMCOL[v.t],fillOpacity:.9}).addTo(LMAP).bindPopup(`<div class="pop"><b>${v.t==="T"?"Terrain à bâtir":IMT[v.t]}${v.s?" "+v.s+" m²":""}</b><span>${eur(v.p)}${sf?" · "+eur(v.p/sf)+"/m²":""}</span><span>${esc(v.r||"")} · ${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span></div>`,{maxWidth:240});});
+  if(pts.length>1)LMAP.fitBounds(L.featureGroup(pts).getBounds().pad(.08),{maxZoom:15});}
+after.immobilier=()=>{if(S.imV!=="carte"||!S.ventes)return;loadLeaflet().then(drawImMap).catch(()=>{const el=document.getElementById("immap");if(el)el.innerHTML='<p class="empty">La carte ne se charge pas. Vérifiez la connexion.</p>';});};
+
 /* ===== Carte des restos (Leaflet, chargé seulement à l'ouverture de la carte) ===== */
 let LMAP=null,LME=null;
 function loadLeaflet(){if(window.L)return Promise.resolve();if(loadLeaflet.p)return loadLeaflet.p;
@@ -1232,14 +1272,14 @@ function whoChange(e){const el=e.target;
 
 /* ---------- menu (bouton en haut à droite) ---------- */
 const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Restos","Restaurants, bars, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"],["pratique","Pratique","Urgences, pharmacie et médecin de garde, mairie, numéros utiles","phone"]];
-const MENU2=[["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
+const MENU2=[["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["immobilier","Immobilier","Ventes réelles et prix au m²","home"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
 const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{const e=$(q);if(e)e.inert=on;});const mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded",String(!!$("#menu")&&on));};
 function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
 function escKey(e){if(e.key==="Escape"){const had=$("#menu");closeOverlays();if(had){const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}}}
 function openMenu(){closeOverlays();const c=curView(),g=gActive();
-  const COL={soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",recherche:"--muted",apropos:"--muted"};
+  const COL={soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",immobilier:"--i-food",recherche:"--muted",apropos:"--muted"};
   const it=([h,l,t,i])=>`<li><a class="menu-item" href="#${h}" style="--c:var(${COL[h]||"--accent"})" ${h===c?'aria-current="page"':""}><span class="menu-ic">${ic(i)}</span><span><b>${l}</b>${t||h===c?`<small>${h===c?'<em class="menu-here">Vous êtes ici</em>'+(t?" · ":""):""}${t}</small>`:""}</span></a></li>`;
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="menu-title" href="#sejour">Le Petit Préf</a><button type="button" class="menu-close" data-m="close">Fermer ${ic("close","i-s")}</button></div>
@@ -1281,7 +1321,7 @@ const ACT={
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
-  mview:v=>{S.mView=v;sset("pp-mview",v);render();},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},imt:v=>{S.imT=v;S.imN=30;render();},imv:()=>{S.imV=S.imV==="carte"?"liste":"carte";render();},imn:()=>{S.imN+=30;render();},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
@@ -1313,7 +1353,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={cday:v=>{if(v)S.cineDay=v;},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={imy:v=>{S.imY=v;S.imN=30;},cday:v=>{if(v)S.cineDay=v;},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
@@ -1326,7 +1366,7 @@ const PARENT={cine:"agenda",activites:"agenda",soirees:"agenda",peche:"mer",spot
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");
   const t=r.querySelector('[aria-current="page"]'),sc=r.closest(".tabs")||r;if(t&&sc.scrollWidth>sc.clientWidth)sc.scrollLeft=Math.max(0,t.offsetLeft-sc.clientWidth/2+t.offsetWidth/2);}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
-const TITLES={soirees:"Soirées",activites:"Activités",cine:"Ciné",mer:"La mer",peche:"Pêche à pied",spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
+const TITLES={immobilier:"Immobilier",soirees:"Soirées",activites:"Activités",cine:"Ciné",mer:"La mer",peche:"Pêche à pied",spots:"Glisse et spots",recherche:"Rechercher",apropos:"À propos",installer:"Installer",venir:"Transports",cine:"Ciné",pratique:"Pratique",peche:"Pêche à pied"};
 
 /* ---------- audience : totaux seulement, comme Concret (même compteur, clés « quiz-pp-… ») ----------
    Rien qui identifie la personne : ni cookie, ni adresse IP gardée, ni identifiant envoyé. Le navigateur garde seulement le jour de sa
@@ -1357,7 +1397,7 @@ function render(){rail();const v=curView();
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer,soirees:vSoirees})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer,soirees:vSoirees,immobilier:vImmo})[v]()}</section>`;
   if(open.length)$$("#main details summary .row-title").forEach(x=>{if(open.includes(x.textContent))x.closest("details").open=true;});
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}

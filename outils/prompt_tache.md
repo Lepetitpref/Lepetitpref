@@ -38,7 +38,7 @@ En priorité les 30 prochains jours, puis les grandes dates : marchés de Noël,
 - Retire les séances passées. Si une source est inaccessible, garde ses séances déjà présentes.
 
 ## 3. Immobilier
-Immobilier : abandonné pour l'instant, ne rien faire.
+Pas d'annonces. Les 15 avril et 15 octobre (ou le premier passage après) : `python3 outils/ventes.py` (ventes DVF de Préfailles et Pornic → `donnees/ventes.json`), puis `git add donnees/ventes.json`. Les autres jours, ne rien faire.
 
 ## 4. `donnees/status.json`
 `{"updatedAt": "<ISO, heure de Paris>", "bulletin": {"date": "JJ/MM", "title": "Glisse du jour", "text": "2–3 phrases"}}` : houle (hauteur, période) et vent (nœuds, direction) aujourd'hui pour Préfailles / Saint-Brevin ; surfable ou non à Saint-Brevin et à la Pointe Saint-Gildas ; wing (≈ 12–25 nœuds) ou bateau ; avis de coup de vent s'il y en a. Sources : windfinder (Saint-Brevin), surfnerd (Préfailles), windmorbihan.com/saint-gildas. Sans prévision fiable : `"bulletin": null`.
