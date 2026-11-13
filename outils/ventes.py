@@ -104,7 +104,8 @@ def ventes(lignes):
         res.append({"d": l0["date_mutation"], "t": t, "p": int(round(prix)), "s": surf, "n": pcs,
                     "tr": tr if t != "A" else None, "r": rue(l0["adresse_nom_voie"]),
                     "la": round(float(lat), 3) if lat else None, "lo": round(float(lon), 3) if lon else None,
-                    "neuf": l0["nature_mutation"] == "Vente en l'état futur d'achèvement" or None})
+                    "neuf": l0["nature_mutation"] == "Vente en l'état futur d'achèvement" or None,
+                    "pa": sorted({l["id_parcelle"][5:] for l in L if l["id_parcelle"]})[:8] or None})
     return res
 
 
@@ -182,6 +183,36 @@ def brut(dossier, depuis):
     return out
 
 
+def parcelles(dossier, k, c, ventes_c):
+    """Contours des parcelles vendues (cadastre Etalab, Licence Ouverte) → donnees/parcelles-<commune>.json."""
+    import gzip
+    besoin = {p for v in ventes_c for p in v.get("pa", [])}
+    g = os.path.join(dossier, f"parcelles-{c}.json.gz")
+    if not os.path.exists(g):
+        try:
+            urllib.request.urlretrieve(CADASTRE.format(c=c), g)
+        except Exception as e:
+            print("  cadastre indisponible", c, e)
+            return
+    out = {}
+    for ft in json.load(gzip.open(g))["features"]:
+        pid = ft["id"][5:]
+        if pid not in besoin:
+            continue
+        geo = ft["geometry"]
+        polys = geo["coordinates"] if geo["type"] == "MultiPolygon" else [geo["coordinates"]]
+        out[pid] = [[[round(x[1], 5), round(x[0], 5)] for x in poly[0]] for poly in polys]
+    f = os.path.join(ICI, "..", "donnees", f"parcelles-{k}.json")
+    try:
+        if json.load(open(f, encoding="utf-8")) == out:
+            return
+    except Exception:
+        pass
+    with open(f, "w", encoding="utf-8") as h:
+        json.dump(out, h, ensure_ascii=False, separators=(",", ":"))
+    print("écrit", os.path.normpath(f), len(out), "parcelles,", os.path.getsize(f) // 1024, "Ko")
+
+
 def main():
     dossier = sys.argv[1] if len(sys.argv) > 1 else tempfile.mkdtemp(prefix="dvf-")
     os.makedirs(dossier, exist_ok=True)
@@ -203,6 +234,8 @@ def main():
                 del v[x]
         sortie["communes"][k] = {"code": c, "fin": tout[0]["d"] if tout else None, "ventes": tout}
         print(k, len(tout), "ventes, la plus récente le", tout[0]["d"] if tout else "-")
+    for k, c in COMMUNES.items():
+        parcelles(dossier, k, c, sortie["communes"][k]["ventes"])
     try:
         avant = json.load(open(SORTIE, encoding="utf-8"))
         if avant.get("communes") == sortie["communes"]:

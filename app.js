@@ -1074,16 +1074,32 @@ function vImmo(){loadVentes();const B=imB(),shUrl=SITE+"/?"+(BASE.k==="pornic"?"
   const bars=sec("Prix au m² par année","",`<div class="im-bars" role="img" aria-label="Prix médian au m² par année">${st.map(x=>`<div class="im-yr"><b>${x.y}</b><div class="im-bar"><i style="width:${x.M?Math.round(x.M/mx*100):0}%;background:${IMCOL.M}"></i><span>${x.M?eur(x.M):"–"}</span></div><div class="im-bar"><i style="width:${x.A?Math.round(x.A/mx*100):0}%;background:${IMCOL.A}"></i><span>${x.A?eur(x.A):"–"}</span></div></div>`).join("")}</div><p class="im-leg"><span><i style="background:${IMCOL.M}"></i>Maisons</span><span><i style="background:${IMCOL.A}"></i>Appartements</span></p>`,"Valeur du milieu : la moitié des ventes se fait au-dessus, la moitié en dessous.");
   const L=imList(),n=S.imN||30;
   const filt=`<div class="filters">${frow("frow","Type",[["tous","Tout"],["M","Maisons"],["A","Appartements"],["T","Terrains"]].map(([k,l])=>chip(l,S.imT===k,`data-act="imt" data-v="${k}"`)).join(""))}${frow("frow","Année",chipSel(S.imY==="tous"?"Toutes les années":S.imY,S.imY,[["tous","Toutes les années"],...ys.map(y=>[y,y])],"imy","tous")+chip(`${ic("compass","i-s")} ${S.imV==="carte"?"Liste":"Carte"}`,S.imV==="carte",`data-act="imv"`))}</div>`;
-  const body=S.imV==="carte"?(S.imMap=L.filter(v=>v.la),`<section class="sec" style="padding-top:4px"><div id="immap" class="mmap" role="region" aria-label="Carte des ventes"></div><p class="mt-hint">Chaque point est placé à environ 100 m près, sans le numéro de la maison.</p></section>`)
+  const body=S.imV==="carte"?(S.imMap=L.filter(v=>v.la),`<section class="sec" style="padding-top:4px"><div id="immap" class="mmap" role="region" aria-label="Carte des ventes"></div><p class="mt-hint" id="imhint">Zoomez pour voir les prix sur les parcelles.</p></section>`)
     :sec(`${L.length} vente${L.length>1?"s":""}`,"",L.length?`<ul class="list">${L.slice(0,n).map(imRow).join("")}</ul>${L.length>n?`<button type="button" class="chip im-more" data-act="imn">Voir ${Math.min(30,L.length-n)} ventes de plus</button>`:""}`:`<p class="empty">Aucune vente pour ce choix.</p>`);
-  return head+top+filt+body+bars+`<p class="note" style="margin:14px var(--gutter)">${ic("info","i-s")}<span><span>Ce sont des ventes signées chez le notaire, pas des annonces. L'État les publie deux fois par an, avec environ six mois de retard.</span> <span>On n'affiche ni nom ni numéro de rue.</span> <span>Ventes de 2021 au ${fin}.</span> <span>Source :</span> <a href="https://explore.data.gouv.fr/fr/immobilier" target="_blank" rel="noopener">Demandes de valeurs foncières</a> <span>(DGFiP, Licence Ouverte).</span></span></p>`;}
-function drawImMap(){const el=document.getElementById("immap");if(!el)return;const list=S.imMap||[];
+  return head+top+filt+body+bars+`<p class="note" style="margin:14px var(--gutter)">${ic("info","i-s")}<span><span>Ce sont des ventes signées chez le notaire, pas des annonces. L'État les publie deux fois par an, avec environ six mois de retard.</span> <span>On n'affiche ni nom ni numéro de rue ; les parcelles viennent du cadastre.</span> <span>Ventes de 2021 au ${fin}.</span> <span>Source :</span> <a href="https://explore.data.gouv.fr/fr/immobilier" target="_blank" rel="noopener">Demandes de valeurs foncières</a> <span>(DGFiP, Licence Ouverte).</span></span></p>`;}
+const imParc=k=>(S.parc=S.parc||{})[k]?Promise.resolve(S.parc[k]):fetch(`donnees/parcelles-${k}.json`,{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(o=>S.parc[k]=o);
+function imPop(G){return `<div class="pop">${G.slice(0,6).map(v=>{const sf=imSurf(v);return `<b>${v.t==="T"?"Terrain à bâtir":IMT[v.t]}${v.s?" "+v.s+" m²":""}${v.n?" · "+v.n+(v.n>1?" pièces":" pièce"):""}</b><span>${eur(v.p)}${sf?" · "+eur(v.p/sf)+"/m²":""}</span><span>${esc(v.r||"")} · ${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span>`;}).join("")}${G.length>6?`<span>et ${G.length-6} autres ventes</span>`:""}</div>`;}
+function drawImMap(){const el=document.getElementById("immap");if(!el)return;const list=S.imMap||[],B=imB();
+  imParc(B.k).then(P=>{if(!document.getElementById("immap"))return;
   if(LMAP){LMAP.remove();LMAP=null;}
   const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
-  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([imB().lat,imB().lon],14);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
-  const pts=list.slice(0,600).map(v=>{const sf=imSurf(v);return L.circleMarker([v.la,v.lo],{radius:6,color:"#fff",weight:1.5,fillColor:IMCOL[v.t],fillOpacity:.9}).addTo(LMAP).bindPopup(`<div class="pop"><b>${v.t==="T"?"Terrain à bâtir":IMT[v.t]}${v.s?" "+v.s+" m²":""}</b><span>${eur(v.p)}${sf?" · "+eur(v.p/sf)+"/m²":""}</span><span>${esc(v.r||"")} · ${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span></div>`,{maxWidth:240});});
-  if(pts.length>1)LMAP.fitBounds(L.featureGroup(pts).getBounds().pad(.08),{maxZoom:15});}
+  LMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:19}).setView([B.lat,B.lon],14);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · parcelles © cadastre (Etalab)'}).addTo(LMAP);
+  /* une forme par parcelle vendue (la vente la plus récente donne la couleur et le prix affiché) */
+  const groups=new Map(),pts=[];
+  list.forEach(v=>{const k=(v.pa||[]).find(p=>P[p]);if(k){if(!groups.has(k))groups.set(k,[]);groups.get(k).push(v);}else if(v.la)pts.push(v);});
+  const shapes=[];
+  groups.forEach((G,k)=>{const v=G[0],sh=L.polygon(P[k],{color:IMCOL[v.t],weight:1.5,fillColor:IMCOL[v.t],fillOpacity:.45}).addTo(LMAP).bindPopup(()=>imPop(G),{maxWidth:260});
+    sh.bindTooltip(G.length>1?`${keur(v.p)} <small>+${G.length-1}</small>`:keur(v.p),{permanent:true,direction:"center",className:"im-lab",opacity:1});shapes.push(sh);});
+  pts.forEach(v=>shapes.push(L.circleMarker([v.la,v.lo],{radius:6,color:"#fff",weight:1.5,fillColor:IMCOL[v.t],fillOpacity:.9}).addTo(LMAP).bindPopup(()=>imPop([v]),{maxWidth:260})));
+  /* étiquettes de prix : à partir du zoom 17, sans chevauchement (la plus récente d'abord) */
+  const labs=()=>{const on=LMAP.getZoom()>=17,bb=LMAP.getBounds(),taken=[];
+    shapes.forEach(x=>{const t=x.getTooltip&&x.getTooltip();if(!t)return;if(!on||!bb.intersects(x.getBounds())){x.closeTooltip();return;}x.openTooltip();
+      const e=t.getElement();if(!e)return;e.style.visibility="";const r=e.getBoundingClientRect();
+      if(taken.some(q=>r.left<q.right+2&&r.right>q.left-2&&r.top<q.bottom+2&&r.bottom>q.top-2))e.style.visibility="hidden";else taken.push(r);});
+    const h=document.getElementById("imhint");if(h)h.textContent=on?"Touchez une parcelle pour le détail des ventes.":"Zoomez pour voir les prix sur les parcelles.";};
+  LMAP.on("zoomend moveend",labs);
+  if(shapes.length>1)LMAP.fitBounds(L.featureGroup(shapes).getBounds().pad(.05),{maxZoom:16});labs();});}
 after.immobilier=()=>{if(S.imV!=="carte"||!S.ventes)return;loadLeaflet().then(drawImMap).catch(()=>{const el=document.getElementById("immap");if(el)el.innerHTML='<p class="empty">La carte ne se charge pas. Vérifiez la connexion.</p>';});};
 
 /* ===== Carte des restos (Leaflet, chargé seulement à l'ouverture de la carte) ===== */
