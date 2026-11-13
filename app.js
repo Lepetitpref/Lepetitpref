@@ -380,6 +380,7 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     /* plafonds de vent, quelle que soit la direction */
     if(k>=25||g>=30)return[0,`Vent trop fort (${r0(k)} nds, rafales ${r0(g)}) : on reste à terre`];
     if(T!=null&&T<7&&k>=18)return[0,`Mer du vent (${r0(T)} s, ${r0(k)} nds) : pas de vraies vagues`];
+    if((rel==="off"||rel==="sideoff")&&k>=10&&g>=18&&/Rochers|récif/i.test((sp.haz||"")+(sp.tideTxt||"")))return[0,`Vent de terre rafaleux sur récif (${r0(k)} nds, raf. ${r0(g)}) : retour dangereux`];
     if(H<.4)return[0,"Plat : pas de houle"];
     const P=.49*H*H*(T||6);                        /* puissance de la houle, kW/m */
     let n=P<1.2?0:P>=3&&(T||0)>=8?2:1;
@@ -394,20 +395,22 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     if(off&&(g>=25||k>8+6*H)){n=Math.min(n,1);note="fort vent de terre, il pousse vers le large";}
     const clean=k<5||(off&&k<=12&&g<=18);
     return[n,clean?"Mer lisse":note?cap(note):n===2?"Bonnes vagues":H<.8?"Petit":"Correct"];}
-  if(act==="kite"||act==="wing"){const K=act==="kite",dk=r1(k),D=g-k,ratio=k>0?g/k:9;
+  if(act==="kite"||act==="wing"){const K=act==="kite",dk=r0(k),D=g-k,ratio=k>0?g/k:9;
     if(tt&&tt.ban)return[0,"Interdit aux pratiquants libres ce jour (écoles seulement, arrêté municipal)"];
     /* le danger avant le confort : le vent de terre passe toujours en premier */
-    if(rel==="off"||rel==="sideoff")return[0,`Vent de terre (${dk} nds) : on dérive au large, on ne sort pas`];
+    /* travers-terre compté dès 95° d'écart avec la plage (90° si le vent est rafaleux) : en kite et wing on dérive au large */
+    const ax=w.wd!=null?angDiff(w.wd,sp.face):0;
+    if(rel==="off"||rel==="sideoff"||ax>(ratio>=1.6?90:95)||inArc(w.wd,OFFARC[sp.id]))return[0,`Vent de terre (${dk} nds) : on dérive au large, on ne sort pas`];
     if(K?(k<10):(k<9))return[0,`Pas assez de vent (${dk} nds)`];
-    if(K?(k>30||g>=35||(ratio>=2&&g>=25)):(k>28||g>=37||(ratio>=2.1&&g>=25)))return[0,`Trop fort ou trop rafaleux (${r0(k)} nds, rafales ${r0(g)})`];
-    if(K&&/Rochers/.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&k>=15)return[0,`Vent de mer ${r0(k)} nds vers les rochers : pas en kite`];
+    if(K&&k<12)return[0,`Foil seulement (${dk} nds)`];
+    if(K?(k>30||g>=32||D>=14):(k>28||g>=34||D>=16))return[0,`Trop fort ou trop rafaleux (${r0(k)} nds, rafales ${r0(g)})`];
+    if(/Rochers/.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&k>=15)return[0,`Vent de mer ${r0(k)} nds vers les rochers : ${K?"pas en kite":"pas en wing"}`];
     let n=2,why=[];
-    if(K?(k<12):(k<10)){n=1;why.push("foil seulement");}
+    if(!K&&k<10){n=1;why.push("foil seulement");}
     else if(K?(k<15):(k<14)){n=1;why.push(K?"vent faible : grande aile ou foil":"vent faible : foil, grande aile");}
     if(K?(k>28):(k>25)){n=1;why.push("vent fort : petite aile, confirmés");}
-    if(ratio>=(K?1.6:1.7)||D>=(K?12:14)){n=1;why.push("rafaleux : confirmés");}
+    if(ratio>=(K?1.5:1.6)||D>=(K?10:12)){n=1;why.push("rafaleux : confirmés");}
     if(K&&rel==="on"){n=Math.min(n,1);why.push("vent de face : dur de sortir");}
-    if(!K&&/Rochers/.test(sp.haz||"")&&(rel==="on"||rel==="sideon")&&k>=15){n=Math.max(0,n-1);why.push("vent de mer vers les rochers");}
     if(tt&&tt.out){n=Math.max(0,n-1);why.push(tt.out);}
     return[n,`${dk} nds ${RELTXT[rel]}${why.length?" · "+why.join(" · "):""}`];}
   if(act==="voile"){const B=bft(k),Hs=s&&s.hs!=null?s.hs:null;
@@ -415,7 +418,7 @@ function judge(act,sp,w,s,tt){if(!w)return null;
     if(B===5||(Hs!=null&&Hs>2))return[1,`Force ${B}${Hs!=null?`, mer ${r1(Hs)} m`:""} : marins confirmés`];
     if(k<4)return[1,"Pétole : prévoir le moteur"];
     return[2,`Force ${B}, ${r0(k)} nds ${DIRLONG[dirTxt(w.wd)]||""}`];}
-  if(act==="paddle"){const h=H??0;if((rel==="off"||rel==="sideoff")&&(k>=8||g>=12))return[k>=12?0:1,`Vent de terre ${r0(k)} nds : on dérive vers le large, pas pour débuter`];if(k<9&&h<.5)return[2,`Plan d'eau calme, ${r0(k)} nds`];if(k<13&&h<.8)return[1,`Un peu de vent (${r0(k)} nds)`];return[0,`Trop de vent ou de vagues`];}
+  if(act==="paddle"){const h=H??0;if((rel==="off"||rel==="sideoff"||inArc(w.wd,OFFARC[sp.id]))&&(k>=8||g>=12))return[k>=12?0:1,`Vent de terre ${r0(k)} nds : on dérive vers le large, pas pour débuter`];if(g>=20)return[0,`Rafales ${r0(g)} nds`];if(k>=13)return[0,`Vent ${r0(k)} nds`];if(h>=.8)return[0,`Mer ${r1(h)} m`];if(g>=15)return[1,`Rafales ${r0(g)} nds`];if(k<9&&h<.5)return[2,`Plan d'eau calme, ${r0(k)} nds`];return[1,`Un peu de vent (${r0(k)} nds)`];}
   return null;}
 const SLOTS=[9,12,15,18];
 /* kite/wing interdits aux pratiquants libres : 15 juin–15 septembre, et week-ends et jours fériés du 1er mai au 30 septembre (fiches du Pointeau et de la Roussellerie) */
@@ -423,6 +426,9 @@ const KBAN={pointeau:["kite","wing"],roussellerie:["kite"]};
 function banOn(sp,act,d){const L=KBAN[sp.id];if(!L||!L.includes(act))return false;const md=d.slice(5);
   if(md>="06-15"&&md<="09-15")return true;const we=dow(d)===0||dow(d)===6,fer=S.transports&&(S.transports.feries||[]).includes(d);return md>="05-01"&&md<="09-30"&&(we||fer);}
 /* fenêtre de marée pour kite/wing, seulement quand la fiche la donne */
+/* vent de terre d'après les fiches : Port-aux-Ânes « de sud à est », Saint-Gildas « nord-est », baie de Bourgneuf « nord à nord-est », La Bernerie « est à nord-est », Les Moutiers « nord-est à est » (marge de 15°) */
+const OFFARC={anes:[75,195],gildas:[30,60],bourgneuf:[345,60],bernerie:[30,105],moutiers:[30,105]};
+const inArc=(wd,a)=>wd!=null&&a&&(a[0]<=a[1]?wd>=a[0]-15&&wd<=a[1]+15:wd>=a[0]-15||wd<=a[1]+15);
 const KTIDE={moutiers:[.5,1,"marée basse : la mer s'est retirée"]};
 /* marée à une heure : niveau 0 (basse) à 1 (haute), montante ou non */
 const tideEx=d=>[...tidesOfDay(addDays(d,-1)),...tidesOfDay(d),...tidesOfDay(addDays(d,1))];
@@ -445,7 +451,14 @@ function bestOf(act,sp,d,h0=d===today()?new Date().getHours():-1){
   if(!hs.length)return null;/* le meilleur créneau : la meilleure note, puis la plus longue suite d'heures */
   let best=null;for(let i=0;i<hs.length;){let j=i;while(j+1<hs.length&&hs[j+1].j[0]===hs[i].j[0]&&hs[j+1].h===hs[j].h+1)j++;const run=hs.slice(i,j+1),mid=run[Math.floor(run.length/2)];
     const c={...mid,h1:run[0].h,h2:run[run.length-1].h,gmax:Math.max(...run.map(x=>(x.w&&x.w.g)||0)),wmin:Math.min(...run.map(x=>(x.w&&x.w.w)||0)),wmax:Math.max(...run.map(x=>(x.w&&x.w.w)||0))};
+    if((act==="kite"||act==="wing")&&c.j[0]>0){const K=act==="kite",G=c.gmax,Wm=c.wmin||1;
+      if(G>=(K?32:34))c.j=[0,`Trop rafaleux sur le créneau (raf. ${r0(G)} nds)`];else if(c.j[0]===2&&(G/Wm>=(K?1.5:1.6)||G-Wm>=(K?10:12)))c.j=[1,c.j[1]+" · rafaleux : confirmés"];}
+    const minH=act==="voile"?3:act==="paddle"?1:2;if(c.j[0]>0&&run.length<minH)c.j=[0,`Créneau trop court (${run.length} h)`];
     if(!best||c.j[0]>best.j[0]||(c.j[0]===best.j[0]&&run.length>best.h2-best.h1+1))best=c;i=j+1;}
+  /* ça forcit : coup de vent dans les heures qui suivent le créneau → on rentre avant, ou pas de sortie */
+  if(best&&best.j[0]>0){const look=act==="voile"?4:3;for(let h=best.h2+1;h<=best.h2+look&&h<=23;h++){const w=wxAt(d,h);if(w&&((w.g||0)>=34||(w.w||0)>=28)){
+      if(act==="voile"){best.j=[0,`Coup de vent à ${h}h (raf. ${r0(w.g)} nds) : on reste au port`];}
+      else{const end=Math.max(best.h1,h-2);best.h2=end;best.j=[Math.min(best.j[0],1),best.j[1]+` · ça forcit : raf. ${r0(w.g)} à ${h}h, rentrez avant ${h-1}h`];best.forcit={h,g:w.g};}break;}}}
   return best;}
 /* classement objectif des spots pour une activité : la note (Non / Possible / Bon), puis à note égale un score fin
    (surf : créneau et marée, hauteur proche de 1,3 m, période ; kite et wing : vent travers ou travers-face, force proche de l'idéal, peu de rafales),
@@ -1004,7 +1017,7 @@ function condTags(sp,b,act="surf"){const T=[],w=b.w,sw=b.s;
 const COEFT=c=>c>=95?"grande marée":c>=70?"vives-eaux":c>=45?"marée moyenne":"mortes-eaux";
 function begWhy(d){/* pourquoi pas de surf pour débuter : la raison la plus fréquente sur les spots d'école */
   const R={};SPOTSX.filter(sp=>sp.acts.includes("surf")&&/Débutant/.test(sp.lvl||"")).forEach(sp=>surfHours(sp,d).forEach(x=>{const w=x.w||{},H=swellAt(sp,x.s),k=w.w??0,g=w.g??k,rel=w.wd!=null?windRel(sp,w.wd):"";
-    const r=H==null?"":H<.4?"trop petit":H>1.2?"vagues trop grosses":k>=16||g>=22?"trop de vent":(rel==="off"||rel==="sideoff")&&k>10?"vent de terre trop fort":x.tt&&sp.tide&&(x.tt.f<sp.tide[0]||x.tt.f>sp.tide[1])?"marée":"";if(r)R[r]=(R[r]||0)+1;}));
+    const r=H==null?"":k>=16||g>=22?"vent trop fort":(rel==="off"||rel==="sideoff")&&k>10?"vent de terre trop fort":H<.4?"trop petit":H>1.2?"vagues trop grosses":x.tt&&sp.tide&&(x.tt.f<sp.tide[0]||x.tt.f>sp.tide[1])?"marée":"";if(r)R[r]=(R[r]||0)+1;}));
   return Object.entries(R).sort((a,b)=>b[1]-a[1])[0]?.[0]||"";}
 function surfRow(d){const RS=rankSpots("surf",d),top=RS.top;if(!top)return"";const b=top.b,sp=top.sp,n=b.j[0];
   const B=begSurf(d),bn=B?B.n:0;let nb=null;if(!B){for(let i=1;i<=5;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const x=begSurf(dd);if(x){nb={d:dd,x};break;}}}
@@ -1044,7 +1057,7 @@ const slotH=b=>b.h2!=null&&b.h2>b.h1?`${b.h1}h-${b.h2}h`:`${b.h}h`;
 function weekDays(){const d0=glDay(today()),L=[];for(let i=0;i<5;i++){const d=addDays(d0,i);if(!wxDay(d))break;L.push(d);}return L;}
 const reasonShort=t=>String(t||"").split(" · ")[0].replace(/\s*\(.*$/,"").replace(/ : .*$/,"").replace(/, rafales.*$/,"");
 const SURFW2={"Mer lisse":"glassy","Plat":"flat","Trop petit":"flat","Haché par le vent de mer":"onshore, haché","Clapot, vent de mer":"onshore, clapot"};
-function wkCell(v,sp,sub,why){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}"><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><small>${esc(why||"non")}</small></span>`;}
+function wkCell(v,sp,sub,why,d){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}${d?"|"+d:""}"><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><small>${esc(why||"non")}</small></span>`;}
 function weekTable(id,title,icn,cols,note,lex){const D=weekDays();if(!D.length)return"";
   const dl=d=>d===today()?"Aujourd'hui":d===addDays(today(),1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
   const far=d=>(new Date(d)-new Date(today()))/864e5>=3;
@@ -1053,16 +1066,20 @@ function weekTable(id,title,icn,cols,note,lex){const D=weekDays();if(!D.length)r
    <div class="wk-t" role="table"><div class="wk-r wk-hd" role="row"><span></span>${cols.map(c=>`<span class="wk-h${c.beg?" beg":""}">${c.l}</span>`).join("")}</div>
    ${D.map(d=>{const c=maxCoef(d);return `<div class="wk-r${cols.length===1?" one":""}" role="row"><span class="wk-d">${dl(d)}<small>${c?`coef. ${c}`:""}${far(d)?"<br>à confirmer":""}</small></span>${cols.map(c=>c.f(d)).join("")}</div>`;}).join("")}</div>
    ${lex?`<p class="wk-lex">${lex}</p>`:""}</section>`;}
-const windTxt=b=>b&&b.w?`${r0(b.wmin??b.w.w)}${b.wmax!=null&&r0(b.wmax)!==r0(b.wmin)?`-${r0(b.wmax)}`:""} nds${b.gmax?` · raf. ${r0(b.gmax)}`:""} · ${dirTxt(b.w.wd)}`:"";
+const windTxt=b=>b&&b.w?`${r0(b.wmin??b.w.w)}${b.wmax!=null&&b.wmin!=null&&r0(b.wmax)!==r0(b.wmin)?`-${r0(b.wmax)}`:""} nds${b.gmax?` · raf. ${r0(b.gmax)}`:""} · ${dirTxt(b.w.wd)}`:"";
 function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions en cours de chargement…</p>`;
   const t=sstNow(today());
-  const swl=b=>{const sp=b&&b.sp,x=b&&b.b;if(!x||!x.s)return"";const H=swellAt(sp,x.s),T=x.s.swp??x.s.tp;return H!=null?`${r1(H)} m${T?` · ${r0(T)} s`:""} · ${dirTxt(x.s.swd??x.s.sd)}`:"";};
+  const swl=b=>{const sp=b&&b.sp,x=b&&b.b;if(!x||!x.s)return"";const H=swellAt(sp,x.s),T=x.s.swp??x.s.tp,w=x.w||{},rel=w.wd!=null?windRel(sp,w.wd):"";
+    return (H!=null?`${r1(H)} m${T?` · ${r0(T)} s`:""} · ${dirTxt(x.s.swd??x.s.sd)}`:"")+(w.w!=null?`<br>${({on:"onshore",sideon:"onshore",side:"side",sideoff:"offshore",off:"offshore"})[rel]||""} ${r0(w.w)} nds${(w.g||0)>=w.w+6?` · raf. ${r0(w.g)}`:""}`:"");};
+  /* motif court du « possible » : 2 mots au plus, le coup de vent qui arrive en premier */
+  const motif=b=>{if(b.j[0]!==1)return"";const m=String(b.j[1]).split(" · ").slice(1).filter(x=>!/^\d/.test(x)).map(x=>x.replace(/^ça forcit : raf\. \d+ à (\d+h).*$/,"ça forcit à $1").replace(/ : .*$/,""));
+    const f=m.filter(x=>/forcit/.test(x)),o=[...new Set(m.filter(x=>!/forcit/.test(x)))];return m.length?"<br><em>"+esc([...f,...o].slice(0,2).join(" · "))+"</em>":"";};
   const surf=weekTable("wk-surf","Où surfer cette semaine","wave",[
     {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)} · avec école`);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
     {l:"Confirmés",f:d=>{const r=rankSpots("surf",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}<br>${swl(r)}`):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
     `${t!=null?`<b>Eau ${r0(t)} °C</b> : intégrale${t<15?" + chaussons":""}. `:""}Débutants : avec une école ou un moniteur, jamais seul. Secours <a href="tel:112">112</a>, en mer <a href="tel:196">196</a>.`,
     `Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large.`);
-  const kc=a=>({l:a==="kite"?"Kite":"Wing",f:d=>{const r=rankSpots(a,d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)}<br>${windTxt(r.b)}${r.b.j[0]===1&&/rafaleux/.test(r.b.j[1])?" · rafaleux":""}`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
+  const kc=a=>({l:a==="kite"?"Kite":"Wing",f:d=>{const r=rankSpots(a,d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)}<br>${windTxt(r.b)}${motif(r.b)}`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
   const kw=weekTable("wk-kite","Où kiter et winger cette semaine","sail",[kc("kite"),kc("wing")],
     `Pour pratiquants autonomes ; débutants : seulement en cours avec une école. Vent de terre : on ne sort pas. Près du bord, vitesse limitée à 5 nœuds dans la bande des 300 m : on traverse par le chenal balisé. Jamais seul, retour avant la nuit. Le vent vient d'un seul point de prévision : vérifiez l'anémomètre. En mer <a href="tel:196">196</a>.`);
   const pc={l:"Paddle",f:d=>{const r=rankSpots("paddle",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${windTxt(r.b)}`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}};
@@ -1077,7 +1094,8 @@ function spotTiles(d){const has=!!wxDay(d),SM={};
     const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):0;
     const dots=sm.map(x=>`<span class="sd ${NOTECLS[x.b.j[0]]}">${ACTL[x.a].replace(" et bateau","")}</span>`).join("");
     return {k:sp.id,l:esc(sp.n.replace(/^Saint-Brevin, /,"Saint-Brevin · ")),sub:`${esc(townShort(sp.town))} · ${Math.max(1,Math.round(k))} km<span class="sdots">${dots}</span>`,c:top===2?"--ok":top===1?"--warn":"--line-strong",ic:sp.acts[0]==="voile"?"sail":"wave",body:spotBody(sp,d,sm)};});
-  return `<section class="sec blk spots-t" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots, ${ceJour(d)}</h2></div>${ptiles("spot",L,"Touchez un spot : conditions heure par heure, niveau, dangers et prévisions détaillées.")}</section>`;}
+  const dch=weekDays().map(x=>`<button type="button" class="chip${x===d?" on":""}" aria-pressed="${x===d}" data-act="spotday" data-v="${x}">${x===today()?"Aujourd'hui":x===addDays(today(),1)?"Demain":esc(cap(dshort(x)))}</button>`).join("");
+  return `<section class="sec blk spots-t" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots, ${d===today()||d===addDays(today(),1)?ceJour(d):dlong(d)}</h2></div><div class="spot-days" role="group" aria-label="Jour">${dch}</div>${ptiles("spot",L,"Touchez un spot : conditions heure par heure, niveau, dangers et prévisions détaillées.")}</section>`;}
 function spotBody(sp,d,sm){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
   const surf=has&&sp.acts.includes("surf")&&sp.tide?surfHours(sp,d):[];
@@ -1085,9 +1103,9 @@ function spotBody(sp,d,sm){const has=!!wxDay(d);
   const bs=sp.acts.includes("surf")?begSpot(sp,d):null;
   const lvRow=(lab,v,main,sub)=>`<div class="sa-lv"><span class="sa-lvl">${lab}</span><span class="sf-v ${NOTECLS[v]}">${NOTE[v]}</span><span class="sa-lvt">${main}${sub?`<small>${sub}</small>`:""}</span></div>`;
   const card=x=>{const v=x.b.j[0];if(x.a==="surf"){const beg=/Débutant/.test(sp.lvl||"");
-      return `<div class="spot-act sa-surf ${NOTECLS[v]}"><div class="sa-h"><b>Surf</b></div>${lvRow("Confirmés",v,v>0?`<b>${slotTxt(x.b)}</b>`:"",esc(x.b.j[1]))}${lvRow("Débutants",bs?bs.n:0,bs?`<b>de ${bs.h1}h à ${bs.h2}h</b>`:"",bs?"idéal avec une école":beg?"pas de créneau facile ce jour":"spot pour confirmés")}${condTags(sp,x.b,"surf")}</div>`;}
+      return `<div class="spot-act sa-surf ${NOTECLS[v]}"><div class="sa-h"><b>Surf</b></div>${lvRow("Confirmés",v,v>0?`<b>${slotTxt(x.b)}</b>`:"",esc(x.b.j[1]))}${lvRow("Débutants",bs?bs.n:0,bs?`<b>de ${bs.h1}h à ${bs.h2}h</b>`:"",bs?"idéal avec une école":beg?(()=>{let nx=null;for(let i=1;i<=5&&!nx;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const y=begSpot(sp,dd);if(y)nx={dd,y};}return `pas de créneau facile ${d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":dshort(d)}${nx?` · prochain : ${dshort(nx.dd)}, ${nx.y.h1}h-${nx.y.h2}h`:""}`;})():"spot pour confirmés")}${condTags(sp,x.b,"surf")}</div>`;}
     return `<div class="spot-act ${NOTECLS[v]}"><div class="sa-h"><b>${ACTL[x.a]}</b><span class="note-pill ${NOTECLS[v]||"no"}">${NOTE[v]}</span></div>${v>0?`<span class="sa-main">${slotTxt(x.b)}</span>`:""}<span class="sa-sub">${esc(x.b.j[1])}</span>${condTags(sp,x.b,x.a)}</div>`;};
-  const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure</b> · idéal : ${esc(sp.tideTxt)}</p><div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}${d===today()&&y.h<new Date().getHours()?" past":""}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta hleg"><i class="ok"></i>bon <i class="warn"></i>possible <i></i>non</p>${/Débutant/.test(sp.lvl||"")?"":`<p class="row-meta"><b>Ce spot n'est pas pour débuter.</b></p>`}</div>`:"";
+  const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure, ${d===today()?"aujourd'hui":d===addDays(today(),1)?"demain":dlong(d)}</b> · idéal : ${esc(sp.tideTxt)}</p>${surf.every(y=>!y.j[0])?`<p class="row-meta">Rien de surfable ce jour-là : ${esc(String(surf[0].j[1]).split(" · ")[0].replace(/ : .*$/,"").toLowerCase())}.</p>`:""}<div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}${d===today()&&y.h<new Date().getHours()?" past":""}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta hleg"><i class="ok"></i>bon <i class="warn"></i>possible <i></i>non</p>${/Débutant/.test(sp.lvl||"")?"":`<p class="row-meta"><b>Ce spot n'est pas pour débuter.</b></p>`}</div>`:"";
   return `<div class="spot-body" id="spot-${sp.id}"><p class="spot-lvl"><b>Niveau :</b> ${esc(sp.lvl)}<br><b>Attention :</b> ${esc(sp.haz)}</p>${sm.length?`<div class="spot-acts">${sm.map(card).join("")}</div>`:""}${strip}
     ${(SPOTCMP[sp.id]||[]).length?`<p class="spot-cmp"><b>Comparer :</b> ${SPOTCMP[sp.id].map(([l,u])=>`<a class="chip" href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</p>`:""}
     <div class="spot-emb"><p class="emb-h">Prévision détaillée : vent et vagues, plusieurs modèles</p><div class="emb-box" id="emb-${sp.id}"></div></div>
@@ -1154,15 +1172,21 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   /* marée du jour à Pornic */
   const td=tidesOfDay(t),c=maxCoef(t);
   const tide=td.length?`<p class="nav-tide"><b>Marée à Pornic aujourd'hui</b>${c?` · coef. ${c}`:""}<br>${td.map(x=>`${x.k==="PM"?"Pleine mer":"Basse mer"} ${hm(new Date(x.ms))}${x.h!=null?` (${r1(x.h)} m)`:""}`).join(" · ")}</p>`:"";
-  /* fenêtre de sortie voile : force en Beaufort, rafales, direction, mer, sur 5 jours */
-  const D=weekDays();
-  const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map((d,i)=>{const r=rankSpots("voile",d).top,b=r&&r.b,v=b?b.j[0]:0,w=b&&b.w;
+  /* fenêtre de sortie voile : force maxi, rafales, direction, mer, marées ; le bulletin officiel l'emporte s'il annonce plus fort */
+  const D=weekDays(),WD=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+  const bulF=d=>{if(!B)return null;const sec=(B.sections||[]).find(x=>/journée/i.test(x.t)&&x.t.toLowerCase().includes(WD[dow(d)])&&x.t.includes(String(+d.slice(8))));if(!sec)return null;
+    const v=sec.l.find(l=>/^VENT/.test(l));if(!v)return null;const n=[...v.matchAll(/(\d{1,2})(?=\s*(?:à|,|\.|$|\s+localement|\s+parfois|\s+au large))/g)].map(m=>+m[1]).filter(x=>x>=1&&x<=12);return n.length?{max:Math.max(...n),txt:v.replace(/^VENT\s*:\s*/,"")}:null;};
+  const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map(d=>{const r=rankSpots("voile",d).top,b=r&&r.b,w=b&&b.w,bf=bulF(d);
+      let v=b?b.j[0]:0;const fmax=b?bft(b.wmax??w.w):null;if(bf&&bf.max>=6)v=0;else if(bf&&fmax!=null&&bf.max>fmax)v=Math.min(v,1);
       const dl=d===t?"Aujourd'hui":d===addDays(t,1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
-      const flag=alerte&&i<2?" · voir l'avis du bulletin":"";
-      return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0&&!(alerte&&i<2)?NOTECLS[v]:alerte&&i<2?"warn":"no"}"><b>${w?`Force ${bft(w.w)} · ${dirTxt(w.wd)}`:"–"}</b><small>${b?`${v>0?slotH(b)+" · ":""}${w?`${r0(b.wmin??w.w)}-${r0(b.wmax??w.w)} nds, raf. ${r0(b.gmax||w.g)}`:""}${b.s&&b.s.hs!=null?` · mer ${r1(b.s.hs)} m`:""}${v===0?" · "+esc(reasonShort(b.j[1]).toLowerCase()):""}${flag}`:""}</small></span></div>`;}).join("")}</div>`:"";
+      const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}${(b.gmax||0)>=34?" (F8)":""}`:"";
+      const tdd=tidesOfDay(d),tl=tdd.length?`<br>${tdd.map(x=>`${x.k==="PM"?"PM":"BM"} ${hm(new Date(x.ms))}`).join(" · ")} · coef. ${maxCoef(d)}`:"";
+      const head=v===0?`On reste au port${fmax!=null?` · force ${fmax}`:""}`:`Force ${fmax} · ${dirTxt(w.wd)}`;
+      const why=v===0?(bf&&bf.max>=6?`bulletin : ${esc(bf.txt)}`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · mer ${r1(b.s.hs)} m`:""}${bf&&bf.max>fmax?` · bulletin : force ${bf.max}`:""}`;
+      return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0?NOTECLS[v]:"no"}"><b>${head}</b><small>${why}${v===0&&b&&w?` · ${ws}`:""}${tl}</small></span></div>`;}).join("")}</div>`:"";
   return `<section class="sec blk nav-blk" id="nav" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic("sail")}Pour naviguer</h2></div><div class="nav-in">
     ${state}${tide}${voile}${bul}${buoy}
-    <p class="nav-sos"><a class="chip" href="tel:196">${ic("phone","i-s")} Secours en mer · 196</a><span>ou VHF canal 16</span></p>
+    <p class="nav-sos"><a class="chip" href="tel:196">${ic("phone","i-s")} Secours en mer · 196</a><span>ou VHF canal 16 (CROSS Étel)</span></p>
     <p class="nav-src">Bande des 300 m : vitesse limitée à 5 nœuds, baigneurs prioritaires. Ces repères ne remplacent pas le bulletin officiel ni les documents nautiques (SHOM).</p></div></section>`;}
 function spotsSec(d){const has=!!wxDay(d);
   const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
@@ -1228,7 +1252,7 @@ function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay
   <button type="button" class="lnk mer-share" data-share="${esc(merShareTxt(s))}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
     <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
   ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}</div>
-  <div id="s-spots" class="part"><h2 class="part-h">Spots</h2><p class="part-sub">Où aller cette semaine selon votre niveau, puis chaque spot en détail.</p>${weekSecs()}${spotTiles(glDay(s))}</div>
+  <div id="s-spots" class="part"><h2 class="part-h">Spots</h2><p class="part-sub">Où aller cette semaine selon votre niveau, puis chaque spot en détail.</p>${weekSecs()}${spotTiles(S.spotDay&&S.spotDay>=today()&&wxDay(S.spotDay)?S.spotDay:glDay(s))}</div>
   <div id="s-nav" class="part"><h2 class="part-h">Naviguer</h2><p class="part-sub">Bulletin côtier officiel, houle mesurée à la bouée, secours en mer.</p>${navSec()}</div>
   <div class="part">${pecheBody()}</div>
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
@@ -1842,7 +1866,7 @@ const ACT={
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
-  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();if(S.pOpen[g])requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="${v}"]`);scrollUnder(t);});},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),plupin:v=>{const [la,lo]=v.split(",").map(Number);S.imPlu=true;ACT.pjump("im-carte");setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP);LMAP.setView([la,lo],17);},350);},pinclear:()=>{if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;const q=$("#imq2");if(q)q.value="";const c=document.getElementById("impinclr");if(c)c.hidden=true;},pluclear:()=>{const b=document.getElementById("plures");if(b)b.innerHTML="";const q=$("#pluq");if(q)q.value="";},go2:v=>{const [h,j,x]=v.split("|");if(x)x.split("&").forEach(kv=>{const [k,val]=kv.split("=");S[k]=val==="1"?true:val==="0"?false:val;if(k==="when")S.whenKeep=true;});S.jumpTo=j||null;if(location.hash==="#"+h)render();else location.hash="#"+h;},binsec:v=>{S.binSec=v;sset("pp-secteur",v);render();},agweek:()=>{S.du=S.agDay||today();S.au=addDays(S.du,6);S.when="dates";render();},imclear:()=>{S.imAddrH=null;S.imAV=null;S.imAP=null;const q=$("#imq");if(q)q.value="";if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;render();},imago:v=>imFocus(S.imAV&&S.imAV[+v]),impgo:v=>pmFocus(S.imAP&&S.imAP[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();requestAnimationFrame(()=>scrollUnder(document.querySelector(".pm-chart")));},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();if(S.pOpen[g])requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="${v}"]`);scrollUnder(t);});},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),plupin:v=>{const [la,lo]=v.split(",").map(Number);S.imPlu=true;ACT.pjump("im-carte");setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP);LMAP.setView([la,lo],17);},350);},pinclear:()=>{if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;const q=$("#imq2");if(q)q.value="";const c=document.getElementById("impinclr");if(c)c.hidden=true;},pluclear:()=>{const b=document.getElementById("plures");if(b)b.innerHTML="";const q=$("#pluq");if(q)q.value="";},go2:v=>{const [h,j,x]=v.split("|");if(x)x.split("&").forEach(kv=>{const [k,val]=kv.split("=");S[k]=val==="1"?true:val==="0"?false:val;if(k==="when")S.whenKeep=true;});S.jumpTo=j||null;if(location.hash==="#"+h)render();else location.hash="#"+h;},binsec:v=>{S.binSec=v;sset("pp-secteur",v);render();},agweek:()=>{S.du=S.agDay||today();S.au=addDays(S.du,6);S.when="dates";render();},spotday:v=>{S.spotDay=v;render();requestAnimationFrame(()=>ACT.pjump("spots"));},imclear:()=>{S.imAddrH=null;S.imAV=null;S.imAP=null;const q=$("#imq");if(q)q.value="";if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;render();},imago:v=>imFocus(S.imAV&&S.imAV[+v]),impgo:v=>pmFocus(S.imAP&&S.imAP[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();requestAnimationFrame(()=>scrollUnder(document.querySelector(".pm-chart")));},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
@@ -1851,7 +1875,7 @@ const ACT={
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
-  spot:v=>{if(!SPOTSX.some(x=>x.id===v))return;S.pOpen.spot=v;if(!["mer","spots","naviguer"].includes(curView())){S.spotOpen=v;location.hash="#spots";return;}render();requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="spot|${v}"]`);if(t)scrollUnder(t);});},
+  spot:v=>{const[id,dd]=String(v).split("|");v=id;if(!SPOTSX.some(x=>x.id===v))return;S.spotDay=dd||S.spotDay||null;S.pOpen.spot=v;if(!["mer","spots","naviguer"].includes(curView())){S.spotOpen=v;location.hash="#spots";return;}render();requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="spot|${v}"]`);if(t)scrollUnder(t);});},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{S.when=v;S.whenKeep=curView()!=="agenda";S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},

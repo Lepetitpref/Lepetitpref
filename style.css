@@ -1371,4 +1371,13 @@ button.wk-c{cursor:pointer}
 .nav-blk .sec-title .i{width:20px;height:20px;color:var(--accent)}
 .fc-dir{display:block;font-size:12px;color:var(--muted)}
 .spot-lvl{margin:0 0 8px;padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--warn) 7%,transparent);font-size:14px!important;line-height:1.45}
-/* version du site */:root{--pp-v:"20261113-1900"}
+.spot-days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:12px 14px 0}
+.spot-days::-webkit-scrollbar{display:none}
+.spot-days .chip{flex:0 0 auto;min-height:44px}
+.spot-days .chip.on{background:var(--sel2,#2f78ab);color:#fff;border-color:transparent}
+.spot-days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:12px 14px 0}
+.spot-days::-webkit-scrollbar{display:none}
+.spot-days .chip{flex:0 0 auto;min-height:44px}
+.spot-days .chip.on{background:var(--sel2,#2f78ab);color:#fff;border-color:transparent}
+.wk-c em{font-style:normal;font-weight:600}
+/* version du site */:root{--pp-v:"20261113-1913"}
