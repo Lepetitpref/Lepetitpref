@@ -824,7 +824,12 @@
 "Effacer cette adresse": "Clear this address",
 "Aller": "Go",
 "Glissez le doigt pour lire chaque année ; touchez-en une pour voir ses permis, en liste et sur la carte.": "Slide your finger to read each year; tap one to see its permits, as a list and on the map.",
-"Prix médian d'une maison": "Median house price"
+"Prix médian d'une maison": "Median house price",
+"trop peu de ventes pour comparer sur un an": "too few sales for a yearly comparison",
+"Zone agricoles": "Agricultural zone",
+"Zone naturelles": "Natural zone",
+"Zone urbaine : on peut construire": "Urban zone: building allowed",
+"Zone naturelle : très peu constructible": "Natural zone: very limited building"
 },
 "rules": [
 [

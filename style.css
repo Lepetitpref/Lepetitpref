@@ -1103,3 +1103,7 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .im-clear{margin:0 0 6px;text-align:right}
 .im-clear .lnk{display:inline-flex;align-items:center;gap:4px;min-height:36px;font-size:14px}
 .pm-wrap{touch-action:pan-y}
+.plu-res{background:color-mix(in srgb,var(--c) 10%,var(--surface));border-left-width:4px;border-radius:10px;padding:10px 12px;margin-top:10px}
+.plu-res .pra-h{color:var(--c);font-size:18px}
+.plu-tag{margin:6px 0 0}
+.plu-tag span{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--c);color:#fff;font-size:13px;font-weight:600}
