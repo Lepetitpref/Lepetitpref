@@ -166,7 +166,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
 
 /* ---------- état ---------- */
 const S={imCad:true,pOpen:{},imT:"tous",imY:"tous",imN:3,events:null,cinema:null,assos:null,meta:null,err:null,
-  where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
+  where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",aWhere:sget("pp-awhere")||"20",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"tous",mk:"tous",q:"",os:null};
 if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.who="tous";try{const q=JSON.parse(sget("pp-dates")||"null");if(q){S.du=q.du;S.au=q.au;}}catch(e){}
@@ -592,7 +592,8 @@ function actGrid(base,od){const n=k=>base.filter(a=>gk(a)===k).length,o=k=>base.
   return `<div class="acgrid" role="group" aria-label="Types d'activités">${ks.map(k=>{const x=o(k);return tile(k,ACLBL[k]||CATS[k],`${n(k)} lieu${n(k)>1?"x":""}`,x?`${x} ouvert${x>1?"s":""}`:"");}).join("")}${na?tile("assos","Associations",`${na} associations`,""):""}</div>
   ${S.cat!=="tous"?`<p class="ac-back"><button type="button" class="lnk" data-act="cat" data-v="tous">${ic("left","i-s")}Tous les types</button></p>`:""}`;}
 function vActs(){const t=today(),od=S.openDay||t;
-  const pre=ACTIV().filter(a=>actOK(a)&&fitsWhere(a.dist,a.town)&&(!S.free||/Gratuit/.test(a.price||"")));
+  /* Activités : distance propre, 20 km par défaut (clé pp-awhere) */
+  const pre=ACTIV().filter(a=>actOK(a)&&fitsWhere(a.dist,a.town,S.aWhere)&&(!S.free||/Gratuit/.test(a.price||"")));
   const base=pre.filter(a=>(!S.rain||a.rain)&&(!S.openToday||openOn(a,od)));
   if(S.cat==="enfants")S.cat="sortie";const list=base.filter(a=>S.cat==="tous"||gk(a)===S.cat).sort((p,q)=>(p.dist??99)-(q.dist??99));
   const nOpen=pre.filter(a=>(!S.rain||a.rain)&&openOn(a,od)).length,nRain=pre.filter(a=>a.rain&&(!S.openToday||openOn(a,od))).length;
@@ -600,7 +601,7 @@ function vActs(){const t=today(),od=S.openDay||t;
   const cats=[["tous","Tous les thèmes"],...Object.keys(CATS).filter(k=>k!=="saveurs"&&k!=="marche"&&pre.some(a=>a.cat===k)).map(k=>[k,CATS[k]]),["assos","Associations"]];
   return `${pageHead("À faire",`Activités : ${list.length} lieu${list.length>1?"x":""}, du plus proche au plus loin`)}
   ${segAC("activites")}
-  <div class="filters">${frow("frow","Filtres",`${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
+  <div class="filters">${frow("frow","Filtres",`${zoneSel(S.aWhere,"awhere","20")}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${actGrid(base,od)}
   <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
@@ -825,7 +826,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const evT=ld?[]:evOnDay(t).filter(e=>z20(e)&&!evIsLong(e));
   const nSoir=evT.filter(evSoir).length;
   const wkP=ld?[]:eventsIn(t,addDays(t,6)).filter(e=>z20(e)&&!evIsLong(e));
-  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,HW)).length;
+  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,S.aWhere==="ici"?"10":S.aWhere)).length;
   const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,CIN0).filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
   /* Mer */
   let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{const R=rankSpots(a,t),x=R.top;if(x&&x.b.j[0]>0&&(!glisse||x.b.j[0]>glisse.b.j[0]))glisse={a,sp:x.sp,b:x.b};});}
@@ -851,7 +852,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   ${quickRow()}
   ${door("d-faire","--i-act","À faire",`Sorties, activités, soirées et cinéma ${HZ}.`,[
     v("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"rien de daté aujourd'hui"} · ${wkP.length} en 7 jours`,"cal",' data-act="when" data-v="auj"'),
-    v("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui`,"compass"),
+    v("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui${S.aWhere==="ici"?"":` à moins de ${S.aWhere} km`}`,"compass"),
     v("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} ce soir`:"rien ce soir"} · ${wkP.filter(evSoir).length} en 7 jours`,"spark",' data-act="soirw" data-v="soir"'),
     v("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} : ${esc(film.f.film)}`:`le programme de ${BASE.n} et autour`,"film",` data-act="cin" data-v="${CIN0}"`)],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées, météo de la mer, glisse, pêche à pied et plages.",[
@@ -1684,12 +1685,12 @@ const ACT={
   av:v=>{S.actView=v;render();},
   more:v=>{S.more[v]=true;render();},
   tday:v=>{S.tideDay=v;render();},
-  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="10";sset("cf-where","10");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";S.mCadre=null;S.mWhere="10";sset("pp-mwhere","10");render();},
+  reset:()=>{S.when="tout";S.etype="tous";S.free=false;S.who="tous";S.where="10";sset("cf-where","10");S.cat="tous";S.rain=false;S.openToday=false;S.mk="tous";S.mCadre=null;S.mWhere="10";sset("pp-mwhere","10");S.aWhere="20";sset("pp-awhere","20");render();},
   kml:()=>{const st=$("#kmlStatus");
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)S.cineDay=v;},agday:v=>{if(!v)return;S.agDay=v;S.when="jour";S.whenKeep=true;render();},soirday:v=>{if(!v)return;S.agDay=v;S.soirWhen="jour";render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)S.cineDay=v;},agday:v=>{if(!v)return;S.agDay=v;S.when="jour";S.whenKeep=true;render();},soirday:v=>{if(!v)return;S.agDay=v;S.soirWhen="jour";render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},awhere:v=>{S.aWhere=v;sset("pp-awhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});

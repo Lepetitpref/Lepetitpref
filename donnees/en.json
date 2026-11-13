@@ -923,6 +923,10 @@
 },
 "rules": [
 [
+"^(\\d+) lieux? ouverts? aujourd'hui à moins de (\\d+) km$",
+"$1 places open today within $2 km"
+],
+[
 "^maison (.+) le m² \\(12 derniers mois\\)$",
 "house $1 per m² (last 12 months)"
 ],
