@@ -204,7 +204,7 @@ function statusOf(a,d){const o=openOn(a,d);
   if(/Pêche à pied/.test(a.n)){const l=dayLows(d);return[`Accès libre${l.length?" · basse mer "+hm(new Date(l[0].ms)):""}`,"ok"];}
   if(o)return[`Ouvert${/^(ouvert|week-end)$/.test(o)?"":" · "+esc(o)}`,"ok"];
   if(o===false){const md=d.slice(5),inSeason=a.open.some(r=>r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to));
-    return[inSeason?`Fermé le ${F(noon(d),{weekday:"long"})}`:`Fermé en cette saison${a.season?" · "+esc(a.season):""}`,""];}
+    return[inSeason?`Fermé le ${F(noon(d),{weekday:"long"})}`:`Fermé en cette saison${a.season?` · <span lang="fr">${esc(a.season)}</span>`:""}`,""];}
   if(/Gratuit/.test(a.price||"")&&/^(nature|mer|culture|plage)$/.test(a.cat))return["Accès libre","ok"];
   return["Horaires à vérifier","dim"];}
 function placeMore(a){const sh=`${a.n} (${a.town})${a.tel?" · "+a.tel:""}`;
@@ -402,10 +402,10 @@ function dayHours(d){const D=WX.f&&WX.f.daily,i=D&&D.sunrise?D.time.indexOf(d):-
 function surfHours(sp,d){const[a,b]=dayHours(d),out=[];for(let h=a;h<=b;h++){const w=wxAt(d,h),s=seaAt(d,h,SPOTZ[sp.id]??0),tt=tideAtH(d,h),j=judge("surf",sp,w,s,tt);
   if(j)out.push({h,j,w,s,tt,sc:j[0]*10+(tt&&sp.tide&&tt.f>=sp.tide[0]&&tt.f<=sp.tide[1]?2:0)+(tt&&tt.up?1:0)+(w&&w.w<8?1:0)});}return out;}
 const slotTxt=b=>b.h2!=null&&b.h2>b.h1?`de ${b.h1}h à ${b.h2}h`:`vers ${b.h}h`;
-function bestOf(act,sp,d){
-  if(act==="surf"){const hs=surfHours(sp,d);if(!hs.length)return null;const top=hs.reduce((x,y)=>y.sc>x.sc?y:x);let i=hs.indexOf(top),lo=i,hi=i;
+function bestOf(act,sp,d,h0=d===today()?new Date().getHours():-1){
+  if(act==="surf"){const hs=surfHours(sp,d).filter(x=>x.h>=h0);if(!hs.length)return null;const top=hs.reduce((x,y)=>y.sc>x.sc?y:x);let i=hs.indexOf(top),lo=i,hi=i;
     while(lo>0&&hs[lo-1].j[0]===top.j[0]&&hs[lo-1].h===hs[lo].h-1)lo--;while(hi<hs.length-1&&hs[hi+1].j[0]===top.j[0]&&hs[hi+1].h===hs[hi].h+1)hi++;
-    return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS){const z=SPOTZ[sp.id]??0,w=wxAt(d,h),s=seaAt(d,h,z)||seaAt(d,h-1,z)||seaAt(d,h+1,z);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
+    return{...top,h1:hs[lo].h,h2:hs[hi].h};}let best=null;for(const h of SLOTS.filter(h=>h>=h0)){const z=SPOTZ[sp.id]??0,w=wxAt(d,h),s=seaAt(d,h,z)||seaAt(d,h-1,z)||seaAt(d,h+1,z);const j=judge(act,sp,w,s);if(!j)continue;if(!best||j[0]>best.j[0])best={h,j,w,s};}return best;}
 const NOTE=["Non","Possible","Bon"],NOTECLS=["dim","warn","ok"];
 
 /* ---------- données utiles aux vues ---------- */
@@ -457,9 +457,9 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const sd=e=>evStart(e,a>t?a:t,b)||t;
   const longs=list.filter(evIsLong),days={};list.filter(e=>!evIsLong(e)).forEach(e=>(days[sd(e)] ||= []).push(e));
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
-  const W=[["tout","Tout"],...(S.when==="auj"?[["auj","Aujourd'hui"]]:[]),["dem","Demain"],...(S.when==="we"?[["we","Ce week-end"]]:[]),["sem","7 jours"],["dates","Mes dates"]];
+  const W=[["tout","Tout"],["auj","Aujourd'hui"],["dem","Demain"],["we","Ce week-end"],["sem","7 jours"],["dates","Mes dates"]];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
-  const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>band(x)-band(y)||byTime(x,y));shown+=es.length;
+  const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>byTime(x,y)||band(x)-band(y));shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":`Agenda : ${list.length} sortie${list.length>1?"s":""} à venir autour de ${BASE.n}`)}
@@ -497,7 +497,7 @@ function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
   const lieux=NUITS().filter(x=>fitsWhere(x.dist??TOWN_KM[x.town],x.town)&&soirOuvert(x)).sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const loin=S.where==="20"||S.where==="30"?[]:NUITS().filter(x=>x.kind==="nuit"||/casino/i.test(x.n)).filter(x=>{const k=x.dist??TOWN_KM[x.town];return !fitsWhere(k,x.town)&&k!=null&&k<=20&&soirOuvert(x);}).sort((p,q)=>(p.dist??99)-(q.dist??99));
   const loinTxt=loin.length?`<p class="soir-loin">Un peu plus loin : ${loin.map(x=>`<b>${esc(x.short||x.n)}</b> (${esc(x.town.replace("-les-Pins",""))}, ${Math.round(x.dist??TOWN_KM[x.town])} km)`).join(", ")}. <button type="button" class="lnk" data-act="where20">Voir jusqu'à 20 km</button></p>`:"";
-  const W=[["soir","Ce soir"],["demain","Demain"],["7j","7 jours"],["dates","Mes dates"]];
+  const W=[["soir","Ce soir"],["demain","Demain"],["we","Ce week-end"],["7j","7 jours"],["dates","Mes dates"]];
   return `${pageHead("À faire",`Soirées : concerts, soirées dansantes, fêtes, spectacles et lieux où sortir le soir, ${zoneTxt()}.`)}
   ${segAC("soirees")}
   <div class="filters">${frow("frow","Quand",W.map(([k,l])=>qchip(k==="dates"?`${ic("cal","i-s")}${l}`:l,(S.soirWhen||"7j")===k,`data-act="soirw" data-v="${k}"`)).join(""))}${S.soirWhen==="dates"?datesRow():""}
@@ -548,11 +548,13 @@ function vManger(){const t=today(),od=S.openDay||t;
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
   const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre)));
   const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))).length]).filter(x=>x[2]);
-  const list=base.sort((p,q)=>((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
+  /* ouverts d'abord, puis « à vérifier » (horaires inconnus), puis fermés ; à rang égal, du plus proche au plus loin */
+  const ork=a=>{const o=openOn(a,od);return o?0:o===null?1:2;};
+  const list=base.sort((p,q)=>ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
   const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
-  return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""}, du plus proche au plus loin`)}
+  return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""} : ouvertes ${od===t?"aujourd'hui":wdName(od)} d'abord, puis du plus proche au plus loin. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
   <div class="filters">${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}
    ${CADRES.length?frow("frow","Cadre",CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")):""}
@@ -660,7 +662,7 @@ function scrollUnder(el){if(!el)return;const nav=document.querySelector(".subnav
 /* Pratique : vignettes qui se déplient (une ouverte à la fois par groupe) ; une vignette avec numéro appelle directement */
 const ptile=(g,o)=>{const on=S.pOpen[g]===o.k,inner=`<span class="actile-ic">${ic(o.ic)}</span><span class="actile-t"><b>${o.l}</b>${o.sub?`<small>${o.sub}</small>`:""}</span>`;
   if(o.go)return `<button type="button" class="actile" style="--c:var(${o.c})" data-act="goimmo" data-v="${o.go}">${inner}<span class="pm-go" aria-hidden="true">›</span></button>`;
-  return o.tel?`<a class="actile pra-call" style="--c:var(${o.c})" href="tel:${o.tel.replace(/\s/g,"")}" aria-label="${o.l} : appeler le ${o.tel}"><span class="pra-call-top"><span class="actile-ic">${ic(o.ic)}</span><span class="actile-num">${o.tel}</span></span><span class="actile-t"><b>${o.l}</b>${o.sub?`<small>${o.sub}</small>`:""}</span></a>`
+  return o.tel?`<a class="actile pra-call" style="--c:var(${o.c})" href="${o.sms?"sms:":"tel:"}${o.tel.replace(/\s/g,"")}" aria-label="${o.l} : ${o.sms?"envoyer un SMS au":"appeler le"} ${o.tel}"><span class="pra-call-top"><span class="actile-ic">${ic(o.ic)}</span><span class="actile-num">${o.tel}</span></span><span class="actile-t"><b>${o.l}</b>${o.sub?`<small>${o.sub}</small>`:""}</span></a>`
     :`<button type="button" class="actile" style="--c:var(${o.c})" data-act="popen" data-v="${g}|${o.k}" aria-pressed="${on}" aria-expanded="${on}">${inner}<span class="actile-more" aria-hidden="true"></span></button>`;};
 const ptiles=(g,L,hint="")=>{const ci=L.findIndex(o=>o.body&&S.pOpen[g]===o.k),cur=L[ci];
   const det=cur?`<div class="pra-open" id="po-${g}" style="--c:var(${cur.c})"><h3 class="pra-h">${cur.l}</h3>${cur.body}</div>`:"";const after=ci<0?-1:Math.min(L.length-1,ci+(ci%2?0:1));
@@ -674,9 +676,9 @@ const PRAK=[["pharma","Pharmacies","Pharmacie","--seagreen","plus"],["medecin","
 function praBlocks(){const d=p=>km(HOME,{lat:p[3],lon:p[4]});
   const LL=k=>PRAT[k].filter(p=>d(p)<=20).sort((a,b)=>d(a)-d(b));
   return ptiles("sante",[...PRAK.map(([k,l,,c,icn])=>{const L=LL(k),n=L[0]?d(L[0]):null;
-    return {k,l,c,ic:icn,sub:`${L.length} · ${n==null?"–":n<1?"la plus proche à pied":"le plus proche à "+Math.round(n)+" km"}`,body:`<ul class="list">${L.map(p=>{const x=d(p);return ptel(p[2],esc(p[0]),`${esc(p[1])} · ${x<1?"à pied":Math.round(x)+" km"}`);}).join("")}</ul>`};}),PURGMED(),PDAE()],"Touchez une vignette pour voir les adresses et les téléphones, du plus proche au plus loin.");}
+    return {k,l,c,ic:icn,sub:`${L.length} · ${n==null?"–":n<1?"la plus proche à pied":"le plus proche à "+Math.round(n)+" km"}`,body:`<ul class="list">${k==="pharma"?ptel("3237","<b>Pharmacie de garde</b>","La nuit, le dimanche et les jours fériés : le 3237 (Résogardes) donne la pharmacie de garde la plus proche"):""}${L.map(p=>{const x=d(p);return ptel(p[2],esc(p[0]),`${esc(p[1])} · ${x<1?"à pied":Math.round(x)+" km"}`);}).join("")}</ul>`};}),PURGMED(),PDAE()],"Touchez une vignette pour voir les adresses et les téléphones, du plus proche au plus loin.");}
 /* barre de sous-rubriques de Pratique : chaque bouton descend à sa partie, la barre suit la lecture (spyTick) */
-const PRNAV=[["p-sante","Santé"],["p-horaires","Au quotidien"],["p-dechets","Poubelles"],["p-mairie","Mairie, poste"],["p-urg","Urgences"],["p-immo","Immobilier"]];
+const PRNAV=[["p-urg","Urgences"],["p-sante","Santé"],["p-horaires","Au quotidien"],["p-dechets","Poubelles"],["p-mairie","Mairie, poste"],["p-immo","Immobilier"]];
 const prNav=()=>`<div class="seg-wrap subnav"><div class="seg seg-scroll" role="group" aria-label="Rubriques de Pratique">${PRNAV.map(([k,l],i)=>`<button type="button" data-act="pjump" data-v="${k}" data-spy="${k}" aria-current="${i===0}">${l}</button>`).join("")}</div></div>`;
 function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfailles"),cin=ACTS.find(a=>/Cinéma L'Atlantique/.test(a.n));
   const DN=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
@@ -685,7 +687,7 @@ function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfaill
   const lows=dayLows(t);
   return `${pageHead("Pratique",`Santé, horaires utiles, poubelles, mairie, poste et urgences à ${BASE.n}.`)}
   ${prNav()}
-  <div class="pra-sos" role="note"><span>Urgence</span><a href="tel:112">112</a><a href="tel:15">SAMU 15</a><a href="tel:18">Pompiers 18</a><button type="button" class="lnk" data-act="pjump" data-v="p-urg">Tout voir</button></div>
+  <div class="pra-sos" role="note"><span>Urgence</span><a href="tel:112">112</a><a href="tel:15">SAMU 15</a><a href="tel:18">Pompiers 18</a><a href="tel:3237">Pharmacie de garde 3237</a><button type="button" class="lnk" data-act="pjump" data-v="p-urg">Tout voir</button></div>
   <div id="p-sante" class="anchor"></div>${sec(`Santé autour de ${BASE.n}`,"",praBlocks(),"À moins de 20 km, du plus proche au plus loin. Horaires des pharmacies non publiés : appelez avant.")}
   <div id="p-horaires" class="anchor"></div>${sec("Horaires utiles","",`<ul class="list">
    ${BASE.k==="pornic"?ACTS.filter(a=>a.cat==="marche"&&a.town==="Pornic"&&a.open&&a.open[0]).map(m=>row({th:`<span class="thumb t-food">${ic("basket")}</span>`,title:esc(m.n),metaH:esc(schedTxt(m)),lines:[statusOf(m,t)]})).join(""):mk?row({th:`<span class="thumb t-food">${ic("basket")}</span>`,title:"Marché de Préfailles",metaH:esc(mkTxt),lines:[statusOf(mk,t)]}):""}
@@ -708,15 +710,16 @@ function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfaill
    {k:"o",l:"Office de tourisme",sub:"29 Grande Rue",c:"--i-sea",ic:"info",body:telB("02 40 21 62 22","29 Grande Rue · hors saison (oct.–mars) mar., mer., ven. 9h30–12h30 et 14h–17h, jeu. 9h30–12h30, sam. 9h–13h ; d'avril à juin et en septembre du mardi au dimanche ; en juillet et août tous les jours ; fermé du 20 au 28 décembre 2026.")},
    {k:"g",l:"Gendarmerie",sub:"À Pornic",c:"--i-act",ic:"people",body:telB("02 40 82 00 29","1 rue du Docteur Auguste Guilmin, Pornic · lun.–sam. 8h–12h et 14h–18h, dim. 9h–12h et 15h–18h. En urgence : 17.")},
    {k:"d",l:"Distributeur de billets",sub:"17 Grande Rue, 24 h/24",c:"--seagreen",ic:"plus",body:`<p class="pra-p">17 Grande Rue, à côté de la mairie, 24 h/24.</p>`}],"Touchez une vignette pour les horaires et le téléphone."))}
-  <div id="p-urg" class="anchor"></div>${sec("Urgences","",ptiles("urg",[{tel:"112",l:"Urgences",sub:"Tous services, depuis tout téléphone",c:"--warn",ic:"phone"},{tel:"15",l:"SAMU",sub:"Urgence médicale",c:"--warn",ic:"plus"},{tel:"18",l:"Pompiers",sub:"Incendie, accident, secours",c:"--warn",ic:"spark"},{tel:"17",l:"Police, gendarmerie",sub:"",c:"--accent",ic:"people"},{tel:"196",l:"Secours en mer",sub:"En mer ou sur l'estran",c:"--i-sea",ic:"wave"},{tel:"114",l:"Urgences par SMS",sub:"Sourds et malentendants",c:"--i-act",ic:"mail"},PURGMED(),PDAE()]))}
+  <div id="p-urg" class="anchor"></div>${sec("Urgences","",ptiles("urg",[{tel:"112",l:"Urgences",sub:"Tous services, depuis tout téléphone",c:"--warn",ic:"phone"},{tel:"15",l:"SAMU",sub:"Urgence médicale",c:"--warn",ic:"plus"},{tel:"18",l:"Pompiers",sub:"Incendie, accident, secours",c:"--warn",ic:"spark"},{tel:"17",l:"Police, gendarmerie",sub:"",c:"--accent",ic:"people"},{tel:"196",l:"Secours en mer",sub:"En mer ou sur l'estran",c:"--i-sea",ic:"wave"},{tel:"114",sms:1,l:"Urgences par SMS",sub:"Sourds et malentendants",c:"--i-act",ic:"mail"},PURGMED(),PDAE()]))}
   <div id="p-immo" class="anchor"></div>${praImmo()}
   <p class="foot">Numéros vérifiés à la publication. En cas de doute, le 112 fonctionne partout.</p>`;}
 function praImmo(){loadVentes();const C=S.ventes?.communes?.[BASE.k],U=S.urba?.communes?.[BASE.k];
-  const st=C?imStats(C):null,l=st?st[st.length-1]:null,P=U?.permis,py=P?.annees?.[P.annees.length-1];
+  /* mêmes chiffres que l'en-tête de la page Immobilier : les 12 derniers mois connus (imRoll) */
+  const R=C?imRoll(C):null,r=R?.cur,P=U?.permis,py=P?.annees?.[P.annees.length-1];
   return sec("Immobilier",secLink("#immobilier","Ouvrir"),ptiles("immo",[
-   {go:"im-top",l:"Prix d'une maison",sub:l&&l.M?`${eur(l.M)} le m² en ${l.y}`:"Prix médian au m²",c:"--i-food",ic:"home"},
-   {go:"im-top",l:"Prix d'un appartement",sub:l&&l.A?`${eur(l.A)} le m² en ${l.y}`:"Prix médian au m²",c:"--i-sea",ic:"home"},
-   {go:"im-ventes",l:"Dernières ventes",sub:l?`${l.n} ventes en ${l.y}`:"Prix, surface, rue",c:"--i-food",ic:"cal"},
+   {go:"im-top",l:"Prix d'une maison",sub:r&&r.M?`${r100(r.M)} le m² (12 derniers mois)`:"Prix médian au m²",c:"--i-food",ic:"home"},
+   {go:"im-top",l:"Prix d'un appartement",sub:r&&r.A?`${r100(r.A)} le m² (12 derniers mois)`:"Prix médian au m²",c:"--i-sea",ic:"home"},
+   {go:"im-ventes",l:"Dernières ventes",sub:r?`${r.n} ventes en 12 mois`:"Prix, surface, rue",c:"--i-food",ic:"cal"},
    {go:"im-carte",l:"Carte",sub:"Ventes et permis, cadastre",c:"--accent",ic:"compass"},
    {go:"im-permis",l:"Permis de construire",sub:py?`${py.permis} en ${py.a}`:"Par année",c:"--i-act",ic:"spark"},
    {go:"im-plu",l:"Urbanisme (PLU)",sub:U?.plu?.zones?`${U.plu.zones.length} zones`:"Zones et règlement",c:"--i-nat",ic:"leaf"}]),`À ${BASE.n}, d'après les données publiques de l'État.`);}
@@ -781,18 +784,18 @@ function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[
 function door(id,col,title,txt,rows,href){return `<section class="sec blk door" id="${id}" style="--c:var(${col})"><a class="sec-head door-head" href="${href}"><h2 class="sec-title">${title}</h2><span class="door-go">Ouvrir${ic("chev","i-s")}</span></a><p class="sec-note">${txt}</p><ul class="list">${rows.filter(Boolean).join("")}</ul></section>`;}
 function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   /* À faire */
-  const z20=e=>fitsWhere(evKm(e),e.town,"10");
+  const HW=S.where==="ici"?"10":S.where,HZ=HW==="tout"?"autour":"à moins de "+HW+" km",z20=e=>fitsWhere(evKm(e),e.town,HW);
   const evT=ld?[]:evOnDay(t).filter(e=>z20(e)&&!evIsLong(e));
   const nSoir=evT.filter(evSoir).length;
   const wkP=ld?[]:eventsIn(t,addDays(t,6)).filter(e=>z20(e)&&!evIsLong(e));
-  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,"10")).length;
+  const nAct=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town,HW)).length;
   const film=(()=>{for(let i=0;i<7;i++){const d=addDays(t,i),f=filmsOn(d,CIN0).filter(x=>d!==t||(x.times||[]).some(h=>tShort(h).padStart(5,"0")>=hm(new Date())));if(f.length)return{d,f:f[0]};}return null;})();
   /* Mer */
   let glisse=null;if(wxDay(t)){["surf","kite","wing","voile"].forEach(a=>{SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,t);if(b&&b.j[0]>0&&(!glisse||b.j[0]>glisse.b.j[0]))glisse={a,sp,b};});});}
   const big=nextBig(1)[0];
   /* Manger */
   const eat=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&isHere(a.dist,a.town)&&openOn(a,t));
-  const eat20=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,"10")&&openOn(a,t));
+  const eat20=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,HW)&&openOn(a,t));
   /* Transports */
   let go=null,come=null;try{const T=S.transports;if(T&&T.legs){const now=hm(new Date());
     TRDEST.forEach(p=>{const j=journeys(T,t,ORIG,p).list.find(x=>x.dep>=now);if(j&&(!go||j.dep<go[1].dep))go=[p,j];
@@ -805,8 +808,8 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   <h2 class="home-h">Aujourd'hui à ${BASE.n} et aux alentours</h2>
   ${homeNow(t)}
   ${door("d-faire","--i-act","À faire","Les sorties datées (fêtes, concerts, marchés, brocantes, ateliers), les activités et lieux à visiter, le cinéma, les soirées. Triez selon qui vient : enfants, adultes, habitants.",[
-    r("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, à moins de 10 km`,' data-act="when" data-v="auj"'),
-    r("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui à moins de 10 km : nature, sport, sensations, culture, enfants`),
+    r("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"pas de sortie datée aujourd'hui"} · ${wkP.length} dans les 7 jours, ${HZ}`,' data-act="when" data-v="auj"'),
+    r("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui ${HZ} : nature, sport, sensations, culture, enfants`),
     r("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} sortie${nSoir>1?"s":""} ce soir`:"pas de sortie annoncée ce soir"} · ${wkP.filter(evSoir).length} soirées dans les 7 jours : concerts, fêtes, soirées dansantes ; et les bars où sortir`,' data-act="soirw" data-v="soir"'),
     r("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} à ${BASE.n} : ${esc(film.f.film)}`:`programme du cinéma de ${BASE.n} et des salles voisines`,` data-act="cin" data-v="${CIN0}"`)],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées et coefficients, météo de la mer, sports de glisse et spots, pêche à pied.",[
@@ -814,7 +817,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
     r("#mer","Marées et météo de la mer","vent, rafales, houle, eau heure par heure"),
     r("#peche","Pêche à pied",big?`prochaine grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, créneau conseillé, sécurité")],"#mer")}
   ${door("d-manger","--i-food","Restos","Restaurants et crêperies, bars, marchés, huîtres et poisson, boulangeries, producteurs, avec leurs horaires du jour.",[
-    r("#manger","Ouvert aujourd'hui",`${eat.length} à Préfailles${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} à moins de 10 km`,' data-act="mwhere20"')],"#manger")}
+    r("#manger","Ouvert aujourd'hui",`${eat.length} à ${BASE.n}${eat.length?` (${eat.slice(0,2).map(a=>esc(a.short||a.n)).join(", ")})`:""}, ${eat20.length} ${HZ}`,' data-act="mwhere20"')],"#manger")}
   ${door("d-transports","--seagreen","Transports",`Les horaires des cars et des trains pour aller à ${listAnd(TRDEST).replace(/ et /," ou ")}, et pour venir à ${BASE.n}, correspondances comprises.`,[
     r("#venir","Partir de "+BASE.n,`vers ${TRDEST.join(", ")}${go?` · prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:""}`,' data-act="trdir" data-v="0"'),
     r("#venir","Venir à "+BASE.n,`depuis ${TRDEST.join(", ")}${come?` · prochain départ de ${esc(come[0])} à ${come[1].dep.replace(/^0/,"")}`:""}`,' data-act="trdir" data-v="1"'),
@@ -884,6 +887,8 @@ function seaCard(d){const w=wxDay(d),t=today();
 function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return b?{a,b}:null;}).filter(Boolean);}
 function glisseSec(d){if(!wxDay(d))return"";
   const acts=["surf","kite","wing","voile","paddle"];
+  /* aujourd'hui : seulement les heures à venir ; le soir, plus rien à venir → demain */
+  const late=d===today()&&new Date().getHours()>=19;if(late&&wxDay(addDays(d,1)))d=addDays(d,1);
   const best=acts.map(a=>{let top=null;SPOTSX.filter(sp=>sp.acts.includes(a)).forEach(sp=>{const b=bestOf(a,sp,d);if(b&&(!top||b.j[0]>top.b.j[0]))top={sp,b};});return top?{a,...top}:null;}).filter(Boolean);
   const yes=best.filter(x=>x.b.j[0]>0),no=best.filter(x=>x.b.j[0]===0);
   const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
@@ -927,7 +932,7 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee;
   const hh=t=>t?t.slice(11,16).replace(":","h"):"";
   const buoy=Y?`<p class="nav-buoy"><b>Houle mesurée</b> à la ${esc(Y.nom.replace(/^Bouée/,"bouée"))}, ${Y.heure.slice(0,10)===today()?"aujourd'hui":esc(Y.heure.slice(8,10)+"/"+Y.heure.slice(5,7))} à ${hh(Y.heure)} : <b>${r1(Y.h13)} m</b>${Y.hmax!=null?` (vagues max ${r1(Y.hmax)} m)`:""}${Y.t13!=null?`, période ${r1(Y.t13)} s`:""}${Y.dir!=null?`, ${DIRLONG[dirTxt(Y.dir)]||""}`:""}${Y.eau!=null?` · eau ${r1(Y.eau)} °C`:""}. <span class="nav-src">Au large, à 40 km à l'ouest-nord-ouest. <a href="${Y.source}" target="_blank" rel="noopener">Candhis ↗</a></span></p>`:"";
   const alerte=B&&B.avis&&!/^Pas d'avis/i.test(B.avis);
-  const bul=B?`<p class="${alerte?"nav-alert":"nav-ok"}">${esc(B.avis||"")}</p><details class="nav-bul"><summary>Bulletin côtier officiel · ${esc((B.emis.match(/du (.*)$/)||["",B.emis])[1].replace(/\.$/,""))}</summary>${B.sections.map(x=>`<h4>${esc(x.t)}</h4>${x.l.map(l=>`<p>${esc(l)}</p>`).join("")}`).join("")}<p class="nav-src">${esc(B.prochain)}. Origine Météo-France · <a href="${B.source}" target="_blank" rel="noopener">voir sur meteofrance.com ↗</a></p></details>`
+  const bul=B?`<p class="${alerte?"nav-alert":"nav-ok"}">${esc(B.avis||"")}</p><details class="nav-bul"><summary>Bulletin côtier officiel · ${esc((B.emis.match(/du (.*)$/)||["",B.emis])[1].replace(/\.$/,""))}</summary>${LANG==="en"?`<p class="nav-src">Bulletin officiel de Météo-France, en français.</p>`:""}<div lang="fr">${B.sections.map(x=>`<h4>${esc(x.t)}</h4>${x.l.map(l=>`<p>${esc(l)}</p>`).join("")}`).join("")}</div><p class="nav-src">${esc(B.prochain)}. Origine Météo-France · <a href="${B.source}" target="_blank" rel="noopener">voir sur meteofrance.com ↗</a></p></details>`
     :`<p class="nav-ok"><a href="https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04" target="_blank" rel="noopener">Bulletin météo marine officiel (Penmarc'h – Anse de l'Aiguillon) ↗</a></p>`;
   return sec("Pour naviguer","",`${bul}${buoy}<p class="nav-src">Secours en mer : <a href="tel:196">196</a> ou VHF canal 16.</p>`,"Bulletin officiel de Météo-France pour la bande côtière des 20 milles, relu toutes les 3 heures, et houle mesurée par la bouée la plus proche.");}
 function spotsSec(d){const has=!!wxDay(d);
@@ -943,7 +948,7 @@ function spotsSec(d){const has=!!wxDay(d);
     const det=grp.map(({x,a})=>`<div class="spot-act"><span class="note-pill ${NOTECLS[x.b.j[0]]}">${NOTE[x.b.j[0]]}</span><span><b>${listAnd(a)}</b> · ${body(x)}</span></div>`).join("");
     const shTxt=`${sp.n} (${townShort(sp.town)}), ${dlong(d)} : ${line||sp.acts.map(a=>ACTL[a]).join(", ")}${surfLine?". "+surfLine[0]:""}.`;
     return {top,h:row({th:`<span class="thumb t-sea">${ic(sp.acts[0]==="voile"?"sail":"wave")}</span>`,title:esc(sp.n),metaH:meta(esc(townShort(sp.town)),`${Math.max(1,Math.round(k))} km`,sp.acts.map(a=>ACTL[a].replace(" et bateau","")).join(", ")),lines:[line?[esc(surfLine?line.replace(/^Surf : [a-z]+/,"Surf "+NOTE[sb.j[0]].toLowerCase()+" "+surfLine[0].replace(/^Surf /,"")):line),NOTECLS[Math.max(top,0)]]:null].filter(Boolean),
-      more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}${(SPOTCMP[sp.id]||[]).length?`<p class="spot-cmp"><b>Comparer les prévisions :</b> ${SPOTCMP[sp.id].map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join(" · ")}</p>`:""}<div class="spot-emb"><p class="emb-h">Prévision détaillée : vent et vagues, plusieurs modèles</p><div class="emb-box" id="emb-${sp.id}"></div></div><p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`}).replace('<details class="row-d"',`<details class="row-d" id="spot-${sp.id}"`)};}).sort((a,b)=>(b.top>0)-(a.top>0)).map(x=>x.h).join("");/* tri stable : à note égale, le plus proche d'abord */
+      more:`${det?`<div class="spot-acts">${det}</div>`:""}${strip}<p class="spot-share"><button type="button" class="chip" data-share="${esc(sp.n+" · Le Petit Préf")}" data-url="${SITE}#spot-${sp.id}">${ic("share","i-s")} Partager ce spot</button></p>${(SPOTCMP[sp.id]||[]).length?`<p class="spot-cmp"><b>Comparer les prévisions :</b> ${SPOTCMP[sp.id].map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join(" · ")}</p>`:""}<div class="spot-emb"><p class="emb-h">Prévision détaillée : vent et vagues, plusieurs modèles</p><div class="emb-box" id="emb-${sp.id}"></div></div><p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p><span class="row-links"><a href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="lnk" data-share="${esc(shTxt)}" data-url="${SITE}/#spots">${ic("share","i-s")} Partager</button></span>`}).replace('<details class="row-d"',`<details class="row-d" id="spot-${sp.id}"`)};}).sort((a,b)=>(b.top>0)-(a.top>0)).map(x=>x.h).join("");/* tri stable : à note égale, le plus proche d'abord */
   return `<section class="sec blk" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots</h2></div><p class="sec-note">${has?"Touchez un spot : conditions du jour, heures de surf, niveau et dangers.":"Touchez un spot pour sa description, son niveau et ses dangers."}</p><ul class="list">${rows}</ul></section>`;}
 /* résumé compact en haut de la page Mer : chaque case s'ouvre sur le graphique de la journée */
 function hChart(series,{fmt=r0,unit="",arrows=null,sub=null,now=null}={}){
@@ -1387,31 +1392,57 @@ function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="
   <p><b>Services utilisés par le site.</b> Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).</p>
   <p><b>Liens.</b> Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.</p></div></div>`;}
 /* ===== Recherche ===== */
+/* recherche : d'abord les rubriques (mots-clés et synonymes, français et anglais), puis les fiches dont le TITRE correspond */
+const RUB=[
+ ["pharmacie pharmacies garde médecin medecin docteur santé sante dentiste kiné kine infirmier infirmière vétérinaire veto pharmacy chemist doctor dentist health","Santé : pharmacies, médecins, pharmacie de garde","pratique|p-sante","plus"],
+ ["urgence urgences samu pompier pompiers 112 15 18 17 114 196 secours emergency ambulance défibrillateur","Urgences et numéros utiles","pratique|p-urg","phone"],
+ ["poubelle poubelles déchet déchets ordure ordures tri bac jaune déchetterie dechetterie déchèterie collecte encombrant bin bins rubbish waste recycling","Poubelles, tri et déchetterie","pratique|p-dechets","basket"],
+ ["mairie poste gendarmerie police office tourisme distributeur banque town hall post","Mairie, poste, office de tourisme","pratique|p-mairie","home"],
+ ["car cars bus autocar train ter gare nantes saint-nazaire aleop aléop 303 315 transport transports coach railway","Transports : cars et trains","venir|","bus"],
+ ["marée marées maree marees coefficient coef tide tides basse pleine","Marées et météo de la mer","mer|","tide"],
+ ["surf kite kitesurf wing paddle voile spot spots glisse vent houle vagues swell wind waves","Glisse et spots","spots|","sail"],
+ ["pêche peche coque coques palourde palourdes pied fishing shellfish","Pêche à pied","peche|","shell"],
+ ["plage plages baignade baigner sable beach beaches swim swimming","Les plages","activites||cat=plage","shell"],
+ ["marché marche marchés marches market markets","Les marchés","manger||mk=marche","basket"],
+ ["restaurant restaurants resto restos manger déjeuner dîner diner eat food lunch dinner","Restos","manger|","fork"],
+ ["bar bars verre apéro apero boire drink drinks pub","Bars","manger||mk=bar","spark"],
+ ["ciné cine cinéma cinema film films séance séances seance movie movies","Ciné","cine|","film"],
+ ["soirée soirées soiree soirees concert sortir nuit nightlife evening","Soirées","soirees|","spark"],
+ ["pluie pleut rain rainy","S'il pleut : activités à l'abri","activites||rain=1","umb"],
+ ["immobilier maison maisons prix vente ventes vendu permis plu urbanisme terrain construire property house houses","Immobilier : ventes, prix, permis, PLU","immobilier|","home"],
+ ["balade balades randonnée rando nature vélo velo bike walk hike","Nature et balades","activites||cat=nature","leaf"]];
+const RUBN=RUB.map(r=>norm(r[0]).split(" "));
 function vSearch(){
   const q=norm(S.q).trim(),words=q.split(/\s+/).filter(Boolean);
-  const hit=s=>words.every(w=>norm(s).includes(w));
+  const wre=words.map(w=>new RegExp("(^|[^a-z0-9])"+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")));
+  const hit=s=>{const n=norm(s);return wre.every(r=>r.test(n));};
+  const tr=x=>x&&I18N.data&&I18N.data[x]||"";
   const t=today();
   let body="";
   if(words.length){
-    const ev=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&hit([e.title,e.desc,e.town,e.place,e.category,e.org,ETL[etype(e)]].join(" "))).sort((a,b)=>a.date.localeCompare(b.date));
-    const fi=[...new Map((S.cinema||[]).filter(c=>c.date>=t&&hit([c.film,c.cinema,c.genre].join(" "))).map(c=>[c.film+c.date,c])).values()];
-    const ac=ACTS.filter(a=>a.cat!=="saveurs"&&hit([a.n,a.d,a.town,CATS[a.cat],a.season].join(" "))).sort((p,q)=>(p.dist??99)-(q.dist??99));
-    const sv=ACTS.filter(a=>a.cat==="saveurs"&&hit([a.n,a.d,a.town,KINDS[a.kind],"saveurs manger"].join(" "))).sort((p,q)=>(p.dist??99)-(q.dist??99));
-    const as=(S.assos||[]).filter(a=>hit([a.name,a.what,a.regular,a.desc,a.town].join(" ")));
-    const G=(title,n,html)=>n?`<div class="block"><h2 class="sec">${title} <span class="count">${n}</span></h2><div class="list">${html}</div></div>`:"";
-    const total=ev.length+fi.length+ac.length+sv.length+as.length;
-    body=total?G("Agenda",ev.length,ev.slice(0,20).map(e=>eventCard(e)).join(""))+
-      G("Ciné",fi.length,fi.slice(0,10).map(c=>card({c:"var(--c-cine)",ic:I.cine,title:esc(c.film),meta:`<b>${esc(rel(c.date))}</b> · ${(c.times||[]).join(", ")} · ${esc(c.cinema)}`})).join(""))+
-      G("Activités",ac.length,ac.slice(0,20).map(a=>actCard(a)).join(""))+
-      G("Saveurs",sv.length,sv.slice(0,20).map(a=>actCard(a)).join(""))+
-      G("Associations",as.length,as.slice(0,10).map(a=>card({c:"var(--taupe)",ic:I.people,title:esc(a.name),meta:esc([a.what,a.town].filter(Boolean).join(" · ")),desc:esc(a.regular||a.desc||""),href:a.url})).join(""))
-      :`<div class="empty">Aucun résultat pour « ${esc(S.q)} ».</div>`;
-  } else body=`<div class="block"><div class="note" style="font-weight:800">Idées</div><div class="scroller">${["huîtres","loto","karting","marché de Noël","cinéma","crêpes","piscine","vide-grenier","enfants","tennis","pêche"].map(s=>`<button class="chip" data-sug="${s}">${s}</button>`).join("")}</div></div>`;
+    const rub=RUB.filter((r,k)=>words.every(w=>RUBN[k].some(x=>x.startsWith(w)||(w.length>=4&&w.startsWith(x)))));
+    const byT=(arr,ti,rest)=>arr.map(x=>({x,h:hit(ti(x))?1:0})).sort((a,b)=>(b.h-a.h)||rest(a.x,b.x)).map(o=>o.x);
+    const ev=byT((S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&hit([e.title,tr(e.title),e.desc,e.town,e.place,e.category,e.org,ETL[etype(e)]].join(" "))),e=>e.title+" "+tr(e.title),(a,b)=>a.date.localeCompare(b.date));
+    const fi=[...new Map((S.cinema||[]).filter(c=>c.date>=t&&hit([c.film,c.cinema,c.genre,tr(c.genre)].join(" "))).map(c=>[c.film+c.date,c])).values()];
+    const dk=(p,q)=>(p.dist??99)-(q.dist??99);
+    const ac=byT(ACTS.filter(a=>a.cat!=="saveurs"&&hit([a.n,tr(a.n),a.d,tr(a.d),a.town,CATS[a.cat],a.season].join(" "))),a=>a.n+" "+tr(a.n)+" "+CATS[a.cat],dk);
+    const sv=byT(ACTS.filter(a=>a.cat==="saveurs"&&hit([a.n,tr(a.n),a.d,tr(a.d),a.town,KINDS[a.kind],"restaurant manger"].join(" "))),a=>a.n+" "+tr(a.n)+" "+(KINDS[a.kind]||""),dk);
+    const as=(S.assos||[]).filter(a=>hit([a.name,a.what,tr(a.what),a.regular,a.desc,a.town].join(" ")));
+    const G=(title,n,html)=>`<div class="block"><h2 class="sec">${title} <span class="count">${n}</span></h2><div class="list">${html}</div></div>`;
+    const R0=rub.length?`<div class="block srch-rub"><h2 class="sec">Rubriques</h2><div class="acgrid">${rub.map(([,l,go,icn])=>`<button type="button" class="actile" style="--c:var(--accent)" data-act="go2" data-v="${go}"><span class="actile-ic">${ic(icn)}</span><span class="actile-t"><b>${l}</b></span></button>`).join("")}</div></div>`:"";
+    const secs=[["Agenda",ev,()=>ev.slice(0,20).map(e=>eventCard(e)).join(""),e=>hit(e.title+" "+tr(e.title))],
+      ["Lieux et activités",ac,()=>ac.slice(0,20).map(a=>actCard(a)).join(""),a=>hit(a.n+" "+tr(a.n)+" "+CATS[a.cat])],
+      ["Restos, bars et produits",sv,()=>sv.slice(0,20).map(a=>actCard(a)).join(""),a=>hit(a.n+" "+tr(a.n)+" "+(KINDS[a.kind]||""))],
+      ["Ciné",fi,()=>fi.slice(0,10).map(c=>card({c:"var(--c-cine)",ic:I.cine,title:esc(c.film),meta:`<b>${esc(rel(c.date))}</b> · ${(c.times||[]).join(", ")} · ${esc(c.cinema)}`})).join(""),c=>hit(c.film)],
+      ["Associations",as,()=>as.slice(0,10).map(a=>card({c:"var(--taupe)",ic:I.people,title:esc(a.name),meta:esc([a.what,a.town].filter(Boolean).join(" · ")),desc:esc(a.regular||a.desc||""),href:a.url})).join(""),a=>hit(a.name)]]
+      .filter(x=>x[1].length).map(x=>[...x,x[1].some(x[3])?1:0]).sort((a,b)=>b[4]-a[4]);
+    body=rub.length||secs.length?R0+secs.map(([ti,L,f])=>G(ti,L.length,f())).join(""):`<div class="empty">Aucun résultat pour « ${esc(S.q)} ».</div>`;
+  } else body=`<div class="block"><div class="note" style="font-weight:800">Idées</div><div class="scroller">${(LANG==="en"?["pharmacy","bins","bus","tide","beach","rain","market","oysters","surf","cinema","crêpes","walk"]:["pharmacie de garde","poubelles","car","marée","plage","pluie","marché","huîtres","loto","cinéma","crêpes","piscine","vide-grenier","enfants","pêche"]).map(x=>`<button class="chip no-tr" data-idea="${x}">${x}</button>`).join("")}</div></div>`;
   return `<div class="vhead"><div><h1>Rechercher</h1></div></div>
-   <div class="searchbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="q" placeholder="Huîtres, loto, karting, Pornic…" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search"></div>${body}`;}
+   <div class="searchbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="q" placeholder="Pharmacie, car, plage, loto…" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search"></div>${body}`;}
 after.recherche=()=>{const q=$("#q");let tm;q.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.q=q.value;render();},180);};
   if(!S.q)q.focus({preventScroll:true});
-  $$("[data-sug]").forEach(b=>b.onclick=()=>{S.q=b.dataset.sug;render();});};
+  $$("[data-idea]").forEach(b=>b.onclick=()=>{S.q=b.dataset.idea;render();});};
 
 /* ===== Installer l'app sur l'écran d'accueil ===== */
 const UA=navigator.userAgent||"";
@@ -1507,15 +1538,15 @@ function whoChange(e){const el=e.target;
   else if(el.id==="wAu"&&el.value){DR.quand.au=el.value;drawWho();}}
 
 /* ---------- menu (bouton en haut à droite) ---------- */
-const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné","Préfailles et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer","Marées, vent, houle, température de l'eau","wave"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["manger","Restos","Restaurants, bars, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"],["pratique","Pratique","Urgences, pharmacie et médecin de garde, mairie, numéros utiles","phone"]];
-const MENU2=[["immobilier","Immobilier","Ventes réelles et prix au m²","home"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, sécurité","shell"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
+const MENU1=[["sejour","Accueil","Le temps du jour et les quatre rubriques","home"],["agenda","À faire · Agenda","Sorties datées : fêtes, concerts, brocantes","cal"],["activites","À faire · Activités","Nature, sport, sensations, culture, associations","compass"],["cine","À faire · Ciné",BASE.n+" et les cinémas voisins","film"],["soirees","À faire · Soirées","Concerts, soirées dansantes, bars, lieux de nuit","spark"],["mer","La mer · Marées et météo","Marées, coefficients, vent, houle, température de l'eau","tide"],["spots","Glisse et spots","Surf, kite, wing, voile : où et à quelle heure","sail"],["peche","Pêche à pied","Bonnes marées, créneau conseillé, tailles, sécurité","shell"],["plages","Plages","Les plages, surveillées ou non, chiens","wave"],["manger","Restos","Restaurants, bars, huîtres, marchés, boulangeries","fork"],["venir","Transports","Cars et trains, correspondances comprises","bus"],["pratique","Pratique","Urgences, pharmacie et médecin de garde, mairie, numéros utiles","phone"]];
+const MENU2=[["immobilier","Immobilier","Ventes réelles et prix au m²","home"],["recherche","Rechercher","","search"],["apropos","À propos et mentions légales","Contact, sources, données personnelles","info"]];
 function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"auto";}
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
 const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{const e=$(q);if(e)e.inert=on;});const mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded",String(!!$("#menu")&&on));};
 function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
 function escKey(e){if(e.key==="Escape"){const had=$("#menu");closeOverlays();if(had){const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}}}
 function openMenu(){closeOverlays();const c=curView(),g=gActive();
-  const COL={soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",immobilier:"--i-food",recherche:"--muted",apropos:"--muted"};
+  const COL={plages:"--i-sea",soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",immobilier:"--i-food",recherche:"--muted",apropos:"--muted"};
   const it=([h,l,t,i])=>`<li><a class="menu-item" href="#${h}" style="--c:var(${COL[h]||"--accent"})" ${h===c?'aria-current="page"':""}><span class="menu-ic">${ic(i)}</span><span><b>${l}</b>${t||h===c?`<small>${h===c?'<em class="menu-here">Vous êtes ici</em>'+(t?" · ":""):""}${t}</small>`:""}</span></a></li>`;
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="menu-title" href="#sejour">Le Petit Préf</a><button type="button" class="menu-close" data-m="close">Fermer ${ic("close","i-s")}</button></div>
@@ -1557,16 +1588,16 @@ const ACT={
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
-  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();if(S.pOpen[g])requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="${v}"]`);scrollUnder(t);});},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),plupin:v=>{const [la,lo]=v.split(",").map(Number);S.imPlu=true;ACT.pjump("im-carte");setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP);LMAP.setView([la,lo],17);},350);},pinclear:()=>{if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;const q=$("#imq2");if(q)q.value="";const c=document.getElementById("impinclr");if(c)c.hidden=true;},pluclear:()=>{const b=document.getElementById("plures");if(b)b.innerHTML="";const q=$("#pluq");if(q)q.value="";},imclear:()=>{S.imAddrH=null;S.imAV=null;S.imAP=null;const q=$("#imq");if(q)q.value="";if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;render();},imago:v=>imFocus(S.imAV&&S.imAV[+v]),impgo:v=>pmFocus(S.imAP&&S.imAP[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();requestAnimationFrame(()=>scrollUnder(document.querySelector(".pm-chart")));},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();if(S.pOpen[g])requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="${v}"]`);scrollUnder(t);});},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),plupin:v=>{const [la,lo]=v.split(",").map(Number);S.imPlu=true;ACT.pjump("im-carte");setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP);LMAP.setView([la,lo],17);},350);},pinclear:()=>{if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;const q=$("#imq2");if(q)q.value="";const c=document.getElementById("impinclr");if(c)c.hidden=true;},pluclear:()=>{const b=document.getElementById("plures");if(b)b.innerHTML="";const q=$("#pluq");if(q)q.value="";},go2:v=>{const [h,j,x]=v.split("|");if(x)x.split("&").forEach(kv=>{const [k,val]=kv.split("=");S[k]=val==="1"?true:val==="0"?false:val;});S.jumpTo=j||null;if(location.hash==="#"+h)render();else location.hash="#"+h;},imclear:()=>{S.imAddrH=null;S.imAV=null;S.imAP=null;const q=$("#imq");if(q)q.value="";if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;render();},imago:v=>imFocus(S.imAV&&S.imAV[+v]),impgo:v=>pmFocus(S.imAP&&S.imAP[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();requestAnimationFrame(()=>scrollUnder(document.querySelector(".pm-chart")));},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
 
   mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},
   where20:()=>{S.where="20";sset("cf-where","20");render();},
-  mwhere20:()=>{S.mWhere="10";S.openToday=true;sset("pp-mwhere","10");},
+  mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
-  spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}},
+  spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}else if(SPOTSX.some(x=>x.id===v)){S.spotOpen=v;location.hash="#spots";}},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{S.when=v;S.whenKeep=curView()!=="agenda";S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
@@ -1639,10 +1670,18 @@ function render(){rail();const v=curView();
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
   window.scrollTo({top:sy,behavior:"instant"});
-  after[v]&&after[v]();requestAnimationFrame(spyTick);}
+  after[v]&&after[v]();requestAnimationFrame(spyTick);if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>ACT.pjump(j),80);}if(S.spotOpen){const id=S.spotOpen;S.spotOpen=null;setTimeout(()=>ACT.spot(id),700);}VPREV=v;}
 after.sejour=()=>bindInstall();
 /* arrivée sur #spots ou #peche : la page Mer s'ouvre sur la bonne partie (une fois par changement d'adresse) */
-const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",peche:"s-peche"}[h];if(!id||S.jumped===h)return;S.jumped=h;const el=document.getElementById(id);if(el)requestAnimationFrame(()=>el.scrollIntoView({behavior:"instant",block:"start"}));};
+const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",peche:"s-peche"}[h];if(!id||S.jumped===h)return;S.jumped=h;
+  const go=()=>{const el=document.getElementById(id);if(!el)return null;const nav=document.querySelector(".subnav");const off=nav?(parseFloat(getComputedStyle(nav).top)||0)+nav.offsetHeight+6:160;const y=Math.max(0,el.getBoundingClientRect().top+scrollY-off);scrollTo({top:y,behavior:"instant"});return y;};
+  let y;requestAnimationFrame(()=>{y=go();[500,1200,2500].forEach(ms=>setTimeout(()=>{if(y!=null&&Math.abs(scrollY-y)<6&&location.hash.slice(1)===h)y=go();},ms));});};
+/* liens courts : #plages, #marees, #spot-<id> */
+function hashAlias(){const h=location.hash.slice(1);let m;
+  if(h==="plages"){S.cat="plage";history.replaceState(null,"","#activites");return;}
+  if(h==="marees"){history.replaceState(null,"","#mer");return;}
+  if((m=h.match(/^spot-([\w-]+)$/))&&SPOTSX.some(x=>x.id===m[1])&&curViewRaw()!=="mer"&&curViewRaw()!=="spots"){S.spotOpen=m[1];history.replaceState(null,"","#spots");}}
+let VPREV="";const curViewRaw=()=>VPREV;
 after.mer=after.spots=after.peche=partJump;
 addEventListener("hashchange",()=>{S.jumped=null;});
 /* barre de sous-rubriques : s'allume sur la partie en cours de lecture (si la page en contient plusieurs) */
@@ -1669,9 +1708,9 @@ let spyRaf=0;addEventListener("scroll",()=>{if(!spyRaf)spyRaf=requestAnimationFr
 })();
 
 /* ---------- démarrage ---------- */
-const POS={};let lastView=curView();
-window.addEventListener("hashchange",()=>{const v=curView();
-  if(!VIEWS.some(x=>x[0]===v)&&!EXTRA.includes(v)){const el=document.getElementById(location.hash.slice(1));if(el)el.scrollIntoView({behavior:"smooth",block:"start"});return;}
+hashAlias();const POS={};let lastView=curView();
+window.addEventListener("hashchange",()=>{hashAlias();const v=curView();
+  if(!VIEWS.some(x=>x[0]===v)&&!EXTRA.includes(v)){const el=document.getElementById(location.hash.slice(1));if(el){if(el.tagName==="DETAILS")el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}return;}
   closeOverlays();
   POS[lastView]=window.scrollY;lastView=v;
   const go=()=>{render();window.scrollTo({top:POS[v]||0,behavior:"instant"});const h=$("#main h1");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}};
@@ -1703,7 +1742,8 @@ function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;
   const D=I18N.d;let v=D.exact[k];
   if(v==null){let x=k,hit=false;for(const [re,rep] of D._rules){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
     for(const [re,rep] of D._words){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
-    v=hit&&(x.match(/(?<![\p{L}'’])(de|du|des|le|la|les|et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à)(?!\p{L})/gu)||[]).length<1?x:null;}
+    /* reste-t-il du français ? (les noms propres comme « Plateau du Four » ou « Port-aux-Ânes » ne comptent pas) */
+    v=hit&&!/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!\s+\p{Lu})/u.test(x)&&!/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à)(?![\p{L}-])/u.test(x)?x:null;}
   I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
 function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
   while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ]/.test(n.nodeValue))todo.push(n);}

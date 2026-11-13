@@ -156,7 +156,7 @@
 "oct.": "Oct",
 "nov.": "Nov",
 "déc.": "Dec",
-"à pied": "walk",
+"à pied": "on foot",
 "Ajouter à mon agenda": "Add to my calendar",
 "Source ↗": "Source ↗",
 "Expo": "Exhibition",
@@ -834,9 +834,161 @@
 "Utiliser la carte": "Use the map",
 "✕ Terminé": "✕ Done",
 "Recentrer": "Recentre",
-"Recentrer la carte": "Recentre the map"
+"Recentrer la carte": "Recentre the map",
+"Fermé en cette saison ·": "Closed this season ·",
+"Pharmacie de garde 3237": "Duty pharmacy 3237",
+"La nuit, le dimanche et les jours fériés : le 3237 (Résogardes) donne la pharmacie de garde la plus proche": "At night, on Sundays and public holidays: call 3237 (Résogardes) for the nearest duty pharmacy",
+"Lieux et activités": "Places and activities",
+"Restos, bars et produits": "Restaurants, bars and local produce",
+"Santé : pharmacies, médecins, pharmacie de garde": "Health: pharmacies, doctors, duty pharmacy",
+"Urgences et numéros utiles": "Emergencies and useful numbers",
+"Poubelles, tri et déchetterie": "Bins, recycling and tip",
+"Mairie, poste, office de tourisme": "Town hall, post office, tourist office",
+"Transports : cars et trains": "Getting around: coaches and trains",
+"Les plages": "Beaches",
+"Les marchés": "Markets",
+"S'il pleut : activités à l'abri": "If it rains: indoor activities",
+"Immobilier : ventes, prix, permis, PLU": "Property: sales, prices, permits, zoning",
+"Nature et balades": "Nature and walks",
+"Pharmacie, car, plage, loto…": "Pharmacy, bus, beach, bingo…",
+"Glissez le doigt sur la courbe pour lire chaque année.": "Slide your finger along the curve to read each year.",
+"On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel.": "Building is only allowed in urban and to-be-developed zones; the rest is farmland or natural areas.",
+"La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)": "La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)",
+"Préfailles – La Plaine-sur-Mer – Pornic – Saint-Brevin – Saint-Nazaire": "Préfailles – La Plaine-sur-Mer – Pornic – Saint-Brevin – Saint-Nazaire",
+"Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic": "Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic",
+"TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic": "TER Aléop line 1 Nantes – Saint-Nazaire – Le Croisic",
+"Car Aléop 303": "Aléop coach 303",
+"Car Aléop 315": "Aléop coach 315",
+"2,90 € le trajet (correspondance Naolib 1 h incluse) jusqu'au 3 janv. 2027 ; 3,40 à 3,80 € vers Nantes à partir du 4 janv. 2027": "€2.90 per journey (1 h Naolib transfer included) until 3 Jan 2027; €3.40 to €3.80 to Nantes from 4 Jan 2027",
+"La plupart des cars 303 partent de Pornic (Ste-Marie, place de la Marne) ; seuls les départs ci-dessous desservent Préfailles. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).": "Most 303 coaches leave from Pornic (Ste-Marie, place de la Marne); only the departures below serve Préfailles. Public holidays: Sunday timetable (1 May: no service, according to the 303 timetable).",
+"2,90 € le trajet jusqu'au 3 janv. 2027 ; 3,00 à 3,40 € vers Saint-Nazaire (Ycéo inclus) à partir du 4 janv. 2027": "€2.90 per journey until 3 Jan 2027; €3.00 to €3.40 to Saint-Nazaire (Ycéo included) from 4 Jan 2027",
+"Terminus à Préfailles, Place de la Gare. À Pornic, arrêts Terres Jarries, Le Sandier, Théâtre St-Gilles (pas Ste-Marie ni la gare). Correspondance possible avec la ligne 303 ou le TER à Pornic. Jours fériés : horaires du dimanche (1er mai : pas de service, d'après la fiche 303).": "Terminus in Préfailles, Place de la Gare. In Pornic, stops at Terres Jarries, Le Sandier, Théâtre St-Gilles (not Ste-Marie nor the station). Connections with line 303 or the TER train in Pornic. Public holidays: Sunday timetable (1 May: no service, according to the 303 timetable).",
+"Tarif TER (non relevé sur une source officielle) ; à partir du 4 janv. 2027, pass Aléop Multi car + train 35 €/jour pour 1 à 5 personnes": "TER fare (not taken from an official source); from 4 Jan 2027, Aléop Multi coach + train pass €35/day for 1 to 5 people",
+"Tarif TER (non relevé sur une source officielle). Les trains numérotés sur 4 chiffres sont des TGV INOUI venant de Paris : billet TGV avec réservation.": "TER fare (not taken from an official source). Trains with a 4-digit number are TGV INOUI from Paris: TGV ticket with seat reservation.",
+"La gare de Saint-Nazaire est le terminus du car 315 (arrêt « Gare SNCF »).": "Saint-Nazaire station is the terminus of coach 315 (stop “Gare SNCF”).",
+"Car Aléop (Loire-Atlantique) : ticket à l'unité 2,90 € (valable 2 h, + 1 h de correspondance Naolib/Ycéo) ; tarif réduit 1,50 € (enfants 4-10 ans, familles nombreuses, CMI…) ; carnet de 10 : 24 € ; gratuit moins de 4 ans. Achat : appli WOP M-Ticket ou auprès du conducteur (appoint).": "Aléop coach (Loire-Atlantique): single ticket €2.90 (valid 2 h, + 1 h Naolib/Ycéo transfer); reduced fare €1.50 (children 4-10, large families, disability card…); book of 10: €24; free under 4. Buy: WOP M-Ticket app or from the driver (exact change).",
+"Nouvelle gamme régionale : billet Aléop dès 2,50 € (hors zone urbaine), 3,40–3,80 € pour un trajet vers Nantes (correspondance Naolib incluse), 3,00–3,40 € vers Saint-Nazaire (Ycéo inclus) ; billet x10 dès 20 € ; Billet Junior (4-11 ans) dès 1,30 € ; Aléop Multi Car 15 €/jour pour 1 à 5 personnes (car), Aléop Multi 35 €/jour (car + train) ; carte Aléop -50 % 15 €/an (10 € moins de 26 ans).": "New regional fares: Aléop ticket from €2.50 (outside urban areas), €3.40–3.80 for a journey to Nantes (Naolib transfer included), €3.00–3.40 to Saint-Nazaire (Ycéo included); 10-journey ticket from €20; Junior ticket (ages 4-11) from €1.30; Aléop Multi Car €15/day for 1 to 5 people (coach), Aléop Multi €35/day (coach + train); Aléop -50% card €15/year (€10 under 26).",
+"Débutants (avec le club) à confirmés": "Beginners (with the club) to experienced",
+"Tous niveaux avec le club": "All levels, with the club",
+"Grande Plage tournée vers l'ouest-sud-ouest, dans la baie de Bourgneuf, avec le plan d'eau Maurice Giros (2,5 ha d'eau de mer renouvelée à marée haute par une écluse) où le club de voile fait naviguer enfants et débutants (Optimist, catamaran, planche à voile). Le club propose aussi le wingfoil (cours ou location), le paddle, la location de bateaux en mer et le char à voile sur la grande plage à marée basse.": "Grande Plage facing west-south-west, in the Baie de Bourgneuf, with the Maurice Giros lake (2.5 ha of seawater renewed at high tide through a lock) where the sailing club takes children and beginners out (Optimist, catamaran, windsurfing). The club also offers wingfoiling (lessons or hire), paddleboarding, boat hire at sea and sand yachting on the main beach at low tide.",
+"En location, on navigue dans la zone fixée par le club. Dans la bande des 300 m, vitesse limitée à 5 nœuds (arrêté du préfet maritime 2018/090). Vent d'est à nord-est : de terre, retour difficile.": "With hired gear, stay in the area set by the club. Within 300 m of the shore, speed is limited to 5 knots (maritime prefect order 2018/090). East to north-east wind: offshore, hard to get back.",
+"Plage du Pré-Vincent, devant la base nautique Claude-Georget du Club nautique des Moutiers (ouvert toute l'année) : dériveur, catamaran, planche à voile, cours de wingfoil, location de paddle et de kayak de mer. Webcam et anémomètre Windfinder au club.": "Plage du Pré-Vincent, in front of the Claude-Georget sailing centre of the Club nautique des Moutiers (open all year): dinghy, catamaran, windsurfing, wingfoil lessons, paddleboard and sea kayak hire. Windfinder webcam and wind gauge at the club.",
+"À marée basse, la mer se retire sur plusieurs kilomètres : on navigue autour de la marée haute. Plage surveillée seulement en juillet et août, à marée haute. Dans la bande des 300 m, vitesse limitée à 5 nœuds. Vent de nord-est à est : de terre.": "At low tide the sea goes out several kilometres: sail around high tide. Beach lifeguarded only in July and August, at high tide. Within 300 m of the shore, speed is limited to 5 knots. North-east to east wind: offshore.",
+"Bulletin officiel de Météo-France, en français.": "Official Météo-France bulletin, in French.",
+"Via la mairie :": "Via the town hall:",
+"(adresse donnée par la mairie)": "(address given by the town hall)",
+"(astreinte des bénévoles, SMS pour réserver) ·": "(volunteers on call, text to book) ·",
+"Aide aux devoirs": "Homework help",
+"Ouvertes d'abord": "Open first",
+"Partager ce spot": "Share this spot",
+"La mer · Marées et météo": "The sea · Tides and weather",
+"Marées, coefficients, vent, houle, température de l'eau": "Tides, coefficients, wind, swell, water temperature",
+"Bonnes marées, créneau conseillé, tailles, sécurité": "Good tides, best time slot, minimum sizes, safety",
+"Les plages, surveillées ou non, chiens": "Beaches, lifeguarded or not, dogs",
+"Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole. Possible remplacement par car le dimanche 15 nov. au matin (signalé par l-itineraire.com) : vérifier avant de partir.": "Pornic station is ~10 km from Préfailles: get there on coach 315 (Théâtre St-Gilles / Terres Jarries stop) or 303. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of Sunday 15 Nov (reported by l-itineraire.com): check before you travel.",
+"Gare de Pornic à ~10 km de Préfailles : y aller en car 315 (arrêt Théâtre St-Gilles / Terres Jarries) ou 303. Les tickets Naolib sont valables dans les TER à l'intérieur de Nantes Métropole.": "Pornic station is ~10 km from Préfailles: get there on coach 315 (Théâtre St-Gilles / Terres Jarries stop) or 303. Naolib tickets are valid on TER trains within Nantes Métropole."
 },
 "rules": [
+[
+"^(Préfailles|Pornic) et les cinémas voisins$",
+"$1 and nearby cinemas"
+],
+[
+"^(.+) le m² \\(12 derniers mois\\)$",
+"$1 per m² (last 12 months)"
+],
+[
+"^(\\d+) ventes en 12 mois$",
+"$1 sales in 12 months"
+],
+[
+"^(\\d+) adresses? : ouvertes aujourd'hui d'abord, puis du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+"$1 places: open today first, then nearest first. Hours are a guide only: call ahead."
+],
+[
+"^(\\d+) adresses? : ouvertes (\\p{L}+) d'abord, puis du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+"$1 places: open on $2 first, then nearest first. Hours are a guide only: call ahead."
+],
+[
+"^Santé, horaires utiles, poubelles, mairie, poste et urgences à (.+)\\.$",
+"Health, useful opening hours, bins, town hall, post office and emergencies in $1."
+],
+[
+"^Aucun résultat pour « (.+) »\\.$",
+"No results for “$1”."
+],
+[
+"^(Surf|Kite|Wing|Paddle) bon (vers|de) ",
+"$1 good $2 "
+],
+[
+"^(Surf|Kite|Wing|Paddle) possible (vers|de) ",
+"$1 possible $2 "
+],
+[
+"^Voile et bateau bon (vers|de) ",
+"Sailing good $1 "
+],
+[
+"^Voile et bateau possible (vers|de) ",
+"Sailing possible $1 "
+],
+[
+"^Ventes des 12 derniers mois connus \\((.+?)\\)\\.",
+"Sales over the last 12 known months ($1)."
+],
+[
+" La moitié des maisons s'est vendue entre (.+?) et (.+?) le m²\\.",
+" Half of the houses sold for between $1 and $2 per m²."
+],
+[
+" À (Préfailles|Pornic) : maison (.+?), appartement (.+?) le m²\\.",
+" In $1: house $2, flat $3 per m²."
+],
+[
+"^(\\d{4}) : année en cours \\(point creux\\)\\.$",
+"$1: current year (hollow dot)."
+],
+[
+"^Glissez le doigt sur la courbe pour lire chaque année\\. (\\d{4}) : année en cours \\(point creux\\)\\.$",
+"Slide your finger along the curve to read each year. $1: current year (hollow dot)."
+],
+[
+"^Une maison à (Préfailles|Pornic) se vendait$",
+"A house in $1 sold for"
+],
+[
+"^le m² en (\\d{4}), environ$",
+"per m² in $1, about"
+],
+[
+"^Une vente apparaît ici environ six mois après sa signature\\. Dernière connue : (.+)\\.$",
+"A sale shows up here about six months after it is signed. Latest known: $1."
+],
+[
+"^Permis de construire qui créent ou agrandissent des logements à (Préfailles|Pornic) \\(base Sitadel de l'État, mise à jour chaque mois, jusqu'en (.+?)\\)\\. Ni déclarations de travaux, ni piscines seules, ni démolitions : voir l'affichage en mairie\\. Le nom n'est donné que pour les sociétés\\.$",
+"Building permits that create or enlarge homes in $1 (State Sitadel database, updated monthly, up to $2). No prior declarations, pools alone or demolitions: see the notices at the town hall. Names are only given for companies."
+],
+[
+"^Plan local d'urbanisme \\(PLU\\) de (Préfailles|Pornic), approuvé le (.+?)\\. Touchez une zone : ce qu'on peut y construire, la zone sur la carte, sa page du règlement\\.$",
+"Local zoning plan (PLU) of $1, approved on $2. Tap a zone: what can be built there, the zone on the map, its page of the regulations."
+],
+[
+"^Ventes signées chez le notaire, pas des annonces, publiées par l'État deux fois par an avec environ six mois de retard \\(de (\\d{4}) au (.+?)\\)\\. Prix 2010-2020 : Cerema\\.$",
+"Sales signed at the notary, not listings, published by the State twice a year about six months late (from $1 to $2). 2010-2020 prices: Cerema."
+],
+[
+"^(.+) · (\\d{1,2} \\S+ \\d{4}) · autorisé$",
+"$1 · $2 · granted"
+],
+[
+"(?<=\\d)\\s+et\\s+(?=\\d)",
+" and "
+],
+[
+"\\((\\d{1,2}h\\d{0,2}) le (lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\\)",
+"($1 on $2)"
+],
 [
 "^(\\d+) ventes$",
 "$1 sales"
@@ -2341,6 +2493,7 @@
 "Septembre": "September",
 "Octobre": "October",
 "Novembre": "November",
-"Décembre": "December"
+"Décembre": "December",
+"Sorties et loisirs": "Outings and leisure"
 }
 }
