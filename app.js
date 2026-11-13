@@ -959,10 +959,35 @@ function seaCard(d){const w=wxDay(d),t=today();
    <button type="button" class="sea-share lnk" data-share="${esc(`La mer à Préfailles, ${dlong(d)} : ${sky.toLowerCase()}, vent ${r0(w.w)} nds ${DIRLONG[dirTxt(w.wd)]||""}${sMid&&sMid.hs!=null?`, houle ${r1(sMid.hs)} m`:""}${sst!=null?`, eau ${r1(sst)}°`:""}${(()=>{const l=dayLows(d)[0];return l?`, basse mer à ${hm(new Date(l.ms))}`:"";})()}.`)}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
   </div>`;}
 function spotSummary(sp,d){return sp.acts.map(a=>{const b=bestOf(a,sp,d);return b?{a,b}:null;}).filter(Boolean);}
+/* surf pour débuter : seulement les spots d'école (niveau « Débutants »), petites vagues, peu de vent, marée dans la fenêtre */
+function begJ(sp,x){const w=x.w||{},H=swellAt(sp,x.s),tt=x.tt,k=w.w??99,g=w.g??k,rel=w.wd!=null?windRel(sp,w.wd):"";
+  if(H==null||!tt||!sp.tide||tt.f<sp.tide[0]||tt.f>sp.tide[1])return 0;
+  if(H<.4||H>1.2||k>=16||g>=22||((rel==="off"||rel==="sideoff")&&k>10))return 0;
+  return H<=.9&&k<12&&g<18?2:1;}
+function begSurf(d){let best=null;SPOTSX.filter(sp=>sp.acts.includes("surf")&&/Débutant/.test(sp.lvl||"")).forEach(sp=>{
+    const hs=surfHours(sp,d).filter(x=>d!==today()||x.h>=new Date().getHours()).map(x=>({...x,b:begJ(sp,x)}));
+    let i=0;while(i<hs.length){if(!hs[i].b){i++;continue;}let j=i;while(j+1<hs.length&&hs[j+1].b&&hs[j+1].h===hs[j].h+1)j++;
+      const run=hs.slice(i,j+1),n=Math.min(...run.map(x=>x.b)),len=run.length;
+      if(len>=2&&(!best||n>best.n||(n===best.n&&len>best.len)))best={sp,n,len,h1:run[0].h,h2:run[len-1].h+1,x:run[Math.floor(len/2)]};i=j+1;}});
+  return best;}
+const sizeW=H=>H<.6?"aux genoux":H<1?"à la taille":H<1.5?"aux épaules":H<2.2?"au-dessus de la tête":"très gros";
+function surfRow(d){const R=rankSpots("surf",d),top=R.top;if(!top)return"";const b=top.b,sp=top.sp,n=b.j[0];
+  const B=begSurf(d);let nb=null;if(!B){for(let i=1;i<=5;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const x=begSurf(dd);if(x){nb={d:dd,x};break;}}}
+  const bw=B?(()=>{const w=B.x.w||{},H=swellAt(B.sp,B.x.s);return `${esc(B.sp.n.replace(/^Saint-Brevin, /,""))} de ${B.h1}h à ${B.h2}h · ${r1(H)} m (${sizeW(H)}), vent ${r0(w.w)} nds · idéal avec une école`;})()
+    :`pas ${ceJour(d)}${nb?` · plutôt ${dshort(nb.d)}, ${esc(nb.x.sp.n.replace(/^Saint-Brevin, /,""))}, de ${nb.x.h1}h à ${nb.x.h2}h`:""}`;
+  const t=sstNow(d),eq=t!=null?`Eau à ${r0(t)} °C : combinaison intégrale${t<15?" et chaussons":""}. `:"";
+  const c=maxCoef(d);
+  return row({th:`<span class="thumb t-sea">${ic("wave")}</span>`,title:`Surf <span class="note-pill ${NOTECLS[n]}">${NOTE[n]}</span>`,
+    metaH:meta(n>0?`Confirmés : ${esc(sp.n)}`:"Confirmés : rien de bon",n>0?slotTxt(b):""),
+    lines:[[esc(b.j[1])+(c?` · coef. ${c}`:""),""],
+      R.ties.length&&n>0?[`Aussi ${NOTE[n].toLowerCase()} : ${esc(listAnd(R.ties.slice(0,3).map(x=>x.sp.n)))}`,""]:null,
+      [`<b>Débutants</b> : ${bw}`,""],
+      [`${eq}Hors saison, plages non surveillées : jamais seul. Secours 112, en mer 196.`,"dim"]].filter(Boolean),
+    href:"#spots",act:` data-act="spot" data-v="${sp.id}"`});}
 function glisseSec(d){if(!wxDay(d))return"";
-  const acts=["surf","kite","wing","voile","paddle"];
+  const acts=["kite","wing","voile","paddle"];
   /* aujourd'hui : seulement les heures à venir ; le soir, plus rien à venir → demain */
-  const late=d===today()&&new Date().getHours()>=19;if(late&&wxDay(addDays(d,1)))d=addDays(d,1);
+  const late=d===today()&&new Date().getHours()>=Math.min(19,dayHours(d)[1]+1);if(late&&wxDay(addDays(d,1)))d=addDays(d,1);
   const best=acts.map(a=>{const R=rankSpots(a,d);return R.top?{a,sp:R.top.sp,b:R.top.b,ties:R.ties}:null;}).filter(Boolean);
   const yes=best.filter(x=>x.b.j[0]>0),no=best.filter(x=>x.b.j[0]===0);
   const icA=a=>a==="voile"?"sail":a==="paddle"?"drop":"wave";
@@ -970,7 +995,7 @@ function glisseSec(d){if(!wxDay(d))return"";
   const nos=no.length?`<li class="row glisse-non"><span class="row-main"><span class="row-meta">${no.map(x=>ACTL[x.a].replace(" et bateau","")).join(", ")} : non (${[...new Set(no.map(x=>x.b.j[1].toLowerCase()))].join(" ; ")})</span></span></li>`:"";
   const gmax=Math.max(0,...[...Array(24).keys()].map(h=>(wxAt(d,h)||{}).g||0));
   const alerte=gmax>=34?`<p class="nav-alert">${ic("wave","i-s")} Rafales prévues jusqu'à ${Math.round(gmax)} nœuds ${ceJour(d)} (prévision Météo-France) : vérifiez s'il y a un avis de coup de vent avant de sortir en mer.</p>`:"";
-  return sec(`Glisse ${ceJour(d)}`,"",`${alerte}<ul class="list">${rows}${nos}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
+  return sec(`Glisse ${ceJour(d)}`,"",`${alerte}<ul class="list">${surfRow(d)}${rows}${nos}</ul>`,"Le meilleur spot et le meilleur créneau pour chaque activité. Touchez une ligne pour voir le spot.");}
 /* prévision détaillée d'un spot : vent de 3 modèles au spot, vagues de 2 modèles dans sa zone (Open-Meteo) */
 const FCM={w:[["meteofrance_seamless","AROME"],["ecmwf_ifs025","ECMWF"],["icon_seamless","ICON"]],v:[["meteofrance_wave","Météo-France"],["ncep_gfswave025","GFS-Wave"]]};
 const ZPT=[[47.13,-2.29],[47.21,-2.21],[47.09,-2.21]];
