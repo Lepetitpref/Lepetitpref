@@ -1321,6 +1321,8 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .wk-c{display:flex;flex-direction:column;justify-content:center;min-height:50px;padding:6px 10px;border:0;border-radius:10px;text-align:left;font:inherit;line-height:1.2;background:color-mix(in srgb,var(--line-strong) 22%,transparent);color:var(--muted)}
 .wk-c b{font-size:15px;font-weight:600;color:var(--ink)}
 .wk-c small{font-size:14px;color:inherit}
+.wk-v{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:inherit}
+.wk-d small{display:block}
 button.wk-c{cursor:pointer}
 .wk-c.ok{background:color-mix(in srgb,var(--ok) 15%,var(--surface));color:var(--ok)}
 .wk-c.warn{background:color-mix(in srgb,var(--warn) 14%,var(--surface));color:var(--warn)}
@@ -1382,4 +1384,4 @@ button.wk-c{cursor:pointer}
 .wk-c em{font-style:normal;font-weight:600}
 .wk-c.foil{text-align:left;cursor:pointer}
 .wk-c.foil b{color:var(--muted)}
-/* version du site */:root{--pp-v:"20261113-1930"}
+/* version du site */:root{--pp-v:"20261113-1934"}
