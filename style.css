@@ -1045,3 +1045,5 @@ button.pm-yr{grid-template-columns:44px 1fr 14px;padding:6px}
 button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .im-town button[aria-pressed="true"]{background:var(--sel2);color:#fff;font-weight:600}
 .im-mapleg{margin:8px 0 0}
+.im-more-bar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+.im-more-bar .im-more{margin:0}

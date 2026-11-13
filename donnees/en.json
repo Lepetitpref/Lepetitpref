@@ -761,9 +761,30 @@
 "La carte des ventes et des permis": "Map of sales and permits",
 "Maison vendue": "House sold",
 "Terrain": "Plot",
-"Touchez une parcelle ou un point violet pour le détail.": "Tap a plot or a purple dot for details."
+"Touchez une parcelle ou un point violet pour le détail.": "Tap a plot or a purple dot for details.",
+"Réduire": "Show less"
 },
 "rules": [
+[
+"^Voir toutes les ventes \\((\\d+)\\)$",
+"See all sales ($1)"
+],
+[
+"^Voir tous les permis de (\\d{4}) \\((\\d+)\\)$",
+"See all permits for $1 ($2)"
+],
+[
+"^Voir tous les permis \\((\\d+)\\)$",
+"See all permits ($1)"
+],
+[
+"^Voir (\\d+) ventes de plus$",
+"See $1 more sales"
+],
+[
+"^Voir (\\d+) permis de plus$",
+"See $1 more permits"
+],
 [
 "^Permis de (\\d{4})$",
 "Permits $1"
