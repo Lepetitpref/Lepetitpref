@@ -163,7 +163,7 @@
   "name": "Les Gaillards d'Avant",
   "regular": "",
   "town": "Préfailles",
-  "url": "https://www.gaillardsdavant.com",
+  "url": "https://www.lesgaillardsdavant.com",
   "what": "Chants de marins traditionnels",
   "th": "culture"
  },
@@ -1957,12 +1957,12 @@
   "id": "feelfree-pornic",
   "name": "Feel’Free",
   "town": "Pornic",
-  "what": "Création, enseignement et diffusion artistiques",
-  "desc": "Création, enseignement développement, diffusion et production artistique ainsi que la promotion de tout art.",
+  "what": "École de musique, danse et théâtre",
+  "desc": "Cours de chant, chorale, orchestre, batterie et percussions, piano, basse, guitare, danse, danse workout et théâtre, 42 rue de Verdun à Pornic.",
   "forWho": "",
   "regular": "",
   "contact": "assofeelfree@gmail.com",
-  "url": "https://www.pornic.fr/fiche-annuaire/feelfree/",
+  "url": "https://www.feel-free.fr/",
   "th": "culture"
  },
  {
@@ -2681,7 +2681,7 @@
   "desc": "",
   "forWho": "",
   "regular": "",
-  "contact": "http://www.baroudeursdepornic.fr",
+  "contact": "",
   "url": "https://www.pornic.fr/fiche-annuaire/les-baroudeurs/",
   "th": "sport"
  },
@@ -4117,13 +4117,13 @@
   "id": "ecole-de-musique-bernerie",
   "name": "École de Musique et Danses",
   "town": "La Bernerie-en-Retz",
-  "what": "Musique et danse",
-  "desc": "Impasse Jean Mounès.",
-  "forWho": "",
+  "what": "Musique (instruments, chant, chorale) et danse (classique, contemporaine, modern'jazz)",
+  "desc": "Cours impasse Jean Mounès (maison des associations, derrière la mairie) ; stages pendant les vacances scolaires.",
+  "forWho": "Enfants (dès l'éveil musical) et adultes (chorale Chant'Retz)",
   "regular": "",
-  "contact": "emab44@gmail.com",
-  "url": "https://mairie-labernerie.fr/annuaire/ecole-de-musique-2/",
-  "th": "sport"
+  "contact": "emab44@gmail.com · 02 40 21 25 72",
+  "url": "https://www.musiquedansebernerie.com/",
+  "th": "culture"
  },
  {
   "id": "ecolieu-ty-louet-bernerie",
@@ -4843,7 +4843,7 @@
   "regular": "",
   "contact": "https://www.facebook.com/saltarelle.sarabande/",
   "url": "https://www.mairie-lesmoutiersenretz.fr/contacts/saltarelle-et-sarabande/",
-  "th": "sport"
+  "th": "culture"
  },
  {
   "id": "surya-yoga-moutiers",

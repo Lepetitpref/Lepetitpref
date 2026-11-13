@@ -1,247 +1,5 @@
 [
  {
-  "id": "2026-11-12-toiles-de-retz-une-femme-aujourd-hui",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Une femme aujourd'hui",
-  "date": "2026-11-12",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-hope",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hope",
-  "date": "2026-11-12",
-  "times": [
-   "14h"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Science Fiction, Action",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-karma",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Karma",
-  "date": "2026-11-12",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-un-bon-patron",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Un bon patron",
-  "date": "2026-11-12",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-karma",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Karma",
-  "date": "2026-11-12",
-  "times": [
-   "14h15"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-l-affaire-marie-claire",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-12",
-  "times": [
-   "14h45",
-   "17h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-l-affaire-marie-claire",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-12",
-  "times": [
-   "15h50",
-   "18h25"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-12",
-  "times": [
-   "16h40"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-les-miserables",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Les Misérables",
-  "date": "2026-11-12",
-  "times": [
-   "16h45"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-la-gradiva",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "La Gradiva",
-  "date": "2026-11-12",
-  "times": [
-   "17h10"
-  ],
-  "version": "VF",
-  "genre": "Drame, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-moulin",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Moulin",
-  "date": "2026-11-12",
-  "times": [
-   "17h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-minotaure",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Minotaure",
-  "date": "2026-11-12",
-  "times": [
-   "17h55"
-  ],
-  "version": "VOST",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-moulin",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Moulin",
-  "date": "2026-11-12",
-  "times": [
-   "20h10"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-la-gradiva",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "La Gradiva",
-  "date": "2026-11-12",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-wicker",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Wicker",
-  "date": "2026-11-12",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Romance, Drame, Fantastique, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-12-saint-joseph-une-femme-aujourd-hui",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Une femme aujourd'hui",
-  "date": "2026-11-12",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-atlantique-memoire-de-fille",
-  "cinema": "L'Atlantique (Préfailles)",
-  "film": "Mémoire de fille",
-  "date": "2026-11-12",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-12-cinejade-la-baleine-et-le-musicien",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "La Baleine et le musicien",
-  "date": "2026-11-12",
-  "times": [
-   "20h40"
-  ],
-  "version": "VF",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-marie-madeleine",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Marie Madeleine",
-  "date": "2026-11-12",
-  "times": [
-   "20h45"
-  ],
-  "version": "VOST",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-12-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-12",
-  "times": [
-   "21h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
   "id": "2026-11-13-toiles-de-retz-les-miserables",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Les Misérables",
@@ -2142,6 +1900,18 @@
   "kids": false
  },
  {
+  "id": "2026-11-22-saint-joseph-le-journal-d-une-femme-de-chambre",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Le Journal d'une femme de chambre",
+  "date": "2026-11-22",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique · avant-première, Journée Art et Essai du cinéma européen",
+  "kids": false
+ },
+ {
   "id": "2026-11-22-atlantique-le-roi-du-game",
   "cinema": "L'Atlantique (Préfailles)",
   "film": "Le Roi du game",
@@ -2151,6 +1921,30 @@
   ],
   "version": "VF",
   "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-saint-joseph-fatherland",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Fatherland",
+  "date": "2026-11-22",
+  "times": [
+   "18h"
+  ],
+  "version": "VOST",
+  "genre": "Drame · avant-première, Journée Art et Essai du cinéma européen",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-saint-joseph-everybody-digs-bill-evans",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Everybody Digs Bill Evans",
+  "date": "2026-11-22",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Biopic, Musical · avant-première, Journée Art et Essai du cinéma européen",
   "kids": false
  },
  {
