@@ -1191,3 +1191,40 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 @media (max-width:380px){.surf-more{padding-left:14px}}
 .s5c,.s5b{white-space:normal;overflow:visible}
 .s5h{border-top:0;font-size:13px;color:var(--muted);font-weight:600;padding-bottom:0}
+/* ligne Surf : deux encadrés identiques */
+.surf-row{padding:12px 0;list-style:none}
+.surf-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.surf-h b{font-size:17px;font-weight:600}
+.surf-h small{flex-basis:100%;margin-left:52px;margin-top:-10px;color:var(--muted);font-size:14px}
+.lv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 0}
+.lv{display:flex;flex-direction:column;gap:4px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;min-width:0}
+.lv-h{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+.lv-h .note-pill{margin:0}
+.lv-main{font-size:16px;font-weight:600;line-height:1.25}
+.lv-sub{font-size:14px;line-height:1.35;color:var(--muted)}
+.lv-sub b{color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--line-strong) 45%,transparent);font-size:13.5px;line-height:1.5;color:var(--ink);white-space:nowrap}
+.tag .i{width:13px;height:13px;color:var(--accent)}
+.tag.t-off{background:color-mix(in srgb,var(--ok) 13%,transparent)}
+.tag.t-on{background:color-mix(in srgb,var(--warn) 13%,transparent)}
+.surf5{margin:12px 0 0}
+.s5{grid-template-columns:5.2em 1fr 1fr}
+.s5x{display:flex;flex-direction:column;padding:4px 8px;border-radius:8px;background:color-mix(in srgb,var(--line-strong) 35%,transparent);color:var(--muted);font-size:14px;line-height:1.25;font-weight:600}
+.s5x small{font-weight:400;font-size:13px}
+.s5x.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.s5x.warn{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.surf-safe{margin:10px 0 4px}
+.surf-src{margin:0}
+/* fiches des spots */
+.spot-act{display:block;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.sa-h{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:15px}
+.sa-h .note-pill{min-width:0}
+.sa-main{display:block;font-weight:600;font-size:15px;margin-top:2px}
+.sa-main:empty{display:none}
+.sa-sub{display:block;color:var(--muted);font-size:14px}
+@media (max-width:360px){.lv-grid{grid-template-columns:1fr}}
+.tag{white-space:normal;max-width:100%}
+.surf-h small{margin-left:0;margin-top:0;flex-basis:auto;flex:1;min-width:12em}
+.spot-act,.spot-act .sa-h b,.spot-act .sa-main{color:var(--ink)}
+.spot-act .sa-sub{color:var(--muted)}

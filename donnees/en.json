@@ -931,9 +931,52 @@
 "non": "no",
 "jamais seul · vérifiez si la plage est surveillée · secours": "never alone · check whether the beach is lifeguarded · emergency",
 "Houle et vent : prévisions Météo-France (Open-Meteo), la hauteur est celle de la houle au large, pas celle du bord. Comparez avec Windguru dans la fiche du spot.": "Swell and wind: Météo-France forecasts (Open-Meteo); the height is the offshore swell, not the size at the shore. Compare with Windguru in the spot's page.",
-"Prévisions en cours de chargement…": "Loading forecasts…"
+"Prévisions en cours de chargement…": "Loading forecasts…",
+"Mer lisse": "Clean",
+"Bonnes vagues": "Good waves",
+"Surfable": "Surfable",
+"Trop petit": "Too small",
+"Gros, experts seulement": "Big, experts only",
+"Haché par le vent de mer": "Choppy, onshore wind",
+"Clapot, vent de mer": "Chop, onshore wind",
+"Vent travers soutenu": "Strong cross-shore wind",
+"Vent fort et rafaleux": "Strong, gusty wind",
+"Fort vent de terre, il pousse vers le large": "Strong offshore wind, it pushes you out to sea",
+"Rien dans les 5 jours.": "Nothing in the next 5 days."
 },
 "rules": [
+[
+"^Pas (demain|aujourd'hui)$",
+"Not $1"
+],
+[
+"^Rien de bon (demain|aujourd'hui)$",
+"Nothing good $1"
+],
+[
+"^Vagues (.+), vent (\\d+) nds\\. Idéal avec une école\\.$",
+"Waves $1, wind $2 kn. Best with a surf school."
+],
+[
+"^(\\d+) nds de (terre|mer)",
+"$1 kn $2"
+],
+[
+"^Basse mer (.+?) · coef\\. (\\d+) \\((.+)\\)$",
+"Low tide $1 · coef. $2 ($3)"
+],
+[
+"^Prochain créneau :$",
+"Next slot:"
+],
+[
+"^Jamais seul, vérifiez si la plage est surveillée\\. Secours$",
+"Never alone, check whether the beach is lifeguarded. Emergency"
+],
+[
+"^Prévisions Météo-France \\(Open-Meteo\\) : houle au large, pas la taille au bord\\. À comparer avec Windguru dans la fiche du spot\\.$",
+"Météo-France forecasts (Open-Meteo): offshore swell, not the size at the shore. Compare with Windguru in the spot's page."
+],
 [
 "^: pas (aujourd'hui|demain|ce \\p{L}+) \\(([^)]+)\\)$",
 ": not $1 ($2)"
