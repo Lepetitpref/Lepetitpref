@@ -1379,6 +1379,12 @@ function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").match
   ov.addEventListener("click",e=>{e.stopPropagation();open();});done.addEventListener("click",e=>{e.stopPropagation();close();});
   L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);}
 addEventListener("popstate",()=>{if(MAPFULL)MAPFULL.close(true);});
+/* barre de sous-rubriques : si la partie est déjà sur la page (La mer, À faire), on y descend ou remonte directement,
+   même quand le lien pointe vers la page où l'on est déjà (sinon rien ne se passait) */
+document.addEventListener("click",e=>{const a=e.target.closest(".subnav a.seg-a[data-spy]");if(!a||e.metaKey||e.ctrlKey)return;
+  const el=document.getElementById(a.dataset.spy);if(!el)return;e.preventDefault();
+  const h=a.getAttribute("href");try{history.replaceState(history.state,"",h);}catch(x){}S.jumped=h.slice(1);lastView=curView();
+  ACT.pjump(a.dataset.spy);});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&MAPFULL)MAPFULL.close();});
 addEventListener("hashchange",()=>{if(MAPFULL){const f=MAPFULL;f.close(true);}});
 let IMLAY={},IMPM=null;
