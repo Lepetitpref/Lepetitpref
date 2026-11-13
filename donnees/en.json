@@ -919,9 +919,77 @@
 "rien ce soir": "nothing tonight",
 "rien de daté aujourd'hui": "nothing scheduled today",
 "ventes réelles, prix au m², permis, PLU": "actual sales, price per m², permits, zoning",
-"Urgences, santé, poubelles, mairie, poste et immobilier.": "Emergencies, health, bins, town hall, post office and property."
+"Urgences, santé, poubelles, mairie, poste et immobilier.": "Emergencies, health, bins, town hall, post office and property.",
+"Débutants : Non": "Beginners: No",
+"Débutants : Possible": "Beginners: Possible",
+"Débutants : Bon": "Beginners: Good",
+"Confirmés : Non": "Experienced: No",
+"Confirmés : Possible": "Experienced: Possible",
+"Confirmés : Bon": "Experienced: Good",
+"Débutants": "Beginners",
+"rien de bon": "nothing good",
+"non": "no",
+"jamais seul · vérifiez si la plage est surveillée · secours": "never alone · check whether the beach is lifeguarded · emergency",
+"Houle et vent : prévisions Météo-France (Open-Meteo), la hauteur est celle de la houle au large, pas celle du bord. Comparez avec Windguru dans la fiche du spot.": "Swell and wind: Météo-France forecasts (Open-Meteo); the height is the offshore swell, not the size at the shore. Compare with Windguru in the spot's page.",
+"Prévisions en cours de chargement…": "Loading forecasts…"
 },
 "rules": [
+[
+"^: pas (aujourd'hui|demain|ce \\p{L}+) \\(([^)]+)\\)$",
+": not $1 ($2)"
+],
+[
+"^: pas (aujourd'hui|demain|ce \\p{L}+)$",
+": not $1"
+],
+[
+"^prochain créneau : (.+)$",
+"next slot: $1"
+],
+[
+"^Eau (\\d+) °C : intégrale \\+ chaussons · $",
+"Water $1 °C: full wetsuit + boots · "
+],
+[
+"^Eau (\\d+) °C : intégrale · $",
+"Water $1 °C: full wetsuit · "
+],
+[
+"^, en mer$",
+", at sea"
+],
+[
+"^ · vagues ≈ (.+), vent (\\d+) nds · idéal avec une école$",
+" · waves ≈ $1, wind $2 kn · best with a surf school"
+],
+[
+"^basse mer (.+?) · coef\\. (\\d+) \\((.+)\\)$",
+"low tide $1 · coef. $2 ($3)"
+],
+[
+"\\bhoule ([NSEO]{1,3}) ",
+"swell $1 "
+],
+[
+"≈ à la taille",
+"≈ waist high"
+],
+[
+"≈ aux genoux",
+"≈ knee high"
+],
+[
+"≈ aux épaules",
+"≈ shoulder high"
+],
+[
+"≈ au-dessus de la tête",
+"≈ overhead"
+],
+[
+"Où et quand faire du surf, du kite, du wing, de la voile demain \\(la journée est finie\\)\\.",
+"Where and when to surf, kite, wing or sail tomorrow (today is over)."
+],
 [
 "^(\\d+) lieux? ouverts? aujourd'hui à moins de (\\d+) km$",
 "$1 places open today within $2 km"
@@ -2647,6 +2715,15 @@
 "Octobre": "October",
 "Novembre": "November",
 "Décembre": "December",
-"Sorties et loisirs": "Outings and leisure"
+"Sorties et loisirs": "Outings and leisure",
+"marée moyenne": "average tide",
+"vives-eaux": "spring tide",
+"mortes-eaux": "neap tide",
+"grande marée": "big spring tide",
+"trop petit": "too small",
+"vagues trop grosses": "waves too big",
+"trop de vent": "too windy",
+"vent de terre trop fort": "offshore wind too strong",
+"marée": "tide"
 }
 }

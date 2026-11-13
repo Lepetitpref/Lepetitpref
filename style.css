@@ -1174,3 +1174,20 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .htile-t small{font-size:14px;line-height:1.3;color:var(--muted)}
 .hgrid .htile:last-child:nth-child(odd){grid-column:1/-1;min-height:0}
 .day-pick{white-space:nowrap}
+/* glisse : ligne Surf par niveau, 5 jours, sécurité */
+.surf-row .row-title{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.surf-row .note-pill{margin-left:0}
+.surf-beg{margin:4px 0 2px;padding:6px 8px;border-radius:8px;background:color-mix(in srgb,var(--accent) 8%,transparent);color:var(--ink)}
+.surf-more{padding:0 0 10px 52px}
+.surf5{display:grid;gap:2px;margin:6px 0 2px;font-size:14px}
+.s5{display:grid;grid-template-columns:5.2em 1fr 1fr;gap:6px;align-items:center;padding:4px 0;border-top:1px solid var(--line)}
+.s5d{color:var(--muted)}
+.s5c,.s5b{padding:2px 6px;border-radius:6px;background:color-mix(in srgb,var(--line-strong) 40%,transparent);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s5c.ok,.s5b.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.s5c.warn,.s5b.warn{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.surf-safe{margin:8px 0 4px;padding:8px 10px;border-radius:8px;border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);background:color-mix(in srgb,var(--warn) 7%,transparent);font-size:14px;line-height:1.4}
+.surf-safe a{font-weight:600;color:var(--ink)}
+.hstrip .past{opacity:.35}
+@media (max-width:380px){.surf-more{padding-left:14px}}
+.s5c,.s5b{white-space:normal;overflow:visible}
+.s5h{border-top:0;font-size:13px;color:var(--muted);font-weight:600;padding-bottom:0}
