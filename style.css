@@ -1153,3 +1153,14 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
  .menu-btn{font-size:0;gap:0;padding:0 10px}
  .menu-btn .i{width:22px;height:22px}
 }
+/* cartes sur téléphone : aperçu dans la page, plein écran pour s'en servir */
+.mmap{touch-action:pan-y}
+.map-lock{pointer-events:auto;border:0;margin:0;cursor:pointer;touch-action:pan-y;background:rgba(0,0,0,.06);font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.map-lock .map-lock-b{pointer-events:none}
+.mmap.map-full{position:fixed!important;inset:0;z-index:2000;width:100vw;height:100vh;height:100dvh;max-height:none!important;min-height:0;margin:0;border:0;border-radius:0;touch-action:none}
+.map-done{display:none!important}
+.map-full .map-done{display:inline-flex!important;align-items:center;gap:6px;position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);bottom:auto;left:50%;transform:translateX(-50%);z-index:1001;min-height:48px;padding:0 20px;font-size:16px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.map-full .leaflet-top{top:calc(env(safe-area-inset-top,0px) + 64px)}
+.map-full .leaflet-bottom{bottom:env(safe-area-inset-bottom,0px)}
+body.map-open .topbar,body.map-open .tabs{visibility:hidden}
+.mmap:has(.map-lock):not(.map-full) .leaflet-top{display:none}

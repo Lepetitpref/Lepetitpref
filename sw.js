@@ -1,5 +1,5 @@
 // Le Petit Préf : hors ligne. Coquille et données en cache, données toujours fraîches quand le réseau répond.
-const V = "pp-20261113-1234";
+const V = "pp-20261113-1236";
 const SHELL = ["./", "index.html", "style.css", "app.js", "manifest.webmanifest", "images/mer.jpg", "images/pornic.jpg", "icons/icon-192.png",
   "donnees/events.json", "donnees/cinema.json", "donnees/assos.json", "donnees/transports.json", "donnees/status.json"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {})))).then(() => self.skipWaiting())); });

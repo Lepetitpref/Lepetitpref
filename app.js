@@ -1238,23 +1238,39 @@ function imPlu(U,B){const P=U.plu;if(!P||!P.zones||!P.zones.length)return"";
 document.addEventListener("toggle",e=>{const d=e.target;if(d.classList&&d.classList.contains("plu-grp")){(S.pluG||(S.pluG={}))[d.dataset.plug]=d.open;}},true);
 /* toucher un permis : la carte montre sa parcelle (contour lu au cadastre de l'IGN) */
 let IMPP=null;
-function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTimeout(()=>{if(LMAP){LMAP.setView([v.la,v.lo],18);L.popup().setLatLng([v.la,v.lo]).setContent(pmPop(v)).openOn(LMAP);}},350);}return;}ACT.pjump("im-carte");const B=imB(),code=S.ventes?.communes?.[B.k]?.code;
-  fetch(`https://apicarto.ign.fr/api/cadastre/parcelle?code_insee=${code}&section=${v.pa.slice(3,5)}&numero=${v.pa.slice(5)}`).then(r=>r.json()).then(g=>{if(!LMAP)return;if(!g.features||!g.features[0]){if(v.la){LMAP.setView([v.la,v.lo],18);L.popup().setLatLng([v.la,v.lo]).setContent(pmPop(v)).openOn(LMAP);}else toast("Parcelle introuvable");return;}
+function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTimeout(()=>{if(LMAP){LMAP.setView([v.la,v.lo],17);L.popup().setLatLng([v.la,v.lo]).setContent(pmPop(v)).openOn(LMAP);}},350);}return;}ACT.pjump("im-carte");const B=imB(),code=S.ventes?.communes?.[B.k]?.code;
+  fetch(`https://apicarto.ign.fr/api/cadastre/parcelle?code_insee=${code}&section=${v.pa.slice(3,5)}&numero=${v.pa.slice(5)}`).then(r=>r.json()).then(g=>{if(!LMAP)return;if(!g.features||!g.features[0]){if(v.la){LMAP.setView([v.la,v.lo],17);L.popup().setLatLng([v.la,v.lo]).setContent(pmPop(v)).openOn(LMAP);}else toast("Parcelle introuvable");return;}
     if(IMPP)IMPP.remove();IMPP=L.geoJSON(g.features[0],{style:{color:"#7b5ea7",weight:3,fillColor:"#7b5ea7",fillOpacity:.35}}).addTo(LMAP);
     const t=v.col>1?`${v.lg} logements en collectif`:v.lg>1?`${v.lg} logements`:v.nat==="neuf"?"Maison neuve":"Travaux sur une maison";
-    LMAP.fitBounds(IMPP.getBounds(),{maxZoom:18,padding:[30,30]});IMPP.bindPopup(`<div class="pop"><span class="im-pn">Parcelle ${v.pa.slice(3,5).replace(/^0/,"")} ${+v.pa.slice(5)}${g.features[0].properties.contenance?" · "+g.features[0].properties.contenance+" m²":""}</span><b>Permis : ${t}</b><span>${v.s?v.s+" m² créés · ":""}${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span><span>${esc(v.r||"")}</span></div>`).openPopup();})
+    LMAP.fitBounds(IMPP.getBounds(),{maxZoom:17,padding:[30,30]});IMPP.bindPopup(`<div class="pop"><span class="im-pn">Parcelle ${v.pa.slice(3,5).replace(/^0/,"")} ${+v.pa.slice(5)}${g.features[0].properties.contenance?" · "+g.features[0].properties.contenance+" m²":""}</span><b>Permis : ${t}</b><span>${v.s?v.s+" m² créés · ":""}${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span><span>${esc(v.r||"")}</span></div>`).openPopup();})
     .catch(()=>toast("Carte du cadastre indisponible"));}
 /* cartes sur téléphone : verrouillées au départ (le doigt fait défiler la page), « Utiliser la carte » pour la manipuler, « Terminé » pour la relâcher ; jamais plus loin que la région */
+/* cartes sur téléphone : dans la page, la carte est une image qui laisse défiler la page (et ne fait jamais zoomer la page entière) ;
+   la toucher l'ouvre en plein écran, avec un gros bouton « Fermer la carte » toujours visible ; le geste « retour » la ferme aussi */
+let MAPFULL=null;
 function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").matches;
   m.setMinZoom(11);m.setMaxBounds(L.latLngBounds([center[0]-.35,center[1]-.5],[center[0]+.35,center[1]+.5]));
   const home=L.control({position:"topright"});home.onAdd=()=>{const b=L.DomUtil.create("button","map-home");b.type="button";b.title="Recentrer";b.setAttribute("aria-label","Recentrer la carte");b.innerHTML="⌖";L.DomEvent.on(b,"click",e=>{L.DomEvent.stop(e);m.setView(center,14);});return b;};home.addTo(m);
-  if(!coarse)return;const set=on=>{["dragging","touchZoom","doubleClickZoom","boxZoom","keyboard"].forEach(k=>m[k]&&(on?m[k].enable():m[k].disable()));el.classList.toggle("map-on",on);};
-  const ov=document.createElement("div");ov.className="map-lock";ov.innerHTML=`<button type="button" class="map-lock-b">${ic("compass","i-s")} Utiliser la carte</button>`;
-  const done=document.createElement("button");done.type="button";done.className="map-done";done.textContent="✕ Terminé";
+  if(!coarse)return;
+  const ph=document.createElement("div");ph.className="map-ph";
+  const set=on=>{["dragging","touchZoom","doubleClickZoom","boxZoom","keyboard","tap"].forEach(k=>m[k]&&(on?m[k].enable():m[k].disable()));el.classList.toggle("map-on",on);};
+  const ov=document.createElement("button");ov.type="button";ov.className="map-lock";ov.innerHTML=`<span class="map-lock-b">${ic("compass","i-s")} Ouvrir la carte en grand</span>`;
+  const done=document.createElement("button");done.type="button";done.className="map-done";done.innerHTML=`${ic("close","i-s")} Fermer la carte`;
   el.appendChild(ov);el.appendChild(done);set(false);
-  ov.querySelector("button").addEventListener("click",e=>{e.stopPropagation();set(true);});done.addEventListener("click",e=>{e.stopPropagation();set(false);});
-  ["click","touchstart","mousedown","dblclick"].forEach(t=>{L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);});}
+  /* bloque le zoom de la page entière sur iPhone (gestes à deux doigts sur la carte) */
+  ["gesturestart","gesturechange"].forEach(t=>el.addEventListener(t,e=>e.preventDefault(),{passive:false}));
+  const open=()=>{if(MAPFULL)return;const y=scrollY;el.parentNode.insertBefore(ph,el);ph.style.height=el.offsetHeight+"px";
+    el.classList.add("map-full");document.body.classList.add("locked","map-open");pageInert(false);set(true);
+    MAPFULL={close,y};try{history.pushState({ppmap:1},"");}catch(e){}requestAnimationFrame(()=>{m.invalidateSize();});};
+  const close=(fromPop)=>{if(!MAPFULL)return;const y=MAPFULL.y;if(S.renderLater){S.renderLater=false;setTimeout(render,50);}MAPFULL=null;m.closePopup();set(false);el.classList.remove("map-full");document.body.classList.remove("locked","map-open");if(ph.parentNode)ph.remove();
+    requestAnimationFrame(()=>{m.invalidateSize();scrollTo({top:y,behavior:"instant"});});if(!fromPop){try{if(history.state&&history.state.ppmap)history.back();}catch(e){}}};
+  ov.addEventListener("click",e=>{e.stopPropagation();open();});done.addEventListener("click",e=>{e.stopPropagation();close();});
+  L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);}
+addEventListener("popstate",()=>{if(MAPFULL)MAPFULL.close(true);});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&MAPFULL)MAPFULL.close();});
+addEventListener("hashchange",()=>{if(MAPFULL){const f=MAPFULL;f.close(true);}});
 let IMLAY={},IMPM=null;
+const pmStyle=z=>z>=16?{radius:7,weight:3}:z>=14?{radius:5,weight:2}:{radius:3.5,weight:1.5};
 /* zone du PLU d'un endroit (apicarto IGN), montrée dans la bulle d'une vente ou d'un permis */
 const PLUC={};
 function pluAt(ll){const k=ll.lat.toFixed(5)+","+ll.lng.toFixed(5);if(PLUC[k])return PLUC[k];
@@ -1272,7 +1288,7 @@ let IMSH=new Map();
 /* toucher une vente de la liste : la carte descend sur sa parcelle et ouvre la bulle */
 function imFocus(v){if(!v)return;const el=document.getElementById("im-carte");if(el)ACT.pjump("im-carte");
   const go=()=>{if(!LMAP)return setTimeout(go,300);const k=(v.pa||[]).find(p=>IMSH.has(p));
-    if(k){const sh=IMSH.get(k);LMAP.fitBounds(sh.getBounds(),{maxZoom:18,padding:[30,30]});setTimeout(()=>sh.openPopup(),350);}
+    if(k){const sh=IMSH.get(k);LMAP.fitBounds(sh.getBounds(),{maxZoom:17,padding:[30,30]});setTimeout(()=>sh.openPopup(),350);}
     else if(v.la){LMAP.setView([v.la,v.lo],17);L.popup().setLatLng([v.la,v.lo]).setContent(imPop([v])).openOn(LMAP);}};
   setTimeout(go,250);}
 const imParc=k=>(S.parc=S.parc||{})[k]?Promise.resolve(S.parc[k]):fetch(`donnees/parcelles-${k}.json`,{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(o=>S.parc[k]=o);
@@ -1287,9 +1303,9 @@ function drawImMap(){const el=document.getElementById("immap");if(!el)return;con
   const cad=L.tileLayer("https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=CADASTRALPARCELS.PARCELLAIRE_EXPRESS&STYLE=normal&TILEMATRIXSET=PM_0_19&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png",{maxNativeZoom:19,maxZoom:19,minZoom:14,className:dark?"tiles-dark":"",opacity:.7,attribution:"Cadastre © IGN, DGFiP"});
   const plu=L.tileLayer.wms("https://data.geopf.fr/wms-v/ows",{layers:"du",format:"image/png",transparent:true,version:"1.3.0",opacity:.3,attribution:"PLU © Géoportail de l'Urbanisme"});
   IMLAY={cad,plu};if(S.imCad)cad.addTo(LMAP);if(S.imPlu)plu.addTo(LMAP);LMAP.on("popupopen",pluInPopup);
-  IMPM=L.featureGroup().addTo(LMAP);const UP=S.urba?.communes?.[B.k]?.permis;
+  IMPM=L.featureGroup().addTo(LMAP);LMAP.on("zoomend",()=>{const st=pmStyle(LMAP.getZoom());IMPM&&IMPM.eachLayer(l=>{if(l.setRadius){l.setRadius(st.radius);l.setStyle({weight:st.weight});}});});const UP=S.urba?.communes?.[B.k]?.permis;
   const y3=String(new Date().getFullYear()-2);
-  if(UP)UP.recents.filter(v=>v.la&&(S.imPY?v.d.startsWith(S.imPY):v.d.slice(0,4)>=y3)).forEach(v=>L.circleMarker([v.la,v.lo],{radius:7,color:"#7b5ea7",weight:3,fillColor:"#fff",fillOpacity:1,bubblingMouseEvents:false}).bindPopup(()=>pmPop(v),{maxWidth:260,autoPanPadding:[20,60]}).addTo(IMPM));if(S.imCad)cad.addTo(LMAP);if(S.imPlu)plu.addTo(LMAP);
+  if(UP)UP.recents.filter(v=>v.la&&(S.imPY?v.d.startsWith(S.imPY):v.d.slice(0,4)>=y3)).forEach(v=>L.circleMarker([v.la,v.lo],{...pmStyle(LMAP.getZoom()),color:"#7b5ea7",fillColor:"#fff",fillOpacity:1,bubblingMouseEvents:false}).bindPopup(()=>pmPop(v),{maxWidth:260,autoPanPadding:[20,60]}).addTo(IMPM));if(S.imCad)cad.addTo(LMAP);if(S.imPlu)plu.addTo(LMAP);
   LMAP.on("click",e=>{if(!LMAP.hasLayer(plu))return;const g=encodeURIComponent(JSON.stringify({type:"Point",coordinates:[e.latlng.lng,e.latlng.lat]}));
     fetch(`https://apicarto.ign.fr/api/gpu/zone-urba?geom=${g}`).then(r=>r.json()).then(o=>{const z=o.features&&o.features[0]&&o.features[0].properties;if(!z)return;
       const TZ={U:"zone urbaine",AUc:"zone à urbaniser",AUs:"zone à urbaniser (plus tard)",A:"zone agricole",N:"zone naturelle"};
@@ -1688,7 +1704,7 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
     [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
-function render(){rail();const v=curView();
+function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView();
   /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */
   if(v==="agenda"&&S.lastView!=="agenda"){if(!S.whenKeep)S.when="tout";}
   if(v==="immobilier"&&S.lastView!=="immobilier")S.imC=(S.lastView==null&&IMQ)||BASE.k;S.whenKeep=false;S.lastView=v;ppVue(v);document.title=v==="sejour"?"Le Petit Préf · Préfailles au jour le jour":(VIEWS.find(x=>x[0]===v)?.[1]||TITLES[v])+" · Le Petit Préf";if(window.I18N&&I18N.d)document.title=trText(document.title);
