@@ -1047,3 +1047,16 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .im-mapleg{margin:8px 0 0}
 .im-more-bar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
 .im-more-bar .im-more{margin:0}
+/* recherche : suggestions d'adresses */
+.im-find{position:relative;flex-wrap:wrap}
+.im-sug{position:absolute;left:0;right:0;top:48px;z-index:500;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.15);overflow:hidden}
+.im-sug button{all:unset;box-sizing:border-box;display:flex;flex-direction:column;width:100%;padding:10px 12px;min-height:44px;cursor:pointer;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
+.im-sug button:first-child{border-top:0}
+.im-sug button:hover,.im-sug button:focus-visible{background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.im-sug small{font-size:13px;color:var(--muted)}
+/* courbe : repère au doigt */
+.imc-wrap{position:relative;touch-action:pan-y}
+.imc-cur{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+.imc-tip{position:absolute;top:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:13px;box-shadow:0 3px 10px rgba(0,0,0,.12);pointer-events:none;display:flex;flex-direction:column;gap:2px;white-space:nowrap}
+.imc-tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.pop .pop-plu{margin-top:6px;padding-top:6px;border-top:1px solid #e3e3e3;font-size:13px}

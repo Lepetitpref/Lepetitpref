@@ -1,0 +1,614 @@
+{
+ "prefailles": {
+  "UA": {
+   "nom": "Centre-bourg ancien",
+   "resume": "Le cœur du bourg, au bâti ancien dense et aux villas balnéaires : habitat, commerces, services et artisanat non gênant y sont permis ; industrie, entrepôts, agriculture et campings y sont interdits.",
+   "regles": [
+    "Emprise au sol : 80 % du terrain au plus",
+    "Hauteur : 9 m à l'égout ou à l'acrotère et 12 m au faîtage le long de la rue (bande principale), 7 m au-delà et le long des voies de moins de 4 m",
+    "Plus de 5 logements : au moins 20 % de logements sociaux"
+   ],
+   "page": 9
+  },
+  "UAa": {
+   "nom": "Centre-bourg, partie sud",
+   "resume": "Partie sud du centre-bourg : mêmes règles que la zone UA, mais avec des hauteurs plus limitées.",
+   "regles": [
+    "Hauteur : 7 m au plus",
+    "Emprise au sol : 80 % du terrain au plus (règle de la zone UA)"
+   ],
+   "page": 9
+  },
+  "UAp": {
+   "nom": "Abords du port Saint-Gildas",
+   "resume": "Le bâti autour du port de la Pointe Saint-Gildas : on n'y construit que si le rez-de-chaussée accueille un commerce, un artisan ou un service ; le reste suit la zone UA.",
+   "regles": [
+    "Hauteur : 7,5 m à l'égout ou à l'acrotère et 9 m au faîtage le long de la rue (bande principale), 7 m au-delà",
+    "Emprise au sol : 80 % du terrain au plus (règle de la zone UA)"
+   ],
+   "page": 9
+  },
+  "UV": {
+   "nom": "Villas balnéaires du littoral",
+   "resume": "La frange littorale aux villas balnéaires entourées de jardins arborés, à préserver : surtout de l'habitat, qui peut évoluer peu à peu ; campings, industrie et entrepôts interdits.",
+   "regles": [
+    "Emprise au sol : 40 % du terrain au plus",
+    "Hauteur : 7 m au plus",
+    "Jardin en pleine terre : 35 % du terrain au moins pour une construction neuve"
+   ],
+   "page": 22
+  },
+  "UH": {
+   "nom": "Quartiers résidentiels peu denses",
+   "resume": "Extensions du bourg bâties au coup par coup, à dominante d'habitat : maisons, services et artisanat non gênant permis ; industrie, entrepôts et campings interdits.",
+   "regles": [
+    "Emprise au sol : 40 % du terrain au plus",
+    "Hauteur : 7 m au plus",
+    "Jardin en pleine terre : 30 % du terrain au moins pour une construction neuve"
+   ],
+   "page": 32
+  },
+  "UB": {
+   "nom": "Lotissements et quartiers pavillonnaires",
+   "resume": "Quartiers plus denses, souvent bâtis en lotissement (maisons, maisons groupées, petits collectifs) : habitat et activités compatibles ; industrie et entrepôts interdits.",
+   "regles": [
+    "Emprise au sol : 40 % du terrain au plus",
+    "Hauteur : 7 m au plus",
+    "Jardin en pleine terre : 25 % du terrain au moins pour une construction neuve"
+   ],
+   "page": 43
+  },
+  "UBc": {
+   "nom": "Opération du Bois Roux",
+   "resume": "Secteur de la zone UB correspondant à l'opération du Bois Roux, où le règlement annonce une hauteur plus importante ; l'article sur la hauteur ne donne toutefois pas de chiffre propre, les autres règles sont celles de la zone UB.",
+   "regles": [
+    "Emprise au sol : 40 % du terrain au plus (règle de la zone UB)",
+    "Jardin en pleine terre : 25 % du terrain au moins (règle de la zone UB)"
+   ],
+   "page": 43
+  },
+  "UC": {
+   "nom": "Habitat diffus en lisière naturelle",
+   "resume": "Maisons isolées en bordure d'espaces naturels, près d'une coupure d'urbanisation : la zone n'est pas destinée à se densifier.",
+   "regles": [
+    "Emprise au sol : 20 % du terrain au plus",
+    "Hauteur : 7 m au plus",
+    "Jardin en pleine terre : 70 % du terrain au moins pour une construction neuve"
+   ],
+   "page": 54
+  },
+  "UE": {
+   "nom": "Équipements publics",
+   "resume": "Secteurs réservés aux équipements publics ou d'intérêt collectif et au maintien des activités qui y sont déjà.",
+   "regles": [
+    "Emprise au sol : non réglementée",
+    "Hauteur : 7 m à l'égout ou à l'acrotère et 10 m au faîtage"
+   ],
+   "page": 64
+  },
+  "UF": {
+   "nom": "Zone artisanale",
+   "resume": "La zone d'activités artisanales : maintien des entreprises existantes et accueil de nouvelles activités.",
+   "regles": [
+    "Emprise au sol : non réglementée",
+    "Hauteur : 9 m au plus"
+   ],
+   "page": 70
+  },
+  "UL": {
+   "nom": "Campings",
+   "resume": "Zone des terrains de camping et de caravaning, avec leurs activités sportives et de loisirs.",
+   "regles": [
+    "Emprise au sol : non réglementée",
+    "Hauteur : 7 m au plus",
+    "Pleine terre : 30 % du terrain au moins"
+   ],
+   "page": 77
+  },
+  "Up": {
+   "nom": "Port de la Pointe Saint-Gildas",
+   "resume": "Le port et ses abords, en grande partie sur le domaine public maritime : seulement les ouvrages, équipements et activités liés au port, à la pêche et à la plaisance, et les logements indispensables à leur fonctionnement.",
+   "regles": [
+    "Hauteur : 4 m au plus (sauf capitainerie et équipements publics)",
+    "Recul : 10 m au moins du bassin, sauf activité qui a besoin d'en être tout près",
+    "Retrait : 3 m au moins des terrains voisins"
+   ],
+   "page": 83
+  },
+  "1AUB": {
+   "nom": "Futur quartier d'habitat",
+   "resume": "Secteur encore naturel, constructible tout de suite pour de nouveaux logements et des activités compatibles, en respectant les orientations d'aménagement (OAP) quand il y en a.",
+   "regles": [
+    "Emprise au sol : 40 % du terrain au plus",
+    "Hauteur : 7 m au plus",
+    "Jardin en pleine terre : 50 % du terrain moins 200 m², au moins"
+   ],
+   "page": 90
+  },
+  "1AUBc": {
+   "nom": "Futur quartier, hauteur majorée",
+   "resume": "Secteur de la zone 1AUB où l'on peut construire plus haut ; les autres règles sont celles de la zone 1AUB.",
+   "regles": [
+    "Hauteur : 11 m au plus (sauf précision contraire d'une OAP)",
+    "Emprise au sol : 40 % du terrain au plus (règle de la zone 1AUB)"
+   ],
+   "page": 90
+  },
+  "N": {
+   "nom": "Espaces naturels protégés",
+   "resume": "Espaces naturels et forestiers à protéger pour leurs paysages et leur valeur écologique : les constructions y sont interdites, sauf exceptions prévues dans chaque secteur ; dans les 100 m du rivage, seulement ce qui a besoin d'être au bord de l'eau ou sert un service public.",
+   "regles": [
+    "Construction neuve interdite, sauf cas prévus par secteur",
+    "Bande des 100 m du rivage : seulement services publics et activités qui exigent la proximité de l'eau",
+    "Hauteur : 7 m à l'égout pour l'habitation et le commerce, 3 m pour les autres constructions"
+   ],
+   "page": 101
+  },
+  "Nm": {
+   "nom": "Espace marin",
+   "resume": "La mer, en partie sur le domaine public maritime : seuls les ouvrages strictement nécessaires à la sécurité maritime, à la défense nationale, à la sécurité civile ou à la défense contre la mer.",
+   "regles": [
+    "Toute construction interdite hors ouvrages de sécurité et de défense contre la mer"
+   ],
+   "page": 101
+  },
+  "Ns": {
+   "nom": "Sites naturels remarquables du littoral",
+   "resume": "Espaces terrestres et marins remarquables du littoral : seuls des aménagements légers pour protéger le site ou l'ouvrir au public (sentiers non bitumés, mobilier d'information, sanitaires démontables) et la réfection des bâtiments existants.",
+   "regles": [
+    "Construction neuve interdite",
+    "Cheminements et parkings ni cimentés ni bitumés"
+   ],
+   "page": 101
+  },
+  "Nd": {
+   "nom": "Sites et paysages protégés",
+   "resume": "Espaces naturels protégés pour leurs sites et paysages : aménagements légers d'accueil du public, réfection, et petite extension des maisons existantes.",
+   "regles": [
+    "Extension des habitations : 30 % et 30 m² de surface de plancher au plus",
+    "Reconstruction après sinistre : au plus le volume d'origine",
+    "Hauteur : 7 m à l'égout pour l'habitation et le commerce, 3 m pour les autres constructions"
+   ],
+   "page": 101
+  },
+  "Nl": {
+   "nom": "Campings en zone naturelle",
+   "resume": "Les campings situés en zone naturelle : camping, caravanes et mobil-homes, avec une extension limitée des bâtiments liés au camping et des maisons existantes.",
+   "regles": [
+    "Hauteur : 7 m au plus",
+    "Extension des bâtiments du camping : 30 % de la surface de plancher au plus",
+    "Extension des habitations : 30 % et 30 m² au plus"
+   ],
+   "page": 101
+  },
+  "Nc": {
+   "nom": "Aire de camping-cars",
+   "resume": "L'aire de camping-cars : seuls le stationnement des camping-cars et les installations nécessaires à l'aire.",
+   "regles": [
+    "Hauteur : 7 m à l'égout pour l'habitation et le commerce, 3 m pour les autres constructions"
+   ],
+   "page": 101
+  },
+  "Na": {
+   "nom": "Lagunage du camping de la Pointe",
+   "resume": "Les bassins de lagunage liés au camping de la Pointe : seuls leur création, leur extension et leur entretien.",
+   "regles": [],
+   "page": 101
+  },
+  "Np": {
+   "nom": "Entrée de la Pointe Saint-Gildas",
+   "resume": "Espaces naturels à mettre en valeur à l'entrée de la Pointe Saint-Gildas, en lien avec le port : seulement services publics, activités qui ont besoin de l'eau et aménagements paysagers.",
+   "regles": [
+    "Hauteur : 7 m à l'égout pour l'habitation et le commerce, 3 m pour les autres constructions"
+   ],
+   "page": 101
+  },
+  "Nx": {
+   "nom": "Espaces naturels cultivés",
+   "resume": "Espaces naturels entretenus par l'agriculture, en bordure des quartiers : aménagements légers et réfection des bâtiments existants seulement.",
+   "regles": [
+    "Construction neuve interdite, hors ouvrages publics et infrastructures"
+   ],
+   "page": 101
+  },
+  "Nr": {
+   "nom": "Activité économique en zone naturelle",
+   "resume": "Petit secteur (STECAL) où un bâtiment d'activité existant peut être refait et agrandi un peu, sans surélévation.",
+   "regles": [
+    "Extension : 30 % d'emprise au sol au plus, sans surélévation",
+    "Hauteur : 7 m à l'égout pour l'habitation et le commerce, 3 m pour les autres constructions"
+   ],
+   "page": 101
+  },
+  "Nj": {
+   "nom": "Jardins partagés",
+   "resume": "Le secteur des jardins partagés (permaculture, jardins familiaux) : seuls de petits équipements nécessaires aux jardins.",
+   "regles": [
+    "Abris et équipements : moins de 5 m² au sol et 1,80 m de haut"
+   ],
+   "page": 101
+  }
+ },
+ "pornic": {
+  "UA": {
+   "nom": "Centre-ville et centres-bourgs",
+   "resume": "Centre-ville de Pornic et centres de Sainte-Marie et du Clion, bâti dense et continu : habitat, commerces, bureaux, services et équipements.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins pour une construction neuve",
+    "4 logements ou plus : au moins 25 % de logements sociaux",
+    "Annexes : 3,5 m de haut au plus",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 142
+  },
+  "UApb": {
+   "nom": "Anciens bourgs de Sainte-Marie et du Clion",
+   "resume": "Secteur patrimonial des anciens bourgs de Sainte-Marie-sur-Mer et du Clion-sur-Mer : mêmes usages que le centre, avec des règles d'aspect et de hauteur qui suivent le bâti voisin.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins pour une construction neuve",
+    "Hauteur à l'égout : pas plus haut que les maisons voisines représentatives (à moins de 50 m)",
+    "Annexes : 4 m de haut au plus"
+   ],
+   "page": 180
+  },
+  "UApc": {
+   "nom": "Cœur historique de Pornic",
+   "resume": "Secteur patrimonial du cœur historique, de la ville haute médiévale jusqu'au port : commerces protégés dans les rues commerçantes, constructions à caler sur la hauteur des immeubles voisins.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins pour une construction neuve",
+    "Hauteur : à 1 m près de celle des édifices voisins, dans la limite du plan des hauteurs",
+    "Annexes : 3,5 m de haut au plus ; extension dans une petite cour (moins de 40 m²) : un seul niveau de 3,5 m"
+   ],
+   "page": 180
+  },
+  "UApf": {
+   "nom": "Faubourgs historiques",
+   "resume": "Secteur patrimonial des faubourgs nés le long des routes d'accès au centre ancien : habitat et commerces, avec des hauteurs alignées sur le quartier.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins pour une construction neuve",
+    "Hauteur à l'égout : pas plus haut que les maisons voisines représentatives (à moins de 50 m)",
+    "Annexes : 4 m de haut au plus"
+   ],
+   "page": 180
+  },
+  "UB": {
+   "nom": "Quartiers pavillonnaires",
+   "resume": "Lotissements, maisons et petits collectifs, avec commerces, services et bureaux compatibles avec l'habitat.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "4 logements ou plus : au moins 25 % de logements sociaux",
+    "Annexes : 4 m de haut au plus (3,20 m en limite de terrain)",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 143
+  },
+  "UBl": {
+   "nom": "Quartiers pavillonnaires du littoral",
+   "resume": "Quartiers de maisons proches du littoral, aérés et paysagers, où la constructibilité est encadrée pour les préserver ; règles de la zone UB, avec une part de nature plus forte.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "Coefficient de naturalité : de 0,6 (terrain jusqu'à 500 m²) à 0,8 (plus de 2 000 m²)",
+    "Annexes : 4 m de haut au plus (3,20 m en limite de terrain)"
+   ],
+   "page": 143
+  },
+  "UBpc": {
+   "nom": "Corniche balnéaire",
+   "resume": "Secteur patrimonial de la corniche, villas de l'époque balnéaire dans un cadre très arboré à garder : les constructions doivent laisser un grand jardin.",
+   "regles": [
+    "Pleine terre : 50 % du terrain (moins de 500 m²) ou 60 % (au-delà) pour une construction neuve",
+    "Recul : 5 m au moins de toutes les voies ; retrait des voisins au moins égal à la moitié de la hauteur, et 3 m au moins",
+    "Hauteur à l'égout : pas plus haut que les maisons voisines représentatives (à moins de 50 m) ; annexes 4 m"
+   ],
+   "page": 181
+  },
+  "UBpc1": {
+   "nom": "Établissement de thalassothérapie",
+   "resume": "Sous-secteur de la corniche correspondant à la thalassothérapie, aux volumes très différents : règles de la corniche (UBpc), assouplies sur certains points.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins",
+    "Coefficient de naturalité : 0,4 au moins",
+    "Recul : 5 m au moins de toutes les voies (règle de la corniche)"
+   ],
+   "page": 181
+  },
+  "UBpg": {
+   "nom": "Lotissement de Gourmalon",
+   "resume": "Secteur patrimonial de l'ancien lotissement de Gourmalon, dont on garde le tracé des rues et l'implantation des maisons ; constructions en second rang interdites.",
+   "regles": [
+    "Pleine terre : 35 % du terrain au moins pour une construction neuve",
+    "Hauteur à l'égout : pas plus haut que les maisons voisines représentatives (à moins de 50 m)",
+    "Annexes : 4 m de haut au plus"
+   ],
+   "page": 181
+  },
+  "UBpp": {
+   "nom": "Lotissements paysagers",
+   "resume": "Secteur pavillonnaire paysager du Domaine Calypso et de la Tocnaye, dont la composition paysagère est à préserver.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "Annexes : 4 m de haut au plus (3,20 m en limite de terrain)",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 181
+  },
+  "UC": {
+   "nom": "Hameaux et écarts",
+   "resume": "Hameaux et écarts déjà bâtis : seulement de quoi améliorer l'offre de logements et les services publics, sans étendre le périmètre bâti ni changer nettement son caractère.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "Recul : 5 m au moins de la voie",
+    "Annexes : 3,5 m de haut au plus",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 144
+  },
+  "UCp": {
+   "nom": "Noyaux anciens des hameaux",
+   "resume": "Secteur patrimonial des noyaux ruraux anciens rattrapés par la ville : mêmes limites que les hameaux, avec des hauteurs calées sur le bâti voisin.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "Hauteur à l'égout : pas plus haut que les maisons voisines représentatives (à moins de 50 m)"
+   ],
+   "page": 182
+  },
+  "UE": {
+   "nom": "Zones d'activités",
+   "resume": "Zones d'activités artisanales, commerciales et industrielles ; logement seulement pour le gardiennage, intégré aux bâtiments.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins",
+    "Logement de gardiennage : 30 m² de surface de plancher au plus",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 237
+  },
+  "UEc": {
+   "nom": "Zones commerciales",
+   "resume": "Secteur des zones d'activités commerciales : règles de la zone UE, et tout nouveau commerce doit être grand.",
+   "regles": [
+    "Nouveau commerce : surface de vente de plus de 300 m²",
+    "Pleine terre : 20 % du terrain au moins (règle de la zone UE)"
+   ],
+   "page": 237
+  },
+  "UEi": {
+   "nom": "Minoterie et faïencerie",
+   "resume": "Sites de la minoterie et de la faïencerie, hors zone inondable : activités industrielles et artisanales, sans logement.",
+   "regles": [
+    "Logement interdit",
+    "Pleine terre : 20 % du terrain au moins (règle de la zone UE)"
+   ],
+   "page": 237
+  },
+  "UG": {
+   "nom": "Grands équipements publics",
+   "resume": "Grands équipements d'intérêt collectif et services publics à l'échelle de la commune et de l'agglomération ; logement seulement de fonction ou de gardiennage (dont la gendarmerie).",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 251
+  },
+  "UL": {
+   "nom": "Campings et loisirs",
+   "resume": "Activités de tourisme, campings, caravanings et parcs résidentiels de loisirs ; logement seulement pour la direction ou le gardiennage.",
+   "regles": [
+    "Pleine terre : 50 % du terrain au moins hors parcs résidentiels de loisirs",
+    "Annexes : 3,5 m au faîtage au plus",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 261
+  },
+  "1AUL": {
+   "nom": "Port Chéri, futur accueil camping-cars",
+   "resume": "Secteur à urbaniser du Port Chéri, prévu pour une aire de camping-cars et l'accueil de logements saisonniers mobiles ; règles de la zone UL.",
+   "regles": [
+    "Pleine terre : 50 % du terrain au moins (règle de la zone UL)",
+    "Annexes : 3,5 m au faîtage au plus"
+   ],
+   "page": 261
+  },
+  "Up1": {
+   "nom": "Port : terre-plein et bâtiments",
+   "resume": "Terre-plein, parkings et bâtiments du port : extension mesurée de l'existant et équipements liés au port et au nautisme.",
+   "regles": [
+    "Hauteur : 5 m et un seul niveau au plus, sous le niveau du chemin côtier qui domine"
+   ],
+   "page": 275
+  },
+  "Up2": {
+   "nom": "Port : reste du périmètre",
+   "resume": "Reste du périmètre administratif du port : seulement les équipements nécessaires au port et au nautisme.",
+   "regles": [
+    "Hauteur : 5 m et un seul niveau au plus, sous le niveau du chemin côtier qui domine"
+   ],
+   "page": 275
+  },
+  "UR": {
+   "nom": "Quartiers en renouvellement",
+   "resume": "Entrées de ville (boulevard de Linz, rue Jean-Moulin, route de Saint-Père, rue de Nantes) et derniers terrains de la Ria appelés à se transformer en habitat dense, avec commerces et services, selon des OAP.",
+   "regles": [
+    "Pleine terre : 20 % du terrain au moins pour une construction neuve",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 283
+  },
+  "1AUB": {
+   "nom": "Futurs quartiers d'habitat",
+   "resume": "Secteurs à urbaniser pour l'habitat (Moulin Neuf, rue du Pont du Clion), dans des opérations d'ensemble suivant une OAP ; règles de la zone UB.",
+   "regles": [
+    "Pleine terre : 40 % du terrain (jusqu'à 500 m²) ou 50 % (au-delà) pour une construction neuve",
+    "4 logements ou plus : au moins 25 % de logements sociaux (ou objectif de l'OAP)"
+   ],
+   "page": 143
+  },
+  "1AUc": {
+   "nom": "ZAC de la Corbinière",
+   "resume": "Nouveau quartier d'habitat de la ZAC de la Corbinière, aménagé par phases selon une OAP.",
+   "regles": [
+    "Pleine terre : 30 % du terrain au moins",
+    "Hauteur : fixée par le plan des hauteurs (pièce 4.3, hors règlement écrit)"
+   ],
+   "page": 300
+  },
+  "2AU": {
+   "nom": "Réserves pour l'urbanisation future",
+   "resume": "Terrains destinés à être urbanisés plus tard, après une évolution du PLU ; en attente, seules de petites extensions des maisons existantes sont possibles.",
+   "regles": [
+    "Extension des habitations : 50 m² de surface de plancher au plus",
+    "Hauteur d'une extension : pas plus haut que la construction existante"
+   ],
+   "page": 313
+  },
+  "A": {
+   "nom": "Terres agricoles",
+   "resume": "Terres à protéger pour l'agriculture : constructions agricoles et logements d'exploitant nécessaires ; les maisons existantes peuvent s'agrandir un peu, pas de nouveaux logements sinon.",
+   "regles": [
+    "Extension des habitations : 50 m² d'emprise au sol au plus (hors bande des 100 m du rivage)",
+    "Annexes : accolées, 40 m² d'emprise au sol au plus",
+    "Hauteur des habitations : 7 m à l'égout, 8,5 m au faîtage, annexes 4 m"
+   ],
+   "page": 319
+  },
+  "Ac": {
+   "nom": "Agriculture en coupure d'urbanisation",
+   "resume": "Terres agricoles en coupure d'urbanisation (loi Littoral) : toute construction interdite, sauf extensions limitées de certains bâtiments existants et ouvrages publics.",
+   "regles": [
+    "Extension des habitations : 50 m² d'emprise au sol au plus (hors bande des 100 m)",
+    "Hauteur des habitations : 7 m à l'égout, 8,5 m au faîtage"
+   ],
+   "page": 319
+  },
+  "Ai": {
+   "nom": "Agriculture inconstructible",
+   "resume": "Terres agricoles en bordure de ville où toute construction est interdite, sauf ouvrages de service public ou d'intérêt général.",
+   "regles": [
+    "Construction interdite, sauf ouvrages publics"
+   ],
+   "page": 319
+  },
+  "Apr": {
+   "nom": "Agriculture proche du rivage",
+   "resume": "Terres agricoles en espace proche du rivage (loi Littoral) : construction interdite, sauf surtout la mise aux normes d'exploitations existantes.",
+   "regles": [
+    "Extension des habitations : 50 m² d'emprise au sol au plus (hors bande des 100 m)",
+    "Hauteur des habitations : 7 m à l'égout, 8,5 m au faîtage"
+   ],
+   "page": 319
+  },
+  "Ax": {
+   "nom": "Activité isolée en zone agricole",
+   "resume": "Petit secteur (STECAL) pour des activités économiques existantes non agricoles : elles peuvent s'agrandir un peu.",
+   "regles": [
+    "Extension : 30 % de l'emprise au sol existante sur l'ensemble du secteur, au plus"
+   ],
+   "page": 319
+  },
+  "Np": {
+   "nom": "Espaces naturels paysagers",
+   "resume": "Espaces à dominante naturelle le long de routes et de la voie ferrée, protégés pour le paysage : pas de logement, seulement abris légers pour animaux et petits ouvrages publics.",
+   "regles": [
+    "Abris pour animaux : 30 m² au plus chacun",
+    "Hauteur : 8,5 m au faîtage au plus",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Ns": {
+   "nom": "Espaces naturels sensibles",
+   "resume": "Zones humides et inondables du canal de Haute Perche, grands réservoirs de biodiversité, espaces naturels sensibles et bande côtière de 15 m : pas de construction nouvelle ; surélévation des maisons existantes, rénovation des établissements et campings existants, locaux de plage démontables.",
+   "regles": [
+    "Hauteur : 7 m à l'égout et 8,5 m au faîtage",
+    "Annexes : accolées, hors bande côtière de 15 m, moins de 40 m²",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Nr": {
+   "nom": "Espaces remarquables du littoral",
+   "resume": "Espaces remarquables protégés par la loi Littoral : seulement des aménagements légers, démontables, pour gérer le site ou l'ouvrir au public (sentiers non bitumés, postes d'observation).",
+   "regles": [
+    "Construction neuve interdite",
+    "Hauteur : 8,5 m au faîtage au plus",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Ni": {
+   "nom": "Abords inondables des fleuves côtiers",
+   "resume": "Abords des fleuves côtiers très exposés aux inondations : surélévation des maisons existantes et reconstruction à l'identique, sans aggraver le risque.",
+   "regles": [
+    "Construction neuve interdite",
+    "Hauteur : 7 m à l'égout et 8,5 m au faîtage",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Ndm": {
+   "nom": "Domaine maritime",
+   "resume": "Le domaine maritime : seulement les installations de service public, de défense contre la mer, de sécurité, les locaux de plage démontables et la reconstruction des pêcheries.",
+   "regles": [
+    "Construction neuve interdite, hors ouvrages publics et pêcheries"
+   ],
+   "page": 335
+  },
+  "Ne": {
+   "nom": "Station d'épuration et cimetière",
+   "resume": "Stations d'épuration existantes et projet de cimetière : seulement les constructions nécessaires à leur fonctionnement.",
+   "regles": [
+    "Pleine terre : 40 % du terrain au moins pour la station des Salettes, 60 % ailleurs",
+    "Hauteur : 8,5 m au faîtage au plus"
+   ],
+   "page": 335
+  },
+  "Nl": {
+   "nom": "Parcs et loisirs de plein air",
+   "resume": "Espaces naturels de loisirs, golf compris, et parcs urbains : constructions légères et équipements de sport et de loisirs de plein air.",
+   "regles": [
+    "Hauteur : 8,5 m au faîtage au plus",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Npb": {
+   "nom": "Grands bois balnéaires",
+   "resume": "Deux grands ensembles boisés du patrimoine balnéaire : extension mesurée des maisons existantes et aménagements pour ouvrir le site au public.",
+   "regles": [
+    "Extension des habitations : 30 % de l'emprise au sol existante au plus",
+    "Hauteur : 6 m à l'égout, annexes 3,5 m",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Ngv": {
+   "nom": "Aires d'accueil des gens du voyage",
+   "resume": "Aires d'accueil, de passage et terrains familiaux des gens du voyage (STECAL) : stationnement des caravanes et petites extensions.",
+   "regles": [
+    "Extension : 30 % de l'emprise au sol existante, annexes accolées 40 m² au plus",
+    "Hauteur : 3,5 m à l'égout et 5 m au faîtage",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Nc": {
+   "nom": "Campings en zone naturelle",
+   "resume": "Campings en zone naturelle (STECAL) : caravanes et extension mesurée des bâtiments du camping.",
+   "regles": [
+    "Extension : 30 % de l'emprise au sol existante et 100 m² au plus par terrain",
+    "Hauteur : 3,5 m à l'égout et 5 m au faîtage",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  },
+  "Nrh": {
+   "nom": "Hôtels et restaurants en zone naturelle",
+   "resume": "Petits secteurs (STECAL) d'hôtels et d'activités touristiques : aménagement et extension mesurée des bâtiments existants.",
+   "regles": [
+    "Extension : 30 % de l'emprise au sol existante et 100 m² au plus par terrain",
+    "Hauteur : 8,5 m au faîtage au plus",
+    "Pleine terre : 60 % du terrain au moins"
+   ],
+   "page": 335
+  }
+ }
+}

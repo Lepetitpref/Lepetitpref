@@ -165,7 +165,7 @@ function fitText(fit,rg,K){const pre=rg&&!(rg[0]===0&&rg[1]>=99)?(rg[1]>=99?`Dè
   return[pre?pre+w:cap(w),"warn"];}
 
 /* ---------- état ---------- */
-const S={pOpen:{},imT:"tous",imY:"tous",imN:3,events:null,cinema:null,assos:null,meta:null,err:null,
+const S={imCad:true,pOpen:{},imT:"tous",imY:"tous",imN:3,events:null,cinema:null,assos:null,meta:null,err:null,
   where:sget("pp-dist10")?(sget("cf-where")||"10"):"10",mView:sget("pp-mview")||"liste",mWhere:sget("pp-dist10")?(sget("pp-mwhere")||"10"):"10",rainSet:{},openDay:null,
   who:gActive()?"groupe":"tous",rain:false,cat:"tous",openToday:false,free:false,actView:"liste",etype:"tous",
   cineDay:null,tideDay:today(),transports:null,trDay:null,selPoi:null,more:{},day:null,when:"tout",cin:sget("pp-cin")||"tous",mk:"tous",q:"",os:null};
@@ -1101,8 +1101,17 @@ function imChart(st){const W=340,H=190,l=46,r=16,t=22,b=26,pts=st.flatMap(x=>[x.
   const up=st.reduce((n,x)=>n+((x.M||0)>=(x.A||0)?1:-1),0)>=0;
   const xl=st.map((x,i)=>(!long||x.y%5===0||i===st.length-1)&&!(long&&i===st.length-2&&x.y%5===0)?`<text x="${X(i)}" y="${H-6}" text-anchor="middle" class="imc-t">${x.y}</text>`:"").join("");
   const est=st.some(x=>x.eM||x.eA);
-  return `<svg class="imc" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prix médian au m² par année, maisons et appartements">${ticks}${xl}${line("A",!up)}${line("M",up)}</svg><p class="im-leg"><span><i style="background:${IMCOL.M}"></i>Maisons</span><span><i style="background:${IMCOL.A}"></i>Appartements</span><span>en milliers d'euros le m²</span>${est?`<span>pointillés : estimation</span>`:""}</p>`;}
+  const dat=st.map((x,i)=>({x:X(i),y:x.y,M:x.M||null,A:x.A||null}));
+  return `<div class="imc-wrap" data-pts='${esc(JSON.stringify(dat))}' data-w="${W}"><svg class="imc" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prix médian au m² par année, maisons et appartements"><line class="imc-cur" x1="0" x2="0" y1="${t}" y2="${H-b}" style="display:none"/>${ticks}${xl}${line("A",!up)}${line("M",up)}</svg><div class="imc-tip" hidden></div></div><p class="im-leg"><span><i style="background:${IMCOL.M}"></i>Maisons</span><span><i style="background:${IMCOL.A}"></i>Appartements</span><span>en milliers d'euros le m²</span>${est?`<span>pointillés : estimation</span>`:""}</p>`;}
 /* série longue : 2010-2020 Cerema (ventes réelles), 2021 et après nos ventes */
+/* courbe : au doigt (ou à la souris), l'année et les prix s'affichent */
+function imcMove(e){const w=e.target.closest(".imc-wrap");if(!w)return;const P=JSON.parse(w.dataset.pts),svg=w.querySelector("svg"),r=svg.getBoundingClientRect(),W=+w.dataset.w;
+  const cx=((e.touches?e.touches[0].clientX:e.clientX)-r.left)*W/r.width;let k=0;P.forEach((p,i)=>{if(Math.abs(p.x-cx)<Math.abs(P[k].x-cx))k=i;});const p=P[k];
+  const ln=svg.querySelector(".imc-cur");ln.setAttribute("x1",p.x);ln.setAttribute("x2",p.x);ln.style.display="";
+  const tip=w.querySelector(".imc-tip");tip.hidden=false;tip.innerHTML=`<b>${p.y}</b>${p.M?`<span><i style="background:${IMCOL.M}"></i>Maison ${eur(p.M)}/m²</span>`:""}${p.A?`<span><i style="background:${IMCOL.A}"></i>Appartement ${eur(p.A)}/m²</span>`:""}${!p.M&&!p.A?"<span>Pas assez de ventes</span>":""}`;
+  const px=p.x/W*r.width;tip.style.left=Math.max(0,Math.min(r.width-tip.offsetWidth,px-tip.offsetWidth/2))+"px";if(window.I18N&&I18N.d)trTree(tip);}
+["pointermove","pointerdown"].forEach(t=>document.addEventListener(t,e=>{if(e.target.closest&&e.target.closest(".imc-wrap"))imcMove(e);},{passive:true}));
+document.addEventListener("touchmove",e=>{if(e.target.closest&&e.target.closest(".imc-wrap"))imcMove(e);},{passive:true});
 function imSerie(st,k){const H=S.histo?.communes?.[k];if(!H)return st;const first=+st[0].y;
   return [...H.filter(x=>x.a<first&&x.a>=2010).map(x=>({y:x.a,M:x.M,A:x.A,eM:x.eM,eA:x.eA})),...st];}
 /* liste courte : 3 lignes, puis « Voir tout » (par 30), et « Réduire » */
@@ -1123,7 +1132,7 @@ function vImmo(){loadVentes();const B=imB(),shUrl=SITE+"/?"+(BASE.k==="pornic"?"
   const ventes=`<div id="im-ventes" class="anchor"></div>`+sec("Les dernières ventes","",filt+(L.length?`<ul class="list">${L.slice(0,n).map((v,i)=>imRow(v,i)).join("")}</ul>${imMore(L.length,n,"imn","imless",`Voir toutes les ventes (${L.length})`,"ventes")}`:`<p class="empty">Aucune vente pour ce choix.</p>`),"Touchez une vente pour la voir sur la carte.");
   const SE=imSerie(st,B.k),lg=SE.length>st.length,e0=SE.find(x=>x.eM),m0=SE.find(x=>x.M&&!x.eM);
   const prix=`<div id="im-prix" class="anchor"></div>`+sec("Prix au m² par année","",`${imChart(SE)}${lg&&m0?`<p class="pra-p">Une maison ${B.k==="prefailles"?"à Préfailles":"à Pornic"} se vendait <b>${eur(m0.M)}</b> le m² en ${m0.y}, <b>${last.M?eur(last.M):"–"}</b> en ${last.y} (prix médians).</p>`:""}`,lg?"Prix médians : la moitié des ventes se fait au-dessus, la moitié en dessous. 2010-2020 : Cerema (DV3F, ventes réelles) ; depuis 2021 : nos ventes DVF.":"Prix médian : la moitié des ventes se fait au-dessus, la moitié en dessous.");
-  const carte=`<div id="im-carte" class="anchor"></div>`+sec("La carte des ventes et des permis","",`<form class="im-find" id="imfind" role="search"><input id="imq" type="search" enterkeyhint="search" autocomplete="street-address" placeholder="Une adresse à ${esc(B.n)}" aria-label="Chercher une adresse"><button type="submit" class="chip">${ic("search","i-s")}Chercher</button></form><div class="chips im-lay" role="group" aria-label="Couches de la carte">${chip("Cadastre",!!S.imCad,`data-act="imlay" data-v="cad"`)}${chip("Zonage PLU",!!S.imPlu,`data-act="imlay" data-v="plu"`)}</div><div id="immap" class="mmap" role="region" aria-label="Carte des ventes"></div><p class="im-leg im-mapleg"><span><i style="background:${IMCOL.M}"></i>Maison vendue</span><span><i style="background:${IMCOL.A}"></i>Appartement</span><span><i style="background:${IMCOL.T}"></i>Terrain</span><span><i style="background:#7b5ea7;box-shadow:0 0 0 2px #fff,0 0 0 3px #7b5ea7"></i>Permis${S.imPY?" de "+S.imPY:""}</span></p><p class="mt-hint" id="imhint">Zoomez pour voir les prix sur les parcelles.</p>`);
+  const carte=`<div id="im-carte" class="anchor"></div>`+sec("La carte des ventes et des permis","",`<form class="im-find" id="imfind" role="search"><input id="imq" type="search" enterkeyhint="search" autocomplete="street-address" placeholder="Une adresse à ${esc(B.n)}" aria-label="Chercher une adresse"><button type="submit" class="chip">${ic("search","i-s")}Chercher</button><div id="imsug" class="im-sug" role="listbox" hidden></div></form><div class="chips im-lay" role="group" aria-label="Couches de la carte">${chip("Cadastre",!!S.imCad,`data-act="imlay" data-v="cad"`)}${chip("Zonage PLU",!!S.imPlu,`data-act="imlay" data-v="plu"`)}</div><div id="immap" class="mmap" role="region" aria-label="Carte des ventes"></div><p class="im-leg im-mapleg"><span><i style="background:${IMCOL.M}"></i>Maison vendue</span><span><i style="background:${IMCOL.A}"></i>Appartement</span><span><i style="background:${IMCOL.T}"></i>Terrain</span><span><i style="background:#7b5ea7;box-shadow:0 0 0 2px #fff,0 0 0 3px #7b5ea7"></i>Permis${S.imPY?" de "+S.imPY:""}</span></p><p class="mt-hint" id="imhint">Zoomez pour voir les prix sur les parcelles.</p>`);
   const U=S.urba?.communes?.[B.k];
   return head+top+ventes+prix+carte+(U?imPermis(U,B)+imPlu(U,B):"")+`<p class="note" style="margin:14px var(--gutter)">${ic("info","i-s")}<span><span>Ce sont des ventes signées chez le notaire, pas des annonces. L'État les publie deux fois par an, avec environ six mois de retard.</span> <span>On n'affiche ni nom ni numéro de rue ; les parcelles viennent du cadastre.</span> <span>Ventes de 2021 au ${fin}.</span> <span>Source :</span> <a href="https://explore.data.gouv.fr/fr/immobilier" target="_blank" rel="noopener">Demandes de valeurs foncières</a> <span>(DGFiP, Licence Ouverte).</span></span></p>`;}
 /* permis de construire (Sitadel), diagnostics énergie (ADEME), PLU (Géoportail de l'Urbanisme) */
@@ -1152,6 +1161,17 @@ function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTim
     LMAP.fitBounds(IMPP.getBounds(),{maxZoom:18,padding:[30,30]});IMPP.bindPopup(`<div class="pop"><span class="im-pn">Parcelle ${v.pa.slice(3,5).replace(/^0/,"")} ${+v.pa.slice(5)}${g.features[0].properties.contenance?" · "+g.features[0].properties.contenance+" m²":""}</span><b>Permis : ${t}</b><span>${v.s?v.s+" m² créés · ":""}${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span><span>${esc(v.r||"")}</span></div>`).openPopup();})
     .catch(()=>toast("Carte du cadastre indisponible"));}
 let IMLAY={},IMPM=null;
+/* zone du PLU d'un endroit (apicarto IGN), montrée dans la bulle d'une vente ou d'un permis */
+const PLUC={};
+function pluAt(ll){const k=ll.lat.toFixed(5)+","+ll.lng.toFixed(5);if(PLUC[k])return PLUC[k];
+  const g=encodeURIComponent(JSON.stringify({type:"Point",coordinates:[ll.lng,ll.lat]}));
+  return PLUC[k]=fetch(`https://apicarto.ign.fr/api/gpu/zone-urba?geom=${g}`).then(r=>r.json()).then(o=>{const z=o.features&&o.features[0]&&o.features[0].properties;if(!z)return null;
+    const Z=(S.imZ||[]).find(x=>x.code===z.libelle);
+    return {code:z.libelle,nom:Z&&Z.nom||(z.libelong&&z.libelong!==z.libelle?z.libelong:PLUN[z.typezone]||""),url:z.nomfic&&z.gpu_doc_id?`https://data.geopf.fr/annexes/gpu/documents/${z.partition}/${z.gpu_doc_id}/${z.nomfic}`:""};}).catch(()=>null);}
+function pluInPopup(e){const pop=e.popup,el=pop.getElement&&pop.getElement(),box=el&&el.querySelector(".pop");if(!box||box.classList.contains("pop-zone")||box.querySelector(".pop-plu"))return;
+  const src=pop._source,ll=src&&src.getBounds?src.getBounds().getCenter():src&&src.getLatLng?src.getLatLng():pop.getLatLng();if(!ll)return;
+  const sp=document.createElement("span");sp.className="pop-plu";sp.textContent="Zone du PLU…";box.appendChild(sp);
+  pluAt(ll).then(z=>{if(!z){sp.remove();return;}sp.innerHTML=`<b>PLU : zone ${esc(z.code)}</b>${z.nom?" · "+esc(z.nom):""}${z.url?` · <a href="${esc(z.url)}" target="_blank" rel="noopener">règlement ↗</a>`:""}`;try{pop._updateLayout();pop._updatePosition();}catch(e){}});}
 const pmT=v=>v.col>1?`${v.lg} logements en collectif`:v.lg>1?`${v.lg} logements`:v.nat==="neuf"?"Maison neuve":"Travaux sur une maison";
 const pmPop=(v,pn="")=>`<div class="pop">${pn?`<span class="im-pn">${pn}</span>`:""}<b>Permis : ${pmT(v)}</b><span>${v.s?v.s+" m² créés · ":""}${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}${v.etat?" · "+v.etat:""}</span><span>${esc(v.r||"")}${v.soc?" · "+esc(v.soc):""}</span></div>`;
 let IMSH=new Map();
@@ -1170,16 +1190,16 @@ function drawImMap(){const el=document.getElementById("immap");if(!el)return;con
   const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
   LMAP=L.map(el,{zoomControl:true,attributionControl:true,maxZoom:19,zoomAnimation:!matchMedia("(prefers-reduced-motion: reduce)").matches}).setView([B.lat,B.lon],14);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · parcelles © cadastre (Etalab)'}).addTo(LMAP);
-  const cad=L.tileLayer("https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=CADASTRALPARCELS.PARCELLAIRE_EXPRESS&STYLE=normal&TILEMATRIXSET=PM_0_19&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png",{maxNativeZoom:19,maxZoom:19,minZoom:15,className:dark?"tiles-dark":"",attribution:"Cadastre © IGN, DGFiP"});
+  const cad=L.tileLayer("https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=CADASTRALPARCELS.PARCELLAIRE_EXPRESS&STYLE=normal&TILEMATRIXSET=PM_0_19&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png",{maxNativeZoom:19,maxZoom:19,minZoom:14,className:dark?"tiles-dark":"",opacity:.7,attribution:"Cadastre © IGN, DGFiP"});
   const plu=L.tileLayer.wms("https://data.geopf.fr/wms-v/ows",{layers:"du",format:"image/png",transparent:true,version:"1.3.0",opacity:.4,attribution:"PLU © Géoportail de l'Urbanisme"});
-  IMLAY={cad,plu};
+  IMLAY={cad,plu};if(S.imCad)cad.addTo(LMAP);if(S.imPlu)plu.addTo(LMAP);LMAP.on("popupopen",pluInPopup);
   IMPM=L.featureGroup().addTo(LMAP);const UP=S.urba?.communes?.[B.k]?.permis;
   if(UP)UP.recents.filter(v=>v.la&&(!S.imPY||v.d.startsWith(S.imPY))).forEach(v=>L.circleMarker([v.la,v.lo],{radius:S.imPY?7:5,color:"#fff",weight:2,fillColor:"#7b5ea7",fillOpacity:.95}).bindPopup(()=>pmPop(v),{maxWidth:260}).addTo(IMPM));if(S.imCad)cad.addTo(LMAP);if(S.imPlu)plu.addTo(LMAP);
   LMAP.on("click",e=>{if(!LMAP.hasLayer(plu))return;const g=encodeURIComponent(JSON.stringify({type:"Point",coordinates:[e.latlng.lng,e.latlng.lat]}));
     fetch(`https://apicarto.ign.fr/api/gpu/zone-urba?geom=${g}`).then(r=>r.json()).then(o=>{const z=o.features&&o.features[0]&&o.features[0].properties;if(!z)return;
       const TZ={U:"zone urbaine",AUc:"zone à urbaniser",AUs:"zone à urbaniser (plus tard)",A:"zone agricole",N:"zone naturelle"};
       const url=z.nomfic&&z.gpu_doc_id?`https://data.geopf.fr/annexes/gpu/documents/${z.partition}/${z.gpu_doc_id}/${z.nomfic}`:"";
-      L.popup().setLatLng(e.latlng).setContent(`<div class="pop"><b>Zone ${esc(z.libelle)}</b><span>${esc(z.libelong&&z.libelong!==z.libelle?z.libelong:(TZ[z.typezone]||""))}</span>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Règlement de la zone ↗</a>`:""}</div>`).openOn(LMAP);}).catch(()=>{});});
+      L.popup().setLatLng(e.latlng).setContent(`<div class="pop pop-zone"><b>Zone ${esc(z.libelle)}</b><span>${esc(z.libelong&&z.libelong!==z.libelle?z.libelong:(TZ[z.typezone]||""))}</span>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Règlement de la zone ↗</a>`:""}</div>`).openOn(LMAP);}).catch(()=>{});});
   /* une forme par parcelle vendue (la vente la plus récente donne la couleur et le prix affiché) */
   const groups=new Map(),pts=[];
   list.forEach(v=>{const k=(v.pa||[]).find(p=>P[p]&&P[p].g);if(k){if(!groups.has(k))groups.set(k,[]);groups.get(k).push(v);}else if(v.la)pts.push(v);});
@@ -1197,12 +1217,18 @@ function drawImMap(){const el=document.getElementById("immap");if(!el)return;con
   if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}else if(shapes.length>1)LMAP.fitBounds(L.featureGroup(shapes).getBounds().pad(.05),{maxZoom:16});labs();});}
 /* recherche d'adresse sur la carte : Base Adresse Nationale (api-adresse.data.gouv.fr), seulement quand on cherche */
 let IMPIN=null;
-document.addEventListener("submit",e=>{if(e.target.id!=="imfind")return;e.preventDefault();const q=($("#imq")||{}).value?.trim();if(!q||!LMAP)return;
-  const B=imB(),code=S.ventes?.communes?.[B.k]?.code||"";
-  fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&citycode=${code}&limit=1`).then(r=>r.json()).then(o=>{const f=o.features&&o.features[0];
-    if(!f){toast("Adresse introuvable à "+B.n);return;}const [lo,la]=f.geometry.coordinates;
-    if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP).bindTooltip(esc(f.properties.label),{direction:"top"}).openTooltip();
-    LMAP.setView([la,lo],18);}).catch(()=>toast("Recherche indisponible : vérifiez la connexion"));});
+function imPin(f){const [lo,la]=f.geometry.coordinates;if(!LMAP)return;
+  if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP).bindTooltip(esc(f.properties.label),{direction:"top"}).openTooltip();
+  LMAP.setView([la,lo],18);}
+const imBan=(q,n)=>{const code=S.ventes?.communes?.[imB().k]?.code||"";return fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&citycode=${code}&limit=${n}${n>1?"&autocomplete=1":""}`).then(r=>r.json()).then(o=>o.features||[]);};
+let IMSUG=[],IMSUGT=0;
+const imSugHide=()=>{const b=document.getElementById("imsug");if(b){b.hidden=true;b.innerHTML="";}};
+document.addEventListener("input",e=>{if(e.target.id!=="imq")return;const q=e.target.value.trim();clearTimeout(IMSUGT);if(q.length<3)return imSugHide();
+  IMSUGT=setTimeout(()=>imBan(q,5).then(F=>{IMSUG=F;const b=document.getElementById("imsug");if(!b||($("#imq")||{}).value.trim()!==q)return;
+    if(!F.length)return imSugHide();b.innerHTML=F.map((f,i)=>`<button type="button" role="option" data-sug="${i}">${esc(f.properties.name)}<small>${esc(f.properties.postcode||"")} ${esc(f.properties.city||"")}</small></button>`).join("");b.hidden=false;}).catch(()=>{}),220);});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-sug]");if(!b)return;e.preventDefault();const f=IMSUG[+b.dataset.sug];if(!f)return;const q=$("#imq");if(q)q.value=f.properties.label;imSugHide();imPin(f);});
+document.addEventListener("submit",e=>{if(e.target.id!=="imfind")return;e.preventDefault();const q=($("#imq")||{}).value?.trim();if(!q||!LMAP)return;imSugHide();
+  imBan(q,1).then(F=>{if(!F[0]){toast("Adresse introuvable à "+imB().n);return;}imPin(F[0]);}).catch(()=>toast("Recherche indisponible : vérifiez la connexion"));});
 after.immobilier=()=>{if(S.imJump&&S.ventes){const j=S.imJump;S.imJump=null;setTimeout(()=>ACT.pjump(j),60);}if(!S.ventes)return;loadLeaflet().then(drawImMap).catch(()=>{const el=document.getElementById("immap");if(el)el.innerHTML='<p class="empty">La carte ne se charge pas. Vérifiez la connexion.</p>';});};
 
 /* ===== Carte des restos (Leaflet, chargé seulement à l'ouverture de la carte) ===== */
@@ -1447,7 +1473,7 @@ const ACT={
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   trday:v=>{S.trDay=v;render();},
   soirw:v=>{S.soirWhen=v;render();},
-  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();if(v==="cad"&&S[k]&&LMAP.getZoom()<16)LMAP.setZoom(16);}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
+  mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),

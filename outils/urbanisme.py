@@ -194,7 +194,7 @@ def plu(c):
     try:
         D = json.load(open(os.path.join(ICI, "..", "donnees", "plu-zones.json"), encoding="utf-8")).get({"44136": "prefailles", "44131": "pornic"}[c], {})
         for code, z in zones.items():
-            for k in ("nom", "resume", "regles"):
+            for k in ("nom", "resume", "regles", "page"):
                 if D.get(code, {}).get(k):
                     z[k] = D[code][k]
     except Exception:

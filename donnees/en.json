@@ -780,9 +780,24 @@
 "Prix médian au m²": "Median price per m²",
 "Prix, surface, rue": "Price, area, street",
 "Par année": "By year",
-"Zones et règlement": "Zones and regulations"
+"Zones et règlement": "Zones and regulations",
+"Zone du PLU…": "Zoning…",
+"règlement ↗": "regulations ↗",
+"Pas assez de ventes": "Not enough sales"
 },
 "rules": [
+[
+"^Maison (.+)/m²$",
+"House $1/m²"
+],
+[
+"^Appartement (.+)/m²$",
+"Flat $1/m²"
+],
+[
+"^PLU : zone (\\S+)$",
+"Zoning: zone $1"
+],
 [
 "^(Zones urbaines|Zones à urbaniser|Zones agricoles|Zones naturelles) \\((\\d+)\\)$",
 "$1 ($2)"
