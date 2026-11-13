@@ -1081,3 +1081,12 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .pm-bar.is-sel rect:nth-child(2){stroke:var(--ink);stroke-width:1.5}
 .im-addr-res .pra-h{margin-top:12px}
 .im-town{margin-top:10px}
+/* PLU : groupes de zones repliés */
+.plu-grp{margin:8px 0;border:1px solid var(--line);border-left:3px solid var(--c);border-radius:12px;background:var(--surface)}
+.plu-grp>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:12px 40px 12px 12px;position:relative;min-height:44px}
+.plu-grp>summary::-webkit-details-marker{display:none}
+.plu-grp>summary::after{content:"";position:absolute;right:16px;top:20px;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg)}
+.plu-grp[open]>summary::after{transform:rotate(-135deg);top:24px}
+.plu-grp>summary b{font-weight:600;font-size:15px}
+.plu-grp>summary small{font-size:13px;color:var(--muted)}
+.plu-grp>.pra-grid{margin:0 10px 10px}
