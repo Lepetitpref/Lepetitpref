@@ -787,7 +787,11 @@
 "Dans quelle zone est mon adresse ?": "Which zone is my address in?",
 "Ma zone": "My zone",
 "Recherche de la zone…": "Looking up the zone…",
-"Zone introuvable pour cette adresse.": "No zone found for this address."
+"Zone introuvable pour cette adresse.": "No zone found for this address.",
+"Apparts": "Flats",
+"Toutes années": "All years",
+"Type de bien": "Property type",
+"Année": "Year"
 },
 "rules": [
 [
