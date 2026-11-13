@@ -666,9 +666,16 @@
 "Appartement": "Flat",
 "Adresse non précisée": "Address not given",
 "Prix médian au m² par année": "Median price per m² by year",
-"Carte des ventes": "Map of sales"
+"Carte des ventes": "Map of sales",
+"Ce sont des ventes signées chez le notaire, pas des annonces. L'État les publie deux fois par an, avec environ six mois de retard.": "These are sales signed at the notary's, not listings. The State publishes them twice a year, about six months late.",
+"On n'affiche ni nom ni numéro de rue.": "No names or house numbers are shown.",
+"(DGFiP, Licence Ouverte).": "(DGFiP, Open Licence)."
 },
 "rules": [
+[
+"^Ventes de 2021 au (.+)\\.$",
+"Sales from 2021 to $1."
+],
 [
 "^Les ventes réelles à (Préfailles|Pornic), d'après les actes enregistrés par l'État$",
 "Actual property sales in $1, from deeds registered by the State"

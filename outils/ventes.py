@@ -108,22 +108,104 @@ def ventes(lignes):
     return res
 
 
+API = "https://www.data.gouv.fr/api/1/datasets/demandes-de-valeurs-foncieres/"
+CADASTRE = "https://cadastre.data.gouv.fr/bundler/cadastre-etalab/communes/{c}/geojson/parcelles"
+
+
+def brut(dossier, depuis):
+    """Fichiers bruts de la DGFiP (publiés avant la version géolocalisée) : ventes postérieures à `depuis`
+    (AAAA-MM-JJ), converties au format des fichiers géolocalisés. Positions : centre de la parcelle (cadastre)."""
+    import io, zipfile, gzip
+    try:
+        res = json.load(urllib.request.urlopen(API, timeout=60))["resources"]
+    except Exception as e:
+        print("  API data.gouv indisponible", e)
+        return {}
+    an0 = int(depuis[:4])
+    urls = [r["url"] for r in res if r.get("url", "").endswith(".txt.zip")
+            and any(str(a) in r["title"] for a in range(an0 + (1 if depuis[5:7] == "12" else 0), an0 + 3))]
+    codes = {c[2:]: c for c in COMMUNES.values()}
+    out = {c: [] for c in COMMUNES.values()}
+    for u in urls:
+        f = os.path.join(dossier, os.path.basename(u))
+        if not os.path.exists(f):
+            try:
+                urllib.request.urlretrieve(u, f)
+            except Exception as e:
+                print("  pas de fichier", u, e)
+                continue
+        with zipfile.ZipFile(f) as z:
+            for nom in z.namelist():
+                with z.open(nom) as h:
+                    entete = None
+                    for ligne in io.TextIOWrapper(h, encoding="utf-8", errors="replace"):
+                        x = ligne.rstrip("\n").split("|")
+                        if entete is None:
+                            entete = x
+                            continue
+                        if len(x) < 43 or x[18] != "44" or x[19] not in codes:
+                            continue
+                        j, m, a = x[8].split("/")
+                        d = f"{a}-{m}-{j}"
+                        if d <= depuis:
+                            continue
+                        c = codes[x[19]]
+                        sec = x[21].rjust(2, "0")
+                        pid = f"{c}{(x[20] or '0').rjust(3, '0')}{sec}{x[22].rjust(4, '0')}"
+                        num = lambda v: v.replace(",", ".")
+                        out[c].append({"id_mutation": f"{d}|{x[9]}|{x[10]}|{x[1]}|{x[7]}", "date_mutation": d,
+                                       "nature_mutation": x[9], "valeur_fonciere": num(x[10]),
+                                       "adresse_nom_voie": " ".join(v for v in (x[13], x[15]) if v),
+                                       "id_parcelle": pid, "lot1_numero": x[24], "type_local": x[36],
+                                       "surface_reelle_bati": num(x[38]), "nombre_pieces_principales": num(x[39]),
+                                       "code_nature_culture": x[40], "surface_terrain": num(x[42]),
+                                       "latitude": "", "longitude": ""})
+    for c, L in out.items():
+        if not L:
+            continue
+        g = os.path.join(dossier, f"parcelles-{c}.json.gz")
+        if not os.path.exists(g):
+            urllib.request.urlretrieve(CADASTRE.format(c=c), g)
+        cen = {}
+        for ft in json.load(gzip.open(g))["features"]:
+            pts = ft["geometry"]["coordinates"]
+            while isinstance(pts[0][0], list):
+                pts = pts[0]
+            cen[ft["id"]] = (sum(p[1] for p in pts) / len(pts), sum(p[0] for p in pts) / len(pts))
+        for l in L:
+            if l["id_parcelle"] in cen:
+                l["latitude"], l["longitude"] = cen[l["id_parcelle"]]
+    return out
+
+
 def main():
     dossier = sys.argv[1] if len(sys.argv) > 1 else tempfile.mkdtemp(prefix="dvf-")
     os.makedirs(dossier, exist_ok=True)
     an = datetime.date.today().year
-    sortie = {"maj": datetime.date.today().isoformat(), "source": "DVF géolocalisées (DGFiP, Etalab), Licence Ouverte 2.0",
+    sortie = {"maj": datetime.date.today().isoformat(), "source": "DVF (DGFiP), versions géolocalisée Etalab et brute ; positions du cadastre Etalab ; Licence Ouverte 2.0",
               "url": "https://explore.data.gouv.fr/fr/immobilier", "communes": {}}
+    BRUT = {}
     for k, c in COMMUNES.items():
         tout = []
         for a in range(an - ANNEES, an + 1):
             tout += ventes(charge(dossier, a, c))
+        fin_geo = max((v["d"] for v in tout), default=f"{an - ANNEES}-01-01")
+        if c not in BRUT:
+            BRUT.update(brut(dossier, fin_geo))
+        tout += ventes(BRUT.get(c, []))
         tout.sort(key=lambda v: v["d"], reverse=True)
         for v in tout:
             for x in [x for x, y in v.items() if y is None]:
                 del v[x]
         sortie["communes"][k] = {"code": c, "fin": tout[0]["d"] if tout else None, "ventes": tout}
         print(k, len(tout), "ventes, la plus récente le", tout[0]["d"] if tout else "-")
+    try:
+        avant = json.load(open(SORTIE, encoding="utf-8"))
+        if avant.get("communes") == sortie["communes"]:
+            print("rien de nouveau")
+            return
+    except Exception:
+        pass
     with open(SORTIE, "w", encoding="utf-8") as h:
         json.dump(sortie, h, ensure_ascii=False, separators=(",", ":"))
     print("écrit", os.path.normpath(SORTIE), os.path.getsize(SORTIE) // 1024, "Ko")
