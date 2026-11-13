@@ -1248,6 +1248,8 @@ function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTim
 /* cartes sur téléphone : dans la page, la carte est une image qui laisse défiler la page (et ne fait jamais zoomer la page entière) ;
    la toucher l'ouvre en plein écran, avec un gros bouton « Fermer la carte » toujours visible ; le geste « retour » la ferme aussi */
 let MAPFULL=null;
+/* pendant le plein écran : la page revient à sa taille normale et ne peut plus être agrandie (sinon on ne voit plus le bouton Fermer) */
+function vpLock(on){const v=document.querySelector('meta[name="viewport"]');if(!v)return;v.setAttribute("content","width=device-width,initial-scale=1,viewport-fit=cover"+(on?",maximum-scale=1,user-scalable=no":""));}
 function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").matches;
   m.setMinZoom(11);m.setMaxBounds(L.latLngBounds([center[0]-.35,center[1]-.5],[center[0]+.35,center[1]+.5]));
   const home=L.control({position:"topright"});home.onAdd=()=>{const b=L.DomUtil.create("button","map-home");b.type="button";b.title="Recentrer";b.setAttribute("aria-label","Recentrer la carte");b.innerHTML="⌖";L.DomEvent.on(b,"click",e=>{L.DomEvent.stop(e);m.setView(center,14);});return b;};home.addTo(m);
@@ -1259,10 +1261,10 @@ function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").match
   el.appendChild(ov);el.appendChild(done);set(false);
   /* bloque le zoom de la page entière sur iPhone (gestes à deux doigts sur la carte) */
   ["gesturestart","gesturechange"].forEach(t=>el.addEventListener(t,e=>e.preventDefault(),{passive:false}));
-  const open=()=>{if(MAPFULL)return;const y=scrollY;el.parentNode.insertBefore(ph,el);ph.style.height=el.offsetHeight+"px";
+  const open=()=>{if(MAPFULL)return;const y=scrollY;vpLock(true);el.parentNode.insertBefore(ph,el);ph.style.height=el.offsetHeight+"px";
     el.classList.add("map-full");document.body.classList.add("locked","map-open");pageInert(false);set(true);
     MAPFULL={close,y};try{history.pushState({ppmap:1},"");}catch(e){}requestAnimationFrame(()=>{m.invalidateSize();});};
-  const close=(fromPop)=>{if(!MAPFULL)return;const y=MAPFULL.y;if(S.renderLater){S.renderLater=false;setTimeout(render,50);}MAPFULL=null;m.closePopup();set(false);el.classList.remove("map-full");document.body.classList.remove("locked","map-open");if(ph.parentNode)ph.remove();
+  const close=(fromPop)=>{if(!MAPFULL)return;const y=MAPFULL.y;vpLock(false);if(S.renderLater){S.renderLater=false;setTimeout(render,50);}MAPFULL=null;m.closePopup();set(false);el.classList.remove("map-full");document.body.classList.remove("locked","map-open");if(ph.parentNode)ph.remove();
     requestAnimationFrame(()=>{m.invalidateSize();scrollTo({top:y,behavior:"instant"});});if(!fromPop){try{if(history.state&&history.state.ppmap)history.back();}catch(e){}}};
   ov.addEventListener("click",e=>{e.stopPropagation();open();});done.addEventListener("click",e=>{e.stopPropagation();close();});
   L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);}
