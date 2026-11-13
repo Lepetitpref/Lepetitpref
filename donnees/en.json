@@ -773,7 +773,7 @@
 "Zone agricole": "Agricultural zone",
 "Zone naturelle": "Natural zone",
 "Zone naturelle (secteur particulier)": "Natural zone (special area)",
-"Prix d'une maison": "House prices",
+"Prix d'une maison": "House price",
 "Prix d'un appartement": "Flat prices",
 "Dernières ventes": "Latest sales",
 "Ventes et permis, cadastre": "Sales and permits, land register",
@@ -791,9 +791,70 @@
 "Apparts": "Flats",
 "Toutes années": "All years",
 "Type de bien": "Property type",
-"Année": "Year"
+"Année": "Year",
+"En bref": "In short",
+"Mon adresse": "My address",
+"Prix": "Prices",
+"Construire": "Building",
+"Autour de mon adresse": "Around my address",
+"Tapez une adresse : les ventes et les permis à moins de 300 m, et ce que le plan d'urbanisme (PLU) permet d'y construire.": "Type an address: sales and permits within 300 m, and what the zoning plan allows there.",
+"Maison · €/m²": "House · €/m²",
+"Appart. · €/m²": "Flat · €/m²",
+"prix du milieu": "median price",
+"Prix au m² depuis 2010": "Price per m² since 2010",
+"Prix du milieu : la moitié des ventes au-dessus, la moitié en dessous.": "Median: half of sales above, half below.",
+"Limites des terrains": "Plot boundaries",
+"Zones du PLU": "Zoning",
+"Écartez deux doigts pour zoomer : les prix s'affichent sur les parcelles.": "Pinch to zoom in: prices appear on the plots.",
+"Logements autorisés (permis)": "Homes approved (permits)",
+"Immeubles": "Blocks of flats",
+"Ce que permet le PLU": "What the zoning allows",
+"Avant tout projet, demandez un certificat d'urbanisme à la mairie.": "Before any project, ask the town hall for a planning certificate.",
+"Aucune vente connue depuis 2021.": "No known sales since 2021.",
+"Aucun permis créant des logements.": "No permits creating homes.",
+"Ce qu'on peut construire (PLU)": "What can be built (zoning)",
+"OK": "OK",
+"Une adresse": "An address",
+"parcelle de l'immeuble": "building's plot",
+"Touchez une année pour voir ses permis, en liste et sur la carte.": "Tap a year to see its permits, as a list and on the map."
 },
 "rules": [
+[
+"^(\\d+) maisons?$",
+"$1 houses"
+],
+[
+"^(\\d+) appart\\.$",
+"$1 flats"
+],
+[
+"^([+−]\\d+) % sur un an$",
+"$1% over a year"
+],
+[
+"^Ventes à moins de 300 m \\((\\d+)\\)$",
+"Sales within 300 m ($1)"
+],
+[
+"^Permis à moins de 300 m depuis 2021 \\((\\d+)\\)$",
+"Permits within 300 m since 2021 ($1)"
+],
+[
+"^Zones agricoles et naturelles \\((\\d+)\\)$",
+"Agricultural and natural zones ($1)"
+],
+[
+"^Permis des 3 dernières années$",
+"Permits, last 3 years"
+],
+[
+"^Ce qui se vend et se construit à (Préfailles|Pornic), d'après les données publiques$",
+"What sells and gets built in $1, from public data"
+],
+[
+"^Une adresse à (Préfailles|Pornic)$",
+"An address in $1"
+],
 [
 "^Votre adresse à (Préfailles|Pornic)$",
 "Your address in $1"

@@ -1069,3 +1069,15 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .im-tseg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .im-ysel{position:relative;display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:var(--accent);min-height:36px;padding:0 4px;cursor:pointer}
 .im-ysel select{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer;font-size:16px}
+/* Immobilier, après relecture */
+.imc-tip[hidden]{display:none}
+.imc-wrap,.pm-chart{user-select:none;-webkit-user-select:none}
+.im-leg .pm-ic,.pm-dot{background:#fff!important;box-shadow:inset 0 0 0 2.5px #7b5ea7;border-radius:50%}
+.pm-dot{width:11px;height:11px}
+.im-filtbar{display:flex;gap:8px;align-items:center;margin:2px 0 8px}
+.im-filtbar .im-tseg{flex:1;margin:0;min-width:0}
+.im-filtbar .im-ysel{flex:none;border:1px solid var(--line);border-radius:10px;padding:0 8px;min-height:38px;color:var(--ink);font-weight:500}
+.pm-bar{cursor:pointer}
+.pm-bar.is-sel rect:nth-child(2){stroke:var(--ink);stroke-width:1.5}
+.im-addr-res .pra-h{margin-top:12px}
+.im-town{margin-top:10px}
