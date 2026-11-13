@@ -968,9 +968,49 @@
 "Comparer :": "Compare:",
 "bon": "good",
 "possible": "possible",
-"pas pour débuter": "not for beginners"
+"pas pour débuter": "not for beginners",
+"Spots": "Spots",
+"Naviguer": "Sailing",
+"Où surfer cette semaine": "Where to surf this week",
+"Où kiter et winger cette semaine": "Where to kite and wing this week",
+"Voile : fenêtre de sortie": "Sailing: weather window",
+"à confirmer": "to be confirmed",
+"Tout le bulletin officiel": "Full official bulletin",
+"Bulletin sur meteofrance.com ↗": "Bulletin on meteofrance.com ↗",
+"Avis aux navigateurs ↗": "Notices to mariners ↗",
+"ou VHF canal 16": "or VHF channel 16",
+"Ce spot n'est pas pour débuter.": "This spot is not for beginners.",
+"Où aller cette semaine selon votre niveau, puis chaque spot en détail.": "Where to go this week by level, then each spot in detail.",
+"Bulletin côtier officiel, houle mesurée à la bouée, secours en mer.": "Official coastal bulletin, swell measured at the buoy, sea rescue.",
+"spot pour confirmés": "spot for experienced surfers",
+"idéal avec une école": "best with a school",
+"pas de créneau facile ce jour": "no easy slot that day",
+"Petit": "Small",
+"Correct": "Decent",
+"foil seulement": "foil only",
+"rafaleux : confirmés": "gusty: experienced riders"
 },
 "rules": [
+[
+"^Les spots, (demain|aujourd'hui)$",
+"Spots, $1"
+],
+[
+"^coef\\. (\\d+)$",
+"coef. $1"
+],
+[
+"^Force (\\d+) · ([NSEO]+)$",
+"Force $1 · $2"
+],
+[
+"^Marée à Pornic aujourd'hui$",
+"Tide in Pornic today"
+],
+[
+"^Secours en mer · 196$",
+"Sea rescue · 196"
+],
 [
 "^vagues (aux genoux|à la taille|aux épaules|au-dessus de la tête)$",
 "waves $1"
