@@ -1208,6 +1208,16 @@ function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTim
     const t=v.col>1?`${v.lg} logements en collectif`:v.lg>1?`${v.lg} logements`:v.nat==="neuf"?"Maison neuve":"Travaux sur une maison";
     LMAP.fitBounds(IMPP.getBounds(),{maxZoom:18,padding:[30,30]});IMPP.bindPopup(`<div class="pop"><span class="im-pn">Parcelle ${v.pa.slice(3,5).replace(/^0/,"")} ${+v.pa.slice(5)}${g.features[0].properties.contenance?" · "+g.features[0].properties.contenance+" m²":""}</span><b>Permis : ${t}</b><span>${v.s?v.s+" m² créés · ":""}${F(new Date(v.d+"T12:00:00"),{month:"short",year:"numeric"})}</span><span>${esc(v.r||"")}</span></div>`).openPopup();})
     .catch(()=>toast("Carte du cadastre indisponible"));}
+/* cartes sur téléphone : verrouillées au départ (le doigt fait défiler la page), « Utiliser la carte » pour la manipuler, « Terminé » pour la relâcher ; jamais plus loin que la région */
+function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").matches;
+  m.setMinZoom(11);m.setMaxBounds(L.latLngBounds([center[0]-.35,center[1]-.5],[center[0]+.35,center[1]+.5]));
+  const home=L.control({position:"topright"});home.onAdd=()=>{const b=L.DomUtil.create("button","map-home");b.type="button";b.title="Recentrer";b.setAttribute("aria-label","Recentrer la carte");b.innerHTML="⌖";L.DomEvent.on(b,"click",e=>{L.DomEvent.stop(e);m.setView(center,14);});return b;};home.addTo(m);
+  if(!coarse)return;const set=on=>{["dragging","touchZoom","doubleClickZoom","boxZoom","keyboard"].forEach(k=>m[k]&&(on?m[k].enable():m[k].disable()));el.classList.toggle("map-on",on);};
+  const ov=document.createElement("div");ov.className="map-lock";ov.innerHTML=`<button type="button" class="map-lock-b">${ic("compass","i-s")} Utiliser la carte</button>`;
+  const done=document.createElement("button");done.type="button";done.className="map-done";done.textContent="✕ Terminé";
+  el.appendChild(ov);el.appendChild(done);set(false);
+  ov.querySelector("button").addEventListener("click",e=>{e.stopPropagation();set(true);});done.addEventListener("click",e=>{e.stopPropagation();set(false);});
+  ["click","touchstart","mousedown","dblclick"].forEach(t=>{L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);});}
 let IMLAY={},IMPM=null;
 /* zone du PLU d'un endroit (apicarto IGN), montrée dans la bulle d'une vente ou d'un permis */
 const PLUC={};
@@ -1236,7 +1246,7 @@ function drawImMap(){const el=document.getElementById("immap");if(!el)return;con
   imParc(B.k).then(P=>{if(tk!==IMTK||!el.isConnected)return;
   if(LMAP){LMAP.remove();LMAP=null;}
   const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
-  LMAP=L.map(el,{preferCanvas:true,zoomControl:true,attributionControl:true,maxZoom:19,zoomAnimation:!matchMedia("(prefers-reduced-motion: reduce)").matches}).setView([B.lat,B.lon],14);
+  LMAP=L.map(el,{preferCanvas:true,zoomControl:true,attributionControl:true,maxZoom:19,zoomAnimation:!matchMedia("(prefers-reduced-motion: reduce)").matches}).setView([B.lat,B.lon],14);mapGuard(LMAP,el,[B.lat,B.lon]);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · parcelles © cadastre (Etalab)'}).addTo(LMAP);
   const cad=L.tileLayer("https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=CADASTRALPARCELS.PARCELLAIRE_EXPRESS&STYLE=normal&TILEMATRIXSET=PM_0_19&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png",{maxNativeZoom:19,maxZoom:19,minZoom:14,className:dark?"tiles-dark":"",opacity:.7,attribution:"Cadastre © IGN, DGFiP"});
   const plu=L.tileLayer.wms("https://data.geopf.fr/wms-v/ows",{layers:"du",format:"image/png",transparent:true,version:"1.3.0",opacity:.3,attribution:"PLU © Géoportail de l'Urbanisme"});
@@ -1317,7 +1327,7 @@ function mapPopup(a,me){const k=a.dist??TOWN_KM[a.town],st=statusOf(a,today());
 function drawMap(){const el=document.getElementById("mmap");if(!el)return;const list=(S.mapList||[]).filter(a=>a.lat&&a.lon);
   if(LMAP){LMAP.remove();LMAP=null;}
   const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
-  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);
+  LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);mapGuard(LMAP,el,[HOME.lat,HOME.lon]);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
   L.circleMarker([HOME.lat,HOME.lon],{radius:5,color:"#1c1d22",weight:2,fillColor:"#fff",fillOpacity:1}).addTo(LMAP).bindTooltip(BASE.k==="prefailles"?"Préfailles, bourg":"Pornic, centre",{direction:"top"});
   const pts=list.map(a=>L.circleMarker([a.lat,a.lon],{radius:8,color:"#fff",weight:2,fillColor:MCOL(a),fillOpacity:.95}).addTo(LMAP).bindPopup(()=>mapPopup(a,LME),{maxWidth:240}));
