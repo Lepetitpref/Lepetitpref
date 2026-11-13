@@ -14,7 +14,7 @@ const HOME={lat:BASE.lat,lon:BASE.lon},ORIG=BASE.n,isBase=t=>new RegExp("^"+BASE
 const ic=(n,c="")=>`<svg class="i${c?" "+c:""}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const I={home:ic("home"),sejour:ic("home"),agenda:ic("cal"),cal:ic("cal"),cine:ic("film"),activites:ic("compass"),mer:ic("tide"),wave:ic("wave"),venir:ic("bus"),manger:ic("fork"),food:ic("fork"),market:ic("basket"),people:ic("people"),train:ic("train"),bus:ic("bus"),umb:ic("umb"),map:ic("compass"),list:ic("cal"),spark:ic("spark"),leaf:ic("leaf"),sail:ic("sail"),drop:ic("drop"),bike:ic("bike"),phone:ic("phone"),info:ic("info"),search:ic("search"),install:ic("install"),shell:ic("shell"),chev:ic("chev"),check:ic("check"),plus:ic("plus"),minus:ic("minus"),close:ic("close"),down:ic("down"),left:ic("left"),share:ic("share")};
 const VIEWS=[["sejour","Accueil"],["agenda","À faire"],["mer","Mer"],["manger","Restos"],["venir","Transports"],["pratique","Pratique"]];
-const EXTRA=["recherche","apropos","installer","activites","cine","soirees","peche","spots","immobilier"];
+const EXTRA=["recherche","apropos","installer","activites","cine","soirees","peche","spots","naviguer","immobilier"];
 const after={};
 /* ---------- taxonomy ---------- */
 const CATS={sensations:"Sensations",plage:"Plages",mer:"Mer & glisse",saveurs:"Saveurs",sortie:"Sorties",bienetre:"Bien-être",enfants:"Pour les petits",culture:"Culture & visites",sport:"Sport",nature:"Nature & balades",marche:"Marchés"};
@@ -312,7 +312,7 @@ function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))retur
     if(z.status==="fulfilled"&&Array.isArray(z.value))WX.z=z.value;
     WX.st=WX.f?"ok":"err";
     if(WX.f)sset("pp-wx"+(BASE.k==="prefailles"?"":"-"+BASE.k),JSON.stringify({at:WX.at,f:WX.f,m:WX.m,z:WX.z}));
-    if(["sejour","mer","spots"].includes(curView()))render();});}
+    if(["sejour","mer","spots","naviguer"].includes(curView()))render();});}
 const WMO=c=>c==null?["",""]:c===0?["Ciel dégagé","sun"]:c===1?["Plutôt ensoleillé","sun"]:c===2?["Éclaircies","cloudsun"]:c===3?["Couvert","cloud"]:c<50?["Brouillard","cloud"]:c<58?["Bruine","rain"]:c<66?[c===61?"Pluie faible":c===65?"Forte pluie":"Pluie","rain"]:c<70?["Pluie verglaçante","rain"]:c<80?["Neige","rain"]:c<83?[c===80?"Quelques averses":"Averses","rain"]:c<90?["Averses de neige","rain"]:["Orages","rain"];
 const DIR16=["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSO","SO","OSO","O","ONO","NO","NNO"];
 const dirTxt=d=>d==null?"":DIR16[Math.round(((d%360)+360)%360/22.5)%16];
@@ -490,7 +490,7 @@ const frow=(cls,label,inner)=>`<div class="chips ${cls}" role="group" aria-label
 function whenRange(w=S.when){const t=today();if(w==="auj")return[t,t];if(w==="jour"){const x=S.agDay&&S.agDay>=t?S.agDay:t;return[x,x];}if(w==="dem")return[addDays(t,1),addDays(t,1)];if(w==="we")return defaultStay();if(w==="sem")return[t,addDays(t,6)];
   if(w==="dates"){const du=S.du&&S.du>t?S.du:t,au=S.au&&S.au>=du?S.au:addDays(du,6);return[du,au];}
   if(w==="sejour"){const q=GR.quand||{};if(q.mode==="dates"&&q.au>=t)return[q.du>t?q.du:t,q.au];}return null;}
-const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Glisse et spots</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
+const segMer=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Rubriques de la mer"><a class="seg-a" href="#mer" data-spy="s-mer" aria-current="${v==="mer"}">Marées et météo</a><a class="seg-a" href="#spots" data-spy="s-spots" aria-current="${v==="spots"}">Spots</a><a class="seg-a" href="#naviguer" data-spy="s-nav" aria-current="${v==="naviguer"}">Naviguer</a><a class="seg-a" href="#peche" data-spy="s-peche" aria-current="${v==="peche"}">Pêche à pied</a></div></div>`;
 const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="${label}">${items.map(([k,l])=>`<button type="button" aria-pressed="${cur===k}" data-act="${act}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
 const segMg=()=>segBtns("Rubriques de Restos",[["tous","Tout"],["tables","Restaurants"],["bar","Bars"],["marche","Marchés"],["produits","Produits"]],["tous","tables","bar","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
 const segTr=()=>segBtns("Destinations",TRDEST.map(x=>[x,x]),TRDEST.includes(S.trTo)?S.trTo:TRDEST[0],"trto");
@@ -1029,6 +1029,56 @@ function surfRow(d){const RS=rankSpots("surf",d),top=RS.top;if(!top)return"";con
     ${week?`<h4 class="sf-h4">Les 5 prochains jours</h4>${week}`:""}
     <p class="sf-safe">${t!=null?`<b>Eau ${r0(t)} °C</b> · intégrale${t<15?" + chaussons":""}<br>`:""}Débutants : jamais seul, vérifiez si la plage est surveillée.<br>Secours <a href="tel:112">112</a> · en mer <a href="tel:196">196</a></p>
     <p class="sf-src">${buoy?esc(buoy)+". ":""}Houle au large et vent : prévisions Météo-France (Open-Meteo). Comparez avec Windguru dans la fiche du spot.</p></li>`;}
+/* ===== Spots : « où aller cette semaine » par activité et par niveau ===== */
+const spShort=n=>n.replace(/^(Saint-Brevin, |Pointe |Plage de |Les Moutiers, plage du )/,"").replace(/-Plage$/,"").replace(/, .*$/,"");
+const slotH=b=>b.h2!=null&&b.h2>b.h1?`${b.h1}h-${b.h2}h`:`${b.h}h`;
+function weekDays(){const d0=glDay(today()),L=[];for(let i=0;i<5;i++){const d=addDays(d0,i);if(!wxDay(d))break;L.push(d);}return L;}
+const reasonShort=t=>String(t||"").split(" · ")[0].replace(/\s*\(.*$/,"").replace(/ : .*$/,"").replace(/, rafales.*$/,"");
+const SURFW2={"Mer lisse":"glassy","Plat":"flat","Trop petit":"flat","Haché par le vent de mer":"onshore, haché","Clapot, vent de mer":"onshore, clapot"};
+function wkCell(v,sp,sub,why){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}"><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><small>${esc(why||"non")}</small></span>`;}
+function weekTable(id,title,icn,cols,note){const D=weekDays();if(!D.length)return"";
+  const dl=d=>d===today()?"Aujourd'hui":d===addDays(today(),1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
+  return `<section class="sec blk wk" id="${id}" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic(icn)}${title}</h2></div>
+   <div class="wk-t" role="table"><div class="wk-r wk-hd" role="row"><span></span>${cols.map(c=>`<span class="wk-h${c.beg?" beg":""}">${c.l}</span>`).join("")}</div>
+   ${D.map(d=>`<div class="wk-r" role="row"><span class="wk-d">${dl(d)}</span>${cols.map(c=>c.f(d)).join("")}</div>`).join("")}</div>
+   ${note?`<p class="wk-note">${note}</p>`:""}</section>`;}
+function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions en cours de chargement…</p>`;
+  const t=sstNow(today());
+  const surf=weekTable("wk-surf","Où surfer cette semaine","wave",[
+    {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B)return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h`);const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
+    {l:"Confirmés",f:d=>{const r=rankSpots("surf",d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}`):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
+    `Débutants : plages de sable avec école (L'Ermitage, Les Rochelets), vagues sous 1,2 m, peu de vent. ${t!=null?`Eau ${r0(t)} °C : intégrale${t<15?" + chaussons":""}. `:""}Jamais seul · secours <a href="tel:112">112</a>, en mer <a href="tel:196">196</a>.`);
+  const kc=a=>({l:a==="kite"?"Kite":"Wing",f:d=>{const r=rankSpots(a,d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${r0(r.b.w.w)} nds`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
+  const kw=weekTable("wk-kite","Où kiter et winger cette semaine","sail",[kc("kite"),kc("wing")],
+    `Pour pratiquants autonomes. Débutants : seulement en cours avec une école. Vent de terre : on ne sort pas · bande des 300 m : 5 nœuds · le vent vient d'un seul point de prévision, vérifiez l'anémomètre · en mer <a href="tel:196">196</a>.`);
+  const vc=a=>({l:a==="voile"?"Voile":"Paddle",f:d=>{const r=rankSpots(a,d).top;return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${r0(r.b.w.w)} nds`):wkCell(0,null,"",r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
+  const vp=weekTable("wk-voile","Voile et paddle","drop",[vc("voile"),vc("paddle")],"");
+  return surf+kw+vp;}
+/* un spot pour débuter en surf : seulement les spots « Débutants », même règle que begSurf */
+function begSpot(sp,d){if(!/Débutant/.test(sp.lvl||"")||!sp.acts.includes("surf"))return null;const hs=surfHours(sp,d).filter(x=>d!==today()||x.h>=new Date().getHours()).map(x=>({...x,b:begJ(sp,x)}));
+  let best=null,i=0;while(i<hs.length){if(!hs[i].b){i++;continue;}let j=i;while(j+1<hs.length&&hs[j+1].b&&hs[j+1].h===hs[j].h+1)j++;const run=hs.slice(i,j+1),n=Math.min(...run.map(x=>x.b));if(run.length>=2&&(!best||n>best.n))best={n,h1:run[0].h,h2:run[run.length-1].h+1};i=j+1;}return best;}
+/* les spots en vignettes : un toucher déplie le détail juste dessous */
+function spotTiles(d){const has=!!wxDay(d),SM={};
+  const L=SPOTSX.map(sp=>({sp,k:km(HOME,sp)})).sort((a,b)=>a.k-b.k).map(({sp,k})=>{const sm=has?spotSummary(sp,d):[];SM[sp.id]=sm;
+    const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):0;
+    const dots=sm.map(x=>`<span class="sd ${NOTECLS[x.b.j[0]]}">${ACTL[x.a].replace(" et bateau","")}</span>`).join("");
+    return {k:sp.id,l:esc(sp.n.replace(/^Saint-Brevin, /,"Saint-Brevin · ")),sub:`${esc(townShort(sp.town))} · ${Math.max(1,Math.round(k))} km<span class="sdots">${dots}</span>`,c:top===2?"--ok":top===1?"--warn":"--line-strong",ic:sp.acts[0]==="voile"?"sail":"wave",body:spotBody(sp,d,sm)};});
+  return `<section class="sec blk spots-t" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots ${ceJour(d)}</h2></div>${ptiles("spot",L,"Touchez un spot : conditions heure par heure, niveau, dangers et prévisions détaillées.")}</section>`;}
+function spotBody(sp,d,sm){const has=!!wxDay(d);
+  const windy=(la,lo,l)=>`https://www.windy.com/${la.toFixed(3)}/${lo.toFixed(3)}?${l},${la.toFixed(3)},${lo.toFixed(3)},11`;
+  const surf=has&&sp.acts.includes("surf")&&sp.tide?surfHours(sp,d):[];
+  /* surf : une ligne Débutants et une ligne Confirmés */
+  const bs=sp.acts.includes("surf")?begSpot(sp,d):null;
+  const lvRow=(lab,v,main,sub)=>`<div class="sa-lv"><span class="sa-lvl">${lab}</span><span class="sf-v ${NOTECLS[v]}">${NOTE[v]}</span><span class="sa-lvt">${main}${sub?`<small>${sub}</small>`:""}</span></div>`;
+  const card=x=>{const v=x.b.j[0];if(x.a==="surf"){const beg=/Débutant/.test(sp.lvl||"");
+      return `<div class="spot-act sa-surf ${NOTECLS[v]}"><div class="sa-h"><b>Surf</b></div>${lvRow("Confirmés",v,v>0?`<b>${slotTxt(x.b)}</b>`:"",esc(x.b.j[1]))}${lvRow("Débutants",bs?bs.n:0,bs?`<b>de ${bs.h1}h à ${bs.h2}h</b>`:"",bs?"idéal avec une école":beg?"pas de créneau facile ce jour":"spot pour confirmés")}${condTags(sp,x.b,"surf")}</div>`;}
+    return `<div class="spot-act ${NOTECLS[v]}"><div class="sa-h"><b>${ACTL[x.a]}</b><span class="note-pill ${NOTECLS[v]||"no"}">${NOTE[v]}</span></div>${v>0?`<span class="sa-main">${slotTxt(x.b)}</span>`:""}<span class="sa-sub">${esc(x.b.j[1])}</span>${condTags(sp,x.b,x.a)}</div>`;};
+  const strip=surf.length?`<div class="spot-surf"><p class="row-meta"><b>Surf heure par heure</b> · idéal : ${esc(sp.tideTxt)}</p><div class="hstrip" aria-hidden="true">${surf.map(y=>`<span class="${NOTECLS[y.j[0]]}${d===today()&&y.h<new Date().getHours()?" past":""}"><i></i>${y.h}h</span>`).join("")}</div><p class="row-meta hleg"><i class="ok"></i>bon <i class="warn"></i>possible <i></i>non${/Débutant/.test(sp.lvl||"")?"":" · <b>pas pour débuter</b>"}</p></div>`:"";
+  return `<div class="spot-body" id="spot-${sp.id}">${sm.length?`<div class="spot-acts">${sm.map(card).join("")}</div>`:""}${strip}
+    ${(SPOTCMP[sp.id]||[]).length?`<p class="spot-cmp"><b>Comparer :</b> ${SPOTCMP[sp.id].map(([l,u])=>`<a class="chip" href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</p>`:""}
+    <div class="spot-emb"><p class="emb-h">Prévision détaillée : vent et vagues, plusieurs modèles</p><div class="emb-box" id="emb-${sp.id}"></div></div>
+    <p>${esc(sp.d)}</p><p class="row-meta"><b>Niveau :</b> ${esc(sp.lvl)}</p><p class="row-meta"><b>Attention :</b> ${esc(sp.haz)}</p>
+    <p class="spot-links"><a class="chip" href="${windy(sp.lat,sp.lon,"waves")}" target="_blank" rel="noopener">Carte des vagues ↗</a><a class="chip" href="${windy(sp.lat,sp.lon,"wind")}" target="_blank" rel="noopener">Carte du vent ↗</a><a class="chip" href="https://www.google.com/maps/search/?api=1&query=${sp.lat},${sp.lon}" target="_blank" rel="noopener">Y aller ↗</a><button type="button" class="chip" data-share="${esc(sp.n+" · Le Petit Préf")}" data-url="${SITE}#spot-${sp.id}">${ic("share","i-s")} Partager</button></p></div>`;}
 /* le soir, quand il n'y a plus de créneau de jour, la glisse parle de demain (bloc du jour ET fiches des spots) */
 const glDay=d=>d===today()&&wxDay(addDays(d,1))&&new Date().getHours()>=Math.min(19,dayHours(d)[1]+1)?addDays(d,1):d;
 function glisseSec(d){if(!wxDay(d))return sec("Glisse","",`<p class="empty">Prévisions en cours de chargement…</p>`);
@@ -1143,13 +1193,14 @@ function vMer(){wxLoad();const t=today();let s=S.tideDay||t;if(s<t)s=t;S.tideDay
   const dayBtn=d=>{const c=maxCoef(d);return qchip(`${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}<small class="${c>=90?"gm":""}">coef. ${c??"–"}</small>`,d===s,`data-act="tday" data-v="${d}"`);};
   const cv=curView();
   return `${pageHead("La mer",`Marées et météo, glisse et spots, pêche à pied : tout se déroule sur cette page. Pour se baigner : <a href="#plages">les plages</a>.`)}
-  ${segMer(cv==="spots"?"spots":cv==="peche"?"peche":"mer")}
+  ${segMer(cv==="spots"?"spots":cv==="peche"?"peche":cv==="naviguer"?"naviguer":"mer")}
   <div class="filters solo">${frow("frow qday","Jour",days.map(dayBtn).join("")+`<label class="chip chip-q chip-sel" ${days.includes(s)?"":'aria-pressed="true"'}>${days.includes(s)?"Autre date":esc(dshort(s))}${ic("cal")}<input type="date" data-chg="tday" value="${s}" min="${t}" aria-label="Choisir une date"></label>`)}</div>
   <div id="s-mer" class="part">${merTop(s)}
   <button type="button" class="lnk mer-share" data-share="${esc(merShareTxt(s))}" data-url="${SITE}/#mer">${ic("share","i-s")} Partager la mer du jour</button>
     <div style="margin-top:-4px">${tideCard(s,{big:true,link:false,label:s===t?"Marée aujourd'hui":"Marée "+dlong(s)})}</div>
   ${sec("Grandes marées",secLink("#peche","Pêche à pied"),big.length?`<ul class="list">${big.map(([d,c,e])=>{const l=dayLows(d);return row({lead:dateLead(d),leadCls:"lead-date",title:e?`Du ${dshort(d)} au ${dshort(e)}`:cap(dlong(d)),metaH:meta(`jusqu'à coef. ${c}`,l.length?`basse mer ${hm(new Date(l[0].ms))}`:""),href:"#peche"});}).join("")}</ul>`:`<p class="empty">Pas de grande marée dans les dix semaines.</p>`,"Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.")}</div>
-  <div id="s-spots" class="part"><h2 class="part-h">Glisse et spots</h2>${(()=>{const gs=glDay(s);return `<p class="part-sub">${gs!==s?"Pour aujourd'hui c'est fini : voici demain. ":""}Le bon spot et la bonne heure pour le surf, le kite, le wing et la voile, sur 5 jours.</p>${glisseSec(gs)}${navSec()}${spotsSec(gs)}`;})()}</div>
+  <div id="s-spots" class="part"><h2 class="part-h">Spots</h2><p class="part-sub">Où aller cette semaine selon votre niveau, puis chaque spot en détail.</p>${weekSecs()}${spotTiles(glDay(s))}</div>
+  <div id="s-nav" class="part"><h2 class="part-h">Naviguer</h2><p class="part-sub">Bulletin côtier officiel, houle mesurée à la bouée, secours en mer.</p>${navSec()}</div>
   <div class="part">${pecheBody()}</div>
   <p class="foot">Vent, houle et eau : prévisions Open-Meteo (modèles Météo-France et européens), actualisées à chaque ouverture. Marée : calcul harmonique calé sur les annuaires SHOM de Pornic. À titre indicatif, ne pas utiliser pour la navigation.</p>`;}
 
@@ -1771,7 +1822,7 @@ const ACT={
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
-  spot:v=>{const el=document.getElementById("spot-"+v);if(el){el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}else if(SPOTSX.some(x=>x.id===v)){S.spotOpen=v;location.hash="#spots";}},
+  spot:v=>{if(!SPOTSX.some(x=>x.id===v))return;S.pOpen.spot=v;if(!["mer","spots","naviguer"].includes(curView())){S.spotOpen=v;location.hash="#spots";return;}render();requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="spot|${v}"]`);if(t)scrollUnder(t);});},
   trdir:v=>{S.trDir=+v;render();},
   trto:v=>{S.trTo=v;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{S.when=v;S.whenKeep=curView()!=="agenda";S.more={};if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(curView()==="agenda")render();},
@@ -1803,7 +1854,7 @@ document.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.close
 
 /* ---------- rendu et navigation ---------- */
 function curView(){const h=location.hash.slice(1);return VIEWS.some(v=>v[0]===h)||EXTRA.includes(h)?h:"sejour";}
-const PARENT={cine:"agenda",activites:"agenda",soirees:"agenda",peche:"mer",spots:"mer"};
+const PARENT={cine:"agenda",activites:"agenda",soirees:"agenda",peche:"mer",spots:"mer",naviguer:"mer"};
 function rail(){const c=curView(),p=PARENT[c]||c,r=$("#rail");if(!r)return;r.innerHTML=VIEWS.map(([id,l])=>`<a class="tab" href="#${id}" ${id===p?'aria-current="page"':""}>${l}</a>`).join("");
   const t=r.querySelector('[aria-current="page"]'),sc=r.closest(".tabs")||r;if(t&&sc.scrollWidth>sc.clientWidth)sc.scrollLeft=Math.max(0,t.offsetLeft-sc.clientWidth/2+t.offsetWidth/2);}
 document.addEventListener("click",e=>{const a=e.target.closest("#rail a");if(!a)return;if(a.getAttribute("href")==="#"+curView()){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});}});
@@ -1839,15 +1890,15 @@ function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView(
   $$("#main form input,#main form select,#main form textarea,#q").forEach(el=>{if(el.id)keep[el.id]=el.type==="checkbox"?el.checked:el.value;});
   const open=[...$$("#main details[open] summary .row-title")].map(x=>x.textContent);
   const sy=window.scrollY;
-  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer,soirees:vSoirees,immobilier:vImmo})[v]()}</section>`;
+  $("#main").innerHTML=`<section class="view">${({sejour:vSejour,agenda:vAgenda,cine:vCine,activites:vActs,manger:vManger,mer:vMer,venir:vTransports,recherche:vSearch,apropos:vApropos,installer:vInstaller,pratique:vPratique,peche:vPeche,spots:vMer,naviguer:vMer,soirees:vSoirees,immobilier:vImmo})[v]()}</section>`;
   if(open.length)$$("#main details summary .row-title").forEach(x=>{if(open.includes(x.textContent))x.closest("details").open=true;});
   for(const[id,val]of Object.entries(keep)){const el=document.getElementById(id);if(!el)continue;if(el.type==="checkbox")el.checked=val;else el.value=val;}
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
   window.scrollTo({top:sy,behavior:"instant"});
-  after[v]&&after[v]();requestAnimationFrame(spyTick);if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>ACT.pjump(j),80);}if(S.spotOpen){const id=S.spotOpen;S.spotOpen=null;setTimeout(()=>ACT.spot(id),700);}VPREV=v;}
+  after[v]&&after[v]();requestAnimationFrame(spyTick);if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>ACT.pjump(j),80);}if(S.spotOpen){const id=S.spotOpen;S.spotOpen=null;S.pOpen.spot=id;setTimeout(()=>ACT.spot(id),700);}VPREV=v;}
 after.sejour=()=>bindInstall();
 /* arrivée sur #spots ou #peche : la page Mer s'ouvre sur la bonne partie (une fois par changement d'adresse) */
-const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",peche:"s-peche"}[h];if(!id||S.jumped===h)return;S.jumped=h;
+const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",naviguer:"s-nav",peche:"s-peche"}[h];if(!id||S.jumped===h)return;S.jumped=h;
   const go=()=>{const el=document.getElementById(id);if(!el)return null;const nav=document.querySelector(".subnav");const off=nav?(parseFloat(getComputedStyle(nav).top)||0)+nav.offsetHeight+6:160;const y=Math.max(0,el.getBoundingClientRect().top+scrollY-off);scrollTo({top:y,behavior:"instant"});return y;};
   let y;requestAnimationFrame(()=>{y=go();[500,1200,2500].forEach(ms=>setTimeout(()=>{if(y!=null&&Math.abs(scrollY-y)<6&&location.hash.slice(1)===h)y=go();},ms));});};
 /* liens courts : #plages, #marees, #spot-<id> */
@@ -1899,7 +1950,7 @@ render();
 (async()=>{
   const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();});
   const names=["events","cinema","assos","transports"];
-  get("mer").then(v=>{S.mer=v;if(["mer","spots"].includes(curView()))render();}).catch(()=>{});
+  get("mer").then(v=>{S.mer=v;if(["mer","spots","naviguer"].includes(curView()))render();}).catch(()=>{});
   const res=await Promise.allSettled([...names.map(get),get("status")]);
   names.forEach((n,k)=>{const v=res[k].status==="fulfilled"?res[k].value:null;S[n]=n==="transports"?(v&&typeof v==="object"&&!Array.isArray(v)?v:{}):(Array.isArray(v)?v:[]);});
   const st=res[names.length];S.meta=st.status==="fulfilled"?st.value:null;
@@ -1911,9 +1962,9 @@ if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceW
 
 
 /* prévision détaillée : chargée dès qu'une fiche de spot s'ouvre */
-const fcOpen=()=>document.querySelectorAll("details[open] .emb-box:empty").forEach(b=>fcSpot(b.id.slice(4)));
+const fcOpen=()=>document.querySelectorAll("details[open] .emb-box:empty, .spot-body .emb-box:empty").forEach(b=>fcSpot(b.id.slice(4)));
 document.addEventListener("toggle",e=>{if(e.target.open&&e.target.querySelector&&e.target.querySelector(".emb-box"))fcOpen();},true);
-new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empty"))fcOpen();}).observe(document.getElementById("main")||document.body,{childList:true,subtree:true});
+new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empty, .spot-body .emb-box:empty"))fcOpen();}).observe(document.getElementById("main")||document.body,{childList:true,subtree:true});
 
 /* ===== English : traduction de l'interface (dictionnaire donnees/en.json), les données restent en français ===== */
 var I18N=I18N||{d:null,cache:new Map()};
