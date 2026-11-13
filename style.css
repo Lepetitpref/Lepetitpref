@@ -1038,3 +1038,9 @@ button.im-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px;b
 button.pm-yr{all:unset;box-sizing:border-box;display:grid;grid-template-columns:44px 1fr;column-gap:10px;align-items:center;width:100%;padding:4px 6px;margin:0 -6px;border-radius:8px;cursor:pointer}
 button.pm-yr[aria-pressed="true"]{background:color-mix(in srgb,var(--i-act) 12%,transparent)}
 button.pm-yr:focus-visible{outline:2px solid var(--accent)}
+.im-town{display:flex;margin:14px var(--gutter) 0;max-width:360px}
+.im-town button{flex:1}
+button.pm-yr{grid-template-columns:44px 1fr 14px;padding:6px}
+.pm-go{color:var(--faint);font-size:20px;line-height:1}
+button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
+.im-town button[aria-pressed="true"]{background:var(--sel2);color:#fff;font-weight:600}
