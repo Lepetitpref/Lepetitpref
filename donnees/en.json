@@ -721,6 +721,22 @@
 },
 "rules": [
 [
+"^Permis : Maison neuve$",
+"Permit: new house"
+],
+[
+"^Permis : Travaux sur une maison$",
+"Permit: work on a house"
+],
+[
+"^Permis : (\\d+) logements en collectif$",
+"Permit: $1 flats in a block"
+],
+[
+"^Permis : (\\d+) logements$",
+"Permit: $1 homes"
+],
+[
 "^Permis qui créent des logements à (Préfailles|Pornic), d'après la base Sitadel de l'État \\(mise à jour chaque mois\\)\\. Le nom n'est donné que pour les sociétés\\.$",
 "Permits creating homes in $1, from the State's Sitadel database (updated monthly). Names are only given for companies."
 ],
