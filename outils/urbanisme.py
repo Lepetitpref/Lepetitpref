@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Permis de construire, diagnostics énergie et PLU de Préfailles et Pornic → donnees/urbanisme.json.
+"""Permis de construire et PLU de Préfailles et Pornic → donnees/urbanisme.json.
 
 Sources (toutes en Licence Ouverte) :
 - Permis : Sitadel (SDES), « Liste des permis de construire et autres autorisations d'urbanisme »,
   fichier des logements, API DiDo filtrée par commune (mise à jour mensuelle).
-- DPE : ADEME, « DPE Logements existants (depuis juillet 2021) » (dpe03existant), totaux par étiquette.
 - PLU : Géoportail de l'Urbanisme (document en vigueur, lien du règlement).
 
 Rien de personnel : pour un particulier, on ne garde que la rue (sans numéro) ; le nom n'est
@@ -114,7 +113,15 @@ def permis(c):
                     f"--{bd}\r\nContent-Disposition: form-data; name=\"citycode\"\r\n\r\ncitycode\r\n--{bd}--\r\n").encode()
             req = urllib.request.Request("https://api-adresse.data.gouv.fr/search/csv/", data=body,
                                          headers={"Content-Type": f"multipart/form-data; boundary={bd}", "User-Agent": "lepetitpref-donnees"})
-            out = urllib.request.urlopen(req, timeout=180).read().decode("utf-8")
+            out = None
+            for essai in range(4):
+                try:
+                    out = urllib.request.urlopen(req, timeout=180).read().decode("utf-8")
+                    break
+                except Exception as e:
+                    err = e
+            if out is None:
+                raise err
             for row in csv.DictReader(io.StringIO(out)):
                 try:
                     if float(row.get("result_score") or 0) >= 0.5 and row.get("latitude"):
@@ -172,15 +179,21 @@ def main():
     for k, c in COMMUNES.items():
         old = avant.get("communes", {}).get(k, {})
         x = {"code": c}
-        for nom, f in (("permis", permis), ("dpe", dpe), ("plu", plu)):
+        for nom, f in (("permis", permis), ("plu", plu)):
             try:
                 x[nom] = f(c) or old.get(nom)
             except Exception as e:
                 print("  ", nom, c, "indisponible :", e, "→ valeur précédente gardée")
                 x[nom] = old.get(nom)
+        # un géocodage raté ne doit pas faire disparaître des points déjà connus
+        cle = lambda v: (v.get("d"), v.get("pa"), v.get("r"), v.get("lg"))
+        vieux = {cle(v): v for v in ((old.get("permis") or {}).get("recents") or []) if "la" in v}
+        for v in ((x.get("permis") or {}).get("recents") or []):
+            if "la" not in v and cle(v) in vieux:
+                v["la"], v["lo"] = vieux[cle(v)]["la"], vieux[cle(v)]["lo"]
         out["communes"][k] = x
         p = x.get("permis") or {}
-        print(k, "permis", p.get("total"), "jusqu'au", p.get("fin"), "· DPE", (x.get("dpe") or {}).get("tous_n"), "· PLU", (x.get("plu") or {}).get("nom"))
+        print(k, "permis", p.get("total"), "jusqu'au", p.get("fin"), "· PLU", (x.get("plu") or {}).get("nom"))
     if avant.get("communes") == out["communes"]:
         print("rien de nouveau")
         return

@@ -757,9 +757,17 @@
 "Mairie de Pornic": "Pornic town hall",
 "Depuis 2010": "Since 2010",
 "Chiffres": "Key figures",
-"Commune": "Town"
+"Commune": "Town",
+"La carte des ventes et des permis": "Map of sales and permits",
+"Maison vendue": "House sold",
+"Terrain": "Plot",
+"Touchez une parcelle ou un point violet pour le détail.": "Tap a plot or a purple dot for details."
 },
 "rules": [
+[
+"^Permis de (\\d{4})$",
+"Permits $1"
+],
 [
 "^Une maison à (Préfailles|Pornic) se vendait (.+) le m² en (\\d{4}), (.+) en (\\d{4}) \\(prix médians\\)\\.$",
 "A house in $1 sold for $2 per m² in $3, $4 in $5 (median prices)."
