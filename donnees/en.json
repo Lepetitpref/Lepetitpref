@@ -699,7 +699,7 @@
 "Maison neuve": "New house",
 "Travaux sur une maison": "Work on a house",
 "Énergie des logements (DPE)": "Home energy ratings (EPC)",
-"Urbanisme (PLU)": "Planning (local zoning plan)",
+"Urbanisme (PLU)": "Planning (zoning)",
 "Lire le règlement (PDF)": "Read the regulations (PDF)",
 "Tout le dossier sur le Géoportail": "Full file on the Géoportail",
 "Cadastre": "Land register",
@@ -762,9 +762,75 @@
 "Maison vendue": "House sold",
 "Terrain": "Plot",
 "Touchez une parcelle ou un point violet pour le détail.": "Tap a plot or a purple dot for details.",
-"Réduire": "Show less"
+"Réduire": "Show less",
+"Zones urbaines": "Urban zones",
+"Zones à urbaniser": "Zones to be developed",
+"Zones agricoles": "Agricultural zones",
+"Zones naturelles": "Natural zones",
+"Zone urbaine": "Urban zone",
+"Zone à urbaniser": "Zone to be developed",
+"Zone à urbaniser plus tard": "Zone to be developed later",
+"Zone agricole": "Agricultural zone",
+"Zone naturelle": "Natural zone",
+"Zone naturelle (secteur particulier)": "Natural zone (special area)",
+"Prix d'une maison": "House prices",
+"Prix d'un appartement": "Flat prices",
+"Dernières ventes": "Latest sales",
+"Ventes et permis, cadastre": "Sales and permits, land register",
+"Prix médian au m²": "Median price per m²",
+"Prix, surface, rue": "Price, area, street",
+"Par année": "By year",
+"Zones et règlement": "Zones and regulations"
 },
 "rules": [
+[
+"^(Zones urbaines|Zones à urbaniser|Zones agricoles|Zones naturelles) \\((\\d+)\\)$",
+"$1 ($2)"
+],
+[
+"^Règlement de la zone \\(p\\. (\\d+)\\) ↗$",
+"Zone regulations (p. $1) ↗"
+],
+[
+"^(\\d+) zones$",
+"$1 zones"
+],
+[
+"^À (Préfailles|Pornic), d'après les données publiques de l'État\\.$",
+"In $1, from the State's public data."
+],
+[
+"^Plan local d'urbanisme de (Préfailles|Pornic), approuvé le (.+)\\. Touchez une zone pour savoir ce qu'on peut y construire, la voir sur la carte et lire sa page du règlement\\.$",
+"Local zoning plan of $1, approved on $2. Tap a zone to see what can be built there, view it on the map and read its page of the regulations."
+],
+[
+"^(.+) le m² en (\\d{4})$",
+"$1 per m² in $2"
+],
+[
+"^(\\d+) ventes en (\\d{4})$",
+"$1 sales in $2"
+],
+[
+"^(\\d+) en (\\d{4})$",
+"$1 in $2"
+],
+[
+"^Zone urbaine · (.+) ha$",
+"Urban zone · $1 ha"
+],
+[
+"^Zone naturelle · (.+) ha$",
+"Natural zone · $1 ha"
+],
+[
+"^Zone agricole · (.+) ha$",
+"Agricultural zone · $1 ha"
+],
+[
+"^Zone à urbaniser · (.+) ha$",
+"Zone to be developed · $1 ha"
+],
 [
 "^Voir toutes les ventes \\((\\d+)\\)$",
 "See all sales ($1)"

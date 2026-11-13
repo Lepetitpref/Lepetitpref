@@ -11,7 +11,7 @@ publié par l'État que pour les sociétés (promoteurs, SCI…), on le garde al
 
 Usage : python3 outils/urbanisme.py
 """
-import csv, io, json, os, sys, urllib.request, urllib.parse, datetime
+import csv, io, json, os, re, sys, urllib.request, urllib.parse, datetime
 
 COMMUNES = {"prefailles": "44136", "pornic": "44131"}
 ICI = os.path.dirname(os.path.abspath(__file__))
@@ -165,9 +165,43 @@ def plu(c):
             reg = f"https://data.geopf.fr/annexes/gpu/documents/DU_{c}/{d['id']}/{r['name']}"
     except Exception:
         pass
+    # les zones du PLU : une ligne par zone (code), avec sa page du règlement, son type et son emprise (pour la carte)
+    zones = {}
+    try:
+        Z = json.loads(get(f"https://apicarto.ign.fr/api/gpu/zone-urba?partition=DU_{c}&_limit=1000"))["features"]
+        import math
+        for f in Z:
+            p = f["properties"]
+            z = zones.setdefault(p["libelle"], {"code": p["libelle"], "long": p.get("libelong") if p.get("libelong") != p["libelle"] else None,
+                                                "type": p.get("typezone"), "page": None, "bb": [90, 180, -90, -180], "ha": 0.0})
+            m = re.search(r"#page=(\d+)", p.get("nomfic") or "")
+            if m:
+                z["page"] = int(m.group(1))
+            g = f["geometry"]
+            polys = g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]
+            for poly in polys:
+                ring = poly[0]
+                for x, y in ring:
+                    z["bb"] = [min(z["bb"][0], y), min(z["bb"][1], x), max(z["bb"][2], y), max(z["bb"][3], x)]
+                k = 111320 * math.cos(math.radians(ring[0][1]))
+                aire = abs(sum((ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1]) for i in range(len(ring) - 1))) / 2 * k * 110540
+                z["ha"] += aire / 10000
+        for z in zones.values():
+            z["bb"] = [round(v, 5) for v in z["bb"]]
+            z["ha"] = round(z["ha"], 1)
+    except Exception as e:
+        print("  zones du PLU indisponibles", c, e)
+    try:
+        D = json.load(open(os.path.join(ICI, "..", "donnees", "plu-zones.json"), encoding="utf-8")).get({"44136": "prefailles", "44131": "pornic"}[c], {})
+        for code, z in zones.items():
+            for k in ("nom", "resume", "regles"):
+                if D.get(code, {}).get(k):
+                    z[k] = D[code][k]
+    except Exception:
+        pass
     appro = on.rsplit("_", 1)[-1] if on else ""
     return {"type": d.get("type"), "approuve": f"{appro[6:8]}/{appro[4:6]}/{appro[:4]}" if len(appro) == 8 else None,
-            "id": d.get("id"), "reglement": reg, "fiche": f"https://www.geoportail-urbanisme.gouv.fr/document/by-id/{d.get('id')}"}
+            "id": d.get("id"), "reglement": reg, "zones": sorted(zones.values(), key=lambda z: ("U", "AUc", "AUs", "A", "N", "Nh").index(z["type"]) if z["type"] in ("U", "AUc", "AUs", "A", "N", "Nh") else 9), "fiche": f"https://www.geoportail-urbanisme.gouv.fr/document/by-id/{d.get('id')}"}
 
 
 def main():
