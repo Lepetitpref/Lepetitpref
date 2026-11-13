@@ -898,9 +898,88 @@
 "Marées et météo, glisse et spots, pêche à pied : tout se déroule sur cette page. Pour se baigner :": "Tides and weather, board sports and spots, shore fishing: it's all on this page. For swimming:",
 "les plages": "the beaches",
 "Ouvrir la carte en grand": "Open the map full screen",
-"Fermer la carte": "Close the map"
+"Fermer la carte": "Close the map",
+"Voir aussi les 7 jours suivants": "Also show the next 7 days",
+"surveillées ou non, chiens": "lifeguarded or not, dogs",
+"boire un verre, en terrasse ou face à la mer": "a drink, on a terrace or facing the sea",
+"huîtres, poisson, boulangeries, producteurs": "oysters, fish, bakeries, producers",
+"jours et horaires": "days and times",
+"pharmacies, médecins, dentistes": "pharmacies, doctors, dentists",
+"112, SAMU 15, pompiers 18, mer 196": "112, ambulance 15, fire 18, sea rescue 196",
+"appelez le 3237 (nuit, dimanche, fériés)": "call 3237 (nights, Sundays, holidays)",
+"choisissez votre secteur": "choose your sector",
+"Cars et trains, correspondances comprises.": "Coaches and trains, connections included.",
+"Urgences, santé, poubelles, mairie et poste.": "Emergencies, health, bins, town hall and post office.",
+"Marées, météo de la mer, glisse, pêche à pied et plages.": "Tides, sea weather, board sports, shore fishing and beaches.",
+"Restaurants, bars, marchés et produits, avec leurs horaires du jour (à vérifier en appelant).": "Restaurants, bars, markets and local produce, with today's hours (check by phone).",
+"vent, houle, eau": "wind, swell, water",
+"pas de bonnes conditions": "no good conditions",
+"surf, kite, wing, voile": "surf, kite, wing, sailing",
+"bonnes marées, sécurité": "good tides, safety",
+"rien ce soir": "nothing tonight",
+"rien de daté aujourd'hui": "nothing scheduled today"
 },
 "rules": [
+[
+"^Sorties, activités, soirées et cinéma à moins de (\\d+) km\\.$",
+"Outings, activities, evenings and cinema within $1 km."
+],
+[
+"^Sorties, activités, soirées et cinéma autour\\.$",
+"Outings, activities, evenings and cinema nearby."
+],
+[
+"^(\\d+) sorties? aujourd'hui · (\\d+) en 7 jours$",
+"$1 today · $2 in 7 days"
+],
+[
+"^rien de daté aujourd'hui · (\\d+) en 7 jours$",
+"nothing today · $1 in 7 days"
+],
+[
+"^(\\d+) ce soir · (\\d+) en 7 jours$",
+"$1 tonight · $2 in 7 days"
+],
+[
+"^rien ce soir · (\\d+) en 7 jours$",
+"nothing tonight · $1 in 7 days"
+],
+[
+"^(\\d+) lieux? ouverts? aujourd'hui$",
+"$1 places open today"
+],
+[
+"^basse mer (\\d{1,2}h\\d\\d) · coef\\. (\\d+)$",
+"low tide $1 · coef. $2"
+],
+[
+"^basse mer (\\d{1,2}h\\d\\d)$",
+"low tide $1"
+],
+[
+"^grande marée (.+), coef\\. (\\d+)$",
+"spring tide $1, coef. $2"
+],
+[
+"^(\\d+) à (Préfailles|Pornic) · (\\d+) à moins de (\\d+) km$",
+"$1 in $2 · $3 within $4 km"
+],
+[
+"^prochain : ",
+"next: "
+],
+[
+"^ordures (.+?) · jaune (.+)$",
+"waste $1 · yellow bin $2"
+],
+[
+"^ordures (.+)$",
+"waste $1"
+],
+[
+"^Le ((?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche) .+)\\.$",
+"On $1."
+],
 [
 "^ordures (\\p{L}+ \\d{1,2} \\S+|aujourd'hui), bac jaune (.+)$",
 "household waste $1, yellow bin $2"
