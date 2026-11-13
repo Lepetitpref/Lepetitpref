@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""Permis de construire, diagnostics énergie et PLU de Préfailles et Pornic → donnees/urbanisme.json.
+
+Sources (toutes en Licence Ouverte) :
+- Permis : Sitadel (SDES), « Liste des permis de construire et autres autorisations d'urbanisme »,
+  fichier des logements, API DiDo filtrée par commune (mise à jour mensuelle).
+- DPE : ADEME, « DPE Logements existants (depuis juillet 2021) » (dpe03existant), totaux par étiquette.
+- PLU : Géoportail de l'Urbanisme (document en vigueur, lien du règlement).
+
+Rien de personnel : pour un particulier, on ne garde que la rue (sans numéro) ; le nom n'est
+publié par l'État que pour les sociétés (promoteurs, SCI…), on le garde alors.
+
+Usage : python3 outils/urbanisme.py
+"""
+import csv, io, json, os, sys, urllib.request, urllib.parse, datetime
+
+COMMUNES = {"prefailles": "44136", "pornic": "44131"}
+ICI = os.path.dirname(os.path.abspath(__file__))
+SORTIE = os.path.join(ICI, "..", "donnees", "urbanisme.json")
+DIDO = "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/8b35affb-55fc-4c1f-915b-7750f974446a/csv?COMM=eq:{c}"
+ADEME = "https://data.ademe.fr/data-fair/api/v1/datasets/dpe03existant/values_agg?qs={q}&field=etiquette_dpe&agg_size=10"
+GPU = "https://www.geoportail-urbanisme.gouv.fr/api/document?partition=DU_{c}&status=document.production"
+
+
+def get(url, tries=3):
+    for i in range(tries):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "lepetitpref-donnees"}), timeout=120) as r:
+                return r.read()
+        except Exception as e:
+            err = e
+    raise err
+
+
+def rue(s):
+    s = (s or "").strip()
+    if not s:
+        return ""
+    petits = {"DE", "DU", "DES", "LA", "LE", "LES", "D", "L", "ET", "AU", "AUX"}
+    out = []
+    for w in s.split():
+        if "'" in w:
+            a, b = w.split("'", 1)
+            out.append(a.lower() + "'" + b.capitalize())
+        elif w in petits and out:
+            out.append(w.lower())
+        else:
+            out.append(w.capitalize())
+    t = " ".join(out)
+    return t[:1].upper() + t[1:]
+
+
+def permis(c):
+    txt = get(DIDO.format(c=c)).decode("utf-8-sig")
+    R = list(csv.DictReader(io.StringIO(txt), delimiter=";"))
+    n = lambda v: int(float(v or 0))
+    ans, liste = {}, []
+    for r in R:
+        d = r.get("DATE_REELLE_AUTORISATION") or ""
+        if len(d) < 10 or r.get("ETAT_DAU") == "4":   # 4 = annulé
+            continue
+        a = d[:4]
+        x = ans.setdefault(a, {"a": a, "permis": 0, "logements": 0, "collectifs": 0, "surface": 0})
+        x["permis"] += 1
+        x["logements"] += n(r.get("NB_LGT_TOT_CREES"))
+        x["collectifs"] += n(r.get("NB_LGT_COL_CREES"))
+        x["surface"] += n(r.get("SURF_HAB_CREEE"))
+        nat = "neuf" if r.get("NATURE_PROJET_DECLAREE") == "1" else "existant"
+        extra = [k for k, l in (("I_EXTENSION", "extension"), ("I_SURELEVATION", "surélévation"), ("I_PISCINE", "piscine")) if r.get(k) == "true"]
+        sec, num = (r.get("SEC_CADASTRE1") or "").strip(), (r.get("NUM_CADASTRE1") or "").strip()
+        liste.append({"d": d[:10], "nat": nat, "lg": n(r.get("NB_LGT_TOT_CREES")), "col": n(r.get("NB_LGT_COL_CREES")),
+                      "s": n(r.get("SURF_HAB_CREEE")) or None, "x": [l for k, l in (("I_EXTENSION", "extension"), ("I_SURELEVATION", "surélévation"), ("I_PISCINE", "piscine")) if r.get(k) == "true"] or None,
+                      "r": rue(r.get("ADR_LIBVOIE_TER") or r.get("ADR_LIEUDIT_TER")),
+                      "soc": (r.get("DENOM_DEM") or "").strip() or None,
+                      "pa": (f"000{sec.rjust(2, '0')}{num.zfill(4)}" if sec and num else None),
+                      "etat": {"2": "autorisé", "5": "chantier commencé", "6": "terminé"}.get(r.get("ETAT_DAU"))})
+    liste.sort(key=lambda v: v["d"], reverse=True)
+    for v in liste:
+        for k in [k for k, y in v.items() if y is None]:
+            del v[k]
+    return {"annees": [ans[a] for a in sorted(ans)], "recents": liste[:40], "total": len(liste),
+            "fin": liste[0]["d"] if liste else None}
+
+
+def dpe(c):
+    out = {}
+    for k, q in (("tous", f"code_insee_ban:{c}"), ("maison", f"code_insee_ban:{c} AND type_batiment:maison"), ("appartement", f"code_insee_ban:{c} AND type_batiment:appartement")):
+        o = json.loads(get(ADEME.format(q=urllib.parse.quote(q))))
+        out[k] = {a["value"]: a["total"] for a in o.get("aggs", [])}
+        out[k + "_n"] = o.get("total")
+    return out
+
+
+def plu(c):
+    try:
+        L = json.loads(get(GPU.format(c=c)))
+    except Exception as e:
+        print("  GPU indisponible", c, e)
+        return None
+    L = [d for d in L if d.get("status") == "document.production"] or L
+    if not L:
+        return None
+    d = sorted(L, key=lambda d: d.get("publicationDate") or "", reverse=True)[0]
+    on = d.get("originalName") or ""
+    reg = None
+    try:
+        F = json.loads(get(f"https://www.geoportail-urbanisme.gouv.fr/api/document/{d['id']}/files"))
+        r = next((f for f in F if "_reglement_" in f.get("name", "") and f["name"].endswith(".pdf")), None)
+        if r:
+            reg = f"https://data.geopf.fr/annexes/gpu/documents/DU_{c}/{d['id']}/{r['name']}"
+    except Exception:
+        pass
+    appro = on.rsplit("_", 1)[-1] if on else ""
+    return {"type": d.get("type"), "approuve": f"{appro[6:8]}/{appro[4:6]}/{appro[:4]}" if len(appro) == 8 else None,
+            "id": d.get("id"), "reglement": reg, "fiche": f"https://www.geoportail-urbanisme.gouv.fr/document/by-id/{d.get('id')}"}
+
+
+def main():
+    try:
+        avant = json.load(open(SORTIE, encoding="utf-8"))
+    except Exception:
+        avant = {"communes": {}}
+    out = {"maj": datetime.date.today().isoformat(), "communes": {}}
+    for k, c in COMMUNES.items():
+        old = avant.get("communes", {}).get(k, {})
+        x = {"code": c}
+        for nom, f in (("permis", permis), ("dpe", dpe), ("plu", plu)):
+            try:
+                x[nom] = f(c) or old.get(nom)
+            except Exception as e:
+                print("  ", nom, c, "indisponible :", e, "→ valeur précédente gardée")
+                x[nom] = old.get(nom)
+        out["communes"][k] = x
+        p = x.get("permis") or {}
+        print(k, "permis", p.get("total"), "jusqu'au", p.get("fin"), "· DPE", (x.get("dpe") or {}).get("tous_n"), "· PLU", (x.get("plu") or {}).get("nom"))
+    if avant.get("communes") == out["communes"]:
+        print("rien de nouveau")
+        return
+    with open(SORTIE, "w", encoding="utf-8") as h:
+        json.dump(out, h, ensure_ascii=False, separators=(",", ":"))
+    print("écrit", os.path.normpath(SORTIE), os.path.getsize(SORTIE) // 1024, "Ko")
+
+
+if __name__ == "__main__":
+    main()

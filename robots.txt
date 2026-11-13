@@ -3,3 +3,4 @@ Allow: /
 Disallow: /donnees/ventes.json
 Disallow: /donnees/parcelles-prefailles.json
 Disallow: /donnees/parcelles-pornic.json
+Disallow: /donnees/urbanisme.json

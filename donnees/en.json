@@ -675,7 +675,6 @@
 "Touchez une parcelle pour le détail des ventes.": "Tap a plot for the details of its sales.",
 "Chercher": "Search",
 "Chercher une adresse": "Search an address",
-"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).",
 "Médecins": "Doctors",
 "Cabinets, maisons de santé": "Surgeries, health centres",
 "Soins à domicile": "Home care",
@@ -689,9 +688,82 @@
 "Prix au m²": "Price per m²",
 "en milliers d'euros le m²": "in thousands of euros per m²",
 "Parties de la page": "Page sections",
-"Type et année": "Type and year"
+"Type et année": "Type and year",
+"Permis": "Permits",
+"Énergie": "Energy",
+"PLU": "Zoning",
+"Permis de construire": "Building permits",
+"Les derniers permis": "Latest permits",
+"Voir plus de permis": "See more permits",
+"Encore plus": "More",
+"Maison neuve": "New house",
+"Travaux sur une maison": "Work on a house",
+"Énergie des logements (DPE)": "Home energy ratings (EPC)",
+"Urbanisme (PLU)": "Planning (local zoning plan)",
+"Lire le règlement (PDF)": "Read the regulations (PDF)",
+"Tout le dossier sur le Géoportail": "Full file on the Géoportail",
+"Cadastre": "Land register",
+"Zonage PLU": "Zoning",
+"Couches de la carte": "Map layers",
+"Touchez un endroit de la carte pour connaître sa zone du PLU.": "Tap a spot on the map to see its zoning.",
+"zone urbaine": "urban zone",
+"zone agricole": "agricultural zone",
+"zone naturelle": "natural zone",
+"zone à urbaniser": "zone to be developed",
+"Règlement de la zone ↗": "Zone regulations ↗",
+"autorisé": "approved",
+"chantier commencé": "work started",
+"terminé": "completed",
+"extension": "extension",
+"piscine": "swimming pool",
+"surélévation": "raised storey",
+"Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).": "To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY 4.0 licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The Land register and Zoning layers, the zone of a tapped spot and plot outlines come from IGN services (data.geopf.fr, apicarto.ign.fr), called only when you use them. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab)."
 },
 "rules": [
+[
+"^Permis qui créent des logements à (Préfailles|Pornic), d'après la base Sitadel de l'État \\(mise à jour chaque mois\\)\\. Le nom n'est donné que pour les sociétés\\.$",
+"Permits creating homes in $1, from the State's Sitadel database (updated monthly). Names are only given for companies."
+],
+[
+"^Diagnostics de performance énergétique faits à (Préfailles|Pornic) depuis juillet 2021 \\(ADEME\\)\\. F et G : les « passoires thermiques », bientôt interdites à la location\\.$",
+"Energy performance certificates issued in $1 since July 2021 (ADEME). F and G: poorly insulated homes, soon banned from being let."
+],
+[
+"^Plan local d'urbanisme de (Préfailles|Pornic), approuvé le (.+)\\.$",
+"Local zoning plan of $1, approved on $2."
+],
+[
+"^(\\d+) diagnostics · (\\d+) % en F ou G$",
+"$1 certificates · $2% rated F or G"
+],
+[
+"^(\\d+) logements? en collectif$",
+"$1 flats in a block"
+],
+[
+"^(\\d+) logements?$",
+"$1 homes"
+],
+[
+"^(\\d+) permis · dont (\\d+) en collectif$",
+"$1 permits · incl. $2 flats in blocks"
+],
+[
+"^(\\d+) permis$",
+"$1 permits"
+],
+[
+"^(\\d+) m² créés(.*)$",
+"$1 m² created$2"
+],
+[
+"^Permis : (.+)$",
+"Permit: $1"
+],
+[
+"^Zone (\\S+)$",
+"Zone $1"
+],
 [
 "^Voir toutes les ventes \\((\\d+)\\)$",
 "See all sales ($1)"
