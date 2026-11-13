@@ -1102,7 +1102,7 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
   const swl=b=>{const sp=b&&b.sp,x=b&&b.b;if(!x||!x.s)return"";const H=swellAt(sp,x.s),T=x.s.swp??x.s.tp,w=x.w||{},rel=w.wd!=null?windRel(sp,w.wd):"";
     return (H!=null?`${r1(H)} m${T?` · ${r0(T)} s`:""} · ${dirTxt(x.s.swd??x.s.sd)}`:"")+(w.w!=null?`<br>${({on:"onshore",sideon:"onshore",side:"side",sideoff:"offshore",off:"offshore"})[rel]||""} ${r0(w.w)} nds${(w.g||0)>=w.w+6?` · raf. ${r0(w.g)}`:""}`:"");};
   /* motif court du « possible » : 2 mots au plus, le coup de vent qui arrive en premier */
-  const motif=b=>{if(b.j[0]!==1)return"";const m=String(b.j[1]).split(" · ").slice(1).filter(x=>!/^\d/.test(x)).map(x=>x.replace(/^après (\d+h) : ([^:]*).*$/,"$2 après $1").replace(/^ça forcit : raf\. \d+ à (\d+h).*$/,"ça forcit à $1").replace(/ : .*$/,""));
+  const motif=b=>{if(b.j[0]!==1)return"";const m=String(b.j[1]).split(" · ").slice(1).filter(x=>!/^\d/.test(x)).map(x=>x.replace(/^après (\d+h) : ([^:]*).*$/,"$2 après $1").replace(/^ça forcit : raf\. \d+ à (\d+h).*$/,"ça forcit à $1").replace(/ : confirmés$/,", confirmés").replace(/ : .*$/,""));
     const f=m.filter(x=>/forcit|coup de vent/.test(x)),o0=[...new Set(m.filter(x=>!/forcit|coup de vent/.test(x)))],o=o0.filter(x=>!(x==="rafaleux"&&o0.some(y=>y!==x&&/rafaleux/.test(y))));return m.length?"<br><em>"+esc([...f,...o].slice(0,2).join(" · "))+"</em>":"";};
   const surf=weekTable("wk-surf","Où surfer cette semaine","wave",[
     {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)}${B.x.tt?` · ${esc(B.x.tt.txt)}`:""} · avec école`,"",d);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
