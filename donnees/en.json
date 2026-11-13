@@ -965,7 +965,10 @@
 "Trop petit : houle trop faible": "Too small: swell too weak",
 "Plus de créneau de jour aujourd'hui : regardez demain": "No daylight slot left today: look at tomorrow",
 "Pas de prévision pour ce spot à cette heure": "No forecast for this spot at this time",
-"Comparer :": "Compare:"
+"Comparer :": "Compare:",
+"bon": "good",
+"possible": "possible",
+"pas pour débuter": "not for beginners"
 },
 "rules": [
 [
