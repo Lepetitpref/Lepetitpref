@@ -1248,3 +1248,53 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .note-pill.no,.note-pill.dim,.note-pill:not(.ok):not(.warn){background:color-mix(in srgb,var(--line-strong) 55%,transparent);color:var(--muted)}
 .spot-cmp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .spot-cmp .chip{min-height:44px;text-decoration:none}
+/* ===== Surf : présentation soignée (cartes par niveau, mesures avec icônes, 5 jours en cartes) ===== */
+.sf{list-style:none;padding:14px 0 16px}
+.sf-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.sf-t{margin:0;font:400 22px/1.1 var(--font-title,Newsreader,serif);color:var(--ink)}
+.sf-tide{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:14px;color:var(--muted)}
+.sf-tide .i{color:var(--accent)}
+.sf-lv{--c:var(--line-strong);display:block;position:relative;margin:0 0 10px;padding:12px 14px 12px 16px;border-radius:14px;background:color-mix(in srgb,var(--c) 9%,var(--surface));color:var(--ink);text-decoration:none;overflow:hidden}
+.sf-lv::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.sf-lv.ok{--c:var(--ok)}.sf-lv.warn{--c:var(--warn)}
+.sf-lab{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sf-v{font-size:14px;letter-spacing:0;text-transform:none;font-weight:600;color:var(--muted)}
+.sf-v.ok{color:var(--ok)}.sf-v.warn{color:var(--warn)}
+.sf-spot{margin-top:6px;font-size:18px;font-weight:600;line-height:1.2}
+.sf-when{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin-top:2px;font-size:16px;font-weight:600;color:var(--ink)}
+.sf-word{font-size:15px;font-weight:400;color:var(--muted)}
+.sf-met{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:15px}
+.sf-met span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sf-met .i{width:16px;height:16px;color:var(--accent)}
+.sf-met small{font-size:14px;color:var(--muted)}
+.sf-also,.sf-next{margin-top:8px;font-size:14px;color:var(--muted)}
+.sf-next b{color:var(--ink);font-weight:600}
+.sf-share{margin:4px 0 6px}
+.sf-h4{margin:16px 0 8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sf-week{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:stretch}
+.sf-wl{display:grid;grid-template-rows:22px 54px 54px;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+.sf-wl span{display:flex;align-items:center}
+.sf-ws{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;padding-bottom:2px}
+.sf-ws::-webkit-scrollbar{display:none}
+.sf-day{flex:0 0 96px;display:grid;grid-template-rows:22px 54px 54px;gap:6px;scroll-snap-align:start}
+.sf-dn{font-size:14px;font-weight:600;color:var(--ink);text-align:center}
+.sf-dc{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4px;border-radius:10px;background:color-mix(in srgb,var(--line-strong) 25%,transparent);line-height:1.2}
+.sf-dc b{font-size:14px;font-weight:600}
+.sf-dc small{font-size:14px;color:var(--muted)}
+.sf-dc.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.sf-dc.warn{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}
+.sf-dc.ok small,.sf-dc.warn small{color:inherit;opacity:.85}
+.sf-safe{margin:14px 0 6px;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--warn) 7%,transparent);font-size:14px;line-height:1.55}
+.sf-safe a{font-weight:600;color:var(--ink)}
+.sf-src{margin:0;font-size:14px;color:var(--muted);line-height:1.45}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sf-dc.ok{background:color-mix(in srgb,var(--ok) 24%,transparent)}}
+:root[data-theme=dark] .sf-dc.ok{background:color-mix(in srgb,var(--ok) 24%,transparent)}
+.sf-top{justify-content:space-between;flex-wrap:wrap;gap:4px 12px}
+.sf-t{display:flex;align-items:center;gap:8px}
+.sf-t .i{width:22px;height:22px;color:var(--accent)}
+.sf-tide{margin:0}
+.sf-share{margin:-2px 0 12px}
+.sf-others{border-top:1px solid var(--line);padding-top:16px}
+.sf-no{padding-top:10px;padding-bottom:10px}
+.sf-no .sf-word{display:block;margin-top:4px}
+.sf-list>li+li{border-top:1px solid var(--line)}
