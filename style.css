@@ -1380,4 +1380,6 @@ button.wk-c{cursor:pointer}
 .spot-days .chip{flex:0 0 auto;min-height:44px}
 .spot-days .chip.on{background:var(--sel2,#2f78ab);color:#fff;border-color:transparent}
 .wk-c em{font-style:normal;font-weight:600}
-/* version du site */:root{--pp-v:"20261113-1913"}
+.wk-c.foil{text-align:left;cursor:pointer}
+.wk-c.foil b{color:var(--muted)}
+/* version du site */:root{--pp-v:"20261113-1917"}
