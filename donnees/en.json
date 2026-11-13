@@ -817,9 +817,15 @@
 "Une adresse": "An address",
 "parcelle de l'immeuble": "building's plot",
 "Touchez une année pour voir ses permis, en liste et sur la carte.": "Tap a year to see its permits, as a list and on the map.",
-"On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel. Pour votre adresse : « Autour de mon adresse », en haut de la page.": "Building is only allowed in urban zones and zones to be developed; the rest is agricultural or natural. For your address: “Around my address”, at the top of the page."
+"On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel. Pour votre adresse : « Autour de mon adresse », en haut de la page.": "Building is only allowed in urban zones and zones to be developed; the rest is agricultural or natural. For your address: “Around my address”, at the top of the page.",
+"Ventes à moins de 300 m": "Sales within 300 m",
+"Permis depuis 2021, à moins de 300 m": "Permits since 2021, within 300 m"
 },
 "rules": [
+[
+"^Votre adresse à (Préfailles|Pornic)$",
+"Your address in $1"
+],
 [
 "^(\\d+) zones? · (.+)$",
 "$1 zones · $2"

@@ -1090,3 +1090,13 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .plu-grp>summary b{font-weight:600;font-size:15px}
 .plu-grp>summary small{font-size:13px;color:var(--muted)}
 .plu-grp>.pra-grid{margin:0 10px 10px}
+/* suggestions d'adresses : dans le flux (les blocs coupent ce qui dépasse) */
+.im-sug{position:static;flex-basis:100%;margin-top:6px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+/* « Autour de mon adresse » : trois blocs de couleur */
+.ia-blk{margin:10px 0;padding:2px 12px 6px;border-left:3px solid var(--c);border-radius:10px;background:color-mix(in srgb,var(--c) 7%,var(--surface))}
+.ia-h{display:flex;align-items:center;gap:8px;margin:10px 0 6px;font:600 15px var(--font-ui,system-ui);color:var(--ink)}
+.ia-h .i{color:var(--c);flex:none}
+.ia-h span{flex:1}
+.ia-h b{min-width:28px;height:24px;padding:0 8px;display:inline-grid;place-items:center;border-radius:12px;background:var(--c);color:#fff;font-size:13px}
+.ia-blk .list{margin:0}
+.im-addr-res>.pra-hint{font-weight:600;color:var(--ink)}
