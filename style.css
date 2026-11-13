@@ -1228,3 +1228,23 @@ body.map-open .topbar,body.map-open .tabs{visibility:hidden}
 .surf-h small{margin-left:0;margin-top:0;flex-basis:auto;flex:1;min-width:12em}
 .spot-act,.spot-act .sa-h b,.spot-act .sa-main{color:var(--ink)}
 .spot-act .sa-sub{color:var(--muted)}
+/* glisse : design épuré après relecture (un seul cadre, texte simple, 14 px minimum) */
+.nw{white-space:nowrap}
+.cond{display:block;margin-top:4px;font-size:14px;line-height:1.45;color:var(--ink)}
+.lv,.spot-act{background:transparent;border:0;border-left:3px solid var(--line-strong);border-radius:0;padding:2px 0 2px 12px}
+.lv-grid{align-items:start;gap:14px}
+.lv-h{justify-content:flex-start;gap:8px}
+.surf-h{align-items:flex-start}
+.surf-h>span:last-child{display:flex;flex-direction:column}
+.surf-h small{font-size:14px;color:var(--muted)}
+.surf-share{margin:10px 0 0}
+.s5x{font-size:14px}.s5x small{font-size:14px}
+.s5x:not(.ok):not(.warn){background:none;color:var(--faint,var(--muted));font-weight:400}
+.surf-safe,.ksafe{background:transparent;border:0;border-left:3px solid var(--warn);border-radius:0;padding:2px 0 2px 12px;font-size:14px}
+.ksafe{margin:12px 0 4px}
+.spot-act small,.tag{font-size:14px}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .s5x.ok{background:color-mix(in srgb,var(--ok) 22%,transparent)}}
+:root[data-theme=dark] .s5x.ok{background:color-mix(in srgb,var(--ok) 22%,transparent)}
+.note-pill.no,.note-pill.dim,.note-pill:not(.ok):not(.warn){background:color-mix(in srgb,var(--line-strong) 55%,transparent);color:var(--muted)}
+.spot-cmp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.spot-cmp .chip{min-height:44px;text-decoration:none}
