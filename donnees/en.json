@@ -819,9 +819,33 @@
 "Touchez une année pour voir ses permis, en liste et sur la carte.": "Tap a year to see its permits, as a list and on the map.",
 "On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel. Pour votre adresse : « Autour de mon adresse », en haut de la page.": "Building is only allowed in urban zones and zones to be developed; the rest is agricultural or natural. For your address: “Around my address”, at the top of the page.",
 "Ventes à moins de 300 m": "Sales within 300 m",
-"Permis depuis 2021, à moins de 300 m": "Permits since 2021, within 300 m"
+"Permis depuis 2021, à moins de 300 m": "Permits since 2021, within 300 m",
+"trop peu de ventes pour comparer": "too few sales to compare",
+"Effacer cette adresse": "Clear this address",
+"Aller": "Go",
+"Glissez le doigt pour lire chaque année ; touchez-en une pour voir ses permis, en liste et sur la carte.": "Slide your finger to read each year; tap one to see its permits, as a list and on the map."
 },
 "rules": [
+[
+"^([+−]\\d+) % sur un an \\(peu de ventes\\)$",
+"$1% over a year (few sales)"
+],
+[
+"^Aller à une adresse à (Préfailles|Pornic)$",
+"Go to an address in $1"
+],
+[
+"^(\\d+) logements? autorisés?$",
+"$1 homes approved"
+],
+[
+"^dont (\\d+) en immeubles$",
+"incl. $1 in blocks of flats"
+],
+[
+"^(\\d{4}) \\(en cours\\)$",
+"$1 (so far)"
+],
 [
 "^Votre adresse à (Préfailles|Pornic)$",
 "Your address in $1"

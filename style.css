@@ -1100,3 +1100,6 @@ button.pm-yr[aria-pressed="true"] .pm-go{color:var(--i-act)}
 .ia-h b{min-width:28px;height:24px;padding:0 8px;display:inline-grid;place-items:center;border-radius:12px;background:var(--c);color:#fff;font-size:13px}
 .ia-blk .list{margin:0}
 .im-addr-res>.pra-hint{font-weight:600;color:var(--ink)}
+.im-clear{margin:0 0 6px;text-align:right}
+.im-clear .lnk{display:inline-flex;align-items:center;gap:4px;min-height:36px;font-size:14px}
+.pm-wrap{touch-action:pan-y}
