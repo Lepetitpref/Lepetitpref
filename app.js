@@ -1218,14 +1218,14 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   /* fenêtre de sortie voile : force maxi, rafales, direction, mer, marées ; le bulletin officiel l'emporte s'il annonce plus fort */
   const D=weekDays(),WD=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
   const bulF=bulDay;
-  const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map(d=>{const r=rankSpots("voile",d).top,b=r&&r.b,w=b&&b.w,bf=bulF(d);
+  const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map((d,ix)=>{if(ix>=2&&!(S.wkOpen||{}).voile)return"";const r=rankSpots("voile",d).top,b=r&&r.b,w=b&&b.w,bf=bulF(d);
       let v=b?b.j[0]:0;const fmax=b?bft(b.wmax??w.w):null;if(bf&&bf.max>=6)v=0;else if(bf&&fmax!=null&&bf.max>fmax)v=Math.min(v,1);
       const dl=(d===t?"Auj.":d===addDays(t,1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,""))+((new Date(d)-new Date(t))/864e5>=3?"<small>à confirmer</small>":"");
       const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}`:"";
       const tdd=tidesOfDay(d),tl=tdd.length?`<br>${tdd.map(x=>`${x.k==="PM"?"PM":"BM"} ${hm(new Date(x.ms))}`).join(" · ")} · coef. ${maxCoef(d)}`:"";
       const head=v===0?`On reste au port${fmax!=null&&!(b&&b.coup)?` · force ${fmax}`:""}`:`${NOTE[v]} · force ${bf&&bf.max>fmax?`${fmax} à ${bf.max} (bulletin)`:fmax} · ${dirTxt(w.wd)}`;
       const why=v===0?(bf&&bf.max>=6?`bulletin : ${esc(bf.txt)}`:b&&b.coup?esc(String(b.j[1])):b&&/^Force/.test(b.j[1])?`force ${fmax}, rafales ${r0(b.gmax||w.g)} nds`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · houle ${r1(b.s.hs)} m`:""}`;
-      return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0?NOTECLS[v]:"no"}"><b>${head}</b><small>${why}${v===0&&b&&w?` · ${ws}`:""}${tl}</small></span></div>`;}).join("")}</div>`:"";
+      return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0?NOTECLS[v]:"no"}"><b>${head}</b><small>${why}${v===0&&b&&w?` · ${ws}`:""}${tl}</small></span></div>`;}).join("")}</div>${D.length>2?`<button type="button" class="wk-fold" data-act="wkmore" data-v="voile" aria-expanded="${!!(S.wkOpen||{}).voile}">${(S.wkOpen||{}).voile?"Replier":`Voir les ${D.length-2} jours suivants`}</button>`:""}`:"";
   return `<section class="sec blk nav-blk" id="nav" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic("sail")}Pour naviguer</h2></div><div class="nav-in">
     ${state}${tide}${voile}${bul}${buoy}
     <p class="nav-sos"><a class="chip" href="tel:196">${ic("phone","i-s")} Secours en mer · 196</a><span>ou VHF canal 16 (CROSS Étel)</span></p>
