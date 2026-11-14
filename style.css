@@ -1408,4 +1408,8 @@ button.wk-c{cursor:pointer}
 .nav-bul summary{list-style:none;justify-content:center;margin:8px 0 4px;border-radius:12px;background:var(--accent);color:var(--accent-ink)!important;font-size:16px!important}
 .nav-bul summary::-webkit-details-marker{display:none}
 .nav-bul[open] summary{background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)!important}
-/* version du site */:root{--pp-v:"20261114-1317"}
+/* ciné : nom de la salle sur sa ligne, horaires alignés dessous, tous de la même largeur */
+.times{gap:6px 8px;margin-top:6px}
+.times>span:first-child{flex-basis:100%;margin-bottom:-2px}
+.times .ics-t{min-width:4.8em;text-align:center;justify-content:center}
+/* version du site */:root{--pp-v:"20261114-1319"}
