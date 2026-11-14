@@ -1402,4 +1402,4 @@ button.wk-c{cursor:pointer}
 /* tableaux de la semaine : jours suivants repliés */
 .wk-r.wk-hid{display:none}
 .wk-fold{display:block;width:100%;min-height:44px;margin:6px 0 2px;border:1px dashed var(--line-strong);border-radius:10px;background:transparent;color:var(--accent);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
-/* version du site */:root{--pp-v:"20261114-1231"}
+/* version du site */:root{--pp-v:"20261114-1232"}

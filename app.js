@@ -1090,7 +1090,7 @@ const slotH=b=>b.h2!=null&&b.h2>b.h1?`${b.h1}h-${b.h2+1}h`:`${b.h}h`;
 function weekDays(){const d0=glDay(today()),L=[];for(let i=0;i<5;i++){const d=addDays(d0,i);if(!wxDay(d))break;L.push(d);}return L;}
 const reasonShort=t=>{const x=String(t||"").split(" · ")[0];if(/^Bulletin Météo-France : /.test(x))return x.replace(/^Bulletin Météo-France : /,"bulletin : ").replace(/ (aujourd'hui|ce jour-là)$/,"");const m=x.match(/\(([^)]*\d[^)]*)\)/);return x.replace(/\s*\(.*$/,"").replace(/ : .*$/,"").replace(/, rafales.*$/,"")+(m?` : ${m[1].replace("rafales","raf.")}`:"");};
 const SURFW2={"Mer lisse":"glassy","Plat":"flat","Trop petit":"flat","Haché par le vent de mer":"onshore, haché","Clapot, vent de mer":"onshore, clapot"};
-function wkCell(v,sp,sub,why,d){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}${d?"|"+d:""}"><span class="wk-v">${NOTE[v]}</span><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><small>${esc(why||"non")}</small></span>`;}
+function wkCell(v,sp,sub,why,d){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}${d?"|"+d:""}"><span class="wk-v">${NOTE[v]}</span><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><span class="wk-v">Non</span><small>${esc(String(why||"").replace(/^Non partout\s*:\s*/,"partout : ").replace(/^Non partout /,"partout ").replace(/^Non · /,""))}</small></span>`;}
 function weekTable(id,title,icn,cols,note,lex){const D=weekDays();if(!D.length)return"";
   const dl=d=>d===today()?"Auj.":d===addDays(today(),1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
   const far=d=>(new Date(d)-new Date(today()))/864e5>=3;
@@ -1121,7 +1121,7 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
       const L=rankSpots(a,d).L,o=rankSpots(a==="kite"?"wing":"kite",d).top,same=o&&o.b.j[0]>0?L.find(x=>x.sp.id===o.sp.id):null;
       const alt=same||L.find(x=>!/Vent de terre|Interdit/.test(x.b.j[1]));const thr=a==="kite"?32:34,gall=Math.max(0,...L.map(x=>x.b.gmax||0)),bul=L.find(x=>/^Bulletin/.test(x.b.j[1]));
       if(!same&&L.length&&L.every(x=>x.b.j[0]===0)){if(bul)return wkCell(0,null,"",`Non partout (${reasonShort(bul.b.j[1])})`);if(L.every(x=>/^Vent de terre/.test(x.b.j[1]))){const w0=L[0].b.w||{};return wkCell(0,null,"",`Non partout : vent de terre (${dirTxt(w0.wd)} ${r0(w0.w)} nds)`);}if(gall>=thr)return wkCell(0,null,"",`Non partout : rafales jusqu'à ${r0(gall)} nds`);}
-      const why=x=>(x.b.gmax||0)>=(a==="kite"?32:34)&&!/afales|Bulletin/.test(x.b.j[1])?`rafales ${r0(x.b.gmax)} nds`:reasonShort(x.b.j[1]).toLowerCase();
+      const why=x=>(x.b.gmax||0)>=(a==="kite"?32:34)&&!/afales|Bulletin/.test(x.b.j[1])?`rafales ${r0(x.b.gmax)} nds`:reasonShort(x.b.j[1]).toLowerCase().replace(/^foil seulement : (\d+) nds/,"pas assez de vent pour le kite : $1 nds");
       return wkCell(0,null,"",alt?`${spShort(alt.sp.n)} : ${why(alt).replace(" : "," ")}`:r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
   const kw=weekTable("wk-kite","Où kiter et winger cette semaine","sail",[kc("kite"),kc("wing")],
     "");
