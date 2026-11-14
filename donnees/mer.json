@@ -1,30 +1,20 @@
 {
- "maj": "2026-11-14T15:53:18.307Z",
+ "maj": "2026-11-14T22:34:55.678Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du samedi 14 novembre 2026 à 12H30 légales.",
-  "avis": "Pas d'avis de vent fort en cours ni prévu.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" soir",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du samedi 14 novembre 2026 à 18H15 légales.",
+  "avis": "Avis de grand frais à coup de vent Nr 130",
   "sections": [
    {
-    "t": "Situation générale le samedi 14 novembre 2026 à 06H00 UTC, et évolution",
+    "t": "Situation générale le samedi 14 novembre 2026 à 12H00 UTC, et évolution",
     "l": [
-     "Anticyclone 1023 hPa sur le nord de la France et le sud de l'Allemagne, s'évacuant vers l'est en journée. Dépression \"BRUNA\" 1010 hPa sur la Corogne, se comblant. Dépression 996 hPa à l'ouest de l'Irlande prévue 991 hPa en Mer d'Irlande demain matin et 992 hPa en entrée de Manche demain midi."
+     "Dépression complexe 992 hPa à l'ouest de l'Irlande se décalant vers l'est, attendue 994 hPa sur la Pointe Bretagne demain midi. Dorsale de l'Europe Centrale à l'Angleterre s'affaissant."
     ]
    },
    {
-    "t": "Observations le samedi 14 novembre 2026 à 09H00 UTC",
+    "t": "Observations le samedi 14 novembre 2026 à 15H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Est 8 nœuds, nuageux avec éclaircies, visibilité 10 milles. Belle Ile : vent Est 16 nœuds, nuageux avec éclaircies, visibilité 10 milles. Ile d'Yeu : vent Est 10 nœuds. Groix : vent Est 12 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 10 nœuds."
-    ]
-   },
-   {
-    "t": "Prévisions pour l'après-midi du samedi 14 novembre",
-    "l": [
-     "VENT : Est à Sud-Est 2 à 4 virant secteur Sud en fin d'après-midi.",
-     "MER : peu agitée à agitée, s'atténuant belle à peu agitée en fin d'après-midi.",
-     "HOULE : Sud à Sud-Est puis Sud-Ouest 0.5 à 1 m.",
-     "TEMPS : se couvrant.",
-     "VISIBILITE : bonne."
+     "Pointe de Penmarc'h : vent Sud-Est 12 nœuds, très nuageux à couvert, visibilité 8 milles. Belle Ile : vent Sud-Sud-Est 6 nœuds, très nuageux à couvert, visibilité 8 milles. Ile d'Yeu : vent Sud-Sud-Est 4 nœuds, mer peu agitée, très nuageux à couvert, visibilité 9 milles. Groix : vent Sud-Est 8 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 4 nœuds."
     ]
    },
    {
@@ -40,7 +30,7 @@
    {
     "t": "Prévisions pour la journée du dimanche 15 novembre",
     "l": [
-     "VENT : Sud-Ouest 5 à 6, fraîchissant 6 à 7 en fin de matinée, puis virant Ouest l'après-midi. Rafales.",
+     "VENT : Ouest à Sud-Ouest fraîchissant 6 à 7 en matinée, puis Ouest 7 à 8 l'après-midi et mollissant 6 à 7 en fin d'après-midi. Fortes rafales.",
      "MER : agitée, devenant progressivement forte à très forte.",
      "HOULE : Sud-Ouest près de 0.5 m, s'amplifiant 1 à 2 m le matin, parfois 2.5 m de Penmarc'h à Belle-Île.",
      "TEMPS : pluie, parfois forte.",
@@ -50,7 +40,7 @@
    {
     "t": "Tendance pour la nuit du 15 au 16, et la journée du lundi 16 novembre",
     "l": [
-     "VENT : Ouest 6 à 7, mollissant 4 à 5 dans la nuit, puis fraîchissant Sud à Sud-Est 6 à 7 dans l'après-midi. Rafales.",
+     "VENT : Ouest mollissant 5 à 6, puis secteur Ouest 2 à 4 en fin de nuit, puis fraîchissant Sud à Sud-Est 6 à 7 dans l'après-midi. Rafales.",
      "MER : forte à très forte, s'atténuant forte en seconde partie de nuit, puis agitée à forte en matinée.",
      "HOULE : Ouest à Sud-Ouest 2 à 3, jusqu'à 4 m de Penmarc'h à Belle-Île, puis s'atténuant 1 à 2 m l'après-midi.",
      "TEMPS : couvert et parfois pluvieux.",
@@ -58,13 +48,13 @@
     ]
    }
   ],
-  "prochain": "Prochain bulletin le samedi 14 novembre 2026, vers 18H15 légales",
+  "prochain": "Prochain bulletin le dimanche 15 novembre 2026, vers 06H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-14T15:53:27.254Z"
+  "lu": "2026-11-14T22:35:12.146Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-14 16:00",
+  "heure": "2026-11-14 22:30",
   "h13": null,
   "hmax": null,
   "t13": null,
