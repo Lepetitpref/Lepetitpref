@@ -1412,4 +1412,5 @@ button.wk-c{cursor:pointer}
 .times{gap:6px 8px;margin-top:6px}
 .times>span:first-child{flex-basis:100%;margin-bottom:-2px}
 .times .ics-t{min-width:4.8em;text-align:center;justify-content:center}
-/* version du site */:root{--pp-v:"20261114-1322"}
+.ba-lnk{display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:6px;font-size:15px;font-weight:600;color:var(--accent);text-decoration:none}
+/* version du site */:root{--pp-v:"20261114-1324"}
