@@ -1049,9 +1049,9 @@ function begReason(sp,d){const hs=surfHours(sp,d).filter(x=>d!==today()||x.h>=ne
     const r=H==null?null:k>=16||g>=22?["vent trop fort",`${r0(k)} nds, raf. ${r0(g)}`]:(rel==="off"||rel==="sideoff")&&k>10?["vent de terre trop fort",`${r0(k)} nds`]:H<(T&&T>=8?.3:.4)?["trop petit",`${r1(H)} m`]:H>1.2?["vagues trop grosses",`${r1(H)} m, on apprend sous 1,2 m`]:null;
     if(r){const e=R[r[0]]||(R[r[0]]={n:0,v:r[1],a:x.h,b:x.h});e.n++;e.b=x.h;}});
   const top=Object.entries(R).sort((a,b)=>b[1].n-a[1].n)[0];return top?`${top[0]} (${top[1].v}, ${top[1].a===top[1].b?`vers ${top[1].a}h`:`${top[1].a}h-${top[1].b+1}h`})`:"créneau trop court";}
-function begWhy(d){const L=SPOTSX.filter(x=>x.acts.includes("surf")&&/Débutant/.test(x.lvl||"")).sort((a,b)=>km(HOME,a)-km(HOME,b));if(!L.length)return"";
+function begWhy(d,nxt=true){const L=SPOTSX.filter(x=>x.acts.includes("surf")&&/Débutant/.test(x.lvl||"")).sort((a,b)=>km(HOME,a)-km(HOME,b));if(!L.length)return"";
   const rs=L.map(sp=>({sp,r:begReason(sp,d)})),k0=x=>x.r.replace(/\s*\(.*$/,"");let t=rs.every(x=>k0(x)===k0(rs[0]))&&rs.length>1?`${L.length===2?`${spShort(L[0].n)} et ${spShort(L[1].n)}`:"Partout"} : ${rs[0].r}`:`${spShort(L[0].n)} : ${rs[0].r}`;
-  for(let i=1;i<=5;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const B=begSurf(dd);if(B){t+=` · prochain : ${dshort(dd)}, ${spShort(B.sp.n)}`;break;}}return t;}
+  for(let i=1;nxt&&i<=5;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const B=begSurf(dd);if(B){t+=` · prochain : ${dshort(dd)}, ${spShort(B.sp.n)}`;break;}}return t;}
 function surfRow(d){const RS=rankSpots("surf",d),top=RS.top;if(!top)return"";const b=top.b,sp=top.sp,n=b.j[0];
   const B=begSurf(d),bn=B?B.n:0;let nb=null;if(!B){for(let i=1;i<=5;i++){const dd=addDays(d,i);if(!wxDay(dd))break;const x=begSurf(dd);if(x){nb={d:dd,x};break;}}}
   const short=n=>esc(n.replace(/^(Saint-Brevin, |Pointe |Plage de )/,"").replace(/-Plage$/,""));
@@ -1108,7 +1108,7 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
   const motif=b=>{if(b.j[0]!==1)return"";const m=String(b.j[1]).split(" · ").slice(1).filter(x=>!/^\d/.test(x)).map(x=>x.replace(/^après (\d+h) : ([^:]*).*$/,"$2 après $1").replace(/^ça forcit : raf\. \d+ à (\d+h).*$/,"ça forcit à $1").replace(/ : confirmés$/,", confirmés").replace(/ : .*$/,""));
     const f=m.filter(x=>/forcit|coup de vent/.test(x)),o0=[...new Set(m.filter(x=>!/forcit|coup de vent/.test(x)))],o=o0.filter(x=>!(x==="rafaleux"&&o0.some(y=>y!==x&&/rafaleux/.test(y))));return m.length?"<br><em>"+esc([...f,...o].slice(0,2).join(" · "))+"</em>":"";};
   const surf=weekTable("wk-surf","Où surfer cette semaine","wave",[
-    {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)}${B.x.tt?` · ${esc(B.x.tt.txt)}`:""} · avec école`,"",d);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
+    {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)}${B.x.tt?` · ${esc(B.x.tt.txt)}`:""} · avec école`,"",d);}const w=begWhy(d,false);return wkCell(0,null,"",w||"non");}},
     {l:"Confirmés",f:d=>{const R0=rankSpots("surf",d),r=R0.top,Hr=r?swellAt(r.sp,r.b.s):null,big=r&&Hr!=null?R0.L.find(x=>x!==r&&x.b.j[0]>0&&(swellAt(x.sp,x.b.s)??0)>=Hr+.3):null;
       return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}<br>${swl(r)}${big?`<br>plus gros : <b>${esc(spShort(big.sp.n))}</b> ${slotH(big.b)}, ${r1(swellAt(big.sp,big.b.s))} m`:""}`,"",d):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
     "",
