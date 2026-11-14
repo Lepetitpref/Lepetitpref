@@ -1092,7 +1092,7 @@ const reasonShort=t=>{const x=String(t||"").split(" · ")[0];if(/^Bulletin Mét�
 const SURFW2={"Mer lisse":"glassy","Plat":"flat","Trop petit":"flat","Haché par le vent de mer":"onshore, haché","Clapot, vent de mer":"onshore, clapot"};
 function wkCell(v,sp,sub,why,d){return v>0?`<button type="button" class="wk-c ${NOTECLS[v]}" data-act="spot" data-v="${sp.id}${d?"|"+d:""}"><span class="wk-v">${NOTE[v]}</span><b>${esc(spShort(sp.n)).replace(/-/g,"\u2011")}</b><small>${sub}</small></button>`:`<span class="wk-c no"><small>${esc(why||"non")}</small></span>`;}
 function weekTable(id,title,icn,cols,note,lex){const D=weekDays();if(!D.length)return"";
-  const dl=d=>d===today()?"Aujourd'hui":d===addDays(today(),1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
+  const dl=d=>d===today()?"Auj.":d===addDays(today(),1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,"");
   const far=d=>(new Date(d)-new Date(today()))/864e5>=3;
   return `<section class="sec blk wk" id="${id}" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic(icn)}${title}</h2></div>
    ${note?`<p class="wk-note">${note}</p>`:""}
@@ -1220,7 +1220,7 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   const bulF=bulDay;
   const voile=D.length?`<div class="wk-t nav-win" role="table"><div class="wk-r wk-hd one" role="row"><span></span><span class="wk-h">Voile : fenêtre de sortie</span></div>${D.map(d=>{const r=rankSpots("voile",d).top,b=r&&r.b,w=b&&b.w,bf=bulF(d);
       let v=b?b.j[0]:0;const fmax=b?bft(b.wmax??w.w):null;if(bf&&bf.max>=6)v=0;else if(bf&&fmax!=null&&bf.max>fmax)v=Math.min(v,1);
-      const dl=(d===t?"Aujourd'hui":d===addDays(t,1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,""))+((new Date(d)-new Date(t))/864e5>=3?"<small>à confirmer</small>":"");
+      const dl=(d===t?"Auj.":d===addDays(t,1)?"Demain":cap(dshort(d)).replace(/ (nov|déc|janv|févr|mars|avr|mai|juin|juil|août|sept|oct)\.?$/,""))+((new Date(d)-new Date(t))/864e5>=3?"<small>à confirmer</small>":"");
       const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}`:"";
       const tdd=tidesOfDay(d),tl=tdd.length?`<br>${tdd.map(x=>`${x.k==="PM"?"PM":"BM"} ${hm(new Date(x.ms))}`).join(" · ")} · coef. ${maxCoef(d)}`:"";
       const head=v===0?`On reste au port${fmax!=null&&!(b&&b.coup)?` · force ${fmax}`:""}`:`${NOTE[v]} · force ${bf&&bf.max>fmax?`${fmax} à ${bf.max} (bulletin)`:fmax} · ${dirTxt(w.wd)}`;
