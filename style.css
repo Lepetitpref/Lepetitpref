@@ -1342,6 +1342,7 @@ button.wk-c{cursor:pointer}
 .sa-lvl{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 .sa-lvt{font-size:15px}
 .sa-lvt small{display:block;font-size:14px;color:var(--muted)}
+.sa-lv .sa-why{grid-column:1/-1;font-size:14px;color:var(--muted);line-height:1.35;margin-top:-2px}
 .spot-act.ok{border-left-color:var(--ok)}.spot-act.warn{border-left-color:var(--warn)}
 .spot-links{display:flex;flex-wrap:wrap;gap:8px}
 .spot-links .chip{min-height:44px;text-decoration:none}
@@ -1403,4 +1404,4 @@ button.wk-c{cursor:pointer}
 /* tableaux de la semaine : jours suivants repliés */
 .wk-r.wk-hid{display:none}
 .wk-fold{display:block;width:100%;min-height:44px;margin:6px 0 2px;border:1px dashed var(--line-strong);border-radius:10px;background:transparent;color:var(--accent);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
-/* version du site */:root{--pp-v:"20261114-1234"}
+/* version du site */:root{--pp-v:"20261114-1236"}
