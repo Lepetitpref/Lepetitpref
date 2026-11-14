@@ -297,6 +297,10 @@
 "Rien de bon aujourd'hui": "Nothing good today",
 "Surf heure par heure": "Surf hour by hour",
 "Heure par heure": "Hour by hour",
+"Replier": "Show less",
+"En bleu": "In blue",
+"en gris": "in grey",
+"faisable ce jour-là": "doable that day",
 "· idéal : mi-marée à marée haute (récif peu profond)": "· ideal: mid tide to high tide (shallow reef)",
 "· idéal : mi-marée à marée haute (récif découvert à basse mer)": "· ideal: mid tide to high tide (reef exposed at low tide)",
 "· idéal : marée basse à mi-marée (shorebreak à marée haute)": "· ideal: low tide to mid tide (shorebreak at high tide)",
@@ -1849,6 +1853,10 @@
 [
 "^Voir les (\\d+) autres, plus loin$",
 "See $1 more, further away"
+],
+[
+"^Voir les (\\d+) jours suivants$",
+"See the next $1 days"
 ],
 [
 "^Ouvert aujourd'hui, (.+)\\.$",
