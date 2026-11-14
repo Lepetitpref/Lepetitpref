@@ -1214,7 +1214,7 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   const buoy=Y?`<p class="nav-buoy"><b>Bouée du Plateau du Four</b> (Candhis, 40 km au large), ${Y.heure&&Y.heure.slice(0,10)===t?"aujourd'hui":esc((Y.heure||"").slice(8,10)+"/"+(Y.heure||"").slice(5,7))} à ${hh(Y.heure)} : ${Y.h13!=null?`<b>${r1(Y.h13)} m</b>${Y.t13!=null?` · ${r1(Y.t13)} s`:""}${Y.dir!=null?` · ${dirTxt(Y.dir)}`:""}${Y.eau!=null?` · eau ${r1(Y.eau)} °C`:""}`:"mesure indisponible pour l'instant"} <a href="${Y.source}" target="_blank" rel="noopener">Candhis ↗</a></p>`:"";
   /* marée du jour à Pornic */
   const td=tidesOfDay(t),c=maxCoef(t);
-  const tide=td.length?`<p class="nav-tide"><b>Marée à Pornic aujourd'hui</b>${c?` · coef. ${c}`:""}<br>${td.map(x=>`${x.k==="PM"?"Pleine mer":"Basse mer"} ${hm(new Date(x.ms))}${x.h!=null?` (${r1(x.h)} m)`:""}`).join(" · ")}</p>`:"";
+  const tide=td.length?`<p class="nav-tide"><b>Marée aujourd'hui</b>${c?` · coef. ${c}`:""}<br>${td.map(x=>`${x.k==="PM"?"Pleine mer":"Basse mer"} ${hm(new Date(x.ms))}${x.h!=null?` (${r1(x.h)} m)`:""}`).join(" · ")}<br><small>Calculée sur le port de Pornic (SHOM) : à Préfailles, la mer monte et descend à quelques minutes près.</small></p>`:"";
   /* fenêtre de sortie voile : force maxi, rafales, direction, mer, marées ; le bulletin officiel l'emporte s'il annonce plus fort */
   const D=weekDays(),WD=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
   const bulF=bulDay;
