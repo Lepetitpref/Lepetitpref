@@ -36,6 +36,7 @@ En priorité les 30 prochains jours, puis les grandes dates : marchés de Noël,
 - Cinéjade (Saint-Brevin) : allociné W0012 ; `cinema` = "Cinéjade (Saint-Brevin-les-Pins)".
 - `id` = "AAAA-MM-JJ-<atlantique|toiles-de-retz|saint-joseph|cinejade>-film-slug". Champs : `cinema`, `film`, `date`, `times` (liste de "20h30"), `version` (VF/VOST), `genre` (ou mention : ciné-goûter, avant-première, jeune public dès X ans), `kids`.
 - Retire les séances passées. Si une source est inaccessible, garde ses séances déjà présentes.
+- Puis `python3 outils/bandes_annonces.py` : lien vers la bande-annonce officielle de chaque film sur Allociné (`donnees/bandes-annonces.json`) ; un film sans bande-annonce trouvée n'a simplement pas de lien. N'ajoute jamais de lien à la main.
 
 ## 3. Immobilier
 Pas d'annonces. Chaque matin : `python3 outils/ventes.py` (ventes réelles DVF de Préfailles et Pornic → `donnees/ventes.json` ; il n'écrit rien s'il n'y a pas de nouvelle publication de l'État, ce qui est le cas presque tous les jours). Le 1er du mois : `python3 outils/adresses.py` (adresses BAN → `donnees/adresses.json`) et `python3 outils/historique.py` (prix depuis 2010 → `donnees/prix-historique.json donnees/adresses.json`). Puis `python3 outils/urbanisme.py` (permis Sitadel, DPE ADEME, PLU → `donnees/urbanisme.json`, même principe). S'ils écrivent, `git add donnees/ventes.json donnees/urbanisme.json donnees/parcelles-*.json donnees/prix-historique.json` et signale « Immobilier : ventes jusqu'au <date> » dans ta réponse.
