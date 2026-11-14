@@ -69,16 +69,21 @@
   "ageMin": 3,
   "category": "Atelier créatif enfants",
   "date": "2026-11-04",
-  "desc": "Chaque mercredi et samedi (10h15-11h45 et 14h30-16h), ateliers parents-enfants de bricolage, bijoux, dessin, peinture et jeux, tarif non précisé, réservation en ligne ou auprès d'Océane.",
+  "desc": "Chaque mercredi et samedi jusqu'au 30 décembre (séances à 10h15 et 14h30), ateliers créatifs parents-enfants (bricolage, bijoux, dessin, peinture, jeux) dans un lieu convivial avec boissons ; tarif non précisé.",
   "end": "2026-12-31",
   "free": false,
   "kids": true,
   "org": "Petites mains & compagnie",
   "place": "52 avenue du Président Roosevelt",
-  "time": "10h15",
+  "time": "10h15 et 14h30",
   "title": "Petites mains & compagnie : ateliers créatifs 3-10 ans",
   "town": "Saint-Brevin-les-Pins",
-  "type": "atelier"
+  "type": "atelier",
+  "days": [
+   3,
+   6
+  ],
+  "url": "https://www.fest.fr/atelier-creatif-3-10-ans-2431421.html"
  },
  {
   "id": "2026-11-04-atelier-intergenerationnel-chauve",
@@ -243,80 +248,6 @@
   "url": "https://www.pornic.com/visite-historique-des-moutiers-les-moutiers-en-retz.html"
  },
  {
-  "id": "2026-11-11-ceremonie-armistice-brevin",
-  "category": "Commémoration",
-  "date": "2026-11-11",
-  "desc": "Rassemblement à 11h avenue Jules-Verne, défilé jusqu'au cimetière pour l'hommage et les gerbes, puis discours et verre de l'amitié à 11h45 salle des Dunes (office religieux à 9h à Corsept).",
-  "free": true,
-  "kids": false,
-  "org": "Ville de Saint-Brevin-les-Pins",
-  "place": "Avenue Jules-Verne, puis cimetière et salle des Dunes",
-  "time": "11h",
-  "title": "Commémoration de l'Armistice du 11 novembre",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "vielocale",
-  "url": "https://www.saint-brevin.fr/agenda/fete-nationale-de-commemoration-de-larmistice-de-1918/"
- },
- {
-  "id": "2026-11-11-armistice-plaine",
-  "category": "Commémoration",
-  "date": "2026-11-11",
-  "desc": "Après la cérémonie de 9h30 au cimetière de Préfailles, rassemblement à 11h15 place du Fort Gentil, dépôt de gerbes au monument du Lancastria puis au monument aux morts (11h30) avec lectures du Conseil municipal des enfants, remise de médailles à 12h30 et vin d'honneur offert par la mairie; contact 02 40 21 50 14, evenementiel@laplainesurmer.fr.",
-  "free": true,
-  "kids": false,
-  "org": "Mairie de La Plaine-sur-Mer",
-  "place": "Place du Fort Gentil, puis cimetière et monument aux morts",
-  "time": "11h15",
-  "title": "Commémoration du 11 novembre",
-  "town": "La Plaine-sur-Mer",
-  "type": "vielocale",
-  "url": "https://www.jds.fr/pornic/manifestations/ceremonie-de-commemoration-du-11-novembre-1832958_A"
- },
- {
-  "id": "2026-11-11-dansant-burlot-brevin",
-  "category": "Thé dansant",
-  "date": "2026-11-11",
-  "desc": "Thé dansant (portes 13h30), 14 € avec une consommation et un goûter. Réservation 02 52 80 00 75.",
-  "free": false,
-  "kids": false,
-  "org": "Le Canotier",
-  "place": "Le Canotier",
-  "time": "14h30",
-  "title": "Après-midi dansant avec Silvère Burlot",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-silvere-burlot-1747446_A"
- },
- {
-  "id": "2026-11-11-armistice",
-  "category": "Commémoration",
-  "date": "2026-11-11",
-  "desc": "9h15 rassemblement place de la Mairie de La Plaine-sur-Mer et défilé jusqu'au cimetière; 10h15 cimetière de Préfailles (gerbes, allocutions dont le Conseil municipal des enfants); 11h célébration en la chapelle de Préfailles; 11h45 remise des médailles en mairie de Préfailles puis vin d'honneur offert.",
-  "free": true,
-  "place": "Place de la Mairie de La Plaine-sur-Mer, puis cimetière et chapelle de Préfailles",
-  "time": "9h15",
-  "title": "Cérémonie du 11 novembre",
-  "town": "Préfailles",
-  "type": "vielocale",
-  "url": "https://www.prefailles.fr/agenda/ceremonie-du-11-novembre/",
-  "org": "Mairies de Préfailles et de La Plaine-sur-Mer, UNC"
- },
- {
-  "id": "2026-11-11-commemoration-armistice-11-novembre-moutiers",
-  "category": "Commémoration",
-  "date": "2026-11-11",
-  "desc": "Cérémonie patriotique du 11 novembre avec rassemblement devant la mairie, ouverte à tous.",
-  "free": true,
-  "kids": false,
-  "org": "UNC et municipalité des Moutiers-en-Retz",
-  "place": "Mairie, 15 place de l'Église Madame",
-  "time": "9h45",
-  "title": "Commémoration de l'Armistice du 11 novembre 1918",
-  "town": "Les Moutiers-en-Retz",
-  "type": "vielocale",
-  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/commemoration-de-larmistice-du-11-novembre-1918/"
- },
- {
   "id": "2026-11-12-expo-laetitia-siraudeau-paimboeuf",
   "title": "Exposition de Laetitia Siraudeau",
   "date": "2026-11-12",
@@ -453,21 +384,6 @@
   "kids": false
  },
  {
-  "id": "2026-11-13-apres-midi-dansant-orchestre-brevin",
-  "category": "Thé dansant",
-  "date": "2026-11-13",
-  "desc": "Thé dansant animé par l'orchestre Tendanse, portes ouvertes dès 13h30, entrée 14 €, réservation au 02 52 80 00 75.",
-  "free": false,
-  "kids": false,
-  "org": "Le Canotier",
-  "place": "Le Canotier, 7 avenue des Frères Lumière",
-  "time": "14h30",
-  "title": "Après-midi dansant avec l'orchestre Tendanse",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "url": "https://www.saint-brevin.com/apres-midi-dansant-avec-l-orchestre-tendanse.html"
- },
- {
   "id": "2026-11-13-visite-bains-de-mer-pornic",
   "category": "Visite guidée",
   "date": "2026-11-13",
@@ -541,6 +457,21 @@
   "url": "https://www.fest.fr/concert-black-and-white-au-bar-le-phare-2695350.html"
  },
  {
+  "id": "2026-11-13-mangeur-lumiere-st-pere",
+  "title": "Mangeur de lumière",
+  "date": "2026-11-13",
+  "time": "20h30",
+  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
+  "town": "Saint-Père-en-Retz",
+  "type": "spectacle",
+  "category": "Spectacle musical",
+  "org": "Espace culturel Saint-Roch",
+  "desc": "Spectacle musical de la compagnie Doucha (1h) : cinq musiciens et dix instruments pour un voyage dans les profondeurs sous-marines ; gratuit sur réservation.",
+  "url": "https://www.saint-brevin.com/mangeur-de-lumiere.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-13-moliere-pornic",
   "category": "Théâtre",
   "date": "2026-11-13",
@@ -555,21 +486,6 @@
   "free": false,
   "kids": false,
   "ageMin": 10
- },
- {
-  "id": "2026-11-13-mangeur-lumiere-st-pere",
-  "title": "Mangeur de lumière",
-  "date": "2026-11-13",
-  "time": "20h30",
-  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
-  "town": "Saint-Père-en-Retz",
-  "type": "spectacle",
-  "category": "Spectacle musical",
-  "org": "Espace culturel Saint-Roch",
-  "desc": "Spectacle musical de la compagnie Doucha (1h) : cinq musiciens et dix instruments pour un voyage dans les profondeurs sous-marines ; gratuit sur réservation.",
-  "url": "https://www.saint-brevin.com/mangeur-de-lumiere.html",
-  "free": true,
-  "kids": true
  },
  {
   "id": "2026-11-13-soiree-jeux-role-ste-pazanne",
@@ -622,6 +538,36 @@
   "ageMax": 3
  },
  {
+  "id": "2026-11-14-belote-vue",
+  "title": "Concours de belote",
+  "date": "2026-11-14",
+  "time": "",
+  "place": "Salle municipale, place du Haras",
+  "town": "Vue",
+  "type": "jeux",
+  "category": "Belote",
+  "org": "Comité des fêtes de Vue",
+  "desc": "Concours de belote, un lot pour chaque participant, bar et petite restauration ; inscription 10 €.",
+  "url": "https://www.pornic.com/concours-de-belote-vue-1.html",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-14-caba-retz-theatre-villeneuve",
+  "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
+  "date": "2026-11-14",
+  "time": "",
+  "place": "Théâtre Caba'Retz, Fresnay-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "spectacle",
+  "category": "Théâtre amateur",
+  "org": "Caba-Retz Théâtre",
+  "desc": "Comédie de Vivien Lheraux, précédée de « Au numéro 13 » joué par les jeunes de l'Avantscène ; horaire non communiqué.",
+  "url": "https://villeneuvenretz.fr/agenda/event-1617-caba-retz-theatre-en-scene-tout-novembre.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-14-semaine-europeenne-reduction-dechets-brevin",
   "category": "Environnement",
   "date": "2026-11-14",
@@ -652,36 +598,6 @@
   "free": false,
   "kids": false,
   "end": "2026-11-15"
- },
- {
-  "id": "2026-11-14-caba-retz-theatre-villeneuve",
-  "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
-  "date": "2026-11-14",
-  "time": "",
-  "place": "Théâtre Caba'Retz, Fresnay-en-Retz",
-  "town": "Villeneuve-en-Retz",
-  "type": "spectacle",
-  "category": "Théâtre amateur",
-  "org": "Caba-Retz Théâtre",
-  "desc": "Comédie de Vivien Lheraux, précédée de « Au numéro 13 » joué par les jeunes de l'Avantscène ; horaire non communiqué.",
-  "url": "https://villeneuvenretz.fr/agenda/event-1617-caba-retz-theatre-en-scene-tout-novembre.html",
-  "free": false,
-  "kids": false
- },
- {
-  "id": "2026-11-14-belote-vue",
-  "title": "Concours de belote",
-  "date": "2026-11-14",
-  "time": "",
-  "place": "Salle municipale, place du Haras",
-  "town": "Vue",
-  "type": "jeux",
-  "category": "Belote",
-  "org": "Comité des fêtes de Vue",
-  "desc": "Concours de belote, un lot pour chaque participant, bar et petite restauration ; inscription 10 €.",
-  "url": "https://www.pornic.com/concours-de-belote-vue-1.html",
-  "free": false,
-  "kids": false
  },
  {
   "id": "2026-11-14-espace-retrouvailles-brevin",
@@ -715,23 +631,6 @@
   "url": "https://en.pornic.com/art-exhibition-which-of-us-inspires-the-other-pornic.html"
  },
  {
-  "id": "2026-11-14-nuage-blanc-st-michel",
-  "ageMax": 3,
-  "ageMin": 0,
-  "category": "Spectacle tout-petits",
-  "date": "2026-11-14",
-  "desc": "Contes, chansons et instruments avec Anne Tessier pour les bébés (45 min); gratuit sur réservation au 02 40 27 86 30.",
-  "free": true,
-  "kids": true,
-  "org": "Médiathèque Les Lettres de Mon Moulin",
-  "place": "Médiathèque Les Lettres de Mon Moulin, 22 bis rue du Redois",
-  "time": "10h30",
-  "title": "Mois des tout-petits : Nuage Blanc",
-  "town": "Saint-Michel-Chef-Chef",
-  "type": "spectacle",
-  "url": "https://www.pornic.com/spectacle-pour-le-mois-des-tout-petits-nuage-blanc-st-michel-chef-chef.html"
- },
- {
   "id": "2026-11-14-nocturne-paimboeuf",
   "title": "Nocturne, spectacle 0-3 ans",
   "date": "2026-11-14",
@@ -747,6 +646,23 @@
   "kids": true,
   "ageMin": 0,
   "ageMax": 3
+ },
+ {
+  "id": "2026-11-14-nuage-blanc-st-michel",
+  "ageMax": 3,
+  "ageMin": 0,
+  "category": "Spectacle tout-petits",
+  "date": "2026-11-14",
+  "desc": "Contes, chansons et instruments avec Anne Tessier pour les bébés (45 min); gratuit sur réservation au 02 40 27 86 30.",
+  "free": true,
+  "kids": true,
+  "org": "Médiathèque Les Lettres de Mon Moulin",
+  "place": "Médiathèque Les Lettres de Mon Moulin, 22 bis rue du Redois",
+  "time": "10h30",
+  "title": "Mois des tout-petits : Nuage Blanc",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "spectacle",
+  "url": "https://www.pornic.com/spectacle-pour-le-mois-des-tout-petits-nuage-blanc-st-michel-chef-chef.html"
  },
  {
   "id": "2026-11-14-balade-anes-sentier-douaniers-pornic",
@@ -765,21 +681,6 @@
   "url": "https://www.pornic.com/randonnee-sur-le-sentier-des-douaniers-avec-nos-anes-et-notre-cheval-pornic.html"
  },
  {
-  "id": "2026-11-14-sainte-cecile-plaine",
-  "category": "Défilé musical",
-  "date": "2026-11-14",
-  "desc": "Défilé du Réveil Plainais pour la Sainte-Cécile : départ à 11h de l'Espace Sports et Loisirs, discours vers 12h à la salle des fêtes suivi d'un vin d'honneur; gratuit, ouvert à tous; contact lereveilplainais44@orange.fr.",
-  "free": true,
-  "kids": true,
-  "org": "Le Réveil Plainais",
-  "place": "Départ de l'Espace Sports et Loisirs, puis salle des fêtes",
-  "time": "11h",
-  "title": "Sainte-Cécile, fête des musiciens",
-  "town": "La Plaine-sur-Mer",
-  "type": "spectacle",
-  "url": "https://www.laplainesurmer.fr/agenda/sainte-cecile/"
- },
- {
   "id": "2026-11-14-conversation-anglais-plaine",
   "category": "Langue",
   "date": "2026-11-14",
@@ -794,6 +695,21 @@
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-conversation-en-anglais-la-plaine-sur-mer.html",
   "ageMin": 15
+ },
+ {
+  "id": "2026-11-14-sainte-cecile-plaine",
+  "category": "Défilé musical",
+  "date": "2026-11-14",
+  "desc": "Défilé du Réveil Plainais pour la Sainte-Cécile : départ à 11h de l'Espace Sports et Loisirs, discours vers 12h à la salle des fêtes suivi d'un vin d'honneur; gratuit, ouvert à tous; contact lereveilplainais44@orange.fr.",
+  "free": true,
+  "kids": true,
+  "org": "Le Réveil Plainais",
+  "place": "Départ de l'Espace Sports et Loisirs, puis salle des fêtes",
+  "time": "11h",
+  "title": "Sainte-Cécile, fête des musiciens",
+  "town": "La Plaine-sur-Mer",
+  "type": "spectacle",
+  "url": "https://www.laplainesurmer.fr/agenda/sainte-cecile/"
  },
  {
   "id": "2026-11-14-village-noel-bernerie",
@@ -827,9 +743,9 @@
   "id": "2026-11-14-exposition-champignons-brevin",
   "category": "Exposition mycologique",
   "date": "2026-11-14",
-  "desc": "Des mycologues présentent et identifient les champignons de la région (samedi 14h-17h30, dimanche 9h-17h30), tarif non précisé.",
+  "desc": "Des mycologues de l'Association Mycologique de l'Ouest présentent et identifient les champignons de la région (samedi 14h-17h30, dimanche 9h-17h30) ; sorties cueillette samedi et dimanche à 9h30 sur inscription (saint-brevin.fr) ; gratuit.",
   "end": "2026-11-15",
-  "free": false,
+  "free": true,
   "kids": true,
   "org": "Ville de Saint-Brevin-les-Pins et Association Mycologique de l'Ouest",
   "place": "École primaire La Pierre Attelée, 10 avenue des Pierres Couchées",
@@ -837,7 +753,7 @@
   "title": "Exposition de champignons",
   "town": "Saint-Brevin-les-Pins",
   "type": "expo",
-  "url": "https://www.saint-brevin.com/exposition-de-champignons.html"
+  "url": "https://www.saint-brevin.com/exposition-et-sorties-champignons.html"
  },
  {
   "id": "2026-11-14-visite-cite-medievale-pornic",
@@ -886,6 +802,21 @@
   "url": "https://www.pornic.com/challans-comedy-club-pornic.html"
  },
  {
+  "id": "2026-11-14-gros-loto-st-viaud",
+  "title": "Gros loto de l'US Basket",
+  "date": "2026-11-14",
+  "time": "20h",
+  "place": "Salle du Lac",
+  "town": "Saint-Viaud",
+  "type": "jeux",
+  "category": "Loto",
+  "org": "US Basket Saint-Viaud Frossay",
+  "desc": "Loto (ouverture des portes à 18h) : 3 € le carton, 8 € les 3, 15 € les 6 + 1 offert, 20 € les 8 ; réservation en ligne.",
+  "url": "https://www.saint-brevin.com/gros-loto.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-14-soiree-80-tharon",
   "ageMin": 18,
   "category": "Soirée dansante",
@@ -900,21 +831,6 @@
   "town": "Saint-Michel-Chef-Chef",
   "type": "fete",
   "url": "https://www.pornic.com/soiree-dansante-des-annees-80-a-aujourd-hui-st-michel-chef-chef.html"
- },
- {
-  "id": "2026-11-14-gros-loto-st-viaud",
-  "title": "Gros loto de l'US Basket",
-  "date": "2026-11-14",
-  "time": "20h",
-  "place": "Salle du Lac",
-  "town": "Saint-Viaud",
-  "type": "jeux",
-  "category": "Loto",
-  "org": "US Basket Saint-Viaud Frossay",
-  "desc": "Loto (ouverture des portes à 18h) : 3 € le carton, 8 € les 3, 15 € les 6 + 1 offert, 20 € les 8 ; réservation en ligne.",
-  "url": "https://www.saint-brevin.com/gros-loto.html",
-  "free": false,
-  "kids": false
  },
  {
   "id": "2026-11-14-akim-omiri-pornic",
@@ -977,19 +893,6 @@
   "kids": false
  },
  {
-  "id": "2026-11-15-vide-grenier-coques-pornic",
-  "category": "Vide-grenier",
-  "date": "2026-11-15",
-  "desc": "Vide-grenier en salle à Sainte-Marie-sur-Mer.",
-  "org": "Les Coques en bois",
-  "place": "12 rue du Colonel Victor Bézier",
-  "time": "",
-  "title": "Vide-grenier des Coques en bois",
-  "town": "Pornic",
-  "type": "brocante",
-  "url": "https://brocabrac.fr/44/pornic/1402692-vide-grenier-des-coques-en-bois"
- },
- {
   "id": "2026-11-15-caba-retz-theatre-villeneuve",
   "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
   "date": "2026-11-15",
@@ -1020,6 +923,19 @@
   "kids": true
  },
  {
+  "id": "2026-11-15-vide-grenier-coques-pornic",
+  "category": "Vide-grenier",
+  "date": "2026-11-15",
+  "desc": "Vide-grenier en salle à Sainte-Marie-sur-Mer.",
+  "org": "Les Coques en bois",
+  "place": "12 rue du Colonel Victor Bézier",
+  "time": "",
+  "title": "Vide-grenier des Coques en bois",
+  "town": "Pornic",
+  "type": "brocante",
+  "url": "https://brocabrac.fr/44/pornic/1402692-vide-grenier-des-coques-en-bois"
+ },
+ {
   "id": "2026-11-15-yoga-tim-eco-domaine-pornic",
   "category": "Yoga",
   "date": "2026-11-15",
@@ -1035,17 +951,17 @@
   "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
  },
  {
-  "id": "2026-11-15-dansant-tendanse-brevin",
-  "title": "Après-midi dansant avec l'orchestre Tendanse",
+  "id": "2026-11-15-super-loto-ste-pazanne",
+  "title": "Super loto",
   "date": "2026-11-15",
-  "time": "14h30",
-  "place": "Le Canotier, 7 avenue des Frères Lumière",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "category": "Thé dansant",
-  "org": "Le Canotier",
-  "desc": "Après-midi dansant (ouverture des portes 13h30); entrée 14 €, réservation au 02 52 80 00 75.",
-  "url": "https://www.le-canotier.net/évènement/2026-11-15-apres-midi-dansant-orchestre-tendanse/",
+  "time": "14h",
+  "place": "Salle Escale de Retz",
+  "town": "Sainte-Pazanne",
+  "type": "jeux",
+  "category": "Loto",
+  "org": "Association",
+  "desc": "Ouverture des portes à 13h, plus de 70 lots (bon d'achat de 400 €, ordinateur, trottinette électrique…) ; 3 € la carte, 10 € les 4, 20 € les 9.",
+  "url": "https://agenda-loto.net/evenement/12498",
   "free": false,
   "kids": false
  },
@@ -1061,6 +977,21 @@
   "org": "Troupe Mem'Papeur",
   "desc": "Nouveau spectacle de la troupe Mem'Papeur : souvenirs, humour et personnages décalés, entre hier et aujourd'hui.",
   "url": "https://www.saintpereenretz.fr/events/comme-avant-ou-presque/",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-15-dansant-tendanse-brevin",
+  "title": "Après-midi dansant avec l'orchestre Tendanse",
+  "date": "2026-11-15",
+  "time": "14h30",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Thé dansant",
+  "org": "Le Canotier",
+  "desc": "Après-midi dansant (ouverture des portes 13h30); entrée 14 €, réservation au 02 52 80 00 75.",
+  "url": "https://www.le-canotier.net/évènement/2026-11-15-apres-midi-dansant-orchestre-tendanse/",
   "free": false,
   "kids": false
  },
@@ -1278,6 +1209,21 @@
   "ageMax": 3
  },
  {
+  "id": "2026-11-16-cyclistes-brillez-ste-pazanne",
+  "title": "Cyclistes, brillez ! (gare de Sainte-Pazanne)",
+  "date": "2026-11-16",
+  "time": "17h–19h",
+  "place": "Parking de la gare, devant le local à vélos",
+  "town": "Sainte-Pazanne",
+  "type": "vielocale",
+  "category": "Sécurité à vélo",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Stand de l'agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux Vélos en Retz, équipement offert contre l'engagement de rouler visible ; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez/",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-17-expo-abbaye-buzay-bernerie",
   "category": "Exposition histoire",
   "date": "2026-11-17",
@@ -1386,22 +1332,6 @@
   "ageMax": 1
  },
  {
-  "id": "2026-11-18-et-moi-je-vole-chaumes",
-  "title": "Et moi je vole",
-  "date": "2026-11-18",
-  "time": "10h30",
-  "place": "Bibliothèque l'Aqueduc, 5 rue des Écoliers, Arthon",
-  "town": "Chaumes-en-Retz",
-  "type": "spectacle",
-  "category": "Spectacle tout-petits",
-  "org": "Bibliothèque l'Aqueduc",
-  "desc": "Spectacle musical de 30 min de la Cie Comptoirs du Rêve pour les tout-petits, dans le cadre du Mois des tout-petits.",
-  "url": "https://www.pornic.com/spectacle-musical-et-moi-je-vole-chaumes-en-retz.html",
-  "free": false,
-  "kids": true,
-  "ageMax": 3
- },
- {
   "id": "2026-11-18-contes-mr-joe-pornic",
   "title": "Les contes de M. Joe",
   "date": "2026-11-18",
@@ -1414,6 +1344,22 @@
   "desc": "Contes merveilleux racontés par la conteuse Majirosé pour les 0-3 ans (45 min), dans le cadre du Mois des tout-petits ; gratuit, sur réservation auprès de la médiathèque.",
   "url": "https://www.pornic.com/medias/images/prestations/le-programme-complet-de-le-mois-des-tout-petits-2026-63994.pdf",
   "free": true,
+  "kids": true,
+  "ageMax": 3
+ },
+ {
+  "id": "2026-11-18-et-moi-je-vole-chaumes",
+  "title": "Et moi je vole",
+  "date": "2026-11-18",
+  "time": "10h30",
+  "place": "Bibliothèque l'Aqueduc, 5 rue des Écoliers, Arthon",
+  "town": "Chaumes-en-Retz",
+  "type": "spectacle",
+  "category": "Spectacle tout-petits",
+  "org": "Bibliothèque l'Aqueduc",
+  "desc": "Spectacle musical de 30 min de la Cie Comptoirs du Rêve pour les tout-petits, dans le cadre du Mois des tout-petits.",
+  "url": "https://www.pornic.com/spectacle-musical-et-moi-je-vole-chaumes-en-retz.html",
+  "free": false,
   "kids": true,
   "ageMax": 3
  },
@@ -1464,6 +1410,21 @@
   "url": "https://en.pornic.com/atelier-micropolluants-kesako-pornic.html"
  },
  {
+  "id": "2026-11-18-temps-aidants-ste-pazanne",
+  "title": "Le temps des aidants",
+  "date": "2026-11-18",
+  "time": "14h30–16h30",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "vielocale",
+  "category": "Rencontre",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Pause conviviale autour d'un jeu pour les aidants, avec Retz'accueil et la plateforme Retz'pit ; entrée libre et gratuite.",
+  "url": "https://www.pornic.com/le-temps-des-aidants-ste-pazanne.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-18-exploration-creative-villeneuve",
   "title": "Exploration créative dès 8 ans : tableau phosphorescent",
   "date": "2026-11-18",
@@ -1493,6 +1454,21 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "vielocale",
   "url": "https://www.jds.fr/saint-nazaire/manifestations/conferences/conference-arnaques-a-l-ere-du-numerique-1730908_A"
+ },
+ {
+  "id": "2026-11-18-gouter-theme-ste-pazanne",
+  "title": "Goûter à thème",
+  "date": "2026-11-18",
+  "time": "15h–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "jeux",
+  "category": "Goûter jeux",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Goûter convivial mensuel autour de jeux de société, ouvert à tous ; gâteau maison 1,50 €, boisson dès 0,50 €.",
+  "url": "https://www.pornic.com/gouter-a-theme-ste-pazanne.html",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-11-18-sport-famille-st-hilaire",
@@ -1694,6 +1670,21 @@
   "org": "Cinéjade"
  },
  {
+  "id": "2026-11-19-jeux-bonne-compagnie-ste-pazanne",
+  "title": "Jeux en bonne compagnie",
+  "date": "2026-11-19",
+  "time": "14h–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Après-midi de jeux de société et de cartes (Scrabble, belote, Triomino…), tout public, entrée libre et gratuite.",
+  "url": "https://www.pornic.com/jeux-en-bonne-compagnie-ste-pazanne.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-19-repair-cafe-chaumes",
   "title": "Repair Café",
   "date": "2026-11-19",
@@ -1706,6 +1697,21 @@
   "desc": "Réparation d'objets avec des bénévoles, chaque 3e jeudi du mois, nouveau lieu.",
   "url": "https://www.chaumesenretz.fr/agenda/repair-cafe-3/",
   "free": true,
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-concert-beaujolais-chope-pornic",
+  "title": "Concert et Beaujolais nouveau : The Miss",
+  "date": "2026-11-19",
+  "time": "19h30",
+  "place": "Chope et Compagnie, 11 rue du Traité de Paris",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert",
+  "org": "Chope et Compagnie",
+  "desc": "Soirée Beaujolais nouveau avec le groupe de reprises rock et métal acoustiques The Miss; offre bouteille de Beaujolais nouveau + saucisson à partir de 16,90 €.",
+  "url": "https://www.chopeetcompagnie-pornic.fr/match-concert-evenement-chope-et-compagnie-pornic",
+  "free": false,
   "kids": false
  },
  {
@@ -1867,6 +1873,21 @@
   "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
  },
  {
+  "id": "2026-11-20-creation-autonomie-ste-pazanne",
+  "title": "Création en autonomie",
+  "date": "2026-11-20",
+  "time": "15h–16h30",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Atelier",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Espace et matériel pour créer ensemble (peinture, tricot, collage), apportez aussi vos travaux en cours.",
+  "url": "https://www.pornic.com/creation-en-autonomie-ste-pazanne.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-20-conference-histoire-ecriture-moutiers",
   "category": "Conférence",
   "date": "2026-11-20",
@@ -1941,20 +1962,19 @@
   "kids": false
  },
  {
-  "id": "2026-11-20-soiree-zen-aquajade-brevin",
-  "category": "Bien-être",
+  "id": "2026-11-20-belote-twirling-villeneuve",
+  "title": "Concours de belote du Twirling Club",
   "date": "2026-11-20",
-  "desc": "De 20h à 22h : ambiance relaxante, buffet bio, hammam et sauna à volonté, massages et soins ; entrée 9,60 €, soins 15 € les 20 minutes, dès 16 ans, réservation à l'accueil (02 40 82 99 70).",
-  "free": false,
-  "kids": false,
-  "org": "Aquajade",
-  "place": "Aquajade, PA de la Guerche",
   "time": "20h",
-  "title": "Soirée zen à l'Aquajade",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "url": "https://www.ca-aquajade.com/2026/10/13/soiree-zen-du-20-novembre-2026/",
-  "ageMin": 16
+  "place": "Salle polyvalente Athéna, Fresnay-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "jeux",
+  "category": "Belote",
+  "org": "Twirling Club de Fresnay",
+  "desc": "Concours de belote (portes à 19h), 10 € par personne, nombreux lots de viande à gagner.",
+  "url": "https://villeneuvenretz.fr/agenda/event-1660-le-twirling-club-de-fresnay-organise-un-concours-d.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-20-loup-en-slip-pornic",
@@ -1973,19 +1993,20 @@
   "ageMin": 5
  },
  {
-  "id": "2026-11-20-belote-twirling-villeneuve",
-  "title": "Concours de belote du Twirling Club",
+  "id": "2026-11-20-soiree-zen-aquajade-brevin",
+  "category": "Bien-être",
   "date": "2026-11-20",
-  "time": "20h",
-  "place": "Salle polyvalente Athéna, Fresnay-en-Retz",
-  "town": "Villeneuve-en-Retz",
-  "type": "jeux",
-  "category": "Belote",
-  "org": "Twirling Club de Fresnay",
-  "desc": "Concours de belote (portes à 19h), 10 € par personne, nombreux lots de viande à gagner.",
-  "url": "https://villeneuvenretz.fr/agenda/event-1660-le-twirling-club-de-fresnay-organise-un-concours-d.html",
+  "desc": "De 20h à 22h : ambiance relaxante, buffet bio, hammam et sauna à volonté, massages et soins ; entrée 9,60 €, soins 15 € les 20 minutes, dès 16 ans, réservation à l'accueil (02 40 82 99 70).",
   "free": false,
-  "kids": false
+  "kids": false,
+  "org": "Aquajade",
+  "place": "Aquajade, PA de la Guerche",
+  "time": "20h",
+  "title": "Soirée zen à l'Aquajade",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "url": "https://www.ca-aquajade.com/2026/10/13/soiree-zen-du-20-novembre-2026/",
+  "ageMin": 16
  },
  {
   "id": "2026-11-20-cine-echange-premieres-lunes-brevin",
@@ -2001,21 +2022,6 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "spectacle",
   "url": "https://www.fest.fr/cine-echange-premieres-lunes-2715329.html"
- },
- {
-  "id": "2026-11-20-eolevoce-pornic",
-  "category": "Spectacle",
-  "date": "2026-11-20",
-  "desc": "Nouveau show d'Éolevoce : 130 choristes et 8 musiciens reprennent la chanson française récente (aussi les 21 et 22/11); 12 à 28 €, gratuit moins de 5 ans.",
-  "place": "Casino Partouche, rue du Canal",
-  "time": "20h30",
-  "title": "Spectacle Éolevoce : Nouveau Souffle",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
-  "org": "Éolevoce",
-  "free": false,
-  "kids": true
  },
  {
   "id": "2026-11-20-concert-patrons-brevin",
@@ -2048,20 +2054,19 @@
   "kids": false
  },
  {
-  "id": "2026-11-20-theatre-forum-violences-pornic",
-  "title": "Théâtre-forum : Ensemble, tout est possible !",
+  "id": "2026-11-20-eolevoce-pornic",
+  "category": "Spectacle",
   "date": "2026-11-20",
+  "desc": "Nouveau show d'Éolevoce : 130 choristes et 8 musiciens reprennent la chanson française récente (aussi les 21 et 22/11); 12 à 28 €, gratuit moins de 5 ans.",
+  "place": "Casino Partouche, rue du Canal",
   "time": "20h30",
-  "place": "Amphithéâtre Thomas Narcejac, rue Rostislaw Loukianoff",
+  "title": "Spectacle Éolevoce : Nouveau Souffle",
   "town": "Pornic",
   "type": "spectacle",
-  "category": "Théâtre-forum",
-  "org": "Pornic Agglo Pays de Retz (CISPD); Cie Live Comedy",
-  "desc": "Soirée de théâtre interactif sur les violences faites aux femmes, avec des professionnels pour répondre aux questions; dès 14 ans, entrée libre, renseignements au 02 51 74 07 16.",
-  "url": "https://www.pornic.fr/evenement/ensemble-tout-est-possible-2/",
-  "free": true,
-  "kids": false,
-  "ageMin": 14
+  "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
+  "org": "Éolevoce",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-11-20-soiree-jeu-musical-ste-pazanne",
@@ -2077,6 +2082,22 @@
   "url": "https://www.pornic.com/soiree-a-la-maison-citoyenne-jeu-musical-ste-pazanne.html",
   "free": true,
   "kids": false
+ },
+ {
+  "id": "2026-11-20-theatre-forum-violences-pornic",
+  "title": "Théâtre-forum : Ensemble, tout est possible !",
+  "date": "2026-11-20",
+  "time": "20h30",
+  "place": "Amphithéâtre Thomas Narcejac, rue Rostislaw Loukianoff",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Théâtre-forum",
+  "org": "Pornic Agglo Pays de Retz (CISPD); Cie Live Comedy",
+  "desc": "Soirée de théâtre interactif sur les violences faites aux femmes, avec des professionnels pour répondre aux questions; dès 14 ans, entrée libre, renseignements au 02 51 74 07 16.",
+  "url": "https://www.pornic.fr/evenement/ensemble-tout-est-possible-2/",
+  "free": true,
+  "kids": false,
+  "ageMin": 14
  },
  {
   "id": "2026-11-20-circuit-motricite-pornic",
@@ -2111,6 +2132,21 @@
   "kids": false
  },
  {
+  "id": "2026-11-21-atelier-genealogie-bernerie",
+  "title": "Atelier généalogie : l'intelligence artificielle en généalogie",
+  "date": "2026-11-21",
+  "time": "10h",
+  "place": "La Bernerie-en-Retz",
+  "town": "La Bernerie-en-Retz",
+  "type": "atelier",
+  "category": "Atelier généalogie",
+  "org": "Société des Historiens du Pays de Retz",
+  "desc": "Atelier mensuel avec le Cercle généalogique du Pays de Retz, consacré cette fois à l'usage de l'IA pour déchiffrer les actes et restaurer les photos de famille ; gratuit sur inscription à contact@shpr.fr ou au 02 51 74 63 73.",
+  "url": "https://www.pornic.com/atelier-genealogie-la-bernerie-en-retz.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-21-motricite-chauve",
   "ageMax": 6,
   "ageMin": 0,
@@ -2126,21 +2162,6 @@
   "town": "Chauvé",
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-motricite-libre-de-3-a-6-ans-chauve.html"
- },
- {
-  "id": "2026-11-21-atelier-genealogie-bernerie",
-  "title": "Atelier généalogie : l'intelligence artificielle en généalogie",
-  "date": "2026-11-21",
-  "time": "10h",
-  "place": "La Bernerie-en-Retz",
-  "town": "La Bernerie-en-Retz",
-  "type": "atelier",
-  "category": "Atelier généalogie",
-  "org": "Société des Historiens du Pays de Retz",
-  "desc": "Atelier mensuel avec le Cercle généalogique du Pays de Retz, consacré cette fois à l'usage de l'IA pour déchiffrer les actes et restaurer les photos de famille ; gratuit sur inscription à contact@shpr.fr ou au 02 51 74 63 73.",
-  "url": "https://www.pornic.com/atelier-genealogie-la-bernerie-en-retz.html",
-  "free": true,
-  "kids": false
  },
  {
   "id": "2026-11-21-naissance-arbre-livre-plaine",
@@ -2356,6 +2377,21 @@
   "url": "https://www.jds.fr/pornic/sports/courses/trail-de-la-cote-de-jade-a-saint-michel-chef-chef-sentiers-littoraux-et-epreuves-nocturnes-au-programme-1809759_A"
  },
  {
+  "id": "2026-11-21-a-pile-ou-face-st-pere",
+  "title": "À pile ou face",
+  "date": "2026-11-21",
+  "time": "20h30",
+  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
+  "town": "Saint-Père-en-Retz",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Espace culturel Saint-Roch",
+  "desc": "Comédie interactive (1h15) où le public tire au sort les choix d'Adélie et Eliott ; 14 €, réduit 7 €.",
+  "url": "https://www.saint-brevin.com/a-pile-ou-face-1.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-21-en-pleine-tempete-brevin",
   "category": "Spectacle musical",
   "date": "2026-11-21",
@@ -2384,21 +2420,6 @@
   "url": "https://www.pornic.fr/evenement/nouveau-souffle/",
   "free": false,
   "kids": true
- },
- {
-  "id": "2026-11-21-a-pile-ou-face-st-pere",
-  "title": "À pile ou face",
-  "date": "2026-11-21",
-  "time": "20h30",
-  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
-  "town": "Saint-Père-en-Retz",
-  "type": "spectacle",
-  "category": "Théâtre",
-  "org": "Espace culturel Saint-Roch",
-  "desc": "Comédie interactive (1h15) où le public tire au sort les choix d'Adélie et Eliott ; 14 €, réduit 7 €.",
-  "url": "https://www.saint-brevin.com/a-pile-ou-face-1.html",
-  "free": false,
-  "kids": false
  },
  {
   "id": "2026-11-21-jo-comedie-ste-pazanne",
@@ -2492,21 +2513,6 @@
   "kids": false
  },
  {
-  "id": "2026-11-22-rando-telethon-chaumes",
-  "title": "Randonnée du Téléthon",
-  "date": "2026-11-22",
-  "time": "",
-  "place": "Salle Tamaris, près du complexe sportif, Arthon",
-  "town": "Chaumes-en-Retz",
-  "type": "sport",
-  "category": "Téléthon",
-  "org": "L'Étoile du Randonneur",
-  "desc": "Randonnée au profit du Téléthon, avec vente de galettes et de crêpes faites sur place.",
-  "url": "https://www.chaumesenretz.fr/agenda/randonnee-telethon/",
-  "free": false,
-  "kids": true
- },
- {
   "id": "2026-11-22-caba-retz-theatre-villeneuve",
   "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
   "date": "2026-11-22",
@@ -2520,6 +2526,21 @@
   "url": "https://villeneuvenretz.fr/agenda/event-1617-caba-retz-theatre-en-scene-tout-novembre.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-11-22-rando-telethon-chaumes",
+  "title": "Randonnée du Téléthon",
+  "date": "2026-11-22",
+  "time": "",
+  "place": "Salle Tamaris, près du complexe sportif, Arthon",
+  "town": "Chaumes-en-Retz",
+  "type": "sport",
+  "category": "Téléthon",
+  "org": "L'Étoile du Randonneur",
+  "desc": "Randonnée au profit du Téléthon, avec vente de galettes et de crêpes faites sur place.",
+  "url": "https://www.chaumesenretz.fr/agenda/randonnee-telethon/",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-11-22-yoga-meditation-brevin",
@@ -2583,47 +2604,17 @@
   "kids": true
  },
  {
-  "id": "2026-11-22-dansant-a4-brevin",
-  "category": "Thé dansant",
+  "id": "2026-11-22-loto-jumelage-ste-pazanne",
+  "title": "Super loto des comités de jumelage",
   "date": "2026-11-22",
-  "desc": "Thé dansant (portes 13h30), 14 € avec consommation et goûter. Réservation 02 52 80 00 75.",
-  "free": false,
-  "kids": false,
-  "org": "Le Canotier",
-  "place": "Le Canotier",
-  "time": "14h30",
-  "title": "Après-midi dansant avec l'orchestre A4",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-a4-1742712_A"
- },
- {
-  "id": "2026-11-22-mem-papeur-pornic",
-  "category": "Variétés",
-  "date": "2026-11-22",
-  "desc": "Revue intergénérationnelle de chansons, sketches et chorégraphies; 10 €, 4 € de 7 à 15 ans, gratuit moins de 6 ans, réservation.",
-  "free": false,
-  "kids": true,
-  "org": "Compagnie Les Mem'papeur",
-  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
-  "time": "14h30",
-  "title": "Spectacle musical : Les Mem'papeur « Comme avant… ou presque »",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.pornic.com/spectacle-musical-les-mem-papeur-comme-avant-ou-presque-st-michel-chef-chef.html"
- },
- {
-  "id": "2026-11-22-jo-comedie-ste-pazanne",
-  "title": "« Jo », comédie d'Alec Coppel",
-  "date": "2026-11-22",
-  "time": "14h30",
-  "place": "Théâtre municipal pazenais, 7 rue du Ballon",
+  "time": "14h",
+  "place": "Escale de Retz, allée de l'Escale",
   "town": "Sainte-Pazanne",
-  "type": "spectacle",
-  "category": "Théâtre amateur",
-  "org": "Troupe Côté Scène",
-  "desc": "Comédie policière mise en scène par Calouss ; entrée adulte 13 €, réservation conseillée.",
-  "url": "https://www.pornic.com/jo-comedie-d-alec-coppel-ste-pazanne.html",
+  "type": "jeux",
+  "category": "Loto",
+  "org": "Comités de jumelage",
+  "desc": "Ouverture des portes à 13h ; 3 € la carte, 8 € les 3, 20 € les 9.",
+  "url": "https://agenda-loto.net/evenement/1039215",
   "free": false,
   "kids": false
  },
@@ -2641,6 +2632,51 @@
   "url": "https://villeneuvenretz.fr/agenda/event-1618-concours-d-aluette-amities-saint-cyrienne.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-11-22-dansant-a4-brevin",
+  "category": "Thé dansant",
+  "date": "2026-11-22",
+  "desc": "Après-midi dansant (ouverture des portes 13h30, début 14h30); entrée 14 €, réservation au 02 52 80 00 75.",
+  "free": false,
+  "kids": false,
+  "org": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
+  "time": "14h30",
+  "title": "Après-midi dansant avec l'orchestre A4",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "url": "https://www.le-canotier.net/évènement/2026-11-22-apres-midi-dansant-orchestre-a4/"
+ },
+ {
+  "id": "2026-11-22-jo-comedie-ste-pazanne",
+  "title": "« Jo », comédie d'Alec Coppel",
+  "date": "2026-11-22",
+  "time": "14h30",
+  "place": "Théâtre municipal pazenais, 7 rue du Ballon",
+  "town": "Sainte-Pazanne",
+  "type": "spectacle",
+  "category": "Théâtre amateur",
+  "org": "Troupe Côté Scène",
+  "desc": "Comédie policière mise en scène par Calouss ; entrée adulte 13 €, réservation conseillée.",
+  "url": "https://www.pornic.com/jo-comedie-d-alec-coppel-ste-pazanne.html",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-mem-papeur-pornic",
+  "category": "Variétés",
+  "date": "2026-11-22",
+  "desc": "Revue intergénérationnelle de chansons, sketches et chorégraphies; 10 €, 4 € de 7 à 15 ans, gratuit moins de 6 ans, réservation.",
+  "free": false,
+  "kids": true,
+  "org": "Compagnie Les Mem'papeur",
+  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
+  "time": "14h30",
+  "title": "Spectacle musical : Les Mem'papeur « Comme avant… ou presque »",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.com/spectacle-musical-les-mem-papeur-comme-avant-ou-presque-st-michel-chef-chef.html"
  },
  {
   "id": "2026-11-22-dimanche-theatre-bernerie",
@@ -2794,6 +2830,21 @@
   "ageMax": 3
  },
  {
+  "id": "2026-11-23-soiree-ecrans-chaumes",
+  "title": "Soirée familles : les écrans, une question d'équilibre",
+  "date": "2026-11-23",
+  "time": "18h30–20h",
+  "place": "Salle Ellipse",
+  "town": "Chaumes-en-Retz",
+  "type": "atelier",
+  "category": "Conférence parents",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Conférence pour les familles sur le temps d'écran et les addictions avec le champion de BMX Joris Bretagnolles, puis show de BMX freestyle ; gratuit, sur réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/soiree-familles-les-ecrans-une-question-dequilibre/",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-24-bus-numerique-prefailles",
   "title": "Bus du numérique",
   "date": "2026-11-24",
@@ -2839,20 +2890,19 @@
   "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
  },
  {
-  "id": "2026-11-24-visite-interieur-chateau-pornic",
-  "ageMin": 10,
-  "category": "Visite guidée",
+  "id": "2026-11-24-un-jour-un-jeu-ste-pazanne",
+  "title": "Un jour, un jeu",
   "date": "2026-11-24",
-  "desc": "Visite d'1h15-1h30 des salons, bibliothèque et salles de la tour du château (aussi les 1er et 15 décembre), dès 10 ans, environ 50 marches; 10 €, réservation obligatoire au 02 40 82 04 40.",
-  "free": false,
-  "kids": true,
-  "org": "Office de tourisme intercommunal de Pornic",
-  "place": "Départ Office de tourisme, place de la Gare",
-  "time": "15h",
-  "title": "Visite guidée : dans l'intimité du château de Pornic",
-  "town": "Pornic",
-  "type": "nature",
-  "url": "https://en.pornic.com/guided-tour-in-the-intimacy-of-the-castle-of-pornic-pornic.html"
+  "time": "14h–16h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Rendez-vous mensuel pour découvrir et apprendre un jeu de plateau, tout public, gratuit.",
+  "url": "https://www.pornic.com/un-jour-un-jeu-ste-pazanne.html",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-11-24-coup-pouce-numerique-brevin",
@@ -2868,6 +2918,22 @@
   "url": "https://www.saint-brevin.fr/agenda/les-coups-de-pouce-numeriques-de-joachim/",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-11-24-visite-interieur-chateau-pornic",
+  "ageMin": 10,
+  "category": "Visite guidée",
+  "date": "2026-11-24",
+  "desc": "Visite d'1h15-1h30 des salons, bibliothèque et salles de la tour du château (aussi les 1er et 15 décembre), dès 10 ans, environ 50 marches; 10 €, réservation obligatoire au 02 40 82 04 40.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme intercommunal de Pornic",
+  "place": "Départ Office de tourisme, place de la Gare",
+  "time": "15h",
+  "title": "Visite guidée : dans l'intimité du château de Pornic",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://en.pornic.com/guided-tour-in-the-intimacy-of-the-castle-of-pornic-pornic.html"
  },
  {
   "id": "2026-11-24-mon-restau-responsable-corsept",
@@ -2942,6 +3008,21 @@
   "org": "Maison citoyenne L'élémentaire",
   "desc": "Préparation de gâteaux plus sains pour le goûter du café, offert l'après-midi aux enfants participants ; gratuit, enfants accompagnés d'un adulte.",
   "url": "https://www.pornic.com/viens-faire-des-gateaux-ste-pazanne.html",
+  "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-11-25-jouer-chauve",
+  "title": "« Si vous preniez le temps de jouer »",
+  "date": "2026-11-25",
+  "time": "10h–12h",
+  "place": "Salle Killa",
+  "town": "Chauvé",
+  "type": "jeux",
+  "category": "Jeux",
+  "org": "Mairie de Chauvé",
+  "desc": "Matinée de jeux ouverte à tous.",
+  "url": "https://www.chauve.fr/agenda/concours-de-flechettes/",
   "free": true,
   "kids": true
  },
@@ -3038,6 +3119,21 @@
   "town": "Pornic",
   "type": "spectacle",
   "url": "https://www.pornic.fr/evenement/bocal/"
+ },
+ {
+  "id": "2026-11-25-crochet-ste-pazanne",
+  "title": "Atelier aiguilles et crochet",
+  "date": "2026-11-25",
+  "time": "15h–17h",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Atelier",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Atelier débutants pour apprendre le crochet ; sur réservation.",
+  "url": "https://www.pornic.com/atelier-aiguilles-et-crochet-ste-pazanne.html",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2026-11-25-mercredi-bricole-origami-pornic",
@@ -3167,10 +3263,40 @@
   "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
  },
  {
+  "id": "2026-11-26-autrement-dit-ste-pazanne",
+  "title": "Autrement dit",
+  "date": "2026-11-26",
+  "time": "14h30–16h",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "vielocale",
+  "category": "Rencontre",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Atelier de partage d'expériences sur la vie quotidienne, avec le CLIC de Pornic agglo ; gratuit, sur inscription.",
+  "url": "https://www.pornic.com/autrement-dit-ste-pazanne.html",
+  "free": true,
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-jeux-bonne-compagnie-ste-pazanne",
+  "title": "Jeux en bonne compagnie",
+  "date": "2026-11-26",
+  "time": "14h–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "jeux",
+  "category": "Jeux de société",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Après-midi de jeux de société et de cartes (Scrabble, belote, Triomino…), tout public, entrée libre et gratuite.",
+  "url": "https://www.pornic.com/jeux-en-bonne-compagnie-ste-pazanne.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-26-soiree-zen-aquacentre-pornic",
   "title": "Soirée zen à l'Aquacentre",
   "date": "2026-11-26",
-  "time": "18h00",
+  "time": "18h",
   "place": "Aquacentre, complexe du Val Saint-Martin",
   "town": "Pornic",
   "type": "sport",
@@ -3197,18 +3323,18 @@
   "kids": false
  },
  {
-  "id": "2026-11-26-mister-fred-pornic",
-  "category": "Magie / mentalisme",
+  "id": "2026-11-26-soiree-sante-mentale-ste-pazanne",
+  "title": "Soirée parentalité : la santé mentale des jeunes, on en parle ?",
   "date": "2026-11-26",
-  "desc": "Spectacle de magie pour adultes mêlant mentalisme, humour et participation du public (aussi le 14 janvier 2027); 20 €, réduit 15 €, réservation sur Billetweb.",
-  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
-  "time": "20h30",
-  "title": "Spectacle de Mister Fred : Connexions",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.pornic.fr/evenement/connexions/",
-  "org": "Mister Fred",
-  "free": false,
+  "time": "19h–21h30",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Soirée parents",
+  "org": "Pornic agglo Pays de Retz et Maison citoyenne",
+  "desc": "Ateliers et échanges pour les parents d'adolescents sur le bien-être et la santé mentale des jeunes ; gratuit, inscription souhaitée auprès du service Jeunesse de l'agglo.",
+  "url": "https://www.pornicagglo.fr/evenement/soiree-parentalite-la-sante-mentale-des-jeunes-on-en-parle/",
+  "free": true,
   "kids": false
  },
  {
@@ -3227,6 +3353,21 @@
   "url": "https://www.saint-brevin.com/cine-debat-marcher-sur-l-eau.html"
  },
  {
+  "id": "2026-11-26-mister-fred-pornic",
+  "category": "Magie / mentalisme",
+  "date": "2026-11-26",
+  "desc": "Spectacle de magie pour adultes mêlant mentalisme, humour et participation du public (aussi le 14 janvier 2027); 20 €, réduit 15 €, réservation sur Billetweb.",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
+  "time": "20h30",
+  "title": "Spectacle de Mister Fred : Connexions",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.fr/evenement/connexions/",
+  "org": "Mister Fred",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-26-soiree-jeux-societe-ste-pazanne",
   "title": "Soirée jeux de société",
   "date": "2026-11-26",
@@ -3241,6 +3382,21 @@
   "free": true,
   "kids": false,
   "ageMin": 16
+ },
+ {
+  "id": "2026-11-26-petit-agite-st-hilaire",
+  "title": "Festival Culture Bar-Bars : Les histoires d'un petit agité",
+  "date": "2026-11-26",
+  "time": "20h–22h",
+  "place": "La Motte aux Cochons, 9 rue du Clos Paulet",
+  "town": "Saint-Hilaire-de-Chaléons",
+  "type": "spectacle",
+  "category": "Théâtre",
+  "org": "Festival Culture Bar-Bars",
+  "desc": "Seul en scène de la Cie Porte Ouverte sur des textes de Bérurier Noir : une soirée dans un squat, entre joie, drame, poésie et musique punk.",
+  "url": "https://openagenda.com/festival-culture-bar-bars/events/les-histoires-dun-petit-agite-179709",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-26-pompon-st-pere",
@@ -3277,21 +3433,6 @@
   "ageMax": 3
  },
  {
-  "id": "2026-11-27-mets-vins-gressiere-bernerie",
-  "category": "Gastronomie",
-  "date": "2026-11-27",
-  "desc": "Dîner accord mets et vins, menu à 65 €; réservation au 02 51 74 60 06.",
-  "free": false,
-  "kids": false,
-  "org": "Domaine de la Gressière",
-  "place": "Restaurant l'Atelier, Domaine de la Gressière",
-  "time": "",
-  "title": "Soirée accord mets et vins",
-  "town": "La Bernerie-en-Retz",
-  "type": "fete",
-  "url": "https://www.pornic.com/soiree-accord-mets-et-vins-au-domaine-de-la-gressiere-la-bernerie-en-retz.html"
- },
- {
   "id": "2026-11-27-bus-numerique-prefailles",
   "title": "Bus du numérique",
   "date": "2026-11-27",
@@ -3305,6 +3446,21 @@
   "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
   "free": true,
   "kids": false
+ },
+ {
+  "id": "2026-11-27-mets-vins-gressiere-bernerie",
+  "category": "Gastronomie",
+  "date": "2026-11-27",
+  "desc": "Dîner accord mets et vins, menu à 65 €; réservation au 02 51 74 60 06.",
+  "free": false,
+  "kids": false,
+  "org": "Domaine de la Gressière",
+  "place": "Restaurant l'Atelier, Domaine de la Gressière",
+  "time": "",
+  "title": "Soirée accord mets et vins",
+  "town": "La Bernerie-en-Retz",
+  "type": "fete",
+  "url": "https://www.pornic.com/soiree-accord-mets-et-vins-au-domaine-de-la-gressiere-la-bernerie-en-retz.html"
  },
  {
   "id": "2026-11-27-coup-pouce-numerique-brevin",
@@ -3337,21 +3493,6 @@
   "kids": false
  },
  {
-  "id": "2026-11-27-bien-vieillir-prefailles",
-  "title": "Atelier Bien Vieillir : mémoire",
-  "date": "2026-11-27",
-  "time": "14h",
-  "place": "Espace culturel (salle annexe); certaines séances à la Marpa de l'Estran",
-  "town": "Préfailles",
-  "type": "atelier",
-  "category": "Seniors",
-  "org": "CCAS de Préfailles",
-  "desc": "Atelier gratuit de prévention pour bien vieillir (mémoire), de 14h à 16h; inscription en mairie au 02 40 21 60 37.",
-  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
-  "free": true,
-  "kids": false
- },
- {
   "id": "2026-11-27-apres-midi-dansant-pornic",
   "title": "Après-midi dansant seniors",
   "date": "2026-11-27",
@@ -3364,6 +3505,21 @@
   "desc": "Après-midi dansant de 14h à 18h pour les seniors, avec chanteuse et taxis danseurs; 5 € (10 € hors Pornic), préinscription obligatoire par SMS (numéro sur la page de la ville).",
   "url": "https://www.pornic.fr/evenement/apres-midi-dansant-a-pornic/",
   "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-bien-vieillir-prefailles",
+  "title": "Atelier Bien Vieillir : mémoire",
+  "date": "2026-11-27",
+  "time": "14h",
+  "place": "Espace culturel (salle annexe); certaines séances à la Marpa de l'Estran",
+  "town": "Préfailles",
+  "type": "atelier",
+  "category": "Seniors",
+  "org": "CCAS de Préfailles",
+  "desc": "Atelier gratuit de prévention pour bien vieillir (mémoire), de 14h à 16h; inscription en mairie au 02 40 21 60 37.",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "free": true,
   "kids": false
  },
  {
@@ -3394,6 +3550,21 @@
   "desc": "Film documentaire présenté sur scène par son réalisateur, sur le pardon et la reconstruction au Rwanda; billetterie sur place.",
   "url": "https://www.pornic.fr/evenement/rwanda-le-paradis-retrouve/",
   "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-creation-autonomie-ste-pazanne",
+  "title": "Création en autonomie",
+  "date": "2026-11-27",
+  "time": "15h–16h30",
+  "place": "Maison Citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Atelier",
+  "org": "Maison citoyenne de Sainte-Pazanne",
+  "desc": "Espace et matériel pour créer ensemble (peinture, tricot, collage), apportez aussi vos travaux en cours.",
+  "url": "https://www.pornic.com/creation-en-autonomie-ste-pazanne.html",
+  "free": true,
   "kids": false
  },
  {
@@ -3486,6 +3657,21 @@
   "url": "https://www.pornic.com/apero-cine-debat-la-bernerie-en-retz.html"
  },
  {
+  "id": "2026-11-27-illuminations-st-hilaire",
+  "title": "Lancement des illuminations de Noël",
+  "date": "2026-11-27",
+  "time": "19h",
+  "place": "Place Éloi-Guitteny",
+  "town": "Saint-Hilaire-de-Chaléons",
+  "type": "fete",
+  "category": "Noël",
+  "org": "Conseil municipal des enfants et commerçants",
+  "desc": "Lancement des illuminations de Noël à partir de 19h, avec le Conseil municipal des enfants et les commerçants de la place.",
+  "url": "https://www.saint-hilaire-de-chaleons.fr/agenda/917909",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-27-ufolep-tennis-table-prefailles",
   "category": "Tennis de table",
   "date": "2026-11-27",
@@ -3515,19 +3701,19 @@
   "url": "https://en.pornic.com/concert-utopia-au-bar-le-phare-pornic.html"
  },
  {
-  "id": "2026-11-27-illuminations-st-hilaire",
-  "title": "Lancement des illuminations de Noël",
+  "id": "2026-11-27-anniversaire-casino-pornic",
+  "title": "Soirée des 8 ans du Casino de Pornic",
   "date": "2026-11-27",
-  "time": "19h",
-  "place": "Place Éloi-Guitteny",
-  "town": "Saint-Hilaire-de-Chaléons",
+  "time": "19h30",
+  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
+  "town": "Pornic",
   "type": "fete",
-  "category": "Noël",
-  "org": "Conseil municipal des enfants et commerçants",
-  "desc": "Lancement des illuminations de Noël à partir de 19h, avec le Conseil municipal des enfants et les commerçants de la place.",
-  "url": "https://www.saint-hilaire-de-chaleons.fr/agenda/917909",
+  "category": "Soirée",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Soirée anniversaire avec open bar, cocktail dînatoire, animations, concerts live et cadeaux à gagner; inscription gratuite.",
+  "url": "https://casino-pornic.partouche.com/agenda/13679/anniversaire-du-casino-de-pornic",
   "free": true,
-  "kids": true
+  "kids": false
  },
  {
   "id": "2026-11-27-tartifete-prefailles",
@@ -3545,18 +3731,18 @@
   "url": "https://www.prefailles.fr/agenda/soiree-tartifete/"
  },
  {
-  "id": "2026-11-27-anniversaire-casino-pornic",
-  "title": "Soirée des 8 ans du Casino de Pornic",
+  "id": "2026-11-27-loto-asr-fresnay-villeneuve",
+  "title": "Super loto de l'ASR Fresnay",
   "date": "2026-11-27",
-  "time": "19h30",
-  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
-  "town": "Pornic",
-  "type": "fete",
-  "category": "Soirée",
-  "org": "Casino Partouche de Pornic",
-  "desc": "Soirée anniversaire avec open bar, cocktail dînatoire, animations, concerts live et cadeaux à gagner; inscription gratuite.",
-  "url": "https://casino-pornic.partouche.com/agenda/13679/anniversaire-du-casino-de-pornic",
-  "free": true,
+  "time": "20h",
+  "place": "Salle communale, rue de Retz, Fresnay-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "jeux",
+  "category": "Loto",
+  "org": "ASR Fresnay-en-Retz (football)",
+  "desc": "Ouverture des portes à 18h, bons d'achat de 500 € à 60 €, paniers gourmands ; 8 € les 3 cartes, 13 € les 6.",
+  "url": "https://agenda-loto.net/evenement/1021579",
+  "free": false,
   "kids": false
  },
  {
@@ -3606,6 +3792,36 @@
   "ageMin": 12
  },
  {
+  "id": "2026-11-27-full-gnawa-st-hilaire",
+  "title": "Festival Culture Bar-Bars : Jaouad El Garouge & Full Gnawa",
+  "date": "2026-11-27",
+  "time": "21h–23h",
+  "place": "La Motte aux Cochons, 9 rue du Clos Paulet",
+  "town": "Saint-Hilaire-de-Chaléons",
+  "type": "spectacle",
+  "category": "Concert",
+  "org": "Festival Culture Bar-Bars",
+  "desc": "Concert de musique gnaoua : Maâlem Jaouad El Garouge et le collectif Full Gnawa mêlent rituels marocains et sonorités du monde.",
+  "url": "https://openagenda.com/festival-culture-bar-bars/events/jaouad-el-garouge-and-full-gnawa-9438440",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-caba-retz-theatre-villeneuve",
+  "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
+  "date": "2026-11-28",
+  "time": "",
+  "place": "Théâtre Caba'Retz, Fresnay-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "spectacle",
+  "category": "Théâtre amateur",
+  "org": "Caba-Retz Théâtre",
+  "desc": "Comédie de Vivien Lheraux, précédée de « Au numéro 13 » joué par les jeunes de l'Avantscène ; horaire non communiqué.",
+  "url": "https://villeneuvenretz.fr/agenda/event-1617-caba-retz-theatre-en-scene-tout-novembre.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-11-28-marche-noel-st-michel",
   "category": "Marché de Noël",
   "date": "2026-11-28",
@@ -3622,18 +3838,18 @@
   "free": true
  },
  {
-  "id": "2026-11-28-caba-retz-theatre-villeneuve",
-  "title": "« Ne surtout pas déranger », Caba-Retz Théâtre",
+  "id": "2026-11-28-atelier-cecile-lacharme-pornic",
+  "title": "Atelier pédagogique avec Cécile Lacharme",
   "date": "2026-11-28",
-  "time": "",
-  "place": "Théâtre Caba'Retz, Fresnay-en-Retz",
-  "town": "Villeneuve-en-Retz",
-  "type": "spectacle",
-  "category": "Théâtre amateur",
-  "org": "Caba-Retz Théâtre",
-  "desc": "Comédie de Vivien Lheraux, précédée de « Au numéro 13 » joué par les jeunes de l'Avantscène ; horaire non communiqué.",
-  "url": "https://villeneuvenretz.fr/agenda/event-1617-caba-retz-theatre-en-scene-tout-novembre.html",
-  "free": false,
+  "time": "10h",
+  "place": "École municipale de musique, salle Belle-Île, place de la Marne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Rencontre musicale",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Rencontre de 10h à 12h avec la violoncelliste (parcours, pédales d'effets, loopstation, démonstrations en live), avant son concert du soir; gratuit sur inscription (billetweb).",
+  "url": "https://www.pornic.fr/evenement/atelier-pedagogique-avec-cecile-lacharme/",
+  "free": true,
   "kids": false
  },
  {
@@ -3665,21 +3881,6 @@
   "town": "Saint-Michel-Chef-Chef",
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-pour-le-mois-des-tout-petits-si-j-osais-st-michel-chef-chef.html"
- },
- {
-  "id": "2026-11-28-atelier-cecile-lacharme-pornic",
-  "title": "Atelier pédagogique avec Cécile Lacharme",
-  "date": "2026-11-28",
-  "time": "10h",
-  "place": "École municipale de musique, salle Belle-Île, place de la Marne",
-  "town": "Pornic",
-  "type": "atelier",
-  "category": "Rencontre musicale",
-  "org": "École municipale de musique de Pornic",
-  "desc": "Rencontre de 10h à 12h avec la violoncelliste (parcours, pédales d'effets, loopstation, démonstrations en live), avant son concert du soir; gratuit sur inscription (billetweb).",
-  "url": "https://www.pornic.fr/evenement/atelier-pedagogique-avec-cecile-lacharme/",
-  "free": true,
-  "kids": false
  },
  {
   "id": "2026-11-28-marche-noel-residence-plaine",
@@ -3775,21 +3976,6 @@
   "kids": true
  },
  {
-  "id": "2026-11-28-salon-vins-flacons-paimboeuf",
-  "title": "Salon des vins des Flacons",
-  "date": "2026-11-28",
-  "time": "10h–18h",
-  "place": "Chapelle Saint-Charles",
-  "town": "Paimbœuf",
-  "type": "fete",
-  "category": "Salon des vins",
-  "org": "Les Flacons",
-  "desc": "Vignerons, distilleries et une brasserie à rencontrer et déguster de 10h à 18h, pour les 5 ans des Flacons.",
-  "url": "https://www.saint-brevin.com/salon-des-vins-des-flacons.html",
-  "free": false,
-  "kids": false
- },
- {
   "id": "2026-11-28-reduc-day-chaumes",
   "title": "Réduc'Day : l'art de mieux consommer",
   "date": "2026-11-28",
@@ -3819,6 +4005,21 @@
   "free": true,
   "kids": false,
   "end": "2026-11-29"
+ },
+ {
+  "id": "2026-11-28-salon-vins-flacons-paimboeuf",
+  "title": "Salon des vins des Flacons",
+  "date": "2026-11-28",
+  "time": "10h–18h",
+  "place": "Chapelle Saint-Charles",
+  "town": "Paimbœuf",
+  "type": "fete",
+  "category": "Salon des vins",
+  "org": "Les Flacons",
+  "desc": "Vignerons, distilleries et une brasserie à rencontrer et déguster de 10h à 18h, pour les 5 ans des Flacons.",
+  "url": "https://www.saint-brevin.com/salon-des-vins-des-flacons.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-28-marche-noel-createurs-paimboeuf",
@@ -3872,21 +4073,6 @@
   "url": "https://www.saint-brevin.com/marche-de-noel-de-l-ecole-de-la-pierre-attelee.html"
  },
  {
-  "id": "2026-11-28-visite-cite-medievale-pornic",
-  "category": "Visite guidée",
-  "date": "2026-11-28",
-  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
-  "free": false,
-  "kids": true,
-  "org": "Office de tourisme Destination Pornic",
-  "place": "Pornic centre",
-  "time": "14h30",
-  "title": "Visite guidée : Pornic, cité médiévale et maritime",
-  "town": "Pornic",
-  "type": "nature",
-  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
- },
- {
   "id": "2026-11-28-balade-moto-paimboeuf",
   "title": "Balade moto solidaire",
   "date": "2026-11-28",
@@ -3900,6 +4086,21 @@
   "url": "https://www.saint-brevin.com/balade-moto.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-11-28-visite-cite-medievale-pornic",
+  "category": "Visite guidée",
+  "date": "2026-11-28",
+  "desc": "Visite commentée d'1h30 de la vieille ville et du port (14h30–16h), sur réservation à l'office de tourisme.",
+  "free": false,
+  "kids": true,
+  "org": "Office de tourisme Destination Pornic",
+  "place": "Pornic centre",
+  "time": "14h30",
+  "title": "Visite guidée : Pornic, cité médiévale et maritime",
+  "town": "Pornic",
+  "type": "nature",
+  "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
  },
  {
   "id": "2026-11-28-illuminations-noel-st-pere",
@@ -3933,17 +4134,18 @@
  },
  {
   "id": "2026-11-26-noel-au-bourg-bernerie",
-  "category": "Fête de Noël",
-  "date": "2026-11-28",
-  "desc": "Fête de Noël au bourg des Moutiers de 14h à 21h (programme en préparation).",
-  "kids": true,
-  "org": "Association des commerçants des Moutiers",
-  "place": "Place de l'Église Madame",
-  "time": "14h–21h",
   "title": "Noël au bourg",
+  "date": "2026-11-28",
+  "time": "14h–21h",
+  "place": "Place de l'Église Madame",
   "town": "Les Moutiers-en-Retz",
   "type": "fete",
-  "url": "https://en.pornic.com/noel-au-bourg.html"
+  "category": "Fête de Noël",
+  "org": "Association des commerçants des Moutiers",
+  "desc": "Marché artisanal et vin chaud : arrivée du Père Noël et orgue de Barbarie à 14h30, chorale à 16h, orgue à 17h, batucada à 19h et 20h ; restauration sur place.",
+  "url": "https://www.pornic.com/noel-au-bourg.html",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-11-28-loups-garous-mediatheque-pornic",
@@ -4037,18 +4239,48 @@
  },
  {
   "id": "2026-11-28-tontons-du-sud-bernerie",
-  "category": "Concert",
+  "category": "Soirée DJ",
   "date": "2026-11-28",
-  "desc": "Concert électro-pop dans le cadre du festival Culture Bar-Bars, au bar Les Tontons Nageurs.",
+  "desc": "Tropical Bar-Bars : soirée DJs et surprises née de l'association du café Le Sud et des Tontons Nageurs, dans le cadre du festival Culture Bar-Bars.",
   "free": false,
   "kids": false,
   "org": "Festival Culture Bar-Bars",
   "place": "Les Tontons Nageurs, 24 avenue de Noirmoutier",
   "time": "21h00",
-  "title": "Festival Culture Bar-Bars : Les Tontons du Sud",
+  "title": "Festival Culture Bar-Bars : Tropical Bar-Bars",
   "town": "La Bernerie-en-Retz",
+  "type": "fete",
+  "url": "https://openagenda.com/festival-culture-bar-bars/events/tropical-bar-bars"
+ },
+ {
+  "id": "2026-11-28-akalmy-st-hilaire",
+  "title": "Festival Culture Bar-Bars : Akalmy",
+  "date": "2026-11-28",
+  "time": "21h–22h30",
+  "place": "La Motte aux Cochons, 9 rue du Clos Paulet",
+  "town": "Saint-Hilaire-de-Chaléons",
   "type": "spectacle",
-  "url": "https://en.pornic.com/festival-culture-bar-bars-les-tontons-du-sud-la-bernerie-en-retz.html"
+  "category": "Concert",
+  "org": "Festival Culture Bar-Bars",
+  "desc": "Concert du groupe de rap indépendant nantais Akalmy.",
+  "url": "https://openagenda.com/festival-culture-bar-bars/events/akalmy-4709558",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-unkle-b-st-hilaire",
+  "title": "Festival Culture Bar-Bars : DJ Unkle B",
+  "date": "2026-11-28",
+  "time": "22h30",
+  "place": "La Motte aux Cochons, 9 rue du Clos Paulet",
+  "town": "Saint-Hilaire-de-Chaléons",
+  "type": "fete",
+  "category": "DJ",
+  "org": "Festival Culture Bar-Bars",
+  "desc": "DJ set hip-hop d'Unkle B, jusqu'à minuit.",
+  "url": "https://openagenda.com/festival-culture-bar-bars/events/unkle-b-7429752",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-28-bourse-timbres-brevin",
@@ -4081,6 +4313,21 @@
   "town": "Les Moutiers-en-Retz",
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-et-cours-de-broderie-les-moutiers-en-retz.html"
+ },
+ {
+  "id": "2026-11-28-cyclistes-brillez-chaumes",
+  "title": "Cyclistes, brillez ! (salle Ellipse)",
+  "date": "2026-11-28",
+  "time": "9h–16h",
+  "place": "Salle Ellipse, impasse du Lavoir",
+  "town": "Chaumes-en-Retz",
+  "type": "vielocale",
+  "category": "Sécurité à vélo",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Stand de l'agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux Vélos en Retz, équipement offert contre l'engagement de rouler visible ; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez-5-2/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-11-29-caba-retz-theatre-villeneuve",
@@ -4158,6 +4405,21 @@
   "free": true
  },
  {
+  "id": "2026-11-29-marche-noel-ecole-chemere-chaumes",
+  "title": "Marché de Noël de l'école Notre-Dame de Chéméré",
+  "date": "2026-11-29",
+  "time": "10h–18h",
+  "place": "Salle Ellipse",
+  "town": "Chaumes-en-Retz",
+  "type": "fete",
+  "category": "Marché de Noël",
+  "org": "Parents d'élèves de l'école Notre-Dame",
+  "desc": "14e édition, une cinquantaine d'exposants artisans et gourmands au profit des projets de l'école.",
+  "url": "https://noel.org/evenement/1013024",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-29-marche-noel-moutiers",
   "category": "Marché de Noël",
   "date": "2026-11-29",
@@ -4205,16 +4467,16 @@
   "id": "2026-11-29-dansant-mister-swing-brevin",
   "category": "Thé dansant",
   "date": "2026-11-29",
-  "desc": "Thé dansant (portes 13h30), 14 € avec consommation et goûter. Réservation 02 52 80 00 75.",
+  "desc": "Après-midi dansant (ouverture des portes 13h30, début 14h30); entrée 14 €, réservation au 02 52 80 00 75.",
   "free": false,
   "kids": false,
   "org": "Le Canotier",
-  "place": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
   "time": "14h30",
   "title": "Après-midi dansant avec l'orchestre Mister Swing",
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-mister-swing-1746037_A"
+  "url": "https://www.le-canotier.net/évènement/2026-11-29-apres-midi-dansant-orchestre-mister-swing/"
  },
  {
   "id": "2026-11-29-jo-comedie-ste-pazanne",
@@ -4596,21 +4858,6 @@
   "kids": false
  },
  {
-  "id": "2026-12-04-salon-livre-noel-pornic",
-  "category": "Salon du livre",
-  "date": "2026-12-04",
-  "desc": "Une quarantaine d'auteurs locaux, accent sur la jeunesse, ateliers d'écriture et de généalogie. Tél..",
-  "end": "2026-12-06",
-  "kids": true,
-  "org": "Les Auteurs du Pays de Retz",
-  "place": "Salle de la Marine, 28 rue de la Marine",
-  "time": "10h30",
-  "title": "Salon du livre : édition de Noël",
-  "town": "Pornic",
-  "type": "expo",
-  "url": "https://www.fest.fr/salon-du-livre-edition-de-noel-2694053.html"
- },
- {
   "id": "2026-12-04-coup-pouce-numerique-brevin",
   "title": "Coup de pouce numérique : Logiciels Open Office",
   "date": "2026-12-04",
@@ -4624,6 +4871,21 @@
   "url": "https://www.saint-brevin.fr/agenda/les-coups-de-pouce-numeriques-de-joachim/",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-04-salon-livre-noel-pornic",
+  "category": "Salon du livre",
+  "date": "2026-12-04",
+  "desc": "Une quarantaine d'auteurs locaux, accent sur la jeunesse, ateliers d'écriture et de généalogie. Tél..",
+  "end": "2026-12-06",
+  "kids": true,
+  "org": "Les Auteurs du Pays de Retz",
+  "place": "Salle de la Marine, 28 rue de la Marine",
+  "time": "10h30",
+  "title": "Salon du livre : édition de Noël",
+  "town": "Pornic",
+  "type": "expo",
+  "url": "https://www.fest.fr/salon-du-livre-edition-de-noel-2694053.html"
  },
  {
   "id": "2026-12-04-ateliers-tricot-brevin",
@@ -4732,6 +4994,21 @@
   "kids": false
  },
  {
+  "id": "2026-12-05-concert-ecole-musique-paimboeuf",
+  "title": "Concert de l'École intercommunale de musique",
+  "date": "2026-12-05",
+  "time": "",
+  "place": "Salle Cutullic",
+  "town": "Paimbœuf",
+  "type": "spectacle",
+  "category": "Concert",
+  "org": "École intercommunale de musique",
+  "desc": "Concert des élèves et professeurs de l'École intercommunale de musique ; heure et tarif non précisés dans le bulletin municipal.",
+  "url": "https://www.paimboeuf.fr/public/tools/editor/files/PAIMBLOfil/2026/Num%C3%A9ro%20104_WEB.pdf",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-12-05-noel-chateau-pornic",
   "category": "Marché de Noël",
   "date": "2026-12-05",
@@ -4794,6 +5071,21 @@
   "url": "https://www.pornic.com/yoga-avec-tim-pornic.html"
  },
  {
+  "id": "2026-12-05-escale-montagne-hautes-noelles-moutiers",
+  "title": "Escale en montagne : portes ouvertes aux Hautes Noëlles",
+  "date": "2026-12-05",
+  "time": "10h–12h et 14h–18h",
+  "place": "Domaine des Hautes Noëlles, rue de Nantes",
+  "town": "Les Moutiers-en-Retz",
+  "type": "fete",
+  "category": "Portes ouvertes vigneronnes",
+  "org": "Domaine des Hautes Noëlles",
+  "desc": "Dégustation libre, fondue dans le chai de 12h à 14h (32 € avec vin), 10 % sur les vins.",
+  "url": "https://www.jds.fr/pornic/manifestations/escale-en-montagne-portes-ouvertes-aux-hautes-noelles-1838577_A",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-05-marche-noel-plaine",
   "category": "Marché de Noël",
   "date": "2026-12-05",
@@ -4809,20 +5101,6 @@
   "url": "https://en.pornic.com/marche-de-noel-a-la-plaine-sur-mer-la-plaine-sur-mer.html"
  },
  {
-  "id": "2026-12-05-osier-bernerie",
-  "category": "Vannerie",
-  "date": "2026-12-05",
-  "desc": "Atelier de 14h à 18h, osier fourni, à partir de 20 €; réservation.",
-  "free": false,
-  "org": "Les Activités Manuelles Berneriennes",
-  "place": "Maison des Associations, salle Balmoral",
-  "time": "14h",
-  "title": "Initiation au tressage de l'osier",
-  "town": "La Bernerie-en-Retz",
-  "type": "atelier",
-  "url": "https://www.pornic.com/initiation-au-tressage-de-l-osier-la-bernerie-en-retz.html"
- },
- {
   "id": "2026-12-05-danse-country-telethon-st-michel",
   "title": "12 heures de danse country pour le Téléthon",
   "date": "2026-12-05",
@@ -4836,6 +5114,20 @@
   "url": "https://www.pornic.com/danse-country-pour-le-telethon-st-michel-chef-chef.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-05-osier-bernerie",
+  "category": "Vannerie",
+  "date": "2026-12-05",
+  "desc": "Atelier de 14h à 18h, osier fourni, à partir de 20 €; réservation.",
+  "free": false,
+  "org": "Les Activités Manuelles Berneriennes",
+  "place": "Maison des Associations, salle Balmoral",
+  "time": "14h",
+  "title": "Initiation au tressage de l'osier",
+  "town": "La Bernerie-en-Retz",
+  "type": "atelier",
+  "url": "https://www.pornic.com/initiation-au-tressage-de-l-osier-la-bernerie-en-retz.html"
  },
  {
   "id": "2026-12-05-visite-cite-medievale-pornic",
@@ -4928,6 +5220,21 @@
   "kids": true
  },
  {
+  "id": "2026-12-05-concert-ensemble-vocal-pornic",
+  "category": "Concert classique",
+  "date": "2026-12-05",
+  "desc": "Hommage à Mozart et « Lamento d'Arianna » de Monteverdi avec l'ensemble Les Curieux (aussi le dimanche 6 à 16h) ; 12 €, réduit 8 €, gratuit moins de 15 ans, billetterie evp.pornic@gmail.com.",
+  "free": false,
+  "kids": false,
+  "org": "Ensemble vocal de Pornic",
+  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
+  "time": "20h30",
+  "title": "Concert de l'Ensemble vocal de Pornic : Mozart et Monteverdi",
+  "town": "Pornic",
+  "type": "spectacle",
+  "url": "https://www.pornic.fr/evenement/concert-par-lensemble-vocal-de-pornic/"
+ },
+ {
   "id": "2026-12-05-derriere-brevin",
   "category": "Spectacle",
   "date": "2026-12-05",
@@ -4953,21 +5260,6 @@
   "url": "https://www.pornic.com/jo-comedie-d-alec-coppel-ste-pazanne.html",
   "free": false,
   "kids": false
- },
- {
-  "id": "2026-12-05-concert-ensemble-vocal-pornic",
-  "category": "Concert classique",
-  "date": "2026-12-05",
-  "desc": "Hommage à Mozart et « Lamento d'Arianna » de Monteverdi avec l'ensemble Les Curieux (aussi le dimanche 6 à 16h) ; 12 €, réduit 8 €, gratuit moins de 15 ans, billetterie evp.pornic@gmail.com.",
-  "free": false,
-  "kids": false,
-  "org": "Ensemble vocal de Pornic",
-  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
-  "time": "20h30",
-  "title": "Concert de l'Ensemble vocal de Pornic : Mozart et Monteverdi",
-  "town": "Pornic",
-  "type": "spectacle",
-  "url": "https://www.pornic.fr/evenement/concert-par-lensemble-vocal-de-pornic/"
  },
  {
   "id": "2026-12-05-swing-of-france-pornic",
@@ -5105,6 +5397,21 @@
   "url": "https://brocabrac.fr/44/saint-viaud/1408291-marche-artisanal-de-noel",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2026-12-06-loto-chaumes-en-fetes",
+  "title": "Loto de Chaumes en Fêtes",
+  "date": "2026-12-06",
+  "time": "14h",
+  "place": "Salle Ellipse",
+  "town": "Chaumes-en-Retz",
+  "type": "jeux",
+  "category": "Loto",
+  "org": "Chaumes en Fêtes",
+  "desc": "Ouverture des portes à 12h, 300 € de bon d'achat et entrées de parcs à gagner ; 3 € la carte, 8 € les 3, 15 € les 6 + 1 ; réservation conseillée.",
+  "url": "https://agenda-loto.net/evenement/1035694",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-06-guinguette-thony-coue-brevin",
@@ -5411,6 +5718,21 @@
   "kids": false
  },
  {
+  "id": "2026-12-11-ecole-horizon-noel-st-michel",
+  "title": "L'école de l'Horizon fête Noël",
+  "date": "2026-12-11",
+  "time": "18h",
+  "place": "École de l'Horizon",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "fete",
+  "category": "Fête de Noël",
+  "org": "École de l'Horizon",
+  "desc": "Danses et chants de Noël des enfants, puis marché de Noël, jeux, petite restauration et visite du Père Noël.",
+  "url": "https://www.pornic.com/l-ecole-de-l-horizon-fete-noel-st-michel-chef-chef.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-12-11-ufolep-tennis-table-prefailles",
   "category": "Tennis de table",
   "date": "2026-12-11",
@@ -5428,16 +5750,16 @@
   "id": "2026-12-11-christmas-party-canotier-brevin",
   "category": "Soirée dansante",
   "date": "2026-12-11",
-  "desc": "Soirée dansante de Noël, entrée 14 € avec une consommation; tables de 10 personnes et plus au 02 52 80 00 75.",
+  "desc": "Soirée dansante de Noël (ouverture des portes 20h) : entrée 14 € avec une consommation, vestiaire 1 €; bar et planches apéritives; tables à partir de 10 personnes, infos au 02 52 80 00 75.",
   "free": false,
   "kids": false,
   "org": "Le Canotier",
-  "place": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
   "time": "20h",
   "title": "Christmas Party au Canotier",
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/christmas-party-1742757_A"
+  "url": "https://www.le-canotier.net/évènement/2026-12-11-soiree-dansante-christmas-party/"
  },
  {
   "id": "2026-12-11-dinde-novembre-brevin",
@@ -5458,16 +5780,16 @@
   "id": "2026-12-11-edgar-yves-pornic",
   "category": "Humour",
   "date": "2026-12-11",
-  "desc": "Nouveau seul-en-scène de l'humoriste Edgar-Yves; 32 à 39 €, billets à l'office de tourisme (02 40 82 04 40) ou au casino (02 40 82 26 87).",
+  "desc": "Nouveau seul-en-scène de l'humoriste Edgar-Yves Jr; 39 € (catégorie 1) ou 32 € (catégorie 2), billets au casino (02 40 82 26 87) ou à l'office de tourisme (02 40 82 04 40).",
   "free": false,
   "kids": false,
   "org": "Casino de Pornic",
   "place": "Casino de Pornic, rue du Canal",
   "time": "20h30",
-  "title": "Spectacle : Edgar-Yves",
+  "title": "Edgar-Yves Jr – « Vigilance »",
   "town": "Pornic",
   "type": "spectacle",
-  "url": "https://www.pornic.com/spectacle-edgar-yves-pornic.html"
+  "url": "https://casino-pornic.partouche.com/spectacles/11323/edgar-yves-jr-vigilance"
  },
  {
   "id": "2026-12-11-mon-premier-cinema-prefailles",
@@ -5483,6 +5805,21 @@
   "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
   "free": false,
   "kids": true
+ },
+ {
+  "id": "2026-12-11-conf-taches-solaires-villeneuve",
+  "title": "Conférence : les deux histoires des taches solaires",
+  "date": "2026-12-11",
+  "time": "21h",
+  "place": "Villeneuve-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "atelier",
+  "category": "Conférence astronomie",
+  "org": "Les Randonneurs des étoiles",
+  "desc": "Conférence de Karl Ludwig Klein, astronome émérite de l'Observatoire de Paris-Meudon, sur l'histoire des taches solaires.",
+  "url": "https://www.pornic.com/conference-sur-les-deux-histoires-des-taches-solaires-villeneuve-en-retz.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-11-coup-pouce-numerique-brevin",
@@ -5563,18 +5900,6 @@
   "kids": true
  },
  {
-  "id": "2026-12-12-sainte-barbe-prefailles",
-  "category": "Tradition",
-  "date": "2026-12-12",
-  "desc": "Hommage aux sapeurs-pompiers volontaires : 11h dépôt de gerbe au cimetière de Préfailles, 11h30 cérémonie descente de plage Éric Tabarly (revue des troupes, médailles), 12h15 discours, 12h45 vin d'honneur salle du Conseil municipal.",
-  "place": "Cimetière de Préfailles puis descente de plage Éric Tabarly",
-  "time": "11h",
-  "title": "Sainte-Barbe des pompiers",
-  "town": "Préfailles",
-  "type": "vielocale",
-  "url": "https://www.jds.fr/pornic/manifestations/sainte-barbe-des-pompiers-1441761_A"
- },
- {
   "id": "2026-12-12-conversation-anglais-plaine",
   "category": "Langue",
   "date": "2026-12-12",
@@ -5589,6 +5914,18 @@
   "type": "atelier",
   "url": "https://www.pornic.com/atelier-conversation-en-anglais-la-plaine-sur-mer.html",
   "ageMin": 15
+ },
+ {
+  "id": "2026-12-12-sainte-barbe-prefailles",
+  "category": "Tradition",
+  "date": "2026-12-12",
+  "desc": "Hommage aux sapeurs-pompiers volontaires : 11h dépôt de gerbe au cimetière de Préfailles, 11h30 cérémonie descente de plage Éric Tabarly (revue des troupes, médailles), 12h15 discours, 12h45 vin d'honneur salle du Conseil municipal.",
+  "place": "Cimetière de Préfailles puis descente de plage Éric Tabarly",
+  "time": "11h",
+  "title": "Sainte-Barbe des pompiers",
+  "town": "Préfailles",
+  "type": "vielocale",
+  "url": "https://www.jds.fr/pornic/manifestations/sainte-barbe-des-pompiers-1441761_A"
  },
  {
   "id": "2026-12-12-visite-cite-medievale-pornic",
@@ -5622,21 +5959,6 @@
   "ageMin": 12
  },
  {
-  "id": "2026-12-12-noel-en-retz-st-pere",
-  "title": "Noël en Retz, marché de Noël",
-  "date": "2026-12-12",
-  "time": "14h–21h",
-  "place": "Salle de la Bergerie",
-  "town": "Saint-Père-en-Retz",
-  "type": "fete",
-  "category": "Marché de Noël",
-  "org": "Noël en Retz",
-  "desc": "Artisans, créations locales, gourmandises et idées cadeaux de 14h à 21h ; entrée libre, restauration et buvette.",
-  "url": "https://www.saint-brevin.com/noel-en-retz.html",
-  "free": true,
-  "kids": true
- },
- {
   "id": "2026-12-12-marche-noel-corsept",
   "title": "Marché de Noël de Corsept",
   "date": "2026-12-12",
@@ -5648,6 +5970,21 @@
   "org": "Les Fées Magics",
   "desc": "Une trentaine d'exposants de créations artisanales, vin chaud, crêpes et galettes, bar et restauration ; entrée libre, de 14h à 21h.",
   "url": "https://www.saint-brevin.com/marche-de-noel-a-corsept.html",
+  "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-12-noel-en-retz-st-pere",
+  "title": "Noël en Retz, marché de Noël",
+  "date": "2026-12-12",
+  "time": "14h–21h",
+  "place": "Salle de la Bergerie",
+  "town": "Saint-Père-en-Retz",
+  "type": "fete",
+  "category": "Marché de Noël",
+  "org": "Noël en Retz",
+  "desc": "Artisans, créations locales, gourmandises et idées cadeaux de 14h à 21h ; entrée libre, restauration et buvette.",
+  "url": "https://www.saint-brevin.com/noel-en-retz.html",
   "free": true,
   "kids": true
  },
@@ -5725,19 +6062,19 @@
   "kids": false
  },
  {
-  "id": "2026-12-12-mon-premier-cinema-prefailles",
-  "title": "Festival « Mon premier cinéma »",
+  "id": "2026-12-12-arnaud-fradin-chaumes",
+  "title": "Arnaud Fradin & His Roots Combo",
   "date": "2026-12-12",
   "time": "20h30",
-  "place": "Cinéma L'Atlantique, 5 Grande Rue",
-  "town": "Préfailles",
+  "place": "Espace culturel Victor-Lemoine, Chéméré",
+  "town": "Chaumes-en-Retz",
   "type": "spectacle",
-  "category": "Cinéma",
-  "org": "Cinéma L'Atlantique",
-  "desc": "Festival programmé et animé par des jeunes de 14 à 18 ans (choix des films, accueil, projection); inscriptions des jeunes à la préparation : cinema.atlantique@gmail.com.",
-  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
+  "category": "Concert blues",
+  "org": "Saison culturelle de Chaumes-en-Retz",
+  "desc": "Concert blues, folk et roots « Good Old Days » ; 15 €, réduit 10 €, enfant 5 €.",
+  "url": "https://www.chaumesenretz.fr/agenda/arnaud-fradin-his-roots-combo/",
   "free": false,
-  "kids": true
+  "kids": false
  },
  {
   "id": "2026-12-12-haut-les-coeurs-st-pere",
@@ -5755,19 +6092,19 @@
   "kids": false
  },
  {
-  "id": "2026-12-12-arnaud-fradin-chaumes",
-  "title": "Arnaud Fradin & His Roots Combo",
+  "id": "2026-12-12-mon-premier-cinema-prefailles",
+  "title": "Festival « Mon premier cinéma »",
   "date": "2026-12-12",
   "time": "20h30",
-  "place": "Espace culturel Victor-Lemoine, Chéméré",
-  "town": "Chaumes-en-Retz",
+  "place": "Cinéma L'Atlantique, 5 Grande Rue",
+  "town": "Préfailles",
   "type": "spectacle",
-  "category": "Concert blues",
-  "org": "Saison culturelle de Chaumes-en-Retz",
-  "desc": "Concert blues, folk et roots « Good Old Days » ; 15 €, réduit 10 €, enfant 5 €.",
-  "url": "https://www.chaumesenretz.fr/agenda/arnaud-fradin-his-roots-combo/",
+  "category": "Cinéma",
+  "org": "Cinéma L'Atlantique",
+  "desc": "Festival programmé et animé par des jeunes de 14 à 18 ans (choix des films, accueil, projection); inscriptions des jeunes à la préparation : cinema.atlantique@gmail.com.",
+  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
   "free": false,
-  "kids": false
+  "kids": true
  },
  {
   "id": "2026-12-13-jeu-vitrines-noel-bernerie",
@@ -5833,16 +6170,16 @@
   "id": "2026-12-13-dansant-rolland-brevin",
   "category": "Thé dansant",
   "date": "2026-12-13",
-  "desc": "Thé dansant (portes 13h30), entrée 14 €. Infos 02 52 80 00 75.",
+  "desc": "Après-midi dansant (ouverture des portes 13h30, début 14h30); entrée 14 €, réservation au 02 52 80 00 75.",
   "free": false,
   "kids": false,
   "org": "Le Canotier",
-  "place": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
   "time": "14h30",
   "title": "Après-midi dansant avec l'orchestre Emmanuel Rolland",
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-emmanuel-rolland-1745915_A"
+  "url": "https://www.le-canotier.net/évènement/2026-12-13-apres-midi-dansant-orchestre-emmanuel-rolland/"
  },
  {
   "id": "2026-12-13-atelier-modelisme-brevin",
@@ -5992,6 +6329,21 @@
   "url": "https://www.saint-brevin.com/ballet-casse-noisette.html"
  },
  {
+  "id": "2026-12-15-coup-pouce-numerique-brevin",
+  "title": "Coup de pouce numérique : Excel, les bases",
+  "date": "2026-12-15",
+  "time": "15h",
+  "place": "Médiathèque Jules-Verne, 30 avenue Jules-Verne",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "atelier",
+  "category": "Aide numérique",
+  "org": "Médiathèque Jules-Verne",
+  "desc": "Atelier du Comptoir numérique animé par Joachim : Excel, les bases (1h30) ; renseignements à la médiathèque au 02 40 27 45 80.",
+  "url": "https://www.saint-brevin.fr/agenda/les-coups-de-pouce-numeriques-de-joachim/",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-15-visite-interieur-chateau-pornic",
   "title": "Visite guidée : dans l'intimité du château de Pornic",
   "date": "2026-12-15",
@@ -6006,21 +6358,6 @@
   "free": false,
   "kids": true,
   "ageMin": 10
- },
- {
-  "id": "2026-12-15-coup-pouce-numerique-brevin",
-  "title": "Coup de pouce numérique : Excel, les bases",
-  "date": "2026-12-15",
-  "time": "15h",
-  "place": "Médiathèque Jules-Verne, 30 avenue Jules-Verne",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "atelier",
-  "category": "Aide numérique",
-  "org": "Médiathèque Jules-Verne",
-  "desc": "Atelier du Comptoir numérique animé par Joachim : Excel, les bases (1h30) ; renseignements à la médiathèque au 02 40 27 45 80.",
-  "url": "https://www.saint-brevin.fr/agenda/les-coups-de-pouce-numeriques-de-joachim/",
-  "free": false,
-  "kids": false
  },
  {
   "id": "2026-12-15-decoration-nature-st-hilaire",
@@ -6316,6 +6653,21 @@
   "url": "https://www.atlantic-loire-valley.com/festivals-and-events/un-noel-feerique-a-pornic-7"
  },
  {
+  "id": "2026-12-19-cine-gouter-st-pere",
+  "title": "Ciné-goûter de Saint-Roch",
+  "date": "2026-12-19",
+  "time": "15h",
+  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
+  "town": "Saint-Père-en-Retz",
+  "type": "spectacle",
+  "category": "Ciné-goûter",
+  "org": "Espace culturel Saint-Roch",
+  "desc": "Séance de cinéma suivie d'un goûter ; 4 €, réduit 2 €.",
+  "url": "https://www.saint-brevin.com/les-cine-gouters-de-saint-roch.html",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-12-19-pr-paillette-brevin",
   "title": "Spectacle enfants : Pr Paillette – La Fabrique à Cadeaux",
   "date": "2026-12-19",
@@ -6331,21 +6683,6 @@
   "kids": true,
   "ageMin": 3,
   "ageMax": 10
- },
- {
-  "id": "2026-12-19-cine-gouter-st-pere",
-  "title": "Ciné-goûter de Saint-Roch",
-  "date": "2026-12-19",
-  "time": "15h",
-  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
-  "town": "Saint-Père-en-Retz",
-  "type": "spectacle",
-  "category": "Ciné-goûter",
-  "org": "Espace culturel Saint-Roch",
-  "desc": "Séance de cinéma suivie d'un goûter ; 4 €, réduit 2 €.",
-  "url": "https://www.saint-brevin.com/les-cine-gouters-de-saint-roch.html",
-  "free": false,
-  "kids": true
  },
  {
   "id": "2026-12-19-pere-noel-tharon",
@@ -6404,6 +6741,21 @@
   "url": "https://www.saint-brevin.com/les-chalets-gourmands-de-noel.html",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2026-12-19-ailleurs-poche-pornic",
+  "title": "Humour : « Ailleurs » de Romain Oliviero",
+  "date": "2026-12-19",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène : de l'animateur pour enfants au cavalier cascadeur du Puy du Fou, une galerie de personnages trop sûrs d'eux ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-ailleurs-pornic.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-19-festi-noel-st-cyr-villeneuve",
@@ -6469,16 +6821,31 @@
   "id": "2026-12-20-dansant-noel-damien-roy-brevin",
   "category": "Thé dansant",
   "date": "2026-12-20",
-  "desc": "Thé dansant de Noël (portes 13h30), 14 € avec consommation et goûter; orchestre à confirmer au 02 52 80 00 75.",
+  "desc": "Après-midi dansant (ouverture des portes 13h30, début 14h30); entrée 14 €, réservation au 02 52 80 00 75.",
   "free": false,
   "kids": false,
   "org": "Le Canotier",
-  "place": "Le Canotier",
+  "place": "Le Canotier, 7 avenue des Frères Lumière",
   "time": "14h30",
-  "title": "Après-midi dansant de Noël (orchestre Damien Roy)",
+  "title": "Après-midi dansant avec l'orchestre Damien Roy",
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/apres-midi-dansant-avec-l-orchestre-damien-roy-1747391_A"
+  "url": "https://www.le-canotier.net/évènement/2026-12-20-apres-midi-dansant-orchestre-damien-roy/"
+ },
+ {
+  "id": "2026-12-20-solstice-hiver-paimboeuf",
+  "title": "Fête du Solstice d'hiver et feu d'artifice",
+  "date": "2026-12-20",
+  "time": "15h",
+  "place": "Le Hangar, quai Sadi-Carnot",
+  "town": "Paimbœuf",
+  "type": "fete",
+  "category": "Noël",
+  "org": "Ville de Paimbœuf",
+  "desc": "Dès 15h au Hangar : groupes musicaux, artisans locaux, photo avec le Père Noël, vin chaud, marrons et gourmandises offerts par la municipalité ; vers 18h déambulation vers le quai Éole et feu d'artifice à 18h30 (annulable si la météo est mauvaise) ; gratuit.",
+  "url": "https://www.paimboeuf.fr/public/tools/editor/files/PAIMBLOfil/2026/Num%C3%A9ro%20104_WEB.pdf",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-20-dinde-novembre-brevin",
@@ -6496,19 +6863,19 @@
   "kids": false
  },
  {
-  "id": "2026-12-20-solstice-hiver-paimboeuf",
-  "title": "Solstice d'hiver",
+  "id": "2026-12-20-ailleurs-poche-pornic",
+  "title": "Humour : « Ailleurs » de Romain Oliviero",
   "date": "2026-12-20",
-  "time": "15h–18h",
-  "place": "Le Hangar, quai Sadi-Carnot",
-  "town": "Paimbœuf",
-  "type": "fete",
-  "category": "Noël",
-  "org": "Ville de Paimbœuf",
-  "desc": "Après-midi festif au Hangar : vin chaud et marrons offerts par la municipalité, créations d'artisans locaux, visite du Père Noël et photobooth ; ouvert à tous.",
-  "url": "https://www.saint-brevin.com/solstice-d-hiver.html",
-  "free": true,
-  "kids": true
+  "time": "16h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène : de l'animateur pour enfants au cavalier cascadeur du Puy du Fou, une galerie de personnages trop sûrs d'eux ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-ailleurs-pornic.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-20-apres-midi-latino-brevin",
@@ -6569,6 +6936,23 @@
   "url": "https://www.pornic.com/rassemblement-de-voitures-retro-prefailles.html"
  },
  {
+  "id": "2026-12-21-chut-heure-poche-pornic",
+  "title": "Conte musical : « Chut ! C'est l'heure »",
+  "date": "2026-12-21",
+  "time": "11h et 16h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Spectacle poétique pour les 1-6 ans : trois chatons partent à l'aventure dans la forêt la nuit ; 8 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/conte-musical-chut-c-est-l-heure-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 1,
+  "ageMax": 6
+ },
+ {
   "id": "2026-12-22-apres-midi-dansant-clion",
   "category": "Thé dansant",
   "date": "2026-12-22",
@@ -6598,6 +6982,22 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://www.pornic.com/visite-guidee-pornic-frissons-de-noel-pornic.html"
+ },
+ {
+  "id": "2026-12-22-le-marie-poche-pornic",
+  "title": "Comédie : « Le marié »",
+  "date": "2026-12-22",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène d'Arnaud de Montlivault : un futur marié attend sa fiancée en retard et son esprit dérape ; dès 14 ans ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-le-marie-pornic.html",
+  "free": false,
+  "kids": false,
+  "ageMin": 14
  },
  {
   "id": "2026-12-23-poney-sainte-marie",
@@ -6649,6 +7049,22 @@
   "ageMax": 10
  },
  {
+  "id": "2026-12-23-le-marie-poche-pornic",
+  "title": "Comédie : « Le marié »",
+  "date": "2026-12-23",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène d'Arnaud de Montlivault : un futur marié attend sa fiancée en retard et son esprit dérape ; dès 14 ans ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-le-marie-pornic.html",
+  "free": false,
+  "kids": false,
+  "ageMin": 14
+ },
+ {
   "id": "2026-12-24-menus-noel-casino-pornic",
   "title": "Menus de Noël au restaurant du Casino de Pornic",
   "date": "2026-12-24",
@@ -6695,6 +7111,21 @@
   "kids": true
  },
  {
+  "id": "2026-12-26-quelles-vies-poche-pornic",
+  "title": "Comédie : « Quelles vies ! » de Tim Solac",
+  "date": "2026-12-26",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène physique d'un ancien danseur devenu comédien, entre personnages, autodérision et chorégraphies ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-quelles-vies-pornic.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-26-vannerie-panier-ste-pazanne",
   "title": "Atelier vannerie : panier à anse cuir",
   "date": "2026-12-26",
@@ -6706,6 +7137,21 @@
   "org": "L'atelier des Grisettes",
   "desc": "Journée de 7 heures avec une vannière osiéricultrice pour réaliser un panier en osier, matériel fourni ; 120 €, 4 places, réservation obligatoire.",
   "url": "https://www.pornic.com/atelier-vannerie-fabrication-d-un-panier-a-anse-cuir-ste-pazanne.html",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-12-27-quelles-vies-poche-pornic",
+  "title": "Comédie : « Quelles vies ! » de Tim Solac",
+  "date": "2026-12-27",
+  "time": "16h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seul-en-scène physique d'un ancien danseur devenu comédien, entre personnages, autodérision et chorégraphies ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-quelles-vies-pornic.html",
   "free": false,
   "kids": false
  },
@@ -6725,6 +7171,21 @@
   "kids": true
  },
  {
+  "id": "2026-12-28-magie-rollini-poche-pornic",
+  "title": "Magie : « Hasard ou coïncidence ? » de Gilles Rollini",
+  "date": "2026-12-28",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Illusionnisme et mentalisme, conseillé aux adolescents et adultes ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/magie-hasard-ou-coincidence-pornic.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-29-visite-cite-medievale-pornic",
   "category": "Visite guidée",
   "date": "2026-12-29",
@@ -6738,6 +7199,21 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
+ },
+ {
+  "id": "2026-12-29-dimanche-avec-toi-poche-pornic",
+  "title": "Comédie : « Un dimanche avec toi »",
+  "date": "2026-12-29",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Comédie presque romantique d'Arnaud de Montlivault : deux inconnus bloqués sur un quai de gare ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-un-dimanche-avec-toi-pornic.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-29-stand-up-prefailles",
@@ -6771,6 +7247,21 @@
   "url": "https://en.pornic.com/guided-tour-event-pornic-dark-hours-in-the-city-pornic.html"
  },
  {
+  "id": "2026-12-30-dimanche-avec-toi-poche-pornic",
+  "title": "Comédie : « Un dimanche avec toi »",
+  "date": "2026-12-30",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Comédie presque romantique d'Arnaud de Montlivault : deux inconnus bloqués sur un quai de gare ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/comedie-un-dimanche-avec-toi-pornic.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-31-reveillon-flottille-prefailles",
   "category": "Réveillon",
   "date": "2026-12-31",
@@ -6786,6 +7277,21 @@
   "url": "https://en.pornic.com/la-flottille-menu-de-la-saint-sylvestre-2026-prefailles.html"
  },
  {
+  "id": "2026-12-31-reveillon-marius-pornic",
+  "title": "Réveillon de la Saint-Sylvestre de Marius",
+  "date": "2026-12-31",
+  "time": "19h",
+  "place": "Salle Joséphine Baker, Le Clion-sur-Mer",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Réveillon",
+  "org": "Marius",
+  "desc": "Dîner festif (buffet d'entrées, plat chaud, buffet de desserts), spectacle de magie d'Emmanuelle et Philippe Bonnemann puis soirée dansante avec DJ Ted's; accueil 19h–19h30, fin à 2h; réservation en ligne ou au 02 51 18 18 00.",
+  "url": "https://www.marius-pornic.fr/nouvel-an-2027/",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-31-jo-comedie-ste-pazanne",
   "title": "« Jo », comédie d'Alec Coppel",
   "date": "2026-12-31",
@@ -6797,21 +7303,6 @@
   "org": "Troupe Côté Scène",
   "desc": "Comédie policière mise en scène par Calouss ; entrée adulte 13 € ; soirée du réveillon avec repas, réservation uniquement par mail ou au théâtre.",
   "url": "https://www.pornic.com/jo-comedie-d-alec-coppel-ste-pazanne.html",
-  "free": false,
-  "kids": false
- },
- {
-  "id": "2026-12-31-reveillon-casino-pornic",
-  "title": "Réveillon de la Saint-Sylvestre au Casino de Pornic",
-  "date": "2026-12-31",
-  "time": "20h30",
-  "place": "Casino Partouche, 30 rue du Canal",
-  "town": "Pornic",
-  "type": "fete",
-  "category": "Réveillon",
-  "org": "Casino Partouche de Pornic",
-  "desc": "Dîner gastronomique du Nouvel An au restaurant du casino (entrées, plat, fromage, dessert), 135 € avec 20 € de crédits de jeu offerts; sur réservation.",
-  "url": "https://casino-pornic.partouche.com/agenda/13325/diner-st-sylvestre---restaurant",
   "free": false,
   "kids": false
  },
@@ -6831,6 +7322,21 @@
   "kids": false
  },
  {
+  "id": "2026-12-31-reveillon-casino-pornic",
+  "title": "Réveillon de la Saint-Sylvestre au Casino de Pornic",
+  "date": "2026-12-31",
+  "time": "20h30",
+  "place": "Casino Partouche, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "fete",
+  "category": "Réveillon",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Dîner gastronomique du Nouvel An au restaurant du casino (entrées, plat, fromage, dessert), 135 € avec 20 € de crédits de jeu offerts; sur réservation.",
+  "url": "https://casino-pornic.partouche.com/agenda/13325/diner-st-sylvestre---restaurant",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-31-reveillon-canotier-brevin",
   "category": "Réveillon",
   "date": "2026-12-31",
@@ -6843,6 +7349,37 @@
   "url": "https://www.le-canotier.net/évènement/reveillon-du-nouvel-an-2026-2027/",
   "org": "Le Canotier",
   "free": false
+ },
+ {
+  "id": "2027-01-01-gouter-magie-marius-pornic",
+  "title": "Goûter spectacle de magie : Vie de grenier",
+  "date": "2027-01-01",
+  "time": "16h",
+  "place": "Salle Joséphine Baker, Le Clion-sur-Mer",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Spectacle familial",
+  "org": "Marius",
+  "desc": "Spectacle de magie d'Armand Bonnemann (1 h, conseillé dès 5 ans), goûter et boisson compris; 20 € par personne, réservation en ligne ou au 02 51 18 18 00.",
+  "url": "https://www.marius-pornic.fr/nouvel-an-2027-2/",
+  "free": false,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
+  "id": "2027-01-02-haaaa-poche-pornic",
+  "title": "Seule en scène : « HAAAA » (Guimette)",
+  "date": "2027-01-02",
+  "time": "19h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seule-en-scène loufoque à la recherche du bonheur ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/seul-en-scene-haaaa-pornic.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-02-don-du-sang-brevin",
@@ -6873,6 +7410,21 @@
   "url": "https://www.pornic.com/exposition-de-vehicules-anciens-st-michel-chef-chef.html",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2027-01-03-haaaa-poche-pornic",
+  "title": "Seule en scène : « HAAAA » (Guimette)",
+  "date": "2027-01-03",
+  "time": "16h",
+  "place": "Café-théâtre Le Poche, 1 place des Halles",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Café-théâtre",
+  "org": "Le Poche",
+  "desc": "Seule-en-scène loufoque à la recherche du bonheur ; 15 €, réduit 12 € ; réservation au Poche (sur place, par téléphone ou en ligne sur HelloAsso).",
+  "url": "https://www.pornic.com/seul-en-scene-haaaa-pornic.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-04-expo-reel-bernerie",
@@ -7314,6 +7866,21 @@
   "kids": true
  },
  {
+  "id": "2027-01-22-coline-linder-trio-villeneuve",
+  "title": "Coline Linder Trio",
+  "date": "2027-01-22",
+  "time": "20h30",
+  "place": "Caba'Retz Théâtre, Fresnay-en-Retz",
+  "town": "Villeneuve-en-Retz",
+  "type": "spectacle",
+  "category": "Concert folk",
+  "org": "Caba'Retz Théâtre",
+  "desc": "Concert folk et musiques du monde (portes à 19h), bar et petite restauration ; de 5 à 15 €, réservation sur HelloAsso.",
+  "url": "https://www.pornic.com/colin-linder-trio-villeneuve-en-retz.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2027-01-22-jeu-famille-brevin",
   "category": "Théâtre",
   "date": "2027-01-22",
@@ -7343,21 +7910,6 @@
   "free": false,
   "kids": false,
   "ageMin": 12
- },
- {
-  "id": "2027-01-22-coline-linder-trio-villeneuve",
-  "title": "Coline Linder Trio",
-  "date": "2027-01-22",
-  "time": "20h30",
-  "place": "Caba'Retz Théâtre, Fresnay-en-Retz",
-  "town": "Villeneuve-en-Retz",
-  "type": "spectacle",
-  "category": "Concert folk",
-  "org": "Caba'Retz Théâtre",
-  "desc": "Concert folk et musiques du monde (portes à 19h), bar et petite restauration ; de 5 à 15 €, réservation sur HelloAsso.",
-  "url": "https://www.pornic.com/colin-linder-trio-villeneuve-en-retz.html",
-  "free": false,
-  "kids": false
  },
  {
   "id": "2027-01-23-osier-bernerie",
@@ -7864,6 +8416,52 @@
   "url": "https://www.pornic.com/conference-l-ia-generative-a-t-elle-une-conscience-pornic.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2027-02-12-concertino-bernold-rossfelder-pornic",
+  "title": "Concertino : Philippe Bernold et Emmanuel Rossfelder",
+  "date": "2027-02-12",
+  "time": "20h30",
+  "place": "Espace culturel du Val Saint-Martin, rue Jules Ferry",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert classique",
+  "org": "Ville de Pornic",
+  "desc": "Duo flûte et guitare de la saison des Concertinos ; renseignements à l'office de tourisme (02 40 82 04 40).",
+  "url": "https://www.jds.fr/pornic/concerts/concertino-philippe-bernold-et-emmanuel-rossfelder-1762501_A",
+  "free": false,
+  "kids": false
+ },
+ {
+  "id": "2027-02-12-fiskal-pornic",
+  "title": "Danse : Fiskal (Cie C'hoari)",
+  "date": "2027-02-12",
+  "time": "20h30",
+  "place": "Amphithéâtre Thomas Narcejac, 17 rue Rostislaw Loukianoff",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Danse",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Deux danseuses et deux skateurs mêlent skate, danse contemporaine et culture bretonne sur des rampes de bois ; dès 7 ans, 1 h ; 15 €, réduit 11 €.",
+  "url": "https://www.pornicagglo.fr/evenement/amphitheatre-fiskal/",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
+ },
+ {
+  "id": "2027-02-12-poisoners-st-pere",
+  "title": "Concert : The Poisoners",
+  "date": "2027-02-12",
+  "time": "20h30",
+  "place": "Espace culturel Saint-Roch, rue de l'Abbé Perrin",
+  "town": "Saint-Père-en-Retz",
+  "type": "spectacle",
+  "category": "Concert pop-rock",
+  "org": "Mairie de Saint-Père-en-Retz (saison Dist'Retz)",
+  "desc": "Groupe nantais aux sonorités pop, 70's et psychédéliques, univers rétro de cabinet de curiosités (1h10, tout public) ; gratuit d'après l'office de tourisme, réservation en ligne, infos au 07 89 05 31 22.",
+  "url": "https://www.saint-brevin.com/the-poisoners.html",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2027-02-20-comme-avant-ou-presque-prefailles",

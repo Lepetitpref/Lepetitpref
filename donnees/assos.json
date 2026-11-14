@@ -169,12 +169,12 @@
  },
  {
   "id": "hirondelle-nature",
-  "contact": "02 51 74 02 62 · asso.hirondelle@wanadoo.fr",
-  "desc": "Association d'éducation à l'environnement de la Côte de Jade, sorties ouvertes au public.",
+  "contact": "02 51 74 02 62 · contact@associationhirondelle.fr",
+  "desc": "Association d'éducation à l'environnement du Pays de Retz (siège au Pas Renaud, Le Clion-sur-Mer), sorties nature ouvertes au public, brochure des sorties 2026 sur son site.",
   "forWho": "Familles, enfants",
   "name": "Hirondelle",
-  "regular": "",
-  "town": "La Plaine-sur-Mer",
+  "regular": "Club nature CPN (3-6 ans et 7-12 ans) : 2 samedis par mois en période scolaire, 10h-11h55, lieu variable dans le Pays de Retz",
+  "town": "Pornic",
   "url": "https://www.associationhirondelle.fr",
   "what": "Sorties nature pour tous, clubs nature pour les enfants, sensibilisation à l'environnement",
   "th": "nature"
@@ -1613,7 +1613,7 @@
   "desc": "",
   "forWho": "",
   "regular": "",
-  "contact": "",
+  "contact": "02 40 82 04 81 (collège Jean Mounès)",
   "url": "https://www.pornic.fr/fiche-annuaire/collectif-des-parents-deleves-du-college-jean-mounes/",
   "th": "enfance"
  },
@@ -2330,11 +2330,11 @@
   "name": "La Lune à l’envers",
   "town": "Pornic",
   "what": "Association humanitaire d’aide au peuple malgache",
-  "desc": "",
+  "desc": "Aide morale et financière aux personnes défavorisées de la région d'Antsirabé à Madagascar (éducation, santé).",
   "forWho": "",
   "regular": "",
   "contact": "lalunealenvers@gmail.com",
-  "url": "https://www.pornic.fr/fiche-annuaire/la-lune-a-lenvers/",
+  "url": "https://lalunealenvers.fr/",
   "th": "solidarite"
  },
  {
