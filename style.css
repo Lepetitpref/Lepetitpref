@@ -1409,8 +1409,10 @@ button.wk-c{cursor:pointer}
 .nav-bul summary::-webkit-details-marker{display:none}
 .nav-bul[open] summary{background:color-mix(in srgb,var(--accent) 14%,var(--surface));color:var(--accent)!important}
 /* ciné : nom de la salle sur sa ligne, horaires alignés dessous, tous de la même largeur */
-.times{gap:6px 8px;margin-top:6px}
-.times>span:first-child{flex-basis:100%;margin-bottom:-2px}
-.times .ics-t{min-width:4.8em;text-align:center;justify-content:center}
-.ba-lnk{display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:6px;font-size:15px;font-weight:600;color:var(--accent);text-decoration:none}
-/* version du site */:root{--pp-v:"20261114-1328"}
+.times{display:grid;grid-template-columns:8em 1fr;align-items:center;gap:6px 10px;margin-top:6px}
+.times.t-solo{grid-template-columns:1fr}
+.times .t-cin{font-size:14px;line-height:1.2;color:var(--muted)}
+.times .t-h{display:flex;flex-wrap:wrap;gap:6px}
+.times .ics-t{min-width:3.9em;min-height:34px;padding:4px 8px;font-size:14px;font-weight:600;text-align:center;justify-content:center;border-radius:8px}
+.ba-lnk{display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:4px;font-size:14px;font-weight:500;color:var(--accent);text-decoration:none}
+/* version du site */:root{--pp-v:"20261114-1404"}
