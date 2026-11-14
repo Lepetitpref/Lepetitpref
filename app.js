@@ -1111,7 +1111,7 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
     {l:"Débutants",beg:1,f:d=>{const B=begSurf(d);if(B){const H=swellAt(B.sp,B.x.s);return wkCell(B.n,B.sp,`${B.h1}h-${B.h2}h<br>vagues ${sizeW(H)}${B.x.tt?` · ${esc(B.x.tt.txt)}`:""} · avec école`,"",d);}const w=begWhy(d);return wkCell(0,null,"",w||"non");}},
     {l:"Confirmés",f:d=>{const R0=rankSpots("surf",d),r=R0.top,Hr=r?swellAt(r.sp,r.b.s):null,big=r&&Hr!=null?R0.L.find(x=>x!==r&&x.b.j[0]>0&&(swellAt(x.sp,x.b.s)??0)>=Hr+.3):null;
       return r&&r.b.j[0]>0?wkCell(r.b.j[0],r.sp,`${slotH(r.b)} · ${SURFW2[String(r.b.j[1]).split(" · ")[0]]||esc(reasonShort(r.b.j[1]).toLowerCase())}<br>${swl(r)}${big?`<br>plus gros : <b>${esc(spShort(big.sp.n))}</b> ${slotH(big.b)}, ${r1(swellAt(big.sp,big.b.s))} m`:""}`,"",d):wkCell(0,null,"",r?(SURFW2[String(r.b.j[1]).split(" · ")[0].replace(/ : .*$/,"")]||reasonShort(r.b.j[1]).toLowerCase()):"non");}}],
-    `${t!=null?`<b>Eau ${r0(t)} °C</b> : intégrale${t<15?" + chaussons":""}. `:""}Débutants : avec une école ou un moniteur, jamais seul. Secours <a href="tel:112">112</a>, en mer <a href="tel:196">196</a>.`,
+    "",
     `Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large, dans la zone du spot.`);
   const kc=a=>({l:a==="kite"?"Kite":"Wing",f:d=>{const r=rankSpots(a,d).top;
       if(a==="kite"&&r&&r.b.j[0]===0){const KL=rankSpots("kite",d).L,fx=rankSpots("wing",d).L.filter(y=>y.b.j[0]>0&&!y.b.forcit&&(y.b.gmax||0)<32&&(y.b.gmax||0)/(y.b.wmin||1)<1.8&&(y.b.gmax||0)-(y.b.wmin||0)<14).find(y=>KL.some(x=>x.sp.id===y.sp.id&&/^Foil seulement/.test(x.b.j[1])));
