@@ -1537,6 +1537,8 @@ addEventListener("popstate",()=>{if(MAPFULL)MAPFULL.close(true);});
 /* barre de sous-rubriques : si la partie est déjà sur la page (La mer, À faire), on y descend ou remonte directement,
    même quand le lien pointe vers la page où l'on est déjà (sinon rien ne se passait) */
 document.addEventListener("click",e=>{const a=e.target.closest(".subnav a.seg-a[data-spy]");if(!a||e.metaKey||e.ctrlKey)return;
+  /* Activités, Ciné, Soirées : l'Agenda n'en montre qu'un aperçu → on ouvre leur vraie page (vignettes, filtres) */
+  if(/^#(activites|cine|soirees)$/.test(a.getAttribute("href")||""))return;
   const el=document.getElementById(a.dataset.spy);if(!el)return;e.preventDefault();
   const h=a.getAttribute("href");try{history.replaceState(history.state,"",h);}catch(x){}S.jumped=h.slice(1);lastView=curView();
   ACT.pjump(a.dataset.spy);});
