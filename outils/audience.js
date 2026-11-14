@@ -2,7 +2,7 @@
 // Audience du Petit Préf pour le tableau de bord de l'éditeur (artifact « Le Petit Préf, audience »), jamais affichée sur le site.
 // Lit les totaux du compteur de Concret (clés « quiz-pp-… », écrites par app.js : ppVue / ppHit) et écrit des JSON HORS du dépôt.
 //   node outils/audience.js <dossier hors dépôt>
-// Écrit : jours.json (14 derniers jours), pages.json (vues par rubrique depuis le début), resume.json.
+// Écrit : jours.json (14 derniers jours), pages.json (vues par rubrique depuis le début, aujourd'hui et hier), resume.json.
 //   --avant <url du dossier déjà publié> : reprend les jours anciens (plus de 2 jours) déjà relevés, pour ne relire que les 2 derniers
 //   (utilisé par .github/workflows/site.yml, toutes les 15 min, pour ménager le compteur).
 var cp = require('child_process'), fs = require('fs'), path = require('path');
@@ -42,7 +42,9 @@ var ecrire = function (n, v) { fs.writeFileSync(path.join(out, n + '.json'), JSO
   jours.forEach(function (r) { var c = CORR[r && r.jour]; if (!c || r.corrige) return; Object.keys(c).forEach(function (k) { if (r[k] != null) r[k] = Math.max(0, r[k] + c[k]); });
     r.appareils_revenus = r.appareils == null ? null : Math.max(0, r.appareils - (r.appareils_nouveaux || 0)); r.corrige = true; });
   var pv = await tout(VUES.map(function (x) { return 'vue-' + x; }));
-  var pages = VUES.map(function (x, i) { return { rubrique: NOMS[x], vues: pv[i] }; }).sort(function (a, b) { return (b.vues || 0) - (a.vues || 0); });
+  // ouvertures du jour et de la veille par rubrique (compteurs « vue-<rubrique>-<jour> », tenus depuis le 14/11/2026 vers 14h30)
+  var pj = await tout(VUES.map(function (x) { return 'vue-' + x + '-' + jour(0); })), ph = await tout(VUES.map(function (x) { return 'vue-' + x + '-' + jour(1); }));
+  var pages = VUES.map(function (x, i) { return { rubrique: NOMS[x], vues: pv[i], aujourdhui: pj[i] || 0, hier: jour(1) >= '2026-11-15' ? (ph[i] || 0) : null }; }).sort(function (a, b) { return (b.vues || 0) - (a.vues || 0); });
   var total = await lire('appareils'); if (total != null) total = Math.max(0, total + CORR_TOTAL);
   var s7 = function (k) { return jours.slice(-7).reduce(function (a, r) { return a + (r[k] || 0); }, 0); };
   ecrire('jours', jours); ecrire('pages', pages);

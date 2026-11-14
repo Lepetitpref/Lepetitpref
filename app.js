@@ -1984,7 +1984,7 @@ function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k)
 const ppVu={};
 /* type d'appareil (totaux seulement) : iphone, android, tablette, ordi */
 const ppType=()=>{const u=navigator.userAgent||"";if(/iPad/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1))return"tablette";if(/iPhone|iPod/.test(u))return"iphone";if(/Android/.test(u))return /Mobile/.test(u)?"android":"tablette";return"ordi";};
-function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
+function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vue-"+v+"-"+j);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
   if(ppVu._jour)return;ppVu._jour=1;
   try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour");
     if(!prem){ppHit("appareils");ppHit("appareils-nouveaux-"+j);}
