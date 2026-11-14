@@ -566,7 +566,11 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
 function faireSuite(){const t=today();
   const acts=ACTIV().filter(a=>openOn(a,t)&&fitsWhere(a.dist,a.town)).sort((p,q)=>(p.dist??99)-(q.dist??99)).slice(0,6);
   const films=[];for(let i=0;i<4&&films.length<6;i++){const d=addDays(t,i);filmsOn(d,"tous").forEach(f=>{if(films.length<6)films.push(f);});}
-  return `<div id="s-activites" class="part"><h2 class="part-h">Activités</h2><p class="part-sub">Ouvert aujourd'hui, ${zoneTxt()}.</p>
+  /* les vignettes des types d'activités, comme sur la page Activités : un toucher ouvre ce type */
+  const c0=S.cat;S.cat="tous";const pre=ACTIV().filter(a=>actOK(a)&&fitsWhere(a.dist,a.town,S.aWhere));let grid=actGrid(pre,t);S.cat=c0;
+  grid=grid.replace(/data-act="cat" data-v="([a-z]+)" aria-pressed="[a-z]+"/g,'data-act="go2" data-v="activites|acsel|cat=$1"');
+  return `<div id="s-activites" class="part"><h2 class="part-h">Activités</h2><p class="part-sub">Touchez un type pour voir les lieux.</p>
+   ${grid}
    ${sec("Ouvert aujourd'hui",secLink("#activites","Toutes les activités"),acts.length?`<ul class="list">${acts.map(a=>placeRow(a,t)).join("")}</ul>`:`<p class="empty">Rien d'ouvert aujourd'hui avec ce rayon.</p>`)}</div>
   <div id="s-cine" class="part"><h2 class="part-h">Ciné</h2><p class="part-sub">Les prochaines séances, à Préfailles et dans les salles voisines.</p>
    ${sec("Prochaines séances",secLink("#cine","Tout le programme"),S.cinema===null?loadingTxt:films.length?`<ul class="list">${films.map(f=>row({lead:dateLead(f.date),leadCls:"lead-date",title:esc(f.film),metaH:meta(esc(cinName(f.cin)),esc((f.times||[]).join(", ")),esc(f.genre||"")),href:"#cine"})).join("")}</ul>`:`<p class="empty">Pas de séance annoncée.</p>`)}</div>
