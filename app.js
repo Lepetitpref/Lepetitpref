@@ -1124,7 +1124,7 @@ function weekSecs(){if(!weekDays().length)return `<p class="empty">Prévisions e
       const why=x=>(x.b.gmax||0)>=(a==="kite"?32:34)&&!/afales|Bulletin/.test(x.b.j[1])?`rafales ${r0(x.b.gmax)} nds`:reasonShort(x.b.j[1]).toLowerCase();
       return wkCell(0,null,"",alt?`${spShort(alt.sp.n)} : ${why(alt).replace(" : "," ")}`:r?reasonShort(r.b.j[1]).toLowerCase():"non");}});
   const kw=weekTable("wk-kite","Où kiter et winger cette semaine","sail",[kc("kite"),kc("wing")],
-    `Pour pratiquants autonomes ; débutants : seulement en cours avec une école. Vent de terre : on ne sort pas. Près du bord, vitesse limitée à 5 nœuds dans la bande des 300 m : on traverse par le chenal balisé. Jamais seul, retour avant la nuit. Le vent vient d'un seul point de prévision : vérifiez l'anémomètre. En mer <a href="tel:196">196</a>.`);
+    "");
   return surf+kw;}
 /* un spot pour débuter en surf : seulement les spots « Débutants », même règle que begSurf */
 function begSpot(sp,d){if(!/Débutant/.test(sp.lvl||"")||!sp.acts.includes("surf"))return null;const hs=surfHours(sp,d).filter(x=>d!==today()||x.h>=new Date().getHours()).map(x=>({...x,b:begJ(sp,x)}));
