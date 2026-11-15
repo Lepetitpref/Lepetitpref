@@ -875,7 +875,7 @@
   "Nature et balades": "Nature and walks",
   "Pharmacie, car, plage, loto…": "Pharmacy, bus, beach, bingo…",
   "Glissez le doigt sur la courbe pour lire chaque année.": "Slide your finger along the curve to read each year.",
-  "On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel.": "Building is only allowed in urban and to-be-developed zones; the rest is farmland or natural areas.",
+  "On ne construit que dans les zones urbaines et à urbaniser ; le reste est agricole ou naturel.": "Building is only allowed in urban and development zones; the rest is farmland or natural areas.",
   "La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)": "La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)",
   "Préfailles – La Plaine-sur-Mer – Pornic – Saint-Brevin – Saint-Nazaire": "Préfailles – La Plaine-sur-Mer – Pornic – Saint-Brevin – Saint-Nazaire",
   "Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic": "Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic",
@@ -3696,19 +3696,19 @@
    "$1.$2$3"
   ],
   [
-   "(?g)(\\d)[  ](\\d{3})(?!\\d)",
+   "(?g)(\\d)[\\s\\u00a0\\u202f](\\d{3})(?!\\d)",
    "$1,$2"
   ],
   [
-   "(?g)(\\d[\\d,.]*) k€",
+   "(?g)(\\d[\\d,.]*)[\\s\\u00a0\\u202f]k€",
    "€$1k"
   ],
   [
-   "(?g)(\\d[\\d,.]*) €(/m²)?",
+   "(?g)(\\d[\\d,.]*)[\\s\\u00a0\\u202f]€(/m²)?",
    "€$1$2"
   ],
   [
-   "(?g)(\\S) :( |$)",
+   "(?g)(\\S)[\\s\\u00a0\\u202f]:([\\s\\u00a0]|$)",
    "$1:$2"
   ],
   [
@@ -3718,6 +3718,18 @@
   [
    "(?g)(?<!\\p{L})Basse mer(?!\\p{L})",
    "Low tide"
+  ],
+  [
+   "^(See the other (?:\\d+|one) · )Sensations$",
+   "$1Thrills"
+  ],
+  [
+   "(?g)(\\d{1,2})H(\\d{2}) local time",
+   "$1h$2 local time"
+  ],
+  [
+   "^[\\s\\u00a0\\u202f]+:([\\s\\u00a0])",
+   ":$1"
   ]
  ],
  "words": {

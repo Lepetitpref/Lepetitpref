@@ -2156,7 +2156,7 @@ function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;
     v=hit&&!/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)&&!/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à)(?![\p{L}-])/u.test(x)?x:null;}
   I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
 function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
-  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ]/.test(n.nodeValue))todo.push(n);}
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ€]|\d,\d|\d :/.test(n.nodeValue))todo.push(n);}
   /* contenus (événements, lieux, associations) : seulement la traduction entière de donnees/en-data.json, jamais de mot à mot */
   todo.forEach(n=>{const fr=n.parentElement.closest("[lang=fr]");let v;
     if(fr){const k=n.nodeValue.replace(/\s+/g," ").trim(),x=I18N.data&&I18N.data[k];v=x?n.nodeValue.replace(k,x):n.nodeValue;}else v=trText(n.nodeValue);
