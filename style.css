@@ -1458,6 +1458,7 @@ button.wk-c{cursor:pointer}
 .tr-mini{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:6px var(--gutter);border:0;border-bottom:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:15px;text-align:left;box-shadow:0 2px 8px rgba(20,22,28,.08);cursor:pointer}
 .tr-mini[hidden]{display:none}
 .tr-mini>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tr-mini-w{flex:none;white-space:nowrap;color:var(--muted);margin-left:auto}
 .tr-mini-e{flex:none;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:14px;font-weight:600}
 .tr-q-r{align-items:flex-end}
 .tr-end{display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -1472,10 +1473,10 @@ button.wk-c{cursor:pointer}
 .tr-j details[open] .tr-chain{display:none}
 .tr-modes{display:inline-flex}
 .tr-modes button{min-height:40px;padding:0 9px;font-size:14px;white-space:nowrap}
-.tr-j-top{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr) auto;align-items:center;gap:4px 8px}
+.tr-j-top{display:grid;grid-template-columns:8.5em 18px minmax(0,1fr) 7.5em;align-items:center;gap:4px 8px}
 .tr-j-top .tr-arr{width:18px}
 .tr-j-top .note-pill{grid-column:4;grid-row:1;margin-left:0;justify-self:end}
 .tr-j-top .tr-d{grid-column:1/4;grid-row:2}
 .tr-j-top .tr-chain{grid-column:4;grid-row:2;justify-self:end;margin-left:0}
 .tr-tt .tr-t,.tr-tt .tr-t2{font-variant-numeric:tabular-nums}
-/* version du site */:root{--pp-v:"20261115-0953"}
+/* version du site */:root{--pp-v:"20261115-0956"}
