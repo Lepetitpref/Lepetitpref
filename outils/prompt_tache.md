@@ -74,3 +74,7 @@ Lire le programme mensuel complet (https://www.cinemaprefailles.com/images/PROGR
 
 ## Transports
 `donnees/transports.json` : vérifier une fois par mois les fiches Aléop 303 / 315, TER Nantes–Pornic et TER ligne 1 Nantes–Saint-Nazaire (champ `fin` de chaque tronçon `legs`). **Les fiches TER actuelles s'arrêtent le 12 décembre 2026** : dès que les fiches à partir du 13 décembre sont publiées (index https://aleop.paysdelaloire.fr/je-recherche-un-horaire-aleop?field_transport_type=4), régénérer les tronçons avec `outils/transports/` (mode d'emploi : `outils/transports/LISEZMOI.md`) et mettre à jour `fin`, `valid` et `source`. Ne jamais inventer d'horaire.
+
+
+## Contrôle de la version anglaise (obligatoire)
+Avant le commit, lancer le serveur local (`python3 -m http.server 8765` à la racine) puis `node outils/anglais.js`. S'il signale des textes d'interface restés en français, les ajouter à `donnees/en.json` (`exact` pour un texte fixe, `rules` ancrées ^…$ pour un texte avec chiffres ou dates) et relancer jusqu'à « OK ». Les contenus (événements, lieux) se traduisent dans `donnees/en-data.json` via `outils/traduire.py`.
