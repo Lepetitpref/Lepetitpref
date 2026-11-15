@@ -1564,6 +1564,11 @@ function pmFocus(v){if(!v)return;if(!v.pa){if(v.la){ACT.pjump("im-carte");setTim
 let MAPFULL=null;
 /* pendant le plein écran : la page revient à sa taille normale et ne peut plus être agrandie (sinon on ne voit plus le bouton Fermer) */
 function vpLock(on){const v=document.querySelector('meta[name="viewport"]');if(!v)return;v.setAttribute("content","width=device-width,initial-scale=1,viewport-fit=cover"+(on?",maximum-scale=1,user-scalable=no":""));}
+/* plusieurs points sous le doigt : petite liste pour choisir (un toucher de plus, toujours le bon lieu) */
+function crowdPop(m,L0,ll){const box=document.createElement("div");box.className="pop crowd";box.innerHTML=`<b>${L0.length} adresses ici</b>`;
+  L0.slice(0,8).forEach(l=>{const b=document.createElement("button");b.type="button";b.className="crowd-b";b.textContent=l.options.title||"Adresse";b.onclick=e=>{e.stopPropagation();m.closePopup();setTimeout(()=>l.openPopup(),30);};box.appendChild(b);});
+  L.DomEvent.disableClickPropagation(box);L.popup({maxWidth:260,autoPanPadding:[20,70]}).setLatLng(ll).setContent(box).openOn(m);}
+const nearOf=(m,p0,r)=>{const o=[];m.eachLayer(l=>{if(l.getLatLng&&l.getPopup&&l.getPopup()&&l.options&&l.options.title){const d=m.latLngToContainerPoint(l.getLatLng()).distanceTo(p0);if(d<r)o.push([d,l]);}});return o.sort((a,b)=>a[0]-b[0]).map(x=>x[1]);};
 function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").matches;
   m.setMinZoom(11);m.setMaxBounds(L.latLngBounds([center[0]-.35,center[1]-.5],[center[0]+.35,center[1]+.5]));
   const home=L.control({position:"topright"});home.onAdd=()=>{const b=L.DomUtil.create("button","map-home");b.type="button";b.title="Recentrer";b.setAttribute("aria-label","Recentrer la carte");b.innerHTML="⌖";L.DomEvent.on(b,"click",e=>{L.DomEvent.stop(e);m.setView(center,14);});return b;};home.addTo(m);
@@ -1580,7 +1585,10 @@ function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").match
     MAPFULL={close,y};try{history.pushState({ppmap:1},"");}catch(e){}requestAnimationFrame(()=>{m.invalidateSize();});};
   const close=(fromPop)=>{if(!MAPFULL)return;const y=MAPFULL.y;vpLock(false);if(S.renderLater){S.renderLater=false;setTimeout(render,50);}MAPFULL=null;m.closePopup();set(false);el.classList.remove("map-full");document.body.classList.remove("locked","map-open");if(ph.parentNode)ph.remove();
     requestAnimationFrame(()=>{m.invalidateSize();scrollTo({top:y,behavior:"instant"});});if(!fromPop){try{if(history.state&&history.state.ppmap)history.back();}catch(e){}}};
-  ov.addEventListener("click",e=>{e.stopPropagation();open();});done.addEventListener("click",e=>{e.stopPropagation();close();});
+  /* toucher un point sur l'aperçu : la carte s'ouvre en grand ET la bulle de ce point s'ouvre (un seul toucher) */
+  ov.addEventListener("click",e=>{e.stopPropagation();const r=el.getBoundingClientRect(),tp=L.point(e.clientX-r.left,e.clientY-r.top);
+    const near=nearOf(m,tp,24),ll=near[0]?near[0].getLatLng():null;
+    open();setTimeout(()=>{m.invalidateSize();if(near.length>1)crowdPop(m,near,ll);else if(near[0])near[0].openPopup();},120);});done.addEventListener("click",e=>{e.stopPropagation();close();});
   L.DomEvent.disableClickPropagation(ov);L.DomEvent.disableClickPropagation(done);}
 addEventListener("popstate",()=>{if(MAPFULL)MAPFULL.close(true);});
 /* barre de sous-rubriques : si la partie est déjà sur la page (La mer, À faire), on y descend ou remonte directement,
@@ -1706,7 +1714,10 @@ function drawMap(){const el=document.getElementById("mmap");if(!el)return;const 
   LMAP=L.map(el,{zoomControl:true,attributionControl:true}).setView([HOME.lat,HOME.lon],14);mapGuard(LMAP,el,[HOME.lat,HOME.lon]);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(LMAP);
   L.circleMarker([HOME.lat,HOME.lon],{radius:5,color:"#1c1d22",weight:2,fillColor:"#fff",fillOpacity:1}).addTo(LMAP).bindTooltip(BASE.k==="prefailles"?"Préfailles, bourg":"Pornic, centre",{direction:"top"});
-  const pts=list.map(a=>L.circleMarker([a.lat,a.lon],{radius:8,color:"#fff",weight:2,fillColor:MCOL(a),fillOpacity:.95}).addTo(LMAP).bindPopup(()=>mapPopup(a,LME),{maxWidth:240}));
+  /* points plus gros, et une zone de toucher de ~32 px autour (tolerance du rendu canvas) : un doigt suffit */
+  const pts=list.map(a=>{const mk=L.marker([a.lat,a.lon],{icon:L.divIcon({className:"mpin",html:`<i style="background:${MCOL(a)}"></i>`,iconSize:[40,40],iconAnchor:[20,20],popupAnchor:[0,-10]}),title:a.n,keyboard:true}).addTo(LMAP).bindPopup(()=>mapPopup(a,LME),{maxWidth:260,autoPanPadding:[20,70]});
+    /* points collés les uns aux autres : un toucher zoome d'abord ; un point seul : sa bulle s'ouvre */
+    mk.off("click",mk._openPopup);mk.on("click",()=>{const N=nearOf(LMAP,LMAP.latLngToContainerPoint(mk.getLatLng()),16);if(N.length>1)crowdPop(LMAP,N,mk.getLatLng());else mk.openPopup();});return mk;});
   if(LME)L.circleMarker([LME.lat,LME.lon],{radius:7,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP).bindTooltip("Vous êtes ici",{direction:"top"});
   if(pts.length>1)LMAP.fitBounds(L.featureGroup(pts).getBounds().pad(.12),{maxZoom:15});}
 function mapLocate(){if(!navigator.geolocation){toast("Localisation indisponible sur cet appareil");return;}
