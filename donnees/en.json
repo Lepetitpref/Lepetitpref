@@ -18,7 +18,7 @@
   "Choisir": "Choose",
   "Installer l'app sur votre téléphone": "Install the app on your phone",
   "Une icône sur l'écran d'accueil, sans store, gratuite : on vous montre comment, sur iPhone et Android.": "An icon on your home screen, no app store, free: we'll show you how, on iPhone and Android.",
-  "Le temps du jour et les quatre rubriques": "Today's weather and the four sections",
+  "Le temps du jour et les quatre rubriques": "Today's weather and the five sections",
   "À faire · Agenda": "Things to do · What's on",
   "Sorties datées : fêtes, concerts, brocantes": "Dated events: festivals, concerts, flea markets",
   "À faire · Activités": "Things to do · Activities",
@@ -47,8 +47,8 @@
   "Liens utiles": "Useful links",
   "Masquer ce message": "Hide this message",
   "La mer en détail": "The sea in detail",
-  "Voir": "See",
-  "Ouvrir": "Open",
+  "Voir": "How to",
+  "Ouvrir": "See all",
   "Pratique": "Practical info",
   "Une nouvelle version du Petit Préf est en ligne": "A new version of Le Petit Préf is available",
   "Mettre à jour": "Update",
@@ -102,7 +102,7 @@
   "Partir de Préfailles": "Leaving Préfailles",
   "Venir à Préfailles": "Getting to Préfailles",
   "Lignes et tarifs": "Lines and fares",
-  "cars Aléop 303 et 315, TER Pornic et Saint-Nazaire, tickets": "Aléop buses 303 and 315, TER trains to Pornic and Saint-Nazaire, tickets",
+  "cars Aléop 303 et 315, TER Pornic et Saint-Nazaire, tickets": "Aléop coaches 303 and 315, TER trains to Pornic and Saint-Nazaire, tickets",
   "Installer Le Petit Préf": "Install Le Petit Préf",
   "Une icône sur l'écran d'accueil. Gratuit, sans store.": "An icon on your home screen. Free, no app store.",
   "Agenda mis à jour ce matin.": "What's on updated this morning.",
@@ -271,7 +271,7 @@
   "Grandes marées": "Spring tides",
   "Le coefficient va de 20 à 120. À partir de 90 : la mer descend très bas et remonte vite.": "The coefficient ranges from 20 to 120. From 90 upwards, the sea goes out a very long way and comes back in fast.",
   "Pas de grande marée dans les dix semaines.": "No spring tides in the next ten weeks.",
-  "Mortes-eaux : petite marée, pas de pêche à pied.": "Neap tide: small tide, no shore fishing.",
+  "Mortes-eaux : petite marée, pas de pêche à pied.": "Neap tide: small tidal range, not worth going shore fishing.",
   "Où et quand faire du surf, du kite, du wing, de la voile aujourd'hui.": "Where and when to surf, kite, wing or sail today.",
   "Glisse aujourd'hui": "Board sports today",
   "Glisse demain": "Board sports tomorrow",
@@ -308,7 +308,7 @@
   " qui apparaît en bas": " that appears at the bottom",
   " en bas": " at the bottom",
   "🔇 La vidéo démarre sans le son : touchez le haut-parleur en bas du lecteur pour l'entendre.": "🔇 The video starts muted: tap the speaker at the bottom of the player to hear it.",
-  "VF et VO selon la salle": "Dubbed or original version depending on the cinema",
+  "VF et VO selon la salle": "French or original version, depending on the cinema",
   "Touchez un type pour voir les lieux.": "Tap a type to see the places.",
   "Lire tout le bulletin météo": "Read the full weather bulletin",
   "Calculée sur le port de Pornic (SHOM) : à Préfailles, la mer monte et descend à quelques minutes près.": "Calculated for the port of Pornic (SHOM): in Préfailles the tide rises and falls within a few minutes of it.",
@@ -316,7 +316,7 @@
   "Replier": "Show less",
   "En bleu": "In blue",
   "en gris": "in grey",
-  "faisable ce jour-là": "doable that day",
+  "faisable ce jour-là": "possible that day",
   "· idéal : mi-marée à marée haute (récif peu profond)": "· ideal: mid tide to high tide (shallow reef)",
   "· idéal : mi-marée à marée haute (récif découvert à basse mer)": "· ideal: mid tide to high tide (reef exposed at low tide)",
   "· idéal : marée basse à mi-marée (shorebreak à marée haute)": "· ideal: low tide to mid tide (shorebreak at high tide)",
@@ -545,7 +545,7 @@
   "Horaires utiles": "Useful times",
   "Programme du mois et prochaines séances": "This month's programme and upcoming screenings",
   "Bonnes marées, créneau conseillé, sécurité": "Good tides, best time slot, safety",
-  "Prochains cars 303 et 315, trains de Pornic": "Next 303 and 315 buses, trains from Pornic",
+  "Prochains cars 303 et 315, trains de Pornic": "Next 303 and 315 coaches, trains from Pornic",
   "Mer et météo": "Sea and weather",
   "Baignade : la qualité de l'eau est contrôlée par l'ARS pendant la saison, plage par plage.": "Swimming: water quality is monitored by the ARS (regional health agency) during the season, beach by beach.",
   "source officielle ↗": "official source ↗",
@@ -570,7 +570,7 @@
   "Photos et logo.": "Photos and logo.",
   "© Le Petit Préf, tous droits réservés.": "© Le Petit Préf, all rights reserved.",
   "Données personnelles.": "Personal data.",
-  "Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie.": "The site collects no personal data: no account, no form, no cookie.",
+  "Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie.": "The site collects no personal data: no account, no sign-up, no cookies.",
   "Mesure d'audience :": "Audience measurement:",
   "le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), les installations de l'app et les clics sur « Installer ». Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.": "the site only counts totals (pages opened, number of devices per day, shares, visit length in bands), with nothing that identifies you: no cookie, no stored IP address, no identifier. Also counted, always as totals: the type of device (iPhone, Android, tablet, computer), app installs and taps on “Install”. Your browser only keeps the date of your last visit. Your holiday dates and filters stay saved in your browser, on your device only.",
   "Services utilisés par le site.": "Services used by the site.",
@@ -619,7 +619,7 @@
   "Poubelles": "Bins",
   "Horaires": "Times",
   "Santé": "Health",
-  "Au quotidien": "Everyday",
+  "Au quotidien": "Day to day",
   "Urgence": "Emergency",
   "SAMU 15": "Ambulance 15",
   "Pompiers 18": "Fire 18",
@@ -666,7 +666,7 @@
   "Nous écrire": "Write to us",
   "Une erreur, un oubli, un événement à ajouter : le formulaire, ou contact@lepetitpref.fr": "A mistake, something missing, an event to add: the form, or contact@lepetitpref.fr",
   "Vous êtes ici": "You are here",
-  "Écrire": "Write",
+  "Écrire": "Contact",
   "Plus": "More",
   "Immobilier": "Property",
   "Ventes réelles et prix au m²": "Actual sales and price per m²",
@@ -732,7 +732,7 @@
   "zone urbaine": "urban zone",
   "zone agricole": "agricultural zone",
   "zone naturelle": "natural zone",
-  "zone à urbaniser": "zone to be developed",
+  "zone à urbaniser": "development zone",
   "Règlement de la zone ↗": "Zone regulations ↗",
   "autorisé": "approved",
   "chantier commencé": "work started",
@@ -761,7 +761,7 @@
   "Un mardi sur deux ; chaque mardi l'été": "Every other Tuesday; every Tuesday in summer",
   "Tri, verre, papier": "Sorting, glass, paper",
   "Colonnes verte et bleue": "Green and blue bins",
-  "De passage, collecte manquée": "Visiting, missed collection",
+  "De passage, collecte manquée": "Visitors, missed collections",
   "Points d'apport volontaire": "Drop-off points",
   "Déchetterie": "Recycling centre",
   "Déchèteries": "Recycling centres",
@@ -787,16 +787,16 @@
   "Touchez une parcelle ou un point violet pour le détail.": "Tap a plot or a purple dot for details.",
   "Réduire": "Show less",
   "Zones urbaines": "Urban zones",
-  "Zones à urbaniser": "Zones to be developed",
+  "Zones à urbaniser": "Development zones",
   "Zones agricoles": "Agricultural zones",
   "Zones naturelles": "Natural zones",
   "Zone urbaine": "Urban zone",
-  "Zone à urbaniser": "Zone to be developed",
-  "Zone à urbaniser plus tard": "Zone to be developed later",
+  "Zone à urbaniser": "Development zone",
+  "Zone à urbaniser plus tard": "Future development zone",
   "Zone agricole": "Agricultural zone",
   "Zone naturelle": "Natural zone",
   "Zone naturelle (secteur particulier)": "Natural zone (special area)",
-  "Prix d'une maison": "House price",
+  "Prix d'une maison": "House prices",
   "Prix d'un appartement": "Flat prices",
   "Dernières ventes": "Latest sales",
   "Ventes et permis, cadastre": "Sales and permits, land register",
@@ -929,7 +929,7 @@
   "jours et horaires": "days and times",
   "pharmacies, médecins, dentistes": "pharmacies, doctors, dentists",
   "112, SAMU 15, pompiers 18, mer 196": "112, ambulance 15, fire 18, sea rescue 196",
-  "appelez le 3237 (nuit, dimanche, fériés)": "call 3237 (nights, Sundays, holidays)",
+  "appelez le 3237 (nuit, dimanche, fériés)": "call 3237 (nights, Sundays, bank holidays)",
   "choisissez votre secteur": "choose your sector",
   "Cars et trains, correspondances comprises.": "Coaches and trains, connections included.",
   "Urgences, santé, poubelles, mairie et poste.": "Emergencies, health, bins, town hall and post office.",
@@ -1025,7 +1025,7 @@
   "Voir notre week-end": "See our weekend",
   "Voir notre programme": "See our plan",
   "J'habite ici, sans groupe": "I live here, no group",
-  "· Le temps du jour et les quatre rubriques": "· Today's weather and the four sections",
+  "· Le temps du jour et les quatre rubriques": "· Today's weather and the five sections",
   "(ou via la mairie": "(or via the town hall",
   "Inscription en mairie :": "Register at the town hall:",
   "Aller à une adresse sur la carte": "Go to an address on the map",
@@ -1060,9 +1060,9 @@
   "Demain midi": "Tomorrow lunchtime",
   "Demain, midi": "Tomorrow lunchtime",
   "Dernier du jour": "Last of the day",
-  "Le premier": "The first one",
+  "Le premier": "First available",
   "Le dernier qui convient": "The last one that fits",
-  "faisable ce jour-là ·": "doable that day ·",
+  "faisable ce jour-là ·": "possible that day ·",
   "Marées et météo, spots de glisse, navigation, pêche à pied : tout se déroule sur cette page. Pour se baigner :": "Tides and weather, surf spots, sailing, shore fishing: it's all on this one page. For swimming:",
   "Me situer sur la carte": "Show my location on the map",
   "On trie sorties, âges et horaires pour vous. Rien ne quitte ce téléphone.": "We sort outings, ages and times for you. Nothing leaves this phone.",
@@ -1216,9 +1216,17 @@
   "Parcs et loisirs de plein air": "Parks and outdoor leisure",
   "Grands bois balnéaires": "Large seaside woods",
   "Aires d'accueil des gens du voyage": "Traveller sites",
-  "Hôtels et restaurants en zone naturelle": "Hotels and restaurants in a natural zone"
+  "Hôtels et restaurants en zone naturelle": "Hotels and restaurants in a natural zone",
+  "Modifier": "Change",
+  "VF": "French version",
+  "VOST": "Original version, French subtitles",
+  "Animation": "Animation"
  },
  "rules": [
+  [
+   "^(\\d{4}) : jusqu'en (.+)$",
+   "$1: up to $2"
+  ],
   [
    "^\\(Candhis, (\\d+) km au large\\), aujourd'hui à (\\S+) : mesure indisponible pour l'instant$",
    "(Candhis, $1 km offshore), today at $2: no reading available for now"
@@ -1581,7 +1589,7 @@
   ],
   [
    "^Ventes signées chez le notaire, pas des annonces, publiées par l'État deux fois par an avec environ six mois de retard \\(de (\\d{4}) au (.+?)\\)\\. Prix 2010-2020 : Cerema\\.$",
-   "Sales signed at the notary, not listings, published by the State twice a year about six months late (from $1 to $2). 2010-2020 prices: Cerema."
+   "Completed sales recorded by notaries, not listings, published by the State twice a year about six months late (from $1 to $2). 2010-2020 prices: Cerema."
   ],
   [
    "^(.+) · (\\d{1,2} \\S+ \\d{4}) · autorisé$",
@@ -2057,7 +2065,7 @@
   ],
   [
    "^Voir jusqu'à (\\d+) km$",
-   "Show up to $1 km"
+   "Show places up to $1 km away"
   ],
   [
    "^≤ (\\d+) km$",
@@ -2121,7 +2129,7 @@
   ],
   [
    "^Fermé le (\\p{L}+)$",
-   "Closed on $1"
+   "Closed on $1s"
   ],
   [
    "^Accès libre · basse mer (.+)$",
@@ -2692,7 +2700,7 @@
    "Tue"
   ],
   [
-   "(?<![\\p{L}\\p{N}])[Mm]er\\.?(?= \\d)",
+   "(?<![\\p{L}\\p{N}])(?<!Pleine |Basse |pleine |basse )[Mm]er\\.?(?= \\d)",
    "Wed"
   ],
   [
@@ -2776,7 +2784,7 @@
    "Tue"
   ],
   [
-   "(?<![\\p{L}\\p{N}])[Mm]er\\.?(?= \\d)",
+   "(?<![\\p{L}\\p{N}])(?<!Pleine |Basse |pleine |basse )[Mm]er\\.?(?= \\d)",
    "Wed"
   ],
   [
@@ -3029,7 +3037,7 @@
   ],
   [
    "^(\\d+) ouverts? sur (\\d+)$",
-   "$1 open of $2"
+   "$1 of $2 open"
   ],
   [
    "^(\\d+) en cours · toucher pour voir$",
@@ -3193,7 +3201,7 @@
   ],
   [
    "^(See the other (?:\\d+|one) · )Mer & glisse$",
-   "$1Sea & watersports"
+   "$1Sea & board sports"
   ],
   [
    "^(See the other (?:\\d+|one) · )Saveurs$",
@@ -3493,7 +3501,7 @@
   ],
   [
    "^(Aujourd'hui|\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+), départ dès (\\d{1,2}h\\d\\d)$",
-   "$1, leaving from $2"
+   "$1, departures after $2"
   ],
   [
    "^(Aujourd'hui|\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+), départ dès maintenant$",
@@ -3501,7 +3509,7 @@
   ],
   [
    "^départ dès (\\d{1,2}h\\d\\d)$",
-   "leaving from $1"
+   "departures after $1"
   ],
   [
    "^· (\\d+) trajets? sur 1 dans la journée, dernier départ (\\d{1,2}h\\d\\d)$",
@@ -3549,7 +3557,7 @@
   ],
   [
    "^Pour le retour ce jour-là : dernier départ de (.+) à$",
-   "To come back that day: last departure from $1 at"
+   "Coming back the same day: last departure from $1 at"
   ],
   [
    "^, (.+?) · arrivée à ((?:Préfailles|Pornic|Nantes|Saint-Nazaire)) (\\d{1,2}h\\d\\d), (.+)$",
@@ -3682,6 +3690,34 @@
   [
    "^Été \\((.+)\\) :$",
    "Summer ($1):"
+  ],
+  [
+   "(?g)(\\d),(\\d)( ?m\\b| ?°| ?€|$)",
+   "$1.$2$3"
+  ],
+  [
+   "(?g)(\\d)[  ](\\d{3})(?!\\d)",
+   "$1,$2"
+  ],
+  [
+   "(?g)(\\d[\\d,.]*) k€",
+   "€$1k"
+  ],
+  [
+   "(?g)(\\d[\\d,.]*) €(/m²)?",
+   "€$1$2"
+  ],
+  [
+   "(?g)(\\S) :( |$)",
+   "$1:$2"
+  ],
+  [
+   "(?g)(?<!\\p{L})Pleine mer(?!\\p{L})",
+   "High tide"
+  ],
+  [
+   "(?g)(?<!\\p{L})Basse mer(?!\\p{L})",
+   "Low tide"
   ]
  ],
  "words": {

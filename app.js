@@ -2164,7 +2164,7 @@ function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker
   (root.querySelectorAll?root:document).querySelectorAll("[aria-label],[placeholder],[title]").forEach(e=>{["aria-label","placeholder","title"].forEach(a=>{const v=e.getAttribute(a);if(v){const t=trText(v);if(t!==v)e.setAttribute(a,t);}});});}
 if(LANG==="en"){document.documentElement.lang="en";
   Promise.all(["donnees/en.json","donnees/en-data.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null))).then(([d,dd])=>{if(!d)return;I18N.data=dd||{};
-    d._rules=(d.rules||[]).map(([a,b])=>{try{return[new RegExp(a,"u"),b];}catch(e){return null;}}).filter(Boolean);
+    d._rules=(d.rules||[]).map(([a,b])=>{try{const g=a.startsWith("(?g)");return[new RegExp(g?a.slice(4):a,g?"gu":"u"),b];}catch(e){return null;}}).filter(Boolean);
     d._words=Object.entries(d.words||{}).map(([a,b])=>[new RegExp("(?<![\\p{L}\\p{N}])"+a.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![\\p{L}\\p{N}])","gu"),b.replace(/\$/g,"$$$$")]);
     I18N.d=d;trTree(document.body);document.title=trText(document.title);
     new MutationObserver(ms=>{ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===1)trTree(x);else if(x.nodeType===3&&x.parentElement)trTree(x.parentElement);}));}).observe(document.body,{childList:true,subtree:true});
