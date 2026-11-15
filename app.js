@@ -200,7 +200,9 @@ function thumbOf(a){let[c,n]=TH[a.cat]||["t-act","spark"];
   if(a.kind==="huitres"||a.kind==="poisson")n="shell";else if(a.cat==="saveurs"&&a.kind!=="restaurant"&&a.kind!=="creperie")n="basket";
   if(/vélo|Ride/i.test(a.n))n="bike";if(/Pêche à pied/.test(a.n))n="tide";if(/^Cin[ée]/.test(a.n))n="film";if(/voile/i.test(a.n))n="sail";if(/Thalasso|Aqua/i.test(a.n))n="drop";
   return `<span class="thumb ${c}">${ic(n)}</span>`;}
-function statusOf(a,d){const o=openOn(a,d);
+/* un autre jour qu'aujourd'hui : « Ouvert demain », « Fermé lun. 16 » */
+function statusOf(a,d){const r=statusOf0(a,d),t=today();if(!r||d===t||typeof r[0]!=="string")return r;const w=d===addDays(t,1)?"demain":dshort(d);return [r[0].replace(/^(Ouvert|Fermé)/,"$1 "+w),...r.slice(1)];}
+function statusOf0(a,d){const o=openOn(a,d);
   if(/Pêche à pied/.test(a.n)){const l=dayLows(d);return[`Accès libre${l.length?" · basse mer "+hm(new Date(l[0].ms)):""}`,"ok"];}
   if(o)return[`Ouvert${/^(ouvert|week-end)$/.test(o)?"":" · "+esc(o)}`,"ok"];
   if(o===false){const md=d.slice(5),inSeason=a.open.some(r=>r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to));
@@ -553,19 +555,19 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const sd=e=>evStart(e,a>t?a:t,b)||t;
   const longs=list.filter(evIsLong),days={};list.filter(e=>!evIsLong(e)).forEach(e=>(days[sd(e)] ||= []).push(e));
   const keys=Object.keys(days).sort();let shown=0;const lim=S.more.agenda?9999:45;
-  const W=[["tout","Tout"],["jour",""],["auj","Aujourd'hui"],["dem","Demain"],["sem","7 jours"]];
+  const W=[["tout","Tout"],["jour",""],["auj","Aujourd'hui"],["dem","Demain"]];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
   const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>byTime(x,y)||band(x)-band(y));shown+=es.length;
     return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":(()=>{const fd=faireDay(),nd=list.length-longs.length,dT=fd?(fd===t?"aujourd'hui":fd===addDays(t,1)?"demain":dlong(fd)):"";return fd?`Agenda, ${esc(dT)} : ${nd?`${nd} sortie${nd>1?"s":""}`:"aucune sortie datée"} ${zoneTxt()}`:`Agenda : ${nd} sortie${nd>1?"s":""} à venir ${zoneTxt()}`;})())}
   ${segAC("agenda")}
-  <div class="ag-wrap"><div class="filters">${frow("frow","Quand",W.map(([k,l])=>k==="jour"?dayPick(S.when,"agday"):qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
+  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>k==="jour"?dayPick(S.when,"agday"):qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
    ${S.when==="jour"?`<p class="ag-dates-n">Le ${esc(dlong(S.agDay))}. <button type="button" class="lnk" data-act="agweek">Voir aussi les 7 jours suivants</button></p>`:S.when==="dates"?datesRow():""}
    ${frow("frow","Filtres",`${chipSel(S.etype==="tous"?"Toutes les sorties":(ETL[S.etype]||"Toutes les sorties"),S.etype,types.map(([k,l])=>[k,k==="tous"?"Toutes les sorties":l]),"etype","tous")}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?(longs.length?`<details class="ev-long"><summary><span class="ev-long-ic">${ic("cal","i-s")}</span><span class="ev-long-t"><b>En ce moment : expos et rendez-vous sur plusieurs semaines</b><small>${longs.length} en cours · toucher pour voir</small></span></summary><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul></details>`:"")
-    +(dayBlocks||(faireDay()?`<p class="empty">Rien d'annoncé ${(()=>{const fd=faireDay();return fd===t?"aujourd'hui":fd===addDays(t,1)?"demain":"le "+esc(dlong(fd));})()} ${zoneTxt()}. </p><button type="button" class="btn btn-quiet btn-block" data-act="when" data-v="sem">Voir les 7 jours</button>`:""))+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
-    :`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section></div>
+    +(dayBlocks||(faireDay()?`<p class="empty">Rien d'annoncé ${(()=>{const fd=faireDay();return fd===t?"aujourd'hui":fd===addDays(t,1)?"demain":"le "+esc(dlong(fd));})()} ${zoneTxt()}. </p><button type="button" class="btn-day" data-act="when" data-v="tout">Voir toutes les dates</button>`:""))+(hiddenN>0?`<button type="button" class="btn btn-quiet btn-block" data-act="more" data-v="agenda">Afficher les ${hiddenN} autres</button>`:"")
+    :`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   ${faireSuite()}
   <p class="foot">Sources : mairies, offices de tourisme, associations.</p>`;}
 /* à la suite de l'Agenda : les activités ouvertes et le ciné, pour qu'on les découvre en descendant */
@@ -590,7 +592,7 @@ function ouvertTard(a,t){if(a.soir===false)return false;const h=openOn(a,t);if(h
 function soirOuvert(a){if(a.soir===false)return false;const r=soirRange();let any=false;for(let t=r[0];t<=r[1];t=addDays(t,1)){const h=openOn(a,t);if(h===null)return true;if(h===false)continue;const m=[...String(h).matchAll(/(\d{1,2})h/g)].map(x=>+x[1]);const e=m.length?m[m.length-1]:24;if(e>=22||e<6)any=true;}return any;}
 const NUITS=()=>ACTS.filter(a=>a.kind==="bar"||a.bar||a.kind==="nuit"||/casino/i.test(a.n));
 /* choisir un jour dans le calendrier du téléphone : puce bien visible, juste après « Tout » */
-function dayPick(cur,chg){const t=today(),on=cur==="jour"&&S.agDay;return `<label class="chip chip-q chip-sel day-pick" ${on?'aria-pressed="true"':""}>${ic("cal","i-s")}${on?esc(dshort(S.agDay)):"Choisir une date"}<input type="date" data-chg="${chg}" value="${on?S.agDay:t}" min="${t}" aria-label="Choisir une date"></label>`;}
+function dayPick(cur,chg){const t=today(),on=cur==="jour"&&S.agDay;return `<label class="chip chip-q chip-sel day-pick" ${on?'aria-pressed="true"':""}>${ic("cal","i-s")}${on?esc(dshort(S.agDay).replace(/ [^ ]+$/,"")):"Autre jour"}<input type="date" data-chg="${chg}" value="${on?S.agDay:t}" min="${t}" aria-label="Choisir une date"></label>`;}
 function datesRow(){const t=today(),[du,au]=whenRange("dates");return `<div class="frow ag-dates"><label>Du <input type="date" data-chg="adu" value="${du}" min="${t}"></label><label>au <input type="date" data-chg="aau" value="${au}" min="${du}"></label></div><p class="ag-dates-n">Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.</p>`;}
 function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="jour"?whenRange("jour"):w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():w==="dates"?whenRange("dates"):[t,addDays(t,6)];}
 function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
@@ -605,7 +607,7 @@ function vSoirees(){const t=today(),[a,b]=soirRange(),ld=S.events===null;
   <div class="filters">${frow("frow","Quand",W.map(([k,l])=>k==="jour"?dayPick(S.soirWhen,"soirday"):qchip(l,(S.soirWhen||"7j")===k,`data-act="soirw" data-v="${k}"`)).join(""))}${S.soirWhen==="dates"?datesRow():""}
    ${frow("frow","Filtres",zoneSel())}</div>
   <div id="s-soirees">${ld?`<section class="sec">${loadingTxt}</section>`:days.length?days.map(([d,L])=>`<div class="day" style="margin:12px var(--gutter) 0 !important"><div class="datecol">${dateLead(d,d===t)}</div><ul class="list">${L.map(e=>evRow(e)).join("")}</ul></div>`).join("")
-    :`<section class="sec"><p class="empty">Pas de soirée annoncée ${S.soirWhen==="soir"?"ce soir":S.soirWhen==="demain"?"demain soir":S.soirWhen==="jour"?"le "+esc(dlong(S.agDay))+" au soir":"sur cette période"} ${zoneTxt()}. <button type="button" class="lnk" data-act="soirw" data-v="7j">Voir les 7 jours</button></p></section>`}
+    :`<section class="sec"><p class="empty">Pas de soirée annoncée ${S.soirWhen==="soir"?"ce soir":S.soirWhen==="demain"?"demain soir":S.soirWhen==="jour"?"le "+esc(dlong(S.agDay))+" au soir":"sur cette période"} ${zoneTxt()}. </p><button type="button" class="btn-day" data-act="soirw" data-v="7j">Voir les 7 jours</button></section>`}
   ${sec("Où sortir le soir","",(lieux.length?`<ul class="list">${lieux.map(x=>placeRow(x,t)).join("")}</ul>`:`<p class="empty">Aucun lieu ${zoneTxt()}. Élargissez la distance.</p>`)+loinTxt,"Bars, bars musicaux, lieux de nuit et casinos, du plus proche au plus loin. Horaires indicatifs : appelez avant.")}</div>
   <p class="foot">${n} sortie${n>1?"s":""} le soir sur la période. Sources : mairies, offices de tourisme, associations, sites des établissements.</p>`;}
 
@@ -619,7 +621,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
   const times=f=>{const mx=vMix(f);return [...new Set(f.seances.map(s=>s.cin+"\u0001"+s.v))].sort((a,b)=>(cinKm(a.split("\u0001")[0])??99)-(cinKm(b.split("\u0001")[0])??99)||a.localeCompare(b)).map(k=>{const[cn,vv]=k.split("\u0001");const lab=S.cin==="pref"?"":cinName(cn).replace(/^Ciné(ma)? /,"");return `<span class="times${lab?"":" t-solo"}">${lab?`<span class="t-cin">${esc(lab)}</span>`:""}<span class="t-h">${mx&&vv?`<span class="t-v">${esc(vv)}</span>`:""}${f.seances.filter(s=>s.cin===cn&&s.v===vv).sort((a,b)=>a.h.localeCompare(b.h,undefined,{numeric:true})).map(s=>`<button type="button" class="ics-t" data-act="ics" data-v="${icsV({t:`Ciné : ${f.film}`,d:day,h:s.h,loc:s.cin})}" aria-label="Ajouter la séance de ${esc(s.h)} au calendrier">${esc(s.h)}</button>`).join("")}</span></span>`;}).join("");};
   return `${pageHead("À faire","Ciné : toutes les salles, de la plus proche à la plus loin.")}
   ${segAC("cine")}
-  <div class="filters">${frow("frow","Jour",`<label class="chip chip-q chip-sel day-pick" ${day&&day>addDays(t,1)?'aria-pressed="true"':""}>${ic("cal","i-s")}${day&&day>addDays(t,1)?esc(cap(dshort(day))):"Choisir une date"}<input type="date" data-chg="cday" value="${day||t}" min="${t}"${days.length?` max="${days[days.length-1]}"`:""} aria-label="Choisir une date"></label>${[t,addDays(t,1)].map(d=>qchip(d===t?"Aujourd'hui":"Demain",d===day,`data-act="cday" data-v="${d}"`)).join("")}`)}
+  <div class="filters">${frow("frow","Jour",`<label class="chip chip-q chip-sel day-pick" ${day&&day>addDays(t,1)?'aria-pressed="true"':""}>${ic("cal","i-s")}${day&&day>addDays(t,1)?esc(dshort(day).replace(/ [^ ]+$/,"")):"Autre jour"}<input type="date" data-chg="cday" value="${day||t}" min="${t}"${days.length?` max="${days[days.length-1]}"`:""} aria-label="Choisir une date"></label>${[t,addDays(t,1)].map(d=>qchip(d===t?"Aujourd'hui":"Demain",d===day,`data-act="cday" data-v="${d}"`)).join("")}`)}
    ${frow("frow","Cinéma",CINF.map(([k,l])=>chip(l,S.cin===k,`data-act="cin" data-v="${k}"`)).join(""))}</div>
   ${S.cinema===null?`<section class="sec">${loadingTxt}</section>`:films.length?`
    ${sec(cap(dlong(day)),"",`<ul class="list">${films.map(f=>`<li class="row"><span class="thumb t-act">${ic("film")}</span><span class="row-main"><span class="row-title">${esc(f.film)}</span><span class="row-meta">${meta(esc((f.genre||"").replace(/Avant-première,?\s*/i,"")),vMix(f)?"VF et VO selon la salle":esc(f.version||""),f.kids?'<span class="ok">Jeune public</span>':"",/avant/i.test(f.genre||"")?"Avant-première":"")}</span>${times(f)}${(()=>{const u=(S.ba||{})[f.film];return u&&/^https:\/\/www\.allocine\.fr\/video\/player_gen_cmedia=\d+&cfilm=\d+\.html$/.test(u)?`<a class="ba-lnk" href="${esc(u)}" target="_blank" rel="noopener" data-act="ba" data-v="${esc(u)}|${esc(f.film)}">${ic("film","i-s")} Bande-annonce</a>`:"";})()}</span></li>`).join("")}</ul><p class="nav-src">Touchez un horaire pour l'ajouter au calendrier de votre téléphone.</p>`,`${films.length} film${films.length>1?"s":""}`)}`

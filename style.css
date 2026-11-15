@@ -1487,4 +1487,7 @@ button.wk-c{cursor:pointer}
 .tr-j:has(>details[open]){margin:0 -14px;padding:8px 14px;background:var(--accent-soft)}
 .tr-j:has(>details[open])+.tr-j:has(>details[open]){border-top:8px solid var(--surface)}
 .tr-j details[open] .tr-steps{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--surface);border-left:3px solid var(--accent)}
-/* version du site */:root{--pp-v:"20261115-1302"}
+.btn-day{display:inline-flex;align-items:center;min-height:44px;margin:4px var(--gutter) 12px;padding:8px 16px;border:1.5px solid var(--sel2);border-radius:999px;background:var(--surface);color:var(--sel2);font:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.sec .btn-day{margin:0 0 4px}
+.filters .chips[aria-label="Quand"]>.chip,.filters .chips[aria-label="Jour"]>.chip{padding-left:10px;padding-right:10px}
+/* version du site */:root{--pp-v:"20261115-1306"}
