@@ -1487,4 +1487,4 @@ button.wk-c{cursor:pointer}
 .tr-j:has(>details[open]){margin:0 -14px;padding:8px 14px;background:var(--accent-soft)}
 .tr-j:has(>details[open])+.tr-j:has(>details[open]){border-top:8px solid var(--surface)}
 .tr-j details[open] .tr-steps{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--surface);border-left:3px solid var(--accent)}
-/* version du site */:root{--pp-v:"20261115-1010"}
+/* version du site */:root{--pp-v:"20261115-1017"}

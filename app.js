@@ -2066,11 +2066,13 @@ let spyRaf=0;addEventListener("scroll",()=>{if(!spyRaf)spyRaf=requestAnimationFr
 
 /* ---------- démarrage ---------- */
 hashAlias();const POS={};let lastView=curView();
+/* un lien dans la page (vignette, « Ouvrir ») ouvre la rubrique en haut ; les onglets et le retour gardent la position */
+document.addEventListener("click",e=>{if(e.target.closest('#main a[href^="#"]'))S.freshNav=true;},true);
 window.addEventListener("hashchange",()=>{hashAlias();const v=curView();
   if(!VIEWS.some(x=>x[0]===v)&&!EXTRA.includes(v)){const el=document.getElementById(location.hash.slice(1));if(el){if(el.tagName==="DETAILS")el.open=true;el.scrollIntoView({behavior:"smooth",block:"start"});}return;}
   closeOverlays();
   POS[lastView]=window.scrollY;lastView=v;
-  const go=()=>{render();window.scrollTo({top:POS[v]||0,behavior:"instant"});const h=$("#main h1");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}};
+  const top=S.freshNav?0:(POS[v]||0);S.freshNav=false;const go=()=>{render();window.scrollTo({top,behavior:"instant"});const h=$("#main h1");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}};
   if(document.startViewTransition&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.startViewTransition(go);
   else{go();const w=$("#main .view");if(w){w.classList.add("enter");setTimeout(()=>w.classList.remove("enter"),260);}}});
 render();
