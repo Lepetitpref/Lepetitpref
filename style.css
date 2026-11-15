@@ -1490,4 +1490,5 @@ button.wk-c{cursor:pointer}
 .btn-day{display:inline-flex;align-items:center;min-height:44px;margin:4px var(--gutter) 12px;padding:8px 16px;border:1.5px solid var(--sel2);border-radius:999px;background:var(--surface);color:var(--sel2);font:inherit;font-size:16px;font-weight:600;cursor:pointer}
 .sec .btn-day{margin:0 0 4px}
 .filters .chips[aria-label="Quand"]>.chip,.filters .chips[aria-label="Jour"]>.chip{padding-left:10px;padding-right:10px}
-/* version du site */:root{--pp-v:"20261115-1306"}
+.day-pick .dp-caret{margin-left:4px;font-size:12px;opacity:.8}
+/* version du site */:root{--pp-v:"20261115-1310"}
