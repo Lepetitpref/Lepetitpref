@@ -1436,7 +1436,8 @@ button.wk-c{cursor:pointer}
 .tr-to{color:var(--muted);font-weight:400}
 .tr-pick{position:relative;display:inline-flex;align-items:center;gap:4px;min-height:40px;padding:0 10px;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font-size:15px;font-weight:600;cursor:pointer}
 .tr-pick::after{content:"▾";font-size:12px;opacity:.8}
-.tr-city{font-size:19px;color:var(--accent)}
+.tr-city{font-size:18px;color:var(--accent);max-width:46vw}
+.tr-city span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tr-pick select,.tr-pick input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;border:0;padding:0}
 .tr-swap{margin-left:auto;flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--accent);font-size:20px;cursor:pointer}
 .tr-x{width:36px;height:36px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:16px;cursor:pointer}
@@ -1463,4 +1464,4 @@ button.wk-c{cursor:pointer}
 .tr-q .tr-swap{align-self:center}
 @media (max-height:600px){.tr-q{position:static}}
 .tr-wait{color:var(--warn)}
-/* version du site */:root{--pp-v:"20261115-0937"}
+/* version du site */:root{--pp-v:"20261115-0939"}
