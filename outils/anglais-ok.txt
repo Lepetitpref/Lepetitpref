@@ -19,8 +19,7 @@
 @placeholder: Your address in Préfailles
 A friendly, family-run, ad-free site to find out what's going on in and around Préfailles.
 A house in Préfailles sold for
-About once a month, #h and #h, at Ô #, place du Marché; booking via Billetreduc
-Activity, Family · ages #+, Mois des Tout-Petits
+About once a month, #h and #h, at Ô #, place du @Mé; booking via Billetreduc
 Adult leisure sessions, free access during term time: @J and @J #h#–#h, @J #h#–#h (Jean Mounès sports hall or outdoor wall at Val Saint-Martin). Climbing school ages #–#: #-# registrations closed.
 All activities relating to the Megaliths of the Pays de Retz and surrounding area
 All year round at the plateau de la Chapelle; in summer, friendly doubles competition on Fridays at #h (sign up on site from #h, €# per player, a prize for everyone; # programme)
@@ -89,7 +88,6 @@ Local zoning plan (PLU) of Préfailles, approved on #/#/#. Tap a zone: what can 
 Membership and FFV licence on HelloAsso (club affiliated to the FFV since #). Summer #: "jeudis du CVP" from #h to #h in the clubroom of the sailing centre, supervised group outings every day from @M to @M. The # programme is in preparation.
 Moral and financial support for disadvantaged people in the Antsirabé area of Madagascar (education, health).
 Most # coaches leave from Pornic (Ste-Marie, place de la Marne); only the departures below serve Préfailles. Public holidays: @J timetable (# @M: no service, according to the # timetable).
-Météo-France coastal bulletin, @J # @M # at #H# local time
 Météo-France coastal bulletin, @J # @M # at #h# local time
 Na · Camping de la Pointe lagoon treatment ponds
 Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic
