@@ -635,7 +635,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["bar","Bars"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["courses","Courses"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
 /* types de cuisine des restaurants, d'après le nom et la description (une adresse peut en avoir plusieurs) */
-const CUIS=[["pizza","Pizzas",/pizz/i,"fork"],["mer","Poisson et fruits de mer",/poisson|fruits de mer|huîtres|moules|crustac|plateau|homard|langoust|plancha/i,"shell"],["snack","Burgers et snacks",/burger|snack|sandwich|fish & chips|hot-?dog|kebab|frites/i,"fork"],["monde","Cuisine du monde",/sushi|asiat|vietnam|chinois|japon|indien|tapas|maroc|libanais|mexic|kebab|wok|créole|italien|thaï/i,"compass"]];
+const CUIS=[["pizza","Pizzas",/pizz/i,"fork"],["mer","Poisson et fruits de mer",/fruits de mer|plateaux?( de)? (fruits|crustac|coquill)|huîtres|crustac|homard|langoust|poissons? (frais|du jour|de (la )?pêche|de la criée)|spécialités? (de la mer|marines?|poissons?)|cuisine de la mer|produits de la mer/i,"shell"],["snack","Burgers et snacks",/burger|snack|sandwich|fish & chips|hot-?dog|kebab|frites/i,"fork"],["monde","Cuisine du monde",/sushi|asiat|vietnam|chinois|japon|indien|tapas|maroc|libanais|mexic|kebab|wok|créole|italien|thaï/i,"compass"]];
 const hasCuis=(a,k)=>{if(a.cat!=="saveurs"||a.kind!=="restaurant")return false;if(Array.isArray(a.cuis))return a.cuis.includes(k);const c=CUIS.find(x=>x[0]===k);return !!c&&c[2].test(a.n+" "+(a.d||""));};
 const mkOK=a=>S.mk.startsWith("t:")?hasCuis(a,S.mk.slice(2)):S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
 /* Restos : grille des types d'adresses (selon la rubrique), comme dans Activités */
@@ -648,7 +648,8 @@ function momOK(a,m){const d=m[0]==="d"?addDays(today(),1):today(),o=openOn(a,d);
   const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)].map(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return[s,e];});
   if(!R.length)return true;const soir=/soir$/.test(m);return R.some(([s,e])=>soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5));}
 const CUISS={pizza:"Pizzas",mer:"Fruits de mer",snack:"Burgers",monde:"Cuisine du monde"},CADS={vue:"Vue mer",plage:"Sur la plage",terrasse:"Terrasse"};
-const tagsOf=a=>[...(a.kind==="restaurant"?CUIS.filter(c=>hasCuis(a,c[0])).map(c=>CUISS[c[0]]):[]),...(a.cadre||[]).map(k=>CADS[k]).filter(Boolean)];
+const BART=[["Bar à vins",/bar à vins?|cave à vins?|vins nature|bar à vin/i],["Cocktails",/cocktail|rhum/i],["Piano bar",/piano/i],["Bière",/brasserie artisanale|bières? (artisanale|pression)|pub\b/i]];
+const tagsOf=a=>[...(a.kind==="restaurant"?CUIS.filter(c=>hasCuis(a,c[0])).map(c=>CUISS[c[0]]):[]),...(a.kind==="bar"?BART.filter(([,r])=>r.test(a.n+" "+(a.d||""))).map(x=>x[0]):[]),...(a.cadre||[]).map(k=>CADS[k]).filter(Boolean)];
 function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.mk;
   const inSec=k=>sec==="tous"||!sec||(sec==="tables"&&(k==="restaurant"||k==="creperie"))||(sec==="produits"&&!["restaurant","creperie","marche","bar"].includes(k));
   const of=k=>k.startsWith("t:")?base.filter(a=>hasCuis(a,k.slice(2))):base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
@@ -667,7 +668,7 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
   const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre))&&(!mom||(eatPlace(a)&&momOK(a,mom))));
-  const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))).length]).filter(x=>x[2]);
+  const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))&&(!mom||(eatPlace(a)&&momOK(a,mom)))&&(!S.openToday||openOn(a,od))).length]).filter(x=>x[2]);
   /* ouverts d'abord, puis « à vérifier » (horaires inconnus), puis fermés ; à rang égal, du plus proche au plus loin */
   const ork=a=>{const o=openOn(a,od);return o?0:o===null?1:2;};
   const list=base.sort((p,q)=>ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
@@ -675,9 +676,10 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
   const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={tables:"restaurant",bar:"bar",marche:"marché",produits:"adresse"};
-  const stat=a=>{const r=statusOf(a,od);return mom&&r&&/^Ouvert/.test(r[0])?[r[0].replace(/^Ouvert( demain)?/,"Ouvert "+momL.toLowerCase()),r[1]]:r;};
+  const slot=(o,m)=>{const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)],soir=/soir$/.test(m);const x=R.find(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5);});return x?x[0]:null;};
+  const stat=a=>{const r=statusOf(a,od);if(!(mom&&r&&/^Ouvert/.test(r[0])))return r;const sl=slot(openOn(a,od),mom);return["Ouvert "+momL.toLowerCase()+(sl?" · "+esc(sl):""),r[1]];};
   const nw=SECL[S.mk]||"adresse";
-  return `${pageHead("Restos",`${shown.length} ${nw}${shown.length>1?"s":""}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?" ouvert"+(nw==="adresse"?"e":"")+(shown.length>1?"s":"")+" "+momL.toLowerCase():""} : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin. Horaires indicatifs, appelez avant.`)}
+  return `${pageHead("Restos",`${shown.length} ${nw}${shown.length>1?"s":""}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?" ouvert"+(nw==="adresse"?"e":"")+(shown.length>1?"s":"")+" "+momL.toLowerCase()+", du plus proche au plus loin":` : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
   <div class="filters">${["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?frow("frow","Quand",MMOM.map(([k,l])=>qchip(l,mom===k,`data-act="mmom" data-v="${k}"`)).join("")):""}${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${mom?"":chip(`Ouvert ${od0===t?"aujourd'hui":wdName(od0)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")}`)}
 </div>
