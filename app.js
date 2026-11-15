@@ -197,18 +197,19 @@ function row({lead="",leadCls="",th="",title,metaH="",lines=[],more="",href="",e
   return tag==="li"?`<li>${h}</li>`:h;}
 const TH={plage:["t-sea","wave"],mer:["t-sea","wave"],nature:["t-nat","leaf"],sortie:["t-act","spark"],sensations:["t-act","spark"],enfants:["t-act","spark"],culture:["t-sea","sail"],sport:["t-nat","bike"],bienetre:["t-sea","drop"],saveurs:["t-food","fork"],marche:["t-food","basket"]};
 function thumbOf(a){let[c,n]=TH[a.cat]||["t-act","spark"];
-  if(a.kind==="huitres"||a.kind==="poisson")n="shell";else if(a.cat==="saveurs"&&a.kind!=="restaurant"&&a.kind!=="creperie")n="basket";
+  if(a.cat==="saveurs"&&a.kind!=="restaurant"&&a.kind!=="creperie")n=MIC[a.kind]||"basket";
   if(/vélo|Ride/i.test(a.n))n="bike";if(/Pêche à pied/.test(a.n))n="tide";if(/^Cin[ée]/.test(a.n))n="film";if(/voile/i.test(a.n))n="sail";if(/Thalasso|Aqua/i.test(a.n))n="drop";
   return `<span class="thumb ${c}">${ic(n)}</span>`;}
 /* un autre jour qu'aujourd'hui : « Ouvert demain », « Fermé lun. 16 » */
-function statusOf(a,d){const r=statusOf0(a,d),t=today();if(!r||d===t||typeof r[0]!=="string")return r;const w=d===addDays(t,1)?"demain":dshort(d);return [r[0].replace(/^(Ouvert|Fermé)/,"$1 "+w),...r.slice(1)];}
+function statusOf(a,d){const r=statusOf0(a,d),t=today();if(!r||d===t||typeof r[0]!=="string"||r[1]==="next")return r;const w=d===addDays(t,1)?"demain":dshort(d);return [r[0].replace(/^(Ouvert|Fermé)/,"$1 "+w),...r.slice(1)];}
 function statusOf0(a,d){const o=openOn(a,d);
   if(/Pêche à pied/.test(a.n)){const l=dayLows(d);return[`Accès libre${l.length?" · basse mer "+hm(new Date(l[0].ms)):""}`,"ok"];}
   if(o)return[`Ouvert${/^(ouvert|week-end)$/.test(o)?"":" · "+esc(o)}`,"ok"];
   if(o===false){const md=d.slice(5),inSeason=a.open.some(r=>r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to));
-    return[inSeason?`Fermé le ${F(noon(d),{weekday:"long"})}`:`Fermé en cette saison${a.season?` · <span lang="fr">${esc(a.season)}</span>`:""}`,""];}
+    if(inSeason&&a.cat==="marche"){for(let i=1;i<=14;i++){const x=addDays(d,i),h=openOn(a,x);if(h)return[`Prochain marché : ${F(noon(x),{weekday:"long",day:"numeric",month:"short"})}${/^(ouvert|week-end)$/.test(h)?"":" · "+esc(h)}`,"next"];}}
+    return[inSeason?`Fermé le ${F(noon(d),{weekday:"long"})}`:`Fermé en cette saison${a.season?` · <span lang="fr">${esc(a.season)}</span>`:""}`,inSeason?"shut":"shut off"];}
   if(/Gratuit/.test(a.price||"")&&/^(nature|mer|culture|plage)$/.test(a.cat))return["Accès libre","ok"];
-  return["Horaires à vérifier","dim"];}
+  return["Horaires à vérifier","chk"];}
 function placeMore(a){const sh=`${a.n} (${a.town})${a.tel?" · "+a.tel:""}`;
   return `${a.d?`<p>${esc(a.d)}</p>`:""}${a.price||a.season?`<span class="row-meta">${[a.price,a.season].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join(" · ")}</span>`:""}
    <span class="row-links">${telLinks(a.tel)}${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a>`:""}<a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a><button type="button" data-share="${esc(sh)}" data-url="${esc(a.url||mapsUrl(a))}">Partager</button></span>`;}
@@ -639,7 +640,15 @@ const hasCuis=(a,k)=>{if(a.cat!=="saveurs"||a.kind!=="restaurant")return false;i
 const mkOK=a=>S.mk.startsWith("t:")?hasCuis(a,S.mk.slice(2)):S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
 /* Restos : grille des types d'adresses (selon la rubrique), comme dans Activités */
 const MSECT=["tous","tables","produits"];
-const MIC={restaurant:"fork",creperie:"fork",bar:"spark",huitres:"shell",poisson:"wave",marche:"basket",boulangerie:"basket",glacier:"drop",producteur:"leaf",cave:"drop",epicerie:"basket",courses:"basket",biscuiterie:"basket"};
+const MIC={restaurant:"fork",creperie:"fork",bar:"glass",huitres:"shell",poisson:"fish",marche:"basket",boulangerie:"bread",glacier:"ice",producteur:"leaf",cave:"bottle",epicerie:"basket",courses:"basket",biscuiterie:"bread"};
+/* moment du repas : ce midi, ce soir, demain midi, demain soir (d'après les créneaux lus) */
+const MMOM=[["midi","Ce midi"],["soir","Ce soir"],["dmidi","Demain midi"],["dsoir","Demain soir"]];
+const eatPlace=a=>a.cat==="saveurs"&&(["restaurant","creperie","bar"].includes(a.kind)||!!a.bar);
+function momOK(a,m){const d=m[0]==="d"?addDays(today(),1):today(),o=openOn(a,d);if(!o)return false;if(o===true||/^(ouvert|week-end)$/.test(o))return true;
+  const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)].map(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return[s,e];});
+  if(!R.length)return true;const soir=/soir$/.test(m);return R.some(([s,e])=>soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5));}
+const CUISS={pizza:"Pizzas",mer:"Fruits de mer",snack:"Burgers",monde:"Cuisine du monde"},CADS={vue:"Vue mer",plage:"Sur la plage",terrasse:"Terrasse"};
+const tagsOf=a=>[...(a.kind==="restaurant"?CUIS.filter(c=>hasCuis(a,c[0])).map(c=>CUISS[c[0]]):[]),...(a.cadre||[]).map(k=>CADS[k]).filter(Boolean)];
 function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.mk;
   const inSec=k=>sec==="tous"||!sec||(sec==="tables"&&(k==="restaurant"||k==="creperie"))||(sec==="produits"&&!["restaurant","creperie","marche","bar"].includes(k));
   const of=k=>k.startsWith("t:")?base.filter(a=>hasCuis(a,k.slice(2))):base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
@@ -647,30 +656,37 @@ function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.
   if(inSec("restaurant")){const cz=CUIS.map(([k,l])=>["t:"+k,l]).filter(([k])=>base.some(a=>hasCuis(a,k.slice(2))));const i=ks.findIndex(([k])=>k==="creperie");ks.splice(i<0?1:i+1,0,...cz);}
   if(ks.length<2&&!cur)return"";
   const back=S.mkSec&&S.mkSec!==S.mk?S.mkSec:"tous";
-  const kk=cur&&ks.some(([k])=>k===cur)?ks.filter(([k])=>k===cur):ks;
+  let kk=cur&&ks.some(([k])=>k===cur)?ks.filter(([k])=>k===cur):ks;
+  const fold=sec==="tous"&&!S.mgAll&&kk.length>4;if(fold){const pref=["restaurant","bar","marche","boulangerie","huitres"];kk=[...pref.map(k=>kk.find(x=>x[0]===k)).filter(Boolean),...kk.filter(x=>!pref.includes(x[0]))].slice(0,4);}
   return `<div class="acgrid${kk.length===1&&cur?" acgrid-one":""}" ${cur?'id="acsel"':""} role="group" aria-label="Types d'adresses">${kk.map(([k,l])=>{const L=of(k),o=L.filter(a=>openOn(a,od)).length;
     return `<button type="button" class="actile" data-act="mk" data-v="${cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||(CUIS.find(c=>"t:"+c[0]===k)||[])[3]||"fork")}</span><span class="actile-t"><b>${esc(k==="restaurant"&&ks.some(([q])=>q.startsWith("t:"))?"Tous les restaurants":l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
+  ${fold?`<button type="button" class="ac-more mg-all" data-act="mgall">Toutes les catégories (${ks.length}) ▾</button>`:sec==="tous"&&S.mgAll&&ks.length>4?`<button type="button" class="ac-more mg-all" data-act="mgall">Moins de catégories ▴</button>`:""}
+  ${sec==="produits"&&!base.some(a=>a.kind==="poisson")?(()=>{const f=ACTS.filter(a=>a.cat==="saveurs"&&a.kind==="poisson").map(a=>[a,(a.dist??TOWN_KM[a.town])??99]).sort((x,y)=>x[1]-y[1])[0];return f?`<p class="group-note mg-fish">${ic("fish","i-s")} <span><b>Poissonnerie</b> : aucune ${S.mWhere==="ici"?"à "+esc(BASE.n):`à moins de ${S.mWhere} km`}. La plus proche : ${esc(f[0].n)}, ${esc(townShort(f[0].town))} (${Math.round(f[1])} km). Le poisson se trouve aussi sur les marchés.</span> <button type="button" class="lnk" data-act="mfish" data-v="${f[1]<=20?"20":"30"}">Voir</button></p>`:"";})():""}
   ${cur?`<p class="ac-back"><button type="button" class="lnk" data-act="mk" data-v="${back}">${ic("left","i-s")}Toutes les adresses</button></p>`:""}`;}
-function vManger(){const t=today(),od=S.openDay||t;
+function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?S.mMom:null,od=mom&&mom[0]==="d"?addDays(t,1):od0,momL=mom?(MMOM.find(x=>x[0]===mom)||[])[1]:"";
   /* Manger : Préfailles par défaut (réglage propre, clé pp-mwhere), indépendant de la distance globale */
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
-  const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre)));
+  const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre))&&(!mom||(eatPlace(a)&&momOK(a,mom))));
   const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))).length]).filter(x=>x[2]);
   /* ouverts d'abord, puis « à vérifier » (horaires inconnus), puis fermés ; à rang égal, du plus proche au plus loin */
   const ork=a=>{const o=openOn(a,od);return o?0:o===null?1:2;};
   const list=base.sort((p,q)=>ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
   const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
-  const nOpen=all.filter(a=>openOn(a,od)&&(S.mk==="tous"||mkOK(a))).length;
-  return `${pageHead("Restos",`${list.length} adresse${list.length>1?"s":""} : ouvertes ${od===t?"aujourd'hui":wdName(od)} d'abord, puis du plus proche au plus loin. Horaires indicatifs, appelez avant.`)}
+  const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
+  const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={tables:"restaurant",bar:"bar",marche:"marché",produits:"adresse"};
+  const stat=a=>{const r=statusOf(a,od);return mom&&r&&/^Ouvert/.test(r[0])?[r[0].replace(/^Ouvert( demain)?/,"Ouvert "+momL.toLowerCase()),r[1]]:r;};
+  const nw=SECL[S.mk]||"adresse";
+  return `${pageHead("Restos",`${shown.length} ${nw}${shown.length>1?"s":""}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?" ouvert"+(nw==="adresse"?"e":"")+(shown.length>1?"s":"")+" "+momL.toLowerCase():""} : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
-  <div class="filters">${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}`)}
-   ${CADRES.length?frow("frow","Cadre",CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")):""}
+  <div class="filters">${["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?frow("frow","Quand",MMOM.map(([k,l])=>qchip(l,mom===k,`data-act="mmom" data-v="${k}"`)).join("")):""}${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${mom?"":chip(`Ouvert ${od0===t?"aujourd'hui":wdName(od0)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")}`)}
 </div>
   ${mGrid(base,od)}
   <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage">${[["liste","Liste"],["carte","Carte"]].map(([k,l])=>`<button type="button" aria-pressed="${(S.mView||"liste")===k}" data-act="mview" data-v="${k}">${l}</button>`).join("")}</div></div>
-  ${S.mView==="carte"?(S.mapList=list.filter(a=>S.mk==="tous"||mkOK(a)),`<section class="sec" style="padding-top:4px"><div id="mmap" class="mmap" role="region" aria-label="Carte des adresses"></div><div class="map-bar"><button type="button" class="chip" data-act="melocate">${ic("compass","i-s")} Me situer sur la carte</button></div><p class="nav-src">${S.mapList.length} adresse${S.mapList.length>1?"s":""} selon vos filtres. Touchez un point : distance, horaires du jour et itinéraire. Fond de carte © OpenStreetMap.</p></section>`):""}
-  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=k.startsWith("t:")?list.filter(a=>hasCuis(a,k.slice(2))):list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc} producteur${zc>1?"s":""} y vende${zc>1?"nt":""} en direct huîtres, moules et coquillages. Leurs adresses sont ci-dessous.</p>`:""}<ul class="list">${(MSECT.includes(S.mk)?L.slice(0,4):L).map(a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),a.kind==="restaurant"||a.kind==="creperie"?"":"")})).join("")}</ul>${MSECT.includes(S.mk)&&L.length>4?`<button type="button" class="ac-more" data-act="mkgo" data-v="${k}">Voir les ${L.length-4} autres · ${esc(l)}${ic("chev","i-s")}</button>`:""}`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
+  ${S.mView==="carte"?(S.mapList=list.filter(a=>S.mk==="tous"||mkOK(a)),`<section class="sec" style="padding-top:4px"><div id="mmap" class="mmap" role="region" aria-label="Carte des adresses"></div><div class="map-bar"><button type="button" class="chip" data-act="melocate">${ic("compass","i-s")} Me situer sur la carte</button></div><p class="nav-src">${S.mapList.length} adresse${S.mapList.length>1?"s":""} selon vos filtres. Touchez un point : distance, horaires du jour et itinéraire. Fond de carte © OpenStreetMap.</p><p class="map-leg">${[["#c0632d","Restaurants"],["#7b5ea7","Bars"],["#2f78ab","Marchés"],["#3d8b5a","Produits"]].map(([c,l])=>`<span><i style="background:${c}"></i>${l}</span>`).join("")}</p></section>`):""}
+  <section class="sec grps" style="padding-top:0;--c:var(--i-food)${S.mView==="carte"?";display:none":""}">${list.length?groups.filter(([k])=>S.mk==="tous"||S.mk===k||(S.mk==="tables"&&(k==="restaurant"||k==="creperie"))||(S.mk==="produits"&&!["restaurant","creperie","marche","bar"].includes(k))).map(([k,l])=>{const L=k.startsWith("t:")?list.filter(a=>hasCuis(a,k.slice(2))):list.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));const zc=k==="huitres"?L.filter(a=>/zone conchylicole/i.test(a.addr||"")).length:0;return `<div class="group"><h2 class="group-title">${l}</h2><span class="group-count">${L.length}</span></div>${zc?`<p class="group-note"><b>Zone conchylicole du Marais, à La Plaine-sur-Mer</b> : ${zc>1?`${zc} producteurs y vendent`:"1 producteur y vend"} en direct huîtres, moules et coquillages. ${zc>1?"Leurs adresses sont":"Son adresse est"} ci-dessous.</p>`:""}${(()=>{const off=a=>openOn(a,od)===false&&/en cette saison/.test((statusOf0(a,od)||[""])[0]),on=L.filter(a=>!off(a)),of=L.filter(off),pr=a=>placeRow(a,od,{metaH:meta(esc(townShort(a.town)),kmTxt(a.dist??TOWN_KM[a.town],a.town),tagsOf(a).map(esc).join(" · ")),lines:a.cat==="marche"&&a.open?[stat(a),[esc(schedTxt(a)),"dim"]]:[stat(a)]});
+    const V=MSECT.includes(S.mk)?on.slice(0,4):on;L.more=MSECT.includes(S.mk)?on.length-V.length:0;
+    return `<ul class="list">${V.map(pr).join("")}</ul>${of.length&&!MSECT.includes(S.mk)?`<details class="mg-off"><summary>${of.length} fermé${of.length>1?"s":""} en cette saison${k==="marche"?" (marchés d'été)":""}</summary><ul class="list">${of.map(pr).join("")}</ul></details>`:""}`;})()}${L.more>0?`<button type="button" class="ac-more" data-act="mkgo" data-v="${k}">${L.more===1?"Voir l'autre adresse":`Voir les ${L.more} autres`} · ${esc(l)}${ic("chev","i-s")}</button>`:""}`;}).join("")||`<p class="empty">Rien dans cette catégorie avec ces filtres.</p>`
    :`<p class="empty">Rien pour ce filtre. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}</section>
   <p class="foot">Horaires indicatifs : appelez avant de vous déplacer.</p>`;}
 
@@ -1954,7 +1970,7 @@ const ACT={
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
 
-  mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},
+  mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},mmom:v=>{S.mMom=S.mMom===v?null:v;if(S.mMom)S.openToday=false;render();},mgall:()=>{S.mgAll=!S.mgAll;render();},mfish:v=>{S.mWhere=v;sset("pp-mwhere",v);S.mk="poisson";S.mkSec="produits";render();requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},

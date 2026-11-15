@@ -1491,4 +1491,19 @@ button.wk-c{cursor:pointer}
 .sec .btn-day{margin:0 0 4px}
 .filters .chips[aria-label="Quand"]>.chip,.filters .chips[aria-label="Jour"]>.chip{padding-left:10px;padding-right:10px}
 .day-pick .dp-caret{margin-left:4px;font-size:12px;opacity:.8}
-/* version du site */:root{--pp-v:"20261115-1310"}
+/* Restos : états lisibles (pastille + mot), mots d'ambiance, grille repliée, carte */
+.row-meta.ok,.row-meta.shut,.row-meta.chk,.row-meta.next{color:var(--ink);font-weight:500}
+.row-meta.shut::before,.row-meta.chk::before,.row-meta.next::before{content:"";display:inline-block;width:7px;height:7px;margin:0 7px 1px 0;border-radius:50%;vertical-align:middle;box-sizing:border-box}
+.row-meta.shut::before{background:var(--faint)}
+.row-meta.shut.off{color:var(--muted);font-weight:400}
+.row-meta.chk::before{border:2px solid #b8860b}
+.row-meta.next::before{border:2px solid var(--ok)}
+.mg-all{margin:8px var(--gutter) 0}
+.mg-fish{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px var(--gutter) 0}
+.mg-off{margin:4px 0 10px}
+.mg-off>summary{min-height:44px;display:flex;align-items:center;color:var(--muted);font-size:15px;cursor:pointer}
+.map-leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:14px;color:var(--muted)}
+.map-leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+.mmap .map-lock{justify-content:flex-end;align-items:flex-end;padding:0 10px 26px 0}
+.map-lock-b{background:#1d5a87!important;color:#fff!important}
+/* version du site */:root{--pp-v:"20261115-1407"}
