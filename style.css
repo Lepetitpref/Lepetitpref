@@ -1429,13 +1429,28 @@ button.wk-c{cursor:pointer}
 .ba-sound ol{margin:4px 0 0;padding-left:22px}
 .ba-sound li{margin:2px 0}
 .ba-src{margin:0;padding:8px 14px 12px;font-size:14px;color:var(--muted)}
-/* transports : mon trajet (sens, destination, jour, heure) */
-.tr-form{margin:10px var(--gutter) 6px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-.tr-form .tr-dir-seg{margin:0 0 4px}
-.tr-f-l{margin:12px 0 6px;font-size:14px;font-weight:600;color:var(--muted)}
-.tr-dest{display:flex;flex-wrap:wrap;gap:8px}
-.tr-dest .chip{min-height:44px;font-size:15px}
-.tr-dest .chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.tr-time{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.tr-form .frow{margin:0}
-/* version du site */:root{--pp-v:"20261115-0925"}
+/* transports : mon trajet en deux lignes (Préfailles → Nantes ⇅ / jour · heure) */
+.tr-q{margin:10px var(--gutter) 6px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.tr-q-r{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:600;color:var(--ink)}
+.tr-q-r2{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:8px}
+.tr-to{color:var(--muted);font-weight:400}
+.tr-pick{position:relative;display:inline-flex;align-items:center;gap:4px;min-height:40px;padding:0 10px;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font-size:15px;font-weight:600;cursor:pointer}
+.tr-pick::after{content:"▾";font-size:12px;opacity:.8}
+.tr-city{font-size:19px;color:var(--accent)}
+.tr-pick select,.tr-pick input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;border:0;padding:0}
+.tr-swap{margin-left:auto;flex:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--accent);font-size:20px;cursor:pointer}
+.tr-x{width:36px;height:36px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:16px;cursor:pointer}
+.tr-mode{min-height:40px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.tr-at{font-size:13px;color:var(--muted)}
+.tr-back{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin:10px 0 4px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--accent) 8%,var(--surface));font-size:15px}
+.tr-back .lnk{font-weight:600}
+.tr-j details>summary{list-style:none;cursor:pointer}
+.tr-j details>summary::-webkit-details-marker{display:none}
+.tr-chain{display:inline-flex;align-items:center;gap:4px;margin-left:auto}
+.tr-sep{color:var(--muted)}
+.tr-note-s{display:flex;gap:6px;margin:8px 0 2px;font-size:14px;color:var(--muted);line-height:1.4}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tr-j .tr-chain .tr-badge{font-size:13px!important;padding:1px 6px!important;min-height:22px!important;height:auto!important;border-radius:6px}
+.tr-chain .tr-badge .i{width:13px;height:13px}
+.tr-share-p{margin:10px 0 0}
+/* version du site */:root{--pp-v:"20261115-0932"}
