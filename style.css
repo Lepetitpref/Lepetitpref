@@ -1506,4 +1506,11 @@ button.wk-c{cursor:pointer}
 .map-leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
 .mmap .map-lock{justify-content:flex-end;align-items:flex-end;padding:0 10px 26px 0}
 .map-lock-b{background:#1d5a87!important;color:#fff!important}
-/* version du site */:root{--pp-v:"20261115-1409"}
+.call-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.btn-call{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:6px 18px 6px 14px;border-radius:999px;background:var(--accent);color:#fff!important;text-decoration:none!important;font-weight:600;font-size:16px}
+.btn-call .i{color:#fff}
+.btn-call span{display:flex;flex-direction:column;line-height:1.15}
+.btn-call small{font-weight:400;font-size:14px;opacity:.9}
+:root[data-theme="dark"] .btn-call{background:#1d5a87}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-call{background:#1d5a87}}
+/* version du site */:root{--pp-v:"20261115-1415"}

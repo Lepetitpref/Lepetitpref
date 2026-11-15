@@ -119,6 +119,7 @@ const evDead=e=>/ANNUL/i.test(e.title||"")||evGone(e);
 const evAges=e=>e.ageMin!=null||e.ageMax!=null?(e.ageMax==null?`dès ${e.ageMin} ans`:`${e.ageMin??0}–${e.ageMax} ans`):"";
 const hourOf=s=>{const m=String(s||"").match(/(\d{1,2})h/);return m?+m[1]:null;};
 function hoursSpan(h){const ms=[...String(h||"").matchAll(/(\d{1,2})h(\d{2})?/g)].map(m=>+m[1]+(m[2]?+m[2]/60:0));if(!ms.length)return null;let a=ms[0],b=ms[ms.length-1];if(b<=a)b+=24;return[a,b];}
+const telCall=t=>{const L=String(t||"").split(/\s*[·/]\s*/).filter(x=>/\d{2}/.test(x));return L.length?`<span class="call-row">${L.map(x=>`<a class="btn-call" href="tel:${x.replace(/[^\d+]/g,"")}">${ic("phone","i-s")}<span>Appeler<small>${esc(x)}</small></span></a>`).join("")}</span>`:"";};
 const telLinks=t=>String(t||"").split(/\s*[·/]\s*/).filter(x=>/\d{2}/.test(x)).map(x=>`<a href="tel:${x.replace(/[^\d+]/g,"")}">${esc(x)}</a>`).join("");
 const mapsUrl=a=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a.addr||(a.n+", "+a.town));
 const KIND1={restaurant:"Restaurant",creperie:"Crêperie",huitres:"Huîtres",poisson:"Poisson",boulangerie:"Boulangerie",glacier:"Glacier",producteur:"Producteur",cave:"Cave",epicerie:"Épicerie",courses:"Courses",biscuiterie:"Biscuiterie"};
@@ -212,7 +213,7 @@ function statusOf0(a,d){const o=openOn(a,d);
   return["Horaires à vérifier","chk"];}
 function placeMore(a){const sh=`${a.n} (${a.town})${a.tel?" · "+a.tel:""}`;
   return `${a.d?`<p>${esc(a.d)}</p>`:""}${a.price||a.season?`<span class="row-meta">${[a.price,a.season].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join(" · ")}</span>`:""}
-   <span class="row-links">${telLinks(a.tel)}${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a>`:""}<a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a><button type="button" data-share="${esc(sh)}" data-url="${esc(a.url||mapsUrl(a))}">Partager</button></span>`;}
+   ${telCall(a.tel)}<span class="row-links">${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a>`:""}<a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a><button type="button" data-share="${esc(sh)}" data-url="${esc(a.url||mapsUrl(a))}">Partager</button></span>`;}
 const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
 function schedTxt(a){if(!a.open||!a.open.length)return "";const per=r=>r.from==="01-01"&&r.to==="12-31"?"":(()=>{const[m1,d1]=r.from.split("-").map(Number),[m2,d2]=r.to.split("-").map(Number);const md=(m,d,end)=>d===1&&!end?MOIS[m-1]:(end&&d>=28?MOIS[m-1]:d+" "+MOIS[m-1]);return m1===m2?md(m1,d1)+(d1===1&&d2>=28?"":"–"+d2):md(m1,d1)+" à "+md(m2,d2,true);})();
   const JN=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"],jours=r=>{const o=[..."1234560"].filter(x=>(r.days||"0123456").includes(x));return o.length===7?"tous les jours":listAnd(o.map(x=>JN[+x]));};
@@ -635,7 +636,7 @@ function vCine(){const t=today(),list=(S.cinema||[]).filter(c=>c.date>=t&&cinOK(
 const MKINDS=[["tous","Tout"],["restaurant","Restaurants"],["creperie","Crêperies"],["bar","Bars"],["huitres","Huîtres & coquillages"],["poisson","Poisson"],["marche","Marchés"],["boulangerie","Boulangeries"],["glacier","Glaciers"],["producteur","Producteurs"],["cave","Vins & caves"],["epicerie","Épiceries fines"],["courses","Courses"],["biscuiterie","Biscuiteries"]];
 const kindOf=a=>a.cat==="marche"?"marche":a.kind;
 /* types de cuisine des restaurants, d'après le nom et la description (une adresse peut en avoir plusieurs) */
-const CUIS=[["pizza","Pizzas",/pizz/i,"fork"],["mer","Poisson et fruits de mer",/fruits de mer|plateaux?( de)? (fruits|crustac|coquill)|huîtres|crustac|homard|langoust|poissons? (frais|du jour|de (la )?pêche|de la criée)|spécialités? (de la mer|marines?|poissons?)|cuisine de la mer|produits de la mer/i,"shell"],["snack","Burgers et snacks",/burger|snack|sandwich|fish & chips|hot-?dog|kebab|frites/i,"fork"],["monde","Cuisine du monde",/sushi|asiat|vietnam|chinois|japon|indien|tapas|maroc|libanais|mexic|kebab|wok|créole|italien|thaï/i,"compass"]];
+const CUIS=[["pizza","Pizzas",/pizz/i,"fork"],["mer","Poisson et fruits de mer",/fruits de mer|plateaux?( de)? (fruits|crustac|coquill)|huîtres|crustac|homard|langoust|poissons? (frais|du jour|de (la )?pêche|de la criée)|spécialités? (de la mer|marines?|poissons?)|cuisine de la mer|produits de la mer/i,"fish"],["snack","Burgers et snacks",/burger|snack|sandwich|fish & chips|hot-?dog|kebab|frites/i,"fork"],["monde","Cuisine du monde",/sushi|asiat|vietnam|chinois|japon|indien|tapas|maroc|libanais|mexic|kebab|wok|créole|italien|thaï/i,"compass"]];
 const hasCuis=(a,k)=>{if(a.cat!=="saveurs"||a.kind!=="restaurant")return false;if(Array.isArray(a.cuis))return a.cuis.includes(k);const c=CUIS.find(x=>x[0]===k);return !!c&&c[2].test(a.n+" "+(a.d||""));};
 const mkOK=a=>S.mk.startsWith("t:")?hasCuis(a,S.mk.slice(2)):S.mk==="tables"?isResto(a):S.mk==="produits"?!isResto(a)&&!["marche","bar"].includes(kindOf(a)):(kindOf(a)===S.mk||(S.mk==="bar"&&!!a.bar));
 /* Restos : grille des types d'adresses (selon la rubrique), comme dans Activités */
@@ -654,13 +655,14 @@ function mGrid(base,od){const sec=MSECT.includes(S.mk)?S.mk:null,cur=sec?null:S.
   const inSec=k=>sec==="tous"||!sec||(sec==="tables"&&(k==="restaurant"||k==="creperie"))||(sec==="produits"&&!["restaurant","creperie","marche","bar"].includes(k));
   const of=k=>k.startsWith("t:")?base.filter(a=>hasCuis(a,k.slice(2))):base.filter(a=>kindOf(a)===k||(k==="bar"&&!!a.bar));
   let ks=MKINDS.slice(1).filter(([k])=>inSec(k)&&of(k).length);
-  if(inSec("restaurant")){const cz=CUIS.map(([k,l])=>["t:"+k,l]).filter(([k])=>base.some(a=>hasCuis(a,k.slice(2))));const i=ks.findIndex(([k])=>k==="creperie");ks.splice(i<0?1:i+1,0,...cz);}
+  if(sec==="tous"){ks=ks.filter(([k])=>k!=="creperie");}
+  else if(inSec("restaurant")){const cz=CUIS.map(([k,l])=>["t:"+k,l]).filter(([k])=>base.some(a=>hasCuis(a,k.slice(2))));const i=ks.findIndex(([k])=>k==="creperie");ks.splice(i<0?1:i+1,0,...cz);}
   if(ks.length<2&&!cur)return"";
   const back=S.mkSec&&S.mkSec!==S.mk?S.mkSec:"tous";
   let kk=cur&&ks.some(([k])=>k===cur)?ks.filter(([k])=>k===cur):ks;
   const fold=sec==="tous"&&!S.mgAll&&kk.length>4;if(fold){const pref=["restaurant","bar","marche","boulangerie","huitres"];kk=[...pref.map(k=>kk.find(x=>x[0]===k)).filter(Boolean),...kk.filter(x=>!pref.includes(x[0]))].slice(0,4);}
-  return `<div class="acgrid${kk.length===1&&cur?" acgrid-one":""}" ${cur?'id="acsel"':""} role="group" aria-label="Types d'adresses">${kk.map(([k,l])=>{const L=of(k),o=L.filter(a=>openOn(a,od)).length;
-    return `<button type="button" class="actile" data-act="mk" data-v="${cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||(CUIS.find(c=>"t:"+c[0]===k)||[])[3]||"fork")}</span><span class="actile-t"><b>${esc(k==="restaurant"&&ks.some(([q])=>q.startsWith("t:"))?"Tous les restaurants":l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
+  return `<div class="acgrid${kk.length===1&&cur?" acgrid-one":""}" ${cur?'id="acsel"':""} role="group" aria-label="Types d'adresses">${kk.map(([k,l])=>{const R0=sec==="tous"&&k==="restaurant",L=R0?base.filter(isResto):of(k),o=L.filter(a=>openOn(a,od)).length;
+    return `<button type="button" class="actile" data-act="mk" data-v="${R0?"tables":cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||(CUIS.find(c=>"t:"+c[0]===k)||[])[3]||"fork")}</span><span class="actile-t"><b>${esc(k==="restaurant"&&sec==="tous"?"Restaurants et crêperies":l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
   ${fold?`<button type="button" class="ac-more mg-all" data-act="mgall">Toutes les catégories (${ks.length}) ▾</button>`:sec==="tous"&&S.mgAll&&ks.length>4?`<button type="button" class="ac-more mg-all" data-act="mgall">Moins de catégories ▴</button>`:""}
   ${sec==="produits"&&!base.some(a=>a.kind==="poisson")?(()=>{const f=ACTS.filter(a=>a.cat==="saveurs"&&a.kind==="poisson").map(a=>[a,(a.dist??TOWN_KM[a.town])??99]).sort((x,y)=>x[1]-y[1])[0];return f?`<p class="group-note mg-fish">${ic("fish","i-s")} <span><b>Poissonnerie</b> : aucune ${S.mWhere==="ici"?"à "+esc(BASE.n):`à moins de ${S.mWhere} km`}. La plus proche : ${esc(f[0].n)}, ${esc(townShort(f[0].town))} (${Math.round(f[1])} km). Le poisson se trouve aussi sur les marchés.</span> <button type="button" class="lnk" data-act="mfish" data-v="${f[1]<=20?"20":"30"}">Voir</button></p>`:"";})():""}
   ${cur?`<p class="ac-back"><button type="button" class="lnk" data-act="mk" data-v="${back}">${ic("left","i-s")}Toutes les adresses</button></p>`:""}`;}
@@ -675,11 +677,11 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
   const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
   const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
-  const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={tables:"restaurant",bar:"bar",marche:"marché",produits:"adresse"};
+  const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={bar:"bar",marche:"marché",produits:"adresse"};
   const slot=(o,m)=>{const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)],soir=/soir$/.test(m);const x=R.find(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5);});return x?x[0]:null;};
   const stat=a=>{const r=statusOf(a,od);if(!(mom&&r&&/^Ouvert/.test(r[0])))return r;const sl=slot(openOn(a,od),mom);return["Ouvert "+momL.toLowerCase()+(sl?" · "+esc(sl):""),r[1]];};
-  const nw=SECL[S.mk]||"adresse";
-  return `${pageHead("Restos",`${shown.length} ${nw}${shown.length>1?"s":""}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?" ouvert"+(nw==="adresse"?"e":"")+(shown.length>1?"s":"")+" "+momL.toLowerCase()+", du plus proche au plus loin":` : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
+  const nw=SECL[S.mk]||(S.mk==="tables"?"restaurant":"adresse");
+  return `${pageHead("Restos",`${S.mk==="tables"?`${shown.length} restaurant${shown.length>1?"s":""} et crêperie${shown.length>1?"s":""}`:`${shown.length} ${nw}${shown.length>1?"s":""}`}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?" ouvert"+(nw==="adresse"?"e":"")+(shown.length>1?"s":"")+" "+momL.toLowerCase()+", du plus proche au plus loin":` : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
   <div class="filters">${["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?frow("frow","Quand",MMOM.map(([k,l])=>qchip(l,mom===k,`data-act="mmom" data-v="${k}"`)).join("")):""}${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${mom?"":chip(`Ouvert ${od0===t?"aujourd'hui":wdName(od0)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")}`)}
 </div>
