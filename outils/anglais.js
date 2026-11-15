@@ -43,7 +43,7 @@ await go('sejour');await p.evaluate(()=>{try{openWho()}catch(e){}});await grab('
 // transports : ligne courte collée
 await go('venir',()=>{S.trA='Préfailles';S.trB='Nantes';render();});await p.evaluate(()=>scrollTo(0,900));await p.waitForTimeout(400);await grab('transports ligne courte');
 const names=new Set(await (async()=>{await go('activites');return p.evaluate(()=>{const o=[];const add=x=>{if(typeof x==='string')o.push(x.trim());};(ACTS||[]).forEach(a=>Object.values(a).forEach(add));['assos','events','cinema'].forEach(k=>(S[k]||[]).forEach(e=>Object.values(e).forEach(add)));try{PRAT.forEach(a=>Object.values(a).forEach(add));}catch(e){}return o;});})());
-const norm=t=>t.replace(/\d+/g,'#');
+const norm=t=>t.replace(/\d+/g,'#').replace(/\b(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\b/g,'@J').replace(/\b(January|February|March|April|May|June|July|August|September|October|November|December)\b/g,'@M');
 const isName=t=>{const t2=t.replace(/^@\w+: /,'');return names.has(t2)||t.startsWith('@title: ')||/\d+ (rue|avenue|place|boulevard|bd|allée|chemin|route|impasse|quai)\b/i.test(t2);};
 const okf=__dirname+'/anglais-ok.txt',ok=new Set(fs.existsSync(okf)?fs.readFileSync(okf,'utf8').split('\n').filter(Boolean):[]);
 const res=[...found.entries()].filter(([t])=>!isName(t)).map(([t,s])=>({t,n:norm(t),s:[...s].slice(0,3)}));
