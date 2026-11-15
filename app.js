@@ -93,7 +93,9 @@ function evFits(e,w){if(w==="tous")return true;const r=WHO.find(x=>x[0]===w)[2];
 const SITE="https://lepetitpref.fr",SITEU=SITE+(BASE.k==="pornic"?"/?ici=pornic":"");
 const siteUrl=(h="")=>SITE+"/"+(BASE.k==="pornic"?"?ici=pornic":"")+h;
 const SHI='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
-function shareBtns(text,link){const t=text+"\n\n"+(link&&!/^https:\/\/lepetitpref\.fr\/?(\?ici=\w+)?$/.test(link)?"Trouvé sur Le Petit Préf\n"+link:SITEU);const enc=encodeURIComponent(t);
+/* lien partagé depuis le site : marqué ?via=partage pour compter (anonymement) les arrivées par partage */
+const viaP=u=>{try{const x=new URL(u);if(x.hostname.endsWith("lepetitpref.fr"))x.searchParams.set("via","partage");return x.href;}catch(e){return u;}};
+function shareBtns(text,link){const t=text+"\n\n"+(link&&!/^https:\/\/lepetitpref\.fr\/?(\?ici=\w+)?$/.test(link)?"Trouvé sur Le Petit Préf\n"+link:viaP(SITEU));const enc=encodeURIComponent(t);
   return `<span class="share"><a class="sh wa" href="https://wa.me/?text=${enc}" target="_blank" rel="noopener">${SHI}WhatsApp</a><button class="sh" data-copy="${esc(t)}">Copier</button></span>`;}
 function toast(m){const d=document.createElement("div");d.className="toast";d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200);}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;e.preventDefault();const txt=b.dataset.copy;
@@ -182,6 +184,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-share]");i
   /* le lien n'apparaît qu'une fois : celui de la chose partagée, sinon celui du site */
   let url=b.dataset.url||SITEU;const site=/^https:\/\/lepetitpref\.fr\/?(\?[^#]*)?(#.*)?$/.test(url);
   if(site&&BASE.k==="pornic"&&!/ici=/.test(url))url=siteUrl((url.match(/#.*$/)||[""])[0]);
+  if(site)url=viaP(url);
   const text=b.dataset.share+(site?"":"\n\nTrouvé sur Le Petit Préf");
   if(navigator.share){navigator.share({text,url}).catch(()=>{});return;}
   try{navigator.clipboard.writeText(text+"\n"+url).then(()=>toast("Copié : collez-le dans votre groupe"),()=>{fallbackCopy(text+"\n"+url);toast("Copié");});}catch(_){fallbackCopy(text+"\n"+url);toast("Copié");}});
@@ -2051,6 +2054,8 @@ function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit(
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
     [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
+/* arrivée par un lien partagé depuis le site (?via=partage) : un total par jour, puis le marqueur est retiré de l'adresse */
+try{const u=new URL(location.href);if(u.searchParams.get("via")==="partage"){ppHit("arrivee-partage-"+ppJour());u.searchParams.delete("via");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}}catch(e){}
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
 function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView();
   /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */

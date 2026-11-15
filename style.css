@@ -1518,4 +1518,4 @@ button.wk-c{cursor:pointer}
 .mpin i{display:block;width:20px;height:20px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .crowd{display:flex;flex-direction:column;gap:6px;min-width:200px}
 .crowd-b{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#1c1d22;font:inherit;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
-/* version du site */:root{--pp-v:"20261115-2027"}
+/* version du site */:root{--pp-v:"20261115-2036"}
