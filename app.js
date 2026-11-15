@@ -596,6 +596,8 @@ const NUITS=()=>ACTS.filter(a=>a.kind==="bar"||a.bar||a.kind==="nuit"||/casino/i
 /* choisir un jour dans le calendrier du téléphone : puce bien visible, juste après « Tout » */
 /* une seule puce pour le jour : la date d'aujourd'hui (ou celle choisie) avec ▾ ; un toucher ouvre le calendrier du téléphone */
 function dayPick(cur,chg,max){const t=today(),fd=faireDay(),on=cur==="auj"||cur==="soir"||cur==="jour",d=on&&fd&&fd!==addDays(t,1)?fd:t;
+  /* pas encore choisie : un toucher prend ce jour (aujourd'hui) ; choisie : un toucher ouvre le calendrier pour changer de jour */
+  if(!on)return `<button type="button" class="chip chip-q day-pick" aria-pressed="false" data-act="dpday" data-v="${chg}|${d}">${ic("cal","i-s")}${esc(cap(dshort(d).replace(/ [^ ]+$/,"")))}<span class="dp-caret" aria-hidden="true">▾</span></button>`;
   return `<label class="chip chip-q chip-sel day-pick" ${on?'aria-pressed="true"':""}>${ic("cal","i-s")}${esc(cap(dshort(d).replace(/ [^ ]+$/,"")))}<span class="dp-caret" aria-hidden="true">▾</span><input type="date" data-chg="${chg}" value="${d}" min="${t}"${max?` max="${max}"`:""} aria-label="Jour : ${d===t?"aujourd'hui, ":""}${esc(dlong(d))}. Toucher pour changer"></label>`;}
 function datesRow(){const t=today(),[du,au]=whenRange("dates");return `<div class="frow ag-dates"><label>Du <input type="date" data-chg="adu" value="${du}" min="${t}"></label><label>au <input type="date" data-chg="aau" value="${au}" min="${du}"></label></div><p class="ag-dates-n">Ouvrez une sortie puis touchez « Ajouter au calendrier » pour la mettre dans votre téléphone.</p>`;}
 function soirRange(){const t=today(),w=S.soirWhen||"7j";return w==="jour"?whenRange("jour"):w==="soir"?[t,t]:w==="demain"?[addDays(t,1),addDays(t,1)]:w==="we"?defaultStay():w==="dates"?whenRange("dates"):[t,addDays(t,6)];}
@@ -1985,6 +1987,7 @@ const ACT={
   ics:v=>icsGo(v),
   fc:v=>fcSpot(v),
 
+  dpday:v=>{const [c,d]=v.split("|");if(CHG[c])CHG[c](d);render();},
   mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},mmom:v=>{S.mMom=S.mMom===v?null:v;if(S.mMom)S.openToday=false;render();},mgall:()=>{S.mgAll=!S.mgAll;render();},mfish:v=>{S.mWhere=v;sset("pp-mwhere",v);S.mk="poisson";S.mkSec="produits";render();requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
