@@ -1,63 +1,63 @@
 {
- "maj": "2026-11-14T22:34:55.678Z",
+ "maj": "2026-11-15T06:48:40.367Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" soir",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du samedi 14 novembre 2026 à 18H15 légales.",
-  "avis": "Avis de grand frais à coup de vent Nr 130",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du dimanche 15 novembre 2026 à 06H15 légales.",
+  "avis": "Avis de grand frais à coup de vent Nr 131",
   "sections": [
    {
-    "t": "Situation générale le samedi 14 novembre 2026 à 12H00 UTC, et évolution",
+    "t": "Situation générale le dimanche 15 novembre 2026 à 00H00 UTC, et évolution",
     "l": [
-     "Dépression complexe 992 hPa à l'ouest de l'Irlande se décalant vers l'est, attendue 994 hPa sur la Pointe Bretagne demain midi. Dorsale de l'Europe Centrale à l'Angleterre s'affaissant."
+     "Dépression complexe 993 hPa au sud-ouest de l'Irlande, se décalant vers l'est, traversant la Manche, prévue 992 hPa en mer du Nord cette nuit, et 988 hPa sur le Danemark demain midi. Thalweg associé, traversant la Manche et le golfe de Gascogne. Dorsale se renforçant à l'arrière, avant l'arrivée d'un nouveau thalweg demain midi dans le golfe de Gascogne."
     ]
    },
    {
-    "t": "Observations le samedi 14 novembre 2026 à 15H00 UTC",
+    "t": "Observations le dimanche 15 novembre 2026 à 03H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Sud-Est 12 nœuds, très nuageux à couvert, visibilité 8 milles. Belle Ile : vent Sud-Sud-Est 6 nœuds, très nuageux à couvert, visibilité 8 milles. Ile d'Yeu : vent Sud-Sud-Est 4 nœuds, mer peu agitée, très nuageux à couvert, visibilité 9 milles. Groix : vent Sud-Est 8 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 4 nœuds."
-    ]
-   },
-   {
-    "t": "Prévisions pour la nuit du samedi 14 novembre au dimanche 15 novembre",
-    "l": [
-     "VENT : Sud à Sud-Ouest 3 à 4, fraîchissant progressivement Sud-Ouest 5 à 6. Rafales.",
-     "MER : peu agitée devenant agitée en seconde partie de nuit.",
-     "HOULE : Sud-Ouest autour de 0.5 m.",
-     "TEMPS : couvert, pluie en seconde partie de nuit.",
-     "VISIBILITE : bonne, mais mauvaise sous pluie."
+     "Pointe de Penmarc'h : vent Sud 19 nœuds, visibilité 5 milles. Belle Ile : vent Sud-Sud-Ouest 23 nœuds, rafales 33 nœuds, très nuageux à couvert, visibilité 8 milles. Ile d'Yeu : vent Sud 16 nœuds, rafales 27 nœuds, mer peu agitée, couvert, pluies ou bruines, visibilité 5 milles. Groix : vent Sud 21 nœuds, mer peu agitée, clair ou peu nuageux, visibilité 8 milles. Pointe de Chemoulin : vent Sud 14 nœuds, mer peu agitée, très nuageux à couvert, visibilité 8 milles."
     ]
    },
    {
     "t": "Prévisions pour la journée du dimanche 15 novembre",
     "l": [
-     "VENT : Ouest à Sud-Ouest fraîchissant 6 à 7 en matinée, puis Ouest 7 à 8 l'après-midi et mollissant 6 à 7 en fin d'après-midi. Fortes rafales.",
-     "MER : agitée, devenant progressivement forte à très forte.",
-     "HOULE : Sud-Ouest près de 0.5 m, s'amplifiant 1 à 2 m le matin, parfois 2.5 m de Penmarc'h à Belle-Île.",
-     "TEMPS : pluie, parfois forte.",
-     "VISIBILITE : moyenne, mais mauvaise sous pluie."
+     "VENT : Sud-Ouest fraîchissant 6 à 7 en matinée, puis Ouest 7 à 8 cet après-midi et mollissant 6 à 7 en fin d'après-midi. Fortes rafales.",
+     "MER : devenant agitée à forte, puis forte à très forte à la mi-journée, parfois croisée.",
+     "HOULE : Sud-Ouest s'amplifiant 1 à 2 m le matin, localement 2.5 à 3 m de Penmarc'h à Belle-Île cet après-midi.",
+     "TEMPS : pluie ou averses, parfois fortes et orageuses vers Côte Vendée.",
+     "VISIBILITE : mauvaise sous précipitations."
     ]
    },
    {
-    "t": "Tendance pour la nuit du 15 au 16, et la journée du lundi 16 novembre",
+    "t": "Prévisions pour la nuit du dimanche 15 novembre au lundi 16 novembre",
     "l": [
-     "VENT : Ouest mollissant 5 à 6, puis secteur Ouest 2 à 4 en fin de nuit, puis fraîchissant Sud à Sud-Est 6 à 7 dans l'après-midi. Rafales.",
-     "MER : forte à très forte, s'atténuant forte en seconde partie de nuit, puis agitée à forte en matinée.",
-     "HOULE : Ouest à Sud-Ouest 2 à 3, jusqu'à 4 m de Penmarc'h à Belle-Île, puis s'atténuant 1 à 2 m l'après-midi.",
-     "TEMPS : couvert et parfois pluvieux.",
-     "VISIBILITE : moyenne, mais mauvaise sous pluie."
+     "VENT : Ouest mollissant 5 à 6, parfois 7 au début, puis Ouest à Nord-Ouest 3 à 5 en seconde partie de nuit. Rafales.",
+     "MER : forte à très forte, s'atténuant agitée à forte en seconde partie de nuit.",
+     "HOULE : Ouest s'amplifiant 2 à 3 m, parfois 3.5 m parages Penmarc'h.",
+     "TEMPS : devenant très nuageux, quelques averses.",
+     "VISIBILITE : bonne, parfois mauvaise sous averses."
+    ]
+   },
+   {
+    "t": "Tendance pour la journée du lundi 16 novembre",
+    "l": [
+     "VENT : Ouest à Sud-Ouest mollissant 2 à 4, fraîchissant Sud à Sud-Ouest 6 à 7 l'après-midi. Rafales.",
+     "MER : agitée à forte.",
+     "HOULE : Ouest 2 à 3 m, s'atténuant 1 à 2 m l'après-midi.",
+     "TEMPS : très nuageux, devenant couvert et pluvieux l'après-midi.",
+     "VISIBILITE : bonne, puis mauvaise sous pluie."
     ]
    }
   ],
-  "prochain": "Prochain bulletin le dimanche 15 novembre 2026, vers 06H15 légales",
+  "prochain": "Prochain bulletin le dimanche 15 novembre 2026, vers 12H30 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-14T22:35:12.146Z"
+  "lu": "2026-11-15T06:48:47.610Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-14 22:30",
-  "h13": null,
-  "hmax": null,
-  "t13": null,
+  "heure": "2026-11-15 07:00",
+  "h13": 1.3,
+  "hmax": 2.1,
+  "t13": 5,
   "dir": null,
   "eau": null,
   "source": "https://candhis.cerema.fr/_public_/campagne.php?Y2FtcD0wNDQwMw=="
