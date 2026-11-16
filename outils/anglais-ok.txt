@@ -3,6 +3,7 @@
 # restaurants and crêperies open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies with a sea view open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 (collège Jean Mounès)
+, Pirmil · arrives in Préfailles at #h#, Place de la Gare
 , SNCF station · arrives in Préfailles at #h#, Place de la Gare
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
@@ -26,7 +27,6 @@ All year round at the plateau de la Chapelle; in summer, friendly doubles compet
 Aléop coach #
 Aléop coach (Loire-Atlantique): single ticket €#.# (valid # h, + # h Naolib/Ycéo transfer); reduced fare €#.# (children #-#, large families, disability card…); book of #: €#; free under #. Buy: WOP M-Ticket app or from the driver (exact change).
 Aléop information:
-Animation, Family · ages #+, Mois des Tout-Petits
 Association of parents at the Préfailles school, very active in organising family events.
 Association that organises the Jazz à Préf concerts at the Espace culturel.
 At night, on Sundays and public holidays: call # (Résogardes) for the nearest duty pharmacy
@@ -47,6 +47,7 @@ Cinéma Saint-Joseph, Pornic
 Coaches and trains between Préfailles, Pornic, Nantes and Saint-Nazaire, connections included.
 Collège Jean Mounès staff association
 Concerts (Jazz à Préf), masterclasses, exhibitions
+Connaissance du Monde film talk
 Contributing to the development of the La Joselière district in Pornic, its beach and its coastline.
 Crêperies
 Cultural development of the Pays de Retz
@@ -72,6 +73,7 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
+L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
 La Bernerie, Grande Plage et plan d'eau
@@ -83,6 +85,7 @@ Le Petit Préf on your home screen
 Les Moutiers
 Les Moutiers · # km
 Les Moutiers, plage du Pré-Vincent
+Les Rochelets
 Local events and activities in Le Clion
 Local zoning plan (PLU) of Préfailles, approved on #/#/#. Tap a zone: what can be built there, the zone on the map, its page of the regulations.
 Membership and FFV licence on HelloAsso (club affiliated to the FFV since #). Summer #: "jeudis du CVP" from #h to #h in the clubroom of the sailing centre, supervised group outings every day from @M to @M. The # programme is in preparation.
@@ -93,6 +96,7 @@ Na · Camping de la Pointe lagoon treatment ponds
 Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic
 Neighbourhood association (La Joselière)
 New regional fares: Aléop ticket from €#.# (outside urban areas), €#.#–#.# for a journey to Nantes (Naolib transfer included), €#.#–#.# to Saint-Nazaire (Ycéo included); #-journey ticket from €#; Junior ticket (ages #-#) from €#.#; Aléop Multi Car €#/day for # to # people (coach), Aléop Multi €#/day (coach + train); Aléop -#% card €#/year (€# under #).
+On reste au port · force #
 Organising Voiles de tradition (classic sailing) events, talks
 Parents of pupils at collège Notre-Dame Recouvrance
 Pharmacie Conseil Santé
@@ -115,12 +119,15 @@ Plateau du Four buoy
 Pornic castle and harbour: “Chateau de Pornic (#)”, Ibex#,
 Pornic station is ~# km from Préfailles: get there on coach # (Théâtre St-Gilles / Terres Jarries stop) or #. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of @J # Nov (reported by l-itineraire.com): check before you travel.
 Pornic, Théâtre St-Gilles
+Pornic, Théâtre St-Gilles →
+Port‑aux‑Ânes
 Promoting and safeguarding the cultural and natural heritage of the Pays de Retz
 Promoting any action or event likely to boost trade at the LE CHAUDRON shopping centre.
 Promoting contemporary art and current music in the Pays de Retz
 Promoting the local fare of the Pays de Retz, especially calf's head in all its culinary forms.
 Protecting and defending the rights of residents of the OPA area – rue de Nantes and its side roads between the Ria Sud, the Chaudron roundabout and the Joli séjour roundabout.
 Protecting the Birochère site
+Pré-Vincent
 Préfailles and nearby cinemas
 Préfailles choir (the directory only gives personal contact details).
 Préfailles cinema
@@ -185,8 +192,14 @@ Wind, swell and water: Open-Meteo forecasts (Météo-France and European models)
 Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
+bulletin : Ouest # à #, temporairement # au début, revenant Sud à la mi-journée, puis fraîchissant Sud à Sud-Ouest # à # l'après-midi. Rafales. · #-# nds, raf. #
+bulletin : Sud à Sud-Ouest # à #, parfois #, virant Ouest à Sud-Ouest en seconde partie de nuit. Fortes rafales. · #-# nds, raf. #
 next: @J #h–#h · Préfailles
+onshore, haché
 or VHF channel # (CROSS Étel)
+partout: rafales jusqu'à # kn
+rafaleux, confirmés · houle #.# m
+rafaleux, confirmés · vent de face
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).
 €#.# per journey until # Jan #; €#.# to €#.# to Saint-Nazaire (Ycéo included) from # Jan #

@@ -1220,9 +1220,54 @@
   "Modifier": "Change",
   "VF": "French version",
   "VOST": "Original version, French subtitles",
-  "Animation": "Animation"
+  "Animation": "Animation",
+  "Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large, dans la zone du spot.": "Experienced = can get out past the breakers and out of a rip current on your own. Glassy = smooth sea. Offshore = wind from the land: clean waves, but it pushes you out to sea. Onshore = wind from the sea: choppy waves. Height: offshore swell, in the spot's area."
  },
  "rules": [
+  [
+   "^(.+?) et (.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
+   "$1 and $2: wind too strong ($3 kn, gusts $4, $5)"
+  ],
+  [
+   "^(.+?) et (.+?) : trop rafaleux sur le créneau (\\S+) → (\\S+) nds$",
+   "$1 and $2: too gusty in that slot, $3 → $4 kn"
+  ],
+  [
+   "^(.+?) et (.+?) : pas assez de vent pour le kite (\\S+) nds$",
+   "$1 and $2: not enough wind for kiting, $3 kn"
+  ],
+  [
+   "^prochain départ de (.+?) à (\\S+)$",
+   "next departure from $1 at $2"
+  ],
+  [
+   "^Attention : force (\\d+) annoncée aujourd'hui dans le bulletin : surveillez les avis \\(BMS\\)\\.$",
+   "Warning: force $1 forecast today in the bulletin: watch for gale warnings (BMS)."
+  ],
+  [
+   "^(.+?) : trop rafaleux sur le créneau (\\S+) → (\\S+) nds$",
+   "$1: too gusty in that slot, $2 → $3 kn"
+  ],
+  [
+   "^(.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
+   "$1: wind too strong ($2 kn, gusts $3, $4)"
+  ],
+  [
+   "^(.+?) : pas assez de vent pour le kite (\\S+) nds$",
+   "$1: not enough wind for kiting, $2 kn"
+  ],
+  [
+   "^prochain départ (\\S+) pour (.+)$",
+   "next departure $1 to $2"
+  ],
+  [
+   "^\\(Candhis, (\\d+) km au large\\), (\\d\\d/\\d\\d) à (\\S+) : mesure indisponible pour l'instant$",
+   "(Candhis, $1 km offshore), $2 at $3: no reading available for now"
+  ],
+  [
+   "^\\(Candhis, (\\d+) km au large\\), (\\d\\d/\\d\\d) à (\\S+) :$",
+   "(Candhis, $1 km offshore), $2 at $3:"
+  ],
   [
    "^(\\d{4}) : jusqu'en (.+)$",
    "$1: up to $2"
@@ -3813,6 +3858,14 @@
   "aux genoux": "knee high",
   "à la taille": "waist high",
   "aux épaules": "shoulder high",
-  "au-dessus de la tête": "overhead"
+  "au-dessus de la tête": "overhead",
+  "vagues à la taille": "waist-high waves",
+  "vagues aux genoux": "knee-high waves",
+  "vagues aux épaules": "shoulder-high waves",
+  "vagues au-dessus de la tête": "overhead waves",
+  "marée haute": "high tide",
+  "marée basse": "low tide",
+  "mi-marée": "mid tide",
+  "avec école": "with a school"
  }
 }
