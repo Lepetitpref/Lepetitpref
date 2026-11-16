@@ -1520,4 +1520,4 @@ button.wk-c{cursor:pointer}
 .crowd-b{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#1c1d22;font:inherit;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
 /* iPhone : les éléments fixes ou collés disparaissaient parfois pendant le défilement ; un calque propre les garde affichés */
 .topbar,.tabs,.subnav,.filters,.tr-mini{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
-/* version du site */:root{--pp-v:"20261116-1056"}
+/* version du site */:root{--pp-v:"20261116-1101"}

@@ -444,6 +444,86 @@ const OFFARC={anes:[75,195],gildas:[30,60],bourgneuf:[345,60],bernerie:[30,105],
 const inArc=(wd,a)=>wd!=null&&a&&(a[0]<=a[1]?wd>=a[0]-15&&wd<=a[1]+15:wd>=a[0]-15||wd<=a[1]+15);
 /* lecture du bulletin côtier pour un jour : force maximale annoncée et « fortes rafales » */
 const BULWD=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+/* Bulletin côtier Météo-France → anglais (vocabulaire marin codifié). Une phrase dont il reste un mot français n'est pas traduite. */
+const BMS_DAYS={lundi:"Monday",mardi:"Tuesday",mercredi:"Wednesday",jeudi:"Thursday",vendredi:"Friday",samedi:"Saturday",dimanche:"Sunday"};
+const BMS_MON={janvier:"January","février":"February",mars:"March",avril:"April",mai:"May",juin:"June",juillet:"July","août":"August",septembre:"September",octobre:"October",novembre:"November","décembre":"December"};
+const BMS_DIR={"Nord":"North","Sud":"South","Est":"East","Ouest":"West"};
+const BMS_RULES=[
+ // dates « lundi 16 novembre 2026 » → « Monday 16 November 2026 »
+ [/\b(lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche) (\d{1,2}) (janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)( \d{4})?/g,(m,d,n,mo,y)=>`${BMS_DAYS[d]} ${n} ${BMS_MON[mo]}${y||""}`],
+ [/(\d{1,2})H(\d{2}) légales/g,"$1:$2 local time"],[/(\d{1,2})H(\d{2}) UTC/g,"$1:$2 UTC"],
+ // noms de lieux (avant tout le reste)
+ [/[Pp]ointe de Penmarc'h/g,"Penmarc'h Point"],[/Pointe de Chemoulin/g,"Chemoulin Point"],[/l'anse de l'Aiguillon/g,"Aiguillon Bay"],[/l'Aiguillon/g,"Aiguillon"],
+ [/Belle[ -]Ile/g,"Belle-Île"],[/l'ile d'Yeu|Ile d'Yeu/g,"Île d'Yeu"],[/ : /g,": "],
+ // mer : « forte » = rough (dans une ligne MER ou après « mer »)
+ [/^MER ?: .*/,m=>m.replace(/très forte/g,"very rough").replace(/\bforte\b/g,"rough")],[/mer forte/g,"mer rough"],[/mer très forte/g,"mer very rough"],
+ // titres
+ [/^Bulletin côte "Penmarc'h – Aiguillon" (matin|midi|soir)$/,(m,x)=>`Coastal forecast "Penmarc'h – Aiguillon", ${({matin:"morning",midi:"midday",soir:"evening"})[x]}`],
+ [/^Bulletin côtier pour la bande des 20 milles, de la Penmarc'h Point à Aiguillon Bay, du (.+?) à (.+?)\.$/,"Coastal forecast for the 20-mile strip from Penmarc'h Point to Aiguillon Bay, issued $1 at $2."],
+ [/^Situation générale le (.+?) à (.+?), et évolution$/,"General situation on $1 at $2, and development"],
+ [/^Observations le (.+?) à (.+)$/,"Observations on $1 at $2"],
+ [/^Prévisions pour la journée du (.+)$/,"Forecast for $1"],[/^Prévisions pour l'après-midi du (.+)$/,"Forecast for the afternoon of $1"],
+ [/^Prévisions pour la nuit du (.+?) au (.+)$/,"Forecast for the night of $1 to $2"],
+ [/^Tendance pour la nuit du (\d+) au (\d+), et la journée du (.+)$/,"Outlook for the night of the $1th to the $2th, and $3"],
+ [/^Tendance pour la journée du (.+)$/,"Outlook for $1"],
+ // avis
+ [/^Pas d'avis de vent fort en cours ni prévu\.$/,"No strong wind warning in force or expected."],
+ [/^Avis de (.+?) Nr (\d+)\.?$/,(m,k,n)=>`${(k.replace(/fort coup de vent/g,"severe gale").replace(/grand frais/g,"near gale").replace(/coup de vent/g,"gale").replace(/tempête/g,"storm").replace(/ à /g," to ")).replace(/^./,c=>c.toUpperCase())} warning no. ${n}.`],
+ // rubriques
+ [/^VENT ?: /,"WIND: "],[/^MER ?: /,"SEA: "],[/^HOULE ?: /,"SWELL: "],[/^TEMPS ?: /,"WEATHER: "],[/^VISIBILITE ?: /,"VISIBILITY: "],
+ // directions composées (Sud-Ouest, Ouest-Nord-Ouest…)
+ [/\b(Nord|Sud|Est|Ouest)((?:-(?:Nord|Sud|Est|Ouest))*)\b/g,m=>m.split("-").map(x=>BMS_DIR[x]).join("-")],
+ [/\bsecteur ([A-Z][a-z-]+)/g,"$1 sector"],
+ // locutions de temps (les plus longues d'abord)
+ [/en toute fin de nuit/g,"at the very end of the night"],[/en seconde partie de nuit/g,"in the second half of the night"],[/en milieu de nuit/g,"in the middle of the night"],
+ [/en début de nuit/g,"early in the night"],[/en fin de nuit/g,"late in the night"],[/en fin d'après-midi/g,"late in the afternoon"],[/en fin de matinée/g,"late in the morning"],
+ [/en début de matinée/g,"early in the morning"],[/en fin de journée/g,"late in the day"],[/en cours de journée/g,"during the day"],[/en journée/g,"during the day"],
+ [/à la mi-journée/g,"around midday"],[/dans l'après-midi/g,"in the afternoon"],[/cet après-midi/g,"this afternoon"],[/l'après-midi/g,"in the afternoon"],
+ [/en matinée/g,"in the morning"],[/le matin/g,"in the morning"],[/ce matin/g,"this morning"],[/en soirée/g,"in the evening"],[/le soir/g,"in the evening"],
+ [/dans la nuit/g,"during the night"],[/la nuit/g,"at night"],[/au début/g,"at first"],[/à la fin/g,"later"],
+ // vent
+ [/avec menace de (\d+)/g,"with risk of $1"],[/fraîchissant progressivement/g,"gradually increasing"],[/fraîchissant/g,"increasing"],[/mollissant/g,"decreasing"],
+ [/virant/g,"veering"],[/revenant/g,"becoming"],[/s'orientant/g,"becoming"],[/Fortes [Rr]afales\./g,"Strong gusts."],[/Rafales\./g,"Gusts."],
+ [/temporairement/g,"temporarily"],[/localement/g,"locally"],[/parfois/g,"occasionally"],[/progressivement/g,"gradually"],
+ [/au large de ([A-ZÉ][\w'-]+(?:-[\w'-]+)*) à ([A-ZÉ][\w'-]+)/g,"offshore from $1 to $2"],[/vers le large de/g,"towards the open sea off"],[/au large/g,"offshore"],
+ [/par l'ouest/g,"from the west"],[/par le sud/g,"from the south"],[/par le nord/g,"from the north"],[/par l'est/g,"from the east"],
+ [/de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*) à (l'Aiguillon|[A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"from $1 to $2"],
+ [/au sud de (Île d'Yeu|[A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"south of $1"],[/au nord de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"north of $1"],
+ [/à l'ouest de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"west of $1"],[/à l'est de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"east of $1"],
+ [/(?:vers|parages) (Penmarc'h|Belle-Ile|Belle-Île|Groix|Yeu|Noirmoutier)/g,"near $1"],[/sur [Cc]ôte Vendée|vers Côte Vendée/g,"near the Vendée coast"],
+ [/mais/g,"but"],[/puis/g,"then"],[/avec/g,"with"],[/devenant/g,"becoming"],
+ // mer
+ [/très grosse/g,"very high"],[/grosse/g,"high"],[/très forte/g,"very rough"],[/peu agitée/g,"slight"],[/agitée/g,"moderate"],[/belle/g,"smooth"],[/ridée/g,"rippled"],[/calme/g,"calm"],
+ [/croisée with houle de ([\w-]+)/g,"cross sea with $1 swell"],[/croisée/g,"cross sea"],[/dominée par la houle/g,"dominated by swell"],
+ [/s'atténuant/g,"easing"],
+ // houle
+ [/longue de ([\w-]+)/g,"long $1 swell"],[/[Hh]oule d'([\w-]+)/g,"$1 swell"],[/s'amplifiant/g,"building"],[/s'amortissant/g,"easing"],[/s'établissant/g,"becoming"],
+ [/jusqu'à (\d)/g,"up to $1"],[/autour de (\d)/g,"around $1"],[/près de (\d)/g,"near $1"],[/du sud au nord/g,"from south to north"],
+ [/(\d+(?:\.\d+)?) à (\d+(?:\.\d+)?)/g,"$1 to $2"],
+ // temps
+ [/ciel couvert/g,"overcast"],[/très nuageux à couvert/g,"very cloudy to overcast"],[/peu nuageux à nuageux/g,"partly cloudy to cloudy"],[/nuageux à très nuageux/g,"cloudy to very cloudy"],
+ [/clair ou peu nuageux/g,"clear or partly cloudy"],[/nuageux avec éclaircies/g,"cloudy with bright spells"],[/très nuageux/g,"very cloudy"],[/peu nuageux/g,"partly cloudy"],[/nuag(?:eux|uex)/g,"cloudy"],
+ [/se couvrant/g,"clouding over"],[/se dégageant/g,"clearing"],[/ciel clair/g,"clear sky"],[/voilé/g,"hazy"],[/ensoleillé/g,"sunny"],[/couvert/g,"overcast"],
+ [/averses orageuses/g,"thundery showers"],[/quelques averses/g,"a few showers"],[/quelques pluies/g,"some rain"],[/fortes pluies/g,"heavy rain"],[/passages pluvieux/g,"spells of rain"],
+ [/pluies ou bruines/g,"rain or drizzle"],[/pluie ou averses/g,"rain or showers"],[/pluies parfois fortes/g,"rain, occasionally heavy"],[/pluvieux/g,"rainy"],[/orageuses?/g,"thundery"],[/orageux/g,"thundery"],
+ [/averses/g,"showers"],[/pluies/g,"rain"],[/pluie/g,"rain"],[/bruine/g,"drizzle"],[/brouillard/g,"fog"],[/brume/g,"mist"],[/éclaircies/g,"bright spells"],[/clair/g,"clear"],
+ [/forte(s)?/g,"heavy"],
+ // visibilité
+ [/très mauvaise/g,"very poor"],[/mauvaise/g,"poor"],[/moyenne/g,"moderate"],[/bonne/g,"good"],[/sous précipitations/g,"in precipitation"],[/sous ([a-z ]+)/g,"in $1"],
+ // observations
+ [/vent ([A-Z][a-z]+(?:-[A-Z][a-z]+)*) (\d+) nœuds/g,"wind $1 $2 knots"],[/rafales (\d+) nœuds/g,"gusts $1 knots"],[/visibilité (\d+) milles/g,"visibility $1 miles"],[/visibilité (\d+) mètres/g,"visibility $1 metres"],
+ [/mer (slight|moderate|very rough|rough|smooth|calm|high)/g,"$1 sea"],[/Belle Ile/g,"Belle-Île"],[/Ile d'Yeu/g,"Île d'Yeu"],[/Pointe de /g,"Pointe de "],
+ [/ et /g," and "],[/ ou /g," or "],[/ dans /g," in "],[/ sur /g," over "],[/ en /g," in "],[/ à /g," to "],[/ de /g," of "]
+];
+const BMS_FR=/(?<![\p{L}'’-])(le|la|les|des|du|de|et|pour|avec|dès|au|aux|en|sur|une|un|ou|par|dans|à|se|puis|mais|vent|mer|houle|pluie|nuageux|parfois|vers|prévue?|décalant|comblant|creusant|dépression|thalweg|dorsale|associé)(?![\p{L}-])/iu;
+const BMS_OK=/^(?:[^\p{L}]|[A-Za-z]|Penmarc'h|Belle-Île|Belle-Ile|Île|Ile|Yeu|Groix|Noirmoutier|Chemoulin|Aiguillon|Vendée|Pointe|pointe|anse|d'Yeu|l'Aiguillon)*$/u;
+function bmsEn(s){let x=String(s||"");if(!x)return null;for(const [re,rep] of BMS_RULES)x=x.replace(re,rep);
+  /* encore du français ? (mots outils, ou lettres accentuées hors noms de lieux) */
+  const rest=x.replace(/Penmarc'h|Belle-Île|Île d'Yeu|Groix|Noirmoutier|Chemoulin|Aiguillon|Vendée/g,"");
+  if(BMS_FR.test(rest)||/[éèêàùûôîçœ]/i.test(rest))return null;return x;}
+
+/* une ligne du bulletin : en anglais si la traduction est sûre, sinon en français (balisée) */
+const bmT=t=>{if(LANG!=="en")return esc(t);const e=bmsEn(t);return e?`<span class="no-tr">${esc(e)}</span>`:`<span lang="fr">${esc(t)}</span> <small class="no-tr" style="color:var(--muted)">(French only)</small>`;};
 function bulDay(d){const B=S.mer&&S.mer.bulletin;if(!B)return null;const sec=(B.sections||[]).find(x=>/journée/i.test(x.t)&&x.t.toLowerCase().includes(BULWD[dow(d)])&&x.t.includes(" "+(+d.slice(8))+" "));if(!sec)return null;
   const v=sec.l.find(l=>/^VENT/.test(l));if(!v)return null;const n=[...v.matchAll(/(\d{1,2})(?=\s*(?:à|,|\.|$|\s+localement|\s+parfois|\s+au large|\s+en))/g)].map(m=>+m[1]).filter(x=>x>=1&&x<=12);
   return{max:n.length?Math.max(...n):0,raf:/fortes rafales/i.test(v),txt:v.replace(/^VENT\s*:\s*/,"")};}
@@ -1249,9 +1329,9 @@ const SPOTCMP={"gildas": [["Windguru", "https://www.windguru.cz/48513"], ["Surf-
 function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
   const hh=x=>x?x.slice(11,16).replace(":","h"):"";
   const alerte=B&&B.avis&&!/^Pas d'avis/i.test(B.avis);
-  const state=B?`<div class="nav-state ${alerte?"bad":"ok"}"><b>${esc(B.avis||"")}</b><span>Bulletin côtier Météo-France, ${esc((B.emis.match(/du (.*)$/)||["",B.emis])[1].replace(/\.$/,""))}</span>${(()=>{const f=weekDays().map(d=>({d,b:bulDay(d)})).find(x=>x.b&&(x.b.max>=6||x.b.raf));return f?`<span>Attention : ${f.b.max>=6?`force ${f.b.max}`:"fortes rafales"} annoncée ${f.d===today()?"aujourd'hui":f.d===addDays(today(),1)?"demain":dlong(f.d)} dans le bulletin : surveillez les avis (BMS).</span>`:"";})()}</div>`:"";
-  const bul=B?`${(B.sections||[]).slice(0,4).filter(x=>/journée|nuit|Tendance/i.test(x.t)).slice(0,2).map(x=>`<div class="nav-bx" lang="fr"><h4>${esc(x.t)}</h4>${x.l.filter(l=>/^(VENT|MER|HOULE|TEMPS|VISI)/.test(l)).map(l=>`<p>${esc(l)}</p>`).join("")}</div>`).join("")}
-    <details class="nav-bul"><summary>Lire tout le bulletin météo</summary><div lang="fr">${B.sections.map(x=>`<h4>${esc(x.t)}</h4>${x.l.map(l=>`<p>${esc(l)}</p>`).join("")}`).join("")}</div><p class="nav-src">${esc(B.prochain)}.</p></details>
+  const state=B?`<div class="nav-state ${alerte?"bad":"ok"}"><b>${bmT(B.avis||"")}</b><span>${LANG==="en"&&bmsEn(B.emis)?`<span class="no-tr">${esc("Météo-France coastal forecast, "+bmsEn(B.emis).replace(/^.*issued /,"").replace(/\.$/,""))}</span>`:`Bulletin côtier Météo-France, ${esc((B.emis.match(/du (.*)$/)||["",B.emis])[1].replace(/\.$/,""))}`}</span>${(()=>{const f=weekDays().map(d=>({d,b:bulDay(d)})).find(x=>x.b&&(x.b.max>=6||x.b.raf));return f?`<span>Attention : ${f.b.max>=6?`force ${f.b.max}`:"fortes rafales"} annoncée ${f.d===today()?"aujourd'hui":f.d===addDays(today(),1)?"demain":dlong(f.d)} dans le bulletin : surveillez les avis (BMS).</span>`:"";})()}</div>`:"";
+  const bul=B?`${(B.sections||[]).slice(0,4).filter(x=>/journée|nuit|Tendance/i.test(x.t)).slice(0,2).map(x=>`<div class="nav-bx"><h4>${bmT(x.t)}</h4>${x.l.filter(l=>/^(VENT|MER|HOULE|TEMPS|VISI)/.test(l)).map(l=>`<p>${bmT(l)}</p>`).join("")}</div>`).join("")}
+    <details class="nav-bul"><summary>Lire tout le bulletin météo</summary><div>${B.sections.map(x=>`<h4>${bmT(x.t)}</h4>${x.l.map(l=>`<p>${bmT(l)}</p>`).join("")}`).join("")}</div><p class="nav-src">${esc(B.prochain)}.</p></details>
     <p class="nav-links"><a class="chip" href="${B.source}" target="_blank" rel="noopener">Bulletin sur meteofrance.com ↗</a><a class="chip" href="https://www.premar-atlantique.gouv.fr/avis-urgents-aux-navigateurs" target="_blank" rel="noopener">Avis aux navigateurs ↗</a></p>`
     :`<p class="nav-links"><a class="chip" href="https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04" target="_blank" rel="noopener">Bulletin marine officiel ↗</a></p>`;
   const buoy=Y?`<p class="nav-buoy"><b>Bouée du Plateau du Four</b> (Candhis, 40 km au large), ${Y.heure&&Y.heure.slice(0,10)===t?"aujourd'hui":esc((Y.heure||"").slice(8,10)+"/"+(Y.heure||"").slice(5,7))} à ${hh(Y.heure)} : ${Y.h13!=null?`<b>${r1(Y.h13)} m</b>${Y.t13!=null?` · ${r1(Y.t13)} s`:""}${Y.dir!=null?` · ${dirTxt(Y.dir)}`:""}${Y.eau!=null?` · eau ${r1(Y.eau)} °C`:""}`:"mesure indisponible pour l'instant"} <a href="${Y.source}" target="_blank" rel="noopener">Candhis ↗</a></p>`:"";
@@ -1267,7 +1347,7 @@ function navSec(){const M=S.mer||{},B=M.bulletin,Y=M.bouee,t=today();
       const ws=b?`${r0(b.wmin??w.w)}${r0(b.wmax??w.w)!==r0(b.wmin??w.w)?`-${r0(b.wmax)}`:""} nds, raf. ${r0(b.gmax||w.g)}`:"";
       const tdd=tidesOfDay(d),tl=tdd.length?`<br>${tdd.map(x=>`${x.k==="PM"?"PM":"BM"} ${hm(new Date(x.ms))}`).join(" · ")} · coef. ${maxCoef(d)}`:"";
       const head=v===0?`On reste au port${fmax!=null&&!(b&&b.coup)?` · force ${fmax}`:""}`:`${NOTE[v]} · force ${bf&&bf.max>fmax?`${fmax} à ${bf.max} (bulletin)`:fmax} · ${dirTxt(w.wd)}`;
-      const why=v===0?(bf&&bf.max>=6?`bulletin : ${esc(bf.txt)}`:b&&b.coup?esc(String(b.j[1])):b&&/^Force/.test(b.j[1])?`force ${fmax}, rafales ${r0(b.gmax||w.g)} nds`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · houle ${r1(b.s.hs)} m`:""}`;
+      const why=v===0?(bf&&bf.max>=6?(LANG==="en"&&bmsEn("VENT : "+bf.txt)?`<span class="no-tr">bulletin: ${esc(bmsEn("VENT : "+bf.txt).replace(/^WIND: /,""))}</span>`:`bulletin : ${esc(bf.txt)}`):b&&b.coup?esc(String(b.j[1])):b&&/^Force/.test(b.j[1])?`force ${fmax}, rafales ${r0(b.gmax||w.g)} nds`:esc(String(b?b.j[1]:"").replace(/^\d.*?:\s*/,""))):`${slotH(b)} · ${ws}${b.s&&b.s.hs!=null?` · houle ${r1(b.s.hs)} m`:""}`;
       return `<div class="wk-r one" role="row"><span class="wk-d">${dl}</span><span class="wk-c ${v>0?NOTECLS[v]:"no"}"><b>${head}</b><small>${why}${v===0&&b&&w?` · ${ws}`:""}${tl}</small></span></div>`;}).join("")}</div>${D.length>2?`<button type="button" class="wk-fold" data-act="wkmore" data-v="voile" aria-expanded="${!!(S.wkOpen||{}).voile}">${(S.wkOpen||{}).voile?"Replier":`Voir les ${D.length-2} jours suivants`}</button>`:""}`:"";
   return `<section class="sec blk nav-blk" id="nav" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">${ic("sail")}Pour naviguer</h2></div><div class="nav-in">
     ${state}${tide}${voile}${bul}${buoy}
