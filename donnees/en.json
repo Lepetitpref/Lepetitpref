@@ -1226,6 +1226,50 @@
  },
  "rules": [
   [
+   "^On reste au port · force (\\d+)$",
+   "Stay in harbour · force $1"
+  ],
+  [
+   "^On reste au port$",
+   "Stay in harbour"
+  ],
+  [
+   "^Bon · force (\\d+) à (\\d+) \\(bulletin\\) · ",
+   "Good · force $1 to $2 (bulletin) · "
+  ],
+  [
+   "^Possible · force (\\d+) à (\\d+) \\(bulletin\\) · ",
+   "Possible · force $1 to $2 (bulletin) · "
+  ],
+  [
+   "^Bon · force (\\d+) · ",
+   "Good · force $1 · "
+  ],
+  [
+   "^Possible · force (\\d+) · ",
+   "Possible · force $1 · "
+  ],
+  [
+   "(?g)force (\\d+), rafales (\\d+) nds",
+   "force $1, gusts $2 kn"
+  ],
+  [
+   "(?g)(\\d+(?:-\\d+)?) nds, raf\\. (\\d+)",
+   "$1 kn, gusts $2"
+  ],
+  [
+   "(?g)houle (\\d+(?:[.,]\\d+)?) m",
+   "swell $1 m"
+  ],
+  [
+   "(?g)(?<![\\p{L}])BM (\\d{1,2}h\\d\\d)",
+   "LW $1"
+  ],
+  [
+   "(?g)(?<![\\p{L}])PM (\\d{1,2}h\\d\\d)",
+   "HW $1"
+  ],
+  [
    "^(.+?) et (.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
    "$1 and $2: wind too strong ($3 kn, gusts $4, $5)"
   ],

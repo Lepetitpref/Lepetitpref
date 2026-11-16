@@ -464,29 +464,31 @@ const BMS_RULES=[
  [/^Observations le (.+?) à (.+)$/,"Observations on $1 at $2"],
  [/^Prévisions pour la journée du (.+)$/,"Forecast for $1"],[/^Prévisions pour l'après-midi du (.+)$/,"Forecast for the afternoon of $1"],
  [/^Prévisions pour la nuit du (.+?) au (.+)$/,"Forecast for the night of $1 to $2"],
- [/^Tendance pour la nuit du (\d+) au (\d+), et la journée du (.+)$/,"Outlook for the night of the $1th to the $2th, and $3"],
+ [/^Tendance pour la nuit du (\d+) au (\d+), et la journée du (.+)$/,"Outlook for the night of $1–$2, and $3"],
  [/^Tendance pour la journée du (.+)$/,"Outlook for $1"],
  // avis
  [/^Pas d'avis de vent fort en cours ni prévu\.$/,"No strong wind warning in force or expected."],
- [/^Avis de (.+?) Nr (\d+)\.?$/,(m,k,n)=>`${(k.replace(/fort coup de vent/g,"severe gale").replace(/grand frais/g,"near gale").replace(/coup de vent/g,"gale").replace(/tempête/g,"storm").replace(/ à /g," to ")).replace(/^./,c=>c.toUpperCase())} warning no. ${n}.`],
+ [/^Avis d(?:e |')(.+?) Nr (\d+)\.?$/,(m,k,n)=>{const T=[["violente tempête","violent storm 11"],["fort coup de vent","severe gale 9"],["grand frais","near gale 7"],["coup de vent","gale 8"],["tempête","storm 10"],["ouragan","hurricane force 12"]];
+   let x=k;T.forEach(([f,e],i)=>{x=x.replace(new RegExp(f,"g"),"\u0001"+i+"\u0001");});x=x.replace(/\u0001(\d)\u0001/g,(_,i)=>T[+i][1]).replace(/ à /g," to ");
+   return /[\p{L}]/u.test(x.replace(/near gale|severe gale|gale|violent storm|storm|hurricane force|to|\d/g,""))?m:`Strong wind warning no. ${n}: ${x}.`;}],
  // rubriques
  [/^VENT ?: /,"WIND: "],[/^MER ?: /,"SEA: "],[/^HOULE ?: /,"SWELL: "],[/^TEMPS ?: /,"WEATHER: "],[/^VISIBILITE ?: /,"VISIBILITY: "],
  // directions composées (Sud-Ouest, Ouest-Nord-Ouest…)
  [/\b(Nord|Sud|Est|Ouest)((?:-(?:Nord|Sud|Est|Ouest))*)\b/g,m=>m.split("-").map(x=>BMS_DIR[x]).join("-")],
- [/\bsecteur ([A-Z][a-z-]+)/g,"$1 sector"],
+ [/\bsecteur (North|South|East|West)/g,(m,d)=>({North:"northerly",South:"southerly",East:"easterly",West:"westerly"})[d]],
  // locutions de temps (les plus longues d'abord)
- [/en toute fin de nuit/g,"at the very end of the night"],[/en seconde partie de nuit/g,"in the second half of the night"],[/en milieu de nuit/g,"in the middle of the night"],
- [/en début de nuit/g,"early in the night"],[/en fin de nuit/g,"late in the night"],[/en fin d'après-midi/g,"late in the afternoon"],[/en fin de matinée/g,"late in the morning"],
+ [/en toute fin de nuit/g,"around dawn"],[/en seconde partie de nuit/g,"later in the night"],[/en milieu de nuit/g,"in the middle of the night"],
+ [/en début de nuit/g,"early in the night"],[/en fin de nuit/g,"towards dawn"],[/en fin d'après-midi/g,"late in the afternoon"],[/en fin de matinée/g,"late in the morning"],
  [/en début de matinée/g,"early in the morning"],[/en fin de journée/g,"late in the day"],[/en cours de journée/g,"during the day"],[/en journée/g,"during the day"],
  [/à la mi-journée/g,"around midday"],[/dans l'après-midi/g,"in the afternoon"],[/cet après-midi/g,"this afternoon"],[/l'après-midi/g,"in the afternoon"],
  [/en matinée/g,"in the morning"],[/le matin/g,"in the morning"],[/ce matin/g,"this morning"],[/en soirée/g,"in the evening"],[/le soir/g,"in the evening"],
  [/dans la nuit/g,"during the night"],[/la nuit/g,"at night"],[/au début/g,"at first"],[/à la fin/g,"later"],
  // vent
- [/avec menace de (\d+)/g,"with risk of $1"],[/fraîchissant progressivement/g,"gradually increasing"],[/fraîchissant/g,"increasing"],[/mollissant/g,"decreasing"],
- [/virant/g,"veering"],[/revenant/g,"becoming"],[/s'orientant/g,"becoming"],[/Fortes [Rr]afales\./g,"Strong gusts."],[/Rafales\./g,"Gusts."],
- [/temporairement/g,"temporarily"],[/localement/g,"locally"],[/parfois/g,"occasionally"],[/progressivement/g,"gradually"],
- [/au large de ([A-ZÉ][\w'-]+(?:-[\w'-]+)*) à ([A-ZÉ][\w'-]+)/g,"offshore from $1 to $2"],[/vers le large de/g,"towards the open sea off"],[/au large/g,"offshore"],
- [/par l'ouest/g,"from the west"],[/par le sud/g,"from the south"],[/par le nord/g,"from the north"],[/par l'est/g,"from the east"],
+ [/avec menace de (\d+)/g,"perhaps $1"],[/fraîchissant progressivement/g,"gradually increasing"],[/fraîchissant/g,"increasing"],[/mollissant/g,"decreasing"],
+ [/virant/g,"veering"],[/revenant/g,"becoming"],[/s'orientant/g,"becoming"],[/Fortes [Rr]afales\./g,"Strong gusts."],[/Rafales\./g,"Gusts."],[/[Ff]ortes rafales/g,"strong gusts"],[/rafales (?:de |jusqu'à )?(\d+) nœuds/g,"gusts of $1 knots"],[/[Rr]afales/g,"gusts"],[/(\d+) nœuds/g,"$1 knots"],
+ [/temporairement/g,"for a time"],[/localement/g,"locally"],[/parfois/g,"occasionally"],[/progressivement/g,"gradually"],
+ [/(?:au|vers le) large de (\p{Lu}[\p{L}'’-]*) à (\p{Lu}[\p{L}'’-]*)/gu,"to seaward between $1 and $2"],[/vers le large de/g,"to seaward off"],[/au large/g,"to seaward"],
+ [/par l'ouest/g,"spreading from the west"],[/par le sud/g,"spreading from the south"],[/par le nord/g,"spreading from the north"],[/par l'est/g,"spreading from the east"],
  [/de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*) à (l'Aiguillon|[A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"from $1 to $2"],
  [/au sud de (Île d'Yeu|[A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"south of $1"],[/au nord de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"north of $1"],
  [/à l'ouest de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"west of $1"],[/à l'est de ([A-ZÉ][\w'’-]*(?:-[A-ZÉ][\w'’-]*)*)/g,"east of $1"],
@@ -494,12 +496,12 @@ const BMS_RULES=[
  [/mais/g,"but"],[/puis/g,"then"],[/avec/g,"with"],[/devenant/g,"becoming"],
  // mer
  [/très grosse/g,"very high"],[/grosse/g,"high"],[/très forte/g,"very rough"],[/peu agitée/g,"slight"],[/agitée/g,"moderate"],[/belle/g,"smooth"],[/ridée/g,"rippled"],[/calme/g,"calm"],
- [/croisée with houle de ([\w-]+)/g,"cross sea with $1 swell"],[/croisée/g,"cross sea"],[/dominée par la houle/g,"dominated by swell"],
+ [/croisée with houle de ([\w-]+)/g,"cross sea with $1 swell"],[/^SWELL: .*/,L=>L.replace(/croisée/g,"cross swell")],[/croisée/g,"cross sea"],[/dominée par la houle/g,"dominated by swell"],
  [/s'atténuant/g,"easing"],
  // houle
- [/longue de ([\w-]+)/g,"long $1 swell"],[/[Hh]oule d'([\w-]+)/g,"$1 swell"],[/s'amplifiant/g,"building"],[/s'amortissant/g,"easing"],[/s'établissant/g,"becoming"],
+ [/longue de ([\w-]+)/g,"long $1 swell"],[/[Hh]oule d'([\w-]+)/g,"$1 swell"],[/s'amplifiant/g,"building"],[/s'amortissant/g,"easing"],[/s'établissant (?=North|South|East|West)/g,"becoming "],[/s'établissant/g,"setting in"],
  [/jusqu'à (\d)/g,"up to $1"],[/autour de (\d)/g,"around $1"],[/près de (\d)/g,"near $1"],[/du sud au nord/g,"from south to north"],
- [/(\d+(?:\.\d+)?) à (\d+(?:\.\d+)?)/g,"$1 to $2"],
+ [/^(WIND|SEA): .*/,L=>L.replace(/(\d+(?:\.\d+)?) à (\d+(?:\.\d+)?)(?! ?m\b)/g,(m,a,c)=>/^\d+$/.test(a)&&/^\d+$/.test(c)&&+c-+a===1?`${a} or ${c}`:`${a} to ${c}`)],[/(\d+(?:\.\d+)?) à (\d+(?:\.\d+)?)/g,"$1 to $2"],
  // temps
  [/ciel couvert/g,"overcast"],[/très nuageux à couvert/g,"very cloudy to overcast"],[/peu nuageux à nuageux/g,"partly cloudy to cloudy"],[/nuageux à très nuageux/g,"cloudy to very cloudy"],
  [/clair ou peu nuageux/g,"clear or partly cloudy"],[/nuageux avec éclaircies/g,"cloudy with bright spells"],[/très nuageux/g,"very cloudy"],[/peu nuageux/g,"partly cloudy"],[/nuag(?:eux|uex)/g,"cloudy"],
@@ -507,15 +509,15 @@ const BMS_RULES=[
  [/averses orageuses/g,"thundery showers"],[/quelques averses/g,"a few showers"],[/quelques pluies/g,"some rain"],[/fortes pluies/g,"heavy rain"],[/passages pluvieux/g,"spells of rain"],
  [/pluies ou bruines/g,"rain or drizzle"],[/pluie ou averses/g,"rain or showers"],[/pluies parfois fortes/g,"rain, occasionally heavy"],[/pluvieux/g,"rainy"],[/orageuses?/g,"thundery"],[/orageux/g,"thundery"],
  [/averses/g,"showers"],[/pluies/g,"rain"],[/pluie/g,"rain"],[/bruine/g,"drizzle"],[/brouillard/g,"fog"],[/brume/g,"mist"],[/éclaircies/g,"bright spells"],[/clair/g,"clear"],
- [/forte(s)?/g,"heavy"],
+ [/forte(s)?/g,"heavy"],[/\b(slight|moderate|rough|very rough|high|very high|smooth) à (slight|moderate|rough|very rough|high|very high)\b/g,"$1 or $2"],
  // visibilité
  [/très mauvaise/g,"very poor"],[/mauvaise/g,"poor"],[/moyenne/g,"moderate"],[/bonne/g,"good"],[/sous précipitations/g,"in precipitation"],[/sous ([a-z ]+)/g,"in $1"],
  // observations
- [/vent ([A-Z][a-z]+(?:-[A-Z][a-z]+)*) (\d+) nœuds/g,"wind $1 $2 knots"],[/rafales (\d+) nœuds/g,"gusts $1 knots"],[/visibilité (\d+) milles/g,"visibility $1 miles"],[/visibilité (\d+) mètres/g,"visibility $1 metres"],
+ [/vent ([A-Z][a-z]+(?:-[A-Z][a-z]+)*) (\d+) (?:nœuds|knots)/g,"wind $1 $2 knots"],[/rafales (\d+) nœuds/g,"gusts $1 knots"],[/visibilité (\d+) milles/g,"visibility $1 miles"],[/visibilité (\d+) mètres/g,"visibility $1 metres"],
  [/mer (slight|moderate|very rough|rough|smooth|calm|high)/g,"$1 sea"],[/Belle Ile/g,"Belle-Île"],[/Ile d'Yeu/g,"Île d'Yeu"],[/Pointe de /g,"Pointe de "],
  [/ et /g," and "],[/ ou /g," or "],[/ dans /g," in "],[/ sur /g," over "],[/ en /g," in "],[/ à /g," to "],[/ de /g," of "]
 ];
-const BMS_FR=/(?<![\p{L}'’-])(le|la|les|des|du|de|et|pour|avec|dès|au|aux|en|sur|une|un|ou|par|dans|à|se|puis|mais|vent|mer|houle|pluie|nuageux|parfois|vers|prévue?|décalant|comblant|creusant|dépression|thalweg|dorsale|associé)(?![\p{L}-])/iu;
+const BMS_FR=/(?<![\p{L}'’-])(le|la|les|des|du|de|et|pour|avec|dès|au|aux|en|sur|une|un|ou|par|dans|à|se|puis|mais|vent|mer|houle|pluie|nuageux|parfois|vers|prévue?|décalant|comblant|creusant|dépression|thalweg|dorsale|associé|rafales|ouragan|violente|tempête|large|secteur|nœuds)(?![\p{L}-])/iu;
 const BMS_OK=/^(?:[^\p{L}]|[A-Za-z]|Penmarc'h|Belle-Île|Belle-Ile|Île|Ile|Yeu|Groix|Noirmoutier|Chemoulin|Aiguillon|Vendée|Pointe|pointe|anse|d'Yeu|l'Aiguillon)*$/u;
 function bmsEn(s){let x=String(s||"");if(!x)return null;for(const [re,rep] of BMS_RULES)x=x.replace(re,rep);
   /* encore du français ? (mots outils, ou lettres accentuées hors noms de lieux) */
