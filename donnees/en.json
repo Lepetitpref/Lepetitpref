@@ -1243,7 +1243,10 @@
   "Heure par heure, aujourd'hui": "Hour by hour, today",
   "Heure par heure, demain": "Hour by hour, tomorrow",
   "Heure par heure (confirmés), demain": "Hour by hour (experienced), tomorrow",
-  "Heure par heure (confirmés), aujourd'hui": "Hour by hour (experienced), today"
+  "Heure par heure (confirmés), aujourd'hui": "Hour by hour (experienced), today",
+  "vent fort et rafaleux": "strong, gusty wind",
+  "petit temps rafaleux, confirmés": "light, gusty wind, experienced only",
+  "plus gros :": "bigger:"
  },
  "rules": [
   [
@@ -4111,31 +4114,31 @@
    ":$1"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])ONO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])ONO(?=$|[\\s,)·])",
    "WNW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])OSO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])OSO(?=$|[\\s,)·])",
    "WSW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])NNO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])NNO(?=$|[\\s,)·])",
    "NNW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])SSO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])SSO(?=$|[\\s,)·])",
    "SSW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])NO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])NO(?=$|[\\s,)·])",
    "NW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])SO(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])SO(?=$|[\\s,)·])",
    "SW"
   ],
   [
-   "(?g)(?<![\\p{L}'’‑-])O(?![\\p{L}'’‑-])",
+   "(?g)(?<=^|[\\s(·])O(?=$|[\\s,)·])",
    "W"
   ]
  ],

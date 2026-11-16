@@ -2236,16 +2236,22 @@ var I18N=I18N||{d:null,cache:new Map()};
 /* reste-t-il du français ? (les noms propres comme « Plateau du Four » ou « Port-aux-Ânes » ne comptent pas) */
 const FRLEFT=x=>/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)||/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à|après|avant|jusqu'à|puis|trop|vent|houle|marée|rafales?|rafaleux|raf\.|nds|confirmés|débutants|partout|aussi|seulement|créneau|plutôt|faible|petit|cette|ce|pas|ne|il|vers|prochain|prochaine|sous|apprend|mer|terre)(?![\p{L}-])/u.test(x)||/^(O|OSO|SO|SSO|ONO|NO|NNO)$/.test(x);
 function trCore(k){const D=I18N.d;let v=D.exact[k];if(v!=null)return v;
+  /* créneau ajouté au bout d'une raison : « (…, de 9h à 12h) », « (…, de 14h) jusqu'à 17h, puis vent de terre » */
+  let m=k.match(/^(.+), de (\d+)h à (\d+)h\)$/);if(m){const b=trCore(m[1]+")");return b==null?null:b.replace(/\)$/,`, ${m[2]}h to ${m[3]}h)`);}
+  m=k.match(/^(.+), de (\d+)h\) jusqu'à (\d+)h, puis vent de terre$/);if(m){const b=trCore(m[1]+")");return b==null?null:b.replace(/\)$/,`, from ${m[2]}h) until ${m[3]}h, then offshore wind`);}
+  m=k.match(/^(.+) \(de (\d+)h à (\d+)h\)$/);if(m){const b=trCore(m[1]);return b==null?null:`${b} (${m[2]}h to ${m[3]}h)`;}
   /* raison tirée du bulletin côtier (« bulletin : Sud-Ouest 5 à 6… ») : même glossaire marin que la page Naviguer */
   const bm=k.match(/^(Bulletin Météo-France|bulletin) : ([^·]+)$/);if(bm&&!/^force \d/.test(bm[2])){const e=bmsEn("VENT : "+bm[2]);if(e)return (bm[1]==="bulletin"?"forecast: ":"Météo-France forecast: ")+e.replace(/^WIND\s*:\s*/i,"");}let x=k,hit=false;
   for(const [re,rep] of D._rules){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
   for(const [re,rep] of D._words){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
   return hit&&!FRLEFT(x)?x:!hit&&!FRLEFT(k)?k:null;}
-function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.data&&I18N.data[k])return t.replace(k,I18N.data[k]);if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:t.replace(k,v);}
+/* remet la traduction à la place du texte (le texte de la page peut avoir des espaces doubles ou des retours à la ligne) */
+const trPut=(t,k,v)=>t.includes(k)?t.replace(k,()=>v):t.match(/^\s*/)[0]+v+t.match(/\s*$/)[0];
+function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.data&&I18N.data[k])return trPut(t,k,I18N.data[k]);if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:trPut(t,k,v);}
   let v=trCore(k);if(v===k)v=null;
   /* phrases faites de morceaux (« 15 nds de face · rafaleux : confirmés · après 12h : … ») : chaque morceau traduit à part */
   if(v==null&&k.includes(" · ")){const P=k.split(" · ").map(x=>x.trim()?trCore(x.trim()):"");if(P.every(x=>x!=null))v=P.join(" · ");}
-  I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
+  I18N.cache.set(k,v);return v==null?t:trPut(t,k,v);}
 function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
   while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ€]|\d,\d|\d :/.test(n.nodeValue))todo.push(n);}
   /* contenus (événements, lieux, associations) : seulement la traduction entière de donnees/en-data.json, jamais de mot à mot */
