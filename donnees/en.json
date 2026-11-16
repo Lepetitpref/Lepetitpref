@@ -1221,7 +1221,8 @@
   "VF": "French version",
   "VOST": "Original version, French subtitles",
   "Animation": "Animation",
-  "Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large, dans la zone du spot.": "Experienced = can get out past the breakers and out of a rip current on your own. Glassy = smooth sea. Offshore = wind from the land: clean waves, but it pushes you out to sea. Onshore = wind from the sea: choppy waves. Height: offshore swell, in the spot's area."
+  "Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large, dans la zone du spot.": "Experienced = can get out past the breakers and out of a rip current on your own. Glassy = smooth sea. Offshore = wind from the land: clean waves, but it pushes you out to sea. Onshore = wind from the sea: choppy waves. Height: offshore swell, in the spot's area.",
+  "Surf débutants": "Surf (beginners)"
  },
  "rules": [
   [

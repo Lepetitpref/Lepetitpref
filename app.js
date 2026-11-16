@@ -1173,8 +1173,10 @@ function begSpot(sp,d){if(!/Débutant/.test(sp.lvl||"")||!sp.acts.includes("surf
 /* les spots en vignettes : un toucher déplie le détail juste dessous */
 function spotTiles(d){const has=!!wxDay(d),SM={};
   const L=SPOTSX.map(sp=>({sp,k:km(HOME,sp)})).sort((a,b)=>a.k-b.k).map(({sp,k})=>{const sm=has?spotSummary(sp,d):[];SM[sp.id]=sm;
-    const top=sm.length?Math.max(...sm.map(x=>x.b.j[0])):0;
-    const dots=sm.map(x=>`<span class="sd${x.b.j[0]>0?" on":""}">${ACTL[x.a].replace(" et bateau","")}</span>`).join("");
+    /* surf : faisable si les confirmés OU les débutants ont un créneau ce jour-là (begSpot) */
+    const beg=has?begSpot(sp,d):null,okA=x=>x.b.j[0]>0||(x.a==="surf"&&!!beg);
+    const top=sm.some(okA)?1:0;
+    const dots=sm.map(x=>`<span class="sd${okA(x)?" on":""}">${ACTL[x.a].replace(" et bateau","")}${x.a==="surf"&&beg&&!(x.b.j[0]>0)?" débutants":""}</span>`).join("");
     return {k:sp.id,l:esc(sp.n.replace(/^Saint-Brevin, /,"Saint-Brevin · ")),sub:`${esc(townShort(sp.town))} · ${Math.max(1,Math.round(k))} km<span class="sdots">${dots}</span>`,c:top>0?"--accent":"--line-strong",cls:top>0?"go":"",ic:sp.acts[0]==="voile"?"sail":"wave",body:spotBody(sp,d,sm)};});
   const dch=weekDays().map(x=>`<button type="button" class="chip${x===d?" on":""}" aria-pressed="${x===d}" data-act="spotday" data-v="${x}">${x===today()?"Aujourd'hui":x===addDays(today(),1)?"Demain":esc(cap(dshort(x)))}</button>`).join("");
   return `<section class="sec blk spots-t" id="spots" style="--c:var(--i-sea)"><div class="sec-head"><h2 class="sec-title">Les spots, ${d===today()||d===addDays(today(),1)?ceJour(d):dlong(d)}</h2></div><div class="spot-days" role="group" aria-label="Jour">${dch}</div><p class="spot-leg"><span class="sd on">En bleu</span> faisable ce jour-là · <span class="sd">en gris</span> non</p>${ptiles("spot",L,"Touchez un spot : conditions heure par heure, niveau, dangers et prévisions détaillées.")}</section>`;}
