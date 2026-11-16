@@ -1308,7 +1308,8 @@ function fcSpot(id){const sp=SPOTSX.find(x=>x.id===id),box=document.getElementBy
   const M=`https://marine-api.open-meteo.com/v1/marine?latitude=${z[0]}&longitude=${z[1]}&hourly=wave_height,wave_period,wave_direction&models=${FCM.v.map(m=>m[0]).join(",")}&timezone=Europe%2FParis&forecast_days=4`;
   const j=u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.json();});
   Promise.allSettled([j(W),j(M)]).then(([a,b])=>{if(a.status!=="fulfilled"&&b.status!=="fulfilled"){box.innerHTML=`<p class="nav-src">Prévisions indisponibles pour le moment. Réessayez plus tard.</p>`;return;}
-    FC[id]={at:Date.now(),w:a.value&&a.value.hourly,v:b.value&&b.value.hourly};box.innerHTML=fcHtml(sp,FC[id]);});}
+    const w=a.value&&a.value.hourly,v=b.value&&b.value.hourly;if(!(w&&w.time)&&!(v&&v.time)){box.innerHTML=`<p class="nav-src">Prévisions indisponibles pour le moment. Réessayez plus tard.</p>`;return;}
+    FC[id]={at:Date.now(),w:w&&w.time?w:null,v:v&&v.time?v:null};box.innerHTML=fcHtml(sp,FC[id]);});}
 const wCol=k=>k==null?"":k<6?"fw0":k<11?"fw1":k<16?"fw2":k<21?"fw3":k<27?"fw4":k<34?"fw5":"fw6";
 const vCol=h=>h==null?"":h<.5?"fv0":h<1?"fv1":h<1.5?"fv2":h<2.5?"fv3":"fv4";
 const arr=d=>d==null?"":`<small class="fc-dir">${dirTxt(d)}</small>`;
@@ -2233,8 +2234,10 @@ new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empt
 /* ===== English : traduction de l'interface (dictionnaire donnees/en.json), les données restent en français ===== */
 var I18N=I18N||{d:null,cache:new Map()};
 /* reste-t-il du français ? (les noms propres comme « Plateau du Four » ou « Port-aux-Ânes » ne comptent pas) */
-const FRLEFT=x=>/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)||/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à|après|avant|jusqu'à|puis|trop|vent|houle|marée|rafales?|rafaleux|raf\.|nds|confirmés|débutants|partout|aussi|seulement|créneau|plutôt|faible|petit|cette|ce|pas|ne|il|vers)(?![\p{L}-])/u.test(x)||/^(O|OSO|SO|SSO|ONO|NO|NNO)$/.test(x);
-function trCore(k){const D=I18N.d;let v=D.exact[k];if(v!=null)return v;let x=k,hit=false;
+const FRLEFT=x=>/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)||/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à|après|avant|jusqu'à|puis|trop|vent|houle|marée|rafales?|rafaleux|raf\.|nds|confirmés|débutants|partout|aussi|seulement|créneau|plutôt|faible|petit|cette|ce|pas|ne|il|vers|prochain|prochaine|sous|apprend|mer|terre)(?![\p{L}-])/u.test(x)||/^(O|OSO|SO|SSO|ONO|NO|NNO)$/.test(x);
+function trCore(k){const D=I18N.d;let v=D.exact[k];if(v!=null)return v;
+  /* raison tirée du bulletin côtier (« bulletin : Sud-Ouest 5 à 6… ») : même glossaire marin que la page Naviguer */
+  const bm=k.match(/^(Bulletin Météo-France|bulletin) : ([^·]+)$/);if(bm&&!/^force \d/.test(bm[2])){const e=bmsEn("VENT : "+bm[2]);if(e)return (bm[1]==="bulletin"?"forecast: ":"Météo-France forecast: ")+e.replace(/^WIND\s*:\s*/i,"");}let x=k,hit=false;
   for(const [re,rep] of D._rules){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
   for(const [re,rep] of D._words){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
   return hit&&!FRLEFT(x)?x:!hit&&!FRLEFT(k)?k:null;}

@@ -1222,9 +1222,306 @@
   "VOST": "Original version, French subtitles",
   "Animation": "Animation",
   "Confirmés = sait passer la barre et sortir seul d'un courant. Glassy = mer lisse. Offshore = vent de terre : vagues propres, mais il pousse au large. Onshore = vent de mer : vagues hachées. Hauteur : houle au large, dans la zone du spot.": "Experienced = can get out past the breakers and out of a rip current on your own. Glassy = smooth sea. Offshore = wind from the land: clean waves, but it pushes you out to sea. Onshore = wind from the sea: choppy waves. Height: offshore swell, in the spot's area.",
-  "Surf débutants": "Surf (beginners)"
+  "Surf débutants": "Surf (beginners)",
+  "Ce jour-là, le tableau conseille plutôt": "That day, the table suggests instead",
+  "En tête du tableau ce jour-là :": "Top of the table that day:",
+  "Un peu de clapot": "A bit choppy",
+  "un peu de clapot": "a bit choppy",
+  "aussi :": "also:",
+  "fort vent de terre, il pousse vers le large": "strong offshore wind, it pushes you out to sea",
+  "marée basse : la mer s'est retirée": "low tide: the sea has gone out",
+  "marée trop basse (rochers à fleur d'eau)": "tide too low (rocks just below the surface)",
+  "petit temps": "light wind",
+  "petit temps : grande aile, confirmés": "light wind: big kite, experienced only",
+  "rafaleux, confirmés": "gusty, experienced only",
+  "vent de face": "onshore wind",
+  "vent de face : dur de sortir": "onshore wind: hard to get out",
+  "vent faible": "light wind",
+  "vent faible : grande aile ou foil": "light wind: big kite or foil",
+  "vent faible et rafaleux": "light and gusty wind",
+  "vent travers soutenu": "steady cross-shore wind",
+  "Heure par heure, aujourd'hui": "Hour by hour, today",
+  "Heure par heure, demain": "Hour by hour, tomorrow",
+  "Heure par heure (confirmés), demain": "Hour by hour (experienced), tomorrow",
+  "Heure par heure (confirmés), aujourd'hui": "Hour by hour (experienced), today"
  },
  "rules": [
+  [
+   "^Trop fort \\((\\d+) nds\\)$",
+   "Too strong ($1 kn)"
+  ],
+  [
+   "(?<=^| · )vagues trop grosses \\(([\\d,]+) m, on apprend sous ([\\d,]+) m, (\\S+)\\)",
+   "waves too big ($1 m, learn below $2 m, $3)"
+  ],
+  [
+   "(?<=^| · )vent de terre trop fort \\((\\d+) nds, (\\S+)\\)",
+   "offshore wind too strong ($1 kn, $2)"
+  ],
+  [
+   "(?g)(?<=^| · )prochain : ",
+   "next: "
+  ],
+  [
+   "^(.+?) et (.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
+   "$1 and $2: wind too strong ($3 kn, gusts $4, $5)"
+  ],
+  [
+   "^(.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
+   "$1: wind too strong ($2 kn, gusts $3, $4)"
+  ],
+  [
+   "^(.+?) : rafales jusqu'à (\\d+) nds dans la journée$",
+   "$1: gusts up to $2 kn during the day"
+  ],
+  [
+   "^Rafales jusqu'à (\\d+) nds dans la journée \\(prévision lointaine\\)$",
+   "Gusts up to $1 kn during the day (long-range forecast)"
+  ],
+  [
+   "^(.+?) : trop rafaleux (\\d+) → (\\d+) nds$",
+   "$1: too gusty, $2 → $3 kn"
+  ],
+  [
+   "^Bulletin Météo-France : force (\\d+) ce jour-là$",
+   "Météo-France forecast: force $1 that day"
+  ],
+  [
+   "^Bulletin Météo-France : force (\\d+), fortes rafales$",
+   "Météo-France forecast: force $1, strong gusts"
+  ],
+  [
+   "^Bulletin Météo-France : force (\\d+)$",
+   "Météo-France forecast: force $1"
+  ],
+  [
+   "^bulletin : force (\\d+), fortes rafales$",
+   "forecast: force $1, strong gusts"
+  ],
+  [
+   "^bulletin : force (\\d+)$",
+   "forecast: force $1"
+  ],
+  [
+   "^Foil seulement \\((\\d+) nds\\)$",
+   "Foil only ($1 kn)"
+  ],
+  [
+   "^Grosse houle \\(([\\d,]+) m\\) et vent de mer : on reste à terre$",
+   "Big swell ($1 m) and onshore wind: stay ashore"
+  ],
+  [
+   "^Heure par heure \\(confirmés\\), ",
+   "Hour by hour (experienced), "
+  ],
+  [
+   "^Heure par heure, ",
+   "Hour by hour, "
+  ],
+  [
+   "^(.+?) et (.+?) : pas de bonne marée de jour$",
+   "$1 and $2: no suitable tide in daylight"
+  ],
+  [
+   "^(.+?) : pas de bonne marée de jour$",
+   "$1: no suitable tide in daylight"
+  ],
+  [
+   "^(.+?) et (.+?) : vagues trop grosses \\(([\\d,]+) m, on apprend sous ([\\d,]+) m, (\\S+)\\)$",
+   "$1 and $2: waves too big ($3 m, learn below $4 m, $5)"
+  ],
+  [
+   "^(.+?) : vagues trop grosses \\(([\\d,]+) m, on apprend sous ([\\d,]+) m, (\\S+)\\)$",
+   "$1: waves too big ($2 m, learn below $3 m, $4)"
+  ],
+  [
+   "^(.+?) et (.+?) : vent de terre trop fort \\((\\d+) nds, (\\S+)\\)$",
+   "$1 and $2: offshore wind too strong ($3 kn, $4)"
+  ],
+  [
+   "^(.+?) : vent de terre trop fort \\((\\d+) nds, (\\S+)\\)$",
+   "$1: offshore wind too strong ($2 kn, $3)"
+  ],
+  [
+   "^Petit temps vers les rochers \\((\\d+) nds, raf\\. (\\d+)\\) : si le vent tombe, on dérive sur la côte$",
+   "Light wind towards the rocks ($1 kn, gusts $2): if it drops, you drift onto the shore"
+  ],
+  [
+   "^(.+?) : petit temps vers les rochers (\\d+) nds, raf\\. (\\d+)$",
+   "$1: light wind towards the rocks, $2 kn, gusts $3"
+  ],
+  [
+   "^(.+?) : petit temps vers les rochers (\\d+) nds$",
+   "$1: light wind towards the rocks, $2 kn"
+  ],
+  [
+   "^(.+?) : vent de mer (\\d+) nds vers les rochers$",
+   "$1: onshore wind $2 kn towards the rocks"
+  ],
+  [
+   "^(.+?) : vent de terre (\\d+) nds$",
+   "$1: offshore wind $2 kn"
+  ],
+  [
+   "^Rafales trop fortes \\((\\d+) nds\\)$",
+   "Gusts too strong ($1 kn)"
+  ],
+  [
+   "^Rien de surfable ce jour-là : clapot, vent de mer\\.$",
+   "Nothing surfable that day: choppy, onshore wind."
+  ],
+  [
+   "^Rien de surfable ce jour-là : grosse houle \\(([\\d,]+) m\\) et vent de mer\\.$",
+   "Nothing surfable that day: big swell ($1 m) and onshore wind."
+  ],
+  [
+   "^Rien de surfable ce jour-là : haché par le vent de mer\\.$",
+   "Nothing surfable that day: blown out by onshore wind."
+  ],
+  [
+   "^Rien de surfable ce jour-là : un peu de clapot\\.$",
+   "Nothing surfable that day: a bit choppy."
+  ],
+  [
+   "^Rien de surfable ce jour-là : vent de terre rafaleux sur récif \\((\\d+) nds, raf\\. (\\d+)\\)\\.$",
+   "Nothing surfable that day: gusty offshore wind over the reef ($1 kn, gusts $2)."
+  ],
+  [
+   "^Rien de surfable ce jour-là : vent trop fort \\((\\d+) nds, rafales (\\d+)\\)\\.$",
+   "Nothing surfable that day: wind too strong ($1 kn, gusts $2)."
+  ],
+  [
+   "^Rien de surfable ce jour-là : (.+)\\.$",
+   "Nothing surfable that day: $1."
+  ],
+  [
+   "^Trop rafaleux \\((\\d+) → (\\d+) nds\\)$",
+   "Too gusty ($1 → $2 kn)"
+  ],
+  [
+   "^Trop rafaleux sur le créneau \\((\\d+) → (\\d+) nds\\)$",
+   "Too gusty in that slot ($1 → $2 kn)"
+  ],
+  [
+   "^Vent de terre ou de côté \\((\\d+) nds, raf\\. (\\d+)\\) : on dérive vers le large$",
+   "Offshore or cross-shore wind ($1 kn, gusts $2): you drift out to sea"
+  ],
+  [
+   "^Vent de terre rafaleux sur récif \\((\\d+) nds, raf\\. (\\d+)\\) : retour dangereux$",
+   "Gusty offshore wind over the reef ($1 kn, gusts $2): dangerous to get back"
+  ],
+  [
+   "^Vent trop fort \\((\\d+) nds, rafales (\\d+)\\) : on reste à terre$",
+   "Wind too strong ($1 kn, gusts $2): stay ashore"
+  ],
+  [
+   "^après (\\d+)h : foil seulement : (\\d+) nds$",
+   "after $1h: foil only, $2 kn"
+  ],
+  [
+   "^après (\\d+)h : force (\\d+)$",
+   "after $1h: force $2"
+  ],
+  [
+   "^après (\\d+)h : grosse houle$",
+   "after $1h: big swell"
+  ],
+  [
+   "^après (\\d+)h : haché par le vent de mer$",
+   "after $1h: blown out by onshore wind"
+  ],
+  [
+   "^après (\\d+)h : marée trop basse$",
+   "after $1h: tide too low"
+  ],
+  [
+   "^après (\\d+)h : marée trop haute$",
+   "after $1h: tide too high"
+  ],
+  [
+   "^après (\\d+)h : trop rafaleux : (\\d+) → (\\d+) nds$",
+   "after $1h: too gusty, $2 → $3 kn"
+  ],
+  [
+   "^après (\\d+)h : vent de terre rafaleux sur récif$",
+   "after $1h: gusty offshore wind over the reef"
+  ],
+  [
+   "^après (\\d+)h : vent trop fort$",
+   "after $1h: wind too strong"
+  ],
+  [
+   "^partout \\(bulletin : force (\\d+)\\)$",
+   "everywhere (forecast: force $1)"
+  ],
+  [
+   "^partout : rafales jusqu'à (\\d+) nds$",
+   "everywhere: gusts up to $1 kn"
+  ],
+  [
+   "^partout : vent de terre \\((\\S+) (\\d+) nds\\)$",
+   "everywhere: offshore wind ($1 $2 kn)"
+  ],
+  [
+   "^de mer (\\d+(?:-\\d+)?) nds \\(raf\\. (\\d+)\\)",
+   "onshore $1 kn (gusts $2)"
+  ],
+  [
+   "^de terre (\\d+(?:-\\d+)?) nds \\(raf\\. (\\d+)\\)",
+   "offshore $1 kn (gusts $2)"
+  ],
+  [
+   "^de mer (\\d+(?:-\\d+)?) nds(?![\\p{L}\\p{N}])",
+   "onshore $1 kn"
+  ],
+  [
+   "^de terre (\\d+(?:-\\d+)?) nds(?![\\p{L}\\p{N}])",
+   "offshore $1 kn"
+  ],
+  [
+   "^(offshore|onshore|side) (\\d+(?:-\\d+)?) nds \\(raf\\. (\\d+)\\)$",
+   "$1 $2 kn (gusts $3)"
+  ],
+  [
+   "^travers (\\d+(?:-\\d+)?) nds \\(raf\\. (\\d+)\\)$",
+   "cross-shore $1 kn (gusts $2)"
+  ],
+  [
+   "^houle ([\\d,]+) m : shorebreak, mise à l'eau difficile$",
+   "swell $1 m: shorebreak, hard to launch"
+  ],
+  [
+   "^pas assez de vent après (\\d+)h$",
+   "not enough wind after $1h"
+  ],
+  [
+   "^trop rafaleux après (\\d+)h$",
+   "too gusty after $1h"
+  ],
+  [
+   "^raf\\. (\\d+)$",
+   "gusts $1"
+  ],
+  [
+   "^vent de terre rafaleux sur récif : (\\d+) nds, raf\\. (\\d+)$",
+   "gusty offshore wind over the reef: $1 kn, gusts $2"
+  ],
+  [
+   "^vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
+   "wind too strong ($1 kn, gusts $2, $3)"
+  ],
+  [
+   "^vent trop fort : (\\d+) nds, raf\\. (\\d+)$",
+   "wind too strong: $1 kn, gusts $2"
+  ],
+  [
+   "^Ça forcit à (\\d+)h \\(raf\\. (\\d+)\\) : créneau trop court$",
+   "Wind picks up at $1h (gusts $2): slot too short"
+  ],
+  [
+   "^à (\\d+)h$",
+   "at $1h"
+  ],
   [
    "^On reste au port · force (\\d+)$",
    "Stay in harbour · force $1"
@@ -1270,10 +1567,6 @@
    "HW $1"
   ],
   [
-   "^(.+?) et (.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
-   "$1 and $2: wind too strong ($3 kn, gusts $4, $5)"
-  ],
-  [
    "^(.+?) et (.+?) : trop rafaleux sur le créneau (\\S+) → (\\S+) nds$",
    "$1 and $2: too gusty in that slot, $3 → $4 kn"
   ],
@@ -1292,10 +1585,6 @@
   [
    "^(.+?) : trop rafaleux sur le créneau (\\S+) → (\\S+) nds$",
    "$1: too gusty in that slot, $2 → $3 kn"
-  ],
-  [
-   "^(.+?) : vent trop fort \\((\\d+) nds, raf\\. (\\d+), (\\S+)\\)$",
-   "$1: wind too strong ($2 kn, gusts $3, $4)"
   ],
   [
    "^(.+?) : pas assez de vent pour le kite (\\S+) nds$",
@@ -3820,6 +4109,34 @@
   [
    "^[\\s\\u00a0\\u202f]+:([\\s\\u00a0])",
    ":$1"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])ONO(?![\\p{L}'’‑-])",
+   "WNW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])OSO(?![\\p{L}'’‑-])",
+   "WSW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])NNO(?![\\p{L}'’‑-])",
+   "NNW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])SSO(?![\\p{L}'’‑-])",
+   "SSW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])NO(?![\\p{L}'’‑-])",
+   "NW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])SO(?![\\p{L}'’‑-])",
+   "SW"
+  ],
+  [
+   "(?g)(?<![\\p{L}'’‑-])O(?![\\p{L}'’‑-])",
+   "W"
   ]
  ],
  "words": {
