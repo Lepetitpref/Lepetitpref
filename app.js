@@ -2232,12 +2232,16 @@ new MutationObserver(()=>{if(document.querySelector("details[open] .emb-box:empt
 
 /* ===== English : traduction de l'interface (dictionnaire donnees/en.json), les données restent en français ===== */
 var I18N=I18N||{d:null,cache:new Map()};
+/* reste-t-il du français ? (les noms propres comme « Plateau du Four » ou « Port-aux-Ânes » ne comptent pas) */
+const FRLEFT=x=>/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)||/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à|après|avant|jusqu'à|puis|trop|vent|houle|marée|rafales?|rafaleux|raf\.|nds|confirmés|débutants|partout|aussi|seulement|créneau|plutôt|faible|petit|cette|ce|pas|ne|il|vers)(?![\p{L}-])/u.test(x)||/^(O|OSO|SO|SSO|ONO|NO|NNO)$/.test(x);
+function trCore(k){const D=I18N.d;let v=D.exact[k];if(v!=null)return v;let x=k,hit=false;
+  for(const [re,rep] of D._rules){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
+  for(const [re,rep] of D._words){re.lastIndex=0;if(re.test(x)){re.lastIndex=0;x=x.replace(re,rep);hit=true;}}
+  return hit&&!FRLEFT(x)?x:!hit&&!FRLEFT(k)?k:null;}
 function trText(t){const k=t.replace(/\s+/g," ").trim();if(!k||!I18N.d)return t;if(I18N.data&&I18N.data[k])return t.replace(k,I18N.data[k]);if(I18N.cache.has(k)){const v=I18N.cache.get(k);return v===null?t:t.replace(k,v);}
-  const D=I18N.d;let v=D.exact[k];
-  if(v==null){let x=k,hit=false;for(const [re,rep] of D._rules){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
-    for(const [re,rep] of D._words){if(re.test(x)){x=x.replace(re,rep);hit=true;}}
-    /* reste-t-il du français ? (les noms propres comme « Plateau du Four » ou « Port-aux-Ânes » ne comptent pas) */
-    v=hit&&!/(?<![\p{L}'’-])(de|du|des|le|la|les)(?![\p{L}-])(?!(?:\s+(?:de|du|des|la|le|les))*\s+(?:l['’])?\p{Lu})/u.test(x)&&!/(?<![\p{L}'’-])(et|pour|avec|dès|au|aux|en|sur|une|ou|par|dans|à)(?![\p{L}-])/u.test(x)?x:null;}
+  let v=trCore(k);if(v===k)v=null;
+  /* phrases faites de morceaux (« 15 nds de face · rafaleux : confirmés · après 12h : … ») : chaque morceau traduit à part */
+  if(v==null&&k.includes(" · ")){const P=k.split(" · ").map(x=>x.trim()?trCore(x.trim()):"");if(P.every(x=>x!=null))v=P.join(" · ");}
   I18N.cache.set(k,v);return v==null?t:t.replace(k,v);}
 function trTree(root){if(!I18N.d||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const todo=[];
   while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest("script,style,.no-tr"))continue;if(/[A-Za-zÀ-ÿ€]|\d,\d|\d :/.test(n.nodeValue))todo.push(n);}
