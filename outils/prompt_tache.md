@@ -44,6 +44,9 @@ Pas d'annonces. Chaque matin : `python3 outils/ventes.py` (ventes réelles DVF d
 ## 4. `donnees/status.json`
 `{"updatedAt": "<ISO, heure de Paris>", "bulletin": {"date": "JJ/MM", "title": "Glisse du jour", "text": "2–3 phrases"}}` : houle (hauteur, période) et vent (nœuds, direction) aujourd'hui pour Préfailles / Saint-Brevin ; surfable ou non à Saint-Brevin et à la Pointe Saint-Gildas ; wing (≈ 12–25 nœuds) ou bateau ; avis de coup de vent s'il y en a. Sources : windfinder (Saint-Brevin), surfnerd (Préfailles), windmorbihan.com/saint-gildas. Sans prévision fiable : `"bulletin": null`.
 
+## 4 bis. `donnees/mer.json` : bulletin marin et bouée (chaque matin)
+`node outils/mer-direct.js donnees/mer.json` (bulletin côtier Météo-France Penmarc'h–Aiguillon et houle mesurée par la bouée Candhis du Plateau du Four ; il garde l'ancienne valeur d'une source qui ne répond pas). La relève automatique de GitHub (`.github/workflows/mer.yml`) ne tourne en pratique que 2 à 3 fois par jour : ce passage du matin garantit le bulletin du jour. Signale dans ta réponse l'heure du bulletin et de la mesure de la bouée (ou « bouée sans mesure »).
+
 ## Lieux, marchés et horaires (restos, bars, caves, marchés, producteurs, activités)
 Les fiches des lieux sont dans `app.js` (tableau `ACTS`). Pour les modifier :
 1. `python3 outils/lieux.py sortir /tmp/lieux.json` ; modifie ce fichier (une fiche = un objet : `n`, `short`, `cat`, `kind`, `town`, `addr`, `tel`, `url`, `season`, `d`, `open`, `lat`, `lon`, `cadre`, `bar`…) ;
