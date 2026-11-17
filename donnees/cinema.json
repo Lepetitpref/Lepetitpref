@@ -1,270 +1,5 @@
 [
  {
-  "id": "2026-11-16-toiles-de-retz-hope",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hope",
-  "date": "2026-11-16",
-  "times": [
-   "20h15"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Science Fiction, Action",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-16",
-  "times": [
-   "18h10"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-karma",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Karma",
-  "date": "2026-11-16",
-  "times": [
-   "17h40"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-l-affaire-marie-claire",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-16",
-  "times": [
-   "20h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-la-gradiva",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "La Gradiva",
-  "date": "2026-11-16",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-les-miserables",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Les Misérables",
-  "date": "2026-11-16",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-marie-madeleine",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Marie Madeleine",
-  "date": "2026-11-16",
-  "times": [
-   "17h55"
-  ],
-  "version": "VOST",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-moulin",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Moulin",
-  "date": "2026-11-16",
-  "times": [
-   "14h45"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-toiles-de-retz-une-femme-aujourd-hui",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Une femme aujourd'hui",
-  "date": "2026-11-16",
-  "times": [
-   "14h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-ghost-elephants",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Ghost Elephants",
-  "date": "2026-11-16",
-  "times": [
-   "16h40"
-  ],
-  "version": "VF",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-hope",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hope",
-  "date": "2026-11-16",
-  "times": [
-   "17h35"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Science Fiction, Action",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-16",
-  "times": [
-   "15h50"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-karma",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Karma",
-  "date": "2026-11-16",
-  "times": [
-   "20h10"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-l-affaire-marie-claire",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-16",
-  "times": [
-   "20h40"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-le-fantome-de-l-opera",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Le Fantôme de l'Opéra",
-  "date": "2026-11-16",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Drame, Romance, Fantastique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-minotaure",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Minotaure",
-  "date": "2026-11-16",
-  "times": [
-   "14h"
-  ],
-  "version": "VOST",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-moulin",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Moulin",
-  "date": "2026-11-16",
-  "times": [
-   "17h15"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-un-bon-patron",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Un bon patron",
-  "date": "2026-11-16",
-  "times": [
-   "14h",
-   "18h45"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-cinejade-wicker",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Wicker",
-  "date": "2026-11-16",
-  "times": [
-   "20h40"
-  ],
-  "version": "VOST",
-  "genre": "Romance, Drame, Fantastique, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-saint-joseph-l-espece-explosive",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "L'Espèce explosive",
-  "date": "2026-11-16",
-  "times": [
-   "18h"
-  ],
-  "version": "VF",
-  "genre": "Comédie, Policier",
-  "kids": false
- },
- {
-  "id": "2026-11-16-saint-joseph-la-maison-de-nos-reves",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "La Maison de nos rêves",
-  "date": "2026-11-16",
-  "times": [
-   "15h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-16-saint-joseph-une-femme-aujourd-hui",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Une femme aujourd'hui",
-  "date": "2026-11-16",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
   "id": "2026-11-17-toiles-de-retz-hope",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Hope",
@@ -496,6 +231,92 @@
   "kids": false
  },
  {
+  "id": "2026-11-18-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-18",
+  "times": [
+   "14h45",
+   "20h15"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-18",
+  "times": [
+   "18h10"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-18",
+  "times": [
+   "18h20",
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-18",
+  "times": [
+   "17h55"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-18",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-18",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-18-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-18",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
   "id": "2026-11-18-cinejade-camembert",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Camembert",
@@ -531,7 +352,7 @@
    "19h55"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -556,7 +377,7 @@
    "20h45"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -644,6 +465,114 @@
   "kids": false
  },
  {
+  "id": "2026-11-19-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-19",
+  "times": [
+   "20h15"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-19",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson-vost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-19",
+  "times": [
+   "17h15"
+  ],
+  "version": "VOST",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-19",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-19",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-19",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-19",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-19",
+  "times": [
+   "14h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-19-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-19",
+  "times": [
+   "21h"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
+  "kids": false
+ },
+ {
   "id": "2026-11-19-cinejade-australie",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Australie",
@@ -689,7 +618,7 @@
    "17h25"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -714,7 +643,7 @@
    "18h50"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -766,6 +695,114 @@
   "kids": false
  },
  {
+  "id": "2026-11-20-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-20",
+  "times": [
+   "20h15"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-20",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-irish-travellers",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Irish Travellers",
+  "date": "2026-11-20",
+  "times": [
+   "15h"
+  ],
+  "version": "VOST",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-20",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-20",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-20",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-20",
+  "times": [
+   "14h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-20",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-20-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-20",
+  "times": [
+   "18h"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
+  "kids": false
+ },
+ {
   "id": "2026-11-20-cinejade-camembert",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Camembert",
@@ -786,7 +823,7 @@
    "20h"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -811,7 +848,7 @@
    "18h"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -923,15 +960,91 @@
   "kids": false
  },
  {
+  "id": "2026-11-21-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-21",
+  "times": [
+   "13h40",
+   "20h25"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
   "id": "2026-11-21-toiles-de-retz-il-faut-bruler-maman",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Il faut brûler Maman",
   "date": "2026-11-21",
   "times": [
-   "15h"
+   "15h",
+   "19h",
+   "21h"
   ],
   "version": "VF",
   "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-21",
+  "times": [
+   "17h",
+   "21h10"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-21",
+  "times": [
+   "13h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-21",
+  "times": [
+   "16h25"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-21",
+  "times": [
+   "16h55"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-21-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-21",
+  "times": [
+   "18h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller",
   "kids": false
  },
  {
@@ -957,7 +1070,7 @@
    "20h"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -982,7 +1095,7 @@
    "20h45"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -1082,6 +1195,153 @@
   "kids": false
  },
  {
+  "id": "2026-11-22-toiles-de-retz-asterix-le-royaume-de-nubie",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Astérix : Le Royaume de Nubie",
+  "date": "2026-11-22",
+  "times": [
+   "16h05"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · avant-première, dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-esprit-s-rebelle-s",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Esprit(s) rebelle(s)",
+  "date": "2026-11-22",
+  "times": [
+   "10h30"
+  ],
+  "version": "VF",
+  "genre": "Jeune public · dès 3 ans, animation surprise après le film (sur inscription)",
+  "kids": true
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-hope",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hope",
+  "date": "2026-11-22",
+  "times": [
+   "20h20"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-22",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-22",
+  "times": [
+   "14h",
+   "18h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-irish-travellers",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Irish Travellers",
+  "date": "2026-11-22",
+  "times": [
+   "21h10"
+  ],
+  "version": "VOST",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-22",
+  "times": [
+   "13h30",
+   "18h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-22",
+  "times": [
+   "13h40"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-22",
+  "times": [
+   "11h",
+   "19h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-22",
+  "times": [
+   "20h50"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-une-femme-aujourd-hui",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-22",
+  "times": [
+   "10h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-22-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-22",
+  "times": [
+   "16h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
+  "kids": false
+ },
+ {
   "id": "2026-11-22-cinejade-asterix-le-royaume-de-nubie",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Astérix : Le Royaume de Nubie",
@@ -1090,7 +1350,7 @@
    "15h55"
   ],
   "version": "VF",
-  "genre": "Animation · avant-première",
+  "genre": "Animation, Famille, Aventure · avant-première",
   "kids": true
  },
  {
@@ -1116,7 +1376,7 @@
    "19h50"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -1142,7 +1402,7 @@
    "20h45"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -1266,6 +1526,114 @@
   "kids": false
  },
  {
+  "id": "2026-11-23-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-23",
+  "times": [
+   "20h20"
+  ],
+  "version": "VOST",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-23",
+  "times": [
+   "18h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-irish-travellers",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Irish Travellers",
+  "date": "2026-11-23",
+  "times": [
+   "18h"
+  ],
+  "version": "VOST",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-23",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-23",
+  "times": [
+   "14h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-23",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-23",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-23",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-23",
+  "times": [
+   "17h50"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
+  "kids": false
+ },
+ {
   "id": "2026-11-23-cinejade-camembert",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Camembert",
@@ -1299,7 +1667,7 @@
    "14h"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -1324,7 +1692,7 @@
    "14h"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {
@@ -1412,6 +1780,114 @@
   "kids": false
  },
  {
+  "id": "2026-11-24-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-24",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-24",
+  "times": [
+   "15h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-irish-travellers",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Irish Travellers",
+  "date": "2026-11-24",
+  "times": [
+   "18h15"
+  ],
+  "version": "VOST",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-24",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-karma",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Karma",
+  "date": "2026-11-24",
+  "times": [
+   "17h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-l-affaire-marie-claire",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-11-24",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-la-gradiva",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "La Gradiva",
+  "date": "2026-11-24",
+  "times": [
+   "14h45"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-24",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-toiles-de-retz-wild-horse-nine",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-11-24",
+  "times": [
+   "20h45"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
+  "kids": false
+ },
+ {
   "id": "2026-11-24-cinejade-camembert",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
   "film": "Camembert",
@@ -1433,7 +1909,7 @@
    "19h50"
   ],
   "version": "VF",
-  "genre": "Action",
+  "genre": "Action, Aventure, Drame",
   "kids": false
  },
  {
@@ -1458,7 +1934,7 @@
    "18h45"
   ],
   "version": "VF",
-  "genre": "Thriller",
+  "genre": "Thriller, Drame",
   "kids": false
  },
  {

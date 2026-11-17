@@ -205,14 +205,15 @@
  },
  {
   "id": "musics-cool",
-  "contact": "jazzapref@gmail.com (adresse donnée par la mairie)",
+  "contact": "jazzapref@gmail.com",
   "desc": "Association qui organise les concerts Jazz à Préf à l'Espace culturel.",
   "forWho": "Tous publics",
   "name": "Music's Cool",
   "regular": "",
   "town": "Préfailles",
-  "what": "Concerts (Jazz à Préf), masterclasses, expositions",
-  "th": "culture"
+  "what": "Concerts (Jazz à Préf), masterclasses, préparation à la scène, expositions",
+  "th": "culture",
+  "url": "https://www.prefailles.fr/associations-culturelles/"
  },
  {
   "id": "nepenthes-theatre",
@@ -3443,13 +3444,13 @@
  },
  {
   "id": "reso-pornic",
-  "name": "Réso",
+  "name": "Réso (Relais d'Échange et de SOlidarité)",
   "town": "Pornic",
-  "what": "Aide aux personnes démunies",
-  "desc": "",
+  "what": "Aide aux personnes démunies : vêtements (Véti-relais), mobilier (Mobi-relais), alphabétisation",
+  "desc": "Soutient les personnes et familles en difficulté, en lien avec les services sociaux et les associations caritatives locales.",
   "forWho": "",
   "regular": "",
-  "contact": "association-reso.association@orange.fr",
+  "contact": "https://www.reso-pornic.fr",
   "url": "https://www.pornic.fr/fiche-annuaire/reso/",
   "th": "solidarite"
  },
