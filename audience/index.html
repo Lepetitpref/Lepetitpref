@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>Audience · Le Petit Préf</title>
+<link rel="icon" href="/icons/icon-192.png">
+<!-- Tableau d'audience de l'éditeur, en direct. Les chiffres viennent du compteur (totaux anonymes) et ne se lisent qu'avec la clé
+     de l'éditeur, gardée dans ce navigateur. Le tableau lui-même est tableau.html (le même que le tableau dans Claude),
+     les calculs sont ceux de outils/audience-calcul.js. -->
+<style>
+:root{--color-fg:#1c1d22;--color-fg-muted:#5d6068;--color-bg:#f6f6f3;--color-panel:#fff;--color-border-line:#e4e3de;--color-ok:#2e7d4f;--color-warn:#a8650a;--color-bad:#b3261e;
+ --font-anthropic-sans:-apple-system,BlinkMacSystemFont,"Inter Tight","Segoe UI",Roboto,sans-serif;--font-anthropic-serif:"Newsreader",Georgia,serif;
+ --cds-font-size-caption:13px;--cds-font-size-body:15px;--cds-font-size-heading:18px;--cds-font-size-title:28px;--cds-font-weight-medium:600;
+ --cds-gap-xs:4px;--cds-gap-sm:8px;--cds-gap-md:12px;--cds-gap-lg:16px;--cds-gap-xl:24px;--cds-pad-xs:4px;--cds-pad-sm:8px;--cds-pad-md:12px;--cds-pad-lg:16px;--cds-pad-xl:24px;--cds-radius:12px;
+ --cds-chart-grid:#ecebe6;--cds-chart-axis:#c9c8c2;--cds-chart-muted:#b9c3cc;--cds-text-secondary:#5d6068;--cds-surface-popover:#fff;--cds-border:#e4e3de;--cds-shadow-popover:0 4px 16px rgba(0,0,0,.12);
+ --s0:#1d5b86;--s1:#7fb0d3;--s2:#b5652f;--s3:#5f8f6a}
+@media (prefers-color-scheme:dark){:root{--color-fg:#ecece7;--color-fg-muted:#a1a3ab;--color-bg:#121317;--color-panel:#1b1c21;--color-border-line:#2c2e35;--color-ok:#5fbf86;--color-bad:#f08a80;
+ --cds-chart-grid:#2c2e35;--cds-chart-axis:#45474f;--cds-text-secondary:#a1a3ab;--cds-surface-popover:#24262c;--cds-border:#34363d;--s0:#5c9bd0;--s1:#2f5e82;--s2:#d58a52;--s3:#7fb08a}}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-anthropic-sans)}
+#dash-root{max-width:960px;margin:0 auto;padding:16px 16px 48px}
+.cle{max-width:440px;margin:40px auto;padding:0 16px;font-size:16px;line-height:1.45}
+.cle h1{font:400 28px/1.15 var(--font-anthropic-serif);margin:0 0 8px}
+.cle input{width:100%;box-sizing:border-box;font-size:17px;padding:12px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-panel);color:var(--color-fg);margin:12px 0}
+.cle button,.barre button{font-size:16px;min-height:44px;padding:0 18px;border:0;border-radius:10px;background:var(--s0);color:#fff;font-weight:600}
+.cle .err{color:var(--color-bad)}
+.barre{max-width:960px;margin:0 auto;padding:12px 16px 0;display:flex;gap:12px;align-items:center;justify-content:space-between;color:var(--color-fg-muted);font-size:13px}
+.barre button{min-height:36px;font-size:14px;background:transparent;color:var(--s0);border:1px solid var(--color-border-line)}
+</style>
+</head>
+<body>
+<div class="cle" id="cle" hidden>
+  <h1>Audience</h1>
+  <p>Tableau réservé à l'éditeur du Petit Préf. Entrez la clé du compteur ; elle reste dans ce navigateur.</p>
+  <form id="cleForm"><input id="cleIn" type="password" autocomplete="current-password" placeholder="Clé du compteur" required><button type="submit">Ouvrir</button></form>
+  <p class="err" id="cleErr" role="alert"></p>
+</div>
+<div class="barre" id="barre" hidden><span id="etat">—</span><button type="button" id="maj">Actualiser</button></div>
+<div id="dash-root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="/outils/audience-calcul.js"></script>
+<script>
+(function () {
+  var BASE = 'https://compteur.square-brook-9d65.workers.dev', K = 'pp-audience-cle';
+  var $ = function (id) { return document.getElementById(id); };
+  var lireCle = function () { try { return localStorage.getItem(K) || ''; } catch (e) { return ''; } };
+  var ecrireCle = function (v) { try { if (v) localStorage.setItem(K, v); else localStorage.removeItem(K); } catch (e) {} };
+  /* petit équivalent du runtime « dash » du tableau dans Claude : données, calculs, dessins */
+  var FICH = null, CALCS = {}, DRAWS = [], ONDATA = [];
+  window.dash = {
+    colors: ['var(--s0)', 'var(--s1)', 'var(--s2)', 'var(--s3)'],
+    data: function (id) { if (!FICH) return { status: 'loading', data: [] };
+      if (FICH[id]) return { status: 'ok', data: FICH[id], columns: FICH[id][0] ? Object.keys(FICH[id][0]) : [] };
+      var c = CALCS[id]; if (c) { try { return { status: 'ok', data: c.fn.apply(null, c.inputs.map(function (i) { return window.dash.data(i).data; })) }; } catch (e) { return { status: 'error', data: [], message: String(e) }; } }
+      return { status: 'missing', data: [] }; },
+    calc: function (id, o) { CALCS[id] = o; }, loader: function () {}, draw: function (n, f) { DRAWS.push([n, f]); }, onData: function (f) { ONDATA.push(f); },
+    params: function () { return {}; }, setParams: function () {}, resetParams: function () {}, setLink: function () {}, refresh: function () {}
+  };
+  var dessiner = function () { ONDATA.forEach(function (f) { try { f(); } catch (e) { console.error(e); } });
+    DRAWS.forEach(function (d) { document.querySelectorAll('[data-draw="' + d[0] + '"]').forEach(function (el) { try { d[1](el); } catch (e) { console.error(e); } }); }); };
+  var pret = fetch('tableau.html', { cache: 'no-cache' }).then(function (r) { return r.text(); }).then(function (h) {
+    var root = $('dash-root'), tmp = document.createElement('div'); tmp.innerHTML = h;
+    var scripts = Array.prototype.slice.call(tmp.querySelectorAll('script')); scripts.forEach(function (s) { s.remove(); });
+    root.appendChild(tmp);
+    scripts.forEach(function (s) { (new Function(s.textContent))(); });
+  });
+  var lw = 0; window.addEventListener('resize', function () { if (FICH && Math.abs(innerWidth - lw) > 20) { lw = innerWidth; dessiner(); } });
+  function charger() {
+    var cle = lireCle(); if (!cle) { $('cle').hidden = false; $('barre').hidden = true; return; }
+    $('cle').hidden = true; $('barre').hidden = false; $('etat').textContent = 'Lecture du compteur…';
+    Promise.all([fetch(BASE + '/pp', { headers: { 'X-Pp-Key': cle }, cache: 'no-store' }), fetch('/app.js', { cache: 'no-cache' }).then(function (r) { return r.text(); }), pret])
+      .then(function (x) {
+        if (x[0].status === 403) { ecrireCle(''); $('cleErr').textContent = 'Clé refusée.'; charger(); return; }
+        return x[0].json().then(function (j) {
+          var V = j.v || {};
+          return PPAudience.construire({ tout: function (ks) { return Promise.resolve(ks.map(function (k) { return V['quiz-pp-' + k] || 0; })); }, appjs: x[1] });
+        }).then(function (r) { FICH = r.fichiers; lw = innerWidth; dessiner();
+          $('etat').textContent = 'En direct · lu à ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }); });
+      })
+      .catch(function () { $('etat').textContent = "Le compteur ne répond pas à cette page (il n'autorise peut-être pas encore lepetitpref.fr). Réessayez plus tard."; });
+  }
+  $('cleForm').addEventListener('submit', function (e) { e.preventDefault(); ecrireCle($('cleIn').value.trim()); $('cleErr').textContent = ''; charger(); });
+  $('maj').addEventListener('click', charger);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible' && FICH) charger(); });
+  charger();
+})();
+</script>
+</body>
+</html>

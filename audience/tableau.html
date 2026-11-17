@@ -1,0 +1,285 @@
+<meta name="dash-one-writer">
+<style>
+.pp-wrap,.pp-wrap>*,.pp-two>*,.pp-card{min-width:0}
+.pp-wrap{display:grid;gap:var(--cds-gap-lg);font-family:var(--font-anthropic-sans);color:var(--color-fg)}
+.pp-h1{margin:0;font:400 var(--cds-font-size-title)/1.15 var(--font-anthropic-serif)}
+.pp-lede{margin:6px 0 0;font-size:var(--cds-font-size-body);line-height:1.45}
+.pp-when{margin:4px 0 0;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.pp-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:var(--cds-gap-md)}
+.pp-tile{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-md) var(--cds-pad-lg)}
+.pp-tile h3{margin:0;font-size:var(--cds-font-size-caption);font-weight:var(--cds-font-weight-medium);color:var(--color-fg-muted)}
+.pp-tile b.big{display:block;margin-top:4px;font:400 32px/1.1 var(--font-anthropic-serif);font-variant-numeric:tabular-nums}
+.pp-tile small{display:block;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);margin-top:2px}
+.pp-delta{font-size:var(--cds-font-size-caption);font-weight:var(--cds-font-weight-medium)}
+.pp-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg)}
+.pp-card h2{margin:0 0 4px;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium)}
+.pp-sub{margin:0 0 var(--cds-gap-sm);color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.pp-chart{position:relative;min-height:230px}
+.pp-chart svg{display:block;width:100%}
+.pp-chart text{fill:var(--cds-text-secondary);font-size:12px}
+.pp-tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);box-shadow:var(--cds-shadow-popover);border-radius:8px;padding:6px 8px;font-size:12px;max-width:260px;z-index:2}
+.pp-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin-top:6px}
+.pp-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.pp-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:var(--cds-gap-lg)}
+.pp-scroll{overflow-x:auto}
+.pp-table{width:100%;border-collapse:collapse;font-size:var(--cds-font-size-body)}
+.pp-table th{text-align:right;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-weight:var(--cds-font-weight-medium);padding:4px 4px;border-bottom:1px solid var(--color-border-line);vertical-align:bottom}
+.pp-table td{text-align:right;padding:6px 4px;border-bottom:1px solid var(--color-border-line);font-variant-numeric:tabular-nums}
+.pp-table th:first-child,.pp-table td:first-child{text-align:left;padding-left:0}
+.pp-bars{display:grid;gap:8px;min-height:40px}
+.pp-bar{display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr) auto;gap:8px;align-items:center;font-size:var(--cds-font-size-body)}
+.pp-bar span.t{height:10px;border-radius:5px;background:var(--cds-chart-grid);position:relative;overflow:hidden}
+.pp-bar span.t i{position:absolute;inset:0 auto 0 0;border-radius:5px}
+.pp-bar b{text-align:right;font-variant-numeric:tabular-nums;font-weight:var(--cds-font-weight-medium)}
+.pp-empty{color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);margin:6px 0 0}
+.pp-notes summary{cursor:pointer;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.pp-notes p,.pp-notes li{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:6px 0 0}
+[data-dash-source-state=refreshing]{opacity:.5}
+</style>
+<div class="pp-wrap" id="audience">
+  <header id="titre">
+    <h1 class="pp-h1">Le Petit Préf, audience</h1>
+    <p class="pp-lede" data-draw="lede">—</p>
+    <p class="pp-lede" id="a-faire"><b>À faire :</b> <span data-draw="afaire">—</span></p>
+    <p class="pp-when" data-draw="quand">—</p>
+  </header>
+
+  <section class="pp-tiles" id="en-bref" aria-label="Les 7 derniers jours complets, comparés aux 7 précédents">
+    <div class="pp-tile" id="t-hier"><h3>Appareils hier</h3><b class="big" data-draw="t_hier" data-source="resume" data-field="appareils_hier" data-row="0">—</b><span class="pp-delta" data-draw="d_vis">—</span><small>moyenne par jour : <span data-draw="m3" data-source="resume" data-field="moyenne_3j" data-row="0">—</span> sur les 3 derniers jours, <span data-draw="m7" data-source="resume" data-field="moyenne_hors_lancement_7j" data-row="0">—</span> <span data-draw="m7l">—</span></small></div>
+    <div class="pp-tile" id="t-differents"><h3>Appareils différents, semaine</h3><b class="big" data-draw="t_dif" data-source="resume" data-field="appareils_semaine" data-row="0">—</b><span class="pp-delta" data-draw="d_dif">—</span><small data-draw="s_dif">—</small></div>
+    <div class="pp-tile" id="t-actions"><h3>Actions utiles, 7 jours</h3><b class="big" data-draw="t_act" data-source="resume" data-field="actions_7j" data-row="0">—</b><span class="pp-delta" data-draw="d_act">—</span><small>appels, itinéraires, ajouts au calendrier, sites des lieux, bandes-annonces</small></div>
+    <div class="pp-tile" id="t-partages"><h3>Partages, 7 jours</h3><b class="big" data-draw="t_par" data-source="resume" data-field="partages_7j" data-row="0">—</b><span class="pp-delta" data-draw="d_arr">—</span><small>touchers d'un bouton Partager ; en dessous, les arrivées par ces liens</small></div>
+  </section>
+
+  <section class="pp-card" id="par-jour">
+    <h2>Chaque jour depuis le lancement</h2>
+    <p class="pp-sub">Appareils du jour : nouveaux (première visite) et revenus. Le jour en cours est hachuré, il n'est pas fini. Les 10 et 11/11 sont le lancement.</p>
+    <div class="pp-chart" data-draw="jours" data-source="jours"></div>
+    <div class="pp-leg"><span><i data-draw="leg0"></i>Nouveaux</span><span><i data-draw="leg1"></i>Revenus</span><span><i data-draw="leg2"></i>1re ouverture de l'app sur iPhone</span></div>
+  </section>
+
+  <section class="pp-card" id="par-semaine">
+    <h2>Par semaine et par mois</h2>
+    <p class="pp-sub">« Différents » : chaque appareil compte une seule fois dans la semaine ou le mois (mesuré depuis le 18/11). « Visites » : appareils comptés une fois par jour.</p>
+    <div class="pp-scroll"><table class="pp-table" data-source="semaines" data-row-key="periode">
+      <thead><tr><th data-field="periode">Période</th><th data-field="appareils_differents">Différents</th><th data-field="appareils_jours">Visites</th><th data-field="vues">Rubriques ouvertes</th><th data-field="actions">Actions</th></tr></thead>
+      <tbody data-draw="semaines"></tbody>
+    </table></div>
+  </section>
+
+  <div class="pp-two">
+    <section class="pp-card" id="sources">
+      <h2>D'où ils arrivent</h2>
+      <p class="pp-sub">7 jours complets, chaque chargement de page compté une fois. Catégorie seulement, jamais l'adresse.</p>
+      <div class="pp-bars" data-draw="sources" data-source="sources7"></div>
+    </section>
+    <section class="pp-card" id="actions">
+      <h2>Ce qu'ils font</h2>
+      <p class="pp-sub">Actions utiles sur 7 jours complets (les partages sont en tête de page).</p>
+      <div class="pp-bars" data-draw="actions" data-source="actions7"></div>
+    </section>
+  </div>
+
+  <section class="pp-card" id="rubriques">
+    <h2>Rubriques, 7 jours</h2>
+    <p class="pp-sub">Rubriques ouvertes (une fois par visite). Le compte par jour existe depuis le 15/11 : « 7 jours » s'affiche à partir du 22/11, et « Avant » à partir du 29/11. « Actions » : appels, itinéraires, calendrier, sites faits dans la rubrique (depuis le 18/11). L'Accueil est la page d'arrivée par défaut.</p>
+    <div class="pp-scroll"><table class="pp-table" data-source="pages" data-row-key="cle">
+      <thead><tr><th data-field="rubrique">Rubrique</th><th data-field="vues_7j" data-col7>7 jours</th><th data-field="vues_7j_avant" data-col7>Avant</th><th data-field="vues_depuis_15_11">Depuis le 15/11</th><th data-field="vues_total">Depuis le lancement</th><th data-field="actions_7j">Actions</th></tr></thead>
+      <tbody data-draw="pages"></tbody>
+    </table></div>
+  </section>
+
+  <div class="pp-two">
+    <section class="pp-card" id="recherche">
+      <h2>Ce qu'on cherche</h2>
+      <p class="pp-sub">Depuis le 18/11 : ce que la recherche a trouvé (le texte tapé n'est jamais gardé). « Rien trouvé » est à traiter en premier.</p>
+      <div class="pp-bars" data-draw="recherches" data-source="recherches"></div>
+    </section>
+    <section class="pp-card" id="fidelite">
+      <h2>Ils reviennent ?</h2>
+      <p class="pp-sub">Retours sur 7 jours complets, selon le temps écoulé depuis la visite précédente. Safari efface la mémoire du site après environ 7 jours sans visite : au-delà, seuls l'app installée et les autres navigateurs se reconnaissent.</p>
+      <div class="pp-bars" data-draw="retours" data-source="retours7"></div>
+    </section>
+  </div>
+
+  <section class="pp-card" id="cohortes">
+    <h2>Retour par semaine de première visite</h2>
+    <p class="pp-sub">Appareils venus pour la première fois une semaine donnée (ligne), revus les semaines suivantes (colonnes S+1, S+2…). Lignes à partir de la semaine du 23/11, la première entièrement mesurée. Safari efface la mémoire du site après environ 7 jours sans visite : à partir de S+2, on voit surtout l'app installée.</p>
+    <div class="pp-scroll" data-draw="cohortes" data-source="cohortes"></div>
+  </section>
+
+  <section class="pp-card" id="app">
+    <h2>L'app installée</h2>
+    <p class="pp-sub">Depuis le lancement le 10/11, aujourd'hui compris. iPhone : l'installation n'est pas signalée, on compte la première ouverture depuis l'icône, seulement depuis le 17/11 (avant, elle comptait comme un nouvel appareil). Les 6 installations du 10/11 sont probablement des essais.</p>
+    <div class="pp-bars" data-draw="appli" data-source="appli7"></div>
+  </section>
+
+  <div class="pp-two">
+    <section class="pp-card" id="qualite">
+      <h2>Durée et pannes</h2>
+      <p class="pp-sub">Sur 7 jours complets, en part des chargements de page (mesuré depuis le 18/11).</p>
+      <div class="pp-bars" data-draw="qualite" data-source="qualite7"></div>
+    </section>
+    <section class="pp-card" id="appareils">
+      <h2>Sur quel appareil</h2>
+      <p class="pp-sub" data-draw="types_p">—</p>
+      <div class="pp-bars" data-draw="types" data-source="types7"></div>
+    </section>
+  </div>
+
+  <details class="pp-notes" id="methode">
+    <summary>Ce qu'on peut conclure, et ce qu'on ne peut pas</summary>
+    <ul>
+      <li>Avec si peu de visites, beaucoup d'écarts sont le hasard : 5 contre 9 peut l'être. Un écart n'est coloré que si le hasard l'explique moins d'une fois sur 20 (test binomial exact) et qu'il dépasse ce que font varier d'habitude les jours (week-end, météo, retours des mêmes appareils) ; sinon, « dans le bruit ».</li><li>Pas de comparaison de semaine à semaine avant le 26/11 : la semaine d'avant contiendrait le lancement.</li>
+      <li>Pas de pourcentage sous 30 : on écrit « 3 sur 13 ».</li>
+      <li>Les chiffres en tête portent sur 7 jours complets (jusqu'à hier) ; aujourd'hui n'est pas fini.</li>
+      <li>Les « nouveaux » restent un peu gonflés : navigation privée, Safari qui efface la mémoire du site après environ 7 jours sans visite, et, avant le 17/11, la première ouverture de l'app sur iPhone.</li>
+      <li>Un même iPhone compte deux fois (par jour, par semaine) s'il passe par Safari et par l'app installée : ce sont deux mémoires séparées.</li><li>« Au plus 129 appareils » : avant le 17/11, la 1re ouverture de l'app sur iPhone comptait comme un nouvel appareil, et un appareil compte une fois par navigateur.</li>
+      <li>Vos propres visites ne sont pas comptées : Safari et l'app de l'éditeur sont exclus (lien ?moi=1, à refaire sur un nouvel appareil).</li>
+      <li>Le 10/11, 2 appareils de l'éditeur ont été retirés à la main ; les 6 installations de ce jour sont probablement des essais.</li>
+    </ul>
+  </details>
+</div>
+<script>
+const N = (v) => Number(v) || 0;
+const fmt = (v) => (v == null || v === '' ? '—' : d3.format(',')(Number(v)).replace(/,/g, ' '));
+const dmy = (s) => (s ? d3.utcFormat('%d/%m')(new Date(s + 'T00:00:00Z')) : '');
+const R = () => { const r = dash.data('resume'); return r.status === 'ok' && r.data[0] ? r.data[0] : null; };
+const semaine7 = (jours) => { const r = jours.filter((x) => !(x.en_cours === true || x.en_cours === 'true')); return r.slice(-7); };
+/* mêmes 7 jours, limités aux jours où les nouvelles mesures existaient (depuis le 18/11) */
+const mesure7 = (jours) => semaine7(jours).filter((x) => x.nouvelles_mesures === true || x.nouvelles_mesures === 'true');
+const sum = (L, ...k) => L.reduce((a, r) => a + k.reduce((b, x) => b + N(r[x]), 0), 0);
+/* écart réel ou bruit (loi de Poisson) */
+/* écart réel ou hasard : test binomial exact (a + b visites réparties au hasard entre les deux périodes), réel si p < 0,05 */
+const pBinom = (a, b) => { const n = a + b, k = Math.min(a, b); let lc = 0, p = 0; const lf = (m) => { let s = 0; for (let i = 2; i <= m; i++) s += Math.log(i); return s; }; const L = lf(n);
+  for (let i = 0; i <= k; i++) p += Math.exp(L - lf(i) - lf(n - i) - n * Math.log(2)); return Math.min(1, 2 * p); };
+const ecart = (a, b) => { a = N(a); b = N(b); const d = a - b; if (a + b === 0) return { txt: '', cls: '' }; const phi = Math.max(1, N((R() || {}).phi) || 1), reel = d !== 0 && pBinom(a, b) < 0.05 && Math.abs(d) > 2 * Math.sqrt(phi * (a + b));
+  return { txt: (d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d) + ' par rapport aux 7 jours d’avant (' + b + ')' + (reel ? '' : ', dans le bruit'), reel, d }; };
+const part = (n, d) => (d < 30 ? `${n} sur ${d}` : Math.round((100 * n) / d) + ' %');
+
+dash.calc('sources7', { title: "D'où ils arrivent (7 jours complets)", description: 'Somme des sources par chargement de page sur les 7 derniers jours complets.', inputs: ['jours'],
+  fn: (jours) => { const L = mesure7(jours); return [['direct', 'Accès direct (favori, adresse tapée, lien reçu par WhatsApp ou SMS)'], ['moteur', 'Moteur de recherche'], ['reseau', 'Réseau social, messagerie'], ['site', 'Autre site'], ['partage', 'Lien partagé depuis le site'], ['campagne', 'Affiche, QR code, campagne'], ['app', "App installée"], ['interne', 'Rechargement depuis le site']].map(([k, l]) => ({ k, source: l, n: sum(L, 'source_' + k), nouveaux: sum(L, 'source_nouveau_' + k) })); } });
+dash.calc('actions7', { title: 'Actions utiles (7 jours complets)', description: 'Appels, itinéraires, calendrier, sites, bandes-annonces sur les 7 derniers jours complets (les partages sont comptés à part).', inputs: ['jours'],
+  fn: (jours) => { const L = mesure7(jours); return [['act_appeler', 'Appeler'], ['act_itineraire', 'Itinéraire'], ['act_calendrier', 'Ajouter au calendrier'], ['act_site', "Site d'un lieu"], ['act_bande_annonce', 'Bande-annonce'], ['act_sms', 'SMS (114)']].map(([k, l]) => ({ k, action: l, n: sum(L, k) })); } });
+dash.calc('retours7', { title: 'Retours (7 jours complets)', description: 'Appareils revenus, selon le temps depuis leur visite précédente, sur les 7 derniers jours complets.', inputs: ['jours'],
+  fn: (jours) => { const L = mesure7(jours); return [['retour_1', 'Le lendemain'], ['retour_2_7', 'Dans la semaine'], ['retour_8_30', 'Dans le mois'], ['retour_31p', 'Après un mois']].map(([k, l]) => ({ k, quand: l, n: sum(L, k) })); } });
+dash.calc('appli7', { title: "L'app depuis le lancement", description: "Pages Installer, clics, installations signalées (Android, ordinateur), premières ouvertures sur iPhone, visites depuis l'app, depuis le lancement (10/11).", inputs: ['jours'],
+  fn: (jours) => { const L = jours; return [
+    { k: 'p_ios', etape: 'iPhone : page « Installer » ouverte', n: sum(L, 'page_installer_iphone') }, { k: 'c_ios', etape: 'iPhone : clic sur Installer', n: sum(L, 'clic_installer_iphone') }, { k: 'i_ios', etape: "iPhone : 1re ouverture depuis l'icône", n: sum(L, 'app_premiere') },
+    { k: 'p_and', etape: 'Android et ordinateur : page « Installer »', n: sum(L, 'page_installer_android', 'page_installer_ordi', 'page_installer_tablette') }, { k: 'c_and', etape: 'Android et ordinateur : clic sur Installer', n: sum(L, 'clic_installer_android', 'clic_installer_ordi', 'clic_installer_tablette') }, { k: 'i_and', etape: 'Android et ordinateur : installée', n: Math.max(sum(L, 'installation_android', 'installation_ordi', 'installation_tablette'), sum(L, 'installation')) },
+    { k: 'v_app', etape: "Visites depuis l'app (par jour)", n: sum(L, 'app') }]; } });
+dash.calc('qualite7', { title: 'Durée et pannes (7 jours complets)', description: 'Chargements de page, visites restées au moins 1 et 3 minutes, plusieurs rubriques, erreurs, sur 7 jours complets.', inputs: ['jours'],
+  fn: (jours) => { const L = mesure7(jours), c = sum(L, 'chargements'); return [
+    { k: 'ch', mesure: 'Chargements de page', n: c, sur: null }, { k: 'm1', mesure: 'Restés au moins 1 minute', n: sum(L, 'visite_60s'), sur: c }, { k: 'm3', mesure: 'Restés au moins 3 minutes', n: sum(L, 'visite_180s'), sur: c },
+    { k: 'r3', mesure: '3 rubriques ou plus', n: sum(L, 'rubriques_3_4', 'rubriques_5p'), sur: c }, { k: 'ej', mesure: 'Erreur de la page', n: sum(L, 'erreur_js'), sur: c }, { k: 'ed', mesure: 'Données non chargées', n: sum(L, 'erreur_donnees'), sur: c }]; } });
+dash.calc('types7', { title: "Type d'appareil (7 jours complets)", description: "Visites par type d'appareil sur 7 jours complets.", inputs: ['jours'],
+  fn: (jours) => { const L = semaine7(jours).filter((r) => r.jour >= '2026-11-12' && N(r.type_iphone) + N(r.type_android) + N(r.type_tablette) + N(r.type_ordi) === N(r.appareils)); return [['type_iphone', 'iPhone'], ['type_android', 'Android'], ['type_tablette', 'Tablette'], ['type_ordi', 'Ordinateur'], ['langue_en', 'En anglais']].map(([k, l]) => ({ k, type: l, n: sum(L, k) })); } });
+
+dash.draw('t_act', (el) => { const x = R(); el.textContent = !x ? '—' : x.nouv_ok === true || x.nouv_ok === 'true' ? fmt(x.actions_7j) : N(x.actions_7j) ? fmt(x.actions_7j) + '*' : '—'; });
+for (const [name, field] of [['t_hier', 'appareils_hier'], ['t_par', 'partages_7j']]) dash.draw(name, (el) => { const x = R(); el.textContent = x ? fmt(x[field]) : '—'; });
+for (const [name, field] of [['m3', 'moyenne_3j'], ['m7', 'moyenne_hors_lancement_7j']]) dash.draw(name, (el) => { const x = R(); el.textContent = x && x[field] != null ? String(x[field]).replace('.', ',') : '—'; });
+dash.draw('m7l', (el) => { const x = R(); el.textContent = x && x.du && x.du > '2026-11-11' ? 'sur 7 jours' : 'depuis le 12/11'; });
+dash.draw('t_dif', (el) => { const x = R(); el.textContent = x && x.appareils_semaine != null ? fmt(x.appareils_semaine) : '—'; });
+dash.draw('s_dif', (el) => { const x = R(); el.textContent = x && x.semaine ? `semaine complète ${x.semaine.replace(/^\d+-s/, 'n° ')} : chaque appareil compte une fois` : 'première semaine complète mesurée : du 23 au 29/11'; });
+const deltaDraw = (name, a, b, bon) => dash.draw(name, (el) => { const x = R(); if (!x) { el.textContent = '—'; return; }
+  if (!(x.avant_ok === true || x.avant_ok === 'true')) { el.textContent = 'comparaison sur 7 jours possible à partir du ' + dmy(x.comparable_le); el.style.color = 'var(--color-fg-muted)'; return; } const e = ecart(x[a], x[b]); el.textContent = e.txt || 'rien à comparer'; el.style.color = e.reel ? ((e.d > 0) === bon ? 'var(--color-ok)' : 'var(--color-bad)') : 'var(--color-fg-muted)'; });
+deltaDraw('d_vis', 'appareils_jours_7j', 'appareils_jours_7j_avant', true);
+dash.draw('d_act', (el) => { const x = R(); if (!x) { el.textContent = '—'; return; } el.style.color = 'var(--color-fg-muted)';
+  if (!(x.nouv_avant_ok === true || x.nouv_avant_ok === 'true')) { el.textContent = (x.nouv_ok === true || x.nouv_ok === 'true' ? '' : '* compté depuis le 18/11 seulement ; ') + 'comparaison à partir du ' + dmy(x.nouv_comparable_le); return; }
+  const e = ecart(x.actions_7j, x.actions_7j_avant); el.textContent = e.txt || 'rien à comparer'; if (e.reel) el.style.color = e.d > 0 ? 'var(--color-ok)' : 'var(--color-bad)'; });
+dash.draw('d_dif', (el) => { const x = R(); if (!x || x.appareils_semaine_avant == null) { el.textContent = 'pas encore de semaine à comparer'; el.style.color = 'var(--color-fg-muted)'; return; } const e = ecart(x.appareils_semaine, x.appareils_semaine_avant); el.textContent = e.txt.replace('aux 7 jours d’avant', 'à la semaine d’avant'); el.style.color = e.reel ? (e.d > 0 ? 'var(--color-ok)' : 'var(--color-bad)') : 'var(--color-fg-muted)'; });
+dash.draw('d_arr', (el) => { const x = R(); el.textContent = x ? `${fmt(x.arrivees_partage_7j)} arrivée${N(x.arrivees_partage_7j) > 1 ? 's' : ''} par ces liens, sur ${fmt(x.partages_7j)} partage${N(x.partages_7j) > 1 ? 's' : ''}` : '—'; el.style.color = 'var(--color-fg-muted)'; });
+dash.draw('quand', (el) => { const x = R(); el.textContent = x ? `7 jours complets du ${dmy(x.du)} au ${dmy(x.au)}${x.du_avant ? `, comparés au ${dmy(x.du_avant)}–${dmy(x.au_avant)}` : ''} · relevé du ${d3.timeFormat('%d/%m à %Hh%M')(new Date(x.maj))} · au plus ${fmt(x.appareils_depuis_debut)} appareils depuis le lancement le ${dmy(x.lancement)}` : '—'; });
+dash.draw('lede', (el) => {
+  const x = R(), j = dash.data('jours'); if (!x || j.status !== 'ok') { el.textContent = '—'; return; }
+  const L = semaine7(j.data), ok = x.avant_ok === true || x.avant_ok === 'true', e = ecart(x.appareils_jours_7j, x.appareils_jours_7j_avant);
+  const apres = j.data.find((r) => r.jour === '2026-11-12');
+  let t = `${fmt(x.appareils_hier)} appareil${N(x.appareils_hier) > 1 ? 's' : ''} hier, environ ${String(x.moyenne_3j).replace('.', ',')} par jour sur les 3 derniers jours`;
+  t += apres ? ` (${fmt(apres.appareils)} le 12/11, au lendemain du lancement).` : '.';
+  t += !ok ? ' En baisse depuis le lancement, comme attendu : la vraie tendance se lira semaine contre semaine à partir du ' + dmy(x.comparable_le) + '.' : e.reel ? (e.d > 0 ? ' En hausse réelle sur la semaine d’avant.' : ' En baisse réelle sur la semaine d’avant.') : ' Comme la semaine d’avant (l’écart peut être le hasard).';
+  const a = N(x.actions_7j); t += a ? ` ${a} action${a > 1 ? 's' : ''} utile${a > 1 ? 's' : ''} (appels, itinéraires…).` : '';
+  const v = N(x.recherches_vides_7j); if (v) t += ` ${v} recherche${v > 1 ? 's' : ''} sans résultat à regarder.`;
+  el.textContent = t; });
+dash.draw('afaire', (el) => { const x = R(), j = dash.data('jours'); if (!x || j.status !== 'ok') { el.textContent = '—'; return; } const L = semaine7(j.data), t = [];
+  if (N(x.recherches_vides_7j)) t.push(`${x.recherches_vides_7j} recherche${N(x.recherches_vides_7j) > 1 ? 's' : ''} sans résultat cette semaine : voir « Ce qu'on cherche »`);
+  if (N(x.erreurs_js_7j) || N(x.erreurs_donnees_7j)) t.push(`${N(x.erreurs_js_7j) + N(x.erreurs_donnees_7j)} panne${N(x.erreurs_js_7j) + N(x.erreurs_donnees_7j) > 1 ? 's' : ''} de la page : me le signaler`);
+  const camp = Object.keys(x).filter((k) => /^campagne_.*_7j$/.test(k) && N(x[k])); if (camp.length) t.push('affiches et QR codes : ' + camp.map((k) => `${x[k]} arrivée${N(x[k]) > 1 ? 's' : ''} par « ${k.replace(/^campagne_|_7j$/g, '')} »`).join(', '));
+  if (L.some((r) => r.incomplet === true || r.incomplet === 'true')) t.push('un jour mal relevé : il sera relu demain');
+  el.textContent = t.length ? t.join(' · ') + '.' : 'rien de particulier cette semaine.'; });
+for (const [n, c] of [['leg0', 0], ['leg1', 1], ['leg2', 2]]) dash.draw(n, (el) => { el.style.background = dash.colors[c]; });
+
+dash.draw('jours', (el) => {
+  const j = dash.data('jours'); el.replaceChildren();
+  if (j.status !== 'ok') { el.textContent = j.status === 'error' ? 'Échec du chargement' : '—'; return; }
+  const rows = j.data.map((r) => ({ jour: r.jour, nv: N(r.appareils_nouveaux), rv: N(r.appareils_revenus), ap: N(r.app_premiere), cours: r.en_cours === true || r.en_cours === 'true', inc: r.incomplet === true || r.incomplet === 'true' }));
+  const W = Math.max(280, el.clientWidth), H = 230, m = { t: 22, r: 8, b: 26, l: 30 };
+  const x = d3.scaleBand().domain(rows.map((r) => r.jour)).range([m.l, W - m.r]).padding(0.22);
+  const y = d3.scaleLinear().domain([0, Math.max(4, d3.max(rows, (r) => r.nv + r.rv + r.ap) || 0)]).nice().range([H - m.b, m.t]);
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Appareils par jour depuis le lancement : nouveaux, revenus, premières ouvertures de l’app');
+  const defs = svg.append('defs'); const pat = defs.append('pattern').attr('id', 'pp-hach').attr('width', 6).attr('height', 6).attr('patternUnits', 'userSpaceOnUse').attr('patternTransform', 'rotate(45)');
+  pat.append('rect').attr('width', 6).attr('height', 6).style('fill', 'var(--color-panel)'); pat.append('line').attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6).style('stroke', dash.colors[0]).style('stroke-width', 3);
+  svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', (d) => y(d)).attr('y2', (d) => y(d)).style('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (d) => y(d) + 4).attr('text-anchor', 'end').text((d) => d);
+  const step = Math.ceil(rows.length / Math.max(2, Math.floor((W - m.l) / 46)));
+  svg.append('g').selectAll('text').data(rows.filter((_, i) => (rows.length - 1 - i) % step === 0)).join('text').attr('x', (r) => x(r.jour) + x.bandwidth() / 2).attr('y', H - 8).attr('text-anchor', 'middle').text((r) => dmy(r.jour));
+  const g = svg.append('g');
+  rows.forEach((r) => { let base = 0; [['nv', 0], ['rv', 1], ['ap', 2]].forEach(([k, c]) => { if (!r[k]) return; g.append('rect').attr('x', x(r.jour)).attr('width', x.bandwidth()).attr('y', y(base + r[k])).attr('height', y(base) - y(base + r[k])).style('fill', r.cours ? 'url(#pp-hach)' : dash.colors[c]).style('stroke', r.cours ? dash.colors[c] : null); base += r[k]; });
+    const t = r.nv + r.rv + r.ap; if (t) g.append('text').attr('x', x(r.jour) + x.bandwidth() / 2).attr('y', y(t) - 4).attr('text-anchor', 'middle').style('font-weight', '600').style('font-size', '11px').text(t); });
+  const l0 = rows.find((r) => r.jour === '2026-11-10'); if (l0) svg.append('text').attr('x', x(l0.jour)).attr('y', 12).style('font-size', '11px').text('lancement');
+  const tip = document.createElement('div'); tip.className = 'pp-tip'; tip.hidden = true; el.appendChild(tip);
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', (r) => x(r.jour) - x.step() * x.paddingInner() / 2).attr('width', x.step()).attr('y', m.t).attr('height', H - m.t - m.b).style('fill', 'transparent')
+    .on('pointermove', (ev, r) => { tip.hidden = false; tip.textContent = `${dmy(r.jour)}${r.cours ? ' (en cours)' : ''}${r.inc ? ' (relevé incomplet)' : ''} · ${r.nv + r.rv + r.ap} appareil(s) : ${r.nv} nouveau(x), ${r.rv} revenu(s)${r.ap ? `, ${r.ap} 1re ouverture de l'app` : ''}`; const b = el.getBoundingClientRect(); let L = ev.clientX - b.left + 10; if (L > b.width - 230) L = b.width - 230; tip.style.left = Math.max(0, L) + 'px'; tip.style.top = Math.max(0, ev.clientY - b.top - 40) + 'px'; })
+    .on('pointerleave', () => { tip.hidden = true; });
+});
+
+dash.draw('semaines', (tb) => {
+  const s = dash.data('semaines'); tb.replaceChildren(); if (s.status !== 'ok') return;
+  for (const r of s.data) { const tr = document.createElement('tr'); tr.dataset.key = r.periode;
+    const p = document.createElement('td'); p.textContent = r.type === 'mois' ? new Date(r.periode + '-01T12:00:00Z').toLocaleDateString('fr-FR', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : `Sem. ${dmy(r.du)}–${dmy(r.au)}${r.complete === true || r.complete === 'true' ? '' : ' (partielle)'}`;
+    const mes = r.mesure === true || r.mesure === 'true';
+    const cells = [p, ...['appareils_differents', 'appareils_jours', 'vues', 'actions'].map((k) => { const td = document.createElement('td'); const nouv = k === 'appareils_differents' || k === 'actions'; td.textContent = nouv && !mes ? (r.partielle_depuis ? fmt(r[k]) + ' (depuis le ' + dmy(r.partielle_depuis) + ')' : 'non mesuré') : fmt(r[k]); if (nouv && !mes) td.style.color = 'var(--color-fg-muted)'; return td; })];
+    tr.append(...cells); tb.appendChild(tr); }
+});
+
+const bars = (el, id, lab, opts = {}) => {
+  const d = dash.data(id); el.replaceChildren();
+  if (d.status !== 'ok' || !Array.isArray(d.data)) { el.textContent = d.status === 'error' ? 'Échec du chargement' : '—'; return; }
+  const rows = opts.filter ? d.data.filter(opts.filter) : d.data, max = d3.max(rows, (r) => N(r.n)) || 0;
+  if (!max) { const p = document.createElement('p'); p.className = 'pp-empty'; p.textContent = opts.vide || 'Rien encore : mesuré depuis le 18/11.'; el.appendChild(p); return; }
+  rows.forEach((r, i) => { const row = document.createElement('div'); row.className = 'pp-bar';
+    const a = document.createElement('span'); a.textContent = r[lab];
+    const t = document.createElement('span'); t.className = 't'; const fill = document.createElement('i'); fill.style.width = (100 * N(r.n)) / max + '%'; fill.style.background = opts.col ? opts.col(r) : dash.colors[0]; t.appendChild(fill);
+    const b = document.createElement('b'); b.textContent = opts.val ? opts.val(r) : fmt(r.n); if (!opts.val || b.textContent === fmt(r.n)) { b.dataset.source = id; b.dataset.field = 'n'; b.dataset.where = (r.k != null ? 'k=' : lab + '=') + encodeURIComponent(r.k != null ? r.k : r[lab]); } else { b.title = fmt(r.n) + ' en tout'; }
+    row.append(a, t, b); el.appendChild(row); });
+};
+dash.draw('sources', (el) => bars(el, 'sources7', 'source', { vide: 'Rien encore : la provenance est mesurée depuis le 18/11.' }));
+dash.draw('actions', (el) => bars(el, 'actions7', 'action', { vide: 'Aucune action encore : mesuré depuis le 18/11 (sauf les partages).' }));
+dash.draw('retours', (el) => bars(el, 'retours7', 'quand', { vide: 'Rien encore : mesuré depuis le 18/11.' }));
+dash.draw('recherches', (el) => bars(el, 'recherches', 'trouve', { vide: 'Aucune recherche encore : mesuré depuis le 18/11.', col: (r) => (r.vide === true || r.vide === 'true' ? 'var(--color-bad)' : dash.colors[0]) }));
+dash.draw('appli', (el) => bars(el, 'appli7', 'etape', { vide: "Rien sur l'app depuis le lancement." }));
+dash.draw('types', (el) => { const d = dash.data('types7'), tot = d.status === 'ok' ? d.data.filter((r) => r.k !== 'langue_en').reduce((a, r) => a + N(r.n), 0) : 0; bars(el, 'types7', 'type', { val: (r) => (tot ? part(N(r.n), tot) : fmt(r.n)) }); });
+dash.draw('types_p', (el) => { const j = dash.data('jours'); if (j.status !== 'ok') { el.textContent = '—'; return; } const W = semaine7(j.data).filter((r) => r.jour >= '2026-11-12'), L = W.filter((r) => N(r.type_iphone) + N(r.type_android) + N(r.type_tablette) + N(r.type_ordi) === N(r.appareils)), out = W.length - L.length;
+  el.textContent = L.length ? `Visites de ${L.length} jour${L.length > 1 ? 's' : ''} entre le ${dmy(W[0].jour)} et le ${dmy(W[W.length - 1].jour)}, en part des ${sum(L, 'appareils')} visites${out ? ` (${out} jour${out > 1 ? 's' : ''} où le type n'a pas été compté pour tous les appareils, laissé${out > 1 ? 's' : ''} de côté)` : ''}.` : '—'; });
+dash.draw('qualite', (el) => bars(el, 'qualite7', 'mesure', { vide: 'Rien encore : mesuré depuis le 18/11.', val: (r) => (r.sur ? part(N(r.n), N(r.sur)) : fmt(r.n)), col: (r) => (/Erreur|non chargées/.test(r.mesure) ? 'var(--color-bad)' : dash.colors[0]) }));
+
+const col7 = () => { const p = dash.data('pages'); return p.status === 'ok' && p.data.some((r) => r.vues_7j != null); };
+dash.onData(() => { const show = col7(); document.querySelectorAll('#rubriques th[data-col7]').forEach((th) => { th.hidden = !show; }); });
+dash.draw('pages', (tb) => {
+  const p = dash.data('pages'); tb.replaceChildren(); if (p.status !== 'ok') return;
+  for (const r of p.data) { if (!N(r.vues_7j) && !N(r.vues_7j_avant) && !N(r.vues_total)) continue; const tr = document.createElement('tr'); tr.dataset.key = r.cle;
+    const a = document.createElement('td'); a.textContent = r.rubrique + (r.page_arrivee === true || r.page_arrivee === 'true' ? ' (arrivée)' : '');
+    const cells = [a, ...(col7() ? ['vues_7j', 'vues_7j_avant'] : []).concat(['vues_depuis_15_11', 'vues_total', 'actions_7j']).map((k) => { const td = document.createElement('td'); const xr = R(), nok = xr && (xr.nouv_ok === true || xr.nouv_ok === 'true'); td.textContent = r[k] == null || (k === 'actions_7j' && !nok && !N(r[k])) ? '—' : fmt(r[k]); if (k === 'vues_7j' && r[k] != null) { td.style.fontWeight = '600'; if (r.vues_7j_avant != null) { const e = ecart(r.vues_7j, r.vues_7j_avant); if (e.reel) td.style.color = e.d > 0 ? 'var(--color-ok)' : 'var(--color-bad)'; } } return td; })];
+    tr.append(...cells); tb.appendChild(tr); }
+});
+
+dash.draw('cohortes', (el) => {
+  const c = dash.data('cohortes'); el.replaceChildren(); if (c.status !== 'ok') { el.textContent = '—'; return; }
+  const rows = c.data.map((r) => ({ p: r.premiere, e: N(r.ecart), n: N(r.appareils) })).filter((r) => r.p >= '2026-s48');
+  if (!rows.length) { const p = document.createElement('p'); p.className = 'pp-empty'; p.textContent = 'Rien encore : la première ligne (appareils venus la semaine du 23/11) apparaîtra début décembre, quand certains reviendront.'; el.appendChild(p); return; }
+  const P = [...new Set(rows.map((r) => r.p))].sort(), E = d3.max(rows, (r) => r.e) || 0;
+  const t = document.createElement('table'); t.className = 'pp-table'; const h = t.createTHead().insertRow(); ['Première visite', 'Arrivés', ...d3.range(1, E + 1).map((i) => 'S+' + i)].forEach((x) => { const th = document.createElement('th'); th.textContent = x; h.appendChild(th); });
+  const b = t.createTBody(); P.forEach((p) => { const tr = b.insertRow(); const base = (rows.find((r) => r.p === p && r.e === 0) || { n: 0 }).n; tr.insertCell().textContent = 'Semaine ' + p.replace(/^\d+-s/, 'n° '); tr.insertCell().textContent = fmt(base);
+    d3.range(1, E + 1).forEach((i) => { const r = rows.find((x) => x.p === p && x.e === i); tr.insertCell().textContent = r ? (base ? part(r.n, base) : fmt(r.n)) : ''; }); });
+  el.appendChild(t);
+});
+</script>
