@@ -2136,7 +2136,7 @@ function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k)
 const ppVu={};
 /* « Ne pas compter mes visites » (À propos) : réglé pour ce navigateur ou cette app seulement (l'app installée a sa propre mémoire) */
 const ppMoi=()=>{try{return localStorage.getItem("pp-editeur")==="1";}catch(e){return false;}};
-const ppMoiTxt=()=>ppMoi()?`<b>Vos visites ne sont pas comptées</b> sur cet appareil${STANDALONE()?" (dans l'app)":" (dans ce navigateur)"}. <button type="button" class="lnk" data-act="moi">Les compter à nouveau</button>`:`<button type="button" class="lnk" data-act="moi">Ne pas compter mes visites sur cet appareil</button> (à refaire dans chaque navigateur et dans l'app installée).`;
+const ppMoiTxt=()=>ppMoi()?`<b>Vos visites ne sont pas comptées</b> sur cet appareil${STANDALONE()?" (dans l'app)":" (dans ce navigateur)"}.<br><button type="button" class="lnk" data-act="moi">Les compter à nouveau</button>`:`<button type="button" class="lnk" data-act="moi">Ne pas compter mes visites sur cet appareil</button> (à refaire dans chaque navigateur et dans l'app installée).`;
 /* type d'appareil (totaux seulement) : iphone, android, tablette, ordi */
 const ppType=()=>{const u=navigator.userAgent||"";if(/iPad/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1))return"tablette";if(/iPhone|iPod/.test(u))return"iphone";if(/Android/.test(u))return /Mobile/.test(u)?"android":"tablette";return"ordi";};
 /* semaine ISO (« 2026-s47 ») et mois (« 2026-11 ») : pour compter chaque appareil une seule fois par semaine et par mois */
