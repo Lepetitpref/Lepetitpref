@@ -1,4 +1,4 @@
-// Calcul de l'audience du Petit Préf, commun au relevé du matin (outils/audience.js, Node) et à la page en direct (audience/, navigateur).
+// Calcul de l'audience du Petit Préf, commun au relevé du matin (outils/audience.js, Node) et à la page en direct de l'éditeur (navigateur).
 // construire({ tout, cache, appjs, maintenant }) : tout(clés sans « quiz-pp- ») → Promise des valeurs (null si illisible) ;
 // cache = jours déjà relus { "AAAA-MM-JJ": rang } ; appjs = texte d'app.js (liste RUB de la recherche).
 (function (racine) {

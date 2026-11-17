@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Audience du Petit Préf pour le tableau de bord de l'éditeur (« Le Petit Préf, audience »), jamais affichée sur le site.
 // Lit les totaux du compteur (clés « quiz-pp-… », écrites par app.js) et écrit des JSON HORS du dépôt ; le calcul est dans audience-calcul.js
-// (le même que la page en direct lepetitpref.fr/audience/).
+// (le même que la page en direct de l'éditeur).
 //   node outils/audience.js <dossier hors dépôt> [--cache <fichier>]
 // Écrit jours.json, pages.json, resume.json, semaines.json, cohortes.json, recherches.json.
 // Clé du compteur : variable PP_CLE (en-tête X-Pp-Key) si elle est définie ; sinon le proxy de la session l'ajoute s'il la connaît.
