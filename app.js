@@ -1914,9 +1914,11 @@ function vSearch(){
   return `<div class="vhead"><div><h1>Rechercher</h1></div></div>
    <div class="searchbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="q" placeholder="Pharmacie, car, plage, loto…" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search"></div>${body}`;}
 /* recherches : un total, les recherches sans résultat, et la rubrique trouvée (jamais le texte tapé) */
-let ppRT;const ppRech=()=>{clearTimeout(ppRT);ppRT=setTimeout(()=>{const v=norm(S.q||"").trim();if(v.length<3||ppUne["q:"+v])return;ppUne["q:"+v]=1;ppHit2("recherche");
-  const r=document.querySelector("#main .srch-rub [data-v]");if(document.querySelector("#main .empty"))ppHit2("recherche-vide");else if(r)ppHit("recherche-rub-"+r.dataset.v.replace(/[^a-z0-9]+/g,"-").replace(/-+$/,""));else ppHit("recherche-fiche");},1500);};
-after.recherche=()=>{const q=$("#q");let tm;q.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.q=q.value;render();ppRech();},180);};
+const ppRech=()=>{if(!ppOn)return;const v=norm(S.q||"").trim();if(v.length<2||ppUne["q:"+v])return;ppUne["q:"+v]=1;ppHit2("recherche");
+  const r=document.querySelector("#main .srch-rub [data-v]");if(document.querySelector("#main .empty"))ppHit2("recherche-vide");else if(r)ppHit("recherche-rub-"+r.dataset.v.replace(/[^a-z0-9]+/g,"-").replace(/-+$/,""));else ppHit("recherche-fiche");};
+after.recherche=()=>{const q=$("#q");let tm;q.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.q=q.value;render();},180);};
+  q.addEventListener("blur",()=>setTimeout(()=>{const f=document.activeElement;if(!(f&&f.id==="q"))ppRech();},300));q.addEventListener("keydown",e=>{if(e.key==="Enter"){clearTimeout(tm);S.q=q.value;render();ppRech();}});
+  $$("#main .block").forEach(b=>b.addEventListener("click",e=>{if(e.target.closest("a,button"))ppRech();},true));
   if(!S.q)q.focus({preventScroll:true});
   $$("[data-idea]").forEach(b=>b.onclick=()=>{S.q=b.dataset.idea;render();ppRech();});};
 
@@ -2147,32 +2149,38 @@ const ppUne={};const ppOnce=k=>{if(ppUne[k])return;ppUne[k]=1;ppHit2(k);};
 const ppSource=()=>{if(STANDALONE())return"app";const r=document.referrer||"";let h="";try{h=new URL(r).hostname;}catch(e){}
   if(!h)return"direct";if(/(^|\.)lepetitpref\.fr$/.test(h))return"interne";if(/google\.|bing\.|qwant\.|duckduckgo\.|ecosia\.|yahoo\.|startpage\.|brave\.com|lilo\.|search\./.test(h))return"moteur";
   if(/facebook\.|fb\.|instagram\.|t\.co$|twitter\.|x\.com|linkedin\.|lnkd\.|threads\.|bsky\.|whatsapp\.|messenger\.|snapchat\.|tiktok\.|pinterest\./.test(h))return"reseau";return"site";};
+/* durée et rubriques d'une visite : remis à zéro à chaque nouveau jour (l'app ou l'onglet peuvent rester ouverts plusieurs jours) */
+const PPT={j:null,t:0,d:0,faits:{},fin:false};
+const ppQuitte=()=>{if(PPT.fin||!PPT.j)return;PPT.fin=true;const n=Object.keys(ppVu).filter(k=>k[0]!=="_").length;ppHit("rubriques-"+(n<=1?"1":n===2?"2":n<=4?"3-4":"5p")+"-"+PPT.j);};
+document.addEventListener("visibilitychange",()=>{if(!ppOn)return;
+  if(document.visibilityState==="visible"){
+    /* app ou onglet rouvert un autre jour sans rechargement : compté comme une nouvelle visite */
+    if(PPT.j&&ppJour()!==PPT.j){for(const k in ppVu)delete ppVu[k];ppVu._retour=1;ppVue(curView());}else PPT.d=Date.now();return;}
+  if(PPT.d){PPT.t+=Date.now()-PPT.d;PPT.d=0;}
+  [30,60,180,600].forEach(n=>{if(PPT.t>=n*1e3&&!PPT.faits[n]){PPT.faits[n]=1;ppHit("visite-"+n+"s-"+PPT.j);}});ppQuitte();});
+window.addEventListener("pagehide",ppQuitte);
 function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vue-"+v+"-"+j);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
-  if(ppVu._jour)return;ppVu._jour=1;
-  try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour"),app=STANDALONE(),sem=ppSem(j),mois=j.slice(0,7);
-    /* chargement : dénominateur des durées et des rubriques ; page d'entrée ; source */
-    ppHit2("chargements");ppHit("entree-"+v+"-"+j);const src=ppVu._via||ppSource();ppHit("source-"+src+"-"+j);ppHit("source-"+src);
+  if(ppVu._jour)return;ppVu._jour=1;Object.assign(PPT,{j,t:0,d:document.visibilityState==="visible"?Date.now():0,faits:{},fin:false});
+  try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour"),app=STANDALONE(),sem=ppSem(j),mois=j.slice(0,7),appPrem=!prem&&app&&IS_IOS;
+    /* chargement : dénominateur des durées et des rubriques ; page d'entrée ; source (un retour dans l'app ou l'onglet resté ouvert : « app » ou « direct ») */
+    ppHit2("chargements");ppHit("entree-"+v+"-"+j);const src=ppVu._via||(ppVu._retour?(app?"app":"direct"):ppSource());ppHit("source-"+src+"-"+j);ppHit("source-"+src);
     /* nouvel appareil ; sur iPhone, la 1re ouverture de l'app installée a sa propre mémoire : comptée à part (= installation), pas comme nouvel appareil */
-    if(!prem){if(app&&IS_IOS){ppHit2("app-premiere");}else{ppHit("appareils");ppHit("appareils-nouveaux-"+j);ppHit("source-nouveau-"+src+"-"+j);}}
+    if(!prem){if(appPrem){ppHit2("app-premiere");}else{ppHit("appareils");ppHit("appareils-nouveaux-"+j);ppHit("source-nouveau-"+src+"-"+j);}}
     if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(app)ppHit("app-"+j);if(LANG==="en")ppHit("langue-en-"+j);
       /* retour : écart avec la visite précédente de cet appareil (Safari efface cette mémoire après ~7 jours sans visite) */
       if(der){const g=Math.round((new Date(j)-new Date(der))/864e5);if(g>0)ppHit("retour-"+(g===1?"1":g<=7?"2-7":g<=30?"8-30":"31p")+"-"+j);}}
-    /* appareils différents par semaine et par mois ; cohortes : semaine de la 1re visite → semaine actuelle */
-    if(localStorage.getItem("pp-sem")!==sem){localStorage.setItem("pp-sem",sem);ppHit("appareils-sem-"+sem);ppHit("cohorte-"+ppSem(prem||j)+"-"+sem);}
-    if(localStorage.getItem("pp-mois")!==mois){localStorage.setItem("pp-mois",mois);ppHit("appareils-mois-"+mois);}
-    localStorage.setItem("pp-appareil",prem||j);localStorage.setItem("pp-appareil-jour",j);}catch(e){}
-  let t=0,d=document.visibilityState==="visible"?Date.now():0;const faits={};let fin=false;
-  const quitte=()=>{if(fin)return;fin=true;const n=Object.keys(ppVu).filter(k=>k[0]!=="_").length;ppHit("rubriques-"+(n<=1?"1":n===2?"2":n<=4?"3-4":"5p")+"-"+j);};
-  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
-    [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});quitte();});
-  window.addEventListener("pagehide",quitte);}
+    /* appareils différents par semaine et par mois ; cohortes : semaine de la 1re visite → semaine actuelle.
+       La 1re ouverture de l'app sur iPhone n'y entre pas (le téléphone est déjà compté par Safari cette semaine-là). */
+    if(localStorage.getItem("pp-sem")!==sem){localStorage.setItem("pp-sem",sem);if(!appPrem){ppHit("appareils-sem-"+sem);ppHit("cohorte-"+ppSem((prem||j).replace(/^app-/,""))+"-"+sem);}}
+    if(localStorage.getItem("pp-mois")!==mois){localStorage.setItem("pp-mois",mois);if(!appPrem)ppHit("appareils-mois-"+mois);}
+    localStorage.setItem("pp-appareil",prem||(appPrem?"app-"+j:j));localStorage.setItem("pp-appareil-jour",j);}catch(e){}}
 /* actions utiles : appeler, itinéraire, site d'un lieu (et la rubrique où l'action a eu lieu) */
 document.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a)return;const h=a.getAttribute("href")||"";
   const k=/^tel:/.test(h)?"appeler":/^sms:/.test(h)?"sms":/google\.[a-z.]+\/maps|maps\.apple\.com|^geo:/.test(h)?"itineraire":(/^https?:/.test(h)&&!/lepetitpref\.fr/.test(h)&&a.closest("#main .row-links,#main .pop,#main details"))?"site":"";
   if(k){ppHit2("act-"+k);ppHit("actv-"+curView()+"-"+ppJour());}},true);
 /* erreurs de la page (une fois par chargement) */
 window.addEventListener("error",()=>ppOnce("erreur-js"));
-document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")){ppHit("partage-"+ppJour());ppHit("partage");ppHit("actv-"+curView()+"-"+ppJour());}},true);
+document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")){ppHit("partage-"+ppJour());ppHit("partage");}},true);
 /* arrivée par un lien partagé depuis le site (?via=partage) : un total par jour, puis le marqueur est retiré de l'adresse */
 try{const u=new URL(location.href),via=u.searchParams.get("via")||"";if(via==="partage"||/^(qr|affiche|fb|insta|flyer|mail)(-[a-z0-9]{1,20})?$/.test(via)){if(via==="partage"){ppHit("arrivee-partage-"+ppJour());ppVu._via="partage";}else{ppHit("arrivee-"+via+"-"+ppJour());ppHit("arrivee-"+via);ppVu._via="campagne";}u.searchParams.delete("via");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}}catch(e){}
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
