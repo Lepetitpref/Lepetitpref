@@ -56,7 +56,7 @@ var col = function (c) { return c.replace(/-/g, '_'); };
 (async function () {
   var ds = []; for (var j = LANCEMENT; j <= AUJ; j = plus(j, 1)) ds.push(j);
   var cache = {}; try { cache = JSON.parse(fs.readFileSync(CACHE, 'utf8')).jours || {}; } catch (x) {}
-  var lu = ds.filter(function (d) { var c = cache[d]; return !c || c._cles !== CH.length || d >= plus(AUJ, -3); });
+  var lu = ds.filter(function (d) { var c = cache[d]; return !c || c._cles !== CH.length || d >= plus(AUJ, -3) || CH.some(function (k) { return c[col(k)] == null; }); });
   var ks = []; lu.forEach(function (d) { CH.forEach(function (c) { ks.push(c + '-' + d); }); });
   var v = await tout(ks);
   lu.forEach(function (d, i) { var r = { jour: d, _cles: CH.length }; CH.forEach(function (c, k) { r[col(c)] = v[i * CH.length + k]; }); cache[d] = r; });
@@ -67,7 +67,7 @@ var col = function (c) { return c.replace(/-/g, '_'); };
     r.appareils_revenus = r.appareils == null ? null : Math.max(0, r.appareils - (r.appareils_nouveaux || 0) - (r.app_premiere || 0));
     r.actions = ACTS.reduce(function (a, k) { return a + (r['act_' + col(k)] || 0); }, 0);
     r.retours = ['retour_1', 'retour_2_7', 'retour_8_30', 'retour_31p'].reduce(function (a, k) { return a + (r[k] || 0); }, 0);
-    r.en_cours = d === AUJ; r.nouvelles_mesures = d >= MESURES2; return r;
+    r.en_cours = d === AUJ; r.nouvelles_mesures = d >= MESURES2; r.incomplet = CH.some(function (k) { return r[col(k)] == null; }); return r;
   });
   try { fs.writeFileSync(CACHE, JSON.stringify({ maj: new Date().toISOString(), jours: cache })); } catch (x) {}
   // 7 jours complets (jusqu'à hier) contre les 7 précédents
@@ -100,7 +100,9 @@ var col = function (c) { return c.replace(/-/g, '_'); };
   var total = tot[0] == null ? null : Math.max(0, tot[0] + CORR_TOTAL);
   var installs = S(jours, 'installation');
   var r0 = { maj: new Date().toISOString(), du: A.length ? A[0].jour : null, au: hier, du_avant: B.length ? B[0].jour : null, au_avant: B.length ? B[B.length - 1].jour : null,
-    avant_ok: B.length === 7 && B[0].jour >= COMPARABLE, rubriques_7j_ok: p7ok, comparable_le: plus(COMPARABLE, 14),
+    avant_ok: B.length === 7 && B[0].jour >= COMPARABLE, nouv_ok: A.length === 7 && A[0].jour >= MESURES2, nouv_avant_ok: B.length === 7 && B[0].jour >= MESURES2, nouv_comparable_le: plus(MESURES2, 14),
+    // surdispersion : variance / moyenne des appareils par jour sur les 14 jours (hors lancement) ; > 1 = les jours varient plus que le hasard seul
+    phi: (function () { var v = A.concat(B).filter(function (r) { return r.jour > '2026-11-11'; }).map(function (r) { return r.appareils || 0; }); if (v.length < 4) return 1; var m = v.reduce(function (a, b) { return a + b; }, 0) / v.length; if (!m) return 1; var q = v.reduce(function (a, b) { return a + (b - m) * (b - m); }, 0) / (v.length - 1); return Math.max(1, Math.round(100 * q / m) / 100); })(), rubriques_7j_ok: p7ok, comparable_le: plus(COMPARABLE, 14),
     hier: hier, appareils_hier: (jours.find(function (r) { return r.jour === hier; }) || {}).appareils || 0,
     moyenne_3j: Math.round(10 * S(jours.filter(function (r) { return r.jour > plus(hier, -3) && r.jour <= hier; }), 'appareils') / 3) / 10,
     moyenne_hors_lancement_7j: (function () { var L = A.filter(function (r) { return r.jour > '2026-11-11'; }); return L.length ? Math.round(10 * S(L, 'appareils') / L.length) / 10 : null; })(),
