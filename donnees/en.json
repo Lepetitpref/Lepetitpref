@@ -572,7 +572,6 @@
   "Données personnelles.": "Personal data.",
   "Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie.": "The site collects no personal data: no account, no sign-up, no cookies.",
   "Mesure d'audience :": "Audience measurement:",
-  "le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), les installations de l'app et les clics sur « Installer ». Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.": "the site only counts totals (pages opened, number of devices per day, shares, visit length in bands), with nothing that identifies you: no cookie, no stored IP address, no identifier. Also counted, always as totals: the type of device (iPhone, Android, tablet, computer), app installs and taps on “Install”. Your browser only keeps the date of your last visit. Your holiday dates and filters stay saved in your browser, on your device only.",
   "Services utilisés par le site.": "Services used by the site.",
   "Liens.": "Links.",
   "Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.": "The publisher is not responsible for the content of other sites linked to.",
@@ -1246,7 +1245,14 @@
   "Heure par heure (confirmés), aujourd'hui": "Hour by hour (experienced), today",
   "vent fort et rafaleux": "strong, gusty wind",
   "petit temps rafaleux, confirmés": "light, gusty wind, experienced only",
-  "plus gros :": "bigger:"
+  "plus gros :": "bigger:",
+  "le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, par semaine et par mois, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), la provenance par grande catégorie (moteur de recherche, réseau social, autre site, accès direct, jamais l'adresse de la page), les installations de l'app, les clics sur « Installer », les appels, itinéraires et ajouts au calendrier, et le nombre de recherches (sans le texte tapé). Votre navigateur garde seulement le jour, la semaine et le mois de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.": "the site only counts totals (pages opened, number of devices per day, per week and per month, shares, visit length in bands), with nothing that identifies you: no cookie, no stored IP address, no identifier. Also counted, always as totals: the type of device (iPhone, Android, tablet, computer), where visits come from by broad category (search engine, social network, other website, direct access, never the page address), app installs, taps on “Install”, calls, directions and calendar additions, and the number of searches (without the text typed). Your browser only keeps the day, week and month of your last visit. Your holiday dates and filters stay stored in your browser, on your device only.",
+  "Vos visites ne sont pas comptées": "Your visits are not counted",
+  "sur cet appareil (dans l'app).": "on this device (in the app).",
+  "sur cet appareil (dans ce navigateur).": "on this device (in this browser).",
+  "Les compter à nouveau": "Count them again",
+  "Ne pas compter mes visites sur cet appareil": "Don't count my visits on this device",
+  "(à refaire dans chaque navigateur et dans l'app installée).": "(to be done in each browser and in the installed app)."
  },
  "rules": [
   [

@@ -236,7 +236,7 @@ function icsFile(o){const p2=n=>String(n).padStart(2,"0"),D=d=>d.replace(/-/g,""
   else{const e=new Date((o.end||o.d)+"T12:00:00Z");e.setUTCDate(e.getUTCDate()+1);dt=`DTSTART;VALUE=DATE:${D(o.d)}\r\nDTEND;VALUE=DATE:${e.toISOString().slice(0,10).replace(/-/g,"")}`;}
   const now=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";
   return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Le Petit Pref//FR","CALSCALE:GREGORIAN","BEGIN:VEVENT",`UID:${now}-${Math.random().toString(36).slice(2)}@lepetitpref.fr`,`DTSTAMP:${now}`,dt,`SUMMARY:${esc2(o.t)}`,o.loc?`LOCATION:${esc2(o.loc)}`:"",o.desc?`DESCRIPTION:${esc2(o.desc)}`:"",o.url?`URL:${o.url}`:"","END:VEVENT","END:VCALENDAR"].filter(Boolean).join("\r\n");}
-function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return;}
+function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return;}ppHit2("act-calendrier");ppHit("actv-"+curView()+"-"+ppJour());
   const txt=icsFile(o),name=(o.t||"evenement").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40).toLowerCase()+".ics";
   const blob=new Blob([txt],{type:"text/calendar;charset=utf-8"});const u=URL.createObjectURL(blob);
   const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),8000);
@@ -1597,7 +1597,7 @@ function vImmo(){loadVentes();const B=imB(),O=B.k==="prefailles"?BASES.pornic:BA
   const U=S.urba?.communes?.[B.k];
   return head+top+addr+prix+carte+ventes+(U?imPermis(U,B)+imPlu(U,B):"")+`<p class="note" style="margin:14px var(--gutter)">${ic("info","i-s")}<span><span>Ventes signées chez le notaire, pas des annonces, publiées par l'État deux fois par an avec environ six mois de retard (de 2021 au ${fin}). Prix 2010-2020 : Cerema.</span> <span>On n'affiche ni nom ni numéro de rue ; les parcelles viennent du cadastre.</span> <span>Source :</span> <a href="https://explore.data.gouv.fr/fr/immobilier" target="_blank" rel="noopener">Demandes de valeurs foncières</a> <span>(DGFiP, Licence Ouverte).</span></span></p>`;}
 /* « Autour de mon adresse » : ventes et permis à moins de 300 m, zone du PLU et ses règles */
-function imAddr(f){const [lo,la]=f.geometry.coordinates,B=imB(),C=S.ventes?.communes?.[B.k],U=S.urba?.communes?.[B.k],box=document.getElementById("imaddr");if(!box||!C)return;
+function imAddr(f){ppOnce("usage-immo-adresse");const [lo,la]=f.geometry.coordinates,B=imB(),C=S.ventes?.communes?.[B.k],U=S.urba?.communes?.[B.k],box=document.getElementById("imaddr");if(!box||!C)return;
   imPin(f,true);const me={lat:la,lon:lo},near=v=>v.la&&km(me,{lat:v.la,lon:v.lo})<=.3;
   const V=C.ventes.filter(near),M=V.filter(v=>v.t==="M"&&v.s).map(v=>v.p/v.s),P=(U?.permis?.recents||[]).filter(v=>v.d>="2021"&&near(v));
   S.imAV=V;S.imAP=P;
@@ -1672,7 +1672,7 @@ function mapGuard(m,el,center){const coarse=matchMedia("(pointer:coarse)").match
   ["gesturestart","gesturechange"].forEach(t=>el.addEventListener(t,e=>e.preventDefault(),{passive:false}));
   const open=()=>{if(MAPFULL)return;const y=scrollY;vpLock(true);el.parentNode.insertBefore(ph,el);ph.style.height=el.offsetHeight+"px";
     el.classList.add("map-full");document.body.classList.add("locked","map-open");pageInert(false);set(true);
-    MAPFULL={close,y};try{history.pushState({ppmap:1},"");}catch(e){}requestAnimationFrame(()=>{m.invalidateSize();});};
+    MAPFULL={close,y};ppOnce("usage-carte");try{history.pushState({ppmap:1},"");}catch(e){}requestAnimationFrame(()=>{m.invalidateSize();});};
   const close=(fromPop)=>{if(!MAPFULL)return;const y=MAPFULL.y;vpLock(false);if(S.renderLater){S.renderLater=false;setTimeout(render,50);}MAPFULL=null;m.closePopup();set(false);el.classList.remove("map-full");document.body.classList.remove("locked","map-open");if(ph.parentNode)ph.remove();
     requestAnimationFrame(()=>{m.invalidateSize();scrollTo({top:y,behavior:"instant"});});if(!fromPop){try{if(history.state&&history.state.ppmap)history.back();}catch(e){}}};
   /* toucher un point sur l'aperçu : la carte s'ouvre en grand ET la bulle de ce point s'ouvre (un seul toucher) */
@@ -1859,7 +1859,8 @@ function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="
   <p><b>Contenus.</b> Les événements, séances de cinéma, horaires et adresses sont repris des sites des communes, offices de tourisme, cinémas, associations et transporteurs, qui restent la référence ; chaque fiche renvoie à sa source. Ils sont mis à jour automatiquement chaque matin et peuvent contenir des erreurs : vérifiez avant de vous déplacer.</p>
   <p><b>Marées.</b> Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.</p>
   <p><b>Photos et logo.</b> © Le Petit Préf, tous droits réservés.</p>
-  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), les installations de l'app et les clics sur « Installer ». Votre navigateur garde seulement le jour de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
+  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, par semaine et par mois, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), la provenance par grande catégorie (moteur de recherche, réseau social, autre site, accès direct, jamais l'adresse de la page), les installations de l'app, les clics sur « Installer », les appels, itinéraires et ajouts au calendrier, et le nombre de recherches (sans le texte tapé). Votre navigateur garde seulement le jour, la semaine et le mois de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
+  <p id="ppmoi">${ppMoiTxt()}</p>
   <p><b>Photos.</b> Château et port de Pornic : « Chateau de Pornic (27) », Ibex73, <a href="https://commons.wikimedia.org/wiki/File:Chateau_de_Pornic_(27).jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 4.0</a> (image recadrée).</p>
   <p><b>Services utilisés par le site.</b> Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).</p>
   <p><b>Liens.</b> Les liens vers d'autres sites n'engagent pas l'éditeur sur leur contenu.</p></div></div>`;}
@@ -1912,9 +1913,12 @@ function vSearch(){
   } else body=`<div class="block"><div class="note" style="font-weight:800">Idées</div><div class="scroller">${(LANG==="en"?["pharmacy","bins","bus","tide","beach","rain","market","oysters","surf","cinema","crêpes","walk"]:["pharmacie de garde","poubelles","car","marée","plage","pluie","marché","huîtres","loto","cinéma","crêpes","piscine","vide-grenier","enfants","pêche"]).map(x=>`<button class="chip no-tr" data-idea="${x}">${x}</button>`).join("")}</div></div>`;
   return `<div class="vhead"><div><h1>Rechercher</h1></div></div>
    <div class="searchbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input type="search" id="q" placeholder="Pharmacie, car, plage, loto…" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search"></div>${body}`;}
-after.recherche=()=>{const q=$("#q");let tm;q.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.q=q.value;render();},180);};
+/* recherches : un total, les recherches sans résultat, et la rubrique trouvée (jamais le texte tapé) */
+let ppRT;const ppRech=()=>{clearTimeout(ppRT);ppRT=setTimeout(()=>{const v=norm(S.q||"").trim();if(v.length<3||ppUne["q:"+v])return;ppUne["q:"+v]=1;ppHit2("recherche");
+  const r=document.querySelector("#main .srch-rub [data-v]");if(document.querySelector("#main .empty"))ppHit2("recherche-vide");else if(r)ppHit("recherche-rub-"+r.dataset.v.replace(/[^a-z0-9]+/g,"-").replace(/-+$/,""));else ppHit("recherche-fiche");},1500);};
+after.recherche=()=>{const q=$("#q");let tm;q.oninput=()=>{clearTimeout(tm);tm=setTimeout(()=>{S.q=q.value;render();ppRech();},180);};
   if(!S.q)q.focus({preventScroll:true});
-  $$("[data-idea]").forEach(b=>b.onclick=()=>{S.q=b.dataset.idea;render();});};
+  $$("[data-idea]").forEach(b=>b.onclick=()=>{S.q=b.dataset.idea;render();ppRech();});};
 
 /* ===== Installer l'app sur l'écran d'accueil ===== */
 const UA=navigator.userAgent||"";
@@ -1925,7 +1929,7 @@ const IN_APP=/FBAN|FBAV|Instagram|WhatsApp|Line\/|GSA\/|Messenger|LinkedInApp|Sn
 const STANDALONE=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
 let deferredPrompt=null;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;if(curView()==="installer"||curView()==="sejour")render();});
-window.addEventListener("appinstalled",()=>{deferredPrompt=null;sset("pp-install","ok");ppHit("installation-"+ppJour());ppHit("installation-"+ppType()+"-"+ppJour());render();});
+window.addEventListener("appinstalled",()=>{deferredPrompt=null;sset("pp-install","ok");ppHit("installation-"+ppJour());ppHit("installation");ppHit("installation-"+ppType()+"-"+ppJour());render();});
 const WAVE='<svg viewBox="0 0 80 50" aria-hidden="true"><path d="M3 25 C10 14 20 6 32 5 C40 4.5 45 8 46 15 C42 11 34 10 29 15 C24 20 25 30 33 33 C41 36 52 30 60 29 C67 28 73 28 77 29.5 C70 35 60 40 46 43 C32 46 16 42 3 25 Z"/></svg>';
 const SHARE_IC='<svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>';
 const PLUS_IC='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>';
@@ -1999,10 +2003,10 @@ function whoClick(e){const b=e.target.closest("[data-w]");if(!b||b.tagName==="SE
   else if(w==="ok"){let q=DR.quand;if(q.mode==="dates"){let a=q.du||today(),z=q.au||a;if(z<a)[a,z]=[z,a];if(z<today()){toast("Ces dates sont passées");return;}q={mode:"dates",du:a,au:z};}
     if(!DR.type)DR.type=DR.enfants.length?"famille":DR.adultes>=3?"amis":DR.adultes===2?"couple":"solo";
     GR.groupes[DR.type]={nom:(GTYPES.find(x=>x[0]===DR.type)||[])[1]||"",adultes:DR.adultes,enfants:DR.enfants.map(k=>({age:+k.age})),type:DR.type};
-    GR.actif=DR.type;GR.habitant=false;GR.quand=q;gSave();
+    GR.actif=DR.type;GR.habitant=false;GR.quand=q;gSave();ppOnce("choix-visite");
     S.day=null;S.who="groupe";closeWho();
     if(curView()!=="agenda")location.hash="#agenda";else{render();window.scrollTo({top:0,behavior:"instant"});}return;}
-  else if(w==="local"){GR.habitant=true;gSave();S.who="tous";S.day=null;closeWho();if(!["agenda","activites","cine"].includes(curView()))location.hash="#agenda";else render();return;}
+  else if(w==="local"){GR.habitant=true;gSave();ppOnce("choix-habitant");S.who="tous";S.day=null;closeWho();if(!["agenda","activites","cine"].includes(curView()))location.hash="#agenda";else render();return;}
   drawWho();}
 function whoChange(e){const el=e.target;
   if(el.dataset.w==="age"){DR.enfants[+el.dataset.i].age=+el.value;drawWho();}
@@ -2017,7 +2021,7 @@ function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAtt
 /* bande-annonce : lecteur Allociné dans une fenêtre du site ; fermer = l'iframe disparaît (la vidéo s'arrête), la suivante repart de zéro */
 function baClose(fromPop){const o=document.getElementById("baov");if(!o)return;o.remove();pageInert(false);document.removeEventListener("keydown",baKey);if(!fromPop&&history.state&&history.state.ba)history.back();const b=document.querySelector(".ba-lnk.last");if(b){b.classList.remove("last");b.focus();}}
 function baKey(e){if(e.key==="Escape")baClose();}
-function baOpen(v){const[u,film]=String(v).split("|"),m=u.match(/player_gen_cmedia=(\d+)&cfilm=\d+\.html$/);if(!m){window.open(u,"_blank","noopener");return;}
+function baOpen(v){ppHit2("act-bande-annonce");ppHit("actv-cine-"+ppJour());const[u,film]=String(v).split("|"),m=u.match(/player_gen_cmedia=(\d+)&cfilm=\d+\.html$/);if(!m){window.open(u,"_blank","noopener");return;}
   baClose(true);document.querySelectorAll(".ba-lnk.last").forEach(x=>x.classList.remove("last"));const a=document.activeElement;if(a&&a.classList)a.classList.add("last");
   const o=document.createElement("div");o.id="baov";o.className="ba-ov";o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label","Bande-annonce "+(film||""));
   o.innerHTML=`<div class="ba-box"><div class="ba-top"><b>${esc(film||"Bande-annonce")}</b><button type="button" class="ba-x">Fermer</button></div><div class="ba-fr"><iframe src="https://player.allocine.fr/${m[1]}.html" title="Bande-annonce ${esc(film||"")}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="ba-sound"><b>🔊 Pour avoir le son</b><ol><li>Touchez <b>la vidéo</b></li><li>Puis le <b>haut-parleur</b> en bas</li></ol></div><p class="ba-src">Vidéo Allociné · <a href="${esc(u)}" target="_blank" rel="noopener">ouvrir sur Allociné ↗</a></p></div>`;
@@ -2060,19 +2064,20 @@ const ACT={
     scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});},
   base:v=>{if(!BASES[v]||v===BASE.k)return;sset("pp-base",v);try{localStorage.removeItem("pp-cin");}catch(e){}ppHit("base-"+v+"-"+ppJour());try{const u=new URL(location.href);if(v==="pornic")u.searchParams.set("ici","pornic");else u.searchParams.delete("ici");if(u.href!==location.href){location.replace(u.href);return;}}catch(e){}location.reload();},
   who:()=>openWho(),
-  local:()=>{GR.habitant=true;gSave();S.day=null;render();},
-  visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();S.day=null;S.who="groupe";render();}else openWho();},
+  local:()=>{GR.habitant=true;gSave();ppOnce("choix-habitant");S.day=null;render();},
+  visit:()=>{if(GR.actif&&GR.groupes[GR.actif]){GR.habitant=false;gSave();ppOnce("choix-visite");S.day=null;S.who="groupe";render();}else openWho();},
   zone:v=>{S.where=v;sset("cf-where",v);render();},
   day:v=>{S.day=v;render();},
   pluie:(v,el)=>{S.rainSet[el.dataset.d]=v==="1";render();},
   etype:v=>{S.etype=v;render();},
   cat:v=>{S.cat=v;render();if(v!=="tous")requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
   catgo:v=>{S.cat=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
-  trday:v=>{S.trDay=v;render();},
+  trday:v=>{S.trDay=v;ppOnce("usage-trajet");render();},
   soirw:v=>{setFaire(v==="soir"?"auj":v==="demain"?"dem":v==="7j"?"sem":v);render();},
   mview:v=>{S.mView=v;sset("pp-mview",v);render();},popen:v=>{const [g,k]=v.split("|");S.pOpen[g]=S.pOpen[g]===k?null:k;render();if(S.pOpen[g])requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="${v}"]`);scrollUnder(t);});},imt:v=>{S.imT=v;S.imN=3;render();},imc:v=>{S.imFit=null;S.imC=v;S.imN=3;S.imY="tous";render();},imn:()=>{S.imN=(S.imN||3)<=3?30:S.imN+30;render();},imless:()=>{S.imN=3;render();ACT.pjump("im-ventes");},imgo:v=>imFocus(S.imL&&S.imL[+v]),plupin:v=>{const [la,lo]=v.split(",").map(Number);S.imPlu=true;ACT.pjump("im-carte");setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(IMPIN)IMPIN.remove();IMPIN=L.circleMarker([la,lo],{radius:8,color:"#fff",weight:3,fillColor:"#1a73e8",fillOpacity:1}).addTo(LMAP);LMAP.setView([la,lo],17);},350);},pinclear:()=>{if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;const q=$("#imq2");if(q)q.value="";const c=document.getElementById("impinclr");if(c)c.hidden=true;},pluclear:()=>{const b=document.getElementById("plures");if(b)b.innerHTML="";const q=$("#pluq");if(q)q.value="";},go2:v=>{const [h,j,x]=v.split("|");if(x)x.split("&").forEach(kv=>{const [k,val]=kv.split("=");S[k]=val==="1"?true:val==="0"?false:val;if(k==="when")S.whenKeep=true;});S.jumpTo=j||null;if(location.hash==="#"+h)render();else location.hash="#"+h;},binsec:v=>{S.binSec=v;sset("pp-secteur",v);render();},agweek:()=>{S.du=S.agDay||today();S.au=addDays(S.du,6);setFaire("dates");render();},wkmore:v=>{S.wkOpen=S.wkOpen||{};S.wkOpen[v]=!S.wkOpen[v];render();},ba:(v,el,e)=>{if(e)e.preventDefault();baOpen(v);},spotd2:v=>{const[id,dd]=v.split("|"),e0=document.getElementById("spd-"+id),y0=e0?e0.getBoundingClientRect().top:0;S.spotDay=dd;render();const e1=document.getElementById("spd-"+id);if(e1)window.scrollBy(0,e1.getBoundingClientRect().top-y0);},spotday:v=>{S.spotDay=v;render();requestAnimationFrame(()=>ACT.pjump("spots"));},imclear:()=>{S.imAddrH=null;S.imAV=null;S.imAP=null;const q=$("#imq");if(q)q.value="";if(IMPIN){IMPIN.remove();IMPIN=null;}S.imFit=null;render();},imago:v=>imFocus(S.imAV&&S.imAV[+v]),impgo:v=>pmFocus(S.imAP&&S.imAP[+v]),goimmo:v=>{S.imJump=v;S.imC=BASE.k;location.hash="#immobilier";},plugo:v=>{const z=(S.imZ||[]).find(x=>x.code===v);if(!z)return;S.imPlu=true;ACT.pjump("im-carte");S.imFit=[[z.bb[0],z.bb[1]],[z.bb[2],z.bb[3]]];setTimeout(()=>{if(!LMAP)return;if(IMLAY.plu&&!LMAP.hasLayer(IMLAY.plu))IMLAY.plu.addTo(LMAP);document.querySelectorAll("[data-act=imlay][data-v=plu]").forEach(b=>b.setAttribute("aria-pressed","true"));if(S.imFit){LMAP.fitBounds(S.imFit,{maxZoom:17,padding:[20,20]});}const h=document.getElementById("imhint");if(h)h.textContent="Zone "+z.code+" : touchez la carte pour connaître la zone d'un endroit.";},350);},pmy:v=>{S.imPY=S.imPY===v?null:v;S.imPN=3;render();requestAnimationFrame(()=>scrollUnder(document.querySelector(".pm-chart")));},pmmap:()=>{ACT.pjump("im-carte");setTimeout(()=>{if(LMAP&&IMPM&&IMPM.getLayers().length)LMAP.fitBounds(IMPM.getBounds().pad(.1),{maxZoom:17});},350);},pmgo:v=>pmFocus(S.imPL&&S.imPL[+v]),imlay:v=>{const k=v==="cad"?"imCad":"imPlu";S[k]=!S[k];const l=IMLAY[v];if(LMAP&&l){S[k]?l.addTo(LMAP):l.remove();}document.querySelectorAll(`[data-act=imlay][data-v=${v}]`).forEach(b=>b.setAttribute("aria-pressed",S[k]));const h=document.getElementById("imhint");if(h&&v==="plu"&&S[k])h.textContent="Touchez un endroit de la carte pour connaître sa zone du PLU.";},pmn:()=>{S.imPN=(S.imPN||3)<=3?30:S.imPN+30;render();},pmless:()=>{S.imPN=3;render();ACT.pjump("im-permis");},
   melocate:()=>mapLocate(),
   ics:v=>icsGo(v),
+  moi:()=>{try{if(ppMoi()){localStorage.removeItem("pp-editeur");ppOn=/(^|\.)lepetitpref\.fr$/.test(location.hostname)&&!navigator.webdriver;}else{localStorage.setItem("pp-editeur","1");ppOn=false;}}catch(e){}const p=document.getElementById("ppmoi");if(p)p.innerHTML=ppMoiTxt();},
   fc:v=>fcSpot(v),
 
   dpday:v=>{const [c,d]=v.split("|");if(CHG[c])CHG[c](d);render();},
@@ -2080,7 +2085,7 @@ const ACT={
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
-  spot:v=>{const[id,dd]=String(v).split("|");v=id;if(!SPOTSX.some(x=>x.id===v))return;S.spotDay=dd||S.spotDay||null;S.pOpen.spot=v;if(!["mer","spots","naviguer"].includes(curView())){S.spotOpen=v;location.hash="#spots";return;}render();requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="spot|${v}"]`);if(t)scrollUnder(t);});},
+  spot:v=>{const[id,dd]=String(v).split("|");v=id;if(!SPOTSX.some(x=>x.id===v))return;ppOnce("usage-spot");S.spotDay=dd||S.spotDay||null;S.pOpen.spot=v;if(!["mer","spots","naviguer"].includes(curView())){S.spotOpen=v;location.hash="#spots";return;}render();requestAnimationFrame(()=>{const t=document.querySelector(`[data-act=popen][data-v="spot|${v}"]`);if(t)scrollUnder(t);});},
   trdir:v=>{if(v==null||v===""){if(S.trA&&S.trB){const a=S.trA;S.trA=S.trB;S.trB=a;}}else{S.trDir=+v;S.trA=S.trB=null;}render();},
   trafter0:()=>{S.trAfter=null;render();},trup:()=>{const q=document.getElementById("trq");if(q)scrollTo({top:Math.max(0,scrollY+q.getBoundingClientRect().top-(parseFloat(getComputedStyle(document.body).paddingTop)||101)-8),behavior:"smooth"});},trto:v=>{S.trTo=v;S.trA=S.trB=null;render();requestAnimationFrame(()=>{const el=document.getElementById("tr-liste");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
   when:(v,el)=>{setFaire(v);if(el&&el.dataset.z){S.where=el.dataset.z;sset("cf-where",el.dataset.z);}if(FAIRE.includes(curView()))render();},
@@ -2103,7 +2108,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={trA:v=>{if(!v)return;const a=S.trA;S.trA=v;if(v===S.trB)S.trB=a&&a!==v?a:([ORIG,...TRDEST].find(x=>x!==v));},trB:v=>{if(v&&v!==S.trA)S.trB=v;},trto:v=>{if(TRDEST.includes(v))S.trTo=v;},trday:v=>{if(v)S.trDay=v;},trafter:v=>{const m=/^(\d{1,2}):(\d{2})/.exec(v||"");S.trAfter=m?m[1].padStart(2,"0")+"h"+m[2]:null;},imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)setFaire("jour",v);},agday:v=>{if(!v)return;setFaire("jour",v);render();},soirday:v=>{if(!v)return;setFaire("jour",v);render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},awhere:v=>{S.aWhere=v;sset("pp-awhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
+const CHG={trA:v=>{if(!v)return;ppOnce("usage-trajet");const a=S.trA;S.trA=v;if(v===S.trB)S.trB=a&&a!==v?a:([ORIG,...TRDEST].find(x=>x!==v));},trB:v=>{if(v&&v!==S.trA)S.trB=v;},trto:v=>{if(TRDEST.includes(v))S.trTo=v;},trday:v=>{if(v)S.trDay=v;},trafter:v=>{const m=/^(\d{1,2}):(\d{2})/.exec(v||"");S.trAfter=m?m[1].padStart(2,"0")+"h"+m[2]:null;},imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)setFaire("jour",v);},agday:v=>{if(!v)return;setFaire("jour",v);render();},soirday:v=>{if(!v)return;setFaire("jour",v);render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},awhere:v=>{S.aWhere=v;sset("pp-awhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.tideDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});
@@ -2123,24 +2128,53 @@ const TITLES={immobilier:"Immobilier",soirees:"Soirées",activites:"Activités",
    dernière visite comptée. Seulement sur lepetitpref.fr ; lepetitpref.fr/?moi=1 retire les appareils de l'éditeur (?moi=0 les remet). */
 const PPC="https://compteur.square-brook-9d65.workers.dev/hit?n=1&i=0&k=";
 const ppJour=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"});
-const ppOn=(()=>{try{const m=/[?&]moi=([01])/.exec(location.search);if(m){if(m[1]==="1")localStorage.setItem("pp-editeur","1");else localStorage.removeItem("pp-editeur");}
+let ppOn=(()=>{try{const m=/[?&]moi=([01])/.exec(location.search);if(m){if(m[1]==="1")localStorage.setItem("pp-editeur","1");else localStorage.removeItem("pp-editeur");}
   return /(^|\.)lepetitpref\.fr$/.test(location.hostname)&&localStorage.getItem("pp-editeur")!=="1"&&!!window.fetch&&!navigator.webdriver&&!/bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|whatsapp/i.test(navigator.userAgent||"");}catch(e){return false;}})();
 function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k),{method:"POST",cache:"no-store",keepalive:true}).catch(()=>{});}catch(e){}}
 const ppVu={};
+/* « Ne pas compter mes visites » (À propos) : réglé pour ce navigateur ou cette app seulement (l'app installée a sa propre mémoire) */
+const ppMoi=()=>{try{return localStorage.getItem("pp-editeur")==="1";}catch(e){return false;}};
+const ppMoiTxt=()=>ppMoi()?`<b>Vos visites ne sont pas comptées</b> sur cet appareil${STANDALONE()?" (dans l'app)":" (dans ce navigateur)"}. <button type="button" class="lnk" data-act="moi">Les compter à nouveau</button>`:`<button type="button" class="lnk" data-act="moi">Ne pas compter mes visites sur cet appareil</button> (à refaire dans chaque navigateur et dans l'app installée).`;
 /* type d'appareil (totaux seulement) : iphone, android, tablette, ordi */
 const ppType=()=>{const u=navigator.userAgent||"";if(/iPad/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1))return"tablette";if(/iPhone|iPod/.test(u))return"iphone";if(/Android/.test(u))return /Mobile/.test(u)?"android":"tablette";return"ordi";};
+/* semaine ISO (« 2026-s47 ») et mois (« 2026-11 ») : pour compter chaque appareil une seule fois par semaine et par mois */
+const ppSem=j=>{const d=new Date(j+"T12:00:00Z");d.setUTCDate(d.getUTCDate()-((d.getUTCDay()+6)%7)+3);const y=d.getUTCFullYear();return y+"-s"+String(1+Math.floor((d-Date.UTC(y,0,1))/6048e5)).padStart(2,"0");};
+/* un total à date et le même sans date (cumul depuis le début) */
+const ppHit2=k=>{const j=ppJour();ppHit(k+"-"+j);ppHit(k);};
+/* une seule fois par chargement de page */
+const ppUne={};const ppOnce=k=>{if(ppUne[k])return;ppUne[k]=1;ppHit2(k);};
+/* d'où vient-on : catégorie seulement, jamais l'adresse */
+const ppSource=()=>{if(STANDALONE())return"app";const r=document.referrer||"";let h="";try{h=new URL(r).hostname;}catch(e){}
+  if(!h)return"direct";if(/(^|\.)lepetitpref\.fr$/.test(h))return"interne";if(/google\.|bing\.|qwant\.|duckduckgo\.|ecosia\.|yahoo\.|startpage\.|brave\.com|lilo\.|search\./.test(h))return"moteur";
+  if(/facebook\.|fb\.|instagram\.|t\.co$|twitter\.|x\.com|linkedin\.|lnkd\.|threads\.|bsky\.|whatsapp\.|messenger\.|snapchat\.|tiktok\.|pinterest\./.test(h))return"reseau";return"site";};
 function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vue-"+v+"-"+j);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
   if(ppVu._jour)return;ppVu._jour=1;
-  try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour");
-    if(!prem){ppHit("appareils");ppHit("appareils-nouveaux-"+j);}
-    if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(STANDALONE())ppHit("app-"+j);ppHit("profil-"+(GR.habitant?"habitant":gActive()?"visite":"aucun")+"-"+j);}
+  try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour"),app=STANDALONE(),sem=ppSem(j),mois=j.slice(0,7);
+    /* chargement : dénominateur des durées et des rubriques ; page d'entrée ; source */
+    ppHit2("chargements");ppHit("entree-"+v+"-"+j);const src=ppVu._via||ppSource();ppHit("source-"+src+"-"+j);ppHit("source-"+src);
+    /* nouvel appareil ; sur iPhone, la 1re ouverture de l'app installée a sa propre mémoire : comptée à part (= installation), pas comme nouvel appareil */
+    if(!prem){if(app&&IS_IOS){ppHit2("app-premiere");}else{ppHit("appareils");ppHit("appareils-nouveaux-"+j);ppHit("source-nouveau-"+src+"-"+j);}}
+    if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(app)ppHit("app-"+j);if(LANG==="en")ppHit("langue-en-"+j);
+      /* retour : écart avec la visite précédente de cet appareil (Safari efface cette mémoire après ~7 jours sans visite) */
+      if(der){const g=Math.round((new Date(j)-new Date(der))/864e5);if(g>0)ppHit("retour-"+(g===1?"1":g<=7?"2-7":g<=30?"8-30":"31p")+"-"+j);}}
+    /* appareils différents par semaine et par mois ; cohortes : semaine de la 1re visite → semaine actuelle */
+    if(localStorage.getItem("pp-sem")!==sem){localStorage.setItem("pp-sem",sem);ppHit("appareils-sem-"+sem);ppHit("cohorte-"+ppSem(prem||j)+"-"+sem);}
+    if(localStorage.getItem("pp-mois")!==mois){localStorage.setItem("pp-mois",mois);ppHit("appareils-mois-"+mois);}
     localStorage.setItem("pp-appareil",prem||j);localStorage.setItem("pp-appareil-jour",j);}catch(e){}
-  let t=0,d=document.visibilityState==="visible"?Date.now():0;const faits={};
+  let t=0,d=document.visibilityState==="visible"?Date.now():0;const faits={};let fin=false;
+  const quitte=()=>{if(fin)return;fin=true;const n=Object.keys(ppVu).filter(k=>k[0]!=="_").length;ppHit("rubriques-"+(n<=1?"1":n===2?"2":n<=4?"3-4":"5p")+"-"+j);};
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){d=Date.now();return;}if(d){t+=Date.now()-d;d=0;}
-    [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});});}
-document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa"))ppHit("partage-"+ppJour());},true);
+    [30,60,180,600].forEach(n=>{if(t>=n*1e3&&!faits[n]){faits[n]=1;ppHit("visite-"+n+"s-"+j);}});quitte();});
+  window.addEventListener("pagehide",quitte);}
+/* actions utiles : appeler, itinéraire, site d'un lieu (et la rubrique où l'action a eu lieu) */
+document.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a)return;const h=a.getAttribute("href")||"";
+  const k=/^tel:/.test(h)?"appeler":/^sms:/.test(h)?"sms":/google\.[a-z.]+\/maps|maps\.apple\.com|^geo:/.test(h)?"itineraire":(/^https?:/.test(h)&&!/lepetitpref\.fr/.test(h)&&a.closest("#main .row-links,#main .pop,#main details"))?"site":"";
+  if(k){ppHit2("act-"+k);ppHit("actv-"+curView()+"-"+ppJour());}},true);
+/* erreurs de la page (une fois par chargement) */
+window.addEventListener("error",()=>ppOnce("erreur-js"));
+document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")){ppHit("partage-"+ppJour());ppHit("partage");ppHit("actv-"+curView()+"-"+ppJour());}},true);
 /* arrivée par un lien partagé depuis le site (?via=partage) : un total par jour, puis le marqueur est retiré de l'adresse */
-try{const u=new URL(location.href);if(u.searchParams.get("via")==="partage"){ppHit("arrivee-partage-"+ppJour());u.searchParams.delete("via");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}}catch(e){}
+try{const u=new URL(location.href),via=u.searchParams.get("via")||"";if(via==="partage"||/^(qr|affiche|fb|insta|flyer|mail)(-[a-z0-9]{1,20})?$/.test(via)){if(via==="partage"){ppHit("arrivee-partage-"+ppJour());ppVu._via="partage";}else{ppHit("arrivee-"+via+"-"+ppJour());ppHit("arrivee-"+via);ppVu._via="campagne";}u.searchParams.delete("via");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}}catch(e){}
 document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
 function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView();
   /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */
@@ -2212,7 +2246,7 @@ window.addEventListener("hashchange",()=>{hashAlias();const v=curView();
   else{go();const w=$("#main .view");if(w){w.classList.add("enter");setTimeout(()=>w.classList.remove("enter"),260);}}});
 render();
 (async()=>{
-  const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();});
+  const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();}).catch(e=>{if(navigator.onLine!==false)ppOnce("erreur-donnees");throw e;});
   const names=["events","cinema","assos","transports"];
   get("bandes-annonces").then(v=>{S.ba=v&&typeof v==="object"?v:{};if(curView()==="cine")render();}).catch(()=>{});
   get("mer").then(v=>{S.mer=v;if(["mer","spots","naviguer"].includes(curView()))render();}).catch(()=>{});
