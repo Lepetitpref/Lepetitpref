@@ -8,6 +8,7 @@
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
+@J #h : Justin le juste
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
 @J #h#-#h (CE# to CM#, # places), school playground and multi-sports hall, since # Sept #; price based on family income (€# to €#)
 @J #h-#h# at the Raymond Devos library in Les Moutiers
@@ -27,7 +28,6 @@ All year round at the plateau de la Chapelle; in summer, friendly doubles compet
 Aléop coach #
 Aléop coach (Loire-Atlantique): single ticket €#.# (valid # h, + # h Naolib/Ycéo transfer); reduced fare €#.# (children #-#, large families, disability card…); book of #: €#; free under #. Buy: WOP M-Ticket app or from the driver (exact change).
 Aléop information:
-Animation, Family · ages #+, Mois des Tout-Petits
 Association of parents at the Préfailles school, very active in organising family events.
 Association that organises the Jazz à Préf concerts at the Espace culturel.
 At night, on Sundays and public holidays: call # (Résogardes) for the nearest duty pharmacy
@@ -60,6 +60,7 @@ Département sports activities in Préfailles, #-#.
 Ensuring that all doctors in the Pays de Retz take part in the organisation of healthcare
 Environmental education association of the Pays de Retz (based at Le Pas Renaud, Le Clion-sur-Mer), nature outings open to the public, # outings brochure on its website.
 FFT tennis club of La Plaine and Préfailles.
+Foil: Baie de Bourgneuf
 Football club of Préfailles, La Plaine and Saint-Michel.
 From Préfailles
 Fruit-growing heritage of the Pays de Retz
@@ -75,6 +76,7 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
+L'Ermitage and Les Rochelets: offshore wind too strong (# kn, #h-#h)
 L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
@@ -142,6 +144,7 @@ Préfailles → Pornic
 Préfailles → Saint-Nazaire
 Préfailles' long-standing club, open to holidaymakers through short memberships (week from €# adult, €# child).
 Préfailles, Place de la Gare →
+Pré‑Vincent
 Pétanque all year round, competitions
 Pétanque club affiliated to UFOLEP.
 Repair cafés and green initiatives
@@ -160,6 +163,7 @@ Saint-Brevin · Les Rochelets
 Screenings on @J # @M, in Préfailles and at nearby cinemas.
 Screenings tomorrow, in Préfailles and at nearby cinemas.
 See the other # · Crêperies
+See the other one · Crêperies
 Sept-@M: Mon #h#-#h, Wed and Sat #h#-#h and #h#-#h#; @M-@M: @J to @J #h#-#h + Sat #h#-#h#; in summer, « Raconte-moi une histoire » (ages #-#) on Thursdays at #h, free, no registration (# programme); membership €# per family
 Showcasing a typical Pays de Retz site with a range of activities
 Showcasing the architectural and historic heritage of the château de Pornic, listed on the Inventaire Supplémentaire des Monuments Historiques, by hosting a performing arts festival in summer and, all year round, organising cultural events in Pornic and the surrounding area: theatre, music, …; organising, producing and presenting performing arts events…
@@ -170,6 +174,8 @@ Supporting women in the Pays de Retz undergoing treatment for breast cancer, off
 TER Aléop Nantes – Sainte-Pazanne – Pornic
 TER Aléop line # Nantes – Saint-Nazaire – Le Croisic
 TER fare (not taken from an official source); from # Jan #, Aléop Multi coach + train pass €#/day for # to # people
+Talks and courses in every field of knowledge (Pornic branch of the Université permanente de Nantes)
+Talks on Wednesdays at #h (about one a month, @M to @M) at the Espace culturel du Val Saint-Martin; courses on Wednesdays from #h to #h at the Lycée du Pays de Retz. Membership €# (talks free), €# per talk without membership.
 Terminus in Préfailles, Place de la Gare. In Pornic, stops at Terres Jarries, Le Sandier, Théâtre St-Gilles (not Ste-Marie nor the station). Connections with line # or the TER train in Pornic. Public holidays: @J timetable (# @M: no service, according to the # timetable).
 This icon appears on your home screen. It opens Le Petit Préf full screen, straight onto your stay.
 Théâtre St-Gilles
@@ -188,7 +194,6 @@ Wind, swell and water: Open-Meteo forecasts (Météo-France and European models)
 Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
-next: today #h–#h · Préfailles
 or VHF channel # (CROSS Étel)
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).
