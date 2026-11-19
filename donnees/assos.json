@@ -3830,12 +3830,12 @@
   "id": "universite-permanente-pornic",
   "name": "Université Permanente",
   "town": "Pornic",
-  "what": "Actions éducatives et culturelles, cours informatique",
+  "what": "Conférences et cours dans tous les domaines de la connaissance (antenne de Pornic de l'Université permanente de Nantes)",
   "desc": "",
-  "forWho": "",
-  "regular": "",
-  "contact": "univ-perm-pornic@univ-nantes.fr",
-  "url": "https://www.pornic.fr/fiche-annuaire/universite-permanente/",
+  "forWho": "Adultes, ouvert à tous",
+  "regular": "Conférences le mercredi à 15h (environ une par mois, d'octobre à mai) à l'Espace culturel du Val Saint-Martin ; cours le mercredi de 14h à 16h au lycée du Pays de Retz. Adhésion 25 € (conférences gratuites), 8 € la conférence sans adhésion.",
+  "contact": "up.pornic@univ-nantes.fr",
+  "url": "https://uppornic.univ-nantes.fr/",
   "th": "culture"
  },
  {

@@ -48,6 +48,22 @@
   "end": "2026-11-30"
  },
  {
+  "id": "2026-10-15-expo-malherbe-bernerie",
+  "title": "Exposition « Sur l'Estran » : peintures de Bernard Malherbe",
+  "date": "2026-10-15",
+  "end": "2026-11-30",
+  "time": "",
+  "place": "Bibliothèque Olympe de Gouges, 3 chaussée du Pays de Retz",
+  "town": "La Bernerie-en-Retz",
+  "type": "expo",
+  "category": "Exposition peinture",
+  "org": "Bibliothèque Olympe de Gouges",
+  "desc": "Toiles acryliques d'inspiration marine d'un peintre autodidacte installé à Pornic, aux heures d'ouverture de la bibliothèque ; renseignements au 02 44 06 25 89.",
+  "url": "https://mairie-labernerie.fr/evenement/exposition-bernard-malherbe/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-10-15-expo-sur-l-estran-bernerie",
   "category": "Exposition",
   "date": "2026-10-15",
@@ -321,53 +337,6 @@
   "url": "https://www.pornic.com/exposition-de-peintures-qui-de-nous-deux-inspire-l-autre-pornic.html",
   "free": true,
   "kids": true
- },
- {
-  "id": "2026-11-16-atelier-motricite-st-pere",
-  "title": "Atelier motricité (0-3 ans)",
-  "date": "2026-11-16",
-  "time": "10h30",
-  "place": "Dojo, 18 rue du Grand Fay",
-  "town": "Saint-Père-en-Retz",
-  "type": "atelier",
-  "category": "Mois des tout-petits",
-  "org": "Relais petite enfance",
-  "desc": "Atelier motricité d'1h pour les 0-3 ans, animé par le Relais petite enfance dans le cadre du Mois des tout-petits ; gratuit sur réservation auprès de la médiathèque.",
-  "url": "https://www.saint-brevin.com/atelier-motricite.html",
-  "free": true,
-  "kids": true,
-  "ageMin": 0,
-  "ageMax": 3
- },
- {
-  "id": "2026-11-16-cyclistes-brillez-ste-pazanne",
-  "title": "Cyclistes, brillez ! (gare de Sainte-Pazanne)",
-  "date": "2026-11-16",
-  "time": "17h–19h",
-  "place": "Parking de la gare, devant le local à vélos",
-  "town": "Sainte-Pazanne",
-  "type": "vielocale",
-  "category": "Sécurité à vélo",
-  "org": "Pornic agglo Pays de Retz",
-  "desc": "Stand de l'agglo sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux Vélos en Retz, équipement offert contre l'engagement de rouler visible ; gratuit, sans réservation.",
-  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez/",
-  "free": true,
-  "kids": true
- },
- {
-  "id": "2026-11-16-conseil-municipal-ste-pazanne",
-  "title": "Conseil municipal",
-  "date": "2026-11-16",
-  "time": "20h30",
-  "place": "Mairie, salle du conseil municipal",
-  "town": "Sainte-Pazanne",
-  "type": "vielocale",
-  "category": "Conseil municipal",
-  "org": "Mairie de Sainte-Pazanne",
-  "desc": "Séance publique : décision modificative du budget, encarts publicitaires du bulletin municipal, entre autres.",
-  "url": "https://www.sainte-pazanne.fr/agenda/conseil-municipal-du-16-novembre/",
-  "free": true,
-  "kids": false
  },
  {
   "id": "2026-11-17-expo-abbaye-buzay-bernerie",
@@ -896,6 +865,21 @@
   "url": "https://www.pornic.com/jeux-en-bonne-compagnie-ste-pazanne.html",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2026-11-19-atelier-electricite-repair-cafe-brevin",
+  "title": "Atelier électricité et électronique",
+  "date": "2026-11-19",
+  "time": "18h30",
+  "place": "Le Son'Art, 108 avenue du Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "atelier",
+  "category": "Bricolage",
+  "org": "Repair Café de Saint-Brevin",
+  "desc": "Cours pour débutants ou pour se perfectionner en électricité et en électronique, avec les bénévoles du Repair Café ; sur inscription (repaircafedestbrevin@orange.fr).",
+  "url": "https://www.saint-brevin.com/atelier-electricite-electronique.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-19-repair-cafe-chaumes",
@@ -1588,6 +1572,21 @@
   "town": "Pornic",
   "type": "fete",
   "url": "https://www.pornic.com/marche-de-noel-a-la-residence-saint-gildas-pornic.html"
+ },
+ {
+  "id": "2026-11-21-danses-en-ligne-brevin",
+  "title": "Atelier découverte des danses en ligne",
+  "date": "2026-11-21",
+  "time": "14h30–17h",
+  "place": "Salle des Dunes, 17 avenue Jules Verne",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "atelier",
+  "category": "Danse",
+  "org": "Eh !! Si on Dans'Retz",
+  "desc": "Après-midi pour découvrir ou partager la danse en ligne, ouvert à tous, débutants comme habitués ; entrée 8 €, réservation conseillée (ehsiondansretz@gmail.com).",
+  "url": "https://www.saint-brevin.com/atelier-decouverte-danses-en-ligne.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-21-balade-anes-sentier-douaniers-pornic",
@@ -2284,6 +2283,21 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://en.pornic.com/guided-tour-in-the-intimacy-of-the-castle-of-pornic-pornic.html"
+ },
+ {
+  "id": "2026-11-24-atelier-montage-video-brevin",
+  "title": "Atelier montage vidéo",
+  "date": "2026-11-24",
+  "time": "18h30",
+  "place": "Espace Boby Lapointe, 108 avenue du Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "atelier",
+  "category": "Multimédia",
+  "org": "ABC Vidéo Photo",
+  "desc": "Atelier tout public pour apprendre à monter ses vidéos de souvenirs ; renseignements : abcvideophoto@gmail.com.",
+  "url": "https://www.saint-brevin.com/atelier-montage-video.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-11-24-mon-restau-responsable-corsept",
@@ -3376,21 +3390,6 @@
   "url": "https://www.laplainesurmer.fr/agenda/marche-de-noel/"
  },
  {
-  "id": "2026-11-28-cafe-debat-eau-brevin",
-  "category": "Café-débat",
-  "date": "2026-11-28",
-  "desc": "Débat citoyen gratuit et ouvert à tous dans le cadre du Festisol; prochain café-débat le 16 janvier sur la laïcité. Infos 02 40 64 49 37.",
-  "free": true,
-  "kids": false,
-  "org": "Amicale laïque de Saint-Brevin",
-  "place": "Centre d'hébergement et de loisirs",
-  "time": "10h30",
-  "title": "Café-débat : l'eau, un bien commun",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "vielocale",
-  "url": "https://www.jds.fr/saint-nazaire/manifestations/conferences/cafe-debat-1754382_A"
- },
- {
   "id": "2026-11-28-reves-histoires-pornic",
   "ageMax": 3,
   "ageMin": 0,
@@ -3466,6 +3465,21 @@
   "desc": "Stage d'une journée de modelage ; 60 €.",
   "url": "https://www.sainte-pazanne.fr/agenda/stage-de-modelage-sculpture/",
   "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-cafe-debat-eau-brevin",
+  "title": "Festisol : journée autour de l'eau",
+  "date": "2026-11-28",
+  "time": "10h–17h30",
+  "place": "Centre d'hébergement et de loisirs Vincent Purkart & Jacques Secrétin, 14 avenue de la Guerche",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "vielocale",
+  "category": "Débats",
+  "org": "Collectif brévinois des Attentifs et Solidaires ; Amicale laïque de Saint-Brevin",
+  "desc": "Journée du Festival des solidarités : café citoyen de l'Amicale laïque sur l'accaparement de l'eau à 10h, repas partagé à 12h15, intervention des résidents du CADA à 14h, documentaire « Y aura-t-il de l'eau cet été » suivi d'un débat avec la réalisatrice à 14h30, puis l'hydrologie régénérative à 16h30.",
+  "url": "https://www.saint-brevin.fr/agenda/festisol-2026-animations-au-chl-purkart-secretin/",
+  "free": true,
   "kids": false
  },
  {
@@ -4671,6 +4685,21 @@
   "url": "https://en.pornic.com/cluedo-geant-au-domaine-de-la-gressiere-la-bernerie-en-retz.html"
  },
  {
+  "id": "2026-12-04-tombola-casino-pornic",
+  "title": "Tombola au Casino de Pornic",
+  "date": "2026-12-04",
+  "time": "19h30",
+  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "jeux",
+  "category": "Tombola",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Une des cinq grandes tombolas du casino (13 et 27 novembre, 4 décembre, 15 et 22 janvier), à partir de 19h30, avec de nombreux cadeaux à gagner.",
+  "url": "https://casino-pornic.partouche.com/agenda/13680/des-tombolas-en-folie",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-04-spectacle-telethon-prefailles",
   "category": "Spectacle solidaire",
   "date": "2026-12-04",
@@ -4824,6 +4853,21 @@
   "url": "https://www.laplainesurmer.fr/wp-content/uploads/2026/11/Echo-plainais-n%C2%B0187.pdf"
  },
  {
+  "id": "2026-12-05-telethon-bernerie",
+  "title": "Téléthon 2026 à La Bernerie et aux Moutiers",
+  "date": "2026-12-05",
+  "time": "11h–14h",
+  "place": "Sous les Halles",
+  "town": "La Bernerie-en-Retz",
+  "type": "fete",
+  "category": "Téléthon",
+  "org": "Mairie de La Bernerie-en-Retz",
+  "desc": "Concerts de Whynot (11h-12h) et La Soffe (13h-14h) sous les Halles, vente d'huîtres (10h30-13h30) et de crêpes, marche entre La Bernerie et Les Moutiers ; la journée se prolonge aux Moutiers (initiation country à 18h, soirée à 20h30 salle Jean Varnier) ; mairie 02 40 82 70 56.",
+  "url": "https://www.pornic.com/telethon-2026-la-bernerie-en-retz.html",
+  "free": false,
+  "kids": true
+ },
+ {
   "id": "2026-12-05-coupe-noel-petanque-ste-pazanne",
   "title": "Coupe de Noël de pétanque",
   "date": "2026-12-05",
@@ -4837,6 +4881,21 @@
   "url": "https://www.sainte-pazanne.fr/agenda/coupe-de-noel-de-petanque/",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-05-marche-telethon-st-michel",
+  "title": "Marchons ensemble pour le Téléthon",
+  "date": "2026-12-05",
+  "time": "13h30–15h30",
+  "place": "Square de Jade, avenue de la Convention",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "sport",
+  "category": "Marche solidaire",
+  "org": "Seniors sportifs de Saint-Michel-Chef-Chef",
+  "desc": "Marche intergénérationnelle de 3, 6 ou 9 km au profit du Téléthon, inscriptions et départs libres de 13h30 à 15h30, animation musicale, vente de gâteaux et boissons dès 10h30 ; 6 € adulte, 2 € de 7 à 12 ans ; infos 02 40 27 97 06.",
+  "url": "https://www.pornic.com/marchons-ensemble-pour-le-telethon-st-michel-chef-chef.html",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-12-05-atelier-buche-instant-patisserie-brevin",
@@ -5231,7 +5290,7 @@
  },
  {
   "id": "2026-12-06-marche-artisanal-noel-st-viaud",
-  "title": "Marché artisanal de Noël",
+  "title": "Marché de Noël",
   "date": "2026-12-06",
   "time": "10h–18h",
   "place": "Salle du Lac, rue du Parc des Sports",
@@ -5239,8 +5298,8 @@
   "type": "fete",
   "category": "Marché de Noël",
   "org": "Comité des fêtes de Saint-Viaud",
-  "desc": "Créations artisanales de 10h à 18h ; l'après-midi, arrivée du Père Noël, balades en calèche, maquillage et gaufres ; entrée gratuite.",
-  "url": "https://brocabrac.fr/44/saint-viaud/1408291-marche-artisanal-de-noel",
+  "desc": "Artisans créateurs, animations pour enfants, gaufres et vin chaud ; exercice incendie des pompiers devant la salle de 10h à 11h puis vin d'honneur offert, arrivée du Père Noël à 15h ; entrée gratuite.",
+  "url": "https://www.saint-viaud.fr/actu_article_marche-de-noel-organise-par-le-comite-des-fetes_1672.html",
   "free": true,
   "kids": true
  },
@@ -6646,15 +6705,15 @@
  },
  {
   "id": "2026-12-18-defile-tracteurs-ste-pazanne",
-  "title": "Défilé de tracteurs",
+  "title": "Défilé de tracteurs illuminés",
   "date": "2026-12-18",
   "time": "",
   "place": "Salle Escale de Retz, allée de l'Escale",
   "town": "Sainte-Pazanne",
   "type": "fete",
   "category": "Noël",
-  "org": "Mairie de Sainte-Pazanne",
-  "desc": "Défilé des tracteurs illuminés au départ de la salle Escale de Retz ; gratuit.",
+  "org": "Jeunes Agriculteurs du Pays de Retz",
+  "desc": "5e édition du défilé de tracteurs décorés et illuminés, suivi d'un feu d'artifice, avec tartiflette, crêpes, buvette et soirée dansante (DJ Bosca) ; gratuit.",
   "url": "https://www.sainte-pazanne.fr/agenda/defile-de-tracteurs/",
   "free": true,
   "kids": true
@@ -7166,16 +7225,19 @@
  },
  {
   "id": "2026-12-20-bossu-notre-dame-brevin",
-  "category": "Comédie musicale",
-  "date": "2026-12-20",
-  "desc": "Spectacle familial.",
-  "kids": true,
-  "place": "",
-  "time": "17h",
   "title": "Spectacle : Le Bossu de Notre-Dame",
+  "date": "2026-12-20",
+  "time": "17h",
+  "place": "Salle Étoile de Jade, avenue Georges Brassens",
   "town": "Saint-Brevin-les-Pins",
   "type": "spectacle",
-  "url": "https://www.fest.fr/spectacle-le-bossu-de-notre-dame-2665101.html"
+  "category": "Théâtre musical",
+  "org": "Ville de Saint-Brevin-les-Pins",
+  "desc": "Version drôle et moderne du roman de Victor Hugo par le Théâtre 100 noms, mêlant théâtre, commedia dell'arte et comédie musicale (1h20, dès 5 ans) ; gratuit sur réservation, annoncé complet.",
+  "url": "https://www.saint-brevin.com/spectacle-le-bossu-de-notre-dame.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 5
  },
  {
   "id": "2026-12-20-voitures-retro-prefailles",
@@ -8083,6 +8145,21 @@
   "kids": false
  },
  {
+  "id": "2027-01-15-tombola-casino-pornic",
+  "title": "Tombola au Casino de Pornic",
+  "date": "2027-01-15",
+  "time": "19h30",
+  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "jeux",
+  "category": "Tombola",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Une des cinq grandes tombolas du casino (13 et 27 novembre, 4 décembre, 15 et 22 janvier), à partir de 19h30, avec de nombreux cadeaux à gagner.",
+  "url": "https://casino-pornic.partouche.com/agenda/13680/des-tombolas-en-folie",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2027-01-15-mukta-pornic",
   "category": "Concert",
   "date": "2027-01-15",
@@ -8277,6 +8354,21 @@
   "town": "Pornic",
   "type": "fete",
   "url": "https://en.pornic.com/apres-midi-dansant-a-pornic-pornic.html"
+ },
+ {
+  "id": "2027-01-22-tombola-finale-casino-pornic",
+  "title": "Tombola au Casino de Pornic (gros lot final)",
+  "date": "2027-01-22",
+  "time": "19h30",
+  "place": "Casino Partouche, ZAC de la Ria, 30 rue du Canal",
+  "town": "Pornic",
+  "type": "jeux",
+  "category": "Tombola",
+  "org": "Casino Partouche de Pornic",
+  "desc": "Une des cinq grandes tombolas du casino (13 et 27 novembre, 4 décembre, 15 et 22 janvier), à partir de 19h30, avec de nombreux cadeaux à gagner ; gros lot final.",
+  "url": "https://casino-pornic.partouche.com/agenda/13680/des-tombolas-en-folie",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2027-01-22-retz-plique-st-pere",
