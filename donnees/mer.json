@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-18T20:42:45.912Z",
+ "maj": "2026-11-19T02:39:58.209Z",
  "bulletin": {
   "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" soir",
   "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du mercredi 18 novembre 2026 à 18H15 légales.",
@@ -50,11 +50,11 @@
   ],
   "prochain": "Prochain bulletin le jeudi 19 novembre 2026, vers 06H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-18T20:42:54.052Z"
+  "lu": "2026-11-19T02:40:05.779Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-18 21:00",
+  "heure": "2026-11-19 03:00",
   "h13": null,
   "hmax": null,
   "t13": null,
