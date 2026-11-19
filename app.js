@@ -2130,7 +2130,16 @@ const PPC="https://compteur.square-brook-9d65.workers.dev/hit?n=1&i=0&k=";
 const ppJour=()=>new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"});
 const ppOn=(()=>{try{const m=/[?&]moi=([01])/.exec(location.search);if(m){if(m[1]==="1")localStorage.setItem("pp-editeur","1");else localStorage.removeItem("pp-editeur");}
   return /(^|\.)lepetitpref\.fr$/.test(location.hostname)&&localStorage.getItem("pp-editeur")!=="1"&&!!window.fetch&&!navigator.webdriver&&!/bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|whatsapp/i.test(navigator.userAgent||"");}catch(e){return false;}})();
-function ppHit(k){if(!ppOn)return;try{fetch(PPC+encodeURIComponent("quiz-pp-"+k),{method:"POST",cache:"no-store",keepalive:true}).catch(()=>{});}catch(e){}}
+function ppEnvoi(k){try{fetch(PPC+encodeURIComponent("quiz-pp-"+k),{method:"POST",cache:"no-store",keepalive:true}).catch(()=>{});}catch(e){}}
+/* robots : beaucoup de programmes chargent la page comme un navigateur ordinaire puis repartent. Rien n'est compté tant qu'un geste
+   humain n'a pas eu lieu (toucher, clic, molette, touche) ou que la page n'est pas restée 10 s à l'écran ; avant, les totaux
+   attendent dans PPQ (perdus si la page se ferme). Seul « brut » (tous les chargements, robots compris) part tout de suite. */
+const PPQ=[],PPV=[];let ppHumain=false;
+function ppHit(k){if(!ppOn)return;if(ppHumain)ppEnvoi(k);else PPQ.push(k);}
+const ppConfirme=()=>{if(ppHumain||!ppOn)return;ppHumain=true;PPQ.splice(0).forEach(ppEnvoi);PPV.splice(0).forEach(v=>ppVue(v));};
+if(ppOn){try{const j0=new Date().toLocaleDateString("sv-SE",{timeZone:"Europe/Paris"});ppEnvoi("brut-"+j0);ppEnvoi("brut");}catch(e){}
+  ["pointerdown","touchstart","keydown","wheel"].forEach(ev=>window.addEventListener(ev,ppConfirme,{capture:true,passive:true,once:true}));
+  let vu=0,t0=document.visibilityState==="visible"?Date.now():0;const tic=()=>{if(ppHumain)return;if(document.visibilityState==="visible"){if(!t0)t0=Date.now();if(vu+Date.now()-t0>=1e4)return ppConfirme();}else if(t0){vu+=Date.now()-t0;t0=0;}setTimeout(tic,1000);};setTimeout(tic,1000);}
 const ppVu={};
 /* type d'appareil (totaux seulement) : iphone, android, tablette, ordi */
 const ppType=()=>{const u=navigator.userAgent||"";if(/iPad/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1))return"tablette";if(/iPhone|iPod/.test(u))return"iphone";if(/Android/.test(u))return /Mobile/.test(u)?"android":"tablette";return"ordi";};
@@ -2154,7 +2163,7 @@ document.addEventListener("visibilitychange",()=>{if(!ppOn)return;
   if(PPT.d){PPT.t+=Date.now()-PPT.d;PPT.d=0;}
   [30,60,180,600].forEach(n=>{if(PPT.t>=n*1e3&&!PPT.faits[n]){PPT.faits[n]=1;ppHit("visite-"+n+"s-"+PPT.j);}});ppQuitte();});
 window.addEventListener("pagehide",ppQuitte);
-function ppVue(v){if(!ppOn)return;const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vue-"+v+"-"+j);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
+function ppVue(v){if(!ppOn)return;if(!ppHumain){if(!PPV.includes(v))PPV.push(v);return;}const j=ppJour();if(!ppVu[v]){ppVu[v]=1;ppHit("vue-"+v);ppHit("vue-"+v+"-"+j);ppHit("vues-"+j);if(v==="installer")ppHit("page-installer-"+ppType()+"-"+j);}
   if(ppVu._jour)return;ppVu._jour=1;Object.assign(PPT,{j,t:0,d:document.visibilityState==="visible"?Date.now():0,faits:{},fin:false});
   try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour"),app=STANDALONE(),sem=ppSem(j),mois=j.slice(0,7),appPrem=!prem&&app&&IS_IOS;
     /* chargement : dénominateur des durées et des rubriques ; page d'entrée ; source (un retour dans l'app ou l'onglet resté ouvert : « app » ou « direct ») */

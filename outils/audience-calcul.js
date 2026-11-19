@@ -13,7 +13,8 @@ var NOMS = { sejour: 'Accueil', agenda: 'Agenda', activites: 'Activités', cine:
 var SRC = ['direct', 'moteur', 'reseau', 'site', 'partage', 'campagne', 'app', 'interne'];
 var CAMP = ['qr', 'affiche', 'fb', 'insta', 'flyer', 'mail']; // ?via= sans suffixe (une affiche précise : ajouter son nom ici, ex. 'qr-port')
 var ACTS = ['appeler', 'sms', 'itineraire', 'site', 'calendrier', 'bande-annonce'];
-var CH = ['appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premiere', 'chargements', 'partage', 'arrivee-partage', 'installation',
+var ROBOTS = '2026-11-20'; // 1er jour entier du filtre des robots (comptage seulement après un geste ou 10 s à l'écran ; « brut » = tous les chargements)
+var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premiere', 'chargements', 'partage', 'arrivee-partage', 'installation',
   'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s', 'rubriques-1', 'rubriques-2', 'rubriques-3-4', 'rubriques-5p',
   'retour-1', 'retour-2-7', 'retour-8-30', 'retour-31p', 'recherche', 'recherche-vide', 'langue-en', 'erreur-js', 'erreur-donnees',
   'choix-habitant', 'choix-visite', 'usage-spot', 'usage-trajet', 'usage-immo-adresse', 'usage-carte',
@@ -80,6 +81,7 @@ async function construire(o) {
     avant_ok: B.length === 7 && B[0].jour >= COMPARABLE, nouv_ok: A.length === 7 && A[0].jour >= MESURES2, nouv_avant_ok: B.length === 7 && B[0].jour >= MESURES2, nouv_comparable_le: plus(MESURES2, 14),
     // surdispersion : variance / moyenne des appareils par jour sur les 14 jours (à partir du 15/11) ; > 1 = les jours varient plus que le hasard seul
     phi: (function () { var v = A.concat(B).filter(function (r) { return r.jour >= '2026-11-15'; }).map(function (r) { return r.appareils || 0; }); if (v.length < 4) return 1; var m = v.reduce(function (a, b) { return a + b; }, 0) / v.length; if (!m) return 1; var q = v.reduce(function (a, b) { return a + (b - m) * (b - m); }, 0) / (v.length - 1); return Math.max(1, Math.round(100 * q / m) / 100); })(), rubriques_7j_ok: p7ok, comparable_le: plus(COMPARABLE, 14),
+    robots_depuis: ROBOTS, brut_hier: hier >= ROBOTS ? (jours.find(function (r) { return r.jour === hier; }) || {}).brut || 0 : null, chargements_hier: (jours.find(function (r) { return r.jour === hier; }) || {}).chargements || 0,
     hier: hier, appareils_hier: (jours.find(function (r) { return r.jour === hier; }) || {}).appareils || 0,
     moyenne_3j: Math.round(10 * S(jours.filter(function (r) { return r.jour > plus(hier, -3) && r.jour <= hier; }), 'appareils') / 3) / 10,
     moyenne_hors_lancement_7j: (function () { var L = A.filter(function (r) { return r.jour > '2026-11-11'; }); return L.length ? Math.round(10 * S(L, 'appareils') / L.length) / 10 : null; })(),
