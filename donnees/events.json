@@ -355,98 +355,6 @@
   "url": "https://en.pornic.com/exposition-l-abbaye-notre-dame-de-buzay-une-histoire-cistercienne-en-pays-de-retz-la-bernerie-en-retz.html"
  },
  {
-  "id": "2026-11-17-port-meleu-prefailles",
-  "category": "Concertation",
-  "date": "2026-11-17",
-  "desc": "Atelier de concertation de 10h30 à 12h30 pour les habitants et riverains sur la circulation, le stationnement et la sécurité à Port Meleu avant les travaux; renseignements en mairie au 02 40 21 60 37.",
-  "free": true,
-  "kids": false,
-  "org": "Mairie de Préfailles",
-  "place": "Corniche de Port Meleu (plage, camping)",
-  "time": "10h30",
-  "title": "Port Meleu, parlons-en !",
-  "town": "Préfailles",
-  "type": "vielocale",
-  "url": "https://www.prefailles.fr/agenda/port-meleu-parlons-en/"
- },
- {
-  "id": "2026-11-17-visite-distillerie-168-pornic",
-  "category": "Visite d'entreprise",
-  "date": "2026-11-17",
-  "desc": "Visite commentée d'une heure de la distillerie artisanale (whisky, gin, vodka, pastis…), réservation obligatoire (billets aux offices de tourisme).",
-  "free": false,
-  "kids": false,
-  "org": "Distillerie 168",
-  "place": "Distillerie 168, Les Réautés",
-  "time": "11h",
-  "title": "Visite de la Distillerie 168",
-  "town": "Pornic",
-  "type": "nature",
-  "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
- },
- {
-  "id": "2026-11-17-jeux-sapin-plaine",
-  "category": "Jeux de société",
-  "date": "2026-11-17",
-  "desc": "Tester des jeux de société pour tous âges et trouver des idées cadeaux avec Le Carrousel du Jeu; gratuit. Tél. 02 51 74 81 92.",
-  "free": true,
-  "kids": true,
-  "place": "Médiathèque Joseph Rousse, 1 rue de la Libération",
-  "time": "18h",
-  "title": "Soirée « Quels jeux mettre sous le sapin ? »",
-  "town": "La Plaine-sur-Mer",
-  "type": "jeux",
-  "url": "https://www.fest.fr/quel-jeux-a-mettre-sous-le-sapin-2727906.html"
- },
- {
-  "id": "2026-11-17-vannerie-buissonniere-st-hilaire",
-  "title": "Vannerie buissonnière",
-  "date": "2026-11-17",
-  "time": "18h–19h30",
-  "place": "La Ferme à cultures, La Prise",
-  "town": "Saint-Hilaire-de-Chaléons",
-  "type": "atelier",
-  "category": "Vannerie",
-  "org": "La Ferme à cultures",
-  "desc": "Atelier de décorations d'automne en branches et lianes ; 15 €, réservation obligatoire.",
-  "url": "https://www.pornic.com/vannerie-buissonniere-st-hilaire-de-chaleons.html",
-  "free": false,
-  "kids": false
- },
- {
-  "id": "2026-11-17-pieuvres-brevin",
-  "ageMin": 9,
-  "category": "Théâtre jeune public",
-  "date": "2026-11-17",
-  "desc": "Trois ados coincés dans les vestiaires d'une piscine affrontent leurs peurs, avec dessin et musique (1h15, dès 9 ans); 11 € (réduit 6 €), office de tourisme au 02 40 27 24 32.",
-  "free": false,
-  "kids": true,
-  "org": "Mairie de Saint-Brevin",
-  "place": "Salle Étoile de Jade, avenue Georges Brassens",
-  "time": "20h",
-  "title": "Théâtre : Les Pieuvres",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "spectacle",
-  "url": "https://www.saint-brevin.com/spectacle-les-pieuvres.html"
- },
- {
-  "id": "2026-11-17-atelier-reflexologie-st-pere",
-  "title": "Atelier réflexologie parents-bébés",
-  "date": "2026-11-17",
-  "time": "9h30",
-  "place": "Médiathèque, 2 rue de la Gare",
-  "town": "Saint-Père-en-Retz",
-  "type": "atelier",
-  "category": "Mois des tout-petits",
-  "org": "Médiathèque de Saint-Père-en-Retz",
-  "desc": "Atelier de réflexologie (1h30) animé par Hélène Salmon pour les 0 à 18 mois et leurs parents ; gratuit sur réservation auprès de la médiathèque.",
-  "url": "https://www.saint-brevin.com/atelier-reflexologie.html",
-  "free": true,
-  "kids": true,
-  "ageMin": 0,
-  "ageMax": 1
- },
- {
   "id": "2026-11-18-depistage-podologique-plaine",
   "title": "Dépistage podologique gratuit",
   "date": "2026-11-18",
@@ -2345,6 +2253,21 @@
   "url": "https://en.pornic.com/soiree-poker-pornic.html"
  },
  {
+  "id": "2026-11-24-apero-espagnol-st-viaud",
+  "title": "Soirée apéro en espagnol",
+  "date": "2026-11-24",
+  "time": "20h–22h",
+  "place": "Salle Robert Hébras, rue de la Jeannière (près de la pharmacie)",
+  "town": "Saint-Viaud",
+  "type": "vielocale",
+  "category": "Conversation en langue étrangère",
+  "org": "Comité de jumelage de Saint-Viaud",
+  "desc": "Soirée apéro pour pratiquer l'espagnol en conversation ; gratuit, en auberge espagnole : chacun apporte une boisson ou un plat salé ou sucré à partager.",
+  "url": "https://www.saint-viaud.fr/actu_article_comite-de-jumelage--soiree-apero-avec-conversation-en-espagnol_1667.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-24-lecture-alligators-chaumes",
   "title": "Lecture animée « Alligators et compagnie »",
   "date": "2026-11-24",
@@ -3822,6 +3745,21 @@
   "url": "https://www.pornic.com/atelier-et-cours-de-broderie-les-moutiers-en-retz.html"
  },
  {
+  "id": "2026-11-28-agglo-mobile-moutiers",
+  "title": "L'Agglo Mobile sur le marché",
+  "date": "2026-11-28",
+  "time": "9h–12h",
+  "place": "Place de l'Église Madame (marché)",
+  "town": "Les Moutiers-en-Retz",
+  "type": "vielocale",
+  "category": "Service public",
+  "org": "Pornic agglo Pays de Retz",
+  "desc": "Le kiosque itinérant de l'agglo répond aux questions sur l'eau, les bacs de collecte ou le numérique, sur le marché ; gratuit, renseignements au 02 51 74 07 16.",
+  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/lagglo-mobile-linfo-pres-de-chez-vous/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-11-28-cyclistes-brillez-chaumes",
   "title": "Cyclistes, brillez ! (salle Ellipse)",
   "date": "2026-11-28",
@@ -4625,6 +4563,21 @@
   "kids": false
  },
  {
+  "id": "2026-12-04-telethon-cuisine-bernerie",
+  "title": "Téléthon : cuisinons ensemble et conférence",
+  "date": "2026-12-04",
+  "time": "18h",
+  "place": "La Bernerie-en-Retz",
+  "town": "La Bernerie-en-Retz",
+  "type": "fete",
+  "category": "Téléthon",
+  "org": "Téléthon La Bernerie-en-Retz et Les Moutiers-en-Retz",
+  "desc": "Premier jour du Téléthon des deux communes : cassoulet à emporter, atelier « Cuisinons ensemble » à 18h puis conférence à 20h, sur réservation uniquement (contact sur la page de la mairie).",
+  "url": "https://mairie-labernerie.fr/evenement/telethon/2026-12-04/",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-04-soiree-noel-plaine",
   "category": "Fête de Noël",
   "date": "2026-12-04",
@@ -4652,6 +4605,21 @@
   "desc": "Chants des enfants, visite du Père Noël, stands d'exposants, grande tombola et animations ; tartiflette maison, dégustation d'huîtres et buvette.",
   "url": "https://villeneuvenretz.fr/agenda/event-1667-marche-de-noel-ecole-st-joseph.html",
   "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-04-brevithon-fest-noz-brevin",
+  "title": "Brévi'Thon : fest-noz du Téléthon",
+  "date": "2026-12-04",
+  "time": "18h–22h30",
+  "place": "Salle polyvalente n°2",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Téléthon",
+  "org": "Saint-Brevin Tennis de Table",
+  "desc": "Fest-noz avec Hêrezh et Ac'cordes-Raez (initiation à la danse bretonne possible), lancement officiel du Brévi'Thon à 19h avec l'AFM-Téléthon, galettes-saucisses vendues par le club à 19h30 ; au profit du Téléthon.",
+  "url": "https://www.saint-brevin.fr/agenda/brevithon/",
+  "free": false,
   "kids": true
  },
  {
@@ -4985,6 +4953,21 @@
   "desc": "Créations, idées-cadeaux et décorations de Noël dans une ambiance conviviale.",
   "url": "https://mairie-labernerie.fr/evenement/marche-de-noel-residence-du-soleil/",
   "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-05-brevithon-brevin",
+  "title": "Brévi'Thon : marche et défis pour le Téléthon",
+  "date": "2026-12-05",
+  "time": "14h–19h30",
+  "place": "Salle polyvalente n°2",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Téléthon",
+  "org": "Saint-Brevin Tennis de Table",
+  "desc": "Marche avec Les Marcheurs du Jeudi à 14h au départ de la salle (participation libre), animations et défis de 14h à 18h30 avec Cirqu'en Retz, Les copains de Micka et le club de ping (initiation au ping en réalité virtuelle), tirage de la tombola à 19h, clôture à 19h30 ; au profit du Téléthon.",
+  "url": "https://www.saint-brevin.fr/agenda/brevithon/",
+  "free": false,
   "kids": true
  },
  {
@@ -5700,6 +5683,21 @@
   "kids": true
  },
  {
+  "id": "2026-12-11-reunion-quartier-moutiers",
+  "title": "Réunion de quartier (Villeneuve, Les Tréans, La Noë…)",
+  "date": "2026-12-11",
+  "time": "18h",
+  "place": "Salle Jean Varnier, 31b rue de Prigny",
+  "town": "Les Moutiers-en-Retz",
+  "type": "vielocale",
+  "category": "Réunion publique",
+  "org": "Mairie des Moutiers-en-Retz",
+  "desc": "Échange avec les élus pour les quartiers Villeneuve, Les Tréans, La Noë, La Rairie, Taillemotte et Les Chicanes ; entrée libre.",
+  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/reunion-de-quartier/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-11-concert-bougie-ecofolies-ste-pazanne",
   "title": "Repas et concert à la bougie : Gabriel Saglio",
   "date": "2026-12-11",
@@ -6301,6 +6299,21 @@
   "desc": "Artisans, créations locales, gourmandises et idées cadeaux de 10h à 18h ; entrée libre, restauration et buvette.",
   "url": "https://www.saint-brevin.com/noel-en-retz.html",
   "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-13-telethon-foot-bernerie",
+  "title": "Téléthon : matchs de football",
+  "date": "2026-12-13",
+  "time": "12h et 15h",
+  "place": "La Bernerie-en-Retz – Les Moutiers-en-Retz",
+  "town": "La Bernerie-en-Retz",
+  "type": "sport",
+  "category": "Téléthon",
+  "org": "Téléthon La Bernerie-en-Retz et Les Moutiers-en-Retz",
+  "desc": "Dernier jour du Téléthon des deux communes avec des matchs de football à 12h et à 15h, au profit de la recherche.",
+  "url": "https://mairie-labernerie.fr/evenement/telethon/2026-12-04/",
+  "free": false,
   "kids": true
  },
  {
@@ -7508,6 +7521,22 @@
   "kids": true
  },
  {
+  "id": "2026-12-28-collecte-sapins-ste-pazanne",
+  "title": "Collecte des sapins de Noël",
+  "date": "2026-12-28",
+  "end": "2027-01-17",
+  "time": "",
+  "place": "Parking des Aéroplanes",
+  "town": "Sainte-Pazanne",
+  "type": "vielocale",
+  "category": "Environnement",
+  "org": "Mairie de Sainte-Pazanne",
+  "desc": "Déposez votre sapin naturel au parking des Aéroplanes ; à partir du 20 janvier 2027, le broyat est donné gratuitement pour le paillage ou le compost.",
+  "url": "https://www.sainte-pazanne.fr/agenda/collecte-des-sapins/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-28-magie-rollini-poche-pornic",
   "title": "Magie : « Hasard ou coïncidence ? » de Gilles Rollini",
   "date": "2026-12-28",
@@ -7581,6 +7610,21 @@
   "url": "https://www.pornic.com/atelier-vannerie-fabrication-d-un-panier-a-anse-cuir-ste-pazanne.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-30-cinema-noel-chaumes",
+  "title": "Cinéma de Noël",
+  "date": "2026-12-30",
+  "time": "15h",
+  "place": "Espace culturel Victor-Lemoine",
+  "town": "Chaumes-en-Retz",
+  "type": "spectacle",
+  "category": "Cinéma",
+  "org": "Mairie de Chaumes-en-Retz",
+  "desc": "Séance de cinéma offerte par la municipalité aux familles de la commune pendant les vacances de Noël ; gratuit.",
+  "url": "https://www.chaumesenretz.fr/agenda/cinema-de-noel/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-30-visite-heures-sombres-pornic",
@@ -8356,6 +8400,21 @@
   "url": "https://en.pornic.com/apres-midi-dansant-a-pornic-pornic.html"
  },
  {
+  "id": "2027-01-22-reunion-quartier-moutiers",
+  "title": "Réunion de quartier (Les Jaunais, Prigny, Les Forges…)",
+  "date": "2027-01-22",
+  "time": "18h",
+  "place": "Salle Jean Varnier, 31b rue de Prigny",
+  "town": "Les Moutiers-en-Retz",
+  "type": "vielocale",
+  "category": "Réunion publique",
+  "org": "Mairie des Moutiers-en-Retz",
+  "desc": "Échange avec les élus pour les quartiers Les Jaunais, L'Ouche Jacquette, Jean Varnier, Maisons Neuves, Prigny, Les Courtes, Les Forges, La Fradouillère et La Boutique ; entrée libre.",
+  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/reunion-de-quartier-2/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2027-01-22-tombola-finale-casino-pornic",
   "title": "Tombola au Casino de Pornic (gros lot final)",
   "date": "2027-01-22",
@@ -8968,6 +9027,21 @@
   "kids": false
  },
  {
+  "id": "2027-02-12-reunion-quartier-moutiers",
+  "title": "Réunion de quartier (Coëff Barreau, Les Sables, Lyarne…)",
+  "date": "2027-02-12",
+  "time": "18h",
+  "place": "Salle Jean Varnier, 31b rue de Prigny",
+  "town": "Les Moutiers-en-Retz",
+  "type": "vielocale",
+  "category": "Réunion publique",
+  "org": "Mairie des Moutiers-en-Retz",
+  "desc": "Échange avec les élus pour les quartiers Coëff Barreau (Dinet), Les Sables, Le Quartrais, La Croix, Lancastria, Lyarne et Le Collet ; entrée libre.",
+  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/reunion-de-quartier-3/",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2027-02-12-concert-if-villeneuve",
   "title": "Concert : IF",
   "date": "2027-02-12",
@@ -9071,6 +9145,21 @@
   "desc": "Seul en scène de Michaël Hirsch, entre humour et poésie, sur un an d'entraînement intensif au bonheur ; de 7 à 16 €, réservation en ligne sur le site du théâtre ou sur place.",
   "url": "https://www.pornic.com/y-a-de-la-joie-ste-pazanne.html",
   "free": false,
+  "kids": false
+ },
+ {
+  "id": "2027-02-18-atelier-ecriture-bernerie",
+  "title": "Atelier d'écriture à la bibliothèque",
+  "date": "2027-02-18",
+  "time": "14h–16h",
+  "place": "Bibliothèque Olympe de Gouges",
+  "town": "La Bernerie-en-Retz",
+  "type": "atelier",
+  "category": "Atelier d'écriture",
+  "org": "Bibliothèque Olympe de Gouges",
+  "desc": "Atelier d'écriture créative pour adultes, on joue avec les mots en suivant des consignes ; gratuit sur réservation (12 places), bibliothèque 02 44 06 25 89.",
+  "url": "https://mairie-labernerie.fr/evenement/atelier-decriture/2027-02-18/",
+  "free": true,
   "kids": false
  },
  {
