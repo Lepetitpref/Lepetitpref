@@ -8,7 +8,6 @@
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
-@J #h : Justin le juste
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
 @J #h#-#h (CE# to CM#, # places), school playground and multi-sports hall, since # Sept #; price based on family income (€# to €#)
 @J #h-#h# at the Raymond Devos library in Les Moutiers
@@ -48,7 +47,6 @@ Cinéma Saint-Joseph, Pornic
 Coaches and trains between Préfailles, Pornic, Nantes and Saint-Nazaire, connections included.
 Collège Jean Mounès staff association
 Concerts (Jazz à Préf), masterclasses, stage coaching, exhibitions
-Connaissance du Monde film talk
 Contributing to the development of the La Joselière district in Pornic, its beach and its coastline.
 Crêperies
 Cultural development of the Pays de Retz
@@ -60,7 +58,6 @@ Département sports activities in Préfailles, #-#.
 Ensuring that all doctors in the Pays de Retz take part in the organisation of healthcare
 Environmental education association of the Pays de Retz (based at Le Pas Renaud, Le Clion-sur-Mer), nature outings open to the public, # outings brochure on its website.
 FFT tennis club of La Plaine and Préfailles.
-Foil: Baie de Bourgneuf
 Football club of Préfailles, La Plaine and Saint-Michel.
 From Préfailles
 Fruit-growing heritage of the Pays de Retz
@@ -76,8 +73,6 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
-L'Ermitage and Les Rochelets: offshore wind too strong (# kn, #h-#h)
-L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
 La Bernerie, Grande Plage et plan d'eau
@@ -144,7 +139,6 @@ Préfailles → Pornic
 Préfailles → Saint-Nazaire
 Préfailles' long-standing club, open to holidaymakers through short memberships (week from €# adult, €# child).
 Préfailles, Place de la Gare →
-Pré‑Vincent
 Pétanque all year round, competitions
 Pétanque club affiliated to UFOLEP.
 Repair cafés and green initiatives
@@ -158,6 +152,7 @@ Running (Foulées Préfaillaises)
 Running club that organises Les Foulées Préfaillaises every summer in Préfailles (# and # km, starting from the plateau de la Chapelle; # edition on # @M).
 Running, trail running (Trail de la Côte de Jade)
 Runs initiatives such as the Repair café, and encourages projects that help us reinvent our lives together, for a more living planet.
+Sailing club on La Joselière beach (FFV licences), renting out Hobie Cat # catamarans, kayaks and paddleboards in summer.
 Saint-Brevin · Le Pointeau
 Saint-Brevin · Les Rochelets
 Screenings on @J # @M, in Préfailles and at nearby cinemas.
@@ -168,6 +163,7 @@ Sept-@M: Mon #h#-#h, Wed and Sat #h#-#h and #h#-#h#; @M-@M: @J to @J #h#-#h + Sa
 Showcasing a typical Pays de Retz site with a range of activities
 Showcasing the architectural and historic heritage of the château de Pornic, listed on the Inventaire Supplémentaire des Monuments Historiques, by hosting a performing arts festival in summer and, all year round, organising cultural events in Pornic and the surrounding area: theatre, music, …; organising, producing and presenting performing arts events…
 Summer (# programme): children's whist ages #-# on Tuesdays #h#-#h (€# members, €#), bridge on Mondays #h#, teen dinners (ages #+, €#/#) and a dinner for #-#s in @M, Tonton Mimile rally ages #-# in mid-@M (€#/#), méchoui (spit roast) in mid-@M, start-of-season drinks in early @M. School holidays outside summer: whist on Tuesdays #h#-#h (ages #-#), tennis course ages #-# (€# for the # autumn half-term), tennis lessons ages #+. Annual membership (@M-@M) required for any activity: adult €#, ages #-# €#, under # €#, family €#; weekly or fortnightly tennis fee on top
+Summer at La Joselière (# season: # @M to the end of @M): catamaran, kayak and paddleboard hire; big summer regatta open to all in @M.
 Support for the Musée de l'Homme, talks
 Support for the Sémaphore museum space, talks (e.g. « Éric Tabarly, enfant de Préfailles », summer #).
 Supporting women in the Pays de Retz undergoing treatment for breast cancer, offering them sport and well-being activities to help them regain their former lives as women, and maintaining social ties through discussion meetings, workshops, etc.
