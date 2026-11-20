@@ -1056,7 +1056,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
     v("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"rien de daté aujourd'hui"} · ${wkP.length} en 7 jours`,"cal"),
     v("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui${S.aWhere==="ici"?"":` à moins de ${S.aWhere} km`}`,"compass"),
     v("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} ce soir`:"rien ce soir"} · ${wkP.filter(evSoir).length} en 7 jours`,"spark"),
-    v("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} : ${esc(film.f.film)}`:`le programme de ${BASE.n} et autour`,"film",` data-act="cin" data-v="tous"`)],"#agenda")}
+    v("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} : <span lang="fr">${esc(film.f.film)}</span>`:`le programme de ${BASE.n} et autour`,"film",` data-act="cin" data-v="tous"`)],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées, météo de la mer, glisse, pêche à pied et plages.",[
     v("#mer","Marées et météo",low?`basse mer ${hm(new Date(low.ms))}${maxCoef(t)?` · coef. ${maxCoef(t)}`:""}`:"vent, houle, eau","tide"),
     v("#spots","Glisse et spots",glisse?`${ACTL[glisse.a].replace(" et bateau","")} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions":"surf, kite, wing, voile","sail"),

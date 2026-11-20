@@ -1252,6 +1252,22 @@
  },
  "rules": [
   [
+   "^Aujourd'hui (\\d{1,2}h\\d{0,2}) :$",
+   "Today $1:"
+  ],
+  [
+   "^Demain (\\d{1,2}h\\d{0,2}) :$",
+   "Tomorrow $1:"
+  ],
+  [
+   "^Aujourd'hui (\\d{1,2}h\\d{0,2}) : (.+)$",
+   "Today $1: $2"
+  ],
+  [
+   "^Demain (\\d{1,2}h\\d{0,2}) : (.+)$",
+   "Tomorrow $1: $2"
+  ],
+  [
    "^Trop fort \\((\\d+) nds\\)$",
    "Too strong ($1 kn)"
   ],
