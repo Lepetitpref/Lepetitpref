@@ -1,56 +1,66 @@
 {
- "maj": "2026-11-21T05:42:13.693Z",
+ "maj": "2026-11-21T11:25:09.572Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du samedi 21 novembre 2026 à 06H15 légales.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du samedi 21 novembre 2026 à 12H30 légales.",
   "avis": "Avis de Grand Frais à Coup de Vent Nr 143",
   "sections": [
    {
-    "t": "Situation générale le samedi 21 novembre 2026 à 00H00 UTC, et évolution",
+    "t": "Situation générale le samedi 21 novembre 2026 à 06H00 UTC, et évolution",
     "l": [
-     "Dépression atlantique 1003 hPa à l'ouest de la Corogne, se décalant vers le nord, prévue 993 hPa au sud-ouest immédiat de l'Irlande en soirée, puis 997 hPa sur l'Irlande demain matin. Thalweg associé jusque dans le golfe de Gascogne en journée. Puis hausse des pressions 1024 hPa sur l'Espagne demain matin."
+     "Dépression atlantique 1000 hPa au nord-ouest de la Corogne, se décalant vers le nord-est, prévue 991 hPa au sud-ouest immédiat de l'Irlande en soirée, puis 997 hPa sur l'Irlande demain matin. Thalweg associé dans le golfe de Gascogne en journée. Hausse des pressions vers 1025-1030 hPa sur l'Espagne demain matin."
     ]
    },
    {
-    "t": "Observations le samedi 21 novembre 2026 à 03H00 UTC",
+    "t": "Observations le samedi 21 novembre 2026 à 09H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Est-Sud-Est 4 nœuds, clair ou peu nuageux, visibilité 8 milles. Belle Ile : vent Sud-Sud-Ouest 6 nœuds. Ile d'Yeu : vent Sud-Sud-Ouest 4 nœuds. Groix : vent Sud 4 nœuds, mer agitée, nuageux avec éclaircies, visibilité 3 milles. Pointe de Chemoulin : vent Sud-Sud-Ouest 4 nœuds."
+     "Pointe de Penmarc'h : vent Est-Sud-Est 14 nœuds, brouillard, visibilité 200 mètres. Belle Ile : vent Sud-Est 8 nœuds, très nuageux à couvert, visibilité 4 milles. Ile d'Yeu : vent Sud-Est 8 nœuds, mer forte, brouillard, visibilité 800 mètres. Groix : vent Est-Sud-Est 10 nœuds, mer peu agitée, brouillard, visibilité 100 mètres. Pointe de Chemoulin : vent Est 6 nœuds, mer peu agitée, brouillard, visibilité 300 mètres."
     ]
    },
    {
-    "t": "Prévisions pour la journée du samedi 21 novembre",
+    "t": "Prévisions pour l'après-midi du samedi 21 novembre",
     "l": [
-     "VENT : Sud-Est 3 à 4, fraîchissant 5 à 6 à la mi-journée. Rafales.",
-     "MER : agitée, localement forte vers le large le matin et en fin de journée.",
-     "HOULE : Ouest 2 à 3 m, s'atténuant progressivement 1 à 1.5 m.",
-     "TEMPS : très nuageux avec bancs de brume le matin, puis pluvieux en fin de journée.",
-     "VISIBILITE : bonne, mais mauvaise par brume ou sous pluie."
+     "VENT : Sud-Est 5 à 6. Rafales.",
+     "MER : peu agitée à agitée, devenant localement agitée à forte de Penmarc'h à Belle-Ile en fin de journée.",
+     "HOULE : Ouest 1 à 1.5 m.",
+     "TEMPS : très nuageux à couvert, puis pluie en fin de journée.",
+     "VISIBILITE : bonne, puis mauvaise sous précipitations."
     ]
    },
    {
     "t": "Prévisions pour la nuit du samedi 21 novembre au dimanche 22 novembre",
     "l": [
-     "VENT : Sud-Est 5 à 6, temporairement Sud-Ouest 3 à 5 en milieu de nuit, localement Ouest à Sud-Ouest 7 au sud de Belle-Île, puis fraîchissant Ouest 7 à 8 partout en seconde partie de nuit. Fortes rafales.",
+     "VENT : Sud-Est 5 à 6, mollissant Sud-Ouest 4 à 5 en milieu de nuit, fraîchissant localement Ouest à Sud-Ouest 6 à 7 au sud de Belle-Île, puis fraîchissant Ouest 7 à 8 partout en seconde partie de nuit. Fortes rafales.",
      "MER : agitée à forte.",
-     "HOULE : Ouest 1 à 1.5 m, s'amplifiant Sud à Sud-Ouest 1 à 2 m en fin de nuit.",
-     "TEMPS : pluie.",
-     "VISIBILITE : mauvaise sous pluie."
+     "HOULE : Ouest 1 à 1.5 m, s'amplifiant Sud à Sud-Ouest 1 à 2 m en seconde partie de nuit.",
+     "TEMPS : pluie ou averses.",
+     "VISIBILITE : mauvaise sous précipitations."
     ]
    },
    {
-    "t": "Tendance pour la journée du dimanche 22 novembre",
+    "t": "Prévisions pour la journée du dimanche 22 novembre",
     "l": [
      "VENT : Ouest à Nord-Ouest 7 à 8, mollissant 6 à 7 l'après-midi. Fortes rafales.",
-     "MER : agitée, localement forte vers Penmarc'h, devenant forte à très forte le matin.",
-     "HOULE : Sud à Sud-Ouest 1 à 2 m, s'amplifiant 2 à 3 m l'après-midi.",
-     "TEMPS : averses.",
-     "VISIBILITE : mauvaise sous averses."
+     "MER : forte à très forte, localement croisée.",
+     "HOULE : Sud-Ouest s'amplifiant 1.5 à 2.5 m, puis 2 à 3 m l'après-midi.",
+     "TEMPS : nuageux avec averses.",
+     "VISIBILITE : moyenne à mauvaise sous averses."
+    ]
+   },
+   {
+    "t": "Tendance pour la nuit du 22 au 23, et la journée du lundi 23 novembre",
+    "l": [
+     "VENT : Ouest à Nord-Ouest mollissant 5 à 6, puis secteur Ouest 2 à 4 le matin, et revenant Sud 3 à 4 l'après-midi. Rafales.",
+     "MER : forte à très forte, s'atténuant agitée à forte en fin de nuit.",
+     "HOULE : Ouest à Sud-Ouest 2 à 3 m, localement 3 à 4 m de Penmarc'h à Belle-Ile, s'amortissant 1.5 à 2.5 m l'après-midi.",
+     "TEMPS : nuageux avec averses la nuit, peu nuageux en journée.",
+     "VISIBILITE : moyenne sous précipitations, puis bonne."
     ]
    }
   ],
-  "prochain": "Prochain bulletin le samedi 21 novembre 2026, vers 12H30 légales",
+  "prochain": "Prochain bulletin le samedi 21 novembre 2026, vers 18H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-21T05:42:22.491Z"
+  "lu": "2026-11-21T11:25:34.451Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
