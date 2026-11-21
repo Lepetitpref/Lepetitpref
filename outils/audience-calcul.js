@@ -21,7 +21,9 @@ var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premier
   'type-iphone', 'type-android', 'type-tablette', 'type-ordi', 'lieu-prefailles', 'lieu-pornic',
   'installation-iphone', 'installation-android', 'installation-tablette', 'installation-ordi',
   'clic-installer-iphone', 'clic-installer-android', 'clic-installer-tablette', 'clic-installer-ordi',
-  'page-installer-iphone', 'page-installer-android', 'page-installer-tablette', 'page-installer-ordi']
+  'page-installer-iphone', 'page-installer-android', 'page-installer-tablette', 'page-installer-ordi',
+  'install-fenetre-android', 'install-fenetre-tablette', 'install-fenetre-ordi', 'install-accepte-android', 'install-accepte-tablette', 'install-accepte-ordi',
+  'install-annule-android', 'install-annule-tablette', 'install-annule-ordi', 'install-chrome-android', 'install-chrome-tablette']
   .concat(SRC.map(function (s) { return 'source-' + s; }), SRC.map(function (s) { return 'source-nouveau-' + s; }),
     ACTS.map(function (a) { return 'act-' + a; }), VUES.map(function (v) { return 'vue-' + v; }),
     VUES.map(function (v) { return 'entree-' + v; }), VUES.map(function (v) { return 'actv-' + v; }), CAMP.map(function (c) { return 'arrivee-' + c; }));

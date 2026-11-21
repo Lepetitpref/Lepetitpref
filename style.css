@@ -1520,4 +1520,9 @@ button.wk-c{cursor:pointer}
 .crowd-b{min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#1c1d22;font:inherit;font-size:15px;font-weight:600;text-align:left;cursor:pointer}
 /* iPhone : les éléments fixes ou collés disparaissaient parfois pendant le défilement ; un calque propre les garde affichés */
 .topbar,.tabs,.subnav,.filters,.tr-mini{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}
-/* version du site */:root{--pp-v:"20261121-1421"}
+.inst-more{margin:8px var(--gutter) 0}
+.inst-more summary{min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600;cursor:pointer}
+.inst-more .steps{margin:0}
+.inst-go{display:grid;margin:16px var(--gutter) 0}
+.inst-go .btn{justify-content:center;text-align:center;min-height:52px;font-size:17px}
+/* version du site */:root{--pp-v:"20261121-1814"}

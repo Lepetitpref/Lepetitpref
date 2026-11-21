@@ -1,7 +1,8 @@
 {
+  "id": "/",
   "name": "Le Petit Préf",
   "short_name": "Le Petit Préf",
-  "description": "Préfailles au jour le jour : marées, sorties, ciné et huîtres. À jour chaque matin.",
+  "description": "Préfailles au jour le jour : marées, agenda des sorties, ciné, restos et marchés, spots de glisse, transports. Mis à jour chaque matin, gratuit, sans compte.",
   "lang": "fr",
   "start_url": "/#sejour",
   "scope": "/",
@@ -9,8 +10,49 @@
   "background_color": "#f6f6f3",
   "theme_color": "#1f5f8b",
   "icons": [
-    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
-    {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": [
+    "travel",
+    "lifestyle",
+    "weather"
+  ],
+  "screenshots": [
+    {
+      "src": "icons/capture-1.jpg",
+      "sizes": "1080x2340",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "L'agenda des sorties autour de Préfailles"
+    },
+    {
+      "src": "icons/capture-2.jpg",
+      "sizes": "1080x2340",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Restos, bars et marchés ouverts aujourd'hui"
+    },
+    {
+      "src": "icons/capture-3.jpg",
+      "sizes": "1080x2340",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Marées et grandes marées"
+    }
   ]
 }

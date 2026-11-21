@@ -1928,7 +1928,20 @@ const IS_ANDROID=/Android/.test(UA);
 const IOS_OTHER=IS_IOS&&/CriOS|FxiOS|EdgiOS/.test(UA);
 const IN_APP=/FBAN|FBAV|Instagram|WhatsApp|Line\/|GSA\/|Messenger|LinkedInApp|Snapchat/.test(UA)||(IS_IOS&&!/Safari\//.test(UA));
 const STANDALONE=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const IS_SAMSUNG=/SamsungBrowser/.test(UA);
+const IN_APP_NOM=/Instagram/.test(UA)?"Instagram":/FBAN|FBAV|Messenger/.test(UA)?"Facebook":/WhatsApp/.test(UA)?"WhatsApp":/LinkedInApp/.test(UA)?"LinkedIn":/Snapchat/.test(UA)?"Snapchat":/GSA\//.test(UA)?"l'appli Google":"une autre appli";
+/* Android, depuis le navigateur intégré de Facebook, Instagram… : ce lien rouvre la page dans Chrome, sur la page Installer */
+const CHROME_INTENT="intent://lepetitpref.fr/?ouvrir=installer#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent("https://lepetitpref.fr/#installer")+";end";
+try{if(new URLSearchParams(location.search).get("ouvrir")==="installer"){history.replaceState(null,"",location.pathname+"#installer");setTimeout(()=>ppHit("install-chrome-"+ppType()+"-"+ppJour()),0);}}catch(e){}
 let deferredPrompt=null;
+/* un toucher = la fenêtre d'installation du téléphone ; sinon la page qui explique */
+async function installGo(){
+  if(!deferredPrompt){if(curView()!=="installer")location.hash="#installer";return;}
+  const p=deferredPrompt;deferredPrompt=null;const t=ppType(),j=ppJour();ppHit("install-fenetre-"+t+"-"+j);
+  let r=null;try{p.prompt();r=await p.userChoice;}catch(e){}
+  if(r&&r.outcome==="accepted"){ppHit("install-accepte-"+t+"-"+j);sset("pp-install","ok");toast("C'est installé : Le Petit Préf est avec vos applis.");}
+  else{ppHit("install-annule-"+t+"-"+j);if(curView()!=="installer")location.hash="#installer";}
+  render();}
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;if(curView()==="installer"||curView()==="sejour")render();});
 window.addEventListener("appinstalled",()=>{deferredPrompt=null;sset("pp-install","ok");ppHit("installation-"+ppJour());ppHit("installation");ppHit("installation-"+ppType()+"-"+ppJour());render();});
 const WAVE='<svg viewBox="0 0 80 50" aria-hidden="true"><path d="M3 25 C10 14 20 6 32 5 C40 4.5 45 8 46 15 C42 11 34 10 29 15 C24 20 25 30 33 33 C41 36 52 30 60 29 C67 28 73 28 77 29.5 C70 35 60 40 46 43 C32 46 16 42 3 25 Z"/></svg>';
@@ -1937,12 +1950,12 @@ const PLUS_IC='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"
 const DOTS_IC='<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg>';
 function installBanner(){
   if(STANDALONE()||sget("pp-install"))return"";
-  const t=IN_APP?"Vous lisez depuis WhatsApp":"Installer Le Petit Préf";
-  const d=IN_APP?"Ouvrez la page dans Safari pour l'ajouter à votre écran d'accueil.":"Une icône sur l'écran d'accueil. Gratuit, sans store.";
-  const b=deferredPrompt?`<button type="button" class="btn-line" id="instNow">Installer</button>`:`<a class="btn-line" href="#installer" style="display:inline-flex;align-items:center">${IN_APP?"Comment":"Voir"}</a>`;
+  const t=IN_APP?"Vous lisez depuis "+IN_APP_NOM:"Installer Le Petit Préf";
+  const d=IN_APP?(IS_ANDROID?"Ouvrez la page dans Chrome pour l'ajouter à votre écran d'accueil.":"Ouvrez la page dans Safari pour l'ajouter à votre écran d'accueil."):"Une icône sur l'écran d'accueil. Gratuit, sans store.";
+  const b=deferredPrompt?`<button type="button" class="btn-line" id="instNow">Installer</button>`:IN_APP&&IS_ANDROID?`<a class="btn-line" href="${CHROME_INTENT}" style="display:inline-flex;align-items:center">Ouvrir dans Chrome</a>`:`<a class="btn-line" href="#installer" style="display:inline-flex;align-items:center">${IN_APP?"Comment":"Voir"}</a>`;
   return `<div class="install" role="region" aria-label="Installer l'app">${ic("install")}<span class="install-txt"><b>${t}</b><span>${d}</span></span>${b}<button type="button" class="icon-btn" id="instHide" aria-label="Masquer ce message">${ic("close","i-s")}</button></div>`;}
 function bindInstall(){const h=$("#instHide");if(h)h.onclick=()=>{sset("pp-install","no");render();toast("Le guide reste en bas de page : « Installer l’app »");};
-  const n=$("#instNow");if(n)n.onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;render();};}
+  const n=$("#instNow");if(n)n.onclick=installGo;}
 function vInstaller(){
   const os=S.os||(IS_ANDROID?"android":"ios");
   const k=(ic,txt)=>`<span class="kbd">${ic}${txt?" "+txt:""}</span>`;
@@ -1951,17 +1964,24 @@ function vInstaller(){
    <li><div><b>${k(SHARE_IC)} Touchez Partager</b><p>${IOS_OTHER?"Dans Chrome ou Firefox, il est en haut à droite, dans la barre d'adresse.":"En bas de l'écran dans Safari (en haut sur iPad). Vous ne le voyez pas ? Touchez d'abord "+k("","•••")+" en bas à droite."}</p></div></li>
    <li><div><b>${k(PLUS_IC)} Choisissez « Sur l'écran d'accueil »</b><p>Faites glisser la liste vers le haut si l'option n'apparaît pas tout de suite. Laissez « Ouvrir en tant qu'app web » activé s'il est proposé.</p></div></li>
    <li><div><b>Touchez « Ajouter »</b>, en haut à droite<p class="iconrow"><img src="icons/icon-192.png" alt="" width="54" height="54"> Cette icône apparaît sur votre écran d'accueil. Elle ouvre Le Petit Préf en plein écran, directement sur votre séjour.</p></div></li></ol>`;
-  const android=`${deferredPrompt?`<button class="btn sea" id="instNow2" style="justify-self:stretch">Installer Le Petit Préf (gratuit)</button>`:""}<ol class="steps">
-   <li><div><b>Ouvrez la page dans Chrome</b><p>Depuis WhatsApp, touchez ${k(DOTS_IC)} puis « Ouvrir dans Chrome ».</p></div></li>
-   <li><div><b>${k(DOTS_IC)} Touchez le menu</b>, en haut à droite</div></li>
-   <li><div><b>Choisissez « Ajouter à l'écran d'accueil »</b>, puis « Installer »<p class="iconrow"><img src="icons/icon-192.png" alt="" width="54" height="54"> L'icône apparaît avec vos autres applis.</p></div></li></ol>`;
+  const chromeSteps=`<li><div><b>${k(DOTS_IC)} Touchez le menu</b>, en haut à droite de Chrome</div></li>
+   <li><div><b>Choisissez « Installer l'application »</b> ou « Ajouter à l'écran d'accueil », puis « Installer »<p class="iconrow"><img src="icons/icon-192.png" alt="" width="54" height="54"> L'icône apparaît avec vos autres applis.</p></div></li>`;
+  const samsungSteps=`<li><div><b>Touchez le menu ☰</b>, en bas à droite de l'écran</div></li>
+   <li><div><b>Choisissez « Ajouter la page à »</b>, puis « Écran d'accueil »<p class="iconrow"><img src="icons/icon-192.png" alt="" width="54" height="54"> L'icône apparaît avec vos autres applis.</p></div></li>`;
+  const android=IN_APP?`<div class="inst-go"><a class="btn sea" href="${CHROME_INTENT}">Ouvrir dans Chrome pour installer</a></div>
+   <p class="callout">Vous lisez depuis ${esc(IN_APP_NOM)}, qui ne permet pas d'installer. Le bouton ouvre la page dans Chrome : il ne restera qu'un toucher.</p>
+   <ol class="steps"><li><div><b>Le bouton ne marche pas ?</b><p>Touchez ${k(DOTS_IC)} en haut à droite, puis « Ouvrir dans Chrome » (ou « Ouvrir dans le navigateur »).</p></div></li>${chromeSteps}</ol>`
+   :deferredPrompt?`<div class="inst-go"><button class="btn sea" id="instNow2">Installer Le Petit Préf (gratuit)</button></div>
+   <p class="callout">Touchez le bouton, puis « Installer » dans la fenêtre qui s'ouvre : c'est fini, l'icône est avec vos applis.</p>`
+   :`<ol class="steps">${IS_SAMSUNG?samsungSteps:chromeSteps}</ol>
+   <details class="inst-more"><summary>${IS_SAMSUNG?"Avec Chrome":"Avec un Samsung (Samsung Internet)"}</summary><ol class="steps">${IS_SAMSUNG?chromeSteps:samsungSteps}</ol></details>`;
   return `<div class="vhead"><div><h1>Le Petit Préf sur votre écran d'accueil</h1><p class="lede">Une icône à côté de vos applis, qui s'ouvre directement sur votre séjour : marée du jour, sorties, films. Rien à télécharger, rien à payer, aucun compte.</p></div></div>
   ${STANDALONE()?`<p class="callout">C'est fait : vous utilisez déjà l'app installée.</p>`:""}
   <div class="seg osseg" role="group" aria-label="Votre téléphone"><button data-os="ios" aria-pressed="${os==="ios"}">iPhone / iPad</button><button data-os="android" aria-pressed="${os==="android"}">Android</button></div>
   ${os==="ios"?ios:android}
   <p class="callout">Vos dates de séjour et vos filtres restent sur votre téléphone. Le contenu se met à jour tout seul chaque matin.</p>
   <div class="block"><h2 class="sec">Envoyer à la famille</h2><div class="bar">${shareBtns("Je te passe Le Petit Préf, le carnet de Préfailles qu'on utilise en famille : marées, sorties, ciné, restos. Mets-le sur ton écran d'accueil.")}</div></div>`;}
-after.installer=()=>{$$("[data-os]").forEach(b=>b.onclick=()=>{S.os=b.dataset.os;render();});const n=$("#instNow2");if(n)n.onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;render();};
+after.installer=()=>{$$("[data-os]").forEach(b=>b.onclick=()=>{S.os=b.dataset.os;render();});const n=$("#instNow2");if(n)n.onclick=installGo;
   if(STANDALONE()){const f=$("#fInst");if(f)f.hidden=true;}};
 
 /* ---------- feuille « Qui vient ? » ---------- */
@@ -2187,7 +2207,8 @@ window.addEventListener("error",()=>ppOnce("erreur-js"));
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")){ppHit("partage-"+ppJour());ppHit("partage");}},true);
 /* arrivée par un lien partagé depuis le site (?via=partage) : un total par jour, puis le marqueur est retiré de l'adresse */
 try{const u=new URL(location.href),via=u.searchParams.get("via")||"";if(via==="partage"||/^(qr|affiche|fb|insta|flyer|mail)(-[a-z0-9]{1,20})?$/.test(via)){if(via==="partage"){ppHit("arrivee-partage-"+ppJour());ppVu._via="partage";}else{ppHit("arrivee-"+via+"-"+ppJour());ppHit("arrivee-"+via);ppVu._via="campagne";}u.searchParams.delete("via");history.replaceState(history.state,"",u.pathname+u.search+u.hash);}}catch(e){}
-document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());},true);
+document.addEventListener("click",e=>{if(e.target.closest("#instNow,#instNow2,.menu-install,a[href=\"#installer\"]"))ppHit("clic-installer-"+ppType()+"-"+ppJour());
+  if(deferredPrompt&&e.target.closest(".menu-install")){e.preventDefault();closeOverlays();installGo();}},true);
 function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView();
   /* en arrivant sur l'Agenda depuis une autre page : « Tout » (sauf si un lien a choisi une période, ex. « aujourd'hui » depuis l'accueil) */
   if(FAIRE.includes(v)&&!FAIRE.includes(S.lastView)&&!S.whenKeep)setFaire("tout");

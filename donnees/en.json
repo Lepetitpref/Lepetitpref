@@ -1259,9 +1259,36 @@
   "Restaurants à Préfailles": "Restaurants in Préfailles",
   "Marchés autour de Pornic": "Markets around Pornic",
   "Plages de Préfailles": "Préfailles beaches",
-  "Que faire à Préfailles": "Things to do in Préfailles"
+  "Que faire à Préfailles": "Things to do in Préfailles",
+  ", en haut à droite de Chrome": ", at the top right of Chrome",
+  "Choisissez « Installer l'application »": "Choose “Install app”",
+  "Touchez le menu ☰": "Tap the ☰ menu",
+  ", en bas à droite de l'écran": ", at the bottom right of the screen",
+  "Choisissez « Ajouter la page à »": "Choose “Add page to”",
+  ", puis « Écran d'accueil »": ", then “Home screen”",
+  "Avec un Samsung (Samsung Internet)": "On a Samsung (Samsung Internet)",
+  "Avec Chrome": "With Chrome",
+  "Ouvrir dans Chrome pour installer": "Open in Chrome to install",
+  "Le bouton ne marche pas ?": "Button not working?",
+  "Touchez le bouton, puis « Installer » dans la fenêtre qui s'ouvre : c'est fini, l'icône est avec vos applis.": "Tap the button, then “Install” in the window that opens: that's it, the icon is with your apps.",
+  "Ouvrez la page dans Chrome pour l'ajouter à votre écran d'accueil.": "Open the page in Chrome to add it to your home screen.",
+  "Ouvrir dans Chrome": "Open in Chrome",
+  "C'est installé : Le Petit Préf est avec vos applis.": "Installed: Le Petit Préf is now with your apps.",
+  "ou « Ajouter à l'écran d'accueil », puis « Installer »": "or “Add to Home screen”, then “Install”",
+  "en haut à droite, puis « Ouvrir dans Chrome » (ou « Ouvrir dans le navigateur »).": "at the top right, then “Open in Chrome” (or “Open in browser”).",
+  "Touchez le menu": "Tap the menu",
+  "Touchez": "Tap",
+  "L'icône apparaît avec vos autres applis.": "The icon appears with your other apps."
  },
  "rules": [
+  [
+   "^Vous lisez depuis ([^,]+)$",
+   "You're reading in $1"
+  ],
+  [
+   "^Vous lisez depuis (.+), qui ne permet pas d'installer\\. Le bouton ouvre la page dans Chrome : il ne restera qu'un toucher\\.$",
+   "You're reading in $1, which can't install apps. The button opens the page in Chrome: then it's just one tap."
+  ],
   [
    "^Aujourd'hui (\\d{1,2}h\\d{0,2}) :$",
    "Today $1:"
