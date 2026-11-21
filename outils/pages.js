@@ -20,16 +20,21 @@ var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;'
 var decal = function (j) { var p = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, timeZoneName: 'shortOffset' }).formatToParts(new Date(j + 'T12:00:00Z')).find(function (x) { return x.type === 'timeZoneName'; }).value.replace('GMT', ''); var m = p.match(/([+-])(\d+)(?::(\d+))?/); return m ? m[1] + ('0' + m[2]).slice(-2) + ':' + (m[3] || '00') : '+00:00'; };
 var heure = function (ms) { return new Date(ms).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: TZ }).replace(':', 'h'); };
 var majTxt = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: TZ });
-var PAGES = [];
+var PAGES = [], ETATF = path.join(__dirname, 'pages-etat.json'), ETAT = {};
+try { ETAT = JSON.parse(fs.readFileSync(ETATF, 'utf8')); } catch (x) {}
+var empreinte = function (t) { return require('crypto').createHash('sha1').update(t).digest('hex').slice(0, 16); };
+var CP = { 'Préfailles': '44770', 'La Plaine-sur-Mer': '44770', 'Pornic': '44210', 'Saint-Michel-Chef-Chef': '44730', 'Saint-Brevin-les-Pins': '44250', 'Chauvé': '44320', 'La Bernerie-en-Retz': '44760', 'Les Moutiers-en-Retz': '44760', 'Villeneuve-en-Retz': '44580', 'Chaumes-en-Retz': '44320', 'Saint-Père-en-Retz': '44320', 'Saint-Hilaire-de-Chaléons': '44680', 'Sainte-Pazanne': '44680', 'Corsept': '44560', 'Saint-Viaud': '44320', 'Vue': '44640', 'Paimbœuf': '44560' };
 
 function page(o) {
   // o : chemin, titre, desc, h1, intro, corps, app (hash), ld (objets JSON-LD)
-  var url = SITE + '/' + o.chemin + '/';
+  var url = SITE + '/' + o.chemin + '/', emp = empreinte(o.titre + o.corps + JSON.stringify(o.ld || []).replace(/"startDate[^,]*,/g, ''));
+  var et = ETAT[o.chemin] || {}; if (et.e !== emp) et = { e: emp, j: auj }; ETAT[o.chemin] = et;
+  var majP = new Date(et.j + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   var autres = PAGES_LIENS.filter(function (p) { return p[0] !== o.chemin; }).map(function (p) { return '<a href="/' + p[0] + '/">' + esc(p[1]) + '</a>'; }).join(' · ');
-  var ld = [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Le Petit Préf', item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: o.h1, item: url }] }].concat(o.ld || []);
+  var ld = [{ '@context': 'https://schema.org', '@type': 'WebPage', name: o.h1, url: url, description: o.desc, inLanguage: 'fr', dateModified: et.j, isPartOf: { '@type': 'WebSite', name: 'Le Petit Préf', url: SITE + '/' } }, { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Le Petit Préf', item: SITE + '/' }, { '@type': 'ListItem', position: 2, name: o.h1, item: url }] }].concat(o.ld || []);
   var html = '<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n' +
     '<title>' + esc(o.titre) + '</title>\n<meta name="description" content="' + esc(o.desc) + '">\n<link rel="canonical" href="' + url + '">\n' +
-    '<meta property="og:title" content="' + esc(o.titre) + '">\n<meta property="og:description" content="' + esc(o.desc) + '">\n<meta property="og:url" content="' + url + '">\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Le Petit Préf">\n<meta property="og:image" content="' + SITE + '/images/partage.jpg?v=5">\n' +
+    '<meta property="article:modified_time" content="' + et.j + '">\n<meta property="og:title" content="' + esc(o.titre) + '">\n<meta property="og:description" content="' + esc(o.desc) + '">\n<meta property="og:url" content="' + url + '">\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Le Petit Préf">\n<meta property="og:image" content="' + SITE + '/images/partage.jpg?v=5">\n' +
     '<meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">\n<meta name="theme-color" content="#121317" media="(prefers-color-scheme: dark)">\n<link rel="icon" href="/icons/icon-192.png" type="image/png">\n<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">\n' +
     '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">\n' +
     '<style>' + CSS + '</style>\n' + ld.map(function (x) { return '<script type="application/ld+json">' + JSON.stringify(x).replace(/</g, '\\u003c') + '</script>'; }).join('\n') + '\n</head>\n<body>\n' +
@@ -37,7 +42,7 @@ function page(o) {
     '<nav class="fil"><a href="/">Accueil</a> › ' + esc(o.h1) + '</nav>\n<h1>' + esc(o.h1) + '</h1>\n<p class="intro">' + o.intro + '</p>\n' +
     '<p class="cta"><a class="btn" href="/' + o.app + '">' + esc(o.bouton || 'Voir dans Le Petit Préf') + ' →</a></p>\n' + o.corps +
     '\n<p class="cta"><a class="btn" href="/' + o.app + '">' + esc(o.bouton || 'Voir dans Le Petit Préf') + ' →</a></p>\n' +
-    '<p class="maj">Mis à jour le ' + esc(majTxt) + '. Le Petit Préf, carnet gratuit et sans publicité de Préfailles et des alentours : les informations viennent des communes, des offices de tourisme, des cinémas et des associations, qui restent la référence.</p>\n' +
+    '<p class="maj">Mis à jour le ' + esc(majP) + '. Le Petit Préf, carnet gratuit et sans publicité de Préfailles et des alentours : les informations viennent des communes, des offices de tourisme, des cinémas et des associations, qui restent la référence.</p>\n' +
     '<nav class="autres"><b>Aussi sur Le Petit Préf :</b> ' + autres + '</nav>\n</main>\n</body>\n</html>\n';
   fs.mkdirSync(path.join(R, o.chemin), { recursive: true });
   fs.writeFileSync(path.join(R, o.chemin, 'index.html'), html);
@@ -57,11 +62,12 @@ var CSS = ':root{--bg:#f6f6f3;--card:#fff;--ink:#1c1d22;--muted:#5d6068;--line:#
   'table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;font-variant-numeric:tabular-nums}' +
   'th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px}th{color:var(--muted);font-weight:500;font-size:14px}' +
   '.maj{color:var(--muted);font-size:14px;margin-top:28px}.autres{font-size:15px;margin:16px 0 32px;line-height:2}.autres a{color:var(--accent)}a{color:var(--accent)}';
-var PAGES_LIENS = [['agenda', 'Agenda'], ['cinema', 'Cinéma'], ['marees', 'Marées'], ['restaurants', 'Restaurants'], ['marches', 'Marchés'], ['plages', 'Plages'], ['que-faire', 'Que faire à Préfailles']];
+var PAGES_LIENS = [['agenda', 'Agenda de Préfailles et Pornic'], ['cinema', 'Cinéma à Préfailles et Pornic'], ['marees', 'Marées à Préfailles'], ['restaurants', 'Restaurants à Préfailles'], ['marches', 'Marchés de Pornic et alentours'], ['plages', 'Plages de Préfailles'], ['que-faire', 'Que faire à Préfailles']];
 
 // ---------- Agenda ----------
 var EV = J('donnees/events.json').filter(function (e) { return (e.end || e.date) >= auj && e.date <= plus(auj, 30); });
-var jours14 = []; for (var i = 0; i < 31; i++) jours14.push(plus(auj, i));
+var jours14 = []; for (var i = 0; i < 14; i++) jours14.push(plus(auj, i));
+var PROCHE = ['Préfailles', 'La Plaine-sur-Mer', 'Pornic', 'Saint-Michel-Chef-Chef'];
 var evDuJour = function (j) { return EV.filter(function (e) { return e.date <= j && (e.end || e.date) >= j && (!e.days || e.days.indexOf(new Date(j + 'T12:00:00Z').getUTCDay()) >= 0); }); };
 var evLi = function (e) { return '<li><b>' + esc(e.title) + '</b><small>' + esc([e.time, e.place, e.town].filter(Boolean).join(' · ')) + '</small>' + (e.desc ? '<small>' + esc(e.desc) + '</small>' : '') + '</li>'; };
 var corpsAg = '';
@@ -71,20 +77,23 @@ jours14.forEach(function (j) {
   L.sort(function (a, b) { return (a.town === 'Préfailles' ? 0 : 1) - (b.town === 'Préfailles' ? 0 : 1) || String(a.time).localeCompare(String(b.time)); });
   corpsAg += '<h2>' + esc(cap(jourL(j))) + '</h2>\n<ul class="liste">' + L.map(evLi).join('') + '</ul>\n';
 });
-var enCours = EV.filter(function (e) { return e.end && e.date < auj; });
-if (enCours.length) corpsAg = '<h2>En ce moment</h2>\n<ul class="liste">' + enCours.slice(0, 15).map(evLi).join('') + '</ul>\n' + corpsAg;
-var ldEv = EV.filter(function (e) { return e.date >= auj && e.date <= plus(auj, 30) && e.place; }).slice(0, 60).map(function (e) {
+var enCours = EV.filter(function (e) { return e.end && e.date < auj && PROCHE.indexOf(e.town) >= 0; });
+if (enCours.length) corpsAg = '<h2>En ce moment</h2>\n<ul class="liste">' + enCours.slice(0, 10).map(evLi).join('') + '</ul>\n' + corpsAg;
+var aPref = EV.filter(function (e) { return e.town === 'Préfailles' && e.date <= plus(auj, 7); });
+corpsAg = '<h2>À Préfailles cette semaine</h2>\n' + (aPref.length ? '<ul class="liste">' + aPref.map(function (e) { return '<li><b>' + esc(e.title) + '</b><small>' + esc([cap(jourL(e.date > auj ? e.date : auj)), e.time, e.place].filter(Boolean).join(' · ')) + '</small></li>'; }).join('') + '</ul>' : '<p>Rien d\'annoncé à Préfailles même cette semaine : voici ce qui se passe autour.</p>') + '\n' + corpsAg;
+var nAg = EV.filter(function (e) { return e.date <= plus(auj, 13); }).length;
+var ldEv = EV.filter(function (e) { return e.date >= auj && e.date <= plus(auj, 13) && e.place && e.place !== e.town && CP[e.town]; }).slice(0, 60).map(function (e) {
   var o = { '@context': 'https://schema.org', '@type': 'Event', name: e.title, startDate: e.date + (/^\d{1,2}h/.test(e.time || '') ? 'T' + e.time.replace(/^(\d{1,2})h(\d{2})?.*$/, function (m, h, mi) { return ('0' + h).slice(-2) + ':' + (mi || '00'); }) + ':00' + decal(e.date) : ''),
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled',
-    location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } } };
-  if (e.end) o.endDate = e.end; if (e.desc) o.description = e.desc; if (e.url) o.url = e.url;
+    location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', streetAddress: e.place, postalCode: CP[e.town], addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } }, image: SITE + '/images/partage.jpg', url: SITE + '/agenda/' };
+  if (e.end) o.endDate = e.end; if (e.desc) o.description = e.desc; if (e.url) o.sameAs = e.url;
   if (e.org) o.organizer = { '@type': 'Organization', name: e.org };
-  if (e.free) o.isAccessibleForFree = true;
+  if (e.free) { o.isAccessibleForFree = true; o.offers = { '@type': 'Offer', price: 0, priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE + '/agenda/' }; }
   return o;
 });
-page({ chemin: 'agenda', titre: 'Agenda Préfailles, Pornic et alentours : que faire cette semaine', h1: 'Agenda de Préfailles et des alentours',
-  desc: 'Concerts, spectacles, marchés de Noël, lotos, vide-greniers, sorties en famille : l\'agenda des 30 prochains jours à Préfailles, Pornic, La Plaine-sur-Mer, Saint-Brevin et autour.',
-  intro: 'Les sorties des 30 prochains jours à Préfailles et autour (Pornic, La Plaine-sur-Mer, Saint-Michel-Chef-Chef, Saint-Brevin, La Bernerie…), reprises chaque matin des sites des communes, de l\'office de tourisme et des associations. ' + EV.length + ' rendez-vous en ce moment.',
+page({ chemin: 'agenda', titre: 'Agenda Préfailles et Pornic : sorties, concerts, animations (14 jours)', h1: 'Agenda de Préfailles et des alentours',
+  desc: 'Concerts, spectacles, marchés de Noël, lotos, vide-greniers, sorties en famille : l\'agenda des 14 prochains jours à Préfailles, Pornic, La Plaine-sur-Mer, Saint-Brevin et autour, mis à jour chaque matin.',
+  intro: 'Les sorties des 14 prochains jours à Préfailles et autour (Pornic, La Plaine-sur-Mer, Saint-Michel-Chef-Chef, Saint-Brevin, La Bernerie…), reprises chaque matin des sites des communes, de l\'office de tourisme et des associations : ' + nAg + ' rendez-vous. La suite, les filtres par jour et par distance sont dans l\'app.',
   corps: corpsAg, app: '#agenda', bouton: 'Voir l\'agenda avec les filtres', ld: ldEv });
 
 // ---------- Cinéma ----------
@@ -109,7 +118,10 @@ for (var k = 0; k < 14; k++) {
   corpsMa += '<tr><td>' + esc(cap(jourL(j))) + '</td><td>' + f(bm) + '</td><td>' + f(pm) + '</td><td>' + (A.maxCoef(j) || '') + '</td></tr>';
 }
 corpsMa += '</tbody></table>\n<p class="intro">Heures de Paris, calculées pour le port de Pornic (données SHOM) : à Préfailles la mer monte et descend à quelques minutes près. À titre indicatif, ne pas utiliser pour la navigation. Grande marée à partir d\'un coefficient de 90 environ, idéal pour la pêche à pied.</p>';
-page({ chemin: 'marees', titre: 'Marées Préfailles : horaires et coefficients des 14 prochains jours', h1: 'Marées à Préfailles',
+var GM = []; for (var g = 0; g < 45; g++) { var jg = plus(auj, g), cg = A.maxCoef(jg); if (cg >= 90) GM.push([jg, cg]); }
+corpsMa += '<h2>Grandes marées à venir</h2>\n' + (GM.length ? '<ul class="liste">' + GM.map(function (x) { var bm = A.tidesOfDay(x[0]).filter(function (e) { return e.k === 'BM'; }); return '<li><b>' + esc(cap(jourL(x[0]))) + ' · coefficient ' + x[1] + '</b><small>Basse mer ' + bm.map(function (e) { return heure(e.ms); }).join(' et ') + ' : le bon moment pour la pêche à pied commence environ 2 h avant.</small></li>'; }).join('') + '</ul>' : '<p>Pas de coefficient de 90 ou plus dans les 45 prochains jours.</p>') + '\n<p class="intro">Pêche à pied : tailles minimales, quantités et zones fermées sont dans l\'app (Mer, Pêche à pied).</p>';
+var moisT = new Date(auj + 'T12:00:00Z').toLocaleDateString('fr-FR', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+page({ chemin: 'marees', titre: 'Marées Préfailles ' + moisT + ' : horaires et coefficients', h1: 'Marées à Préfailles',
   desc: 'Heures de basse mer et de pleine mer, hauteurs et coefficients des marées à Préfailles (port de Pornic) pour les 14 prochains jours. Grandes marées et pêche à pied.',
   intro: 'Horaires des marées pour les 14 prochains jours à Préfailles, avec hauteurs et coefficients. Dans l\'app : la courbe de la marée heure par heure, la météo de la mer, le vent, la houle et les bons créneaux de pêche à pied.',
   corps: corpsMa, app: '#mer', bouton: 'Voir la marée heure par heure' });
@@ -156,6 +168,7 @@ page({ chemin: 'que-faire', titre: 'Que faire à Préfailles ? Sorties, activit�
 
 // ---------- sitemap ----------
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>' + SITE + '/</loc><lastmod>' + auj + '</lastmod></url>\n' +
-  PAGES.map(function (p) { return '<url><loc>' + SITE + '/' + p + '/</loc><lastmod>' + auj + '</lastmod></url>'; }).join('\n') + '\n</urlset>\n';
+  PAGES.map(function (p) { return '<url><loc>' + SITE + '/' + p + '/</loc><lastmod>' + ETAT[p].j + '</lastmod></url>'; }).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(R, 'sitemap.xml'), sm);
+fs.writeFileSync(ETATF, JSON.stringify(ETAT, null, 1));
 console.log('OK · pages :', PAGES.join(', '), '· événements', EV.length, '· séances', CI.length, '· restos', RESTOS.length, '· marchés', MARCHES.length, '· plages', PLAGES.length);
