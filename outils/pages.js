@@ -69,7 +69,7 @@ var EV = J('donnees/events.json').filter(function (e) { return (e.end || e.date)
 var jours14 = []; for (var i = 0; i < 14; i++) jours14.push(plus(auj, i));
 var PROCHE = ['Préfailles', 'La Plaine-sur-Mer', 'Pornic', 'Saint-Michel-Chef-Chef'];
 var evDuJour = function (j) { return EV.filter(function (e) { return e.date <= j && (e.end || e.date) >= j && (!e.days || e.days.indexOf(new Date(j + 'T12:00:00Z').getUTCDay()) >= 0); }); };
-var evLi = function (e) { return '<li><b>' + esc(e.title) + '</b><small>' + esc([e.time, e.place, e.town].filter(Boolean).join(' · ')) + '</small>' + (e.desc ? '<small>' + esc(e.desc) + '</small>' : '') + '</li>'; };
+var evLi = function (e) { return '<li id="ev-' + esc(e.id) + '"><b>' + esc(e.title) + '</b><small>' + esc([e.time, e.place, e.town].filter(Boolean).join(' · ')) + '</small>' + (e.desc ? '<small>' + esc(e.desc) + '</small>' : '') + '</li>'; };
 var corpsAg = '';
 jours14.forEach(function (j) {
   var L = evDuJour(j).filter(function (e) { return !e.end || e.date === j; }); // les expos sur plusieurs jours seulement le 1er jour
@@ -85,7 +85,7 @@ var nAg = EV.filter(function (e) { return e.date <= plus(auj, 13); }).length;
 var ldEv = EV.filter(function (e) { return e.date >= auj && e.date <= plus(auj, 13) && e.place && e.place !== e.town && CP[e.town]; }).slice(0, 60).map(function (e) {
   var o = { '@context': 'https://schema.org', '@type': 'Event', name: e.title, startDate: e.date + (/^\d{1,2}h/.test(e.time || '') ? 'T' + e.time.replace(/^(\d{1,2})h(\d{2})?.*$/, function (m, h, mi) { return ('0' + h).slice(-2) + ':' + (mi || '00'); }) + ':00' + decal(e.date) : ''),
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled',
-    location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', streetAddress: e.place, postalCode: CP[e.town], addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } }, image: SITE + '/images/partage.jpg', url: SITE + '/agenda/' };
+    location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', streetAddress: e.place, postalCode: CP[e.town], addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } }, image: SITE + '/images/partage.jpg', url: SITE + '/agenda/#ev-' + encodeURIComponent(e.id) };
   if (e.end) o.endDate = e.end; if (e.desc) o.description = e.desc; if (e.url) o.sameAs = e.url;
   if (e.org) o.organizer = { '@type': 'Organization', name: e.org };
   if (e.free) { o.isAccessibleForFree = true; o.offers = { '@type': 'Offer', price: 0, priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: SITE + '/agenda/' }; }
