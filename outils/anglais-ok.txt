@@ -5,7 +5,6 @@
 (collège Jean Mounès)
 , Pirmil · arrives in Préfailles at #h#, Place de la Gare
 , SNCF station · arrives in Préfailles at #h#, Place de la Gare
-, Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
@@ -190,6 +189,7 @@ Wind, swell and water: Open-Meteo forecasts (Météo-France and European models)
 Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
+next: today #h–#h · Préfailles
 or VHF channel # (CROSS Étel)
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).
