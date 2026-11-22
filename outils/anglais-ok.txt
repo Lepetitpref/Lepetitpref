@@ -75,7 +75,6 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
-L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
 La Bernerie, Grande Plage et plan d'eau
@@ -87,7 +86,6 @@ Le Petit Préf on your home screen
 Les Moutiers
 Les Moutiers · # km
 Les Moutiers, plage du Pré-Vincent
-Les Rochelets
 Local events and activities in Le Clion
 Local zoning plan (PLU) of Préfailles, approved on #/#/#. Tap a zone: what can be built there, the zone on the map, its page of the regulations.
 Membership and FFV licence on HelloAsso (club affiliated to the FFV since #). Summer #: "jeudis du CVP" from #h to #h in the clubroom of the sailing centre, supervised group outings every day from @M to @M. The # programme is in preparation.
@@ -181,6 +179,9 @@ TER fare (not taken from an official source); from # Jan #, Aléop Multi coach +
 Talks and courses in every field of knowledge (Pornic branch of the Université permanente de Nantes)
 Talks on Wednesdays at #h (about one a month, @M to @M) at the Espace culturel du Val Saint-Martin; courses on Wednesdays from #h to #h at the Lycée du Pays de Retz. Membership €# (talks free), €# per talk without membership.
 Terminus in Préfailles, Place de la Gare. In Pornic, stops at Terres Jarries, Le Sandier, Théâtre St-Gilles (not Ste-Marie nor the station). Connections with line # or the TER train in Pornic. Public holidays: @J timetable (# @M: no service, according to the # timetable).
+Things to do in La Bernerie
+Things to do in La Plaine-sur-Mer
+Things to do in Les Moutiers-en-Retz
 Things to do in Préfailles
 This icon appears on your home screen. It opens Le Petit Préf full screen, straight onto your stay.
 Théâtre St-Gilles

@@ -62,7 +62,7 @@ var CSS = ':root{--bg:#f6f6f3;--card:#fff;--ink:#1c1d22;--muted:#5d6068;--line:#
   'table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;font-variant-numeric:tabular-nums}' +
   'th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px}th{color:var(--muted);font-weight:500;font-size:14px}' +
   '.maj{color:var(--muted);font-size:14px;margin-top:28px}.autres{font-size:15px;margin:16px 0 32px;line-height:2}.autres a{color:var(--accent)}a{color:var(--accent)}';
-var PAGES_LIENS = [['agenda', 'Agenda de Préfailles et Pornic'], ['cinema', 'Cinéma à Préfailles et Pornic'], ['marees', 'Marées à Préfailles'], ['restaurants', 'Restaurants à Préfailles'], ['marches', 'Marchés de Pornic et alentours'], ['plages', 'Plages de Préfailles'], ['que-faire', 'Que faire à Préfailles']];
+var PAGES_LIENS = [['pornic', 'Que faire à Pornic'], ['saint-brevin', 'Que faire à Saint-Brevin'], ['la-bernerie', 'Que faire à La Bernerie'], ['agenda', 'Agenda de Préfailles et Pornic'], ['cinema', 'Cinéma à Préfailles et Pornic'], ['marees', 'Marées à Préfailles'], ['restaurants', 'Restaurants à Préfailles'], ['marches', 'Marchés de Pornic et alentours'], ['plages', 'Plages de Préfailles'], ['que-faire', 'Que faire à Préfailles']];
 
 // ---------- Agenda ----------
 var EV = J('donnees/events.json').filter(function (e) { return (e.end || e.date) >= auj && e.date <= plus(auj, 30); });
@@ -165,6 +165,39 @@ page({ chemin: 'que-faire', titre: 'Que faire à Préfailles ? Sorties, activit�
   desc: 'Idées de sorties à Préfailles et autour : les événements de la semaine, activités, balades, sports nautiques, visites, sorties en famille et adresses pour les jours de pluie.',
   intro: 'Ce qui se passe cette semaine à Préfailles et autour, et les activités pour toute l\'année : nature et balades, mer et glisse, culture et visites, sorties pour les enfants.',
   corps: corpsQF, app: '#activites', bouton: 'Voir les activités dans l\'app' });
+
+// ---------- Une page par commune : « Que faire à Pornic », etc. ----------
+// Même contenu que l'app (agenda, cinéma, marchés, restos, plages, activités), filtré sur la commune. Pas de page si trop peu de contenu.
+var COMMUNES = [['pornic', 'Pornic', 'Pornic', '?ici=pornic'], ['saint-brevin', 'Saint-Brevin-les-Pins', 'Saint-Brevin', ''], ['la-bernerie', 'La Bernerie-en-Retz', 'La Bernerie', ''],
+  ['la-plaine-sur-mer', 'La Plaine-sur-Mer', 'La Plaine-sur-Mer', ''], ['saint-michel-chef-chef', 'Saint-Michel-Chef-Chef', 'Saint-Michel-Chef-Chef et Tharon', ''], ['les-moutiers', 'Les Moutiers-en-Retz', 'Les Moutiers-en-Retz', '']];
+var a14 = plus(auj, 13), COMM_LIENS = [];
+COMMUNES.forEach(function (c) {
+  var ville = c[1], nom = c[2], app = '/' + c[3];
+  var ev = EV.filter(function (e) { return e.town === ville && e.date <= a14; });
+  var ci = CI.filter(function (x) { return x.cinema.indexOf(ville === 'Saint-Brevin-les-Pins' ? 'Saint-Brevin' : ville) >= 0 && x.date <= plus(auj, 6); });
+  var lieux = A.ACTS.filter(function (a) { return a.town === ville; });
+  var mar = lieux.filter(function (a) { return a.cat === 'marche'; }), res = lieux.filter(function (a) { return a.cat === 'saveurs' && (a.kind === 'restaurant' || a.kind === 'creperie'); }),
+    bars = lieux.filter(function (a) { return a.kind === 'bar' || a.bar; }), pla = lieux.filter(function (a) { return a.cat === 'plage'; });
+  var act = {}; lieux.forEach(function (a) { if (['saveurs', 'marche', 'plage'].indexOf(a.cat) < 0) (act[a.cat] = act[a.cat] || []).push(a); });
+  if (ev.length + lieux.length < 15) return;
+  var liste = function (L, h) { return '<ul class="liste">' + L.sort(function (a, b) { return a.n.localeCompare(b.n); }).map(function (a) { return lieuLi(a, h); }).join('') + '</ul>'; };
+  var corps = '<h2>Agenda : les 14 prochains jours à ' + esc(nom) + '</h2>\n' + (ev.length ? '<ul class="liste">' + ev.map(function (e) { return '<li><b>' + esc(e.title) + '</b><small>' + esc([cap(jourL(e.date > auj ? e.date : auj)) + (e.end && e.end > e.date ? ' (jusqu\'au ' + jourL(e.end) + ')' : ''), e.time, e.place].filter(Boolean).join(' · ')) + '</small>' + (e.desc ? '<small>' + esc(e.desc) + '</small>' : '') + '</li>'; }).join('') + '</ul>' : '<p>Rien d\'annoncé dans la commune même ces 14 prochains jours : <a href="/agenda/">voir l\'agenda des alentours</a>.</p>') + '\n';
+  if (ci.length) { var films = {}; ci.forEach(function (x) { (films[x.film] = films[x.film] || []).push(x); });
+    corps += '<h2>Cinéma cette semaine</h2>\n<ul class="liste">' + Object.keys(films).sort().map(function (f) { return '<li><b>' + esc(f) + '</b><small>' + esc(films[f].map(function (x) { return cap(jourL(x.date)).replace(/ \d{4}$/, '') + ' ' + x.times.join(', '); }).slice(0, 4).join(' · ')) + '</small></li>'; }).join('') + '</ul>\n<p><a href="/cinema/">Toutes les séances</a></p>\n'; }
+  if (mar.length) corps += '<h2>Marchés</h2>\n' + liste(mar, true) + '\n';
+  if (res.length) corps += '<h2>Restaurants et crêperies (' + res.length + ')</h2>\n' + liste(res, true) + '\n';
+  if (bars.length) corps += '<h2>Bars</h2>\n' + liste(bars, true) + '\n';
+  if (pla.length) corps += '<h2>Plages</h2>\n' + liste(pla, false) + '\n';
+  Object.keys(act).forEach(function (k) { corps += '<h2>' + esc(A.CATS[k] || k) + '</h2>\n<ul class="liste">' + act[k].sort(function (a, b) { return a.n.localeCompare(b.n); }).map(function (a) { return '<li><b>' + esc(a.n) + '</b>' + (a.d ? '<small>' + esc(a.d) + '</small>' : '') + '</li>'; }).join('') + '</ul>\n'; });
+  var ldE = ev.filter(function (e) { return e.date >= auj && e.place && e.place !== e.town; }).slice(0, 40).map(function (e) { var m = /^(\d{1,2})h(\d{2})?/.exec(e.time || ''), sd = e.date + (m ? 'T' + ('0' + m[1]).slice(-2) + ':' + (m[2] || '00') + ':00' + decal(e.date) : '');
+    var o = { '@context': 'https://schema.org', '@type': 'Event', name: e.title, startDate: sd, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', streetAddress: e.place, postalCode: CP[e.town], addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } }, image: SITE + '/images/partage.jpg', url: SITE + '/' + c[0] + '/' };
+    if (e.end) o.endDate = e.end; if (e.desc) o.description = e.desc; if (e.url) o.sameAs = e.url; if (e.org) o.organizer = { '@type': 'Organization', name: e.org }; return o; });
+  page({ chemin: c[0], titre: 'Que faire à ' + nom + ' : agenda, restaurants, marchés, plages', h1: 'Que faire à ' + nom + ' ?',
+    desc: 'À ' + nom + ' : les sorties des 14 prochains jours' + (ci.length ? ', le cinéma' : '') + ', les marchés, ' + res.length + ' restaurants et crêperies avec leurs horaires, les plages et les activités. Mis à jour chaque matin.',
+    intro: 'Tout ce qui se passe à ' + esc(nom) + ', repris chaque matin des sites de la commune, de l\'office de tourisme, des cinémas et des associations : ' + ev.length + ' rendez-vous ces 14 prochains jours, ' + res.length + ' restaurants et crêperies, ' + mar.length + ' marché' + (mar.length > 1 ? 's' : '') + '.',
+    corps: corps, app: c[3] ? c[3] + '#sejour' : '#agenda', bouton: c[3] ? 'Ouvrir Le Petit Préf à ' + nom : 'Voir l\'agenda dans Le Petit Préf', ld: ldE });
+  COMM_LIENS.push([c[0], 'Que faire à ' + nom]);
+});
 
 // ---------- sitemap ----------
 var sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>' + SITE + '/</loc><lastmod>' + auj + '</lastmod></url>\n' +
