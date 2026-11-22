@@ -1578,4 +1578,6 @@ button.wk-c{cursor:pointer}
 .tr-bigb,.trbig-x{background:var(--accent);color:#fff;border:0;font-weight:600}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tr-bigb,:root:not([data-theme="light"]) .trbig-x{background:var(--sel2)}}
 :root[data-theme="dark"] .tr-bigb,:root[data-theme="dark"] .trbig-x{background:var(--sel2)}
-/* version du site */:root{--pp-v:"20261122-1047"}
+.urg-h{margin:14px 0 4px;font-weight:600;color:var(--warn)}.blk .urg-h:first-child{margin-top:4px}
+.sos-doubt{flex-basis:100%;font-size:14px;font-weight:600}
+/* version du site */:root{--pp-v:"20261122-1051"}
