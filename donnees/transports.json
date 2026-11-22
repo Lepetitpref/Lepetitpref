@@ -162,32 +162,80 @@
      "dep": "05h35",
      "arr": "05h56",
      "jours": "15",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "05h36",
+      "05h50",
+      "05h51",
+      "05h52",
+      "05h53",
+      "05h54"
+     ]
     },
     {
      "dep": "06h45",
      "arr": "07h06",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h46",
+      "07h00",
+      "07h01",
+      "07h02",
+      "07h03",
+      "07h04"
+     ]
     },
     {
      "dep": "06h45",
      "arr": "07h06",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h46",
+      "07h00",
+      "07h01",
+      "07h02",
+      "07h03",
+      "07h04"
+     ]
     },
     {
      "dep": "10h45",
      "arr": "11h06",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h46",
+      "11h00",
+      "11h01",
+      "11h02",
+      "11h03",
+      "11h04"
+     ]
     },
     {
      "dep": "19h15",
      "arr": "19h36",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h16",
+      "19h30",
+      "19h31",
+      "19h32",
+      "19h33",
+      "19h34"
+     ]
     }
+   ],
+   "chemin": [
+    "Préfailles, Quirouard",
+    "Pornic, Ste Marie Pl. de la Marne",
+    "Pornic, Terres aux Moines",
+    "Pornic, Rond-Point EDF",
+    "Pornic, Terres Jarries",
+    "Pornic, Le Sandier"
    ]
   },
   {
@@ -203,32 +251,170 @@
      "dep": "05h35",
      "arr": "07h17",
      "jours": "15",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "05h36",
+      "05h50",
+      "05h51",
+      "05h52",
+      "05h53",
+      "05h54",
+      "05h56",
+      "06h02",
+      "06h05",
+      "06h15",
+      "06h17",
+      "06h20",
+      "06h22",
+      "06h23",
+      "06h25",
+      "06h30",
+      "06h38",
+      "06h40",
+      "06h43",
+      "06h44",
+      "07h12"
+     ]
     },
     {
      "dep": "06h45",
      "arr": "08h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h46",
+      "07h00",
+      "07h01",
+      "07h02",
+      "07h03",
+      "07h04",
+      "07h06",
+      "07h12",
+      "07h15",
+      "07h25",
+      "07h27",
+      "07h30",
+      "07h32",
+      "07h33",
+      "07h35",
+      "07h40",
+      "07h48",
+      "07h50",
+      "07h53",
+      "07h54",
+      "08h22"
+     ]
     },
     {
      "dep": "06h45",
      "arr": "08h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h46",
+      "07h00",
+      "07h01",
+      "07h02",
+      "07h03",
+      "07h04",
+      "07h06",
+      "07h12",
+      "07h15",
+      "07h25",
+      "07h27",
+      "07h30",
+      "07h32",
+      "07h33",
+      "07h35",
+      "07h40",
+      "07h48",
+      "07h50",
+      "07h53",
+      "07h54",
+      "08h22"
+     ]
     },
     {
      "dep": "10h45",
      "arr": "12h27",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h46",
+      "11h00",
+      "11h01",
+      "11h02",
+      "11h03",
+      "11h04",
+      "11h06",
+      "11h12",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h30",
+      "11h32",
+      "11h33",
+      "11h35",
+      "11h40",
+      "11h48",
+      "11h50",
+      "11h53",
+      "11h54",
+      "12h22"
+     ]
     },
     {
      "dep": "19h15",
      "arr": "20h57",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h16",
+      "19h30",
+      "19h31",
+      "19h32",
+      "19h33",
+      "19h34",
+      "19h36",
+      "19h42",
+      "19h45",
+      "19h55",
+      "19h57",
+      "20h00",
+      "20h02",
+      "20h03",
+      "20h05",
+      "20h10",
+      "20h18",
+      "20h20",
+      "20h23",
+      "20h24",
+      "20h52"
+     ]
     }
+   ],
+   "chemin": [
+    "Préfailles, Quirouard",
+    "Pornic, Ste Marie Pl. de la Marne",
+    "Pornic, Terres aux Moines",
+    "Pornic, Rond-Point EDF",
+    "Pornic, Terres Jarries",
+    "Pornic, Le Sandier",
+    "Pornic, Théâtre St Gilles",
+    "Pornic, Hôpital",
+    "Pornic, Le Clion Sur Mer / Rue André Louerat",
+    "Chauvé, Église",
+    "Chaumes-en-Retz (Arthon-en-Retz), Haute Perche",
+    "Chaumes-en-Retz (Arthon-en-Retz), La Boizonnière",
+    "Chaumes-en-Retz (Arthon-en-Retz), Place du relais",
+    "Chaumes-en-Retz (Chéméré), Les Pierres Rousses",
+    "Chaumes-en-Retz (Chéméré), Arthus Princé",
+    "Chaumes-en-Retz (Chéméré), Pont Béranger",
+    "Port-Saint-Père, Ecomarché",
+    "Port-Saint-Père, Église",
+    "Saint-Léger-les-Vignes, Centre",
+    "Saint-Léger-les-Vignes, Le Clémois",
+    "Rezé, Mairie de Rezé"
    ]
   },
   {
@@ -244,224 +430,832 @@
      "dep": "05h56",
      "arr": "07h17",
      "jours": "15",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "06h02",
+      "06h05",
+      "06h15",
+      "06h17",
+      "06h20",
+      "06h22",
+      "06h23",
+      "06h25",
+      "06h30",
+      "06h38",
+      "06h40",
+      "06h43",
+      "06h44",
+      "07h12"
+     ]
     },
     {
      "dep": "05h56",
      "arr": "07h17",
      "jours": "234",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h02",
+      "06h05",
+      "06h15",
+      "06h17",
+      "06h20",
+      "06h22",
+      "06h23",
+      "06h25",
+      "06h30",
+      "06h38",
+      "06h40",
+      "06h43",
+      "06h44",
+      "07h12"
+     ]
     },
     {
      "dep": "06h21",
      "arr": "07h42",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h27",
+      "06h30",
+      "06h40",
+      "06h42",
+      "06h45",
+      "06h47",
+      "06h48",
+      "06h50",
+      "06h55",
+      "07h03",
+      "07h05",
+      "07h08",
+      "07h09",
+      "07h37"
+     ]
     },
     {
      "dep": "06h36",
      "arr": "07h57",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "06h42",
+      "06h45",
+      "06h55",
+      "06h57",
+      "07h00",
+      "07h02",
+      "07h03",
+      "07h05",
+      "07h10",
+      "07h18",
+      "07h20",
+      "07h23",
+      "07h24",
+      "07h52"
+     ]
     },
     {
      "dep": "06h51",
      "arr": "08h12",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "06h57",
+      "07h00",
+      "07h10",
+      "07h12",
+      "07h15",
+      "07h17",
+      "07h18",
+      "07h20",
+      "07h25",
+      "07h33",
+      "07h35",
+      "07h38",
+      "07h39",
+      "08h07"
+     ]
     },
     {
      "dep": "06h51",
      "arr": "08h12",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h57",
+      "07h00",
+      "07h10",
+      "07h12",
+      "07h15",
+      "07h17",
+      "07h18",
+      "07h20",
+      "07h25",
+      "07h33",
+      "07h35",
+      "07h38",
+      "07h39",
+      "08h07"
+     ]
     },
     {
      "dep": "07h06",
      "arr": "08h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h12",
+      "07h15",
+      "07h25",
+      "07h27",
+      "07h30",
+      "07h32",
+      "07h33",
+      "07h35",
+      "07h40",
+      "07h48",
+      "07h50",
+      "07h53",
+      "07h54",
+      "08h22"
+     ]
     },
     {
      "dep": "07h06",
      "arr": "08h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h12",
+      "07h15",
+      "07h25",
+      "07h27",
+      "07h30",
+      "07h32",
+      "07h33",
+      "07h35",
+      "07h40",
+      "07h48",
+      "07h50",
+      "07h53",
+      "07h54",
+      "08h22"
+     ]
     },
     {
      "dep": "07h21",
      "arr": "08h42",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h27",
+      "07h30",
+      "07h40",
+      "07h42",
+      "07h45",
+      "07h47",
+      "07h48",
+      "07h50",
+      "07h55",
+      "08h03",
+      "08h05",
+      "08h08",
+      "08h09",
+      "08h37"
+     ]
     },
     {
      "dep": "07h36",
      "arr": "08h57",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "07h42",
+      "07h45",
+      "07h55",
+      "07h57",
+      "08h00",
+      "08h02",
+      "08h03",
+      "08h05",
+      "08h10",
+      "08h18",
+      "08h20",
+      "08h23",
+      "08h24",
+      "08h52"
+     ]
     },
     {
      "dep": "07h51",
      "arr": "09h12",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "07h57",
+      "08h00",
+      "08h10",
+      "08h12",
+      "08h15",
+      "08h17",
+      "08h18",
+      "08h20",
+      "08h25",
+      "08h33",
+      "08h35",
+      "08h38",
+      "08h39",
+      "09h07"
+     ]
     },
     {
      "dep": "08h06",
      "arr": "09h27",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "08h12",
+      "08h15",
+      "08h25",
+      "08h27",
+      "08h30",
+      "08h32",
+      "08h33",
+      "08h35",
+      "08h40",
+      "08h48",
+      "08h50",
+      "08h53",
+      "08h54",
+      "09h22"
+     ]
     },
     {
      "dep": "08h21",
      "arr": "09h42",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "08h27",
+      "08h30",
+      "08h40",
+      "08h42",
+      "08h45",
+      "08h47",
+      "08h48",
+      "08h50",
+      "08h55",
+      "09h03",
+      "09h05",
+      "09h08",
+      "09h09",
+      "09h37"
+     ]
     },
     {
      "dep": "08h36",
      "arr": "09h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h42",
+      "08h45",
+      "08h55",
+      "08h57",
+      "09h00",
+      "09h02",
+      "09h03",
+      "09h05",
+      "09h10",
+      "09h18",
+      "09h20",
+      "09h23",
+      "09h24",
+      "09h52"
+     ]
     },
     {
      "dep": "09h06",
      "arr": "10h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h12",
+      "09h15",
+      "09h25",
+      "09h27",
+      "09h30",
+      "09h32",
+      "09h33",
+      "09h35",
+      "09h40",
+      "09h48",
+      "09h50",
+      "09h53",
+      "09h54",
+      "10h22"
+     ]
     },
     {
      "dep": "09h06",
      "arr": "10h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h12",
+      "09h15",
+      "09h25",
+      "09h27",
+      "09h30",
+      "09h32",
+      "09h33",
+      "09h35",
+      "09h40",
+      "09h48",
+      "09h50",
+      "09h53",
+      "09h54",
+      "10h22"
+     ]
     },
     {
      "dep": "09h36",
      "arr": "10h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h42",
+      "09h45",
+      "09h55",
+      "09h57",
+      "10h00",
+      "10h02",
+      "10h03",
+      "10h05",
+      "10h10",
+      "10h18",
+      "10h20",
+      "10h23",
+      "10h24",
+      "10h52"
+     ]
     },
     {
      "dep": "11h06",
      "arr": "12h27",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h12",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h30",
+      "11h32",
+      "11h33",
+      "11h35",
+      "11h40",
+      "11h48",
+      "11h50",
+      "11h53",
+      "11h54",
+      "12h22"
+     ]
     },
     {
      "dep": "11h06",
      "arr": "12h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h12",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h30",
+      "11h32",
+      "11h33",
+      "11h35",
+      "11h40",
+      "11h48",
+      "11h50",
+      "11h53",
+      "11h54",
+      "12h22"
+     ]
     },
     {
      "dep": "11h06",
      "arr": "12h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h12",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h30",
+      "11h32",
+      "11h33",
+      "11h35",
+      "11h40",
+      "11h48",
+      "11h50",
+      "11h53",
+      "11h54",
+      "12h22"
+     ]
     },
     {
      "dep": "12h36",
      "arr": "13h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h42",
+      "12h45",
+      "12h55",
+      "12h57",
+      "13h00",
+      "13h02",
+      "13h03",
+      "13h05",
+      "13h10",
+      "13h18",
+      "13h20",
+      "13h23",
+      "13h24",
+      "13h52"
+     ]
     },
     {
      "dep": "12h36",
      "arr": "13h57",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h42",
+      "12h45",
+      "12h55",
+      "12h57",
+      "13h00",
+      "13h02",
+      "13h03",
+      "13h05",
+      "13h10",
+      "13h18",
+      "13h20",
+      "13h23",
+      "13h24",
+      "13h52"
+     ]
     },
     {
      "dep": "14h06",
      "arr": "15h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h12",
+      "14h15",
+      "14h25",
+      "14h27",
+      "14h30",
+      "14h32",
+      "14h33",
+      "14h35",
+      "14h40",
+      "14h48",
+      "14h50",
+      "14h53",
+      "14h54",
+      "15h22"
+     ]
     },
     {
      "dep": "14h06",
      "arr": "15h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h12",
+      "14h15",
+      "14h25",
+      "14h27",
+      "14h30",
+      "14h32",
+      "14h33",
+      "14h35",
+      "14h40",
+      "14h48",
+      "14h50",
+      "14h53",
+      "14h54",
+      "15h22"
+     ]
     },
     {
      "dep": "15h36",
      "arr": "16h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h42",
+      "15h45",
+      "15h55",
+      "15h57",
+      "16h00",
+      "16h02",
+      "16h03",
+      "16h05",
+      "16h10",
+      "16h18",
+      "16h20",
+      "16h23",
+      "16h24",
+      "16h52"
+     ]
     },
     {
      "dep": "17h06",
      "arr": "18h27",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h12",
+      "17h15",
+      "17h25",
+      "17h27",
+      "17h30",
+      "17h32",
+      "17h33",
+      "17h35",
+      "17h40",
+      "17h48",
+      "17h50",
+      "17h53",
+      "17h54",
+      "18h22"
+     ]
     },
     {
      "dep": "17h06",
      "arr": "18h27",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h12",
+      "17h15",
+      "17h25",
+      "17h27",
+      "17h30",
+      "17h32",
+      "17h33",
+      "17h35",
+      "17h40",
+      "17h48",
+      "17h50",
+      "17h53",
+      "17h54",
+      "18h22"
+     ]
     },
     {
      "dep": "17h51",
      "arr": "19h12",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h57",
+      "18h00",
+      "18h10",
+      "18h12",
+      "18h15",
+      "18h17",
+      "18h18",
+      "18h20",
+      "18h25",
+      "18h33",
+      "18h35",
+      "18h38",
+      "18h39",
+      "19h07"
+     ]
     },
     {
      "dep": "17h51",
      "arr": "19h12",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "17h57",
+      "18h00",
+      "18h10",
+      "18h12",
+      "18h15",
+      "18h17",
+      "18h18",
+      "18h20",
+      "18h25",
+      "18h33",
+      "18h35",
+      "18h38",
+      "18h39",
+      "19h07"
+     ]
     },
     {
      "dep": "17h51",
      "arr": "19h12",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h57",
+      "18h00",
+      "18h10",
+      "18h12",
+      "18h15",
+      "18h17",
+      "18h18",
+      "18h20",
+      "18h25",
+      "18h33",
+      "18h35",
+      "18h38",
+      "18h39",
+      "19h07"
+     ]
     },
     {
      "dep": "18h36",
      "arr": "19h57",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h42",
+      "18h45",
+      "18h55",
+      "18h57",
+      "19h00",
+      "19h02",
+      "19h03",
+      "19h05",
+      "19h10",
+      "19h18",
+      "19h20",
+      "19h23",
+      "19h24",
+      "19h52"
+     ]
     },
     {
      "dep": "18h36",
      "arr": "19h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h42",
+      "18h45",
+      "18h55",
+      "18h57",
+      "19h00",
+      "19h02",
+      "19h03",
+      "19h05",
+      "19h10",
+      "19h18",
+      "19h20",
+      "19h23",
+      "19h24",
+      "19h52"
+     ]
     },
     {
      "dep": "18h36",
      "arr": "19h57",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h42",
+      "18h45",
+      "18h55",
+      "18h57",
+      "19h00",
+      "19h02",
+      "19h03",
+      "19h05",
+      "19h10",
+      "19h18",
+      "19h20",
+      "19h23",
+      "19h24",
+      "19h52"
+     ]
     },
     {
      "dep": "19h36",
      "arr": "20h57",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h42",
+      "19h45",
+      "19h55",
+      "19h57",
+      "20h00",
+      "20h02",
+      "20h03",
+      "20h05",
+      "20h10",
+      "20h18",
+      "20h20",
+      "20h23",
+      "20h24",
+      "20h52"
+     ]
     },
     {
      "dep": "19h36",
      "arr": "20h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h42",
+      "19h45",
+      "19h55",
+      "19h57",
+      "20h00",
+      "20h02",
+      "20h03",
+      "20h05",
+      "20h10",
+      "20h18",
+      "20h20",
+      "20h23",
+      "20h24",
+      "20h52"
+     ]
     },
     {
      "dep": "20h36",
      "arr": "21h57",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h42",
+      "20h45",
+      "20h55",
+      "20h57",
+      "21h00",
+      "21h02",
+      "21h03",
+      "21h05",
+      "21h10",
+      "21h18",
+      "21h20",
+      "21h23",
+      "21h24",
+      "21h52"
+     ]
     },
     {
      "dep": "20h36",
      "arr": "21h57",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h42",
+      "20h45",
+      "20h55",
+      "20h57",
+      "21h00",
+      "21h02",
+      "21h03",
+      "21h05",
+      "21h10",
+      "21h18",
+      "21h20",
+      "21h23",
+      "21h24",
+      "21h52"
+     ]
     }
+   ],
+   "chemin": [
+    "Pornic, Hôpital",
+    "Pornic, Le Clion Sur Mer / Rue André Louerat",
+    "Chauvé, Église",
+    "Chaumes-en-Retz (Arthon-en-Retz), Haute Perche",
+    "Chaumes-en-Retz (Arthon-en-Retz), La Boizonnière",
+    "Chaumes-en-Retz (Arthon-en-Retz), Place du relais",
+    "Chaumes-en-Retz (Chéméré), Les Pierres Rousses",
+    "Chaumes-en-Retz (Chéméré), Arthus Princé",
+    "Chaumes-en-Retz (Chéméré), Pont Béranger",
+    "Port-Saint-Père, Ecomarché",
+    "Port-Saint-Père, Église",
+    "Saint-Léger-les-Vignes, Centre",
+    "Saint-Léger-les-Vignes, Le Clémois",
+    "Rezé, Mairie de Rezé"
    ]
   },
   {
@@ -477,230 +1271,854 @@
      "dep": "06h30",
      "arr": "07h37",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h33",
+      "06h51",
+      "06h52",
+      "06h54",
+      "06h55",
+      "07h00",
+      "07h07",
+      "07h10",
+      "07h11",
+      "07h13",
+      "07h15",
+      "07h18",
+      "07h28",
+      "07h31"
+     ]
     },
     {
      "dep": "08h00",
      "arr": "09h07",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "08h03",
+      "08h21",
+      "08h22",
+      "08h24",
+      "08h25",
+      "08h30",
+      "08h37",
+      "08h40",
+      "08h41",
+      "08h43",
+      "08h45",
+      "08h48",
+      "08h58",
+      "09h01"
+     ]
     },
     {
      "dep": "08h00",
      "arr": "09h07",
      "jours": "12345",
-     "periode": "vacances"
+     "periode": "vacances",
+     "p": [
+      "08h03",
+      "08h21",
+      "08h22",
+      "08h24",
+      "08h25",
+      "08h30",
+      "08h37",
+      "08h40",
+      "08h41",
+      "08h43",
+      "08h45",
+      "08h48",
+      "08h58",
+      "09h01"
+     ]
     },
     {
      "dep": "08h00",
      "arr": "09h07",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h03",
+      "08h21",
+      "08h22",
+      "08h24",
+      "08h25",
+      "08h30",
+      "08h37",
+      "08h40",
+      "08h41",
+      "08h43",
+      "08h45",
+      "08h48",
+      "08h58",
+      "09h01"
+     ]
     },
     {
      "dep": "09h30",
      "arr": "10h37",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h33",
+      "09h51",
+      "09h52",
+      "09h54",
+      "09h55",
+      "10h00",
+      "10h07",
+      "10h10",
+      "10h11",
+      "10h13",
+      "10h15",
+      "10h18",
+      "10h28",
+      "10h31"
+     ]
     },
     {
      "dep": "09h30",
      "arr": "10h37",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h33",
+      "09h51",
+      "09h52",
+      "09h54",
+      "09h55",
+      "10h00",
+      "10h07",
+      "10h10",
+      "10h11",
+      "10h13",
+      "10h15",
+      "10h18",
+      "10h28",
+      "10h31"
+     ]
     },
     {
      "dep": "09h30",
      "arr": "10h37",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h33",
+      "09h51",
+      "09h52",
+      "09h54",
+      "09h55",
+      "10h00",
+      "10h07",
+      "10h10",
+      "10h11",
+      "10h13",
+      "10h15",
+      "10h18",
+      "10h28",
+      "10h31"
+     ]
     },
     {
      "dep": "11h00",
      "arr": "12h07",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h03",
+      "11h21",
+      "11h22",
+      "11h24",
+      "11h25",
+      "11h30",
+      "11h37",
+      "11h40",
+      "11h41",
+      "11h43",
+      "11h45",
+      "11h48",
+      "11h58",
+      "12h01"
+     ]
     },
     {
      "dep": "11h00",
      "arr": "12h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h03",
+      "11h21",
+      "11h22",
+      "11h24",
+      "11h25",
+      "11h30",
+      "11h37",
+      "11h40",
+      "11h41",
+      "11h43",
+      "11h45",
+      "11h48",
+      "11h58",
+      "12h01"
+     ]
     },
     {
      "dep": "11h00",
      "arr": "12h07",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h03",
+      "11h21",
+      "11h22",
+      "11h24",
+      "11h25",
+      "11h30",
+      "11h37",
+      "11h40",
+      "11h41",
+      "11h43",
+      "11h45",
+      "11h48",
+      "11h58",
+      "12h01"
+     ]
     },
     {
      "dep": "11h45",
      "arr": "12h52",
      "jours": "12345",
-     "periode": "vacances"
+     "periode": "vacances",
+     "p": [
+      "11h48",
+      "12h06",
+      "12h07",
+      "12h09",
+      "12h10",
+      "12h15",
+      "12h22",
+      "12h25",
+      "12h26",
+      "12h28",
+      "12h30",
+      "12h33",
+      "12h43",
+      "12h46"
+     ]
     },
     {
      "dep": "11h45",
      "arr": "12h52",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h48",
+      "12h06",
+      "12h07",
+      "12h09",
+      "12h10",
+      "12h15",
+      "12h22",
+      "12h25",
+      "12h26",
+      "12h28",
+      "12h30",
+      "12h33",
+      "12h43",
+      "12h46"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h37",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h37",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h37",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31"
+     ]
     },
     {
      "dep": "14h00",
      "arr": "15h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h03",
+      "14h21",
+      "14h22",
+      "14h24",
+      "14h25",
+      "14h30",
+      "14h37",
+      "14h40",
+      "14h41",
+      "14h43",
+      "14h45",
+      "14h48",
+      "14h58",
+      "15h01"
+     ]
     },
     {
      "dep": "14h00",
      "arr": "15h07",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h03",
+      "14h21",
+      "14h22",
+      "14h24",
+      "14h25",
+      "14h30",
+      "14h37",
+      "14h40",
+      "14h41",
+      "14h43",
+      "14h45",
+      "14h48",
+      "14h58",
+      "15h01"
+     ]
     },
     {
      "dep": "15h30",
      "arr": "16h37",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "15h33",
+      "15h51",
+      "15h52",
+      "15h54",
+      "15h55",
+      "16h00",
+      "16h07",
+      "16h10",
+      "16h11",
+      "16h13",
+      "16h15",
+      "16h18",
+      "16h28",
+      "16h31"
+     ]
     },
     {
      "dep": "16h00",
      "arr": "17h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h03",
+      "16h21",
+      "16h22",
+      "16h24",
+      "16h25",
+      "16h30",
+      "16h37",
+      "16h40",
+      "16h41",
+      "16h43",
+      "16h45",
+      "16h48",
+      "16h58",
+      "17h01"
+     ]
     },
     {
      "dep": "16h00",
      "arr": "17h07",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h03",
+      "16h21",
+      "16h22",
+      "16h24",
+      "16h25",
+      "16h30",
+      "16h37",
+      "16h40",
+      "16h41",
+      "16h43",
+      "16h45",
+      "16h48",
+      "16h58",
+      "17h01"
+     ]
     },
     {
      "dep": "16h15",
      "arr": "17h22",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "16h18",
+      "16h36",
+      "16h37",
+      "16h39",
+      "16h40",
+      "16h45",
+      "16h52",
+      "16h55",
+      "16h56",
+      "16h58",
+      "17h00",
+      "17h03",
+      "17h13",
+      "17h16"
+     ]
     },
     {
      "dep": "16h30",
      "arr": "17h37",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h33",
+      "16h51",
+      "16h52",
+      "16h54",
+      "16h55",
+      "17h00",
+      "17h07",
+      "17h10",
+      "17h11",
+      "17h13",
+      "17h15",
+      "17h18",
+      "17h28",
+      "17h31"
+     ]
     },
     {
      "dep": "16h45",
      "arr": "17h52",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "16h48",
+      "17h06",
+      "17h07",
+      "17h09",
+      "17h10",
+      "17h15",
+      "17h22",
+      "17h25",
+      "17h26",
+      "17h28",
+      "17h30",
+      "17h33",
+      "17h43",
+      "17h46"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h07",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h07",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01"
+     ]
     },
     {
      "dep": "17h15",
      "arr": "18h22",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "17h18",
+      "17h36",
+      "17h37",
+      "17h39",
+      "17h40",
+      "17h45",
+      "17h52",
+      "17h55",
+      "17h56",
+      "17h58",
+      "18h00",
+      "18h03",
+      "18h13",
+      "18h16"
+     ]
     },
     {
      "dep": "17h30",
      "arr": "18h37",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h33",
+      "17h51",
+      "17h52",
+      "17h54",
+      "17h55",
+      "18h00",
+      "18h07",
+      "18h10",
+      "18h11",
+      "18h13",
+      "18h15",
+      "18h18",
+      "18h28",
+      "18h31"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h52",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "17h48",
+      "18h06",
+      "18h07",
+      "18h09",
+      "18h10",
+      "18h15",
+      "18h22",
+      "18h25",
+      "18h26",
+      "18h28",
+      "18h30",
+      "18h33",
+      "18h43",
+      "18h46"
+     ]
     },
     {
      "dep": "18h00",
      "arr": "19h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h03",
+      "18h21",
+      "18h22",
+      "18h24",
+      "18h25",
+      "18h30",
+      "18h37",
+      "18h40",
+      "18h41",
+      "18h43",
+      "18h45",
+      "18h48",
+      "18h58",
+      "19h01"
+     ]
     },
     {
      "dep": "18h15",
      "arr": "19h22",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h18",
+      "18h36",
+      "18h37",
+      "18h39",
+      "18h40",
+      "18h45",
+      "18h52",
+      "18h55",
+      "18h56",
+      "18h58",
+      "19h00",
+      "19h03",
+      "19h13",
+      "19h16"
+     ]
     },
     {
      "dep": "18h15",
      "arr": "19h22",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h18",
+      "18h36",
+      "18h37",
+      "18h39",
+      "18h40",
+      "18h45",
+      "18h52",
+      "18h55",
+      "18h56",
+      "18h58",
+      "19h00",
+      "19h03",
+      "19h13",
+      "19h16"
+     ]
     },
     {
      "dep": "18h30",
      "arr": "19h37",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "18h33",
+      "18h51",
+      "18h52",
+      "18h54",
+      "18h55",
+      "19h00",
+      "19h07",
+      "19h10",
+      "19h11",
+      "19h13",
+      "19h15",
+      "19h18",
+      "19h28",
+      "19h31"
+     ]
     },
     {
      "dep": "19h00",
      "arr": "20h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h03",
+      "19h21",
+      "19h22",
+      "19h24",
+      "19h25",
+      "19h30",
+      "19h37",
+      "19h40",
+      "19h41",
+      "19h43",
+      "19h45",
+      "19h48",
+      "19h58",
+      "20h01"
+     ]
     },
     {
      "dep": "19h00",
      "arr": "20h07",
      "jours": "6",
-     "periode": "vacances"
+     "periode": "vacances",
+     "p": [
+      "19h03",
+      "19h21",
+      "19h22",
+      "19h24",
+      "19h25",
+      "19h30",
+      "19h37",
+      "19h40",
+      "19h41",
+      "19h43",
+      "19h45",
+      "19h48",
+      "19h58",
+      "20h01"
+     ]
     },
     {
      "dep": "19h30",
      "arr": "20h37",
      "jours": "12345",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "19h33",
+      "19h51",
+      "19h52",
+      "19h54",
+      "19h55",
+      "20h00",
+      "20h07",
+      "20h10",
+      "20h11",
+      "20h13",
+      "20h15",
+      "20h18",
+      "20h28",
+      "20h31"
+     ]
     },
     {
      "dep": "19h30",
      "arr": "20h37",
      "jours": "6",
-     "periode": "scolaire"
+     "periode": "scolaire",
+     "p": [
+      "19h33",
+      "19h51",
+      "19h52",
+      "19h54",
+      "19h55",
+      "20h00",
+      "20h07",
+      "20h10",
+      "20h11",
+      "20h13",
+      "20h15",
+      "20h18",
+      "20h28",
+      "20h31"
+     ]
     },
     {
      "dep": "21h00",
      "arr": "22h07",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "21h03",
+      "21h21",
+      "21h22",
+      "21h24",
+      "21h25",
+      "21h30",
+      "21h37",
+      "21h40",
+      "21h41",
+      "21h43",
+      "21h45",
+      "21h48",
+      "21h58",
+      "22h01"
+     ]
     }
+   ],
+   "chemin": [
+    "Rezé, Mairie de Rezé",
+    "Saint-Léger-les-Vignes, Le Clémois",
+    "Saint-Léger-les-Vignes, Centre",
+    "Port-Saint-Père, Église",
+    "Port-Saint-Père, Ecomarché",
+    "Chaumes-en-Retz (Chéméré), Pont Béranger",
+    "Chaumes-en-Retz (Chéméré), Arthus Princé",
+    "Chaumes-en-Retz (Chéméré), Les Pierres Rousses",
+    "Chaumes-en-Retz (Arthon-en-Retz), Place du relais",
+    "Chaumes-en-Retz (Arthon-en-Retz), La Boizonnière",
+    "Chaumes-en-Retz (Arthon-en-Retz), Haute Perche",
+    "Chauvé, Église",
+    "Pornic, Le Clion Sur Mer / Rue André Louerat",
+    "Pornic, Hôpital"
    ]
   },
   {
@@ -716,56 +2134,286 @@
      "dep": "09h30",
      "arr": "10h58",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h33",
+      "09h51",
+      "09h52",
+      "09h54",
+      "09h55",
+      "10h00",
+      "10h07",
+      "10h10",
+      "10h11",
+      "10h13",
+      "10h15",
+      "10h18",
+      "10h28",
+      "10h31",
+      "10h37",
+      "10h39",
+      "10h40",
+      "10h41",
+      "10h42",
+      "10h43",
+      "10h57"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h58",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31",
+      "13h37",
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h58",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31",
+      "13h37",
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "12h30",
      "arr": "13h58",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h33",
+      "12h51",
+      "12h52",
+      "12h54",
+      "12h55",
+      "13h00",
+      "13h07",
+      "13h10",
+      "13h11",
+      "13h13",
+      "13h15",
+      "13h18",
+      "13h28",
+      "13h31",
+      "13h37",
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h28",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01",
+      "18h07",
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h28",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01",
+      "18h07",
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "17h00",
      "arr": "18h28",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h03",
+      "17h21",
+      "17h22",
+      "17h24",
+      "17h25",
+      "17h30",
+      "17h37",
+      "17h40",
+      "17h41",
+      "17h43",
+      "17h45",
+      "17h48",
+      "17h58",
+      "18h01",
+      "18h07",
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "18h15",
      "arr": "19h43",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h18",
+      "18h36",
+      "18h37",
+      "18h39",
+      "18h40",
+      "18h45",
+      "18h52",
+      "18h55",
+      "18h56",
+      "18h58",
+      "19h00",
+      "19h03",
+      "19h13",
+      "19h16",
+      "19h22",
+      "19h24",
+      "19h25",
+      "19h26",
+      "19h27",
+      "19h28",
+      "19h42"
+     ]
     },
     {
      "dep": "18h15",
      "arr": "19h43",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h18",
+      "18h36",
+      "18h37",
+      "18h39",
+      "18h40",
+      "18h45",
+      "18h52",
+      "18h55",
+      "18h56",
+      "18h58",
+      "19h00",
+      "19h03",
+      "19h13",
+      "19h16",
+      "19h22",
+      "19h24",
+      "19h25",
+      "19h26",
+      "19h27",
+      "19h28",
+      "19h42"
+     ]
     }
+   ],
+   "chemin": [
+    "Rezé, Mairie de Rezé",
+    "Saint-Léger-les-Vignes, Le Clémois",
+    "Saint-Léger-les-Vignes, Centre",
+    "Port-Saint-Père, Église",
+    "Port-Saint-Père, Ecomarché",
+    "Chaumes-en-Retz (Chéméré), Pont Béranger",
+    "Chaumes-en-Retz (Chéméré), Arthus Princé",
+    "Chaumes-en-Retz (Chéméré), Les Pierres Rousses",
+    "Chaumes-en-Retz (Arthon-en-Retz), Place du relais",
+    "Chaumes-en-Retz (Arthon-en-Retz), La Boizonnière",
+    "Chaumes-en-Retz (Arthon-en-Retz), Haute Perche",
+    "Chauvé, Église",
+    "Pornic, Le Clion Sur Mer / Rue André Louerat",
+    "Pornic, Hôpital",
+    "Pornic, Théâtre St Gilles",
+    "Pornic, Le Sandier",
+    "Pornic, Terres Jarries",
+    "Pornic, Rond-Point EDF",
+    "Pornic, Terres aux Moines",
+    "Pornic, Ste Marie Pl. de la Marne",
+    "Préfailles, Quirouard"
    ]
   },
   {
@@ -781,56 +2429,136 @@
      "dep": "10h37",
      "arr": "10h58",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h39",
+      "10h40",
+      "10h41",
+      "10h42",
+      "10h43",
+      "10h57"
+     ]
     },
     {
      "dep": "13h37",
      "arr": "13h58",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "13h37",
      "arr": "13h58",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "13h37",
      "arr": "13h58",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h39",
+      "13h40",
+      "13h41",
+      "13h42",
+      "13h43",
+      "13h57"
+     ]
     },
     {
      "dep": "18h07",
      "arr": "18h28",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "18h07",
      "arr": "18h28",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "18h07",
      "arr": "18h28",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h09",
+      "18h10",
+      "18h11",
+      "18h12",
+      "18h13",
+      "18h27"
+     ]
     },
     {
      "dep": "19h22",
      "arr": "19h43",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h24",
+      "19h25",
+      "19h26",
+      "19h27",
+      "19h28",
+      "19h42"
+     ]
     },
     {
      "dep": "19h22",
      "arr": "19h43",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h24",
+      "19h25",
+      "19h26",
+      "19h27",
+      "19h28",
+      "19h42"
+     ]
     }
+   ],
+   "chemin": [
+    "Pornic, Le Sandier",
+    "Pornic, Terres Jarries",
+    "Pornic, Rond-Point EDF",
+    "Pornic, Terres aux Moines",
+    "Pornic, Ste Marie Pl. de la Marne",
+    "Préfailles, Quirouard"
    ]
   },
   {
@@ -846,116 +2574,236 @@
      "dep": "05h50",
      "arr": "06h10",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "05h51",
+      "05h55",
+      "06h07",
+      "06h08"
+     ]
     },
     {
      "dep": "06h10",
      "arr": "06h30",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h11",
+      "06h15",
+      "06h27",
+      "06h28"
+     ]
     },
     {
      "dep": "06h35",
      "arr": "06h55",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h36",
+      "06h40",
+      "06h52",
+      "06h53"
+     ]
     },
     {
      "dep": "07h40",
      "arr": "08h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h41",
+      "07h45",
+      "07h57",
+      "07h58"
+     ]
     },
     {
      "dep": "07h45",
      "arr": "08h05",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h46",
+      "07h50",
+      "08h02",
+      "08h03"
+     ]
     },
     {
      "dep": "09h12",
      "arr": "09h32",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h13",
+      "09h17",
+      "09h29",
+      "09h30"
+     ]
     },
     {
      "dep": "09h20",
      "arr": "09h40",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h21",
+      "09h25",
+      "09h37",
+      "09h38"
+     ]
     },
     {
      "dep": "09h50",
      "arr": "10h10",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h51",
+      "09h55",
+      "10h07",
+      "10h08"
+     ]
     },
     {
      "dep": "10h55",
      "arr": "11h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h56",
+      "11h00",
+      "11h12",
+      "11h13"
+     ]
     },
     {
      "dep": "11h30",
      "arr": "11h50",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h31",
+      "11h35",
+      "11h47",
+      "11h48"
+     ]
     },
     {
      "dep": "11h57",
      "arr": "12h17",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h58",
+      "12h02",
+      "12h14",
+      "12h15"
+     ]
     },
     {
      "dep": "13h05",
      "arr": "13h25",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h06",
+      "13h10",
+      "13h22",
+      "13h23"
+     ]
     },
     {
      "dep": "14h10",
      "arr": "14h30",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h11",
+      "14h15",
+      "14h27",
+      "14h28"
+     ]
     },
     {
      "dep": "15h10",
      "arr": "15h30",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h11",
+      "15h15",
+      "15h27",
+      "15h28"
+     ]
     },
     {
      "dep": "16h15",
      "arr": "16h35",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h16",
+      "16h20",
+      "16h32",
+      "16h33"
+     ]
     },
     {
      "dep": "16h35",
      "arr": "16h55",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h36",
+      "16h40",
+      "16h52",
+      "16h53"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "19h15",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "19h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "19h15",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13"
+     ]
     }
+   ],
+   "chemin": [
+    "Préfailles, Quirouard",
+    "La Plaine-sur-Mer, Centre",
+    "Pornic, Terres Jarries",
+    "Pornic, Le Sandier"
    ]
   },
   {
@@ -971,110 +2819,433 @@
      "dep": "05h50",
      "arr": "06h55",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "05h51",
+      "05h55",
+      "06h07",
+      "06h08",
+      "06h10",
+      "06h20",
+      "06h22",
+      "06h24",
+      "06h27",
+      "06h28",
+      "06h36",
+      "06h38",
+      "06h41",
+      "06h53",
+      "06h54"
+     ]
     },
     {
      "dep": "06h10",
      "arr": "07h15",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h11",
+      "06h15",
+      "06h27",
+      "06h28",
+      "06h30",
+      "06h40",
+      "06h42",
+      "06h44",
+      "06h47",
+      "06h48",
+      "06h56",
+      "06h58",
+      "07h01",
+      "07h13",
+      "07h14"
+     ]
     },
     {
      "dep": "06h35",
      "arr": "07h40",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h36",
+      "06h40",
+      "06h52",
+      "06h53",
+      "06h55",
+      "07h05",
+      "07h07",
+      "07h09",
+      "07h12",
+      "07h13",
+      "07h21",
+      "07h23",
+      "07h26",
+      "07h38",
+      "07h39"
+     ]
     },
     {
      "dep": "07h40",
      "arr": "08h45",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h41",
+      "07h45",
+      "07h57",
+      "07h58",
+      "08h00",
+      "08h10",
+      "08h12",
+      "08h14",
+      "08h17",
+      "08h18",
+      "08h26",
+      "08h28",
+      "08h31",
+      "08h43",
+      "08h44"
+     ]
     },
     {
      "dep": "07h45",
      "arr": "08h50",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h46",
+      "07h50",
+      "08h02",
+      "08h03",
+      "08h05",
+      "08h15",
+      "08h17",
+      "08h19",
+      "08h22",
+      "08h23",
+      "08h31",
+      "08h33",
+      "08h36",
+      "08h48",
+      "08h49"
+     ]
     },
     {
      "dep": "09h12",
      "arr": "10h17",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h13",
+      "09h17",
+      "09h29",
+      "09h30",
+      "09h32",
+      "09h42",
+      "09h44",
+      "09h46",
+      "09h49",
+      "09h50",
+      "09h58",
+      "10h00",
+      "10h03",
+      "10h15",
+      "10h16"
+     ]
     },
     {
      "dep": "09h20",
      "arr": "10h25",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h21",
+      "09h25",
+      "09h37",
+      "09h38",
+      "09h40",
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06",
+      "10h08",
+      "10h11",
+      "10h23",
+      "10h24"
+     ]
     },
     {
      "dep": "09h50",
      "arr": "10h55",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h51",
+      "09h55",
+      "10h07",
+      "10h08",
+      "10h10",
+      "10h20",
+      "10h22",
+      "10h24",
+      "10h27",
+      "10h28",
+      "10h36",
+      "10h38",
+      "10h41",
+      "10h53",
+      "10h54"
+     ]
     },
     {
      "dep": "10h55",
      "arr": "12h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h56",
+      "11h00",
+      "11h12",
+      "11h13",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h29",
+      "11h32",
+      "11h33",
+      "11h41",
+      "11h43",
+      "11h46",
+      "11h58",
+      "11h59"
+     ]
     },
     {
      "dep": "11h30",
      "arr": "12h35",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h31",
+      "11h35",
+      "11h47",
+      "11h48",
+      "11h50",
+      "12h00",
+      "12h02",
+      "12h04",
+      "12h07",
+      "12h08",
+      "12h16",
+      "12h18",
+      "12h21",
+      "12h33",
+      "12h34"
+     ]
     },
     {
      "dep": "13h05",
      "arr": "14h10",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h06",
+      "13h10",
+      "13h22",
+      "13h23",
+      "13h25",
+      "13h35",
+      "13h37",
+      "13h39",
+      "13h42",
+      "13h43",
+      "13h51",
+      "13h53",
+      "13h56",
+      "14h08",
+      "14h09"
+     ]
     },
     {
      "dep": "14h10",
      "arr": "15h15",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h11",
+      "14h15",
+      "14h27",
+      "14h28",
+      "14h30",
+      "14h40",
+      "14h42",
+      "14h44",
+      "14h47",
+      "14h48",
+      "14h56",
+      "14h58",
+      "15h01",
+      "15h13",
+      "15h14"
+     ]
     },
     {
      "dep": "15h10",
      "arr": "16h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h11",
+      "15h15",
+      "15h27",
+      "15h28",
+      "15h30",
+      "15h40",
+      "15h42",
+      "15h44",
+      "15h47",
+      "15h48",
+      "15h56",
+      "15h58",
+      "16h01",
+      "16h13",
+      "16h14"
+     ]
     },
     {
      "dep": "16h15",
      "arr": "17h20",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h16",
+      "16h20",
+      "16h32",
+      "16h33",
+      "16h35",
+      "16h45",
+      "16h47",
+      "16h49",
+      "16h52",
+      "16h53",
+      "17h01",
+      "17h03",
+      "17h06",
+      "17h18",
+      "17h19"
+     ]
     },
     {
      "dep": "16h35",
      "arr": "17h40",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h36",
+      "16h40",
+      "16h52",
+      "16h53",
+      "16h55",
+      "17h05",
+      "17h07",
+      "17h09",
+      "17h12",
+      "17h13",
+      "17h21",
+      "17h23",
+      "17h26",
+      "17h38",
+      "17h39"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "20h00",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "20h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     },
     {
      "dep": "18h55",
      "arr": "20h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     }
+   ],
+   "chemin": [
+    "Préfailles, Quirouard",
+    "La Plaine-sur-Mer, Centre",
+    "Pornic, Terres Jarries",
+    "Pornic, Le Sandier",
+    "Pornic, Théâtre St Gilles",
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Brevin-les-Pins, Pôle de Bresse",
+    "Saint-Brevin-les-Pins, Le Bosquet",
+    "Trignac, Grand Large",
+    "Trignac, Roselière"
    ]
   },
   {
@@ -1090,110 +3261,433 @@
      "dep": "07h55",
      "arr": "09h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06",
+      "08h10",
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31",
+      "08h41",
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
     },
     {
      "dep": "07h55",
      "arr": "09h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06",
+      "08h10",
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31",
+      "08h41",
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
     },
     {
      "dep": "08h30",
      "arr": "09h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h31",
+      "08h32",
+      "08h41",
+      "08h45",
+      "08h47",
+      "08h56",
+      "08h57",
+      "09h00",
+      "09h03",
+      "09h06",
+      "09h16",
+      "09h18",
+      "09h19",
+      "09h31",
+      "09h34"
+     ]
     },
     {
      "dep": "09h00",
      "arr": "10h05",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h01",
+      "09h02",
+      "09h11",
+      "09h15",
+      "09h17",
+      "09h26",
+      "09h27",
+      "09h30",
+      "09h33",
+      "09h36",
+      "09h46",
+      "09h48",
+      "09h49",
+      "10h01",
+      "10h04"
+     ]
     },
     {
      "dep": "09h10",
      "arr": "10h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h11",
+      "09h12",
+      "09h21",
+      "09h25",
+      "09h27",
+      "09h36",
+      "09h37",
+      "09h40",
+      "09h43",
+      "09h46",
+      "09h56",
+      "09h58",
+      "09h59",
+      "10h11",
+      "10h14"
+     ]
     },
     {
      "dep": "11h00",
      "arr": "12h05",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h01",
+      "11h02",
+      "11h11",
+      "11h15",
+      "11h17",
+      "11h26",
+      "11h27",
+      "11h30",
+      "11h33",
+      "11h36",
+      "11h46",
+      "11h48",
+      "11h49",
+      "12h01",
+      "12h04"
+     ]
     },
     {
      "dep": "11h15",
      "arr": "12h20",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h16",
+      "11h17",
+      "11h26",
+      "11h30",
+      "11h32",
+      "11h41",
+      "11h42",
+      "11h45",
+      "11h48",
+      "11h51",
+      "12h01",
+      "12h03",
+      "12h04",
+      "12h16",
+      "12h19"
+     ]
     },
     {
      "dep": "11h55",
      "arr": "13h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h56",
+      "11h57",
+      "12h06",
+      "12h10",
+      "12h12",
+      "12h21",
+      "12h22",
+      "12h25",
+      "12h28",
+      "12h31",
+      "12h41",
+      "12h43",
+      "12h44",
+      "12h56",
+      "12h59"
+     ]
     },
     {
      "dep": "12h55",
      "arr": "14h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h56",
+      "12h57",
+      "13h06",
+      "13h10",
+      "13h12",
+      "13h21",
+      "13h22",
+      "13h25",
+      "13h28",
+      "13h31",
+      "13h41",
+      "13h43",
+      "13h44",
+      "13h56",
+      "13h59"
+     ]
     },
     {
      "dep": "13h30",
      "arr": "14h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h31",
+      "13h32",
+      "13h41",
+      "13h45",
+      "13h47",
+      "13h56",
+      "13h57",
+      "14h00",
+      "14h03",
+      "14h06",
+      "14h16",
+      "14h18",
+      "14h19",
+      "14h31",
+      "14h34"
+     ]
     },
     {
      "dep": "15h25",
      "arr": "16h30",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h26",
+      "15h27",
+      "15h36",
+      "15h40",
+      "15h42",
+      "15h51",
+      "15h52",
+      "15h55",
+      "15h58",
+      "16h01",
+      "16h11",
+      "16h13",
+      "16h14",
+      "16h26",
+      "16h29"
+     ]
     },
     {
      "dep": "16h30",
      "arr": "17h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h31",
+      "16h32",
+      "16h41",
+      "16h45",
+      "16h47",
+      "16h56",
+      "16h57",
+      "17h00",
+      "17h03",
+      "17h06",
+      "17h16",
+      "17h18",
+      "17h19",
+      "17h31",
+      "17h34"
+     ]
     },
     {
      "dep": "17h10",
      "arr": "18h18",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h11",
+      "17h12",
+      "17h24",
+      "17h28",
+      "17h30",
+      "17h39",
+      "17h40",
+      "17h43",
+      "17h46",
+      "17h49",
+      "17h59",
+      "18h01",
+      "18h02",
+      "18h14",
+      "18h17"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h50",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h50",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h50",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "20h05",
      "arr": "21h10",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h06",
+      "20h07",
+      "20h16",
+      "20h20",
+      "20h22",
+      "20h31",
+      "20h32",
+      "20h35",
+      "20h38",
+      "20h41",
+      "20h51",
+      "20h53",
+      "20h54",
+      "21h06",
+      "21h09"
+     ]
     },
     {
      "dep": "20h20",
      "arr": "21h25",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h21",
+      "20h22",
+      "20h31",
+      "20h35",
+      "20h37",
+      "20h46",
+      "20h47",
+      "20h50",
+      "20h53",
+      "20h56",
+      "21h06",
+      "21h08",
+      "21h09",
+      "21h21",
+      "21h24"
+     ]
     }
+   ],
+   "chemin": [
+    "Trignac, Roselière",
+    "Trignac, Grand Large",
+    "Saint-Brevin-les-Pins, Le Bosquet",
+    "Saint-Brevin-les-Pins, Pôle de Bresse",
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Pornic, Théâtre St Gilles",
+    "Pornic, Le Sandier",
+    "Pornic, Terres Jarries",
+    "La Plaine-sur-Mer, Centre",
+    "Préfailles, Quirouard"
    ]
   },
   {
@@ -1209,116 +3703,236 @@
      "dep": "08h41",
      "arr": "09h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
     },
     {
      "dep": "08h41",
      "arr": "09h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
     },
     {
      "dep": "09h16",
      "arr": "09h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h18",
+      "09h19",
+      "09h31",
+      "09h34"
+     ]
     },
     {
      "dep": "09h46",
      "arr": "10h05",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h48",
+      "09h49",
+      "10h01",
+      "10h04"
+     ]
     },
     {
      "dep": "09h56",
      "arr": "10h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h58",
+      "09h59",
+      "10h11",
+      "10h14"
+     ]
     },
     {
      "dep": "11h46",
      "arr": "12h05",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h48",
+      "11h49",
+      "12h01",
+      "12h04"
+     ]
     },
     {
      "dep": "12h01",
      "arr": "12h20",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h03",
+      "12h04",
+      "12h16",
+      "12h19"
+     ]
     },
     {
      "dep": "12h41",
      "arr": "13h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h43",
+      "12h44",
+      "12h56",
+      "12h59"
+     ]
     },
     {
      "dep": "13h41",
      "arr": "14h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h43",
+      "13h44",
+      "13h56",
+      "13h59"
+     ]
     },
     {
      "dep": "14h16",
      "arr": "14h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h18",
+      "14h19",
+      "14h31",
+      "14h34"
+     ]
     },
     {
      "dep": "14h36",
      "arr": "14h55",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h38",
+      "14h39",
+      "14h51",
+      "14h54"
+     ]
     },
     {
      "dep": "16h11",
      "arr": "16h30",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h13",
+      "16h14",
+      "16h26",
+      "16h29"
+     ]
     },
     {
      "dep": "17h16",
      "arr": "17h35",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h18",
+      "17h19",
+      "17h31",
+      "17h34"
+     ]
     },
     {
      "dep": "17h59",
      "arr": "18h18",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h01",
+      "18h02",
+      "18h14",
+      "18h17"
+     ]
     },
     {
      "dep": "18h31",
      "arr": "18h50",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "18h31",
      "arr": "18h50",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "18h31",
      "arr": "18h50",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
     },
     {
      "dep": "20h51",
      "arr": "21h10",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h53",
+      "20h54",
+      "21h06",
+      "21h09"
+     ]
     },
     {
      "dep": "21h06",
      "arr": "21h25",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "21h08",
+      "21h09",
+      "21h21",
+      "21h24"
+     ]
     }
+   ],
+   "chemin": [
+    "Pornic, Le Sandier",
+    "Pornic, Terres Jarries",
+    "La Plaine-sur-Mer, Centre",
+    "Préfailles, Quirouard"
    ]
   },
   {
@@ -1334,122 +3948,374 @@
      "dep": "06h10",
      "arr": "06h55",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h20",
+      "06h22",
+      "06h24",
+      "06h27",
+      "06h28",
+      "06h36",
+      "06h38",
+      "06h41",
+      "06h53",
+      "06h54"
+     ]
     },
     {
      "dep": "06h30",
      "arr": "07h15",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "06h40",
+      "06h42",
+      "06h44",
+      "06h47",
+      "06h48",
+      "06h56",
+      "06h58",
+      "07h01",
+      "07h13",
+      "07h14"
+     ]
     },
     {
      "dep": "06h55",
      "arr": "07h40",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h05",
+      "07h07",
+      "07h09",
+      "07h12",
+      "07h13",
+      "07h21",
+      "07h23",
+      "07h26",
+      "07h38",
+      "07h39"
+     ]
     },
     {
      "dep": "08h00",
      "arr": "08h45",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h10",
+      "08h12",
+      "08h14",
+      "08h17",
+      "08h18",
+      "08h26",
+      "08h28",
+      "08h31",
+      "08h43",
+      "08h44"
+     ]
     },
     {
      "dep": "08h05",
      "arr": "08h50",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h15",
+      "08h17",
+      "08h19",
+      "08h22",
+      "08h23",
+      "08h31",
+      "08h33",
+      "08h36",
+      "08h48",
+      "08h49"
+     ]
     },
     {
      "dep": "09h32",
      "arr": "10h17",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h42",
+      "09h44",
+      "09h46",
+      "09h49",
+      "09h50",
+      "09h58",
+      "10h00",
+      "10h03",
+      "10h15",
+      "10h16"
+     ]
     },
     {
      "dep": "09h40",
      "arr": "10h25",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06",
+      "10h08",
+      "10h11",
+      "10h23",
+      "10h24"
+     ]
     },
     {
      "dep": "09h40",
      "arr": "10h25",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06",
+      "10h08",
+      "10h11",
+      "10h23",
+      "10h24"
+     ]
     },
     {
      "dep": "10h10",
      "arr": "10h55",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "10h20",
+      "10h22",
+      "10h24",
+      "10h27",
+      "10h28",
+      "10h36",
+      "10h38",
+      "10h41",
+      "10h53",
+      "10h54"
+     ]
     },
     {
      "dep": "11h15",
      "arr": "12h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h25",
+      "11h27",
+      "11h29",
+      "11h32",
+      "11h33",
+      "11h41",
+      "11h43",
+      "11h46",
+      "11h58",
+      "11h59"
+     ]
     },
     {
      "dep": "11h50",
      "arr": "12h35",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h00",
+      "12h02",
+      "12h04",
+      "12h07",
+      "12h08",
+      "12h16",
+      "12h18",
+      "12h21",
+      "12h33",
+      "12h34"
+     ]
     },
     {
      "dep": "13h25",
      "arr": "14h10",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h35",
+      "13h37",
+      "13h39",
+      "13h42",
+      "13h43",
+      "13h51",
+      "13h53",
+      "13h56",
+      "14h08",
+      "14h09"
+     ]
     },
     {
      "dep": "14h30",
      "arr": "15h15",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "14h40",
+      "14h42",
+      "14h44",
+      "14h47",
+      "14h48",
+      "14h56",
+      "14h58",
+      "15h01",
+      "15h13",
+      "15h14"
+     ]
     },
     {
      "dep": "15h30",
      "arr": "16h15",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h40",
+      "15h42",
+      "15h44",
+      "15h47",
+      "15h48",
+      "15h56",
+      "15h58",
+      "16h01",
+      "16h13",
+      "16h14"
+     ]
     },
     {
      "dep": "16h35",
      "arr": "17h20",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h45",
+      "16h47",
+      "16h49",
+      "16h52",
+      "16h53",
+      "17h01",
+      "17h03",
+      "17h06",
+      "17h18",
+      "17h19"
+     ]
     },
     {
      "dep": "16h55",
      "arr": "17h40",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h05",
+      "17h07",
+      "17h09",
+      "17h12",
+      "17h13",
+      "17h21",
+      "17h23",
+      "17h26",
+      "17h38",
+      "17h39"
+     ]
     },
     {
      "dep": "17h15",
      "arr": "18h00",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h25",
+      "17h27",
+      "17h29",
+      "17h32",
+      "17h33",
+      "17h41",
+      "17h43",
+      "17h46",
+      "17h58",
+      "17h59"
+     ]
     },
     {
      "dep": "19h15",
      "arr": "20h00",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     },
     {
      "dep": "19h15",
      "arr": "20h00",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     },
     {
      "dep": "19h15",
      "arr": "20h00",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41",
+      "19h43",
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
     }
+   ],
+   "chemin": [
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Brevin-les-Pins, Pôle de Bresse",
+    "Saint-Brevin-les-Pins, Le Bosquet",
+    "Trignac, Grand Large",
+    "Trignac, Roselière"
    ]
   },
   {
@@ -1465,116 +4331,356 @@
      "dep": "07h55",
      "arr": "08h41",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06",
+      "08h10",
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31"
+     ]
     },
     {
      "dep": "07h55",
      "arr": "08h41",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06",
+      "08h10",
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31"
+     ]
     },
     {
      "dep": "08h30",
      "arr": "09h16",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "08h31",
+      "08h32",
+      "08h41",
+      "08h45",
+      "08h47",
+      "08h56",
+      "08h57",
+      "09h00",
+      "09h03",
+      "09h06"
+     ]
     },
     {
      "dep": "09h00",
      "arr": "09h46",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h01",
+      "09h02",
+      "09h11",
+      "09h15",
+      "09h17",
+      "09h26",
+      "09h27",
+      "09h30",
+      "09h33",
+      "09h36"
+     ]
     },
     {
      "dep": "09h10",
      "arr": "09h56",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "09h11",
+      "09h12",
+      "09h21",
+      "09h25",
+      "09h27",
+      "09h36",
+      "09h37",
+      "09h40",
+      "09h43",
+      "09h46"
+     ]
     },
     {
      "dep": "11h00",
      "arr": "11h46",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h01",
+      "11h02",
+      "11h11",
+      "11h15",
+      "11h17",
+      "11h26",
+      "11h27",
+      "11h30",
+      "11h33",
+      "11h36"
+     ]
     },
     {
      "dep": "11h15",
      "arr": "12h01",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h16",
+      "11h17",
+      "11h26",
+      "11h30",
+      "11h32",
+      "11h41",
+      "11h42",
+      "11h45",
+      "11h48",
+      "11h51"
+     ]
     },
     {
      "dep": "11h55",
      "arr": "12h41",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "11h56",
+      "11h57",
+      "12h06",
+      "12h10",
+      "12h12",
+      "12h21",
+      "12h22",
+      "12h25",
+      "12h28",
+      "12h31"
+     ]
     },
     {
      "dep": "12h55",
      "arr": "13h41",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "12h56",
+      "12h57",
+      "13h06",
+      "13h10",
+      "13h12",
+      "13h21",
+      "13h22",
+      "13h25",
+      "13h28",
+      "13h31"
+     ]
     },
     {
      "dep": "13h30",
      "arr": "14h16",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "13h31",
+      "13h32",
+      "13h41",
+      "13h45",
+      "13h47",
+      "13h56",
+      "13h57",
+      "14h00",
+      "14h03",
+      "14h06"
+     ]
     },
     {
      "dep": "15h25",
      "arr": "16h11",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "15h26",
+      "15h27",
+      "15h36",
+      "15h40",
+      "15h42",
+      "15h51",
+      "15h52",
+      "15h55",
+      "15h58",
+      "16h01"
+     ]
     },
     {
      "dep": "16h30",
      "arr": "17h16",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "16h31",
+      "16h32",
+      "16h41",
+      "16h45",
+      "16h47",
+      "16h56",
+      "16h57",
+      "17h00",
+      "17h03",
+      "17h06"
+     ]
     },
     {
      "dep": "17h10",
      "arr": "17h59",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h11",
+      "17h12",
+      "17h24",
+      "17h28",
+      "17h30",
+      "17h39",
+      "17h40",
+      "17h43",
+      "17h46",
+      "17h49"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h31",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h31",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
     },
     {
      "dep": "17h45",
      "arr": "18h31",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56",
+      "18h00",
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
     },
     {
      "dep": "19h00",
      "arr": "19h46",
      "jours": "0",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "19h01",
+      "19h02",
+      "19h11",
+      "19h15",
+      "19h17",
+      "19h26",
+      "19h27",
+      "19h30",
+      "19h33",
+      "19h36"
+     ]
     },
     {
      "dep": "20h05",
      "arr": "20h51",
      "jours": "6",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h06",
+      "20h07",
+      "20h16",
+      "20h20",
+      "20h22",
+      "20h31",
+      "20h32",
+      "20h35",
+      "20h38",
+      "20h41"
+     ]
     },
     {
      "dep": "20h20",
      "arr": "21h06",
      "jours": "12345",
-     "periode": "toujours"
+     "periode": "toujours",
+     "p": [
+      "20h21",
+      "20h22",
+      "20h31",
+      "20h35",
+      "20h37",
+      "20h46",
+      "20h47",
+      "20h50",
+      "20h53",
+      "20h56"
+     ]
     }
+   ],
+   "chemin": [
+    "Trignac, Roselière",
+    "Trignac, Grand Large",
+    "Saint-Brevin-les-Pins, Le Bosquet",
+    "Saint-Brevin-les-Pins, Pôle de Bresse",
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Dalonnerie"
    ]
   },
   {
@@ -1889,6 +4995,2488 @@
      "periode": "toujours",
      "train": "859295"
     }
+   ]
+  },
+  {
+   "id": "ter-bernerie-nantes",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "La Bernerie",
+   "a": "Nantes",
+   "arret_de": "La Bernerie, gare SNCF",
+   "arret_a": "Nantes, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h32",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "06h35",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h18",
+     "arr": "08h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h23",
+     "arr": "08h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h47",
+     "arr": "08h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859284/859134"
+    },
+    {
+     "dep": "08h32",
+     "arr": "09h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h35",
+     "arr": "09h28",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "09h16",
+     "arr": "10h20",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859286/859136"
+    },
+    {
+     "dep": "10h57",
+     "arr": "11h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859288"
+    },
+    {
+     "dep": "11h57",
+     "arr": "12h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859262"
+    },
+    {
+     "dep": "13h57",
+     "arr": "14h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859290"
+    },
+    {
+     "dep": "13h58",
+     "arr": "14h51",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859266"
+    },
+    {
+     "dep": "14h57",
+     "arr": "15h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859292"
+    },
+    {
+     "dep": "16h16",
+     "arr": "17h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859272"
+    },
+    {
+     "dep": "16h57",
+     "arr": "17h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859294"
+    },
+    {
+     "dep": "17h47",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859282/859148"
+    },
+    {
+     "dep": "18h01",
+     "arr": "19h03",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859274"
+    },
+    {
+     "dep": "18h47",
+     "arr": "19h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859296/859144"
+    },
+    {
+     "dep": "18h52",
+     "arr": "19h45",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859206",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h47",
+     "arr": "20h39",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h47",
+     "arr": "20h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "sauf": [
+      "2026-11-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ter-nantes-bernerie",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Nantes",
+   "a": "La Bernerie",
+   "arret_de": "Nantes, gare SNCF",
+   "arret_a": "La Bernerie, gare SNCF",
+   "departs": [
+    {
+     "dep": "07h05",
+     "arr": "08h09",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h07",
+     "arr": "08h07",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h05",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "11h09",
+     "arr": "12h02",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859285"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h00",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h00",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h29",
+     "arr": "13h22",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859265"
+    },
+    {
+     "dep": "14h30",
+     "arr": "15h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859269"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h03",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h03",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "16h32",
+     "arr": "17h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859273/859123"
+    },
+    {
+     "dep": "17h09",
+     "arr": "18h03",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859291"
+    },
+    {
+     "dep": "17h48",
+     "arr": "18h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859275"
+    },
+    {
+     "dep": "18h41",
+     "arr": "19h36",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859277"
+    },
+    {
+     "dep": "19h09",
+     "arr": "20h07",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859293/859145"
+    },
+    {
+     "dep": "20h15",
+     "arr": "21h06",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859281"
+    },
+    {
+     "dep": "21h13",
+     "arr": "22h06",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859295"
+    }
+   ]
+  },
+  {
+   "id": "ter-bernerie-pornic",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "La Bernerie",
+   "a": "Pornic",
+   "arret_de": "La Bernerie, gare SNCF",
+   "arret_a": "Pornic, gare SNCF",
+   "departs": [
+    {
+     "dep": "08h07",
+     "arr": "08h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h09",
+     "arr": "08h17",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "10h05",
+     "arr": "10h13",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "10h05",
+     "arr": "10h13",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "12h02",
+     "arr": "12h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859285"
+    },
+    {
+     "dep": "13h00",
+     "arr": "13h08",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "13h00",
+     "arr": "13h08",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "13h22",
+     "arr": "13h30",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859265"
+    },
+    {
+     "dep": "15h23",
+     "arr": "15h31",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859269"
+    },
+    {
+     "dep": "16h03",
+     "arr": "16h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "16h03",
+     "arr": "16h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "17h32",
+     "arr": "17h40",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859273/859123"
+    },
+    {
+     "dep": "18h03",
+     "arr": "18h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859291"
+    },
+    {
+     "dep": "18h44",
+     "arr": "18h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859275"
+    },
+    {
+     "dep": "19h36",
+     "arr": "19h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859277"
+    },
+    {
+     "dep": "20h07",
+     "arr": "20h15",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859293/859145"
+    },
+    {
+     "dep": "21h06",
+     "arr": "21h14",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859281"
+    },
+    {
+     "dep": "22h06",
+     "arr": "22h14",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859295"
+    }
+   ]
+  },
+  {
+   "id": "ter-pornic-bernerie",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Pornic",
+   "a": "La Bernerie",
+   "arret_de": "Pornic, gare SNCF",
+   "arret_a": "La Bernerie, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h24",
+     "arr": "06h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "06h28",
+     "arr": "06h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h09",
+     "arr": "07h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h16",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h40",
+     "arr": "07h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859284/859134"
+    },
+    {
+     "dep": "08h25",
+     "arr": "08h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h27",
+     "arr": "08h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "09h09",
+     "arr": "09h16",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859286/859136"
+    },
+    {
+     "dep": "10h50",
+     "arr": "10h57",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859288"
+    },
+    {
+     "dep": "11h50",
+     "arr": "11h57",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859262"
+    },
+    {
+     "dep": "13h50",
+     "arr": "13h57",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859290"
+    },
+    {
+     "dep": "13h51",
+     "arr": "13h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859266"
+    },
+    {
+     "dep": "14h50",
+     "arr": "14h57",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859292"
+    },
+    {
+     "dep": "16h09",
+     "arr": "16h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859272"
+    },
+    {
+     "dep": "16h50",
+     "arr": "16h57",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859294"
+    },
+    {
+     "dep": "17h40",
+     "arr": "17h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859282/859148"
+    },
+    {
+     "dep": "17h54",
+     "arr": "18h01",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859274"
+    },
+    {
+     "dep": "18h40",
+     "arr": "18h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859296/859144"
+    },
+    {
+     "dep": "18h45",
+     "arr": "18h52",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859206",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "19h47",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "19h47",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "sauf": [
+      "2026-11-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "315-brevin-stnaz",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Saint-Nazaire",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Saint-Nazaire, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h38",
+     "arr": "06h55",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "06h41",
+      "06h53",
+      "06h54"
+     ]
+    },
+    {
+     "dep": "06h58",
+     "arr": "07h15",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "07h01",
+      "07h13",
+      "07h14"
+     ]
+    },
+    {
+     "dep": "07h23",
+     "arr": "07h40",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "07h26",
+      "07h38",
+      "07h39"
+     ]
+    },
+    {
+     "dep": "08h28",
+     "arr": "08h45",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "08h31",
+      "08h43",
+      "08h44"
+     ]
+    },
+    {
+     "dep": "08h33",
+     "arr": "08h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h36",
+      "08h48",
+      "08h49"
+     ]
+    },
+    {
+     "dep": "10h00",
+     "arr": "10h17",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "10h03",
+      "10h15",
+      "10h16"
+     ]
+    },
+    {
+     "dep": "10h08",
+     "arr": "10h25",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "10h11",
+      "10h23",
+      "10h24"
+     ]
+    },
+    {
+     "dep": "10h08",
+     "arr": "10h25",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "10h11",
+      "10h23",
+      "10h24"
+     ]
+    },
+    {
+     "dep": "10h38",
+     "arr": "10h55",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "10h41",
+      "10h53",
+      "10h54"
+     ]
+    },
+    {
+     "dep": "11h43",
+     "arr": "12h00",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "11h46",
+      "11h58",
+      "11h59"
+     ]
+    },
+    {
+     "dep": "12h18",
+     "arr": "12h35",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "12h21",
+      "12h33",
+      "12h34"
+     ]
+    },
+    {
+     "dep": "13h53",
+     "arr": "14h10",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h56",
+      "14h08",
+      "14h09"
+     ]
+    },
+    {
+     "dep": "14h58",
+     "arr": "15h15",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "15h01",
+      "15h13",
+      "15h14"
+     ]
+    },
+    {
+     "dep": "15h58",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "16h01",
+      "16h13",
+      "16h14"
+     ]
+    },
+    {
+     "dep": "17h03",
+     "arr": "17h20",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "17h06",
+      "17h18",
+      "17h19"
+     ]
+    },
+    {
+     "dep": "17h23",
+     "arr": "17h40",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "17h26",
+      "17h38",
+      "17h39"
+     ]
+    },
+    {
+     "dep": "17h43",
+     "arr": "18h00",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h58",
+      "17h59"
+     ]
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "19h46",
+      "19h58",
+      "19h59"
+     ]
+    }
+   ],
+   "chemin": [
+    "Saint-Brevin-les-Pins, Le Bosquet",
+    "Trignac, Grand Large",
+    "Trignac, Roselière"
+   ]
+  },
+  {
+   "id": "315-stnaz-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Nazaire",
+   "a": "Saint-Brevin",
+   "arret_de": "Saint-Nazaire, gare SNCF",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "07h55",
+     "arr": "08h10",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06"
+     ]
+    },
+    {
+     "dep": "07h55",
+     "arr": "08h10",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "07h56",
+      "07h57",
+      "08h06"
+     ]
+    },
+    {
+     "dep": "08h30",
+     "arr": "08h45",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h31",
+      "08h32",
+      "08h41"
+     ]
+    },
+    {
+     "dep": "09h00",
+     "arr": "09h15",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "09h01",
+      "09h02",
+      "09h11"
+     ]
+    },
+    {
+     "dep": "09h10",
+     "arr": "09h25",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h11",
+      "09h12",
+      "09h21"
+     ]
+    },
+    {
+     "dep": "11h00",
+     "arr": "11h15",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "11h01",
+      "11h02",
+      "11h11"
+     ]
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h30",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "11h16",
+      "11h17",
+      "11h26"
+     ]
+    },
+    {
+     "dep": "11h55",
+     "arr": "12h10",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "11h56",
+      "11h57",
+      "12h06"
+     ]
+    },
+    {
+     "dep": "12h55",
+     "arr": "13h10",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "12h56",
+      "12h57",
+      "13h06"
+     ]
+    },
+    {
+     "dep": "13h30",
+     "arr": "13h45",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h31",
+      "13h32",
+      "13h41"
+     ]
+    },
+    {
+     "dep": "15h25",
+     "arr": "15h40",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "15h26",
+      "15h27",
+      "15h36"
+     ]
+    },
+    {
+     "dep": "16h00",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "16h01",
+      "16h02",
+      "16h11"
+     ]
+    },
+    {
+     "dep": "16h30",
+     "arr": "16h45",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "16h31",
+      "16h32",
+      "16h41"
+     ]
+    },
+    {
+     "dep": "17h10",
+     "arr": "17h28",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "17h11",
+      "17h12",
+      "17h24"
+     ]
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56"
+     ]
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56"
+     ]
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "17h46",
+      "17h47",
+      "17h56"
+     ]
+    },
+    {
+     "dep": "19h00",
+     "arr": "19h15",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "19h01",
+      "19h02",
+      "19h11"
+     ]
+    },
+    {
+     "dep": "20h05",
+     "arr": "20h20",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "20h06",
+      "20h07",
+      "20h16"
+     ]
+    },
+    {
+     "dep": "20h20",
+     "arr": "20h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "20h21",
+      "20h22",
+      "20h31"
+     ]
+    }
+   ],
+   "chemin": [
+    "Trignac, Roselière",
+    "Trignac, Grand Large",
+    "Saint-Brevin-les-Pins, Le Bosquet"
+   ]
+  },
+  {
+   "id": "315-brevin-pornic",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Pornic",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "08h10",
+     "arr": "08h41",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31"
+     ]
+    },
+    {
+     "dep": "08h10",
+     "arr": "08h41",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31"
+     ]
+    },
+    {
+     "dep": "08h45",
+     "arr": "09h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h47",
+      "08h56",
+      "08h57",
+      "09h00",
+      "09h03",
+      "09h06"
+     ]
+    },
+    {
+     "dep": "09h15",
+     "arr": "09h46",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "09h17",
+      "09h26",
+      "09h27",
+      "09h30",
+      "09h33",
+      "09h36"
+     ]
+    },
+    {
+     "dep": "09h25",
+     "arr": "09h56",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h27",
+      "09h36",
+      "09h37",
+      "09h40",
+      "09h43",
+      "09h46"
+     ]
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h46",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "11h17",
+      "11h26",
+      "11h27",
+      "11h30",
+      "11h33",
+      "11h36"
+     ]
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h01",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "11h32",
+      "11h41",
+      "11h42",
+      "11h45",
+      "11h48",
+      "11h51"
+     ]
+    },
+    {
+     "dep": "12h10",
+     "arr": "12h41",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "12h12",
+      "12h21",
+      "12h22",
+      "12h25",
+      "12h28",
+      "12h31"
+     ]
+    },
+    {
+     "dep": "13h10",
+     "arr": "13h41",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "13h12",
+      "13h21",
+      "13h22",
+      "13h25",
+      "13h28",
+      "13h31"
+     ]
+    },
+    {
+     "dep": "13h45",
+     "arr": "14h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h47",
+      "13h56",
+      "13h57",
+      "14h00",
+      "14h03",
+      "14h06"
+     ]
+    },
+    {
+     "dep": "14h05",
+     "arr": "14h36",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "14h07",
+      "14h16",
+      "14h17",
+      "14h20",
+      "14h23",
+      "14h26"
+     ]
+    },
+    {
+     "dep": "15h40",
+     "arr": "16h11",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "15h42",
+      "15h51",
+      "15h52",
+      "15h55",
+      "15h58",
+      "16h01"
+     ]
+    },
+    {
+     "dep": "16h45",
+     "arr": "17h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "16h47",
+      "16h56",
+      "16h57",
+      "17h00",
+      "17h03",
+      "17h06"
+     ]
+    },
+    {
+     "dep": "17h28",
+     "arr": "17h59",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "17h30",
+      "17h39",
+      "17h40",
+      "17h43",
+      "17h46",
+      "17h49"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21"
+     ]
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h46",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "19h17",
+      "19h26",
+      "19h27",
+      "19h30",
+      "19h33",
+      "19h36"
+     ]
+    },
+    {
+     "dep": "20h20",
+     "arr": "20h51",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "20h22",
+      "20h31",
+      "20h32",
+      "20h35",
+      "20h38",
+      "20h41"
+     ]
+    },
+    {
+     "dep": "20h35",
+     "arr": "21h06",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "20h37",
+      "20h46",
+      "20h47",
+      "20h50",
+      "20h53",
+      "20h56"
+     ]
+    }
+   ],
+   "chemin": [
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Dalonnerie"
+   ]
+  },
+  {
+   "id": "315-pornic-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Saint-Brevin",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "06h10",
+     "arr": "06h38",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "06h20",
+      "06h22",
+      "06h24",
+      "06h27",
+      "06h28",
+      "06h36"
+     ]
+    },
+    {
+     "dep": "06h30",
+     "arr": "06h58",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "06h40",
+      "06h42",
+      "06h44",
+      "06h47",
+      "06h48",
+      "06h56"
+     ]
+    },
+    {
+     "dep": "06h55",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "07h05",
+      "07h07",
+      "07h09",
+      "07h12",
+      "07h13",
+      "07h21"
+     ]
+    },
+    {
+     "dep": "08h00",
+     "arr": "08h28",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "08h10",
+      "08h12",
+      "08h14",
+      "08h17",
+      "08h18",
+      "08h26"
+     ]
+    },
+    {
+     "dep": "08h05",
+     "arr": "08h33",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h15",
+      "08h17",
+      "08h19",
+      "08h22",
+      "08h23",
+      "08h31"
+     ]
+    },
+    {
+     "dep": "09h32",
+     "arr": "10h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "09h42",
+      "09h44",
+      "09h46",
+      "09h49",
+      "09h50",
+      "09h58"
+     ]
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h08",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06"
+     ]
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h08",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06"
+     ]
+    },
+    {
+     "dep": "10h10",
+     "arr": "10h38",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "10h20",
+      "10h22",
+      "10h24",
+      "10h27",
+      "10h28",
+      "10h36"
+     ]
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h43",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "11h25",
+      "11h27",
+      "11h29",
+      "11h32",
+      "11h33",
+      "11h41"
+     ]
+    },
+    {
+     "dep": "11h50",
+     "arr": "12h18",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "12h00",
+      "12h02",
+      "12h04",
+      "12h07",
+      "12h08",
+      "12h16"
+     ]
+    },
+    {
+     "dep": "12h17",
+     "arr": "12h45",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "12h27",
+      "12h29",
+      "12h31",
+      "12h34",
+      "12h35",
+      "12h43"
+     ]
+    },
+    {
+     "dep": "13h25",
+     "arr": "13h53",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h35",
+      "13h37",
+      "13h39",
+      "13h42",
+      "13h43",
+      "13h51"
+     ]
+    },
+    {
+     "dep": "14h30",
+     "arr": "14h58",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "14h40",
+      "14h42",
+      "14h44",
+      "14h47",
+      "14h48",
+      "14h56"
+     ]
+    },
+    {
+     "dep": "15h30",
+     "arr": "15h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "15h40",
+      "15h42",
+      "15h44",
+      "15h47",
+      "15h48",
+      "15h56"
+     ]
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h03",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "16h45",
+      "16h47",
+      "16h49",
+      "16h52",
+      "16h53",
+      "17h01"
+     ]
+    },
+    {
+     "dep": "16h55",
+     "arr": "17h23",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "17h05",
+      "17h07",
+      "17h09",
+      "17h12",
+      "17h13",
+      "17h21"
+     ]
+    },
+    {
+     "dep": "17h15",
+     "arr": "17h43",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "17h25",
+      "17h27",
+      "17h29",
+      "17h32",
+      "17h33",
+      "17h41"
+     ]
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    }
+   ],
+   "chemin": [
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Brevin-les-Pins, Fontaine"
+   ]
+  },
+  {
+   "id": "315-brevin-pref",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Préfailles",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "08h10",
+     "arr": "09h00",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31",
+      "08h41",
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
+    },
+    {
+     "dep": "08h10",
+     "arr": "09h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "08h12",
+      "08h21",
+      "08h22",
+      "08h25",
+      "08h28",
+      "08h31",
+      "08h41",
+      "08h43",
+      "08h44",
+      "08h56",
+      "08h59"
+     ]
+    },
+    {
+     "dep": "08h45",
+     "arr": "09h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "08h47",
+      "08h56",
+      "08h57",
+      "09h00",
+      "09h03",
+      "09h06",
+      "09h16",
+      "09h18",
+      "09h19",
+      "09h31",
+      "09h34"
+     ]
+    },
+    {
+     "dep": "09h15",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "09h17",
+      "09h26",
+      "09h27",
+      "09h30",
+      "09h33",
+      "09h36",
+      "09h46",
+      "09h48",
+      "09h49",
+      "10h01",
+      "10h04"
+     ]
+    },
+    {
+     "dep": "09h25",
+     "arr": "10h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h27",
+      "09h36",
+      "09h37",
+      "09h40",
+      "09h43",
+      "09h46",
+      "09h56",
+      "09h58",
+      "09h59",
+      "10h11",
+      "10h14"
+     ]
+    },
+    {
+     "dep": "11h15",
+     "arr": "12h05",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "11h17",
+      "11h26",
+      "11h27",
+      "11h30",
+      "11h33",
+      "11h36",
+      "11h46",
+      "11h48",
+      "11h49",
+      "12h01",
+      "12h04"
+     ]
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h20",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "11h32",
+      "11h41",
+      "11h42",
+      "11h45",
+      "11h48",
+      "11h51",
+      "12h01",
+      "12h03",
+      "12h04",
+      "12h16",
+      "12h19"
+     ]
+    },
+    {
+     "dep": "12h10",
+     "arr": "13h00",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "12h12",
+      "12h21",
+      "12h22",
+      "12h25",
+      "12h28",
+      "12h31",
+      "12h41",
+      "12h43",
+      "12h44",
+      "12h56",
+      "12h59"
+     ]
+    },
+    {
+     "dep": "13h10",
+     "arr": "14h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "13h12",
+      "13h21",
+      "13h22",
+      "13h25",
+      "13h28",
+      "13h31",
+      "13h41",
+      "13h43",
+      "13h44",
+      "13h56",
+      "13h59"
+     ]
+    },
+    {
+     "dep": "13h45",
+     "arr": "14h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h47",
+      "13h56",
+      "13h57",
+      "14h00",
+      "14h03",
+      "14h06",
+      "14h16",
+      "14h18",
+      "14h19",
+      "14h31",
+      "14h34"
+     ]
+    },
+    {
+     "dep": "14h05",
+     "arr": "14h55",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "14h07",
+      "14h16",
+      "14h17",
+      "14h20",
+      "14h23",
+      "14h26",
+      "14h36",
+      "14h38",
+      "14h39",
+      "14h51",
+      "14h54"
+     ]
+    },
+    {
+     "dep": "15h40",
+     "arr": "16h30",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "15h42",
+      "15h51",
+      "15h52",
+      "15h55",
+      "15h58",
+      "16h01",
+      "16h11",
+      "16h13",
+      "16h14",
+      "16h26",
+      "16h29"
+     ]
+    },
+    {
+     "dep": "16h45",
+     "arr": "17h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "16h47",
+      "16h56",
+      "16h57",
+      "17h00",
+      "17h03",
+      "17h06",
+      "17h16",
+      "17h18",
+      "17h19",
+      "17h31",
+      "17h34"
+     ]
+    },
+    {
+     "dep": "17h28",
+     "arr": "18h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "17h30",
+      "17h39",
+      "17h40",
+      "17h43",
+      "17h46",
+      "17h49",
+      "17h59",
+      "18h01",
+      "18h02",
+      "18h14",
+      "18h17"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "18h02",
+      "18h11",
+      "18h12",
+      "18h15",
+      "18h18",
+      "18h21",
+      "18h31",
+      "18h33",
+      "18h34",
+      "18h46",
+      "18h49"
+     ]
+    },
+    {
+     "dep": "20h20",
+     "arr": "21h10",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "20h22",
+      "20h31",
+      "20h32",
+      "20h35",
+      "20h38",
+      "20h41",
+      "20h51",
+      "20h53",
+      "20h54",
+      "21h06",
+      "21h09"
+     ]
+    },
+    {
+     "dep": "20h35",
+     "arr": "21h25",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "20h37",
+      "20h46",
+      "20h47",
+      "20h50",
+      "20h53",
+      "20h56",
+      "21h06",
+      "21h08",
+      "21h09",
+      "21h21",
+      "21h24"
+     ]
+    }
+   ],
+   "chemin": [
+    "Saint-Brevin-les-Pins, Fontaine",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Pornic, Théâtre St Gilles",
+    "Pornic, Le Sandier",
+    "Pornic, Terres Jarries",
+    "La Plaine-sur-Mer, Centre",
+    "Préfailles, Quirouard"
+   ]
+  },
+  {
+   "id": "315-pref-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Saint-Brevin",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "05h50",
+     "arr": "06h38",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "05h51",
+      "05h55",
+      "06h07",
+      "06h08",
+      "06h10",
+      "06h20",
+      "06h22",
+      "06h24",
+      "06h27",
+      "06h28",
+      "06h36"
+     ]
+    },
+    {
+     "dep": "06h10",
+     "arr": "06h58",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "06h11",
+      "06h15",
+      "06h27",
+      "06h28",
+      "06h30",
+      "06h40",
+      "06h42",
+      "06h44",
+      "06h47",
+      "06h48",
+      "06h56"
+     ]
+    },
+    {
+     "dep": "06h35",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "06h36",
+      "06h40",
+      "06h52",
+      "06h53",
+      "06h55",
+      "07h05",
+      "07h07",
+      "07h09",
+      "07h12",
+      "07h13",
+      "07h21"
+     ]
+    },
+    {
+     "dep": "07h40",
+     "arr": "08h28",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "07h41",
+      "07h45",
+      "07h57",
+      "07h58",
+      "08h00",
+      "08h10",
+      "08h12",
+      "08h14",
+      "08h17",
+      "08h18",
+      "08h26"
+     ]
+    },
+    {
+     "dep": "07h45",
+     "arr": "08h33",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "07h46",
+      "07h50",
+      "08h02",
+      "08h03",
+      "08h05",
+      "08h15",
+      "08h17",
+      "08h19",
+      "08h22",
+      "08h23",
+      "08h31"
+     ]
+    },
+    {
+     "dep": "09h12",
+     "arr": "10h00",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "09h13",
+      "09h17",
+      "09h29",
+      "09h30",
+      "09h32",
+      "09h42",
+      "09h44",
+      "09h46",
+      "09h49",
+      "09h50",
+      "09h58"
+     ]
+    },
+    {
+     "dep": "09h20",
+     "arr": "10h08",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h21",
+      "09h25",
+      "09h37",
+      "09h38",
+      "09h40",
+      "09h50",
+      "09h52",
+      "09h54",
+      "09h57",
+      "09h58",
+      "10h06"
+     ]
+    },
+    {
+     "dep": "09h50",
+     "arr": "10h38",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "09h51",
+      "09h55",
+      "10h07",
+      "10h08",
+      "10h10",
+      "10h20",
+      "10h22",
+      "10h24",
+      "10h27",
+      "10h28",
+      "10h36"
+     ]
+    },
+    {
+     "dep": "10h55",
+     "arr": "11h43",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "10h56",
+      "11h00",
+      "11h12",
+      "11h13",
+      "11h15",
+      "11h25",
+      "11h27",
+      "11h29",
+      "11h32",
+      "11h33",
+      "11h41"
+     ]
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h18",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "11h31",
+      "11h35",
+      "11h47",
+      "11h48",
+      "11h50",
+      "12h00",
+      "12h02",
+      "12h04",
+      "12h07",
+      "12h08",
+      "12h16"
+     ]
+    },
+    {
+     "dep": "11h57",
+     "arr": "12h45",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "11h58",
+      "12h02",
+      "12h14",
+      "12h15",
+      "12h17",
+      "12h27",
+      "12h29",
+      "12h31",
+      "12h34",
+      "12h35",
+      "12h43"
+     ]
+    },
+    {
+     "dep": "13h05",
+     "arr": "13h53",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "13h06",
+      "13h10",
+      "13h22",
+      "13h23",
+      "13h25",
+      "13h35",
+      "13h37",
+      "13h39",
+      "13h42",
+      "13h43",
+      "13h51"
+     ]
+    },
+    {
+     "dep": "14h10",
+     "arr": "14h58",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "14h11",
+      "14h15",
+      "14h27",
+      "14h28",
+      "14h30",
+      "14h40",
+      "14h42",
+      "14h44",
+      "14h47",
+      "14h48",
+      "14h56"
+     ]
+    },
+    {
+     "dep": "15h10",
+     "arr": "15h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "15h11",
+      "15h15",
+      "15h27",
+      "15h28",
+      "15h30",
+      "15h40",
+      "15h42",
+      "15h44",
+      "15h47",
+      "15h48",
+      "15h56"
+     ]
+    },
+    {
+     "dep": "16h15",
+     "arr": "17h03",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "16h16",
+      "16h20",
+      "16h32",
+      "16h33",
+      "16h35",
+      "16h45",
+      "16h47",
+      "16h49",
+      "16h52",
+      "16h53",
+      "17h01"
+     ]
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h23",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "16h36",
+      "16h40",
+      "16h52",
+      "16h53",
+      "16h55",
+      "17h05",
+      "17h07",
+      "17h09",
+      "17h12",
+      "17h13",
+      "17h21"
+     ]
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "0",
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours",
+     "p": [
+      "18h56",
+      "19h00",
+      "19h12",
+      "19h13",
+      "19h15",
+      "19h25",
+      "19h27",
+      "19h29",
+      "19h32",
+      "19h33",
+      "19h41"
+     ]
+    }
+   ],
+   "chemin": [
+    "Préfailles, Quirouard",
+    "La Plaine-sur-Mer, Centre",
+    "Pornic, Terres Jarries",
+    "Pornic, Le Sandier",
+    "Pornic, Théâtre St Gilles",
+    "Saint-Michel-Chef-Chef, La Dalonnerie",
+    "Saint-Michel-Chef-Chef, Tharon",
+    "Saint-Michel-Chef-Chef, La Pouplinière",
+    "Saint-Michel-Chef-Chef, La Poste",
+    "Saint-Michel-Chef-Chef, Mairie",
+    "Saint-Brevin-les-Pins, Fontaine"
    ]
   },
   {
@@ -2822,1414 +8410,6 @@
      "periode": "toujours",
      "train": "8937",
      "tgv": true
-    }
-   ]
-  },
-  {
-   "id": "ter-bernerie-nantes",
-   "ligne": "TER",
-   "mode": "train",
-   "de": "La Bernerie",
-   "a": "Nantes",
-   "arret_de": "La Bernerie, gare SNCF",
-   "arret_a": "Nantes, gare SNCF",
-   "departs": [
-    {
-     "dep": "06h32",
-     "arr": "07h29",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859252",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "06h35",
-     "arr": "07h29",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859252",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "07h18",
-     "arr": "08h18",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859254",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "07h23",
-     "arr": "08h16",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859254",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "07h47",
-     "arr": "08h50",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859284/859134"
-    },
-    {
-     "dep": "08h32",
-     "arr": "09h24",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859256",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "08h35",
-     "arr": "09h28",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859256",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "09h16",
-     "arr": "10h20",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859286/859136"
-    },
-    {
-     "dep": "10h57",
-     "arr": "11h50",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859288"
-    },
-    {
-     "dep": "11h57",
-     "arr": "12h50",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859262"
-    },
-    {
-     "dep": "13h57",
-     "arr": "14h50",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859290"
-    },
-    {
-     "dep": "13h58",
-     "arr": "14h51",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859266"
-    },
-    {
-     "dep": "14h57",
-     "arr": "15h50",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859292"
-    },
-    {
-     "dep": "16h16",
-     "arr": "17h15",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859272"
-    },
-    {
-     "dep": "16h57",
-     "arr": "17h50",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859294"
-    },
-    {
-     "dep": "17h47",
-     "arr": "18h50",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859282/859148"
-    },
-    {
-     "dep": "18h01",
-     "arr": "19h03",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859274"
-    },
-    {
-     "dep": "18h47",
-     "arr": "19h50",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859296/859144"
-    },
-    {
-     "dep": "18h52",
-     "arr": "19h45",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859206",
-     "aussi": [
-      "2026-11-01"
-     ],
-     "seulement": true
-    },
-    {
-     "dep": "19h47",
-     "arr": "20h39",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859240/859192",
-     "aussi": [
-      "2026-11-01"
-     ],
-     "seulement": true
-    },
-    {
-     "dep": "19h47",
-     "arr": "20h50",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859240/859192",
-     "sauf": [
-      "2026-11-01"
-     ]
-    }
-   ]
-  },
-  {
-   "id": "ter-nantes-bernerie",
-   "ligne": "TER",
-   "mode": "train",
-   "de": "Nantes",
-   "a": "La Bernerie",
-   "arret_de": "Nantes, gare SNCF",
-   "arret_a": "La Bernerie, gare SNCF",
-   "departs": [
-    {
-     "dep": "07h05",
-     "arr": "08h09",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859255/859105",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "07h07",
-     "arr": "08h07",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859255/859105",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "09h09",
-     "arr": "10h05",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859243/859191"
-    },
-    {
-     "dep": "09h09",
-     "arr": "10h05",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859243/859191"
-    },
-    {
-     "dep": "11h09",
-     "arr": "12h02",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859285"
-    },
-    {
-     "dep": "12h09",
-     "arr": "13h00",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859287"
-    },
-    {
-     "dep": "12h09",
-     "arr": "13h00",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859287"
-    },
-    {
-     "dep": "12h29",
-     "arr": "13h22",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859265"
-    },
-    {
-     "dep": "14h30",
-     "arr": "15h23",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859269"
-    },
-    {
-     "dep": "15h09",
-     "arr": "16h03",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859289"
-    },
-    {
-     "dep": "15h09",
-     "arr": "16h03",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859289"
-    },
-    {
-     "dep": "16h32",
-     "arr": "17h32",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859273/859123"
-    },
-    {
-     "dep": "17h09",
-     "arr": "18h03",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859291"
-    },
-    {
-     "dep": "17h48",
-     "arr": "18h44",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859275"
-    },
-    {
-     "dep": "18h41",
-     "arr": "19h36",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859277"
-    },
-    {
-     "dep": "19h09",
-     "arr": "20h07",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859293/859145"
-    },
-    {
-     "dep": "20h15",
-     "arr": "21h06",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859281"
-    },
-    {
-     "dep": "21h13",
-     "arr": "22h06",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859295"
-    }
-   ]
-  },
-  {
-   "id": "ter-bernerie-pornic",
-   "ligne": "TER",
-   "mode": "train",
-   "de": "La Bernerie",
-   "a": "Pornic",
-   "arret_de": "La Bernerie, gare SNCF",
-   "arret_a": "Pornic, gare SNCF",
-   "departs": [
-    {
-     "dep": "08h07",
-     "arr": "08h15",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859255/859105",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "08h09",
-     "arr": "08h17",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859255/859105",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "10h05",
-     "arr": "10h13",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859243/859191"
-    },
-    {
-     "dep": "10h05",
-     "arr": "10h13",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859243/859191"
-    },
-    {
-     "dep": "12h02",
-     "arr": "12h10",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859285"
-    },
-    {
-     "dep": "13h00",
-     "arr": "13h08",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859287"
-    },
-    {
-     "dep": "13h00",
-     "arr": "13h08",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859287"
-    },
-    {
-     "dep": "13h22",
-     "arr": "13h30",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859265"
-    },
-    {
-     "dep": "15h23",
-     "arr": "15h31",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859269"
-    },
-    {
-     "dep": "16h03",
-     "arr": "16h10",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859289"
-    },
-    {
-     "dep": "16h03",
-     "arr": "16h10",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859289"
-    },
-    {
-     "dep": "17h32",
-     "arr": "17h40",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859273/859123"
-    },
-    {
-     "dep": "18h03",
-     "arr": "18h10",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859291"
-    },
-    {
-     "dep": "18h44",
-     "arr": "18h52",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859275"
-    },
-    {
-     "dep": "19h36",
-     "arr": "19h44",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859277"
-    },
-    {
-     "dep": "20h07",
-     "arr": "20h15",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859293/859145"
-    },
-    {
-     "dep": "21h06",
-     "arr": "21h14",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859281"
-    },
-    {
-     "dep": "22h06",
-     "arr": "22h14",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859295"
-    }
-   ]
-  },
-  {
-   "id": "ter-pornic-bernerie",
-   "ligne": "TER",
-   "mode": "train",
-   "de": "Pornic",
-   "a": "La Bernerie",
-   "arret_de": "Pornic, gare SNCF",
-   "arret_a": "La Bernerie, gare SNCF",
-   "departs": [
-    {
-     "dep": "06h24",
-     "arr": "06h32",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859252",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "06h28",
-     "arr": "06h35",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859252",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "07h09",
-     "arr": "07h18",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859254",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "07h16",
-     "arr": "07h23",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859254",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "07h40",
-     "arr": "07h47",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859284/859134"
-    },
-    {
-     "dep": "08h25",
-     "arr": "08h32",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859256",
-     "au": "2026-10-02"
-    },
-    {
-     "dep": "08h27",
-     "arr": "08h35",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859256",
-     "du": "2026-10-05"
-    },
-    {
-     "dep": "09h09",
-     "arr": "09h16",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859286/859136"
-    },
-    {
-     "dep": "10h50",
-     "arr": "10h57",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859288"
-    },
-    {
-     "dep": "11h50",
-     "arr": "11h57",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859262"
-    },
-    {
-     "dep": "13h50",
-     "arr": "13h57",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859290"
-    },
-    {
-     "dep": "13h51",
-     "arr": "13h58",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859266"
-    },
-    {
-     "dep": "14h50",
-     "arr": "14h57",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859292"
-    },
-    {
-     "dep": "16h09",
-     "arr": "16h16",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859272"
-    },
-    {
-     "dep": "16h50",
-     "arr": "16h57",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859294"
-    },
-    {
-     "dep": "17h40",
-     "arr": "17h47",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859282/859148"
-    },
-    {
-     "dep": "17h54",
-     "arr": "18h01",
-     "jours": "12345",
-     "periode": "toujours",
-     "train": "859274"
-    },
-    {
-     "dep": "18h40",
-     "arr": "18h47",
-     "jours": "6",
-     "periode": "toujours",
-     "train": "859296/859144"
-    },
-    {
-     "dep": "18h45",
-     "arr": "18h52",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859206",
-     "aussi": [
-      "2026-11-01"
-     ],
-     "seulement": true
-    },
-    {
-     "dep": "19h40",
-     "arr": "19h47",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859240/859192",
-     "aussi": [
-      "2026-11-01"
-     ],
-     "seulement": true
-    },
-    {
-     "dep": "19h40",
-     "arr": "19h47",
-     "jours": "0",
-     "periode": "toujours",
-     "train": "859240/859192",
-     "sauf": [
-      "2026-11-01"
-     ]
-    }
-   ]
-  },
-  {
-   "id": "315-brevin-stnaz",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Saint-Brevin",
-   "a": "Saint-Nazaire",
-   "arret_de": "Saint-Brevin, Pôle de Bresse",
-   "arret_a": "Saint-Nazaire, gare SNCF",
-   "departs": [
-    {
-     "dep": "06h38",
-     "arr": "06h55",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "06h58",
-     "arr": "07h15",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "07h23",
-     "arr": "07h40",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h28",
-     "arr": "08h45",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h33",
-     "arr": "08h50",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h00",
-     "arr": "10h17",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h08",
-     "arr": "10h25",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h08",
-     "arr": "10h25",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h38",
-     "arr": "10h55",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h43",
-     "arr": "12h00",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "12h18",
-     "arr": "12h35",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h53",
-     "arr": "14h10",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "14h58",
-     "arr": "15h15",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h58",
-     "arr": "16h15",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h03",
-     "arr": "17h20",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h23",
-     "arr": "17h40",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h43",
-     "arr": "18h00",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h43",
-     "arr": "20h00",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h43",
-     "arr": "20h00",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h43",
-     "arr": "20h00",
-     "jours": "6",
-     "periode": "toujours"
-    }
-   ]
-  },
-  {
-   "id": "315-stnaz-brevin",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Saint-Nazaire",
-   "a": "Saint-Brevin",
-   "arret_de": "Saint-Nazaire, gare SNCF",
-   "arret_a": "Saint-Brevin, Pôle de Bresse",
-   "departs": [
-    {
-     "dep": "07h55",
-     "arr": "08h10",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "07h55",
-     "arr": "08h10",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h30",
-     "arr": "08h45",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h00",
-     "arr": "09h15",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h10",
-     "arr": "09h25",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h00",
-     "arr": "11h15",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h15",
-     "arr": "11h30",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h55",
-     "arr": "12h10",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "12h55",
-     "arr": "13h10",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h30",
-     "arr": "13h45",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h25",
-     "arr": "15h40",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h00",
-     "arr": "16h15",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h30",
-     "arr": "16h45",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h10",
-     "arr": "17h28",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h45",
-     "arr": "18h00",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h45",
-     "arr": "18h00",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h45",
-     "arr": "18h00",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h00",
-     "arr": "19h15",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h05",
-     "arr": "20h20",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h20",
-     "arr": "20h35",
-     "jours": "12345",
-     "periode": "toujours"
-    }
-   ]
-  },
-  {
-   "id": "315-brevin-pornic",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Saint-Brevin",
-   "a": "Pornic",
-   "arret_de": "Saint-Brevin, Pôle de Bresse",
-   "arret_a": "Pornic, Théâtre St-Gilles",
-   "departs": [
-    {
-     "dep": "08h10",
-     "arr": "08h41",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h10",
-     "arr": "08h41",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h45",
-     "arr": "09h16",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h15",
-     "arr": "09h46",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h25",
-     "arr": "09h56",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h15",
-     "arr": "11h46",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h30",
-     "arr": "12h01",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "12h10",
-     "arr": "12h41",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h10",
-     "arr": "13h41",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h45",
-     "arr": "14h16",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "14h05",
-     "arr": "14h36",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h40",
-     "arr": "16h11",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h45",
-     "arr": "17h16",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h28",
-     "arr": "17h59",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h31",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h31",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h31",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h15",
-     "arr": "19h46",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h20",
-     "arr": "20h51",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h35",
-     "arr": "21h06",
-     "jours": "12345",
-     "periode": "toujours"
-    }
-   ]
-  },
-  {
-   "id": "315-pornic-brevin",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Pornic",
-   "a": "Saint-Brevin",
-   "arret_de": "Pornic, Théâtre St-Gilles",
-   "arret_a": "Saint-Brevin, Pôle de Bresse",
-   "departs": [
-    {
-     "dep": "06h10",
-     "arr": "06h38",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "06h30",
-     "arr": "06h58",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "06h55",
-     "arr": "07h23",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h00",
-     "arr": "08h28",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h05",
-     "arr": "08h33",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h32",
-     "arr": "10h00",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h40",
-     "arr": "10h08",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h40",
-     "arr": "10h08",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h10",
-     "arr": "10h38",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h15",
-     "arr": "11h43",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h50",
-     "arr": "12h18",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "12h17",
-     "arr": "12h45",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h25",
-     "arr": "13h53",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "14h30",
-     "arr": "14h58",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h30",
-     "arr": "15h58",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h35",
-     "arr": "17h03",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h55",
-     "arr": "17h23",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h15",
-     "arr": "17h43",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h15",
-     "arr": "19h43",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h15",
-     "arr": "19h43",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "19h15",
-     "arr": "19h43",
-     "jours": "6",
-     "periode": "toujours"
-    }
-   ]
-  },
-  {
-   "id": "315-brevin-pref",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Saint-Brevin",
-   "a": "Préfailles",
-   "arret_de": "Saint-Brevin, Pôle de Bresse",
-   "arret_a": "Préfailles, Place de la Gare",
-   "departs": [
-    {
-     "dep": "08h10",
-     "arr": "09h00",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h10",
-     "arr": "09h00",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "08h45",
-     "arr": "09h35",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h15",
-     "arr": "10h05",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h25",
-     "arr": "10h15",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h15",
-     "arr": "12h05",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h30",
-     "arr": "12h20",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "12h10",
-     "arr": "13h00",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h10",
-     "arr": "14h00",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h45",
-     "arr": "14h35",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "14h05",
-     "arr": "14h55",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h40",
-     "arr": "16h30",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h45",
-     "arr": "17h35",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "17h28",
-     "arr": "18h18",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h50",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h50",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h00",
-     "arr": "18h50",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h20",
-     "arr": "21h10",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "20h35",
-     "arr": "21h25",
-     "jours": "12345",
-     "periode": "toujours"
-    }
-   ]
-  },
-  {
-   "id": "315-pref-brevin",
-   "ligne": "315",
-   "mode": "car",
-   "de": "Préfailles",
-   "a": "Saint-Brevin",
-   "arret_de": "Préfailles, Place de la Gare",
-   "arret_a": "Saint-Brevin, Pôle de Bresse",
-   "departs": [
-    {
-     "dep": "05h50",
-     "arr": "06h38",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "06h10",
-     "arr": "06h58",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "06h35",
-     "arr": "07h23",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "07h40",
-     "arr": "08h28",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "07h45",
-     "arr": "08h33",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h12",
-     "arr": "10h00",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h20",
-     "arr": "10h08",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "09h50",
-     "arr": "10h38",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "10h55",
-     "arr": "11h43",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h30",
-     "arr": "12h18",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "11h57",
-     "arr": "12h45",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "13h05",
-     "arr": "13h53",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "14h10",
-     "arr": "14h58",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "15h10",
-     "arr": "15h58",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h15",
-     "arr": "17h03",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "16h35",
-     "arr": "17h23",
-     "jours": "6",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h55",
-     "arr": "19h43",
-     "jours": "0",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h55",
-     "arr": "19h43",
-     "jours": "12345",
-     "periode": "toujours"
-    },
-    {
-     "dep": "18h55",
-     "arr": "19h43",
-     "jours": "6",
-     "periode": "toujours"
     }
    ]
   }

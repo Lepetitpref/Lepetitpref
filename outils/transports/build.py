@@ -20,7 +20,7 @@ def car_leg(cols,dirn,frm,to,keyf,keyt):
         if not c["dir"].startswith(dirn):continue
         st=c["stops"];i=next((k for k,s in enumerate(st) if (s["town"],s["stop"])==keyf),None);j=next((k for k,s in enumerate(st) if (s["town"],s["stop"])==keyt),None)
         if i is None or j is None or j<=i:continue
-        base={"dep":hh(st[i]["t"]),"arr":hh(st[j]["t"]),"jours":c["days"],"periode":per(c)}
+        base={"dep":hh(st[i]["t"]),"arr":hh(st[j]["t"]),"jours":c["days"],"periode":per(c),"_mid":[(x["town"],x["stop"],hh(x["t"])) for x in st[i+1:j] if x.get("t")]}
         n=c.get("note") or ""
         if "Ne circule pas" in n:base["sauf"]=dates_in(n.split("Ne circule pas",1)[1])
         if re.search(r"Circule également le \d",n):base["aussi"]=dates_in(n)
@@ -29,12 +29,19 @@ def car_leg(cols,dirn,frm,to,keyf,keyt):
         if m:
             J={"lundi":"1","mardi":"2","mercredi":"3","jeudi":"4","vendredi":"5","samedi":"6","dimanche":"0"}
             e=dict(base);e["jours"]="".join(J[x] for x in m.group(1).split(", "));e["periode"]="vacances";out.append(e)
+    # arrêts en chemin : liste commune au tronçon (la colonne qui en dessert le plus), heure de passage de chaque départ (None s'il n'y passe pas)
+    names=[]
+    for x in sorted(out,key=lambda x:-len(x["_mid"])):
+        for t,n,_ in x["_mid"]:
+            if [t,n] not in names:names.append([t,n])
+    for x in out:
+        m={(t,n):h for t,n,h in x.pop("_mid")};x["p"]=[m.get((t,n)) for t,n in names]
     # dédoublonne
     seen=set();res=[]
     for x in sorted(out,key=lambda x:(x["dep"],x["jours"])):
         k=json.dumps(x,sort_keys=True)
         if k not in seen:seen.add(k);res.append(x)
-    return res
+    return res,names
 def ter_leg(cols,frm,to):
     out=[]
     for c in cols:
@@ -86,5 +93,7 @@ legs=[
  {"id":"ter1-stnaz-nantes","ligne":"TER 1","mode":"train","de":"Saint-Nazaire","a":"Nantes","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cl1,"ST-NAZAIRE","NANTES")},
  {"id":"ter1-nantes-stnaz","ligne":"TER 1","mode":"train","de":"Nantes","a":"Saint-Nazaire","arret_de":"Nantes, gare SNCF","arret_a":"Saint-Nazaire, gare SNCF","departs":ter_leg(cl1,"NANTES","ST-NAZAIRE")},
 ]
+for L in legs:
+    if isinstance(L["departs"],tuple):L["departs"],L["chemin"]=L["departs"];L["chemin"]=[f"{t}, {n}" for t,n in L["chemin"]]
 for L in legs:print(L["id"],len(L["departs"]),file=sys.stderr)
 json.dump(legs,open(f"{D}/legs.json","w"),ensure_ascii=False,indent=1)

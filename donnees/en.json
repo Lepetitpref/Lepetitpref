@@ -1327,7 +1327,6 @@
   "Ouvrir le plan en grand": "Open the map full screen",
   "Fermer le plan": "Close the map",
   "Plan des arrêts": "Map of the stops",
-  "Petits points : les arrêts du car en chemin. Arrêts et tracé : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Small dots: the bus stops along the way. Stops and route: Aléop and SNCF open data. Map © OpenStreetMap.",
   "En cas de doute : 112": "If in doubt: 112",
   "Tous secours": "All emergencies",
   "En mer": "At sea",
@@ -1352,9 +1351,50 @@
   "Cette liste ne dit pas qui accepte de nouveaux patients. Pour choisir un médecin traitant :": "This list does not show who is taking new patients. To choose a GP:",
   "annuaire santé de l'Assurance maladie ↗": "Assurance maladie health directory ↗",
   "11 boulevard Georges Charpak, par le pont de Saint-Nazaire. L'hôpital de Pornic n'a pas d'urgences. Ce numéro est le standard : pour une urgence, appelez le 15": "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. Pornic hospital has no A&E. This is the switchboard: in an emergency, call 15",
-  "11 boulevard Georges Charpak, par le pont de Saint-Nazaire. Ce numéro est le standard : pour une urgence, appelez le 15": "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. This is the switchboard: in an emergency, call 15"
+  "11 boulevard Georges Charpak, par le pont de Saint-Nazaire. Ce numéro est le standard : pour une urgence, appelez le 15": "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. This is the switchboard: in an emergency, call 15",
+  "Au téléphone : dites la commune et le lieu précis (plage, poste de secours, rue), ce qui se passe, et ne raccrochez pas le premier.": "On the phone: give the town and the exact place (beach, lifeguard post, street), say what is happening, and don't hang up first.",
+  "Lesquels sont accessibles la nuit : voir la carte nationale": "Which ones are accessible at night: see the national map",
+  "Géo'DAE ↗": "Géo'DAE ↗",
+  ". En cas d'arrêt cardiaque, le 15 vous indique le plus proche.": ". In a cardiac arrest, 15 will tell you the nearest one.",
+  "Petits points : les arrêts du car en chemin ; sur le plan en grand, touchez-en un pour ses horaires de passage. Arrêts et tracé : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Small dots: the bus stops along the way; on the full-screen map, tap one to see when the bus calls there. Stops and route: Aléop and SNCF open data. Map © OpenStreetMap.",
+  "Arrêt de la ligne": "Stop on this line",
+  "Pas de passage ce jour-là": "No bus that day",
+  "Le soir après 20 h, le samedi après 12 h, le dimanche et les jours fériés, quand votre médecin est fermé": "Evenings after 8pm, Saturdays after noon, Sundays and public holidays, when your doctor is closed",
+  "Résumé des décisions, d'après les documents publiés par la commune, qui font foi. Touchez une séance pour le détail.": "Summary of decisions, from the documents published by the town, which are the official reference. Tap a meeting for details."
  },
  "rules": [
+  [
+   "^· (\\d+) décisions$",
+   "· $1 decisions"
+  ],
+  [
+   "^Car (\\S+) vers (.+), (.+?) : (\\d.+)$",
+   "Bus $1 to $2, $3: $4"
+  ],
+  [
+   "^Car (\\S+) vers (.+), aujourd'hui : (.+)$",
+   "Bus $1 to $2, today: $3"
+  ],
+  [
+   "^(\\d+) · le plus proche à (\\d+) m du centre$",
+   "$1 · nearest $2 m from the centre"
+  ],
+  [
+   "^(\\d+) · le plus proche à (\\d+) km$",
+   "$1 · nearest $2 km away"
+  ],
+  [
+   "^(\\d+) marchés? d'été, fermés? en cette saison$",
+   "$1 summer market(s), closed this season"
+  ],
+  [
+   "^(.+)\\. Pour une urgence, appelez le 15 ; standard :$",
+   "$1. In an emergency, call 15; switchboard:"
+  ],
+  [
+   "^11 boulevard Georges Charpak, par le pont de Saint-Nazaire(?:\\. L'hôpital de Pornic n'a pas d'urgences)?\\. Pour une urgence, appelez le 15 ; standard :$",
+   "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. In an emergency, call 15; switchboard:"
+  ],
   [
    "^Urgences, santé, poubelles, mairie et poste, vie de la commune à (.+)\\.$",
    "Emergencies, health, bins, town hall and post office, local life in $1."

@@ -10,7 +10,7 @@ Usage : python3 outils/historique.py
 """
 import json, os, re, urllib.request, datetime
 
-COMMUNES = {"prefailles": "44136", "pornic": "44131"}
+COMMUNES = {"prefailles": "44136", "pornic": "44131", "brevin": "44154", "bernerie": "44012"}
 ICI = os.path.dirname(os.path.abspath(__file__))
 SORTIE = os.path.join(ICI, "..", "donnees", "prix-historique.json")
 API = "https://apidf-preprod.cerema.fr/indicateurs/dv3f/prix/{p}/?code={c}&echelle=communes"

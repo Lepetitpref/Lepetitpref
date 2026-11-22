@@ -13,7 +13,7 @@ Usage : python3 outils/urbanisme.py
 """
 import csv, io, json, os, re, sys, urllib.request, urllib.parse, datetime
 
-COMMUNES = {"prefailles": "44136", "pornic": "44131"}
+COMMUNES = {"prefailles": "44136", "pornic": "44131", "brevin": "44154", "bernerie": "44012"}
 ICI = os.path.dirname(os.path.abspath(__file__))
 SORTIE = os.path.join(ICI, "..", "donnees", "urbanisme.json")
 DIDO = "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/8b35affb-55fc-4c1f-915b-7750f974446a/csv?COMM=eq:{c}"
@@ -192,7 +192,7 @@ def plu(c):
     except Exception as e:
         print("  zones du PLU indisponibles", c, e)
     try:
-        D = json.load(open(os.path.join(ICI, "..", "donnees", "plu-zones.json"), encoding="utf-8")).get({"44136": "prefailles", "44131": "pornic"}[c], {})
+        D = json.load(open(os.path.join(ICI, "..", "donnees", "plu-zones.json"), encoding="utf-8")).get({v: k for k, v in COMMUNES.items()}[c], {})
         for code, z in zones.items():
             for k in ("nom", "resume", "regles", "page"):
                 if D.get(code, {}).get(k):

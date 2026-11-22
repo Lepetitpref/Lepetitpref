@@ -14,7 +14,7 @@ Usage : python3 outils/ventes.py [dossier de téléchargement]
 """
 import csv, json, os, sys, tempfile, urllib.request, datetime
 
-COMMUNES = {"prefailles": "44136", "pornic": "44131"}
+COMMUNES = {"prefailles": "44136", "pornic": "44131", "brevin": "44154", "bernerie": "44012"}
 ANNEES = 5
 BASE = "https://files.data.gouv.fr/geo-dvf/latest/csv/{a}/communes/44/{c}.csv"
 ICI = os.path.dirname(os.path.abspath(__file__))
