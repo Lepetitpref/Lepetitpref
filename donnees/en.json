@@ -1319,7 +1319,9 @@
   "Résumé des décisions, d'après les documents publiés par la commune, qui font foi.": "Summary of decisions, from the documents published by the town, which are the official reference.",
   "Séance publique.": "Open to the public.",
   "Vote :": "Vote:",
-  "Vote : ": "Vote:"
+  "Vote : ": "Vote:",
+  "À Pornic, l'arrêt de car Théâtre St-Gilles est à environ 970 m de la gare SNCF par les rues (≈ 13 min à pied, d'après OpenStreetMap).": "In Pornic, the Théâtre St-Gilles bus stop is about 970 m from the SNCF station by the streets (≈ 13 min on foot, according to OpenStreetMap).",
+  "À Pornic, l'arrêt de car Théâtre St-Gilles est à environ 970 m de la gare SNCF par les rues (≈ 13 min à pied, d'après OpenStreetMap). Pirmil : arrêt des cars au sud de la Loire, tram 2 ou 3 pour rejoindre le centre de Nantes.": "In Pornic, the Théâtre St-Gilles coach stop is about 970 m from the SNCF station by the streets (≈ 13 min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram 2 or 3 into central Nantes."
  },
  "rules": [
   [
