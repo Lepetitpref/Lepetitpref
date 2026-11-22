@@ -359,21 +359,15 @@
   "category": "Cinéma jeune public",
   "date": "2026-11-18",
   "desc": "Six courts métrages tendres sur l'enfance, son adapté, sans publicité, dès 3 ans ; goûter offert le mercredi ; séance 4,50 €, infos 02 40 39 39 39.",
-  "end": "2026-11-22",
   "free": false,
   "kids": true,
   "org": "Cinéjade",
   "place": "Cinéjade",
-  "time": "16h15 (mer.) / 14h30 (sam.) / 11h15 (dim.)",
+  "time": "16h15",
   "title": "Cinéfilou : Le monde à l'envers",
   "town": "Saint-Brevin-les-Pins",
   "type": "spectacle",
   "url": "https://www.fest.fr/cinefilou-le-monde-a-l-envers-2664923.html",
-  "days": [
-   3,
-   6,
-   0
-  ],
   "ageMin": 3
  },
  {
@@ -944,6 +938,22 @@
   "url": "https://www.pornic.com/initiation-au-tressage-de-l-osier-la-bernerie-en-retz.html"
  },
  {
+  "id": "2026-11-21-cinefilou-monde-envers-brevin",
+  "category": "Cinéma jeune public",
+  "date": "2026-11-21",
+  "desc": "Six courts métrages tendres sur l'enfance, son adapté, sans publicité, dès 3 ans ; goûter offert le mercredi ; séance 4,50 €, infos 02 40 39 39 39.",
+  "free": false,
+  "kids": true,
+  "org": "Cinéjade",
+  "place": "Cinéjade",
+  "time": "14h30",
+  "title": "Cinéfilou : Le monde à l'envers",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "url": "https://www.fest.fr/cinefilou-le-monde-a-l-envers-2664923.html",
+  "ageMin": 3
+ },
+ {
   "id": "2026-11-21-marche-noel-st-gildas-pornic",
   "category": "Marché de Noël",
   "date": "2026-11-21",
@@ -990,15 +1000,14 @@
   "url": "https://www.pornic.com/randonnee-sur-le-sentier-des-douaniers-avec-nos-anes-et-notre-cheval-pornic.html"
  },
  {
-  "id": "2026-11-22-marche-noel-st-michel",
+  "id": "2026-11-21-marche-noel-st-michel",
   "category": "Marché",
   "date": "2026-11-21",
   "desc": "Artisans locaux, entrée libre.",
-  "end": "2026-11-22",
   "free": true,
   "kids": true,
   "place": "Salle Beauséjour",
-  "time": "14h–19h (sam.) / 10h–18h (dim.)",
+  "time": "14h–19h",
   "title": "Marché artisanal de Noël",
   "town": "Saint-Michel-Chef-Chef",
   "type": "fete",
@@ -1028,19 +1037,6 @@
   "place": "Sentiers littoraux",
   "time": "19h",
   "title": "Trail de la Côte de Jade : Noz Trail (nocturne)",
-  "town": "Saint-Michel-Chef-Chef",
-  "type": "sport",
-  "url": "https://www.jds.fr/pornic/sports/courses/trail-de-la-cote-de-jade-a-saint-michel-chef-chef-sentiers-littoraux-et-epreuves-nocturnes-au-programme-1809759_A"
- },
- {
-  "id": "2026-11-22-trail-cote-de-jade",
-  "category": "Trail",
-  "date": "2026-11-22",
-  "desc": "Petite Jade 10 km (13 €) et Grande Jade 24 km (17 €) sur les sentiers littoraux. Inscription sur milesrepublic.",
-  "org": "Côte de Jade Athlétic Club",
-  "place": "Sentiers littoraux",
-  "time": "9h30",
-  "title": "Trail de la Côte de Jade : Petite et Grande Jade",
   "town": "Saint-Michel-Chef-Chef",
   "type": "sport",
   "url": "https://www.jds.fr/pornic/sports/courses/trail-de-la-cote-de-jade-a-saint-michel-chef-chef-sentiers-littoraux-et-epreuves-nocturnes-au-programme-1809759_A"
@@ -1272,6 +1268,20 @@
   "kids": true
  },
  {
+  "id": "2026-11-22-marche-noel-st-michel",
+  "category": "Marché",
+  "date": "2026-11-22",
+  "desc": "Artisans locaux, entrée libre.",
+  "free": true,
+  "kids": true,
+  "place": "Salle Beauséjour",
+  "time": "10h–18h",
+  "title": "Marché artisanal de Noël",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "fete",
+  "url": "https://en.pornic.com/marche-artisanal-de-noel-st-michel-chef-chef.html"
+ },
+ {
   "id": "2026-11-22-gadoue-pornic",
   "category": "Spectacle enfants",
   "date": "2026-11-22",
@@ -1286,6 +1296,22 @@
   "org": "Ville de Pornic",
   "free": false,
   "ageMin": 4
+ },
+ {
+  "id": "2026-11-22-cinefilou-monde-envers-brevin",
+  "category": "Cinéma jeune public",
+  "date": "2026-11-22",
+  "desc": "Six courts métrages tendres sur l'enfance, son adapté, sans publicité, dès 3 ans ; goûter offert le mercredi ; séance 4,50 €, infos 02 40 39 39 39.",
+  "free": false,
+  "kids": true,
+  "org": "Cinéjade",
+  "place": "Cinéjade",
+  "time": "11h15",
+  "title": "Cinéfilou : Le monde à l'envers",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "url": "https://www.fest.fr/cinefilou-le-monde-a-l-envers-2664923.html",
+  "ageMin": 3
  },
  {
   "id": "2026-11-22-marche-noel-st-pere-histoire",
@@ -1435,6 +1461,19 @@
   "town": "Pornic",
   "type": "expo",
   "url": "https://www.fest.fr/auto-retro-rassemblement-de-vehicules-anciens-2431137.html"
+ },
+ {
+  "id": "2026-11-22-trail-cote-de-jade",
+  "category": "Trail",
+  "date": "2026-11-22",
+  "desc": "Petite Jade 10 km (13 €) et Grande Jade 24 km (17 €) sur les sentiers littoraux. Inscription sur milesrepublic.",
+  "org": "Côte de Jade Athlétic Club",
+  "place": "Sentiers littoraux",
+  "time": "9h30",
+  "title": "Trail de la Côte de Jade : Petite et Grande Jade",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "sport",
+  "url": "https://www.jds.fr/pornic/sports/courses/trail-de-la-cote-de-jade-a-saint-michel-chef-chef-sentiers-littoraux-et-epreuves-nocturnes-au-programme-1809759_A"
  },
  {
   "id": "2026-11-22-salon-producteurs-sainte-marie-pornic",

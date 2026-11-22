@@ -26,6 +26,8 @@ for e in ev:
     if e.get("end") and not D.match(str(e["end"])): err.append(f"events {i} : end invalide")
     if e.get("town") not in TOWNS: err.append(f"events {i} : town « {e.get('town')} » hors liste")
     if e.get("type") and e["type"] not in TYPES: err.append(f"events {i} : type « {e['type']} » hors liste")
+    # une heure par fiche : un événement à plusieurs dates avec des heures différentes = une fiche par date (sinon « 19h » s'affiche aussi le dimanche)
+    if e.get("end") and re.search(r"\d+h\d*.*[/;].*\d+h|\((lun|mar|mer|jeu|ven|sam|dim)\.?\)", str(e.get("time", ""))): err.append(f"events {i} : plusieurs heures selon le jour (« {e['time']} ») : faites une fiche par date")
 for c in ci:
     if not D.match(str(c.get("date", ""))) or not isinstance(c.get("times"), list): err.append(f"cinema {c.get('id')} : date ou times invalide")
 if not isinstance(st, dict) or "updatedAt" not in st: err.append("status.json : updatedAt manquant")
