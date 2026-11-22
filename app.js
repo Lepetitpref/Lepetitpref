@@ -1485,18 +1485,27 @@ const ARR={"Préfailles, Place de la Gare":[47.12938,-2.21282],"Pornic, Théâtr
 const arrLL=(L,a)=>{const n=String(a?L.arret_a:L.arret_de).replace(/\s*\(.*\)$/,"");return ARR[n+(n==="Saint-Nazaire, gare SNCF"&&L.mode==="car"?" (car)":"")]?[n,...ARR[n+(n==="Saint-Nazaire, gare SNCF"&&L.mode==="car"?" (car)":"")]]:null;};
 /* plan des arrêts d'un trajet : départ, correspondance (les deux points et le trajet à pied), arrivée */
 const trPts=j=>{const P=[];j.steps.forEach((s,i)=>{const a=arrLL(s.L,0),b=arrLL(s.L,1);if(a&&(!P.length||P[P.length-1][1]!==a[1]||P[P.length-1][2]!==a[2]))P.push([...a,i?"Correspondance":"Départ"]);if(b)P.push([...b,i===j.steps.length-1?"Arrivée":"Descente"]);});return P;};
+function trDraw(el,P,walk,live){const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
+  const m=L.map(el,live?{zoomControl:true,attributionControl:true}:{zoomControl:false,attributionControl:true,scrollWheelZoom:false,dragging:false,touchZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,tap:false});
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
+  const mk=P.map((x,i)=>L.marker([x[1],x[2]],{icon:L.divIcon({className:"tr-pin",html:`<i>${i+1}</i>`,iconSize:[28,28],iconAnchor:[14,14]}),title:x[0],interactive:!!live}).addTo(m).bindTooltip(`${i+1}. ${x[0]}`,{direction:"top"}));
+  for(let i=1;i<P.length;i++)L.polyline([[P[i-1][1],P[i-1][2]],[P[i][1],P[i][2]]],walk.some(w=>w[1][0]===P[i][0]&&w[1][3]===P[i][3])?{color:"#c0632d",weight:4,dashArray:"4 8"}:{color:"#2f78ab",weight:3,opacity:.55}).addTo(m);
+  m.fitBounds(L.featureGroup(mk).getBounds().pad(.25),{maxZoom:16});return m;}
+function trBig(P,walk,zoomW){let ov=document.getElementById("trbig");if(ov)ov.remove();
+  ov=document.createElement("div");ov.id="trbig";ov.className="trbig";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");ov.setAttribute("aria-label","Plan des arrêts");
+  ov.innerHTML=`<div class="trbig-map"></div><button type="button" class="btn trbig-x">${ic("close","i-s")} Fermer le plan</button>`;document.body.appendChild(ov);document.body.classList.add("locked");
+  const m=trDraw(ov.querySelector(".trbig-map"),P,walk,true);m.invalidateSize();setTimeout(()=>m.invalidateSize(),120);if(zoomW)m.fitBounds([[zoomW[0][1],zoomW[0][2]],[zoomW[1][1],zoomW[1][2]]],{padding:[60,60],maxZoom:17});
+  let gone=false;const close=()=>{if(gone)return;gone=true;m.remove();ov.remove();document.body.classList.remove("locked");removeEventListener("popstate",pop);document.removeEventListener("keydown",esc_);};
+  const pop=()=>close(),esc_=e=>{if(e.key==="Escape"){history.back();}};
+  try{history.pushState({trbig:1},"");}catch(e){}addEventListener("popstate",pop);document.addEventListener("keydown",esc_);
+  ov.querySelector(".trbig-x").onclick=()=>{try{history.back();}catch(e){close();}setTimeout(close,300);};ov.querySelector(".trbig-x").focus({preventScroll:true});}
 function trMap(btn){const box=btn.nextElementSibling;if(!box)return;if(!box.hidden){box.hidden=true;btn.setAttribute("aria-expanded","false");return;}
   let P=[];try{P=JSON.parse(btn.dataset.pts);}catch(e){}if(!P.length)return;box.hidden=false;btn.setAttribute("aria-expanded","true");ppOnce("usage-carte");
   const walk=[];for(let i=1;i<P.length;i++)if(P[i][3]==="Correspondance"&&P[i-1][3]==="Descente"){const m=Math.round(km({lat:P[i-1][1],lon:P[i-1][2]},{lat:P[i][1],lon:P[i][2]})*1000);walk.push([P[i-1],P[i],m]);}
   box.innerHTML=`<div class="tr-mapc" role="img" aria-label="Plan des arrêts du trajet"></div><ol class="tr-map-l">${P.map((x,i)=>`<li><b>${i+1}</b> ${esc(x[3])} : ${esc(x[0])} <a href="https://www.google.com/maps/search/?api=1&query=${x[1]},${x[2]}" target="_blank" rel="noopener">ouvrir ↗</a></li>`).join("")}</ol>${walk.map(w=>`<p class="tr-map-w">À pied entre ${esc(w[0][0])} et ${esc(w[1][0].replace(/^[^,]*,\s*/,""))} : ${w[2]} m à vol d'oiseau${/Pornic/.test(w[0][0])?", environ 970 m et 13 min par les rues (OpenStreetMap)":""}. <a href="https://www.google.com/maps/dir/?api=1&origin=${w[0][1]},${w[0][2]}&destination=${w[1][1]},${w[1][2]}&travelmode=walking" target="_blank" rel="noopener">Itinéraire à pied ↗</a> <button type="button" class="lnk tr-zoomc">Voir la correspondance de près</button></p>`).join("")}<p class="tr-map-s">Positions des arrêts : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.</p>`;
   const el=box.querySelector(".tr-mapc");
-  loadLeaflet().then(()=>{const dark=document.documentElement.dataset.theme==="dark"||(!document.documentElement.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);
-    const m=L.map(el,{zoomControl:true,attributionControl:true,scrollWheelZoom:false,dragging:!matchMedia("(pointer:coarse)").matches,touchZoom:false,doubleClickZoom:false,tap:false});
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:dark?"tiles-dark":"",attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
-    const mk=P.map((x,i)=>L.marker([x[1],x[2]],{icon:L.divIcon({className:"tr-pin",html:`<i>${i+1}</i>`,iconSize:[28,28],iconAnchor:[14,14]}),title:x[0]}).addTo(m).bindTooltip(`${i+1}. ${x[0]}`,{direction:"top"}));
-    for(let i=1;i<P.length;i++)L.polyline([[P[i-1][1],P[i-1][2]],[P[i][1],P[i][2]]],walk.some(w=>w[1]===P[i])?{color:"#c0632d",weight:4,dashArray:"4 8"}:{color:"#2f78ab",weight:3,opacity:.55}).addTo(m);
-    m.fitBounds(L.featureGroup(mk).getBounds().pad(.25),{maxZoom:16});
-    box.querySelectorAll(".tr-zoomc").forEach((zb,i)=>zb.onclick=()=>{const w=walk[i];m.fitBounds([[w[0][1],w[0][2]],[w[1][1],w[1][2]]],{padding:[40,40],maxZoom:17});el.scrollIntoView({block:"center",behavior:"smooth"});});}).catch(()=>{el.outerHTML='<p class="empty">Plan indisponible (pas de réseau ?).</p>';});}
+  loadLeaflet().then(()=>{trDraw(el,P,walk,false);const big=document.createElement("button");big.type="button";big.className="btn tr-bigb";big.innerHTML=`${ic("plus","i-s")} Ouvrir le plan en grand`;el.appendChild(big);
+    el.onclick=()=>trBig(P,walk);box.querySelectorAll(".tr-zoomc").forEach((zb,i)=>zb.onclick=()=>trBig(P,walk,walk[i]));}).catch(()=>{el.outerHTML='<p class="empty">Plan indisponible (pas de réseau ?).</p>';});}
 function vTransports(){const t=today(),T=S.transports;let d=S.trDay||t;if(d<t)d=t;S.trDay=d;let dir=S.trDir||0;if(!TRDEST.includes(S.trTo))S.trTo=TRDEST[0];
   const CITIES=[ORIG,...TRDEST];if(!CITIES.includes(S.trA)||!CITIES.includes(S.trB)||S.trA===S.trB){S.trA=dir?S.trTo:ORIG;S.trB=dir?ORIG:S.trTo;}
   const FA=S.trA,FB=S.trB,dest=FB===ORIG?FA:FB;dir=FB===ORIG?1:0;
