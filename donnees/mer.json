@@ -1,28 +1,28 @@
 {
- "maj": "2026-11-22T05:44:11.930Z",
+ "maj": "2026-11-22T11:40:39.231Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du dimanche 22 novembre 2026 à 06H15 légales.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du dimanche 22 novembre 2026 à 12H30 légales.",
   "avis": "Avis de Grand Frais Nr 146.",
   "sections": [
    {
-    "t": "Situation générale le dimanche 22 novembre 2026 à 00H00 UTC, et évolution",
+    "t": "Situation générale le dimanche 22 novembre 2026 à 06H00 UTC, et évolution",
     "l": [
-     "Dépression 992 hPa au sud-ouest Irlande, talweg dynamique associé, se décalant rapidement vers l'est en journée. 2 dépressions secondaires en Manche, se comblant lentement, prévues autour de 1008 hPa ce soir. Anticyclone des Açores 1027 hPa se décalant vers l'est, prévu 1026 hPa sud-ouest de la France demain matin. Nouveau talweg sur le proche Atlantique à la fin."
+     "Dépression 992 hPa au sud-ouest de l'Irlande et talweg associé s'étendant sur la Bretagne, remontant vers le nord. Dépression secondaire 1003 hPa en Manche cet après-midi, prévue autour de 1012 hPa cette nuit et se décalant vers l'est. Anticyclone des Açores 1027 hPa se décalant vers le nord-est, prévu 1026 hPa sur le sud-ouest de la France demain. Nouveau talweg sur le proche Atlantique demain soir."
     ]
    },
    {
-    "t": "Observations le dimanche 22 novembre 2026 à 03H00 UTC",
+    "t": "Observations le dimanche 22 novembre 2026 à 09H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Ouest-Nord-Ouest 19 nœuds, rafales 31 nœuds, couvert, pluies ou bruines, visibilité 4 milles. Belle Ile : vent Ouest 16 nœuds, très nuageux à couvert, visibilité 5 milles. Ile d'Yeu : vent Ouest-Sud-Ouest 16 nœuds, mer agitée, couvert, pluies ou bruines, visibilité 4 milles. Groix : vent Ouest 16 nœuds, rafales 33 nœuds, mer agitée, visibilité 6 milles. Pointe de Chemoulin : vent Ouest 21 nœuds, rafales 33 nœuds, mer agitée, couvert, pluies ou bruines, visibilité 4 milles."
+     "Pointe de Penmarc'h : vent Ouest-Nord-Ouest 33 nœuds, rafales 45 nœuds, clair ou peu nuageux, visibilité 7 milles. Belle Ile : vent Ouest 31 nœuds, rafales 43 nœuds, clair ou peu nuageux, visibilité 5 milles. Ile d'Yeu : vent Ouest-Nord-Ouest 21 nœuds, rafales 37 nœuds, mer forte, nuageux avec éclaircies, visibilité 5 milles. Groix : vent Ouest 39 nœuds, mer agitée, nuageux avec éclaircies, visibilité 4 milles. Pointe de Chemoulin : vent Ouest 31 nœuds, rafales 43 nœuds, mer agitée, très nuageux à couvert, visibilité 5 milles."
     ]
    },
    {
-    "t": "Prévisions pour la journée du dimanche 22 novembre",
+    "t": "Prévisions pour l'après-midi du dimanche 22 novembre",
     "l": [
-     "VENT : Ouest 7, mollissant Ouest à Nord-Ouest 6 à 7 l'après-midi. Fortes rafales.",
+     "VENT : Ouest à Nord-Ouest 6 à 7. Fortes rafales.",
      "MER : forte à très forte, parfois croisée.",
-     "HOULE : Sud-Ouest s'amplifiant 1.5 à 2.5 m, puis 2 à 3 m l'après-midi.",
+     "HOULE : Sud-Ouest s'amplifiant 2 à 3 m.",
      "TEMPS : nuageux avec averses.",
      "VISIBILITE : moyenne à mauvaise sous averses."
     ]
@@ -30,7 +30,7 @@
    {
     "t": "Prévisions pour la nuit du dimanche 22 novembre au lundi 23 novembre",
     "l": [
-     "VENT : Ouest à Nord-Ouest mollissant 5 à 6, et 4 à 3 en fin de nuit. Rafales.",
+     "VENT : Ouest à Nord-Ouest mollissant 5 à 6, puis 3 à 4 en fin de nuit. Rafales.",
      "MER : forte à très forte, s'atténuant agitée à forte en fin de nuit.",
      "HOULE : Ouest à Sud-Ouest 2 à 3 m.",
      "TEMPS : nuageux avec averses.",
@@ -38,28 +38,38 @@
     ]
    },
    {
-    "t": "Tendance pour la journée du lundi 23 novembre",
+    "t": "Prévisions pour la journée du lundi 23 novembre",
     "l": [
      "VENT : secteur Ouest mollissant 2 à 4 le matin, revenant Sud 3 à 4 l'après-midi. Rafales.",
-     "MER : agitée à forte, s'atténuant agitée à l'est de Groix l'après-midi.",
+     "MER : agitée à forte, s'atténuant agitée l'après-midi.",
      "HOULE : Ouest à Sud-Ouest 2 à 3 m, s'atténuant 1.5 à 2.5 m l'après-midi.",
      "TEMPS : nuageux avec averses.",
      "VISIBILITE : moyenne sous précipitations."
     ]
+   },
+   {
+    "t": "Tendance pour la nuit du 23 au 24, et la journée du mardi 24 novembre",
+    "l": [
+     "VENT : Sud fraîchissant 5 à 6 la nuit, mollissant 4 à 5 l'après-midi et virant Nord-Ouest 3 à 4 au nord de Belle Ile.",
+     "MER : devenant agitée à forte la nuit, temporairement croisée la nuit et le matin.",
+     "HOULE : Ouest 1 à 2 m, s'amplifiant 2 à 3 m en fin de nuit, au nord de Belle Ile.",
+     "TEMPS : devenant pluvieux en fin de nuit.",
+     "VISIBILITE : moyenne à mauvaise sous pluie."
+    ]
    }
   ],
-  "prochain": "Prochain bulletin le dimanche 22 novembre 2026, vers 12H30 légales",
+  "prochain": "Prochain bulletin le dimanche 22 novembre 2026, vers 18H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-22T05:44:21.021Z"
+  "lu": "2026-11-22T11:40:47.279Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-22 06:00",
-  "h13": 1.5,
-  "hmax": 2.2,
-  "t13": 6,
-  "dir": 184,
-  "eau": 12.9,
+  "heure": "2026-11-22 12:00",
+  "h13": 3.3,
+  "hmax": 4.8,
+  "t13": 7.9,
+  "dir": null,
+  "eau": null,
   "source": "https://candhis.cerema.fr/_public_/campagne.php?Y2FtcD0wNDQwMw=="
  }
 }
