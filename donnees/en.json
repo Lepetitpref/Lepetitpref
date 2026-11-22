@@ -4092,7 +4092,7 @@
    "Coming back the same day: last departure from $1 at"
   ],
   [
-   "^, (.+?) · arrivée à ((?:Préfailles|Pornic|Nantes|Saint-Nazaire)) (\\d{1,2}h\\d\\d), (.+)$",
+   "^, (.+?) · arrivée à ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie)) (\\d{1,2}h\\d\\d), (.+)$",
    ", $1 · arrives in $2 at $3, $4"
   ],
   [
@@ -4124,15 +4124,15 @@
    "Day: $1. Tap to change"
   ],
   [
-   "^Cars et trains entre (.+) et ((?:Préfailles|Pornic|Nantes|Saint-Nazaire)), correspondances comprises\\.$",
+   "^Cars et trains entre (.+) et ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie)), correspondances comprises\\.$",
    "Coaches and trains between $1 and $2, connections included."
   ],
   [
-   "^depuis ((?:Préfailles|Pornic|Nantes|Saint-Nazaire)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire))*)$",
+   "^depuis ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie))*)$",
    "from $1"
   ],
   [
-   "^vers ((?:Préfailles|Pornic|Nantes|Saint-Nazaire)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire))*)$",
+   "^vers ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie))*)$",
    "to $1"
   ],
   [
