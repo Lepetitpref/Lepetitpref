@@ -3,8 +3,8 @@
 # restaurants and crêperies open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies with a sea view open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 (collège Jean Mounès)
-, Pirmil · arrives in Préfailles at #h#, Place de la Gare
 , SNCF station · arrives in Préfailles at #h#, Place de la Gare
+, Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
@@ -26,6 +26,7 @@ All year round at the plateau de la Chapelle; in summer, friendly doubles compet
 Aléop coach #
 Aléop coach (Loire-Atlantique): single ticket €#.# (valid # h, + # h Naolib/Ycéo transfer); reduced fare €#.# (children #-#, large families, disability card…); book of #: €#; free under #. Buy: WOP M-Ticket app or from the driver (exact change).
 Aléop information:
+Animation · ages #+, Mois des Tout-Petits
 Association of parents at the Préfailles school, very active in organising family events.
 Association that organises the Jazz à Préf concerts at the Espace culturel.
 At night, on Sundays and public holidays: call # (Résogardes) for the nearest duty pharmacy
@@ -44,10 +45,12 @@ Cinema in Préfailles and Pornic
 Cinéjade, Saint-Brevin-les-Pins
 Cinéma Saint-Joseph
 Cinéma Saint-Joseph, Pornic
+Club affiliated to the French Tennis Federation, shared by La Plaine-sur-Mer and Préfailles: tennis for everyone, from first try to regular play.
 Coaches and trains between Préfailles, Pornic, Nantes and Saint-Nazaire, connections included.
 Collège Jean Mounès staff association
 Concerts (Jazz à Préf), masterclasses, stage coaching, exhibitions
 Contributing to the development of the La Joselière district in Pornic, its beach and its coastline.
+Creating and staging live shows (Patrizio Kelly's shows: “Konnexions”, “Fragments d'un futur oublié”), taking part in or organising cultural events.
 Crêperies
 Cultural development of the Pays de Retz
 Côte de Jade chess club, sessions open to all.
@@ -57,7 +60,6 @@ Département fact sheet
 Département sports activities in Préfailles, #-#.
 Ensuring that all doctors in the Pays de Retz take part in the organisation of healthcare
 Environmental education association of the Pays de Retz (based at Le Pas Renaud, Le Clion-sur-Mer), nature outings open to the public, # outings brochure on its website.
-FFT tennis club of La Plaine and Préfailles.
 Football club of Préfailles, La Plaine and Saint-Michel.
 From Préfailles
 Fruit-growing heritage of the Pays de Retz
@@ -73,7 +75,6 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
-L'Ermitage and Les Rochelets: offshore wind too strong (# kn, #h-#h)
 L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
@@ -118,7 +119,6 @@ Plateau du Four buoy
 Pornic castle and harbour: “Chateau de Pornic (#)”, Ibex#,
 Pornic station is ~# km from Préfailles: get there on coach # (Théâtre St-Gilles / Terres Jarries stop) or #. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of @J # Nov (reported by l-itineraire.com): check before you travel.
 Pornic, Théâtre St-Gilles
-Pornic, Théâtre St-Gilles →
 Promoting and safeguarding the cultural and natural heritage of the Pays de Retz
 Promoting any action or event likely to boost trade at the LE CHAUDRON shopping centre.
 Promoting contemporary art and current music in the Pays de Retz
@@ -146,10 +146,12 @@ Préfailles' long-standing club, open to holidaymakers through short memberships
 Préfailles, Place de la Gare →
 Pétanque all year round, competitions
 Pétanque club affiliated to UFOLEP.
+Rehearsals every @J at #h, salle de la Birochère (town hall annexe, # ter rue Pierre Fleury, Pornic); simple audition (singing in tune), one or two rehearsals possible before joining.
 Repair cafés and green initiatives
 Residents' association (rue de Nantes area)
 Restaurants and crêperies
 Restaurants in Préfailles
+Roller-skating club of Pornic and La Plaine-sur-Mer (touring, freestyle, roller hockey, skating school)
 Route de Nantes (Les Gentelleries), Pornic · # km
 Rue de Quirouard · # Jun #
 Rue de la Source · # Sept # · granted
@@ -188,6 +190,7 @@ To Préfailles
 To show the weather, wind, swell and water temperature, your phone queries Open-Meteo directly (open-meteo.com, data under CC BY #.# licence, models from Météo-France, the European centre ECMWF, the German service DWD and the American NOAA): so this service sees your IP address, like any website you visit. Fonts are loaded from Google Fonts, which also sees your IP address. Audience totals are sent to a counter hosted by Cloudflare. The restaurant map is drawn on an OpenStreetMap background (tile.openstreetmap.org), loaded only when you open the map. Some opening hours also come from OpenStreetMap (© OpenStreetMap contributors, ODbL licence). On the Property map, the address you type is sent to the State's address service (api-adresse.data.gouv.fr), only when you run the search. The Land register and Zoning layers, the zone of a tapped spot and plot outlines come from IGN services (data.geopf.fr, apicarto.ign.fr), called only when you use them. The marine weather forecast comes from Météo-France (meteofrance.com) and the measured swell from the Plateau du Four buoy, Cerema's Candhis network (Licence Ouverte Etalab).
 Today in and around Préfailles
 Toiles de Retz
+Touring, freestyle, roller hockey and skating school in Sainte-Marie and La Plaine-sur-Mer: this season's sessions are on the club website.
 Traders' association (Le Chaudron shopping centre)
 Upcoming screenings, in Préfailles and at nearby cinemas.
 Users of the port de la Pointe Saint-Gildas; boat trips at the port festival
@@ -198,7 +201,6 @@ Wind, swell and water: Open-Meteo forecasts (Météo-France and European models)
 Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
-next: today #h–#h · Préfailles
 or VHF channel # (CROSS Étel)
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).

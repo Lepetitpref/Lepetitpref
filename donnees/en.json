@@ -1282,6 +1282,22 @@
  },
  "rules": [
   [
+   "^rafales (\\d+) pour (\\d+) nds : trop irrégulier, même en kitefoil$",
+   "gusts $1 for $2 kn: too irregular, even on a kitefoil"
+  ],
+  [
+   "^le vent passe de terre à (\\d+)h$",
+   "the wind turns offshore at $1h"
+  ],
+  [
+   "^le vent passe de terre à (\\d+)h : rentrez avant (\\d+)h$",
+   "the wind turns offshore at $1h: be back in before $2h"
+  ],
+  [
+   "^Le vent passe de terre à (\\d+)h : créneau trop court$",
+   "The wind turns offshore at $1h: slot too short"
+  ],
+  [
    "^Vous lisez depuis ([^,]+)$",
    "You're reading in $1"
   ],
