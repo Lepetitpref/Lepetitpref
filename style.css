@@ -1586,4 +1586,5 @@ button.wk-c{cursor:pointer}
 .dae-more summary{min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600;cursor:pointer}
 .urg-tip{margin:4px 0 6px;font-size:14px;color:var(--muted)}
 .mk-off summary{min-height:44px;display:flex;align-items:center;padding:0 var(--gutter);color:var(--muted);font-size:14px;cursor:pointer}
-/* version du site */:root{--pp-v:"20261122-1108"}
+.tr-mapb .tr-chev{transition:transform .15s}.tr-mapb[aria-expanded="true"] .tr-chev{transform:rotate(180deg)}
+/* version du site */:root{--pp-v:"20261122-1117"}
