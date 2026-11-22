@@ -2192,7 +2192,12 @@ function ppVue(v){if(!ppOn)return;if(!ppHumain){if(!PPV.includes(v))PPV.push(v);
     if(!prem){if(appPrem){ppHit2("app-premiere");}else{ppHit("appareils");ppHit("appareils-nouveaux-"+j);ppHit("source-nouveau-"+src+"-"+j);}}
     if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(app)ppHit("app-"+j);if(LANG==="en")ppHit("langue-en-"+j);
       /* retour : écart avec la visite précédente de cet appareil (Safari efface cette mémoire après ~7 jours sans visite) */
-      if(der){const g=Math.round((new Date(j)-new Date(der))/864e5);if(g>0)ppHit("retour-"+(g===1?"1":g<=7?"2-7":g<=30?"8-30":"31p")+"-"+j);}}
+      if(der){const g=Math.round((new Date(j)-new Date(der))/864e5);if(g>0)ppHit("retour-"+(g===1?"1":g<=7?"2-7":g<=30?"8-30":"31p")+"-"+j);}
+      /* depuis le début : chaque appareil revenu n'est compté qu'une fois (« revenu-unique »), puis à son 3e, 5e et 10e jour de visite (« fidele-N »).
+         Les jours d'avant le 22/11 ne sont pas connus : un ancien appareil repart de 1 jour vu. */
+      if(prem&&der){const n=(+localStorage.getItem("pp-jours")||1)+1;localStorage.setItem("pp-jours",n);
+        if(!localStorage.getItem("pp-revenu")){localStorage.setItem("pp-revenu",j);ppHit2("revenu-unique");}
+        if(n===3||n===5||n===10)ppHit2("fidele-"+n);}}
     /* appareils différents par semaine et par mois ; cohortes : semaine de la 1re visite → semaine actuelle.
        La 1re ouverture de l'app sur iPhone n'y entre pas (le téléphone est déjà compté par Safari cette semaine-là). */
     if(localStorage.getItem("pp-sem")!==sem){localStorage.setItem("pp-sem",sem);if(!appPrem){ppHit("appareils-sem-"+sem);ppHit("cohorte-"+ppSem((prem||j).replace(/^app-/,""))+"-"+sem);}}

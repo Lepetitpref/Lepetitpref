@@ -61,6 +61,19 @@
     <div class="pp-leg"><span><i data-draw="leg0"></i>Nouveaux</span><span><i data-draw="leg1"></i>Revenus</span><span><i data-draw="leg2"></i>1re ouverture de l'app sur iPhone</span></div>
   </section>
 
+  <section class="pp-card" id="cumul">
+    <h2>Depuis le lancement, en cumulé</h2>
+    <p class="pp-sub">Chaque appareil n'est compté qu'une fois dans « appareils différents ». Une « visite », c'est un appareil un jour donné : l'écart entre les deux courbes, ce sont les retours.</p>
+    <section class="pp-tiles" aria-label="Cumul depuis le lancement">
+      <div class="pp-tile"><h3>Appareils différents</h3><b class="big" data-draw="c_app" data-source="resume" data-field="appareils_depuis_debut" data-row="0">—</b><small>depuis le 10/11, au plus (un téléphone qui efface sa mémoire compte deux fois)</small></div>
+      <div class="pp-tile"><h3>Visites</h3><b class="big" data-draw="c_vis" data-source="resume" data-field="visites_depuis_debut" data-row="0">—</b><small data-draw="c_vis_s">—</small></div>
+      <div class="pp-tile"><h3>Revenus au moins une fois</h3><b class="big" data-draw="c_rev" data-source="resume" data-field="revenus_uniques" data-row="0">—</b><small data-draw="c_rev_s">—</small></div>
+      <div class="pp-tile"><h3>Fidèles</h3><b class="big" data-draw="c_fid" data-source="resume" data-field="fideles_3" data-row="0">—</b><small data-draw="c_fid_s">—</small></div>
+    </section>
+    <div class="pp-chart pp-chart-s" data-draw="cumulc" data-source="jours"></div>
+    <div class="pp-leg"><span><i data-draw="leg0"></i>Appareils différents (cumul des nouveaux)</span><span><i data-draw="leg1"></i>Visites (cumul)</span><span><i data-draw="leg2"></i>Revenus au moins une fois (depuis le 22/11)</span></div>
+  </section>
+
   <section class="pp-card" id="par-semaine">
     <h2>Par semaine et par mois</h2>
     <p class="pp-sub">« Différents » : chaque appareil compte une seule fois dans la semaine ou le mois (mesuré depuis le 18/11). « Visites » : appareils comptés une fois par jour.</p>
@@ -242,6 +255,35 @@ dash.draw('jours', (el) => {
     .on('pointerleave', () => { tip.hidden = true; });
 });
 
+dash.draw('c_app', (el) => { const x = R(); el.textContent = x ? fmt(x.appareils_depuis_debut) : '—'; });
+dash.draw('c_vis', (el) => { const x = R(); el.textContent = x ? fmt(x.visites_depuis_debut) : '—'; });
+dash.draw('c_vis_s', (el) => { const x = R(); if (!x || !N(x.appareils_depuis_debut)) { el.textContent = '—'; return; } el.textContent = `soit ${String(Math.round(10 * N(x.visites_depuis_debut) / N(x.appareils_depuis_debut)) / 10).replace('.', ',')} jour(s) de visite par appareil ; ${fmt(x.retours_jours_depuis_debut)} visites sont des retours`; });
+dash.draw('c_rev', (el) => { const x = R(); el.textContent = x ? fmt(Math.max(N(x.revenus_uniques), N(x.revenus_semaine_suivante_min))) : '—'; });
+dash.draw('c_rev_s', (el) => { const x = R(); el.textContent = !x ? '—' : `chacun compté une fois. Mesuré exactement depuis le 22/11 (${fmt(x.revenus_uniques)}) ; avant, au moins ${fmt(x.revenus_semaine_suivante_min)} d'après les semaines`; });
+dash.draw('c_fid', (el) => { const x = R(); el.textContent = x ? fmt(x.fideles_3) : '—'; });
+dash.draw('c_fid_s', (el) => { const x = R(); el.textContent = !x ? '—' : `appareils venus au moins 3 jours différents (5 jours : ${fmt(x.fideles_5)}, 10 jours : ${fmt(x.fideles_10)}), comptés depuis le 22/11`; });
+dash.draw('cumulc', (el) => {
+  const j = dash.data('jours'); el.replaceChildren();
+  if (j.status !== 'ok') { el.textContent = j.status === 'error' ? 'Échec du chargement' : '—'; return; }
+  let a = 0, v = 0, u = 0; const rows = j.data.map((r) => { a += N(r.appareils_nouveaux); v += N(r.appareils); u += N(r.revenu_unique); return { jour: r.jour, a, v, u }; });
+  const W = Math.max(280, el.clientWidth), H = 190, m = { t: 18, r: 34, b: 26, l: 30 };
+  const x = d3.scalePoint().domain(rows.map((r) => r.jour)).range([m.l, W - m.r]);
+  const y = d3.scaleLinear().domain([0, Math.max(5, d3.max(rows, (r) => r.v) || 0)]).nice().range([H - m.b, m.t]);
+  const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Cumul depuis le lancement : appareils différents, visites, revenus');
+  svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', (d) => y(d)).attr('y2', (d) => y(d)).style('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (d) => y(d) + 4).attr('text-anchor', 'end').text((d) => d);
+  const step = Math.ceil(rows.length / Math.max(2, Math.floor((W - m.l) / 46)));
+  svg.append('g').selectAll('text').data(rows.filter((_, i) => (rows.length - 1 - i) % step === 0)).join('text').attr('x', (r) => x(r.jour)).attr('y', H - 8).attr('text-anchor', 'middle').text((r) => dmy(r.jour));
+  [['a', 0], ['v', 1], ['u', 2]].forEach(([k, c]) => { const L = k === 'u' ? rows.filter((r) => r.jour >= '2026-11-22') : rows; if (L.length < 1) return;
+    svg.append('path').attr('d', d3.line().x((r) => x(r.jour)).y((r) => y(r[k]))(L)).style('fill', 'none').style('stroke', dash.colors[c]).style('stroke-width', 2.5);
+    const z = L[L.length - 1]; svg.append('circle').attr('cx', x(z.jour)).attr('cy', y(z[k])).attr('r', 3.5).style('fill', dash.colors[c]);
+    svg.append('text').attr('x', x(z.jour) + 6).attr('y', y(z[k]) + 4).style('font-weight', '600').style('font-size', '11px').text(z[k]); });
+  const tip = document.createElement('div'); tip.className = 'pp-tip'; tip.hidden = true; el.appendChild(tip);
+  const bw = rows.length > 1 ? x(rows[1].jour) - x(rows[0].jour) : W;
+  svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', (r) => x(r.jour) - bw / 2).attr('width', bw).attr('y', m.t).attr('height', H - m.t - m.b).style('fill', 'transparent')
+    .on('pointermove', (ev, r) => { tip.hidden = false; tip.textContent = `au ${dmy(r.jour)} : ${r.a} appareils différents, ${r.v} visites${r.jour >= '2026-11-22' ? `, ${r.u} revenus` : ''}`; const b = el.getBoundingClientRect(); let L = ev.clientX - b.left + 10; if (L > b.width - 230) L = b.width - 230; tip.style.left = Math.max(0, L) + 'px'; tip.style.top = Math.max(0, ev.clientY - b.top - 40) + 'px'; })
+    .on('pointerleave', () => { tip.hidden = true; });
+});
 dash.draw('appjour', (el) => {
   const j = dash.data('jours'); el.replaceChildren();
   if (j.status !== 'ok') { el.textContent = j.status === 'error' ? 'Échec du chargement' : '—'; return; }

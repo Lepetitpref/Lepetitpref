@@ -23,7 +23,7 @@ var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premier
   'clic-installer-iphone', 'clic-installer-android', 'clic-installer-tablette', 'clic-installer-ordi',
   'page-installer-iphone', 'page-installer-android', 'page-installer-tablette', 'page-installer-ordi',
   'install-fenetre-android', 'install-fenetre-tablette', 'install-fenetre-ordi', 'install-accepte-android', 'install-accepte-tablette', 'install-accepte-ordi',
-  'install-annule-android', 'install-annule-tablette', 'install-annule-ordi', 'install-chrome-android', 'install-chrome-tablette']
+  'install-annule-android', 'install-annule-tablette', 'install-annule-ordi', 'install-chrome-android', 'install-chrome-tablette', 'revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10']
   .concat(SRC.map(function (s) { return 'source-' + s; }), SRC.map(function (s) { return 'source-nouveau-' + s; }),
     ACTS.map(function (a) { return 'act-' + a; }), VUES.map(function (v) { return 'vue-' + v; }),
     VUES.map(function (v) { return 'entree-' + v; }), VUES.map(function (v) { return 'actv-' + v; }), CAMP.map(function (c) { return 'arrivee-' + c; }));
@@ -77,6 +77,7 @@ async function construire(o) {
   var nRub = rub.length; recherches.push({ trouve: 'Une fiche (événement, lieu…)', recherches: rv[nRub + 2] || 0 }, { trouve: 'Rien trouvé', recherches: rv[nRub + 1] || 0, vide: true });
   // totaux depuis le début (compteurs sans date)
   var tot = await tout(['appareils', 'installation', 'app-premiere', 'partage', 'chargements'].concat(ACTS.map(function (a) { return 'act-' + a; })));
+  var fid = await tout(['revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10']);
   var total = tot[0] == null ? null : Math.max(0, tot[0] + CORR_TOTAL);
   var installs = S(jours, 'installation');
   var r0 = { maj: new Date().toISOString(), du: A.length ? A[0].jour : null, au: hier, du_avant: B.length ? B[0].jour : null, au_avant: B.length ? B[B.length - 1].jour : null,
@@ -87,7 +88,12 @@ async function construire(o) {
     hier: hier, appareils_hier: (jours.find(function (r) { return r.jour === hier; }) || {}).appareils || 0,
     moyenne_3j: Math.round(10 * S(jours.filter(function (r) { return r.jour > plus(hier, -3) && r.jour <= hier; }), 'appareils') / 3) / 10,
     moyenne_hors_lancement_7j: (function () { var L = A.filter(function (r) { return r.jour > '2026-11-11'; }); return L.length ? Math.round(10 * S(L, 'appareils') / L.length) / 10 : null; })(),
-    appareils_depuis_debut: total, installations_depuis_debut: Math.max(installs, tot[1] || 0) + S(jours, 'app_premiere'), lancement: LANCEMENT, mesures_depuis: MESURES2 };
+    appareils_depuis_debut: total,
+    // vue cumulée depuis le lancement : visites (un appareil par jour), appareils revenus (jours), appareils revenus au moins une fois (chacun compté une fois, depuis le 22/11), fidèles
+    visites_depuis_debut: S(jours, 'appareils'), retours_jours_depuis_debut: S(jours, 'appareils_revenus'),
+    revenus_uniques: Math.max(fid[0] || 0, S(jours, 'revenu_unique')), fideles_3: Math.max(fid[1] || 0, S(jours, 'fidele_3')), fideles_5: Math.max(fid[2] || 0, S(jours, 'fidele_5')), fideles_10: Math.max(fid[3] || 0, S(jours, 'fidele_10')), revenus_uniques_depuis: '2026-11-22',
+    revenus_semaine_suivante_min: (function () { var m = {}; cohortes.forEach(function (c) { if (c.ecart > 0) m[c.premiere] = Math.max(m[c.premiere] || 0, c.appareils); }); return Object.keys(m).reduce(function (a, k) { return a + m[k]; }, 0); })(),
+    installations_depuis_debut: Math.max(installs, tot[1] || 0) + S(jours, 'app_premiere'), lancement: LANCEMENT, mesures_depuis: MESURES2 };
   [['appareils_jours', 'appareils'], ['nouveaux', 'appareils_nouveaux'], ['revenus', 'appareils_revenus'], ['vues', 'vues'], ['chargements', 'chargements'], ['actions', 'actions'], ['appels', 'act_appeler'], ['itineraires', 'act_itineraire'], ['calendrier', 'act_calendrier'], ['sites', 'act_site'],
     ['partages', 'partage'], ['arrivees_partage', 'arrivee_partage'], ['app', 'app'], ['installations', 'installation'], ['app_premiere', 'app_premiere'], ['recherches', 'recherche'], ['recherches_vides', 'recherche_vide'], ['erreurs_js', 'erreur_js'], ['erreurs_donnees', 'erreur_donnees'], ['retours', 'retours']]
     .forEach(function (p) { r0[p[0] + '_7j'] = S(A, p[1]); r0[p[0] + '_7j_avant'] = S(B, p[1]); });
