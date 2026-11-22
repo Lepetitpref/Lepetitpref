@@ -1559,4 +1559,4 @@ button.wk-c{cursor:pointer}
 .base-line:focus-within{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .base-line{background:var(--sel2);border-color:var(--sel2)}}
 :root[data-theme="dark"] .base-line{background:var(--sel2);border-color:var(--sel2)}
-/* version du site */:root{--pp-v:"20261122-0956"}
+/* version du site */:root{--pp-v:"20261122-1002"}
