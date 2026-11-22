@@ -900,7 +900,18 @@ function praBlocks(){const d=p=>km(HOME,{lat:p[3],lon:p[4]});
   return ptiles("sante",[...PRAK.map(([k,l,,c,icn])=>{const L=LL(k),n=L[0]?d(L[0]):null;
     return {k,l,c,ic:icn,sub:`${L.length} · ${n==null?"–":n<1?"la plus proche à pied":"le plus proche à "+Math.round(n)+" km"}`,body:`<ul class="list">${k==="pharma"?ptel("3237","<b>Pharmacie de garde</b>","La nuit, le dimanche et les jours fériés : le 3237 (Résogardes) donne la pharmacie de garde la plus proche"):""}${L.map(p=>{const x=d(p);return ptel(p[2],esc(p[0]),`${esc(p[1])} · ${x<1?"à pied":Math.round(x)+" km"}`);}).join("")}</ul>`};}),PURGMED(),PDAE()],"Touchez une vignette pour voir les adresses et les téléphones, du plus proche au plus loin.");}
 /* barre de sous-rubriques de Pratique : chaque bouton descend à sa partie, la barre suit la lecture (spyTick) */
-const PRNAV=[["p-urg","Urgences"],["p-sante","Santé"],["p-horaires","Au quotidien"],["p-dechets","Poubelles"],["p-mairie","Mairie, poste"],["p-immo","Immobilier"]];
+const PRNAV=[["p-urg","Urgences"],["p-sante","Santé"],["p-horaires","Au quotidien"],["p-dechets","Poubelles"],["p-mairie","Mairie, poste"],["p-conseil","Conseil municipal"],["p-immo","Immobilier"]];
+/* conseil municipal : dernières décisions, lues dans les comptes rendus officiels (donnees/conseils.json, relu par la mise à jour du matin) */
+function loadConseils(){if(S.conseils!==undefined||loadConseils.p)return;loadConseils.p=fetch("donnees/conseils.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{S.conseils=d;if(curView()==="pratique")render();}).catch(()=>{S.conseils=null;});}
+function praConseil(){loadConseils();const C=S.conseils?.communes?.[BASE.k];
+  if(S.conseils===undefined)return sec("Conseil municipal","",loadingTxt);
+  if(!C)return "";
+  const P=C.prochain,t=today(),ds=d=>esc(cap(F(noon(d),{weekday:"long",day:"numeric",month:"long"})));
+  const nx=P&&P.date>=t?`<p class="pra-p cm-next">${ic("cal","i-s")} <b>Prochain conseil : ${ds(P.date)}${P.heure?" à "+esc(P.heure.replace(":","h").replace(/h00$/,"h")):""}</b>${P.lieu?`, <span lang="fr">${esc(P.lieu)}</span>`:""}. Séance publique.</p>`:"";
+  const L=(C.seances||[]).slice(0,3);
+  return sec("Conseil municipal",`<a class="sec-link" href="${esc(C.page_cr)}" target="_blank" rel="noopener">Tous les comptes rendus ↗</a>`,nx+ptiles("cm",L.map((x,i)=>({k:"s"+i,l:"Séance du "+esc(F(noon(x.date),{day:"numeric",month:"long"})),sub:`${x.decisions.length} décision${x.decisions.length>1?"s":""}${i===0?" · la plus récente":""}`,c:"--accent",ic:"cal",
+    body:`<ul class="pra-ul cm-list">${x.decisions.map(d=>`<li><span lang="fr">${esc(d.t)}</span>${d.vote?` <small class="cm-vote">Vote : <span lang="fr">${esc(d.vote)}</span></small>`:""}</li>`).join("")}</ul><p class="pra-p"><a href="${esc(x.doc)}" target="_blank" rel="noopener">Document officiel : ${esc(x.type||"compte rendu")} ↗</a></p>`}))),
+    "Résumé des décisions, d'après les documents publiés par la commune, qui font foi.");}
 const prNav=()=>`<div class="seg-wrap subnav"><div class="seg seg-scroll" role="group" aria-label="Rubriques de Pratique">${PRNAV.map(([k,l],i)=>`<button type="button" data-act="pjump" data-v="${k}" data-spy="${k}" aria-current="${i===0}">${l}</button>`).join("")}</div></div>`;
 function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfailles"),cin=ACTS.find(a=>/Cinéma L'Atlantique/.test(a.n));
   const DN=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
@@ -933,6 +944,7 @@ function vPratique(){const t=today(),mk=ACTS.find(a=>a.n==="Marché de Préfaill
    {k:"g",l:"Gendarmerie",sub:"À Pornic",c:"--i-act",ic:"people",body:telB("02 40 82 00 29","1 rue du Docteur Auguste Guilmin, Pornic · lun.–sam. 8h–12h et 14h–18h, dim. 9h–12h et 15h–18h. En urgence : 17.")},
    {k:"d",l:"Distributeur de billets",sub:"17 Grande Rue, 24 h/24",c:"--seagreen",ic:"plus",body:`<p class="pra-p">17 Grande Rue, à côté de la mairie, 24 h/24.</p>`}],"Touchez une vignette pour les horaires et le téléphone."))}
   <div id="p-urg" class="anchor"></div>${sec("Urgences","",ptiles("urg",[{tel:"112",l:"Urgences",sub:"Tous services, depuis tout téléphone",c:"--warn",ic:"phone"},{tel:"15",l:"SAMU",sub:"Urgence médicale",c:"--warn",ic:"plus"},{tel:"18",l:"Pompiers",sub:"Incendie, accident, secours",c:"--warn",ic:"spark"},{tel:"17",l:"Police, gendarmerie",sub:"",c:"--accent",ic:"people"},{tel:"196",l:"Secours en mer",sub:"En mer ou sur l'estran",c:"--i-sea",ic:"wave"},{tel:"114",sms:1,l:"Urgences par SMS",sub:"Sourds et malentendants",c:"--i-act",ic:"mail"},PURGMED(),PDAE()]))}
+  <div id="p-conseil" class="anchor"></div>${praConseil()}
   <div id="p-immo" class="anchor"></div>${praImmo()}
   <p class="foot">Numéros vérifiés à la publication. En cas de doute, le 112 fonctionne partout.</p>`;}
 function praImmo(){loadVentes();const IB=IMMO_OK.includes(BASE.k)?BASE:BASES.pornic,C=S.ventes?.communes?.[IB.k],U=S.urba?.communes?.[IB.k];

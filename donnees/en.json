@@ -1313,9 +1313,47 @@
   "ouvrir ↗": "open ↗",
   "Itinéraire à pied ↗": "Walking directions ↗",
   "Positions des arrêts : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Stop locations: Aléop and SNCF open data. Map © OpenStreetMap.",
-  "Plan indisponible (pas de réseau ?).": "Map unavailable (no network?)."
+  "Plan indisponible (pas de réseau ?).": "Map unavailable (no network?).",
+  "Conseil municipal": "Town council",
+  "Tous les comptes rendus ↗": "All minutes ↗",
+  "Résumé des décisions, d'après les documents publiés par la commune, qui font foi.": "Summary of decisions, from the documents published by the town, which are the official reference.",
+  "Séance publique.": "Open to the public.",
+  "Vote :": "Vote:",
+  "Vote : ": "Vote:"
  },
  "rules": [
+  [
+   "^Document officiel : liste des délibérations ↗$",
+   "Official document: list of resolutions ↗"
+  ],
+  [
+   "^Document officiel : compte rendu ↗$",
+   "Official document: summary ↗"
+  ],
+  [
+   "^Document officiel : procès-verbal ↗$",
+   "Official document: minutes ↗"
+  ],
+  [
+   "^Prochain conseil : (.+?) à (\\d{1,2}h\\d{0,2})$",
+   "Next council meeting: $1 at $2"
+  ],
+  [
+   "^Prochain conseil : (.+)$",
+   "Next council meeting: $1"
+  ],
+  [
+   "^Séance du (\\d{1,2}) (\\p{L}+)$",
+   "Meeting of $1 $2"
+  ],
+  [
+   "^(\\d+) décisions? · la plus récente$",
+   "$1 decision(s) · most recent"
+  ],
+  [
+   "^(\\d+) décisions?$",
+   "$1 decision(s)"
+  ],
   [
    "^Arrivée : (.+)$",
    "Arrival: $1"

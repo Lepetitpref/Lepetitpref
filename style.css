@@ -1567,4 +1567,5 @@ button.wk-c{cursor:pointer}
 .tr-map-l li{padding:4px 0}.tr-map-l b{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:4px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px}
 .tr-map-w{margin:6px 0 0;font-size:14px}.tr-map-s{margin:6px 0 0;font-size:13px;color:var(--muted)}
 .tr-pin i{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#2f78ab;color:#fff;font:700 14px "Inter Tight",system-ui;font-style:normal;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(0,0,0,.3)}
-/* version du site */:root{--pp-v:"20261122-1015"}
+.cm-next{display:block}.cm-next .i{vertical-align:-2px}.cm-list li{margin:0 0 8px}.cm-vote{display:block;color:var(--muted);font-size:14px}
+/* version du site */:root{--pp-v:"20261122-1017"}

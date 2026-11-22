@@ -1,0 +1,345 @@
+{
+ "maj": "2026-11-22",
+ "communes": {
+  "prefailles": {
+   "page_cr": "https://www.prefailles.fr/les-conseils-municipaux/",
+   "prochain": {
+    "date": "2026-12-07",
+    "heure": "19:00",
+    "lieu": "Salle du conseil municipal, mairie, 17 Grande Rue",
+    "source": "https://www.prefailles.fr/les-conseils-municipaux/"
+   },
+   "seances": [
+    {
+     "date": "2026-11-09",
+     "doc": "https://www.prefailles.fr/medias/2026/11/Liste-DCM-2026-11-09.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Révision du plan local d'urbanisme : le conseil a tenu le débat sur le projet d'aménagement et de développement durables (PADD), seul point de la séance.",
+       "vote": "approuvée"
+      }
+     ]
+    },
+    {
+     "date": "2026-09-28",
+     "doc": "https://www.prefailles.fr/medias/2026/10/DCM-2026-09-28.pdf",
+     "type": "procès-verbal",
+     "decisions": [
+      {
+       "t": "Budget : décision modificative de 48 400 €, avec notamment la fibre et des volets roulants à la maison de santé (9 375 €) et une étude pour l'aménagement de Port-Meleu (3 400 €).",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Convention avec l'Office français de la biodiversité et demande de subvention pour les études préalables à l'extension de la réserve naturelle régionale de la Pointe Saint-Gildas.",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Vente à La Plaine-sur-Mer de la moitié de la parcelle de 991 m² que les deux communes possèdent boulevard Charles-de-Gaulle, pour 105 000 €.",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Achat d'une parcelle naturelle de 1,2 ha chemin de la Prée, pour 18 528 €, afin de préserver le secteur de la Prée et de Port-aux-Ânes.",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Fonds de concours 2026 de Pornic Agglo : 14 000 € pour du matériel technique, un broyeur d'accotement et du matériel informatique (29 583 € HT au total).",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Adhésion au service « Conseil en énergie partagée » de Territoire d'énergie Loire-Atlantique, pour mieux maîtriser les consommations d'énergie de la commune (2 588 € par an).",
+       "vote": "unanimité (15 pour)"
+      }
+     ]
+    },
+    {
+     "date": "2026-06-15",
+     "doc": "https://www.prefailles.fr/medias/2026/06/PDFsam_merge.pdf",
+     "type": "procès-verbal",
+     "decisions": [
+      {
+       "t": "Orientations budgétaires 2027-2032 : le conseil en a pris acte.",
+       "vote": "14 pour, 1 contre"
+      },
+      {
+       "t": "Création de sept commissions extra-municipales : urbanisme et environnement, culture et animations, voile, transition énergétique, développement économique, touristique et sportif.",
+       "vote": "15 pour (commission voile : 14 pour, 1 contre)"
+      },
+      {
+       "t": "Service commun « Conseiller numérique » avec Pornic Agglo : une permanence par semaine pour aider les habitants avec leur téléphone, leur ordinateur et leurs démarches.",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Reprise par la commune des concessions en état d'abandon au cimetière.",
+       "vote": "unanimité (15 pour)"
+      },
+      {
+       "t": "Adoption du règlement intérieur du conseil municipal.",
+       "vote": "unanimité (15 pour)"
+      }
+     ]
+    }
+   ]
+  },
+  "pornic": {
+   "page_cr": "https://www.pornic.fr/pornic-ma-ville/vie-municipale/conseil-municipal/",
+   "prochain": {
+    "date": "2026-11-26",
+    "heure": "19:30",
+    "lieu": "Salle du Conseil, Relais Saint-Gilles (séance retransmise en direct sur le site de la Ville)",
+    "source": "https://www.pornic.fr/wp-content/uploads/2026/11/OJ-CM-26112026.pdf"
+   },
+   "seances": [
+    {
+     "date": "2026-09-29",
+     "doc": "https://www.pornic.fr/wp-content/uploads/2026/09/DELIBERATIONS-CM-29092026.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Bilan de la concertation sur la modification n° 2 du plan local d'urbanisme.",
+       "vote": "27 pour, 6 abstentions"
+      },
+      {
+       "t": "Modification simplifiée n° 3 du plan local d'urbanisme : dispense d'évaluation environnementale et modalités de mise à disposition du public.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Convention avec l'Établissement public foncier de Loire-Atlantique pour mettre en location deux appartements 10 place des Halles.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Convention 2026-2028 pour le logement des travailleurs saisonniers.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Aide de solidarité aux communes sinistrées par les incendies.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Noms donnés à sept nouvelles voies, dont l'impasse de la Baie de Bourgneuf et l'impasse Tourmaline.",
+       "vote": "unanimité"
+      }
+     ]
+    },
+    {
+     "date": "2026-06-29",
+     "doc": "https://www.pornic.fr/wp-content/uploads/2026/06/DELIBERATIONS-CM-29062026-1.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Budget supplémentaire 2026 du budget général.",
+       "vote": "26 pour, 6 contre"
+      },
+      {
+       "t": "Compte financier unique 2025 (comptes de l'année écoulée).",
+       "vote": "29 pour, 1 abstention"
+      },
+      {
+       "t": "Tarifs communaux 2026 : restauration scolaire et accueil périscolaire (unanimité), occupation du domaine public (29 pour, 1 contre), location de salles (27 pour, 5 abstentions).",
+       "vote": ""
+      },
+      {
+       "t": "Gratuité de la médiathèque Armel de Wismes.",
+       "vote": "27 pour, 5 contre"
+      },
+      {
+       "t": "Subventions 2026 aux associations.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Ticket-sport : aide aux familles aux revenus modestes pour la pratique du sport.",
+       "vote": "27 pour, 5 abstentions"
+      }
+     ]
+    }
+   ]
+  },
+  "bernerie": {
+   "page_cr": "https://mairie-labernerie.fr/votre-mairie/conseil-municipal/conseils-municipaux/",
+   "prochain": {
+    "date": "2026-12-11",
+    "heure": "19:00",
+    "lieu": "",
+    "source": "https://mairie-labernerie.fr/evenement/conseil-municipal-n7/"
+   },
+   "seances": [
+    {
+     "date": "2026-09-17",
+     "doc": "https://mairie-labernerie.fr/telecharger/298/cm-n6-17-septembre/243825/pv_17-09-2026.pdf",
+     "type": "procès-verbal",
+     "decisions": [
+      {
+       "t": "Budget supplémentaire 2026 : 1 726 521,83 € en fonctionnement et 5 208 161,19 € en investissement.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Création d'un tarif adulte au restaurant scolaire (enseignants, intervenants extérieurs) : 7,50 € le repas.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Le logement communal de la gare sera loué de septembre à juin aux salariés et saisonniers qui travaillent sur la commune : 500 € par mois charges comprises, ou 250 € la chambre en colocation ; juillet et août restent réservés aux sauveteurs.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Demande de 7 000 € de fonds de concours à Pornic Agglo pour changer quatre fenêtres de l'école de musique (21 522 € HT).",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Recrutement de huit agents recenseurs pour le recensement de 2027.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Principe d'un jumelage avec une commune de montagne des Alpes.",
+       "vote": "23 pour, 4 abstentions"
+      }
+     ]
+    },
+    {
+     "date": "2026-07-02",
+     "doc": "https://mairie-labernerie.fr/telecharger/297/cm-n5-02-juillet/243195/proces-verbal-cm-n-5-du-2-juillet-2026.pdf",
+     "type": "procès-verbal",
+     "decisions": [
+      {
+       "t": "Nouveaux horaires d'extinction de l'éclairage public : en juillet-août, de 3 h à 7 h au centre-ville et de minuit à 7 h ailleurs ; du 1er mai au 30 juin et du 1er septembre au 15 octobre, de minuit à 6 h ; du 16 octobre au 30 avril, de 23 h à 6 h.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Participation de 2 676 € au Fonds de solidarité pour le logement en 2026.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Renouvellement des conventions de mise à disposition gratuite de locaux de la Maison des associations aux Marcheurs de l'Amitié et à l'Océan Club Plongée de Retz.",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Mission d'un archiviste du Centre de gestion pour classer les archives communales (151 heures, 7 550 €).",
+       "vote": "unanimité (27 pour)"
+      },
+      {
+       "t": "Délégation au maire pour conclure et réviser les locations de biens communaux d'une durée de douze ans au plus.",
+       "vote": "21 pour, 6 contre"
+      }
+     ]
+    },
+    {
+     "date": "2026-05-11",
+     "doc": "https://mairie-labernerie.fr/telecharger/293/cm-n4-11-mai/242497/liste-des-deliberations-cm-du-11-mai-2026.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Compte financier unique 2025 (comptes de l'année écoulée).",
+       "vote": "23 pour, 2 abstentions"
+      },
+      {
+       "t": "Subventions à des associations, dont la Fédération des associations berneriennes et les Amis de l'orgue.",
+       "vote": "26 pour"
+      },
+      {
+       "t": "Convention avec Pornic pour le poste de coordinateur des sauveteurs SNSM.",
+       "vote": "26 pour"
+      },
+      {
+       "t": "Convention de logement des saisonniers avec Pornic Agglo.",
+       "vote": "26 pour"
+      }
+     ]
+    }
+   ]
+  },
+  "brevin": {
+   "page_cr": "https://www.saint-brevin.fr/categorie-documents/deliberations-du-conseil-municipal/",
+   "prochain": null,
+   "seances": [
+    {
+     "date": "2026-11-02",
+     "doc": "https://www.saint-brevin.fr/medias/2026/11/liste_deliberations_CM_02.11.2026.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Garantie d'emprunt pour financer la réhabilitation du foyer logement des Sableaux.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Participation financière 2026 au groupement d'intérêt public culturel La Déferlante.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Dotation pour les voyages scolaires de l'année 2026-2027.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Organisation du recensement de la population de 2027.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Noms de quatre voies : chemin des Chevalais, passage de Penfour, route de la Giclais et chemin de la Maulevrais.",
+       "vote": "unanimité"
+      }
+     ]
+    },
+    {
+     "date": "2026-09-21",
+     "doc": "https://www.saint-brevin.fr/medias/2026/09/liste_deliberations_CM_21.09.2026.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Création d'un conseil des sages, d'un conseil participatif, d'une commission mixte Environnement, d'une brigade brévinoise d'accompagnement culturel et d'un collectif brévinois du sport.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Protocole partenarial sur le projet urbain de la Bresse et son foncier.",
+       "vote": "26 pour, 6 contre"
+      },
+      {
+       "t": "Lancement d'un projet d'habitat inclusif à la maison Maillet.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Attribution des travaux de rénovation de la toiture et des façades de deux classes du groupe scolaire François Dallet.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Installation de deux pompes à chaleur à l'école Max Jacob, dans le cadre du remplacement des chaudières des écoles (modification du marché).",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Étude du littoral de la commune (modèle hydro-sédimentaire et propositions d'aménagements de protection) : modification du marché.",
+       "vote": "unanimité"
+      }
+     ]
+    },
+    {
+     "date": "2026-06-29",
+     "doc": "https://www.saint-brevin.fr/medias/2026/06/liste_deliberations_CM_29.06.2026.pdf",
+     "type": "liste des délibérations",
+     "decisions": [
+      {
+       "t": "Budget supplémentaire 2026 (budget principal et budgets annexes).",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Compte financier unique 2025 (budget principal et budgets annexes).",
+       "vote": "adoption"
+      },
+      {
+       "t": "Nouvelle concession de service pour la gestion des marchés alimentaires.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Attribution de l'étude historique et du diagnostic environnemental de l'ancienne décharge littorale.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Subvention exceptionnelle à l'association Les Aitos Brévinois.",
+       "vote": "unanimité"
+      },
+      {
+       "t": "Rapports 2025 des délégataires du cinéma Cinéjade, des marchés, du casino, des campings et des lots de plage présentés au conseil.",
+       "vote": "dont acte"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
