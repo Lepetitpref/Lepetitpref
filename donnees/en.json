@@ -1327,9 +1327,54 @@
   "Ouvrir le plan en grand": "Open the map full screen",
   "Fermer le plan": "Close the map",
   "Plan des arrêts": "Map of the stops",
-  "Petits points : les arrêts du car en chemin. Arrêts et tracé : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Small dots: the bus stops along the way. Stops and route: Aléop and SNCF open data. Map © OpenStreetMap."
+  "Petits points : les arrêts du car en chemin. Arrêts et tracé : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Small dots: the bus stops along the way. Stops and route: Aléop and SNCF open data. Map © OpenStreetMap.",
+  "En cas de doute : 112": "If in doubt: 112",
+  "Tous secours": "All emergencies",
+  "En mer": "At sea",
+  "Urgence vitale, danger immédiat": "Life-threatening emergency",
+  "Pas d'urgence vitale": "Not life-threatening",
+  "Où sont les urgences": "Where the A&E is",
+  "SAMU : malaise, détresse, accident grave": "SAMU (ambulance): collapse, distress, serious accident",
+  "Arrêt cardiaque : massez sans attendre, faites chercher un défibrillateur ; le médecin du 15 vous guide": "Cardiac arrest: start chest compressions now, send someone for a defibrillator; the 15 doctor will guide you",
+  "Tous secours, depuis tout téléphone": "All emergency services, from any phone",
+  "Et si vous ne savez pas qui appeler": "And if you don't know who to call",
+  "Incendie, accident, personne bloquée": "Fire, accident, someone trapped",
+  "Personne emportée, baigneur, kite ou bateau en difficulté, encerclé par la marée. Ne vous mettez pas à l'eau : appelez et gardez la personne en vue": "Someone swept away, a swimmer, kite or boat in trouble, cut off by the tide. Don't go into the water: call and keep the person in sight",
+  "Sourds, malentendants, ou quand on ne peut pas parler": "Deaf, hard of hearing, or when you can't speak",
+  "Pharmacie ouverte la nuit, le dimanche et les jours fériés": "Pharmacy open at night, on Sundays and public holidays",
+  "Dimanches et jours fériés, de 8 h à 11 h : passez par le 15": "Sundays and public holidays, 8am to 11am: call 15",
+  "Hôpital de Saint-Nazaire (Cité sanitaire)": "Saint-Nazaire hospital (Cité sanitaire)",
+  "Itinéraire vers l'hôpital de Saint-Nazaire ↗": "Directions to Saint-Nazaire hospital ↗",
+  "Vous ne connaissez pas votre secteur ? Prochaine collecte des ordures ménagères :": "Don't know your sector? Next household waste collection:",
+  "Numéros et adresses vérifiés le 22 novembre 2026. En cas de doute, le 112 fonctionne partout.": "Numbers and addresses checked on 22 November 2026. If in doubt, 112 works everywhere.",
+  "Touchez un métier : adresses et téléphones, du plus proche au plus loin. Horaires non publiés : appelez avant.": "Tap a profession: addresses and phone numbers, nearest first. Opening hours not published: call ahead.",
+  "À moins de 20 km.": "Within 20 km.",
+  "Cette liste ne dit pas qui accepte de nouveaux patients. Pour choisir un médecin traitant :": "This list does not show who is taking new patients. To choose a GP:",
+  "annuaire santé de l'Assurance maladie ↗": "Assurance maladie health directory ↗",
+  "11 boulevard Georges Charpak, par le pont de Saint-Nazaire. L'hôpital de Pornic n'a pas d'urgences. Ce numéro est le standard : pour une urgence, appelez le 15": "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. Pornic hospital has no A&E. This is the switchboard: in an emergency, call 15",
+  "11 boulevard Georges Charpak, par le pont de Saint-Nazaire. Ce numéro est le standard : pour une urgence, appelez le 15": "11 boulevard Georges Charpak, over the Saint-Nazaire bridge. This is the switchboard: in an emergency, call 15"
  },
  "rules": [
+  [
+   "^Urgences, santé, poubelles, mairie et poste, vie de la commune à (.+)\\.$",
+   "Emergencies, health, bins, town hall and post office, local life in $1."
+  ],
+  [
+   "^(\\d+) · le plus proche : à pied$",
+   "$1 · nearest: walking distance"
+  ],
+  [
+   "^(\\d+) · le plus proche : (\\d+) km$",
+   "$1 · nearest: $2 km"
+  ],
+  [
+   "^Pleine mer (.+) · basse mer (.+) · coef\\. (\\S+) \\(port de Pornic\\)$",
+   "High tide $1 · low tide $2 · coef. $3 (Pornic port)"
+  ],
+  [
+   "^Voir les (\\d+) autres$",
+   "See the other $1"
+  ],
   [
    "^Document officiel : liste des délibérations ↗$",
    "Official document: list of resolutions ↗"

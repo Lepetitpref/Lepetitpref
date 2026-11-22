@@ -1580,4 +1580,8 @@ button.wk-c{cursor:pointer}
 :root[data-theme="dark"] .tr-bigb,:root[data-theme="dark"] .trbig-x{background:var(--sel2)}
 .urg-h{margin:14px 0 4px;font-weight:600;color:var(--warn)}.blk .urg-h:first-child{margin-top:4px}
 .sos-doubt{flex-basis:100%;font-size:14px;font-weight:600}
-/* version du site */:root{--pp-v:"20261122-1054"}
+.pra-sos{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;padding:6px 12px}
+.pra-sos a{gap:6px;font-weight:500}.pra-sos a b{font-size:18px;color:var(--warn)}
+.pra-sos .sos-doubt{grid-column:1/-1;color:var(--warn);padding:2px 0 6px}
+.dae-more summary{min-height:44px;display:flex;align-items:center;color:var(--accent);font-weight:600;cursor:pointer}
+/* version du site */:root{--pp-v:"20261122-1055"}
