@@ -4237,9 +4237,9 @@
  "correspondances": {
   "Pornic": {
    "car-car": 3,
-   "car-train": 12,
-   "train-car": 12,
-   "note": "À Pornic, l'arrêt de car Théâtre St-Gilles est à environ 600 m de la gare SNCF (≈ 10 min à pied, d'après OpenStreetMap)."
+   "car-train": 15,
+   "train-car": 15,
+   "note": "À Pornic, l'arrêt de car Théâtre St-Gilles est à environ 970 m de la gare SNCF par les rues (≈ 13 min à pied, d'après OpenStreetMap)."
   },
   "Saint-Nazaire": {
    "car-train": 8,

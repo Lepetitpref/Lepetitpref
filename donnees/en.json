@@ -1308,9 +1308,42 @@
   "rassemble ce qu'il y a à faire à La Bernerie et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.": "brings together everything there is to do in and around La Bernerie: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.",
   "Aujourd'hui à La Bernerie et aux alentours": "Today in and around La Bernerie",
   "rassemble ce qu'il y a à faire à Saint-Brevin et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.": "brings together everything there is to do in and around Saint-Brevin: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.",
-  "Aujourd'hui à Saint-Brevin et aux alentours": "Today in and around Saint-Brevin"
+  "Aujourd'hui à Saint-Brevin et aux alentours": "Today in and around Saint-Brevin",
+  "Voir les arrêts sur un plan": "See the stops on a map",
+  "ouvrir ↗": "open ↗",
+  "Itinéraire à pied ↗": "Walking directions ↗",
+  "Positions des arrêts : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Stop locations: Aléop and SNCF open data. Map © OpenStreetMap.",
+  "Plan indisponible (pas de réseau ?).": "Map unavailable (no network?)."
  },
  "rules": [
+  [
+   "^Arrivée : (.+)$",
+   "Arrival: $1"
+  ],
+  [
+   "^Correspondance : (.+)$",
+   "Change: $1"
+  ],
+  [
+   "^Descente : (.+)$",
+   "Get off: $1"
+  ],
+  [
+   "^Départ : (.+)$",
+   "Departure: $1"
+  ],
+  [
+   "^À pied entre (.+) et (.+) : (\\d+) m à vol d'oiseau, environ 970 m et 13 min par les rues \\(OpenStreetMap\\)\\.$",
+   "On foot between $1 and $2: $3 m as the crow flies, about 970 m and 13 min by the streets (OpenStreetMap)."
+  ],
+  [
+   "^À pied entre (.+) et (.+) : (\\d+) m à vol d'oiseau\\.$",
+   "On foot between $1 and $2: $3 m as the crow flies."
+  ],
+  [
+   "^\\(dont ≈ 13 min à pied arrêt ↔ gare\\)$",
+   "(including ≈ 13 min on foot between stop and station)"
+  ],
   [
    "^Pornic : (\\d+) ventes en 12 mois$",
    "Pornic: $1 sales in 12 months"
@@ -4104,8 +4137,8 @@
    ", SNCF station"
   ],
   [
-   "^Changement à (.+?) · (.+?) \\(dont ≈ 10 min à pied arrêt ↔ gare\\)$",
-   "Change at $1 · $2 (incl. ≈ 10 min walk, stop ↔ station)"
+   "^Changement à (.+?) · (.+?) \\(dont ≈ 13 min à pied arrêt ↔ gare\\)$",
+   "Change at $1 · $2 (incl. ≈ 13 min walk, stop ↔ station)"
   ],
   [
    "^Changement à (.+?) · (.+)$",
