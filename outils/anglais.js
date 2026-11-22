@@ -4,7 +4,7 @@
 // (chiffres remplacés par #). Usage : node outils/anglais.js  (échoue s'il y a du nouveau français)  ·  node outils/anglais.js --maj  (accepte l'état actuel)
 const {chromium,devices}=require('playwright');const fs=require('fs');
 (async()=>{const OUT=null,SHOT='',BASE_URL=process.env.PP_URL||'http://localhost:8765';const b=await chromium.launch(),er=[];
-const c=await b.newContext({...devices['iPhone 13'],locale:'en-GB'});await c.addInitScript(()=>{try{localStorage.setItem('pp-lang','en');}catch(e){}});
+const c=await b.newContext({...devices['iPhone 13'],locale:'en-GB'});await c.addInitScript(b=>{try{localStorage.setItem('pp-lang','en');if(b)localStorage.setItem('pp-base',b);}catch(e){}},process.env.PP_BASE||'');
 const p=await c.newPage();p.on('pageerror',e=>er.push(e.message));
 const FRW=/(?<![\p{L}'’-])(le|la|les|des|du|de|et|pour|avec|dès|au|aux|en|sur|une|un|ou|par|dans|à|ce|cette|ces|est|sont|plus|pas|ne|vous|votre|vos|qui|que|il|elle|son|sa|ses|leur|tout|tous|toute|aujourd'hui|demain|ouvert|fermé|heures?|jours?|soir|matin|midi|semaine|voir|trajet|trajets|départ|arrivée|retour|correspondance|depuis|vers|prochain|dernier|premier)(?![\p{L}-])/iu;
 const ACC=/[éèêàùûôîçœ]/i;
@@ -47,7 +47,7 @@ const norm=t=>t.replace(/\d+/g,'#').replace(/\b(Monday|Tuesday|Wednesday|Thursda
 const isName=t=>{const t2=t.replace(/^@\w+: /,'');return names.has(t2)||t.startsWith('@title: ')||/\d+ (rue|avenue|place|boulevard|bd|allée|chemin|route|impasse|quai)\b/i.test(t2);};
 const okf=__dirname+'/anglais-ok.txt',ok=new Set(fs.existsSync(okf)?fs.readFileSync(okf,'utf8').split('\n').filter(Boolean):[]);
 const res=[...found.entries()].filter(([t])=>!isName(t)).map(([t,s])=>({t,n:norm(t),s:[...s].slice(0,3)}));
-if(process.argv.includes('--maj')){fs.writeFileSync(okf,[...new Set(res.map(x=>x.n))].sort().join('\n')+'\n');console.log('anglais-ok.txt mis à jour :',res.length,'textes admis');await b.close();return;}
+if(process.argv.includes('--maj')){fs.writeFileSync(okf,[...new Set([...(process.env.PP_BASE?ok:[]),...res.map(x=>x.n)])].sort().join('\n')+'\n');console.log('anglais-ok.txt mis à jour :',res.length,'textes admis');await b.close();return;}
 const neu=res.filter(x=>!ok.has(x.n));
 if(er.filter(e=>!/Transition was aborted/.test(e)).length)console.log('Erreurs de page :',er.slice(0,5));
 if(neu.length){console.log('Version anglaise : '+neu.length+' texte(s) encore en français. Ajoutez-les à donnees/en.json (exact ou rules), ou, si c\'est un nom propre, mettez-le en lang="fr" :');neu.forEach(x=>console.log('  « '+x.t.slice(0,160)+' »  ('+x.s.join(', ')+')'));await b.close();process.exit(1);}

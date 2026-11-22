@@ -57,7 +57,7 @@ def ter_leg(cols,frm,to):
         k=json.dumps(x,sort_keys=True)
         if k not in seen:seen.add(k);res.append(x)
     return res
-P=("Préfailles","Place de la Gare");TH=("Pornic","Théâtre St Gilles");PI=("Nantes","Pirmil");SN=("Saint-Nazaire","Gare SNCF")
+P=("Préfailles","Place de la Gare");TH=("Pornic","Théâtre St Gilles");PI=("Nantes","Pirmil");SN=("Saint-Nazaire","Gare SNCF");SB=("Saint-Brevin-les-Pins","Pôle de Bresse")
 legs=[
  {"id":"303-pref-pornic","ligne":"303","mode":"car","de":"Préfailles","a":"Pornic","arret_de":"Préfailles, Place de la Gare","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c303,"Nantes","","",P,TH)},
  {"id":"303-pref-nantes","ligne":"303","mode":"car","de":"Préfailles","a":"Nantes","arret_de":"Préfailles, Place de la Gare","arret_a":"Nantes, Pirmil (tram 2 et 3)","departs":car_leg(c303,"Nantes","","",P,PI)},
@@ -73,6 +73,16 @@ legs=[
  {"id":"315-stnaz-pornic","ligne":"315","mode":"car","de":"Saint-Nazaire","a":"Pornic","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c315,"Préfailles","","",SN,TH)},
  {"id":"ter-pornic-nantes","ligne":"TER","mode":"train","de":"Pornic","a":"Nantes","arret_de":"Pornic, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cter,"PORNIC","NANTES")},
  {"id":"ter-nantes-pornic","ligne":"TER","mode":"train","de":"Nantes","a":"Pornic","arret_de":"Nantes, gare SNCF","arret_a":"Pornic, gare SNCF","departs":ter_leg(cter,"NANTES","PORNIC")},
+ {"id":"ter-bernerie-nantes","ligne":"TER","mode":"train","de":"La Bernerie","a":"Nantes","arret_de":"La Bernerie, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cter,"La Bernerie-en-Retz","NANTES")},
+ {"id":"ter-nantes-bernerie","ligne":"TER","mode":"train","de":"Nantes","a":"La Bernerie","arret_de":"Nantes, gare SNCF","arret_a":"La Bernerie, gare SNCF","departs":ter_leg(cter,"NANTES","La Bernerie-en-Retz")},
+ {"id":"ter-bernerie-pornic","ligne":"TER","mode":"train","de":"La Bernerie","a":"Pornic","arret_de":"La Bernerie, gare SNCF","arret_a":"Pornic, gare SNCF","departs":ter_leg(cter,"La Bernerie-en-Retz","PORNIC")},
+ {"id":"ter-pornic-bernerie","ligne":"TER","mode":"train","de":"Pornic","a":"La Bernerie","arret_de":"Pornic, gare SNCF","arret_a":"La Bernerie, gare SNCF","departs":ter_leg(cter,"PORNIC","La Bernerie-en-Retz")},
+ {"id":"315-brevin-stnaz","ligne":"315","mode":"car","de":"Saint-Brevin","a":"Saint-Nazaire","arret_de":"Saint-Brevin, Pôle de Bresse","arret_a":"Saint-Nazaire, gare SNCF","departs":car_leg(c315,"Saint-Nazaire","","",SB,SN)},
+ {"id":"315-stnaz-brevin","ligne":"315","mode":"car","de":"Saint-Nazaire","a":"Saint-Brevin","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Préfailles","","",SN,SB)},
+ {"id":"315-brevin-pornic","ligne":"315","mode":"car","de":"Saint-Brevin","a":"Pornic","arret_de":"Saint-Brevin, Pôle de Bresse","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c315,"Préfailles","","",SB,TH)},
+ {"id":"315-pornic-brevin","ligne":"315","mode":"car","de":"Pornic","a":"Saint-Brevin","arret_de":"Pornic, Théâtre St-Gilles","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Saint-Nazaire","","",TH,SB)},
+ {"id":"315-brevin-pref","ligne":"315","mode":"car","de":"Saint-Brevin","a":"Préfailles","arret_de":"Saint-Brevin, Pôle de Bresse","arret_a":"Préfailles, Place de la Gare","departs":car_leg(c315,"Préfailles","","",SB,P)},
+ {"id":"315-pref-brevin","ligne":"315","mode":"car","de":"Préfailles","a":"Saint-Brevin","arret_de":"Préfailles, Place de la Gare","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Saint-Nazaire","","",P,SB)},
  {"id":"ter1-stnaz-nantes","ligne":"TER 1","mode":"train","de":"Saint-Nazaire","a":"Nantes","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cl1,"ST-NAZAIRE","NANTES")},
  {"id":"ter1-nantes-stnaz","ligne":"TER 1","mode":"train","de":"Nantes","a":"Saint-Nazaire","arret_de":"Nantes, gare SNCF","arret_a":"Saint-Nazaire, gare SNCF","departs":ter_leg(cl1,"NANTES","ST-NAZAIRE")},
 ]

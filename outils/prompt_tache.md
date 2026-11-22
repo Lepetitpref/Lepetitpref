@@ -83,4 +83,4 @@ Lire le programme mensuel complet (https://www.cinemaprefailles.com/images/PROGR
 
 
 ## Contrôle de la version anglaise (obligatoire)
-Avant le commit, lancer le serveur local (`python3 -m http.server 8765` à la racine) puis `node outils/anglais.js`. S'il signale des textes d'interface restés en français, les ajouter à `donnees/en.json` (`exact` pour un texte fixe, `rules` ancrées ^…$ pour un texte avec chiffres ou dates) et relancer jusqu'à « OK ». Les contenus (événements, lieux) se traduisent dans `donnees/en-data.json` via `outils/traduire.py`.
+Avant le commit, lancer le serveur local (`python3 -m http.server 8765` à la racine) puis `node outils/anglais.js`. Le site a plusieurs communes de départ : relancer aussi `PP_BASE=brevin node outils/anglais.js` et `PP_BASE=bernerie node outils/anglais.js` si l'interface a changé. S'il signale des textes d'interface restés en français, les ajouter à `donnees/en.json` (`exact` pour un texte fixe, `rules` ancrées ^…$ pour un texte avec chiffres ou dates) et relancer jusqu'à « OK ». Les contenus (événements, lieux) se traduisent dans `donnees/en-data.json` via `outils/traduire.py`.

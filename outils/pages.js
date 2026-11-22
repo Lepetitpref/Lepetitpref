@@ -9,7 +9,7 @@ var R = path.resolve(__dirname, '..'), J = function (f) { return JSON.parse(fs.r
 var SITE = 'https://lepetitpref.fr';
 var L = fs.readFileSync(path.join(R, 'app.js'), 'utf8').split('\n');
 var stub = 'var document={documentElement:{},querySelector:()=>null,getElementById:()=>null,addEventListener(){}},localStorage={getItem:()=>null,setItem(){}},navigator={language:"fr",userAgent:""},window={addEventListener(){},matchMedia:()=>({matches:false})},location={hash:"",search:"",hostname:"x"},matchMedia=()=>({matches:false});';
-var A = new Function(stub + L.slice(0, 84).join('\n') + ';return {ACTS,KINDS,CATS,tidesOfDay,maxCoef};')();
+var A = new Function(stub + L.slice(0, L.findIndex(function (x) { return /^\/\* -{10} activities -{10} \*\//.test(x); })).join('\n') + ';return {ACTS,KINDS,CATS,tidesOfDay,maxCoef};')();
 var TZ = 'Europe/Paris';
 var auj = new Date().toLocaleDateString('sv-SE', { timeZone: TZ });
 var plus = function (j, n) { var d = new Date(j + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
@@ -168,7 +168,7 @@ page({ chemin: 'que-faire', titre: 'Que faire à Préfailles ? Sorties, activit�
 
 // ---------- Une page par commune : « Que faire à Pornic », etc. ----------
 // Même contenu que l'app (agenda, cinéma, marchés, restos, plages, activités), filtré sur la commune. Pas de page si trop peu de contenu.
-var COMMUNES = [['pornic', 'Pornic', 'Pornic', '?ici=pornic'], ['saint-brevin', 'Saint-Brevin-les-Pins', 'Saint-Brevin', ''], ['la-bernerie', 'La Bernerie-en-Retz', 'La Bernerie', ''],
+var COMMUNES = [['pornic', 'Pornic', 'Pornic', '?ici=pornic'], ['saint-brevin', 'Saint-Brevin-les-Pins', 'Saint-Brevin', '?ici=brevin'], ['la-bernerie', 'La Bernerie-en-Retz', 'La Bernerie', '?ici=bernerie'],
   ['la-plaine-sur-mer', 'La Plaine-sur-Mer', 'La Plaine-sur-Mer', ''], ['saint-michel-chef-chef', 'Saint-Michel-Chef-Chef', 'Saint-Michel-Chef-Chef et Tharon', ''], ['les-moutiers', 'Les Moutiers-en-Retz', 'Les Moutiers-en-Retz', '']];
 var a14 = plus(auj, 13), COMM_LIENS = [];
 COMMUNES.forEach(function (c) {

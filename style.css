@@ -1525,4 +1525,38 @@ button.wk-c{cursor:pointer}
 .inst-more .steps{margin:0}
 .inst-go{display:grid;margin:16px var(--gutter) 0}
 .inst-go .btn{justify-content:center;text-align:center;min-height:52px;font-size:17px}
-/* version du site */:root{--pp-v:"20261122-0845"}
+/* choix de la commune : repère de l'en-tête, 1re visite (grand), ligne compacte ensuite */
+.base-btn{display:inline-flex;align-items:center;gap:4px;height:var(--tap,44px);max-width:132px;margin:0 auto 0 0;padding:0 6px;border:0;background:none;cursor:pointer;border-radius:10px;color:var(--accent);font:600 14px/1 "Inter Tight",system-ui,sans-serif}
+.base-btn .base-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.base-btn .chev{width:10px;height:7px;flex:none;transition:transform .15s}
+.base-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.base-btn:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.lang-btn .lang-code{display:none}
+.lang-btn{margin-right:0}
+.base-pop{min-width:200px}
+.base-pop-h{margin:4px 10px 4px;color:var(--muted);font-size:14px}
+.base-pop button{min-height:48px;font-size:16px}
+.base-pop button .i-s{width:16px;height:16px;flex:none}
+.base-first{margin:16px var(--gutter) 0}
+.base-q{margin:0 0 10px;font:500 20px/1.2 "Newsreader",Georgia,serif}
+.base-why{margin:8px 0 0;color:var(--muted);font-size:14px}
+.base-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.base-grid button{min-height:48px;padding:0 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface,#fff);color:var(--ink);font:600 16px/1.2 "Inter Tight",system-ui,sans-serif;cursor:pointer}
+.base-grid button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.base-line{display:flex;align-items:center;gap:8px;min-height:48px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface,#fff)}
+.base-line .base-l{flex:none}
+.base-line select{flex:1;min-width:0;min-height:44px;border:0;background:none;color:var(--accent);font:600 16px "Inter Tight",system-ui,sans-serif;cursor:pointer}
+.base-bar{display:block}
+@media (max-width:340px){.base-btn .base-n{display:none}}
+/* en-tête sur téléphone : marque, drapeau, commune et Menu doivent tenir ; la recherche reste dans le menu (Rechercher) */
+@media (max-width:430px){.topbar>.icon-btn[href="#recherche"]{display:none}.brand{font-size:19px;gap:6px}.lang-btn{margin-left:6px;padding:0 4px;min-width:34px;justify-content:center}.lang-btn .chev{display:none}.base-btn{max-width:150px;padding:0 4px}.menu-btn{padding:0 8px}}
+/* « Je suis à » de l'accueil : bien visible, dans le bleu mer du site */
+.base-line{background:var(--accent);border-color:var(--accent);color:#fff}
+.base-line .base-l{color:rgba(255,255,255,.85)}
+.base-line .base-l .i{color:#fff}
+.base-line select{color:#fff;font-size:17px;appearance:none;-webkit-appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 4px center/12px 8px;padding-right:22px}
+.base-line select option{color:var(--ink);background:var(--surface,#fff)}
+.base-line:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .base-line{background:var(--sel2);border-color:var(--sel2)}}
+:root[data-theme="dark"] .base-line{background:var(--sel2);border-color:var(--sel2)}
+/* version du site */:root{--pp-v:"20261122-0956"}

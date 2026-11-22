@@ -1,15 +1,26 @@
 # bis place de l'Église, Saint-Michel-Chef-Chef · # km
 # in Préfailles · # within # km
+# restaurant or crêperie open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies with a sea view open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
+# restaurants and crêperies: open first, then nearest first. Hours are a guide only: call ahead.
+# zones · #AUc, #AUL, #AUB, #AU
+# zones · Ne, Ns, Ngv, Np…
+#AU · Land reserved for future development
+#AUL · Port Chéri, future motorhome area
+#AUc · La Corbinière development zone (ZAC)
+(Préfailles, # km),
 (collège Jean Mounès)
+(image recadrée). Plage de Saint-Brevin-l'Océan : « Plage et chenal se jetant dans la mer à Saint-Brevin-l'Océan », DarkVador#-UA,
 , SNCF station · arrives in Préfailles at #h#, Place de la Gare
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
+, gare SNCF · arrivée à Saint-Brevin #h#, Pôle de Bresse
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
 @J #h#-#h (CE# to CM#, # places), school playground and multi-sports hall, since # Sept #; price based on family income (€# to €#)
 @J #h-#h# at the Raymond Devos library in Les Moutiers
+@aria-label: I'm in Préfailles: change town
 @aria-label: Le Petit Préf, home
 @aria-label: Share Le Petit Préf
 @aria-label: Swap direction: travel to Préfailles
@@ -30,11 +41,13 @@ Animation · ages #+, Mois des Tout-Petits
 Association of parents at the Préfailles school, very active in organising family events.
 Association that organises the Jazz à Préf concerts at the Espace culturel.
 At night, on Sundays and public holidays: call # (Résogardes) for the nearest duty pharmacy
+Avenue du Jardin de Retz · # Jun #
 Baie de Bourgneuf
 Bibliothèque des Moutiers
 Bins and recycling in Préfailles
 Book lending, story readings for #-# year olds in summer, literary cafés, activities with the school
 Building permits that create or enlarge homes in Préfailles (State Sitadel database, updated monthly, up to @M #). No prior declarations, pools alone or demolitions: see the notices at the town hall. Names are only given for companies.
+Bus # to Pornic, Préfailles and Saint-Nazaire
 CPN nature club (ages #-# and #-#): # Saturdays a month in term time, #h-#h#, venue varies within the Pays de Retz
 Calculated for the port of Pornic (SHOM): in Préfailles the tide rises and falls within a few minutes of it.
 Chess: introduction and friendly games (Les Moutiers library)
@@ -43,10 +56,12 @@ Children in Year # to Year # (CE# to CM#)
 Children's social care home (# bis chemin du Moulin de Sang): looks after # children aged # to # under child protection.
 Cinema in Préfailles and Pornic
 Cinéjade, Saint-Brevin-les-Pins
+Cinéjade: next showings
 Cinéma Saint-Joseph
 Cinéma Saint-Joseph, Pornic
 Club affiliated to the French Tennis Federation, shared by La Plaine-sur-Mer and Préfailles: tennis for everyone, from first try to regular play.
 Coaches and trains between Préfailles, Pornic, Nantes and Saint-Nazaire, connections included.
+Coaches and trains between Saint-Brevin, Saint-Nazaire, Pornic, Préfailles and Nantes, connections included.
 Collège Jean Mounès staff association
 Concerts (Jazz à Préf), masterclasses, stage coaching, exhibitions
 Contributing to the development of the La Joselière district in Pornic, its beach and its coastline.
@@ -66,6 +81,7 @@ Fruit-growing heritage of the Pays de Retz
 Gastronomic brotherhood (local produce of the Pays de Retz)
 Golf de Pornic sports association (avenue Scalby Newby): # competition calendar, seniors' trophy, golf school.
 Good tides over the coming weeks, calculated for Préfailles.
+Grande Plage de La Bernerie-en-Retz: « Grande Plage », Loïc LLH,
 Group of childminders of La Plaine and Préfailles
 Health services around Préfailles
 Health, useful opening hours, bins, town hall, post office and emergencies in Préfailles.
@@ -75,17 +91,22 @@ In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station
 In Pornic, the Théâtre St-Gilles coach stop is about # m from the SNCF station (≈ # min on foot, according to OpenStreetMap). Pirmil: coach stop south of the Loire; take tram # or # into central Nantes.
 In Préfailles, from the State's public data.
 Install Le Petit Préf
+L'Ermitage and Les Rochelets: wind too strong (# kn, gusts #, #h-#h)
 La Bernerie
 La Bernerie · # km
 La Bernerie, Grande Plage et plan d'eau
 La Génière, in La Plaine
 La Plaine-sur-Mer – Préfailles – Pornic – Nantes (Pirmil)
+Le Chene Pendu · # Jun #
 Le Marais shellfish-farming area, in La Plaine-sur-Mer
 Le Petit Préf is a personal, free and non-commercial website, published by a private individual (a non-professional publisher within the meaning of Article #-III-# of French Law No. #-# of # @M #, whose identity has been given to the host). Publication director: the publisher. Contact:
 Le Petit Préf on your home screen
+Le Pointeau: not enough wind # kn
 Les Moutiers
 Les Moutiers · # km
 Les Moutiers, plage du Pré-Vincent
+Les Rochelets
+Les Rochelets and L'Ermitage: wind too strong (# kn, gusts #, #h-#h)
 Local events and activities in Le Clion
 Local zoning plan (PLU) of Préfailles, approved on #/#/#. Tap a zone: what can be built there, the zone on the map, its page of the regulations.
 Membership and FFV licence on HelloAsso (club affiliated to the FFV since #). Summer #: "jeudis du CVP" from #h to #h in the clubroom of the sailing centre, supervised group outings every day from @M to @M. The # programme is in preparation.
@@ -93,12 +114,14 @@ Moral and financial support for disadvantaged people in the Antsirabé area of M
 Most # coaches leave from Pornic (Ste-Marie, place de la Marne); only the departures below serve Préfailles. Public holidays: @J timetable (# @M: no service, according to the # timetable).
 Na · Camping de la Pointe lagoon treatment ponds
 Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic
+Ne · Sewage works and cemetery
 Neighbourhood association (La Joselière)
 New regional fares: Aléop ticket from €#.# (outside urban areas), €#.#–#.# for a journey to Nantes (Naolib transfer included), €#.#–#.# to Saint-Nazaire (Ycéo included); #-journey ticket from €#; Junior ticket (ages #-#) from €#.#; Aléop Multi Car €#/day for # to # people (coach), Aléop Multi €#/day (coach + train); Aléop -#% card €#/year (€# under #).
 Organising Voiles de tradition (classic sailing) events, talks
 Parents of pupils at collège Notre-Dame Recouvrance
 Pharmacie Conseil Santé
 Pharmacie Côte de Jade
+Pharmacie Le Pemp
 Pharmacie de La Bernerie
 Pharmacie de Mindin
 Pharmacie de Préfailles
@@ -109,11 +132,14 @@ Pharmacie de la Gare
 Pharmacie des Dunes
 Pharmacie des Pins
 Pharmacie des Plages
+Pharmacie du @Mé
 Pharmacie du Bien-Être
+Pharmacie du Centre
 Pharmacie du Prieuré
 Place des Hirondelles · # Jun #
 Plage de Margaret
 Plateau du Four buoy
+Pornic and Préfailles only for now, from French government open data.
 Pornic castle and harbour: “Chateau de Pornic (#)”, Ibex#,
 Pornic station is ~# km from Préfailles: get there on coach # (Théâtre St-Gilles / Terres Jarries stop) or #. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of @J # Nov (reported by l-itineraire.com): check before you travel.
 Pornic, Théâtre St-Gilles
@@ -123,6 +149,7 @@ Promoting contemporary art and current music in the Pays de Retz
 Promoting the local fare of the Pays de Retz, especially calf's head in all its culinary forms.
 Protecting and defending the rights of residents of the OPA area – rue de Nantes and its side roads between the Ria Sud, the Chaudron roundabout and the Joli séjour roundabout.
 Protecting the Birochère site
+Pré-Vincent
 Préfailles and nearby cinemas
 Préfailles beaches
 Préfailles choir (the directory only gives personal contact details).
@@ -144,6 +171,7 @@ Préfailles' long-standing club, open to holidaymakers through short memberships
 Préfailles, Place de la Gare →
 Pétanque all year round, competitions
 Pétanque club affiliated to UFOLEP.
+Pôle de Bresse
 Rehearsals every @J at #h, salle de la Birochère (town hall annexe, # ter rue Pierre Fleury, Pornic); simple audition (singing in tune), one or two rehearsals possible before joining.
 Repair cafés and green initiatives
 Residents' association (rue de Nantes area)
@@ -152,8 +180,11 @@ Restaurants in Préfailles
 Roller-skating club of Pornic and La Plaine-sur-Mer (touring, freestyle, roller hockey, skating school)
 Route de Nantes (Les Gentelleries), Pornic · # km
 Rue de Quirouard · # Jun #
+Rue de la Bernerie · # Jun #
+Rue de la Ficaudiere · # Oct # · granted
 Rue de la Source · # Sept # · granted
 Rue des Cassis · # Jun # · granted
+Rue du Moulin Neuf · # Oct # · granted
 Running (Foulées Préfaillaises)
 Running club that organises Les Foulées Préfaillaises every summer in Préfailles (# and # km, starting from the plateau de la Chapelle; # edition on # @M).
 Running, trail running (Trail de la Côte de Jade)
@@ -161,6 +192,8 @@ Runs initiatives such as the Repair café, and encourages projects that help us 
 Sailing club on La Joselière beach (FFV licences), renting out Hobie Cat # catamarans, kayaks and paddleboards in summer.
 Saint-Brevin · Le Pointeau
 Saint-Brevin · Les Rochelets
+Saint-Brevin, Pôle de Bresse →
+Sales over the last # known months (Jul # – Jun #). Half of the houses sold for between €#,# and €#,# per m². In Préfailles: house €#,#, flat €#,# per m².
 Screenings on @J # @M, in Préfailles and at nearby cinemas.
 Screenings tomorrow, in Préfailles and at nearby cinemas.
 See the other # · Crêperies
@@ -193,6 +226,7 @@ Today in and around Préfailles
 Toiles de Retz
 Touring, freestyle, roller hockey and skating school in Sainte-Marie and La Plaine-sur-Mer: this season's sessions are on the club website.
 Traders' association (Le Chaudron shopping centre)
+UApb · Old villages of Sainte-Marie and Le Clion
 Upcoming screenings, in Préfailles and at nearby cinemas.
 Users of the port de la Pointe Saint-Gildas; boat trips at the port festival
 Volunteer-run library in the village: lending, readings and literary cafés.
@@ -203,6 +237,7 @@ Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
 or VHF channel # (CROSS Étel)
+rue Ferréol Prézelin (centre commercial Super U), Paimbœuf · # km
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).
 €#.# per journey until # Jan #; €#.# to €#.# to Saint-Nazaire (Ycéo included) from # Jan #

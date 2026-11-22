@@ -188,13 +188,7 @@
      "jours": "0",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "303-pref-nantes",
@@ -235,13 +229,7 @@
      "jours": "0",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "303-pornic-nantes",
@@ -474,13 +462,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "303-nantes-pornic",
@@ -719,13 +701,7 @@
      "jours": "12345",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "303-nantes-pref",
@@ -790,13 +766,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "303-pornic-pref",
@@ -861,13 +831,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 303 Pornic / Nantes (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34934/download?token=LO6Cu_LU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-pref-pornic",
@@ -992,13 +956,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-pref-stnaz",
@@ -1117,13 +1075,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-stnaz-pref",
@@ -1242,13 +1194,7 @@
      "jours": "12345",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-pornic-pref",
@@ -1373,13 +1319,7 @@
      "jours": "12345",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-pornic-stnaz",
@@ -1510,13 +1450,7 @@
      "jours": "6",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "315-stnaz-pornic",
@@ -1641,13 +1575,7 @@
      "jours": "12345",
      "periode": "toujours"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire Aléop 315 Préfailles / Pornic / Saint-Nazaire (31/08/2026 – 02/07/2027)",
-    "url": "https://aleop.paysdelaloire.fr/file/34871/download?token=o8X9H3p1"
-   },
-   "debut": "2026-08-31",
-   "fin": "2027-07-02"
+   ]
   },
   {
    "id": "ter-pornic-nantes",
@@ -1822,13 +1750,7 @@
       "2026-11-01"
      ]
     }
-   ],
-   "source": {
-    "n": "Fiche horaire TER Aléop Nantes – Ste-Pazanne – Pornic (31/08 – 12/12/2026)",
-    "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2026-12-12"
+   ]
   },
   {
    "id": "ter-nantes-pornic",
@@ -1967,13 +1889,7 @@
      "periode": "toujours",
      "train": "859295"
     }
-   ],
-   "source": {
-    "n": "Fiche horaire TER Aléop Nantes – Ste-Pazanne – Pornic (31/08 – 12/12/2026)",
-    "url": "https://aleop.paysdelaloire.fr/file/36724/download?token=8DY34doU"
-   },
-   "debut": "2026-08-31",
-   "fin": "2026-12-12"
+   ]
   },
   {
    "id": "ter1-stnaz-nantes",
@@ -2432,13 +2348,7 @@
       "2026-11-11"
      ]
     }
-   ],
-   "source": {
-    "n": "Fiche horaire TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic (31/08 – 12/12/2026)",
-    "url": "https://aleop.paysdelaloire.fr/file/36732/download?token=ea-RDuXy"
-   },
-   "debut": "2026-08-31",
-   "fin": "2026-12-12"
+   ]
   },
   {
    "id": "ter1-nantes-stnaz",
@@ -2913,13 +2823,1415 @@
      "train": "8937",
      "tgv": true
     }
-   ],
-   "source": {
-    "n": "Fiche horaire TER Aléop ligne 1 Nantes – Saint-Nazaire – Le Croisic (31/08 – 12/12/2026)",
-    "url": "https://aleop.paysdelaloire.fr/file/36732/download?token=ea-RDuXy"
-   },
-   "debut": "2026-08-31",
-   "fin": "2026-12-12"
+   ]
+  },
+  {
+   "id": "ter-bernerie-nantes",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "La Bernerie",
+   "a": "Nantes",
+   "arret_de": "La Bernerie, gare SNCF",
+   "arret_a": "Nantes, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h32",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "06h35",
+     "arr": "07h29",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h18",
+     "arr": "08h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h23",
+     "arr": "08h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h47",
+     "arr": "08h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859284/859134"
+    },
+    {
+     "dep": "08h32",
+     "arr": "09h24",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h35",
+     "arr": "09h28",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "09h16",
+     "arr": "10h20",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859286/859136"
+    },
+    {
+     "dep": "10h57",
+     "arr": "11h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859288"
+    },
+    {
+     "dep": "11h57",
+     "arr": "12h50",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859262"
+    },
+    {
+     "dep": "13h57",
+     "arr": "14h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859290"
+    },
+    {
+     "dep": "13h58",
+     "arr": "14h51",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859266"
+    },
+    {
+     "dep": "14h57",
+     "arr": "15h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859292"
+    },
+    {
+     "dep": "16h16",
+     "arr": "17h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859272"
+    },
+    {
+     "dep": "16h57",
+     "arr": "17h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859294"
+    },
+    {
+     "dep": "17h47",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859282/859148"
+    },
+    {
+     "dep": "18h01",
+     "arr": "19h03",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859274"
+    },
+    {
+     "dep": "18h47",
+     "arr": "19h50",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859296/859144"
+    },
+    {
+     "dep": "18h52",
+     "arr": "19h45",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859206",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h47",
+     "arr": "20h39",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h47",
+     "arr": "20h50",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "sauf": [
+      "2026-11-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ter-nantes-bernerie",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Nantes",
+   "a": "La Bernerie",
+   "arret_de": "Nantes, gare SNCF",
+   "arret_a": "La Bernerie, gare SNCF",
+   "departs": [
+    {
+     "dep": "07h05",
+     "arr": "08h09",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h07",
+     "arr": "08h07",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h05",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "09h09",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "11h09",
+     "arr": "12h02",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859285"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h00",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h09",
+     "arr": "13h00",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "12h29",
+     "arr": "13h22",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859265"
+    },
+    {
+     "dep": "14h30",
+     "arr": "15h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859269"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h03",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "15h09",
+     "arr": "16h03",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "16h32",
+     "arr": "17h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859273/859123"
+    },
+    {
+     "dep": "17h09",
+     "arr": "18h03",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859291"
+    },
+    {
+     "dep": "17h48",
+     "arr": "18h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859275"
+    },
+    {
+     "dep": "18h41",
+     "arr": "19h36",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859277"
+    },
+    {
+     "dep": "19h09",
+     "arr": "20h07",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859293/859145"
+    },
+    {
+     "dep": "20h15",
+     "arr": "21h06",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859281"
+    },
+    {
+     "dep": "21h13",
+     "arr": "22h06",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859295"
+    }
+   ]
+  },
+  {
+   "id": "ter-bernerie-pornic",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "La Bernerie",
+   "a": "Pornic",
+   "arret_de": "La Bernerie, gare SNCF",
+   "arret_a": "Pornic, gare SNCF",
+   "departs": [
+    {
+     "dep": "08h07",
+     "arr": "08h15",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h09",
+     "arr": "08h17",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859255/859105",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "10h05",
+     "arr": "10h13",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "10h05",
+     "arr": "10h13",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859243/859191"
+    },
+    {
+     "dep": "12h02",
+     "arr": "12h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859285"
+    },
+    {
+     "dep": "13h00",
+     "arr": "13h08",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "13h00",
+     "arr": "13h08",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859287"
+    },
+    {
+     "dep": "13h22",
+     "arr": "13h30",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859265"
+    },
+    {
+     "dep": "15h23",
+     "arr": "15h31",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859269"
+    },
+    {
+     "dep": "16h03",
+     "arr": "16h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "16h03",
+     "arr": "16h10",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859289"
+    },
+    {
+     "dep": "17h32",
+     "arr": "17h40",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859273/859123"
+    },
+    {
+     "dep": "18h03",
+     "arr": "18h10",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859291"
+    },
+    {
+     "dep": "18h44",
+     "arr": "18h52",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859275"
+    },
+    {
+     "dep": "19h36",
+     "arr": "19h44",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859277"
+    },
+    {
+     "dep": "20h07",
+     "arr": "20h15",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859293/859145"
+    },
+    {
+     "dep": "21h06",
+     "arr": "21h14",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859281"
+    },
+    {
+     "dep": "22h06",
+     "arr": "22h14",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859295"
+    }
+   ]
+  },
+  {
+   "id": "ter-pornic-bernerie",
+   "ligne": "TER",
+   "mode": "train",
+   "de": "Pornic",
+   "a": "La Bernerie",
+   "arret_de": "Pornic, gare SNCF",
+   "arret_a": "La Bernerie, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h24",
+     "arr": "06h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "06h28",
+     "arr": "06h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859252",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h09",
+     "arr": "07h18",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "07h16",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859254",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "07h40",
+     "arr": "07h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859284/859134"
+    },
+    {
+     "dep": "08h25",
+     "arr": "08h32",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "au": "2026-10-02"
+    },
+    {
+     "dep": "08h27",
+     "arr": "08h35",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859256",
+     "du": "2026-10-05"
+    },
+    {
+     "dep": "09h09",
+     "arr": "09h16",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859286/859136"
+    },
+    {
+     "dep": "10h50",
+     "arr": "10h57",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859288"
+    },
+    {
+     "dep": "11h50",
+     "arr": "11h57",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859262"
+    },
+    {
+     "dep": "13h50",
+     "arr": "13h57",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859290"
+    },
+    {
+     "dep": "13h51",
+     "arr": "13h58",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859266"
+    },
+    {
+     "dep": "14h50",
+     "arr": "14h57",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859292"
+    },
+    {
+     "dep": "16h09",
+     "arr": "16h16",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859272"
+    },
+    {
+     "dep": "16h50",
+     "arr": "16h57",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859294"
+    },
+    {
+     "dep": "17h40",
+     "arr": "17h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859282/859148"
+    },
+    {
+     "dep": "17h54",
+     "arr": "18h01",
+     "jours": "12345",
+     "periode": "toujours",
+     "train": "859274"
+    },
+    {
+     "dep": "18h40",
+     "arr": "18h47",
+     "jours": "6",
+     "periode": "toujours",
+     "train": "859296/859144"
+    },
+    {
+     "dep": "18h45",
+     "arr": "18h52",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859206",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "19h47",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "aussi": [
+      "2026-11-01"
+     ],
+     "seulement": true
+    },
+    {
+     "dep": "19h40",
+     "arr": "19h47",
+     "jours": "0",
+     "periode": "toujours",
+     "train": "859240/859192",
+     "sauf": [
+      "2026-11-01"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "315-brevin-stnaz",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Saint-Nazaire",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Saint-Nazaire, gare SNCF",
+   "departs": [
+    {
+     "dep": "06h38",
+     "arr": "06h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h58",
+     "arr": "07h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h23",
+     "arr": "07h40",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h28",
+     "arr": "08h45",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h33",
+     "arr": "08h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h00",
+     "arr": "10h17",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h08",
+     "arr": "10h25",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h08",
+     "arr": "10h25",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h38",
+     "arr": "10h55",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h43",
+     "arr": "12h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h18",
+     "arr": "12h35",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h53",
+     "arr": "14h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h58",
+     "arr": "15h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h58",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h03",
+     "arr": "17h20",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h23",
+     "arr": "17h40",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h43",
+     "arr": "18h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h43",
+     "arr": "20h00",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ]
+  },
+  {
+   "id": "315-stnaz-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Nazaire",
+   "a": "Saint-Brevin",
+   "arret_de": "Saint-Nazaire, gare SNCF",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "07h55",
+     "arr": "08h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h55",
+     "arr": "08h10",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h30",
+     "arr": "08h45",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h00",
+     "arr": "09h15",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h10",
+     "arr": "09h25",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h00",
+     "arr": "11h15",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h55",
+     "arr": "12h10",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h55",
+     "arr": "13h10",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h30",
+     "arr": "13h45",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h25",
+     "arr": "15h40",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h00",
+     "arr": "16h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h30",
+     "arr": "16h45",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h10",
+     "arr": "17h28",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h45",
+     "arr": "18h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h00",
+     "arr": "19h15",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h05",
+     "arr": "20h20",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h20",
+     "arr": "20h35",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ]
+  },
+  {
+   "id": "315-brevin-pornic",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Pornic",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Pornic, Théâtre St-Gilles",
+   "departs": [
+    {
+     "dep": "08h10",
+     "arr": "08h41",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h10",
+     "arr": "08h41",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h45",
+     "arr": "09h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h15",
+     "arr": "09h46",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h25",
+     "arr": "09h56",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h46",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h01",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h10",
+     "arr": "12h41",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h10",
+     "arr": "13h41",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h45",
+     "arr": "14h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h05",
+     "arr": "14h36",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h40",
+     "arr": "16h11",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h45",
+     "arr": "17h16",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h28",
+     "arr": "17h59",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h31",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h46",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h20",
+     "arr": "20h51",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h35",
+     "arr": "21h06",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ]
+  },
+  {
+   "id": "315-pornic-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Pornic",
+   "a": "Saint-Brevin",
+   "arret_de": "Pornic, Théâtre St-Gilles",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "06h10",
+     "arr": "06h38",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h30",
+     "arr": "06h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h55",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h00",
+     "arr": "08h28",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h05",
+     "arr": "08h33",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h32",
+     "arr": "10h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h08",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h40",
+     "arr": "10h08",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h10",
+     "arr": "10h38",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "11h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h50",
+     "arr": "12h18",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h17",
+     "arr": "12h45",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h25",
+     "arr": "13h53",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h30",
+     "arr": "14h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h30",
+     "arr": "15h58",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h03",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h55",
+     "arr": "17h23",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h15",
+     "arr": "17h43",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "19h15",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ]
+  },
+  {
+   "id": "315-brevin-pref",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Saint-Brevin",
+   "a": "Préfailles",
+   "arret_de": "Saint-Brevin, Pôle de Bresse",
+   "arret_a": "Préfailles, Place de la Gare",
+   "departs": [
+    {
+     "dep": "08h10",
+     "arr": "09h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h10",
+     "arr": "09h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "08h45",
+     "arr": "09h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h15",
+     "arr": "10h05",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h25",
+     "arr": "10h15",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h15",
+     "arr": "12h05",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h20",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "12h10",
+     "arr": "13h00",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h10",
+     "arr": "14h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h45",
+     "arr": "14h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h05",
+     "arr": "14h55",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h40",
+     "arr": "16h30",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h45",
+     "arr": "17h35",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "17h28",
+     "arr": "18h18",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h00",
+     "arr": "18h50",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h20",
+     "arr": "21h10",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "20h35",
+     "arr": "21h25",
+     "jours": "12345",
+     "periode": "toujours"
+    }
+   ]
+  },
+  {
+   "id": "315-pref-brevin",
+   "ligne": "315",
+   "mode": "car",
+   "de": "Préfailles",
+   "a": "Saint-Brevin",
+   "arret_de": "Préfailles, Place de la Gare",
+   "arret_a": "Saint-Brevin, Pôle de Bresse",
+   "departs": [
+    {
+     "dep": "05h50",
+     "arr": "06h38",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h10",
+     "arr": "06h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "06h35",
+     "arr": "07h23",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h40",
+     "arr": "08h28",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "07h45",
+     "arr": "08h33",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h12",
+     "arr": "10h00",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h20",
+     "arr": "10h08",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "09h50",
+     "arr": "10h38",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "10h55",
+     "arr": "11h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h30",
+     "arr": "12h18",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "11h57",
+     "arr": "12h45",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "13h05",
+     "arr": "13h53",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "14h10",
+     "arr": "14h58",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "15h10",
+     "arr": "15h58",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h15",
+     "arr": "17h03",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "16h35",
+     "arr": "17h23",
+     "jours": "6",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "0",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "12345",
+     "periode": "toujours"
+    },
+    {
+     "dep": "18h55",
+     "arr": "19h43",
+     "jours": "6",
+     "periode": "toujours"
+    }
+   ]
   }
  ],
  "correspondances": {
