@@ -1326,7 +1326,8 @@
   "Voir la correspondance de près": "Zoom in on the change",
   "Ouvrir le plan en grand": "Open the map full screen",
   "Fermer le plan": "Close the map",
-  "Plan des arrêts": "Map of the stops"
+  "Plan des arrêts": "Map of the stops",
+  "Petits points : les arrêts du car en chemin. Arrêts et tracé : données ouvertes Aléop et SNCF. Fond de carte © OpenStreetMap.": "Small dots: the bus stops along the way. Stops and route: Aléop and SNCF open data. Map © OpenStreetMap."
  },
  "rules": [
   [

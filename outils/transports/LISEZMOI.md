@@ -16,3 +16,5 @@ Les horaires de `donnees/transports.json` (clé `legs`) sont **extraits des fich
 3. Contrôler à l'œil quelques colonnes sur le PDF (jours « Sam » / « Dim & JF », renvois A/B, « à partir du », « uniquement le »).
 
 À savoir : `aleop.py` lit les cases d'en-tête (rectangles) pour attribuer les jours ; `ter.py` recolle les numéros de train écrits chiffre par chiffre. Les dates de validité des TER (« à partir du 05/10 ») sont lues avec l'année 2026 : à adapter pour une fiche 2027 (variable dans `ter.py`).
+
+4. Plan des trajets : `python3 outils/transports/geo.py <GTFS Aléop dézippé>` (https://donnees.paysdelaloire.fr/data/pdl.zip) écrit `donnees/trajets-geo.json` (arrêts en chemin et tracé de chaque tronçon de car). À relancer quand les tronçons changent.
