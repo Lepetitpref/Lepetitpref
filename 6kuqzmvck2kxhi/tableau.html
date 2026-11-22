@@ -89,6 +89,11 @@
       <p class="pp-sub">7 jours complets, chaque chargement de page compté une fois. Catégorie seulement, jamais l'adresse.</p>
       <div class="pp-bars" data-draw="sources" data-source="sources7"></div>
     </section>
+    <section class="pp-card" id="pages-google">
+      <h2>Pages pour Google</h2>
+      <p class="pp-sub">Visites des pages par sujet et par commune (agenda, marées, Pornic…), qui n'ont pas l'app ; comptées depuis le 22/11 au soir, sur 7 jours. « Vers l'app » : touchers du bouton qui ouvre l'app.</p>
+      <div class="pp-bars" data-draw="seo" data-source="seo7"></div>
+    </section>
     <section class="pp-card" id="actions">
       <h2>Ce qu'ils font</h2>
       <p class="pp-sub">Actions utiles sur 7 jours complets (les partages sont en tête de page).</p>
@@ -180,6 +185,9 @@ dash.calc('sources7', { title: "D'où ils arrivent (7 jours complets)", descript
   fn: (jours) => { const L = mesure7(jours); return [['direct', 'Accès direct (favori, adresse tapée, lien reçu par WhatsApp ou SMS)'], ['moteur', 'Moteur de recherche'], ['reseau', 'Réseau social, messagerie'], ['site', 'Autre site'], ['partage', 'Lien partagé depuis le site'], ['campagne', 'Affiche, QR code, campagne'], ['app', "App installée"], ['interne', 'Rechargement depuis le site']].map(([k, l]) => ({ k, source: l, n: sum(L, 'source_' + k), nouveaux: sum(L, 'source_nouveau_' + k) })); } });
 dash.calc('actions7', { title: 'Actions utiles (7 jours complets)', description: 'Appels, itinéraires, calendrier, sites, bandes-annonces sur les 7 derniers jours complets (les partages sont comptés à part).', inputs: ['jours'],
   fn: (jours) => { const L = mesure7(jours); return [['act_appeler', 'Appeler'], ['act_itineraire', 'Itinéraire'], ['act_calendrier', 'Ajouter au calendrier'], ['act_site', "Site d'un lieu"], ['act_bande_annonce', 'Bande-annonce'], ['act_sms', 'SMS (114)']].map(([k, l]) => ({ k, action: l, n: sum(L, k) })); } });
+dash.calc('seo7', { title: 'Pages pour Google (7 jours)', description: 'Visites des pages statiques par sujet et par commune, et clics vers l’app, sur les 7 derniers jours (jour en cours compris).', inputs: ['jours'],
+  fn: (jours) => { const L = jours.slice(-7); const P = [['seo_marees', 'Marées'], ['seo_agenda', 'Agenda'], ['seo_cinema', 'Cinéma'], ['seo_restaurants', 'Restaurants'], ['seo_marches', 'Marchés'], ['seo_plages', 'Plages'], ['seo_que_faire', 'Que faire'], ['seo_pornic', 'Pornic'], ['seo_saint_brevin', 'Saint-Brevin'], ['seo_la_bernerie', 'La Bernerie'], ['seo_la_plaine_sur_mer', 'La Plaine'], ['seo_saint_michel_chef_chef', 'Saint-Michel'], ['seo_les_moutiers', 'Les Moutiers']].map(([k, l]) => ({ k, page: l, n: sum(L, k) })).filter((r) => r.n);
+    return P.concat([{ k: 'seo_source_moteur', page: 'dont arrivés par un moteur', n: sum(L, 'seo_source_moteur') }, { k: 'seo_vers_app', page: 'Vers l’app (bouton touché)', n: sum(L, 'seo_vers_app') }]); } });
 dash.calc('retours7', { title: 'Retours (7 jours complets)', description: 'Appareils revenus, selon le temps depuis leur visite précédente, sur les 7 derniers jours complets.', inputs: ['jours'],
   fn: (jours) => { const L = mesure7(jours); return [['retour_1', 'Le lendemain'], ['retour_2_7', 'Dans la semaine'], ['retour_8_30', 'Dans le mois'], ['retour_31p', 'Après un mois']].map(([k, l]) => ({ k, quand: l, n: sum(L, k) })); } });
 dash.calc('appli7', { title: "L'app depuis le lancement", description: "Pages Installer, clics, installations signalées (Android, ordinateur), premières ouvertures sur iPhone, visites depuis l'app, depuis le lancement (10/11).", inputs: ['jours'],
@@ -326,6 +334,7 @@ const bars = (el, id, lab, opts = {}) => {
 };
 dash.draw('sources', (el) => bars(el, 'sources7', 'source', { vide: 'Rien encore : la provenance est mesurée depuis le 18/11.' }));
 dash.draw('actions', (el) => bars(el, 'actions7', 'action', { vide: 'Aucune action encore : mesuré depuis le 18/11 (sauf les partages).' }));
+dash.draw('seo', (el) => bars(el, 'seo7', 'page', { vide: 'Rien encore : compté depuis le 22/11 au soir.' }));
 dash.draw('retours', (el) => bars(el, 'retours7', 'quand', { vide: 'Rien encore : mesuré depuis le 18/11.' }));
 dash.draw('recherches', (el) => bars(el, 'recherches', 'trouve', { vide: 'Aucune recherche encore : mesuré depuis le 18/11.', col: (r) => (r.vide === true || r.vide === 'true' ? 'var(--color-bad)' : dash.colors[0]) }));
 dash.draw('appli', (el) => bars(el, 'appli7', 'etape', { vide: "Rien sur l'app depuis le lancement." }));

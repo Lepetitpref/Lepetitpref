@@ -23,7 +23,7 @@ var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premier
   'clic-installer-iphone', 'clic-installer-android', 'clic-installer-tablette', 'clic-installer-ordi',
   'page-installer-iphone', 'page-installer-android', 'page-installer-tablette', 'page-installer-ordi',
   'install-fenetre-android', 'install-fenetre-tablette', 'install-fenetre-ordi', 'install-accepte-android', 'install-accepte-tablette', 'install-accepte-ordi',
-  'install-annule-android', 'install-annule-tablette', 'install-annule-ordi', 'install-chrome-android', 'install-chrome-tablette', 'revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10']
+  'install-annule-android', 'install-annule-tablette', 'install-annule-ordi', 'install-chrome-android', 'install-chrome-tablette', 'revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10', 'seo', 'seo-brut', 'seo-vers-app', 'seo-source-moteur', 'seo-source-site', 'seo-source-direct', 'seo-agenda', 'seo-cinema', 'seo-marees', 'seo-restaurants', 'seo-marches', 'seo-plages', 'seo-que-faire', 'seo-pornic', 'seo-saint-brevin', 'seo-la-bernerie', 'seo-la-plaine-sur-mer', 'seo-saint-michel-chef-chef', 'seo-les-moutiers']
   .concat(SRC.map(function (s) { return 'source-' + s; }), SRC.map(function (s) { return 'source-nouveau-' + s; }),
     ACTS.map(function (a) { return 'act-' + a; }), VUES.map(function (v) { return 'vue-' + v; }),
     VUES.map(function (v) { return 'entree-' + v; }), VUES.map(function (v) { return 'actv-' + v; }), CAMP.map(function (c) { return 'arrivee-' + c; }));
@@ -95,7 +95,7 @@ async function construire(o) {
     revenus_semaine_suivante_min: (function () { var m = {}; cohortes.forEach(function (c) { if (c.ecart > 0) m[c.premiere] = Math.max(m[c.premiere] || 0, c.appareils); }); return Object.keys(m).reduce(function (a, k) { return a + m[k]; }, 0); })(),
     installations_depuis_debut: Math.max(installs, tot[1] || 0) + S(jours, 'app_premiere'), lancement: LANCEMENT, mesures_depuis: MESURES2 };
   [['appareils_jours', 'appareils'], ['nouveaux', 'appareils_nouveaux'], ['revenus', 'appareils_revenus'], ['vues', 'vues'], ['chargements', 'chargements'], ['actions', 'actions'], ['appels', 'act_appeler'], ['itineraires', 'act_itineraire'], ['calendrier', 'act_calendrier'], ['sites', 'act_site'],
-    ['partages', 'partage'], ['arrivees_partage', 'arrivee_partage'], ['app', 'app'], ['installations', 'installation'], ['app_premiere', 'app_premiere'], ['recherches', 'recherche'], ['recherches_vides', 'recherche_vide'], ['erreurs_js', 'erreur_js'], ['erreurs_donnees', 'erreur_donnees'], ['retours', 'retours']]
+    ['partages', 'partage'], ['arrivees_partage', 'arrivee_partage'], ['app', 'app'], ['installations', 'installation'], ['app_premiere', 'app_premiere'], ['recherches', 'recherche'], ['recherches_vides', 'recherche_vide'], ['erreurs_js', 'erreur_js'], ['erreurs_donnees', 'erreur_donnees'], ['retours', 'retours'], ['seo', 'seo'], ['seo_vers_app', 'seo_vers_app']]
     .forEach(function (p) { r0[p[0] + '_7j'] = S(A, p[1]); r0[p[0] + '_7j_avant'] = S(B, p[1]); });
   var wPrev = semRows.filter(function (r) { return r.type === 'semaine' && r.complete; });
   r0.semaine = wPrev.length ? wPrev[wPrev.length - 1].periode : null; r0.appareils_semaine = wPrev.length ? wPrev[wPrev.length - 1].appareils_differents : null;
