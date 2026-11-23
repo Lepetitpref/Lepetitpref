@@ -1588,4 +1588,4 @@ button.wk-c{cursor:pointer}
 .mk-off summary{min-height:44px;display:flex;align-items:center;padding:0 var(--gutter);color:var(--muted);font-size:14px;cursor:pointer}
 .tr-mapb .tr-chev{transition:transform .15s}.tr-mapb[aria-expanded="true"] .tr-chev{transform:rotate(180deg)}
 .cin-go{display:inline-flex;align-items:center;min-height:32px;margin-left:6px;font-weight:600}
-/* version du site */:root{--pp-v:"20261123-2223"}
+/* version du site */:root{--pp-v:"20261123-2228"}
