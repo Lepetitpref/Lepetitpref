@@ -49,7 +49,7 @@ const CINES=[
  {n:"L'Atlantique",t:"Préfailles",km:0.3,a:"7 Grande Rue, 44770 Préfailles",d:"Cinéma associatif du bourg, programme mensuel. 6,50 €, moins de 14 ans 4 €, carte 10 places 55 €.",url:"https://www.cinemaprefailles.com/images/PROGRAMME/programmation.pdf"},
  {n:"Ciné Toiles de Retz",t:"Pornic",km:9,a:"1 rue du Chaudron, 44210 Pornic",d:"Le multisalle de Pornic.",url:"http://www.cinemapornic.fr"},
  {n:"Cinéma Saint-Joseph",t:"Pornic",km:7,a:"14 rue Notre-Dame, Sainte-Marie-sur-Mer, 44210 Pornic",d:"Cinéma associatif du village de Sainte-Marie-sur-Mer (Pornic). Car 303 et 315 : arrêt Sainte-Marie, place de la Marne.",url:"https://cinestjoseph44.fr"},
- {n:"Cinéjade",t:"Saint-Brevin-les-Pins",km:13,a:"Cinéjade, Saint-Brevin-les-Pins",d:"Le cinéma de Saint-Brevin.",url:"https://www.saint-brevin.com"},
+ {n:"Cinéjade",t:"Saint-Brevin-les-Pins",km:13,a:"2 avenue des Frères Lumière, 44250 Saint-Brevin-les-Pins",d:"Le cinéma de Saint-Brevin, parc d'activités de la Guerche.",url:"https://en.saint-brevin.com/cinejade.html"},
  {n:"Cinéma Jeanne d'Arc",t:"La Bernerie-en-Retz",km:14,a:"15 rue de la Mer, 44760 La Bernerie-en-Retz",d:"Cinéma associatif classé Art et Essai, une salle.",url:"https://www.allocine.fr/seance/salle_gen_csalle=P6667.html"},
  {n:"Cinéma Saint-Michel",t:"Saint-Michel-Chef-Chef",km:7,a:"20 rue du Redois, 44730 Saint-Michel-Chef-Chef",d:"Cinéma associatif d'une salle, tenu par des bénévoles ; ouvert du vendredi au lundi, tous les jours pendant les vacances (office de tourisme).",url:"https://cinesaintmichel.fr"}];
 CINES.forEach(c=>{if(TOWN_KM[c.t]!=null)c.km=isBase(c.t)&&BASE.k!=="prefailles"?1:TOWN_KM[c.t];});CINES.sort((a,b)=>a.km-b.km);

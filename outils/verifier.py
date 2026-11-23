@@ -60,3 +60,15 @@ if err:
     print("\n".join(err)); sys.exit(1)
 today = datetime.date.today().isoformat()
 print(f"OK · {len([e for e in ev if (e.get('end') or e['date'])>=today])} événements à venir · {len([c for c in ci if c['date']>=today])} séances · bulletin {'oui' if st.get('bulletin') else 'non'}")
+
+
+# Cinémas (CINES dans app.js) : adresse complète obligatoire (numéro, rue, code postal), lien http(s)
+import re as _re
+_app = open(pathlib.Path(__file__).resolve().parent.parent / "app.js", encoding="utf-8").read() if "pathlib" in globals() else open("app.js", encoding="utf-8").read()
+_m = _re.search(r"const CINES=\[(.*?)\];", _app, _re.S)
+if _m:
+    for _c in _re.findall(r"\{n:\"([^\"]+)\"[^}]*?a:\"([^\"]*)\"[^}]*?url:\"([^\"]*)\"", _m.group(1)):
+        if not _re.search(r"^\d+\s.*\b\d{5}\b", _c[1]):
+            sys.exit(f"ERREUR cinéma « {_c[0]} » : adresse incomplète ({_c[1]}) — numéro, rue et code postal lus sur une source officielle")
+        if not _c[2].startswith(("http://", "https://")):
+            sys.exit(f"ERREUR cinéma « {_c[0]} » : lien non http(s)")
