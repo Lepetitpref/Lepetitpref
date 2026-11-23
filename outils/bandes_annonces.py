@@ -8,7 +8,7 @@ Un film sans bande-annonce trouvée n'a pas de lien (le site n'affiche rien plut
 import json, re, html, unicodedata, pathlib, urllib.request, time
 R = pathlib.Path(__file__).resolve().parent.parent
 D = R / "donnees"
-SALLES = ["W4477", "P0716", "P2368", "W0012"]   # L'Atlantique, Toiles de Retz, Saint-Joseph, Cinéjade
+SALLES = ["W4477", "P0716", "P2368", "W0012", "P6667", "W1146"]   # L'Atlantique, Toiles de Retz, Saint-Joseph, Cinéjade, Jeanne d'Arc (La Bernerie), Saint-Michel (Tharon)
 UA = {"User-Agent": "Mozilla/5.0 (Le Petit Pref; lecture des programmes)"}
 def get(u):
     with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=30) as r:

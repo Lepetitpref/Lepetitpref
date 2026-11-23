@@ -34,7 +34,9 @@ En priorité les 30 prochains jours, puis les grandes dates : marchés de Noël,
 - Ciné Toiles de Retz (Pornic) : https://www.cinemapornic.fr/films/horaires.html et son PDF hebdo ; allociné P0716 ; `cinema` = "Ciné Toiles de Retz (Pornic)".
 - Cinéma Saint-Joseph (Pornic) : cinestjoseph44.fr ou allociné P2368 ; `cinema` = "Cinéma Saint-Joseph (Pornic)".
 - Cinéjade (Saint-Brevin) : allociné W0012 ; `cinema` = "Cinéjade (Saint-Brevin-les-Pins)".
-- `id` = "AAAA-MM-JJ-<atlantique|toiles-de-retz|saint-joseph|cinejade>-film-slug". Champs : `cinema`, `film`, `date`, `times` (liste de "20h30"), `version` (VF/VOST), `genre` (ou mention : ciné-goûter, avant-première, jeune public dès X ans), `kids`.
+- Cinéma Jeanne d'Arc (La Bernerie) : allociné P6667 ; `cinema` = "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)".
+- Cinéma Saint-Michel (Tharon, Saint-Michel-Chef-Chef) : cinesaintmichel.fr ou allociné W1146 ; `cinema` = "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)".
+- `id` = "AAAA-MM-JJ-<atlantique|toiles-de-retz|saint-joseph|cinejade|jeanne-darc|saint-michel>-film-slug". Champs : `cinema`, `film`, `date`, `times` (liste de "20h30"), `version` (VF/VOST), `genre` (ou mention : ciné-goûter, avant-première, jeune public dès X ans), `kids`.
 - Retire les séances passées. Si une source est inaccessible, garde ses séances déjà présentes.
 - Puis `python3 outils/bandes_annonces.py` : lien vers la bande-annonce officielle de chaque film sur Allociné (`donnees/bandes-annonces.json`) ; un film sans bande-annonce trouvée n'a simplement pas de lien. N'ajoute jamais de lien à la main.
 
