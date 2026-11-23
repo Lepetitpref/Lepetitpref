@@ -166,7 +166,7 @@
   "Site ↗": "Website ↗",
   "Itinéraire ↗": "Directions ↗",
   "Les prochaines séances, à Préfailles et dans les salles voisines.": "Upcoming screenings, in Préfailles and at nearby cinemas.",
-  "Prochaines séances": "Upcoming screenings",
+  "Prochaines séances": "Next showings",
   "Tout le programme": "Full programme",
   "Prochaines soirées": "Upcoming evenings",
   "Toutes les soirées": "All evening events",
@@ -1361,7 +1361,10 @@
   "Pas de passage ce jour-là": "No bus that day",
   "Le soir après 20 h, le samedi après 12 h, le dimanche et les jours fériés, quand votre médecin est fermé": "Evenings after 8pm, Saturdays after noon, Sundays and public holidays, when your doctor is closed",
   "Résumé des décisions, d'après les documents publiés par la commune, qui font foi. Touchez une séance pour le détail.": "Summary of decisions, from the documents published by the town, which are the official reference. Tap a meeting for details.",
-  "Masquer le plan": "Hide the map"
+  "Masquer le plan": "Hide the map",
+  "Prochaines séances de cette salle": "Next showings at this cinema",
+  "Plan ↗": "Map ↗",
+  "Touchez une salle pour l'adresse, le programme officiel et l'itinéraire.": "Tap a cinema for its address, official programme and directions."
  },
  "rules": [
   [
