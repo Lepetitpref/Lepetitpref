@@ -1,65 +1,75 @@
 {
- "maj": "2026-11-23T05:43:23.562Z",
+ "maj": "2026-11-23T13:14:19.634Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du lundi 23 novembre 2026 à 06H15 légales.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du lundi 23 novembre 2026 à 12H30 légales.",
   "avis": "Pas d'avis de vent fort en cours ni prévu.",
   "sections": [
    {
-    "t": "Situation générale le lundi 23 novembre 2026 à 00H00 UTC, et évolution",
+    "t": "Situation générale le lundi 23 novembre 2026 à 06H00 UTC, et évolution",
     "l": [
-     "Dépression 1008 hPa sur la Normandie, se décalant vers le sud-est en se comblant lentement.Anticyclone des Açores 1027 hPa se décalant vers l'est, prévu 1026 hPa sud-ouest de la France en matinée. Nouveau talweg sur le proche Atlantique la nuit prochaine."
+     "Dépression 1011 hPa sur le nord de la France, se décalant vers le sud-est en se comblant. Anticyclone 1030 hPa sur l'Espagne, se décalant lentement vers le nord-est, prévu sur l'Allemagne mardi matin. Talweg sur le golfe de Gascogne la nuit."
     ]
    },
    {
-    "t": "Observations le lundi 23 novembre 2026 à 03H00 UTC",
+    "t": "Observations le lundi 23 novembre 2026 à 09H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Nord-Ouest 19 nœuds, clair ou peu nuageux, visibilité 9 milles. Belle Ile : vent Ouest-Nord-Ouest 12 nœuds, clair ou peu nuageux, visibilité 9 milles. Ile d'Yeu : vent Nord-Ouest 12 nœuds, rafales 25 nœuds. Groix : vent Ouest-Nord-Ouest 16 nœuds, mer agitée, clair ou peu nuageux, visibilité 9 milles. Pointe de Chemoulin : vent Nord-Ouest 14 nœuds."
+     "Pointe de Penmarc'h : vent Ouest-Sud-Ouest 6 nœuds, nuageux avec éclaircies, visibilité 8 milles. Belle Ile : vent Ouest-Nord-Ouest 6 nœuds, nuageux avec éclaircies, visibilité 10 milles. Ile d'Yeu : vent Nord-Ouest 4 nœuds, mer forte, visibilité 10 milles. Groix : vent Ouest-Nord-Ouest 8 nœuds, mer peu agitée, clair ou peu nuageux, visibilité 6 milles. Pointe de Chemoulin : vent Nord-Ouest 6 nœuds, mer peu agitée, clair ou peu nuageux, visibilité 6 milles."
     ]
    },
    {
-    "t": "Prévisions pour la journée du lundi 23 novembre",
+    "t": "Prévisions pour l'après-midi du lundi 23 novembre",
     "l": [
-     "VENT : Nord-Ouest 3 à 4, parfois 5 au début, revenant Sud l'après-midi. Rafales.",
-     "MER : agitée à forte, s'atténuant agitée l'après-midi.",
-     "HOULE : Ouest 2 à 3 m, s'atténuant 1 à 2 m en fin de journée.",
-     "TEMPS : peu nuageux avec quelques averses le matin.",
-     "VISIBILITE : mauvaise sous averses."
+     "VENT : secteur Sud-Ouest 2 à 4, revenant Sud l'après-midi. Rafales.",
+     "MER : agitée à forte dominée par la houle, s'atténuant agitée l'après-midi.",
+     "HOULE : Ouest 2 à 3 m, s'atténuant 1.5 à 2 m l'après-midi.",
+     "TEMPS : voilé, parfois averses vers Penmarc'h à la fin.",
+     "VISIBILITE : bonne, devenant mauvaise sous averses vers Penmarc'h à la fin."
     ]
    },
    {
     "t": "Prévisions pour la nuit du lundi 23 novembre au mardi 24 novembre",
     "l": [
-     "VENT : Sud 3 à 4, fraîchissant Sud à Sud-Est 4 à 5 en milieu de nuit, puis localement 5 à 6 de Penmarc'h à Belle-Île.",
-     "MER : agitée, devenant agitée à forte de Penmarc'h à Belle-Île en seconde partie de nuit.",
-     "HOULE : Ouest 2 m. Devenant progressivement croisée de Penmarc'h à Belle-Île.",
-     "TEMPS : peu nuageux à nuageux. Averses vers Penmarc'h.",
-     "VISIBILITE : mauvaise sous averses."
+     "VENT : Sud 3 à 4, fraîchissant Sud à Sud-Est 4 à 5 le soir, puis localement 5 à 6 de Penmarc'h à Belle-Île en seconde partie de nuit.",
+     "MER : agitée dominée par la houle, devenant localement forte et croisée par houle d'Ouest de Penmarc'h à Belle-Île en seconde partie de nuit.",
+     "HOULE : Ouest 1.5 à 2 m.",
+     "TEMPS : très nuageux, parfois averses vers Penmarc'h.",
+     "VISIBILITE : bonne, parfois mauvaise sous averses vers Penmarc'h."
     ]
    },
    {
-    "t": "Tendance pour la journée du mardi 24 novembre",
+    "t": "Prévisions pour la journée du mardi 24 novembre",
     "l": [
-     "VENT : Sud à Sud-Est 4 à 5, localement 5 à 6 de Penmarc'h à Belle-Île, puis virant rapidement secteur Sud-Ouest en fin de journée.",
-     "MER : agitée à forte et croisée.",
-     "HOULE : Ouest 1 à 2 m, s'amplifiant 2 à 3 m en début de journée au nord de Belle Ile.",
-     "TEMPS : devenant pluvieux l'après-midi.",
+     "VENT : Sud à Sud-Est 4 à 5, localement 6 de Penmarc'h à Belle-Île, virant secteur Sud-Ouest à la fin.",
+     "MER : agitée à forte, croisée avec houle d'Ouest.",
+     "HOULE : Ouest 1.5 à 2 m, parfois 3 m vers Penmarc'h.",
+     "TEMPS : très nuageux, devenant pluvieux l'après-midi.",
+     "VISIBILITE : bonne, devenant mauvaise sous pluie l'après-midi."
+    ]
+   },
+   {
+    "t": "Tendance pour la nuit du 24 au 25, et la journée du mercredi 25 novembre",
+    "l": [
+     "VENT : secteur Sud-Ouest 5 à 6, avec menace de 7 le soir, mollissant Variable dépressionnaire 4 à 5 en fin de nuit, puis s'orientant secteur Nord en journée. Rafales.",
+     "MER : agitée à forte.",
+     "HOULE : Ouest s'amplifiant 2 à 3 m.",
+     "TEMPS : pluie, parfois éclaircies en journée.",
      "VISIBILITE : moyenne à mauvaise sous pluie."
     ]
    }
   ],
-  "prochain": "Prochain bulletin le lundi 23 novembre 2026, vers 12H30 légales",
+  "prochain": "Prochain bulletin le lundi 23 novembre 2026, vers 18H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-23T05:43:32.859Z"
+  "lu": "2026-11-23T13:14:27.983Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-23 06:00",
-  "h13": null,
-  "hmax": null,
-  "t13": null,
-  "dir": null,
-  "eau": null,
+  "heure": "2026-11-23 12:30",
+  "h13": 1.7,
+  "hmax": 3.3,
+  "t13": 8.4,
+  "dir": 261,
+  "eau": 13,
   "source": "https://candhis.cerema.fr/_public_/campagne.php?Y2FtcD0wNDQwMw=="
  }
 }
