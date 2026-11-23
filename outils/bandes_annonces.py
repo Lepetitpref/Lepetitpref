@@ -32,8 +32,24 @@ old = {}
 f = D / "bandes-annonces.json"
 if f.exists(): old = json.loads(f.read_text(encoding="utf-8"))
 out = {}
+import base64, urllib.parse
+def cherche(film):
+    """Film absent des pages « séances du jour » des salles : page publique de recherche d'Allociné, titre identique exigé."""
+    try:
+        p = get("https://www.allocine.fr/rechercher/movie/?q=" + urllib.parse.quote(film))
+    except Exception as e:
+        print("recherche", film, e); return None
+    for m in re.finditer(r'class="(ACr[^ "]+) [^"]*meta-title-link"[^>]*>([^<]+)<', p):
+        c = m.group(1).replace("ACr", ""); c += "=" * (-len(c) % 4)
+        try: u = base64.b64decode(c).decode()
+        except Exception: continue
+        f = re.search(r"cfilm=(\d+)", u)
+        if f and norm(m.group(2)) == norm(film): return f.group(1)
+    return None
 for film in films:
     fid = ids.get(norm(film))
+    if not fid and film not in old:
+        fid = cherche(film); time.sleep(0.5)
     if not fid:
         if film in old: out[film] = old[film]
         continue
