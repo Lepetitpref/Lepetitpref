@@ -1429,5 +1429,233 @@
   "version": "VF",
   "genre": "Drame",
   "kids": false
+ },
+ {
+  "id": "2026-11-24-jeanne-darc-portrait-de-femme",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Portrait de femme",
+  "date": "2026-11-24",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Drame, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-jeanne-darc-olivia",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Olivia",
+  "date": "2026-11-25",
+  "times": [
+   "10h30"
+  ],
+  "version": "VF",
+  "genre": "Animation",
+  "kids": true
+ },
+ {
+  "id": "2026-11-25-jeanne-darc-pressure",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Pressure",
+  "date": "2026-11-25",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Historique, Guerre",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-jeanne-darc-les-miserables",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Les Misérables",
+  "date": "2026-11-26",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-jeanne-darc-la-gradiva",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "La Gradiva",
+  "date": "2026-11-28",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-jeanne-darc-le-corset",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Le Corset",
+  "date": "2026-11-29",
+  "times": [
+   "17h00"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
+ },
+ {
+  "id": "2026-11-29-jeanne-darc-l-espece-explosive",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "L'Espèce explosive",
+  "date": "2026-11-29",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Policier",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-jeanne-darc-esprit-s-rebelle-s",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Esprit(s) rebelle(s)",
+  "date": "2026-12-02",
+  "times": [
+   "10h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
+ },
+ {
+  "id": "2026-12-02-jeanne-darc-hope",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Hope",
+  "date": "2026-12-02",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Science Fiction, Action · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-23-saint-michel-the-social-reckoning",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "The Social Reckoning",
+  "date": "2026-11-23",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-saint-michel-le-mystere-lucy-lost",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-25",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-26-saint-michel-ni-vue-ni-connue",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Ni vue, ni connue",
+  "date": "2026-11-26",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-saint-michel-une-femme-aujourdhui",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Une femme aujourd'hui",
+  "date": "2026-11-27",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-saint-michel-le-mystere-lucy-lost",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-28",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-28-saint-michel-moulin",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Moulin",
+  "date": "2026-11-28",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-saint-michel-le-merveilleux-hiver-de-tom-le-chat",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Merveilleux hiver de Tom le chat",
+  "date": "2026-11-29",
+  "times": [
+   "11h00"
+  ],
+  "version": "VF",
+  "genre": "Animation, Aventure, Comédie",
+  "kids": true
+ },
+ {
+  "id": "2026-11-29-saint-michel-karma",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Karma",
+  "date": "2026-11-29",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-saint-michel-quelques-mots-d-amour",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-11-30",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-saint-michel-petite-casbah",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Petite Casbah",
+  "date": "2026-12-02",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
  }
 ]
