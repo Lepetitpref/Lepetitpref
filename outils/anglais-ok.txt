@@ -12,6 +12,7 @@
 (Préfailles, # km),
 (collège Jean Mounès)
 (image recadrée). Plage de Saint-Brevin-l'Océan : « Plage et chenal se jetant dans la mer à Saint-Brevin-l'Océan », DarkVador#-UA,
+, Pirmil · arrives in Préfailles at #h#, Place de la Gare
 , SNCF station · arrives in Préfailles at #h#, Place de la Gare
 , SNCF station · arrives in Saint-Brevin at #h#, Pôle de Bresse
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
@@ -20,6 +21,7 @@
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
 @J #h#-#h (CE# to CM#, # places), school playground and multi-sports hall, since # Sept #; price based on family income (€# to €#)
 @J #h-#h# at the Raymond Devos library in Les Moutiers
+@J and @J afternoons (meet #.#pm, leave #pm from the Amphithéâtre Thomas Narcejac) and @J mornings
 @aria-label: I'm in Préfailles: change town
 @aria-label: Le Petit Préf, home
 @aria-label: Share Le Petit Préf
@@ -78,6 +80,7 @@ Emergencies, health, bins, town hall and post office, local life in Préfailles.
 Ensuring that all doctors in the Pays de Retz take part in the organisation of healthcare
 Environmental education association of the Pays de Retz (based at Le Pas Renaud, Le Clion-sur-Mer), nature outings open to the public, # outings brochure on its website.
 Football club of Préfailles, La Plaine and Saint-Michel.
+Four walking groups (Accro, Bon Pas, Cool, Douce); full-day walks one @J and one @J a month, trips and the mussels walk on the last @J in @M. #-# registrations closed, next at the @M # fair.
 From Préfailles
 Fruit-growing heritage of the Pays de Retz
 Gastronomic brotherhood (local produce of the Pays de Retz)
@@ -114,6 +117,8 @@ Les Rochelets
 Les Rochelets and L'Ermitage: wind too strong (# kn, gusts #, #h-#h)
 Local events and activities in Le Clion
 Local zoning plan (PLU) of Préfailles, approved on #/#/#. Tap a zone: what can be built there, the zone on the map, its page of the regulations.
+Marching band and majorettes of La Plaine-sur-Mer: parades, Sainte-Cécile, carnivals and the Christmas Super Loto; music school (instrument lent, free tuition).
+Marching band, majorettes and music school: parades, Sainte-Cécile, Christmas Super Loto
 Membership and FFV licence on HelloAsso (club affiliated to the FFV since #). Summer #: "jeudis du CVP" from #h to #h in the clubroom of the sailing centre, supervised group outings every day from @M to @M. The # programme is in preparation.
 Moral and financial support for disadvantaged people in the Antsirabé area of Madagascar (education, health).
 Most # coaches leave from Pornic (Ste-Marie, place de la Marne); only the departures below serve Préfailles. Public holidays: @J timetable (# @M: no service, according to the # timetable).
@@ -122,6 +127,7 @@ Nantes – Savenay – Saint-Nazaire – La Baule – Le Croisic
 Ne · Sewage works and cemetery
 Neighbourhood association (La Joselière)
 New regional fares: Aléop ticket from €#.# (outside urban areas), €#.#–#.# for a journey to Nantes (Naolib transfer included), €#.#–#.# to Saint-Nazaire (Ycéo included); #-journey ticket from €#; Junior ticket (ages #-#) from €#.#; Aléop Multi Car €#/day for # to # people (coach), Aléop Multi €#/day (coach + train); Aléop -#% card €#/year (€# under #).
+Organises the Voiles de Tradition (gathering of boats and parade in the Vieux Port) and maritime talks, free and open to all, outside the sailing season.
 Organising Voiles de tradition (classic sailing) events, talks
 Parents of pupils at collège Notre-Dame Recouvrance
 Pharmacie Conseil Santé
@@ -148,6 +154,7 @@ Pornic and Préfailles only for now, from French government open data.
 Pornic castle and harbour: “Chateau de Pornic (#)”, Ibex#,
 Pornic station is ~# km from Préfailles: get there on coach # (Théâtre St-Gilles / Terres Jarries stop) or #. Naolib tickets are valid on TER trains within Nantes Métropole. Possible replacement by coach on the morning of @J # Nov (reported by l-itineraire.com): check before you travel.
 Pornic, Théâtre St-Gilles
+Pornic, Théâtre St-Gilles →
 Promoting and safeguarding the cultural and natural heritage of the Pays de Retz
 Promoting any action or event likely to boost trade at the LE CHAUDRON shopping centre.
 Promoting contemporary art and current music in the Pays de Retz
@@ -174,6 +181,7 @@ Préfailles → Pornic
 Préfailles → Saint-Nazaire
 Préfailles' long-standing club, open to holidaymakers through short memberships (week from €# adult, €# child).
 Préfailles, Place de la Gare →
+Pré‑Vincent
 Pétanque all year round, competitions
 Pétanque club affiliated to UFOLEP.
 Pôle de Bresse
@@ -196,6 +204,7 @@ Running, trail running (Trail de la Côte de Jade)
 Runs initiatives such as the Repair café, and encourages projects that help us reinvent our lives together, for a more living planet.
 Sailing centre and Sémaphore museum (Pointe Saint-Gildas) · Espace culturel · Port-Meleu · Town hall (# Grande Rue) · in summer, the three lifeguard stations (Port-Meleu, Grande Plage, Anse du Sud).
 Sailing club on La Joselière beach (FFV licences), renting out Hobie Cat # catamarans, kayaks and paddleboards in summer.
+Sailing good from #h to #h · Baie de Bourgneuf
 Saint-Brevin · Le Pointeau
 Saint-Brevin · Les Rochelets
 Saint-Brevin, Pôle de Bresse →
@@ -244,6 +253,7 @@ Wind, swell and water: Open-Meteo forecasts (Météo-France and European models)
 Workshops on @J and @J, salle René Deffain
 Write to Le Petit Préf
 brings together everything there is to do in and around Préfailles: events, activities and the cinema, the sea and its spots, where to have lunch, dinner or a drink, and how to get here. Everything is updated every morning.
+next: @J #h–#h · Préfailles
 or VHF channel # (CROSS Étel)
 rue Ferréol Prézelin (centre commercial Super U), Paimbœuf · # km
 © Le Petit Préf, all rights reserved.

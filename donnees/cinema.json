@@ -1,287 +1,5 @@
 [
  {
-  "id": "2026-11-22-toiles-de-retz-asterix-le-royaume-de-nubie",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Astérix : Le Royaume de Nubie",
-  "date": "2026-11-22",
-  "times": [
-   "16h05"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Aventure · avant-première, dès 6 ans",
-  "kids": true
- },
- {
-  "id": "2026-11-22-toiles-de-retz-esprit-s-rebelle-s",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Esprit(s) rebelle(s)",
-  "date": "2026-11-22",
-  "times": [
-   "10h30"
-  ],
-  "version": "VF",
-  "genre": "Jeune public · dès 3 ans, animation surprise après le film (sur inscription)",
-  "kids": true
- },
- {
-  "id": "2026-11-22-toiles-de-retz-hope",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hope",
-  "date": "2026-11-22",
-  "times": [
-   "20h20"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Science Fiction, Action · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-22-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-22",
-  "times": [
-   "15h30"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-22-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-22",
-  "times": [
-   "14h",
-   "18h15"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-22-toiles-de-retz-irish-travellers",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Irish Travellers",
-  "date": "2026-11-22",
-  "times": [
-   "21h10"
-  ],
-  "version": "VOST",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-22-toiles-de-retz-jupiter",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Jupiter",
-  "date": "2026-11-22",
-  "times": [
-   "13h30",
-   "18h40"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-22-toiles-de-retz-l-affaire-marie-claire",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-22",
-  "times": [
-   "11h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-asterix-le-royaume-de-nubie",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Astérix : Le Royaume de Nubie",
-  "date": "2026-11-22",
-  "times": [
-   "15h55"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Aventure · avant-première",
-  "kids": true
- },
- {
-  "id": "2026-11-22-cinejade-camembert",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Camembert",
-  "date": "2026-11-22",
-  "times": [
-   "14h",
-   "17h50"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-22",
-  "times": [
-   "15h55",
-   "19h50"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-22",
-  "times": [
-   "14h",
-   "18h55"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-jupiter",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Jupiter",
-  "date": "2026-11-22",
-  "times": [
-   "16h10",
-   "20h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-l-affaire-marie-claire",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-22",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-l-ile-des-souvenirs",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Île des souvenirs",
-  "date": "2026-11-22",
-  "times": [
-   "11h15"
-  ],
-  "version": "VF",
-  "genre": "Animation",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-le-monde-a-l-envers",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Le Monde à l'envers",
-  "date": "2026-11-22",
-  "times": [
-   "11h15"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille · dès 3 ans",
-  "kids": true
- },
- {
-  "id": "2026-11-22-cinejade-ma-toute-petite-ecole",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Ma toute petite école",
-  "date": "2026-11-22",
-  "times": [
-   "20h45"
-  ],
-  "version": "VF",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-moulin",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Moulin",
-  "date": "2026-11-22",
-  "times": [
-   "18h05"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-22-cinejade-un-bon-patron",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Un bon patron",
-  "date": "2026-11-22",
-  "times": [
-   "11h15"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-22-saint-joseph-everybody-digs-bill-evans",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Everybody Digs Bill Evans",
-  "date": "2026-11-22",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Biopic, Musical · avant-première, Journée Art et Essai du cinéma européen",
-  "kids": false
- },
- {
-  "id": "2026-11-22-saint-joseph-fatherland",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Fatherland",
-  "date": "2026-11-22",
-  "times": [
-   "18h"
-  ],
-  "version": "VOST",
-  "genre": "Drame · avant-première, Journée Art et Essai du cinéma européen",
-  "kids": false
- },
- {
-  "id": "2026-11-22-saint-joseph-le-journal-d-une-femme-de-chambre",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Le Journal d'une femme de chambre",
-  "date": "2026-11-22",
-  "times": [
-   "15h"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique · avant-première, Journée Art et Essai du cinéma européen",
-  "kids": false
- },
- {
-  "id": "2026-11-22-atlantique-le-roi-du-game",
-  "cinema": "L'Atlantique (Préfailles)",
-  "film": "Le Roi du game",
-  "date": "2026-11-22",
-  "times": [
-   "17h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
   "id": "2026-11-23-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Hunger Games : Lever de soleil sur la moisson",
@@ -1063,6 +781,18 @@
   "kids": false
  },
  {
+  "id": "2026-11-27-cinejade-saint-nicolas-de-myre",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Saint Nicolas de Myre",
+  "date": "2026-11-27",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
   "id": "2026-11-27-saint-joseph-quelques-mots-d-amour",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
   "film": "Quelques mots d'amour",
@@ -1272,7 +1002,7 @@
   "times": [
    "20h40"
   ],
-  "version": "VF",
+  "version": "VOST",
   "genre": "Documentaire",
   "kids": false
  },
@@ -1417,7 +1147,7 @@
   "times": [
    "14h"
   ],
-  "version": "VF",
+  "version": "VOST",
   "genre": "Documentaire",
   "kids": false
  },
@@ -1686,6 +1416,18 @@
   ],
   "version": "VF",
   "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-saint-joseph-ce-qui-nous-mene-a-toi",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Ce qui nous mène à toi",
+  "date": "2026-12-02",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Drame",
   "kids": false
  }
 ]

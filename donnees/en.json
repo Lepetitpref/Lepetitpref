@@ -1365,6 +1365,18 @@
  },
  "rules": [
   [
+   "^(?:Voile|Sailing) bon (vers|de) ",
+   "Sailing good $1 "
+  ],
+  [
+   "^vent de mer (\\d+) nds vers les rochers après (\\d+)h$",
+   "onshore wind $1 kn towards the rocks after $2h"
+  ],
+  [
+   "^vent de mer (\\d+) nds vers les rochers$",
+   "onshore wind $1 kn towards the rocks"
+  ],
+  [
    "^· (\\d+) décisions$",
    "· $1 decisions"
   ],

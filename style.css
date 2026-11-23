@@ -1587,4 +1587,4 @@ button.wk-c{cursor:pointer}
 .urg-tip{margin:4px 0 6px;font-size:14px;color:var(--muted)}
 .mk-off summary{min-height:44px;display:flex;align-items:center;padding:0 var(--gutter);color:var(--muted);font-size:14px;cursor:pointer}
 .tr-mapb .tr-chev{transition:transform .15s}.tr-mapb[aria-expanded="true"] .tr-chev{transform:rotate(180deg)}
-/* version du site */:root{--pp-v:"20261122-1117"}
+/* version du site */:root{--pp-v:"20261123-0657"}
