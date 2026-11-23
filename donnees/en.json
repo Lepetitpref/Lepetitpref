@@ -1364,7 +1364,18 @@
   "Masquer le plan": "Hide the map",
   "Prochaines séances de cette salle": "Next showings at this cinema",
   "Plan ↗": "Map ↗",
-  "Touchez une salle pour l'adresse, le programme officiel et l'itinéraire.": "Tap a cinema for its address, official programme and directions."
+  "Touchez une salle pour l'adresse, le programme officiel et l'itinéraire.": "Tap a cinema for its address, official programme and directions.",
+  "Cinéma de Tharon (Saint-Michel)": "Tharon cinema (Saint-Michel)",
+  "Cinéma de La Bernerie (Jeanne d'Arc)": "La Bernerie cinema (Jeanne d'Arc)",
+  "Cinéma de Sainte-Marie, Pornic (Saint-Joseph)": "Sainte-Marie cinema, Pornic (Saint-Joseph)",
+  "Cinéma de Saint-Brevin (Cinéjade)": "Saint-Brevin cinema (Cinéjade)",
+  "Cinéma de Tharon": "Tharon cinema",
+  "Cinéma de La Bernerie": "La Bernerie cinema",
+  "Cinéma de Sainte-Marie": "Sainte-Marie cinema",
+  "Cinéma associatif classé Art et Essai, une salle.": "Community-run arthouse cinema, one screen.",
+  "Cinéma associatif d'une salle, tenu par des bénévoles ; ouvert du vendredi au lundi, tous les jours pendant les vacances (office de tourisme).": "One-screen community cinema run by volunteers; open Friday to Monday, every day during school holidays (tourist office).",
+  "Cinéma associatif du village de Sainte-Marie-sur-Mer (Pornic). Car 303 et 315 : arrêt Sainte-Marie, place de la Marne.": "Community cinema in the village of Sainte-Marie-sur-Mer (Pornic). Bus 303 and 315: Sainte-Marie, place de la Marne stop.",
+  "Le cinéma de Saint-Brevin, parc d'activités de la Guerche.": "Saint-Brevin's cinema, in the La Guerche business park."
  },
  "rules": [
   [
