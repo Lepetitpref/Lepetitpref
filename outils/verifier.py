@@ -72,3 +72,30 @@ if _m:
             sys.exit(f"ERREUR cinéma « {_c[0]} » : adresse incomplète ({_c[1]}) — numéro, rue et code postal lus sur une source officielle")
         if not _c[2].startswith(("http://", "https://")):
             sys.exit(f"ERREUR cinéma « {_c[0]} » : lien non http(s)")
+
+# Lieux (ACTS) : adresse et position cohérentes avec la commune (évite un lieu placé dans la mauvaise ville)
+import math as _math
+_i = _app.index("ACTS=") + 5
+_A, _ = json.JSONDecoder().raw_decode(_app[_i:])
+_CP = {"Préfailles": "44770", "La Plaine-sur-Mer": "44770", "Pornic": "44210", "Saint-Brevin-les-Pins": "44250",
+       "La Bernerie-en-Retz": "44760", "Les Moutiers-en-Retz": "44760", "Saint-Michel-Chef-Chef": "44730"}
+_pts = {}
+for _a in _A:
+    if _a.get("lat"): _pts.setdefault(_a["town"], []).append((_a["lat"], _a["lon"]))
+_med = {t: (sorted(p[0] for p in v)[len(v) // 2], sorted(p[1] for p in v)[len(v) // 2]) for t, v in _pts.items()}
+_err, _avert = [], []
+for _a in _A:
+    _ad, _t = _a.get("addr") or "", _a["town"]
+    _cp = _re.findall(r"\b(44\d{3})\b", _ad)
+    if _t in _CP and _cp and _CP[_t] not in _cp:
+        _err.append(f"« {_a['n']} » : code postal {_cp[0]} ≠ {_t}")
+    if _a.get("lat") and len(_pts.get(_t, [])) >= 3:
+        _d = _math.hypot((_a["lat"] - _med[_t][0]) * 111, (_a["lon"] - _med[_t][1]) * 75)
+        if _d > 9: _err.append(f"« {_a['n']} » : à {_d:.0f} km de {_t}, position à vérifier")
+    if not _ad or not _a.get("lat"):
+        _avert.append(_a["n"])
+if _err:
+    sys.exit("ERREUR lieux :\n  " + "\n  ".join(_err))
+if _avert:
+    print(f"À compléter : {len(_avert)} lieux sans adresse ou sans position (python3 outils/verifier.py --lieux pour la liste)")
+    if "--lieux" in sys.argv: print("  " + "\n  ".join(_avert))
