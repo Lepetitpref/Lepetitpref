@@ -79,7 +79,7 @@
   <section class="pp-card" id="sources">
     <h2>D'où ils viennent</h2>
     <p class="pp-sub">Arrivées sur les 7 derniers jours complets.</p>
-    <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Par où</th><th>Arrivées</th><th>dont nouveaux</th></tr></thead><tbody data-draw="sources" data-source="sources7"></tbody></table></div>
+    <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Par où</th><th>Hier</th><th>7 jours</th><th>30 jours</th><th>Depuis le 17/11</th></tr></thead><tbody data-draw="sources" data-source="sources7"></tbody></table></div>
     <p class="pp-p" data-draw="seo_l">—</p>
     <h3 class="pp-h3">Google</h3>
     <p class="pp-sub" data-draw="g_tot">—</p>
@@ -209,7 +209,7 @@ const bao = (x) => ({ p: N(x.partages_7j), i: N(x.installations_7j) + N(x.app_pr
 /* ---------- calculs ---------- */
 dash.calc('sources7', { title: "D'où ils viennent (7 jours complets)", description: 'Arrivées par canal sur les 7 derniers jours complets (une par chargement de page) et, parmi elles, les nouveaux.', inputs: ['jours'],
   fn: (jours) => { const L = semaine7(jours); return [['moteur', 'Google et autres moteurs'], ['direct', 'Direct (favori, lien WhatsApp ou SMS…)'], ['reseau', 'Réseaux sociaux'], ['site', 'Autres sites'], ['partage', 'Liens partagés depuis le site'], ['campagne', 'Affiches, QR codes, campagnes'], ['app', 'App installée'], ['interne', 'Depuis une page du site']]
-    .map(([k, l]) => ({ k, canal: l, n: sum(L, 'source_' + k), nouveaux: sum(L, 'source_nouveau_' + k) })); } });
+    .map(([k, l]) => { const C = jours.filter((x) => !T(x.en_cours) && T(x.nouvelles_mesures)), H = C.slice(-1), M = C.slice(-30); return { k, canal: l, h: sum(H, 'source_' + k), n: sum(L, 'source_' + k), nouveaux: sum(L, 'source_nouveau_' + k), m: sum(M, 'source_' + k), tot: sum(C, 'source_' + k), totn: sum(C, 'source_nouveau_' + k) }; }); } });
 dash.calc('seo7', { title: 'Pages pour Google (7 jours)', description: 'Visites des pages statiques par sujet et par commune, et touchers du bouton vers l’app, sur 7 jours complets.', inputs: ['jours'],
   fn: (jours) => { const L = semaine7(jours); return [{ k: 'seo', quoi: 'Visites', n: sum(L, 'seo') }, { k: 'seo_vers_app', quoi: "Vers l'app", n: sum(L, 'seo_vers_app') }]; } });
 dash.calc('retours7', { title: 'Retours (7 jours complets)', description: 'Personnes revenues le lendemain ou dans la semaine, sur les 7 derniers jours complets.', inputs: ['jours'],
@@ -302,9 +302,12 @@ dash.draw('lanc', (el) => { const j = J(); if (!j) { el.textContent = '—'; ret
 dash.draw('sources', (tb) => { const d = dash.data('sources7'); tb.replaceChildren(); if (d.status !== 'ok') return;
   d.data.forEach((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.k; const a = document.createElement('td'); a.textContent = r.canal;
     if (r.k === 'campagne' && !N(r.n)) { const s = document.createElement('small'); s.textContent = '0 : aucune affiche ou QR posé'; a.appendChild(s); }
-    const n = document.createElement('td'); n.textContent = fmt(r.n); n.dataset.source = 'sources7'; n.dataset.field = 'n'; n.dataset.where = 'k=' + r.k; n.style.fontWeight = '600';
-    const nv = document.createElement('td'); nv.textContent = fmt(r.nouveaux); nv.dataset.source = 'sources7'; nv.dataset.field = 'nouveaux'; nv.dataset.where = 'k=' + r.k;
-    tr.append(a, n, nv); tb.appendChild(tr); }); });
+    const cell = (v, f, nv) => { const td = document.createElement('td'); td.textContent = fmt(v); td.dataset.source = 'sources7'; td.dataset.field = f; td.dataset.where = 'k=' + r.k; if (f === 'n') td.style.fontWeight = '600';
+      if (nv) { const sm = document.createElement('small'); sm.textContent = `dont ${fmt(nv)} nouv.`; sm.style.display = 'block'; sm.style.fontWeight = '400'; td.appendChild(sm); } return td; };
+    tr.append(a, cell(r.h, 'h'), cell(r.n, 'n', r.nouveaux), cell(r.m, 'm'), cell(r.tot, 'tot', r.totn)); tb.appendChild(tr); });
+  const tt = document.createElement('tr'); tt.style.borderTop = '2px solid var(--color-border-line)'; const th = document.createElement('td'); th.textContent = 'Total'; th.style.fontWeight = '600'; tt.appendChild(th);
+  [['h'], ['n', 'nouveaux'], ['m'], ['tot', 'totn']].forEach(([f, g]) => { const td = document.createElement('td'); td.style.fontWeight = '600'; td.textContent = fmt(d.data.reduce((a, r) => a + N(r[f]), 0));
+    if (g) { const sm = document.createElement('small'); sm.style.display = 'block'; sm.style.fontWeight = '400'; sm.textContent = `dont ${fmt(d.data.reduce((a, r) => a + N(r[g]), 0))} nouv.`; td.appendChild(sm); } tt.appendChild(td); }); tb.appendChild(tt); });
 dash.draw('seo_l', (el) => { const d = dash.data('seo7'); if (d.status !== 'ok') { el.textContent = '—'; return; } const v = N((d.data.find((r) => r.k === 'seo') || {}).n), a = N((d.data.find((r) => r.k === 'seo_vers_app') || {}).n);
   el.textContent = `Pages faites pour Google (agenda, marées, communes…), hors app : ${pl(v, 'visite')} sur 7 jours, ${fmt(a)} vers l'app.`; });
 dash.draw('g_tot', (el) => { const x = R(); el.textContent = x && x.google_aff != null ? `${pl(x.google_clics, 'clic')} sur ${pl(x.google_aff, 'affichage')} dans les résultats de Google depuis le 1er novembre${x.google_dernier_jour ? `, jusqu'au ${dmy(x.google_dernier_jour)}` : ''}.` : 'Pas encore de relevé Google.'; });
