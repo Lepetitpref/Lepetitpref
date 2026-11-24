@@ -1,24 +1,24 @@
 {
- "maj": "2026-11-24T05:43:51.119Z",
+ "maj": "2026-11-24T13:58:05.142Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du mardi 24 novembre 2026 à 06H15 légales.",
-  "avis": "Avis de Grand Frais Nr 148 .",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" midi",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du mardi 24 novembre 2026 à 12H30 légales.",
+  "avis": "Avis de Grand Frais Nr 148.",
   "sections": [
    {
-    "t": "Situation générale le mardi 24 novembre 2026 à 00H00 UTC, et évolution",
+    "t": "Situation générale le mardi 24 novembre 2026 à 06H00 UTC, et évolution",
     "l": [
-     "Talweg sur le golfe de Gascogne et dépression se creusant 999 hPa au sud-ouest de la Bretagne cet après-midi, s'enfonçant en fond de golfe de Gascogne en fin de nuit prochaine."
+     "Anticyclone 1030 hPa sur l'Espagne, prévu sur l'Allemagne mardi matin, puis se décalant vers l'est. Talweg sur le golfe de Gascogne la nuit, puis dépression se creusant 999 hPa au sud-ouest de la Bretagne mardi après-midi."
     ]
    },
    {
-    "t": "Observations le mardi 24 novembre 2026 à 03H00 UTC",
+    "t": "Observations le mardi 24 novembre 2026 à 09H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Sud-Sud-Est 27 nœuds, très nuageux à couvert, visibilité 8 milles. Belle Ile : vent Sud-Sud-Est 19 nœuds. Ile d'Yeu : vent Sud-Sud-Est 12 nœuds. Groix : vent Sud-Sud-Est 16 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 12 nœuds."
+     "Pointe de Penmarc'h : vent Sud-Sud-Est 25 nœuds, très nuageux à couvert, visibilité 6 milles. Belle Ile : vent Sud-Est 19 nœuds, très nuageux à couvert, visibilité 8 milles. Ile d'Yeu : vent Sud-Est 16 nœuds, mer agitée, nuageux avec éclaircies, visibilité 10 milles. Groix : vent Sud-Est 14 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 12 nœuds, mer belle, très nuageux à couvert, visibilité 10 milles."
     ]
    },
    {
-    "t": "Prévisions pour la journée du mardi 24 novembre",
+    "t": "Prévisions pour l'après-midi du mardi 24 novembre",
     "l": [
      "VENT : Sud à Sud-Est 5 à 6, virant Est à Sud-Est l'après-midi. Rafales.",
      "MER : agitée à forte, croisée avec houle d'Ouest.",
@@ -38,28 +38,38 @@
     ]
    },
    {
-    "t": "Tendance pour la journée du mercredi 25 novembre",
+    "t": "Prévisions pour la journée du mercredi 25 novembre",
     "l": [
      "VENT : Est à Nord-Est 3 à 5, revenant Nord l'après-midi. Rafales.",
-     "MER : agitée à forte, devenant peu agitée à agitée en fin de journée.",
+     "MER : agitée à forte, devenant peu agitée à agitée en fin de journée de Penmarc'h à Noirmoutiers en fin de journée.",
      "HOULE : Ouest 1 à 2 m.",
      "TEMPS : pluie, parfois éclaircies en journée.",
      "VISIBILITE : moyenne à mauvaise sous pluie."
     ]
+   },
+   {
+    "t": "Tendance pour la nuit du 25 au 26, et la journée du jeudi 26 novembre",
+    "l": [
+     "VENT : Nord 3 à 5, mollissant 3 à 4 en matinée, puis devenant Variable 1 à 3 l'après-midi.",
+     "MER : peu agitée à agitée, localement forte de Noirmoutier à l'Aiguillon jusqu'en fin de nuit.",
+     "HOULE : Ouest 1 à 2 m, s'atténuant 1 à 1.5 m l'après-midi.",
+     "TEMPS : très nuageux à couvert, parfois pluie ou averses.",
+     "VISIBILITE : moyenne à mauvaise sous précipitations."
+    ]
    }
   ],
-  "prochain": "Prochain bulletin le mardi 24 novembre 2026, vers 12H30 légales",
+  "prochain": "Prochain bulletin le mardi 24 novembre 2026, vers 18H15 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-24T05:44:00.352Z"
+  "lu": "2026-11-24T13:58:23.155Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-23 12:30",
-  "h13": 1.7,
-  "hmax": 3.3,
-  "t13": 8.4,
-  "dir": 261,
-  "eau": 13,
+  "heure": "2026-11-24 14:00",
+  "h13": 1.8,
+  "hmax": 2.9,
+  "t13": 6.2,
+  "dir": null,
+  "eau": null,
   "source": "https://candhis.cerema.fr/_public_/campagne.php?Y2FtcD0wNDQwMw=="
  }
 }
