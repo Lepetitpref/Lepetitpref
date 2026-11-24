@@ -1,0 +1,32 @@
+# Search Console : chaque matin, clics, affichages, pages et recherches Google de lepetitpref.fr,
+# écrits dans le dossier caché de l'audience (repris par outils/audience.js dans le tableau).
+name: Search Console
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: gsc
+  cancel-in-progress: true
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Relevé
+        env:
+          GSC_KEY: ${{ secrets.GSC_KEY }}
+        run: python3 outils/gsc.py 6kuqzmvck2kxhi/gsc.json
+      - name: Publier si changé
+        run: |
+          git add -N 6kuqzmvck2kxhi/gsc.json
+          if git diff --quiet -- 6kuqzmvck2kxhi/gsc.json; then echo "Rien de nouveau."; exit 0; fi
+          git config user.name "Le Petit Préf"
+          git config user.email "noreply@lepetitpref.fr"
+          git add 6kuqzmvck2kxhi/gsc.json
+          git commit -m "Search Console : relevé du matin"
+          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0; sleep 5; done
+          exit 1
