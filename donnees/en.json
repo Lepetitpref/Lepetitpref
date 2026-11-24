@@ -1383,6 +1383,234 @@
  },
  "rules": [
   [
+   "^Fermé le lundi · rouvre demain$",
+   "Closed on Mondays · open again tomorrow"
+  ],
+  [
+   "^Fermé le lundi · rouvre mardi$",
+   "Closed on Mondays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le lundi · rouvre mercredi$",
+   "Closed on Mondays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le lundi · rouvre jeudi$",
+   "Closed on Mondays · open again on Thursday"
+  ],
+  [
+   "^Fermé le lundi · rouvre vendredi$",
+   "Closed on Mondays · open again on Friday"
+  ],
+  [
+   "^Fermé le lundi · rouvre samedi$",
+   "Closed on Mondays · open again on Saturday"
+  ],
+  [
+   "^Fermé le lundi · rouvre dimanche$",
+   "Closed on Mondays · open again on Sunday"
+  ],
+  [
+   "^Fermé le mardi · rouvre demain$",
+   "Closed on Tuesdays · open again tomorrow"
+  ],
+  [
+   "^Fermé le mardi · rouvre lundi$",
+   "Closed on Tuesdays · open again on Monday"
+  ],
+  [
+   "^Fermé le mardi · rouvre mercredi$",
+   "Closed on Tuesdays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le mardi · rouvre jeudi$",
+   "Closed on Tuesdays · open again on Thursday"
+  ],
+  [
+   "^Fermé le mardi · rouvre vendredi$",
+   "Closed on Tuesdays · open again on Friday"
+  ],
+  [
+   "^Fermé le mardi · rouvre samedi$",
+   "Closed on Tuesdays · open again on Saturday"
+  ],
+  [
+   "^Fermé le mardi · rouvre dimanche$",
+   "Closed on Tuesdays · open again on Sunday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre demain$",
+   "Closed on Wednesdays · open again tomorrow"
+  ],
+  [
+   "^Fermé le mercredi · rouvre lundi$",
+   "Closed on Wednesdays · open again on Monday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre mardi$",
+   "Closed on Wednesdays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre jeudi$",
+   "Closed on Wednesdays · open again on Thursday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre vendredi$",
+   "Closed on Wednesdays · open again on Friday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre samedi$",
+   "Closed on Wednesdays · open again on Saturday"
+  ],
+  [
+   "^Fermé le mercredi · rouvre dimanche$",
+   "Closed on Wednesdays · open again on Sunday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre demain$",
+   "Closed on Thursdays · open again tomorrow"
+  ],
+  [
+   "^Fermé le jeudi · rouvre lundi$",
+   "Closed on Thursdays · open again on Monday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre mardi$",
+   "Closed on Thursdays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre mercredi$",
+   "Closed on Thursdays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre vendredi$",
+   "Closed on Thursdays · open again on Friday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre samedi$",
+   "Closed on Thursdays · open again on Saturday"
+  ],
+  [
+   "^Fermé le jeudi · rouvre dimanche$",
+   "Closed on Thursdays · open again on Sunday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre demain$",
+   "Closed on Fridays · open again tomorrow"
+  ],
+  [
+   "^Fermé le vendredi · rouvre lundi$",
+   "Closed on Fridays · open again on Monday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre mardi$",
+   "Closed on Fridays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre mercredi$",
+   "Closed on Fridays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre jeudi$",
+   "Closed on Fridays · open again on Thursday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre samedi$",
+   "Closed on Fridays · open again on Saturday"
+  ],
+  [
+   "^Fermé le vendredi · rouvre dimanche$",
+   "Closed on Fridays · open again on Sunday"
+  ],
+  [
+   "^Fermé le samedi · rouvre demain$",
+   "Closed on Saturdays · open again tomorrow"
+  ],
+  [
+   "^Fermé le samedi · rouvre lundi$",
+   "Closed on Saturdays · open again on Monday"
+  ],
+  [
+   "^Fermé le samedi · rouvre mardi$",
+   "Closed on Saturdays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le samedi · rouvre mercredi$",
+   "Closed on Saturdays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le samedi · rouvre jeudi$",
+   "Closed on Saturdays · open again on Thursday"
+  ],
+  [
+   "^Fermé le samedi · rouvre vendredi$",
+   "Closed on Saturdays · open again on Friday"
+  ],
+  [
+   "^Fermé le samedi · rouvre dimanche$",
+   "Closed on Saturdays · open again on Sunday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre demain$",
+   "Closed on Sundays · open again tomorrow"
+  ],
+  [
+   "^Fermé le dimanche · rouvre lundi$",
+   "Closed on Sundays · open again on Monday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre mardi$",
+   "Closed on Sundays · open again on Tuesday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre mercredi$",
+   "Closed on Sundays · open again on Wednesday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre jeudi$",
+   "Closed on Sundays · open again on Thursday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre vendredi$",
+   "Closed on Sundays · open again on Friday"
+  ],
+  [
+   "^Fermé le dimanche · rouvre samedi$",
+   "Closed on Sundays · open again on Saturday"
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open for lunch today, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open tonight, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open for lunch tomorrow, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open tomorrow evening, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^Fermé ce midi$",
+   "Closed for lunch today"
+  ],
+  [
+   "^Fermé ce soir$",
+   "Closed tonight"
+  ],
+  [
+   "^Fermé demain midi$",
+   "Closed for lunch tomorrow"
+  ],
+  [
+   "^Fermé demain soir$",
+   "Closed tomorrow evening"
+  ],
+  [
    "^(?:Voile|Sailing) bon (vers|de) ",
    "Sailing good $1 "
   ],
@@ -3769,46 +3997,6 @@
   [
    "^(\\d+) en cours · toucher pour voir$",
    "$1 running · tap to see"
-  ],
-  [
-   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
-   "$1: $2 open for lunch today, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
-  ],
-  [
-   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
-   "$1: $2 open tonight, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
-  ],
-  [
-   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
-   "$1: $2 open for lunch tomorrow, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
-  ],
-  [
-   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
-   "$1: $2 open tomorrow evening, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
-  ],
-  [
-   "^Fermé ce midi$",
-   "Closed for lunch today"
-  ],
-  [
-   "^Fermé ce soir$",
-   "Closed tonight"
-  ],
-  [
-   "^Fermé demain midi$",
-   "Closed for lunch tomorrow"
-  ],
-  [
-   "^Fermé demain soir$",
-   "Closed tomorrow evening"
-  ],
-  [
-   "^Fermé le (\\p{L}+) · rouvre demain$",
-   "Closed on $1s · open again tomorrow"
-  ],
-  [
-   "^Fermé le (\\p{L}+) · rouvre (\\p{L}+)$",
-   "Closed on $1s · open again on $2"
   ],
   [
    "^(\\d+ [^:]+?) : ouverte?s? d'abord, (?:puis|then) du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
