@@ -1,223 +1,5 @@
 [
  {
-  "id": "2026-11-23-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-23",
-  "times": [
-   "20h20"
-  ],
-  "version": "VOST",
-  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-23-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-23",
-  "times": [
-   "18h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-23-toiles-de-retz-jupiter",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Jupiter",
-  "date": "2026-11-23",
-  "times": [
-   "20h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-23-toiles-de-retz-karma",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Karma",
-  "date": "2026-11-23",
-  "times": [
-   "14h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-23-toiles-de-retz-les-miserables",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Les Misérables",
-  "date": "2026-11-23",
-  "times": [
-   "14h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-23-toiles-de-retz-wild-horse-nine",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Wild Horse Nine",
-  "date": "2026-11-23",
-  "times": [
-   "17h50"
-  ],
-  "version": "VOST",
-  "genre": "Thriller",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-camembert",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Camembert",
-  "date": "2026-11-23",
-  "times": [
-   "17h10",
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-hope",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hope",
-  "date": "2026-11-23",
-  "times": [
-   "19h55"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Science Fiction, Action",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-23",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-23",
-  "times": [
-   "14h",
-   "18h05"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-jupiter",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Jupiter",
-  "date": "2026-11-23",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-l-affaire-marie-claire",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-23",
-  "times": [
-   "15h55"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-le-royal-ballet-manon",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Le Royal Ballet : Manon",
-  "date": "2026-11-23",
-  "times": [
-   "19h15"
-  ],
-  "version": "VF",
-  "genre": "Ballet",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-moulin",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Moulin",
-  "date": "2026-11-23",
-  "times": [
-   "15h55"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-23-cinejade-un-bon-patron",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Un bon patron",
-  "date": "2026-11-23",
-  "times": [
-   "18h35"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-23-saint-joseph-la-tentazione",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "La Tentazione",
-  "date": "2026-11-23",
-  "times": [
-   "18h"
-  ],
-  "version": "VOST",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-23-saint-joseph-loin-de-moi-la-colere",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Loin de moi la colère",
-  "date": "2026-11-23",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-23-saint-joseph-moulin",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Moulin",
-  "date": "2026-11-23",
-  "times": [
-   "15h"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
   "id": "2026-11-24-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Hunger Games : Lever de soleil sur la moisson",
@@ -354,7 +136,7 @@
  {
   "id": "2026-11-24-cinejade-l-ile-des-souvenirs",
   "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Île des souvenirs",
+  "film": "L'île des souvenirs",
   "date": "2026-11-24",
   "times": [
    "20h30"
@@ -385,6 +167,18 @@
   ],
   "version": "VF",
   "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-24-jeanne-darc-portrait-de-femme",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Portrait de femme",
+  "date": "2026-11-24",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Drame, Romance",
   "kids": false
  },
  {
@@ -421,6 +215,67 @@
   ],
   "version": "VOST",
   "genre": "Drame · coup de cœur du cinéma",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-25",
+  "times": [
+   "14h50"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-25",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-25",
+  "times": [
+   "15h30",
+   "18h05"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-25",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Policier, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-25-toiles-de-retz-paper-tiger-vost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-25",
+  "times": [
+   "18h15"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -524,9 +379,33 @@
   "kids": false
  },
  {
+  "id": "2026-11-25-jeanne-darc-olivia",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Olivia",
+  "date": "2026-11-25",
+  "times": [
+   "10h30"
+  ],
+  "version": "VF",
+  "genre": "Animation",
+  "kids": true
+ },
+ {
+  "id": "2026-11-25-jeanne-darc-pressure",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Pressure",
+  "date": "2026-11-25",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Historique, Guerre",
+  "kids": false
+ },
+ {
   "id": "2026-11-25-saint-joseph-l-arabe",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "L'Arabe",
+  "film": "L’Arabe",
   "date": "2026-11-25",
   "times": [
    "20h30"
@@ -548,6 +427,18 @@
   "kids": false
  },
  {
+  "id": "2026-11-25-saint-michel-le-mystere-lucy-lost",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-25",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
   "id": "2026-11-25-atlantique-moulin",
   "cinema": "L'Atlantique (Préfailles)",
   "film": "Moulin",
@@ -562,7 +453,7 @@
  {
   "id": "2026-11-25-atlantique-un-amour-d-epouvantail",
   "cinema": "L'Atlantique (Préfailles)",
-  "film": "Un amour d'épouvantail",
+  "film": "Un amour d’épouvantail",
   "date": "2026-11-25",
   "times": [
    "16h"
@@ -570,6 +461,78 @@
   "version": "VF",
   "genre": "Animation · dès 3 ans, Mois des Tout-Petits",
   "kids": true
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-club-kid",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Club Kid",
+  "date": "2026-11-26",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-26",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-26",
+  "times": [
+   "15h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-26",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-octobre-a-paris",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Octobre à Paris",
+  "date": "2026-11-26",
+  "times": [
+   "18h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-26",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Policier, Drame",
+  "kids": false
  },
  {
   "id": "2026-11-26-cinejade-billie-a-la-croisee-des-mondes",
@@ -682,6 +645,18 @@
   "kids": false
  },
  {
+  "id": "2026-11-26-jeanne-darc-les-miserables",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Les Misérables",
+  "date": "2026-11-26",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
   "id": "2026-11-26-saint-joseph-un-bon-patron",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
   "film": "Un bon patron",
@@ -691,6 +666,78 @@
   ],
   "version": "VF",
   "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-26-saint-michel-ni-vue-ni-connue",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Ni vue, ni connue",
+  "date": "2026-11-26",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-27",
+  "times": [
+   "17h40"
+  ],
+  "version": "VOST",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-27",
+  "times": [
+   "18h15"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-27",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-toiles-de-retz-les-miserables",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Les Misérables",
+  "date": "2026-11-27",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-27-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-27",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -781,21 +828,21 @@
   "kids": false
  },
  {
-  "id": "2026-11-27-cinejade-saint-nicolas-de-myre",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Saint Nicolas de Myre",
+  "id": "2026-11-27-saint-joseph-quelques-mots-d-amour",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Quelques mots d'amour",
   "date": "2026-11-27",
   "times": [
    "20h30"
   ],
   "version": "VF",
-  "genre": "Documentaire",
+  "genre": "Comédie dramatique",
   "kids": false
  },
  {
-  "id": "2026-11-27-saint-joseph-quelques-mots-d-amour",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Quelques mots d'amour",
+  "id": "2026-11-27-saint-michel-une-femme-aujourd-hui",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Une femme aujourd’hui",
   "date": "2026-11-27",
   "times": [
    "20h30"
@@ -814,6 +861,91 @@
   ],
   "version": "VF",
   "genre": "Drame, Thriller · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-club-kid",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Club Kid",
+  "date": "2026-11-28",
+  "times": [
+   "18h25"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-28",
+  "times": [
+   "13h30",
+   "20h40"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-28",
+  "times": [
+   "18h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-28",
+  "times": [
+   "16h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-le-corset",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Corset",
+  "date": "2026-11-28",
+  "times": [
+   "16h20"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-moulin",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Moulin",
+  "date": "2026-11-28",
+  "times": [
+   "13h35"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-28",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -906,6 +1038,18 @@
   "kids": false
  },
  {
+  "id": "2026-11-28-jeanne-darc-la-gradiva",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "La Gradiva",
+  "date": "2026-11-28",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Comédie",
+  "kids": false
+ },
+ {
   "id": "2026-11-28-saint-joseph-l-affaire-marie-claire",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
   "film": "L'Affaire Marie-Claire",
@@ -920,13 +1064,37 @@
  {
   "id": "2026-11-28-saint-joseph-l-arabe",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "L'Arabe",
+  "film": "L’Arabe",
   "date": "2026-11-28",
   "times": [
    "18h"
   ],
   "version": "VF",
   "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-28-saint-michel-le-mystere-lucy-lost",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Mystère Lucy Lost",
+  "date": "2026-11-28",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure",
+  "kids": true
+ },
+ {
+  "id": "2026-11-28-saint-michel-moulin",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Moulin",
+  "date": "2026-11-28",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique",
   "kids": false
  },
  {
@@ -939,6 +1107,82 @@
   ],
   "version": "VOST",
   "genre": "Comédie, Drame, Fantastique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-11-29",
+  "times": [
+   "10h30",
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-29",
+  "times": [
+   "13h45",
+   "16h15",
+   "18h20"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-29",
+  "times": [
+   "15h45",
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-le-corset",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Le Corset",
+  "date": "2026-11-29",
+  "times": [
+   "11h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-octobre-a-paris",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Octobre à Paris",
+  "date": "2026-11-29",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-29",
+  "times": [
+   "13h35"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -1002,7 +1246,7 @@
   "times": [
    "20h40"
   ],
-  "version": "VOST",
+  "version": "VF",
   "genre": "Documentaire",
   "kids": false
  },
@@ -1056,6 +1300,30 @@
   "kids": false
  },
  {
+  "id": "2026-11-29-jeanne-darc-l-espece-explosive",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "L'Espèce explosive",
+  "date": "2026-11-29",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie, Policier",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-jeanne-darc-le-corset",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Le Corset",
+  "date": "2026-11-29",
+  "times": [
+   "17h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille",
+  "kids": true
+ },
+ {
   "id": "2026-11-29-saint-joseph-quelques-mots-d-amour",
   "cinema": "Cinéma Saint-Joseph (Pornic)",
   "film": "Quelques mots d'amour",
@@ -1080,6 +1348,30 @@
   "kids": false
  },
  {
+  "id": "2026-11-29-saint-michel-karma",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Karma",
+  "date": "2026-11-29",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-29-saint-michel-le-merveilleux-hiver-de-tom-le-chat",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Merveilleux hiver de Tom le chat",
+  "date": "2026-11-29",
+  "times": [
+   "11h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Aventure, Comédie",
+  "kids": true
+ },
+ {
   "id": "2026-11-29-atlantique-le-fantome-de-l-opera",
   "cinema": "L'Atlantique (Préfailles)",
   "film": "Le Fantôme de l'Opéra",
@@ -1089,6 +1381,66 @@
   ],
   "version": "VF",
   "genre": "Drame, Fantastique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-toiles-de-retz-club-kid",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Club Kid",
+  "date": "2026-11-30",
+  "times": [
+   "18h"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-11-30",
+  "times": [
+   "21h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-11-30",
+  "times": [
+   "15h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-30",
+  "times": [
+   "18h15"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Policier, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-toiles-de-retz-paper-tiger-vost",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-11-30",
+  "times": [
+   "20h45"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -1147,7 +1499,7 @@
   "times": [
    "14h"
   ],
-  "version": "VOST",
+  "version": "VF",
   "genre": "Documentaire",
   "kids": false
  },
@@ -1258,6 +1610,79 @@
   ],
   "version": "VF",
   "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-saint-michel-quelques-mots-d-amour",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-11-30",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-01-toiles-de-retz-club-kid",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Club Kid",
+  "date": "2026-12-01",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Comédie dramatique · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-01-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-01",
+  "times": [
+   "14h30",
+   "20h"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-01-toiles-de-retz-il-faut-bruler-maman",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-12-01",
+  "times": [
+   "17h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-01-toiles-de-retz-jupiter",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Jupiter",
+  "date": "2026-12-01",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-01-toiles-de-retz-paper-tiger",
+  "cinema": "Ciné Toiles de Retz (Pornic)",
+  "film": "Paper Tiger",
+  "date": "2026-12-01",
+  "times": [
+   "17h50"
+  ],
+  "version": "VOST",
+  "genre": "Thriller, Policier, Drame",
   "kids": false
  },
  {
@@ -1419,102 +1844,6 @@
   "kids": false
  },
  {
-  "id": "2026-12-02-saint-joseph-ce-qui-nous-mene-a-toi",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Ce qui nous mène à toi",
-  "date": "2026-12-02",
-  "times": [
-   "18h"
-  ],
-  "version": "VF",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-24-jeanne-darc-portrait-de-femme",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Portrait de femme",
-  "date": "2026-11-24",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Drame, Romance",
-  "kids": false
- },
- {
-  "id": "2026-11-25-jeanne-darc-olivia",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Olivia",
-  "date": "2026-11-25",
-  "times": [
-   "10h30"
-  ],
-  "version": "VF",
-  "genre": "Animation",
-  "kids": true
- },
- {
-  "id": "2026-11-25-jeanne-darc-pressure",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Pressure",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Historique, Guerre",
-  "kids": false
- },
- {
-  "id": "2026-11-26-jeanne-darc-les-miserables",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Les Misérables",
-  "date": "2026-11-26",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-28-jeanne-darc-la-gradiva",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "La Gradiva",
-  "date": "2026-11-28",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-29-jeanne-darc-le-corset",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Le Corset",
-  "date": "2026-11-29",
-  "times": [
-   "17h00"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille",
-  "kids": true
- },
- {
-  "id": "2026-11-29-jeanne-darc-l-espece-explosive",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "L'Espèce explosive",
-  "date": "2026-11-29",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie, Policier",
-  "kids": false
- },
- {
   "id": "2026-12-02-jeanne-darc-esprit-s-rebelle-s",
   "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
   "film": "Esprit(s) rebelle(s)",
@@ -1539,111 +1868,27 @@
   "kids": false
  },
  {
-  "id": "2026-11-23-saint-michel-the-social-reckoning",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "The Social Reckoning",
-  "date": "2026-11-23",
+  "id": "2026-12-02-saint-joseph-ce-qui-nous-mene-a-toi",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Ce qui nous mène à toi",
+  "date": "2026-12-02",
   "times": [
-   "20h30"
+   "18h"
   ],
-  "version": "VOST",
+  "version": "VF",
   "genre": "Drame",
   "kids": false
  },
  {
-  "id": "2026-11-25-saint-michel-le-mystere-lucy-lost",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Le Mystère Lucy Lost",
-  "date": "2026-11-25",
-  "times": [
-   "15h30"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Aventure",
-  "kids": true
- },
- {
-  "id": "2026-11-26-saint-michel-ni-vue-ni-connue",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Ni vue, ni connue",
-  "date": "2026-11-26",
-  "times": [
-   "15h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-27-saint-michel-une-femme-aujourdhui",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Une femme aujourd'hui",
-  "date": "2026-11-27",
+  "id": "2026-12-02-saint-joseph-wild-horse-nine",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Wild Horse Nine",
+  "date": "2026-12-02",
   "times": [
    "20h30"
   ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-28-saint-michel-le-mystere-lucy-lost",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Le Mystère Lucy Lost",
-  "date": "2026-11-28",
-  "times": [
-   "15h30"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Aventure",
-  "kids": true
- },
- {
-  "id": "2026-11-28-saint-michel-moulin",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Moulin",
-  "date": "2026-11-28",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-29-saint-michel-le-merveilleux-hiver-de-tom-le-chat",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Le Merveilleux hiver de Tom le chat",
-  "date": "2026-11-29",
-  "times": [
-   "11h00"
-  ],
-  "version": "VF",
-  "genre": "Animation, Aventure, Comédie",
-  "kids": true
- },
- {
-  "id": "2026-11-29-saint-michel-karma",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Karma",
-  "date": "2026-11-29",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-30-saint-michel-quelques-mots-d-amour",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Quelques mots d'amour",
-  "date": "2026-11-30",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
+  "version": "VOST",
+  "genre": "Thriller",
   "kids": false
  },
  {
@@ -1657,5 +1902,41 @@
   "version": "VF",
   "genre": "Animation, Famille",
   "kids": true
+ },
+ {
+  "id": "2026-12-03-jeanne-darc-octobre-a-paris",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Octobre à Paris",
+  "date": "2026-12-03",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-saint-joseph-ruy-blas-comedie-francaise",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Ruy Blas (Comédie-Française)",
+  "date": "2026-12-03",
+  "times": [
+   "20h10"
+  ],
+  "version": "VF",
+  "genre": "Spectacle",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-saint-joseph-vivaldi-et-moi",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Vivaldi et moi",
+  "date": "2026-12-03",
+  "times": [
+   "15h"
+  ],
+  "version": "VOST",
+  "genre": "Biopic, Musical, Historique",
+  "kids": false
  }
 ]
