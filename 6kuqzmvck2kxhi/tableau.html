@@ -82,10 +82,10 @@
       <div class="pp-tile"><h3>Affichages dans Google</h3><b class="big" data-source="resume" data-field="google_aff" data-row="0">—</b><small data-draw="g_ctr">—</small></div>
       <div class="pp-tile"><h3>Position moyenne</h3><b class="big" data-draw="g_pos">—</b><small>1 à 10 : première page de Google ; 11 à 20 : deuxième page</small></div>
     </section>
-    <div class="pp-two">
-      <div><h3 class="pp-h3">Pages montrées par Google (28 jours)</h3><div class="pp-bars" data-draw="g_pages" data-source="google"></div></div>
-      <div><h3 class="pp-h3">Recherches tapées (28 jours)</h3><div class="pp-bars" data-draw="g_rech" data-source="google"></div></div>
-    </div>
+    <h3 class="pp-h3">Pages montrées par Google (28 jours)</h3>
+    <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Page</th><th>Affichages</th><th>Clics</th><th>Position</th></tr></thead><tbody data-draw="g_pages" data-source="google"></tbody></table></div>
+    <h3 class="pp-h3">Recherches tapées (28 jours)</h3>
+    <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Recherche</th><th>Affichages</th><th>Clics</th><th>Position</th></tr></thead><tbody data-draw="g_rech" data-source="google"></tbody></table></div>
   </section>
 
   <section class="pp-card" id="par-semaine">
@@ -348,9 +348,12 @@ const bars = (el, id, lab, opts = {}) => {
 };
 dash.draw('sources', (el) => bars(el, 'sources7', 'source', { vide: 'Rien encore : la provenance est mesurée depuis le 18/11.' }));
 dash.draw('actions', (el) => bars(el, 'actions7', 'action', { vide: 'Aucune action encore : mesuré depuis le 18/11 (sauf les partages).' }));
-const gval = (r) => `${fmt(r.n)} affichage${N(r.n) > 1 ? 's' : ''} · ${fmt(r.clics)} clic${N(r.clics) > 1 ? 's' : ''} · position ${String(r.pos).replace('.', ',')}`;
-dash.draw('g_pages', (el) => bars(el, 'google', 'quoi', { filter: (r) => r.type === 'page', val: gval, vide: 'Pas encore de relevé Search Console.' }));
-dash.draw('g_rech', (el) => bars(el, 'google', 'quoi', { filter: (r) => r.type === 'recherche', val: gval, vide: 'Google masque les recherches tant qu’elles sont rares : elles apparaîtront avec plus de visites.' }));
+const gtab = (el, type, vide) => { const d = dash.data('google'); el.replaceChildren();
+  const rows = d.status === 'ok' && Array.isArray(d.data) ? d.data.filter((r) => r.type === type).sort((a, b) => N(b.n) - N(a.n)) : [];
+  if (!rows.length) { const tr = document.createElement('tr'), td = document.createElement('td'); td.colSpan = 4; td.className = 'pp-empty'; td.textContent = d.status === 'ok' ? vide : '—'; tr.appendChild(td); el.appendChild(tr); return; }
+  rows.forEach((r) => { const tr = document.createElement('tr'); [r.quoi, fmt(r.n), fmt(r.clics), N(r.pos) ? String(r.pos).replace('.', ',') : '—'].forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.appendChild(td); }); el.appendChild(tr); }); };
+dash.draw('g_pages', (el) => gtab(el, 'page', 'Pas encore de relevé Search Console.'));
+dash.draw('g_rech', (el) => gtab(el, 'recherche', 'Google masque les recherches tant qu’elles sont rares : elles apparaîtront avec plus de visites.'));
 dash.draw('g_pos', (el) => { const x = R(); el.textContent = x && N(x.google_pos) ? String(x.google_pos).replace('.', ',') : '—'; });
 dash.draw('g_ctr', (el) => { const x = R(); el.textContent = x && N(x.google_aff) ? `${Math.round(100 * N(x.google_ctr))} % des affichages donnent un clic` : '—'; });
 dash.draw('g_clics_s', (el) => { const x = R(); el.textContent = x && x.google_dernier_jour ? `depuis le 1er novembre, données jusqu’au ${x.google_dernier_jour.split('-').reverse().slice(0, 2).join('/')}` : 'pas encore de relevé'; });
