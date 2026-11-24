@@ -1597,7 +1597,7 @@ button.wk-c{cursor:pointer}
 .actile-img{display:block;width:100%;height:64px;object-fit:cover;border-radius:8px;background:var(--bg)}
 .actile:has(> .actile-img) .actile-t,.actile:has(> .actile-ban) .actile-t{padding-right:4px}
 .actile-ban{display:grid;place-items:center;height:64px;border-radius:8px;background:color-mix(in srgb,var(--c) 12%,transparent);color:var(--c)}.actile-ban .i{width:26px;height:26px}
-.actile:has(> .actile-img) .actile-more,.actile:has(> .actile-ban) .actile-more{top:12px;right:12px;width:22px;height:22px;border:0;transform:none;border-radius:50%;background:color-mix(in srgb,var(--surface) 88%,transparent) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 8%27%3E%3Cpath d=%27M1.5 1.5 6 6l4.5-4.5%27 fill=%27none%27 stroke=%27%23555%27 stroke-width=%271.8%27 stroke-linecap=%27round%27/%3E%3C/svg%3E") center/11px no-repeat}
+.actile:has(> .actile-img) .actile-more,.actile:has(> .actile-ban) .actile-more{top:12px;right:12px;width:32px;height:32px;border:0;transform:none;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.25);background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 8%27%3E%3Cpath d=%27M1.5 1.5 6 6l4.5-4.5%27 fill=%27none%27 stroke=%27%23fff%27 stroke-width=%272%27 stroke-linecap=%27round%27/%3E%3C/svg%3E") center/14px no-repeat}
 .actile[aria-expanded="true"]:has(> .actile-img) .actile-more,.actile[aria-expanded="true"]:has(> .actile-ban) .actile-more{transform:rotate(180deg);top:12px}
 
 @media (max-width:430px){.brand{font-size:17px;gap:5px}.brand .i{width:24px}.base-btn{max-width:118px}.base-btn,.base-btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
@@ -1605,4 +1605,4 @@ button.wk-c{cursor:pointer}
 .base-s{display:none}@media (max-width:430px){.base-btn .base-n{display:none}.base-btn .base-s{display:inline}}
 @media (max-width:430px){.base-btn .chev{display:block;width:10px;height:7px;flex:none}.base-btn{gap:2px;padding:0 2px}.lang-btn{margin-left:4px}}
 @media (max-width:380px){.topbar>.icon-btn[href="#recherche"]{width:34px;min-width:34px}.menu-btn{padding:0 0 0 2px}.base-btn{max-width:110px}}
-/* version du site */:root{--pp-v:"20261124-2158"}
+/* version du site */:root{--pp-v:"20261124-2159"}
