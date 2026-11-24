@@ -22,7 +22,8 @@ def get(u):
 
 
 def mots(t):
-    t = unicodedata.normalize("NFD", html.unescape(t or "").lower()).encode("ascii", "ignore").decode()
+    t = re.sub(r"\([^)]*\)", " ", t or "")  # « Plage de l'Ermitage (Saint-Brevin) » : la commune entre parenthèses ne compte pas
+    t = unicodedata.normalize("NFD", html.unescape(t).lower()).encode("ascii", "ignore").decode()
     return [w for w in re.split(r"[^a-z0-9]+", t) if w and w not in STOP]
 
 
@@ -30,9 +31,16 @@ def km(a, b):
     return math.hypot((a[0] - b[0]) * 111.2, (a[1] - b[1]) * 111.2 * math.cos(math.radians(a[0])))
 
 
+LIEUX = {"prefailles", "pornic", "bernerie", "retz", "moutiers", "bourgneuf", "brevin", "saint", "pins", "michel", "chef",
+         "plaine", "mer", "clion", "chauve", "tharon", "sainte", "marie", "villeneuve", "centre", "port"}
+
+
 def inclus(a, b):
-    """Tous les mots du nom le plus court se retrouvent (à une lettre près) dans l'autre."""
+    """Tous les mots du nom le plus court se retrouvent (à une lettre près) dans l'autre, et ce nom court
+    n'est pas fait que de noms de lieux (« Marché de Pornic » ≠ « Patrimoine balnéaire de Pornic »)."""
     a, b = (a, b) if len(a) <= len(b) else (b, a)
+    if not [w for w in a if w not in LIEUX]:
+        return False
     eq = lambda x, y: x == y or (len(x) > 4 and difflib.SequenceMatcher(None, x, y).ratio() >= 0.85)
     return all(any(eq(x, y) for y in b) for x in a)
 
@@ -77,7 +85,7 @@ def main():
             r = difflib.SequenceMatcher(None, " ".join(w), " ".join(cw)).ratio()
             if not inclus(w, cw):
                 continue
-            if r >= 0.8 and (best is None or r > best[0] or (r == best[0] and d < best[1])):
+            if (r >= 0.8 or d <= 0.15) and (best is None or r > best[0] or (r == best[0] and d < best[1])):
                 best = (r, d, ph, cw)
         if best:
             ph = best[2]
