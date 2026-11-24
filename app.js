@@ -2425,7 +2425,7 @@ if(LANG==="en"){document.documentElement.lang="en";
 
 /* langue : drapeau + code + flèche dans l'en-tête ; un toucher ouvre le choix FR / EN */
 (()=>{const b=document.getElementById("baseBtn");if(!b)return;
-  b.innerHTML=`${ic("pin","i-s")}<span class="base-n">${esc(BASE.n)}</span><svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1.5 1.5 6 6l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  b.innerHTML=`${ic("pin","i-s")}<span class="base-n">${esc(BASE.n)}</span><span class="base-s" lang="fr">${esc(({brevin:"St-Brevin",bernerie:"Bernerie",prefailles:"Préfailles",pornic:"Pornic"})[BASE.k]||BASE.n)}</span><svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1.5 1.5 6 6l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   b.setAttribute("aria-label","Je suis à "+BASE.n+" : changer de commune");
   let pop=null;
   const close=()=>{if(!pop)return;pop.remove();pop=null;b.setAttribute("aria-expanded","false");document.removeEventListener("click",outside,true);};
