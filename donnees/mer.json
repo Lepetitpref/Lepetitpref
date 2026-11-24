@@ -1,56 +1,56 @@
 {
- "maj": "2026-11-24T02:21:17.183Z",
+ "maj": "2026-11-24T05:43:51.119Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" soir",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du lundi 23 novembre 2026 à 18H15 légales.",
-  "avis": "Pas d'avis de vent fort en cours ni prévu.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du mardi 24 novembre 2026 à 06H15 légales.",
+  "avis": "Avis de Grand Frais Nr 148 .",
   "sections": [
    {
-    "t": "Situation générale le lundi 23 novembre 2026 à 12H00 UTC, et évolution",
+    "t": "Situation générale le mardi 24 novembre 2026 à 00H00 UTC, et évolution",
     "l": [
-     "Anticyclone 1030 hPa sur l'Espagne, prévu sur l'Allemagne mardi matin, puis se décalant vers l'est. Talweg sur le golfe de Gascogne la nuit, puis dépression se creusant 999 hPa au sud-ouest de la Bretagne mardi après-midi."
+     "Talweg sur le golfe de Gascogne et dépression se creusant 999 hPa au sud-ouest de la Bretagne cet après-midi, s'enfonçant en fond de golfe de Gascogne en fin de nuit prochaine."
     ]
    },
    {
-    "t": "Observations le lundi 23 novembre 2026 à 15H00 UTC",
+    "t": "Observations le mardi 24 novembre 2026 à 03H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Sud-Sud-Est 16 nœuds, clair ou peu nuageux, visibilité 8 milles. Belle Ile : vent Sud 8 nœuds, très nuageux à couvert, visibilité 10 milles. Ile d'Yeu : vent Ouest-Sud-Ouest 4 nœuds. Groix : vent Sud 8 nœuds, mer belle, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Sud-Ouest 4 nœuds, mer peu agitée, très nuageux à couvert, visibilité 8 milles."
-    ]
-   },
-   {
-    "t": "Prévisions pour la nuit du lundi 23 novembre au mardi 24 novembre",
-    "l": [
-     "VENT : Sud à Sud-Est fraîchissant 4 à 5, parfois 6 de Penmarc'h à Belle-Île en seconde partie de nuit.",
-     "MER : agitée dominée par la houle, devenant localement forte et croisée par houle d'Ouest de Penmarc'h à Belle-Île en seconde partie de nuit.",
-     "HOULE : Ouest 1.5 à 2 m.",
-     "TEMPS : très nuageux, parfois averses vers Penmarc'h.",
-     "VISIBILITE : bonne, parfois mauvaise sous averses vers Penmarc'h."
+     "Pointe de Penmarc'h : vent Sud-Sud-Est 27 nœuds, très nuageux à couvert, visibilité 8 milles. Belle Ile : vent Sud-Sud-Est 19 nœuds. Ile d'Yeu : vent Sud-Sud-Est 12 nœuds. Groix : vent Sud-Sud-Est 16 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 9 milles. Pointe de Chemoulin : vent Est 12 nœuds."
     ]
    },
    {
     "t": "Prévisions pour la journée du mardi 24 novembre",
     "l": [
-     "VENT : Sud-Est fraîchissant 5 à 6, puis virant secteur Sud à la fin. Rafales.",
+     "VENT : Sud à Sud-Est 5 à 6, virant Est à Sud-Est l'après-midi. Rafales.",
      "MER : agitée à forte, croisée avec houle d'Ouest.",
-     "HOULE : Ouest 1.5 à 2 m, parfois 3 m vers Penmarc'h.",
+     "HOULE : Ouest 1.5 à 2 m, parfois 2.5 m vers Penmarc'h.",
      "TEMPS : très nuageux, devenant pluvieux l'après-midi.",
      "VISIBILITE : bonne, devenant mauvaise sous pluie l'après-midi."
     ]
    },
    {
-    "t": "Tendance pour la nuit du 24 au 25, et la journée du mercredi 25 novembre",
+    "t": "Prévisions pour la nuit du mardi 24 novembre au mercredi 25 novembre",
     "l": [
-     "VENT : Variable dépressionnaire 5 à 6, avec menace de 7 le soir, mollissant 4 à 5 en fin de nuit, puis s'orientant secteur Nord en journée. Rafales.",
+     "VENT : Est à Sud-Est 5 à 6, parfois 7 de Penmarc'h à Belle Ile, mollissant 4 à 5 en fin de nuit. Fortes rafales.",
      "MER : agitée à forte.",
      "HOULE : Ouest s'amplifiant 2 à 3 m.",
+     "TEMPS : pluie.",
+     "VISIBILITE : moyenne à mauvaise sous pluie."
+    ]
+   },
+   {
+    "t": "Tendance pour la journée du mercredi 25 novembre",
+    "l": [
+     "VENT : Est à Nord-Est 3 à 5, revenant Nord l'après-midi. Rafales.",
+     "MER : agitée à forte, devenant peu agitée à agitée en fin de journée.",
+     "HOULE : Ouest 1 à 2 m.",
      "TEMPS : pluie, parfois éclaircies en journée.",
      "VISIBILITE : moyenne à mauvaise sous pluie."
     ]
    }
   ],
-  "prochain": "Prochain bulletin le mardi 24 novembre 2026, vers 06H15 légales",
+  "prochain": "Prochain bulletin le mardi 24 novembre 2026, vers 12H30 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-24T02:21:34.200Z"
+  "lu": "2026-11-24T05:44:00.352Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
