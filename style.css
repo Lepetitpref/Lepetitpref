@@ -1605,4 +1605,4 @@ button.wk-c{cursor:pointer}
 .base-s{display:none}@media (max-width:430px){.base-btn .base-n{display:none}.base-btn .base-s{display:inline}}
 @media (max-width:430px){.base-btn .chev{display:block;width:10px;height:7px;flex:none}.base-btn{gap:2px;padding:0 2px}.lang-btn{margin-left:4px}}
 @media (max-width:380px){.topbar>.icon-btn[href="#recherche"]{width:34px;min-width:34px}.menu-btn{padding:0 0 0 2px}.base-btn{max-width:110px}}
-/* version du site */:root{--pp-v:"20261124-2159"}
+/* version du site */:root{--pp-v:"20261124-2201"}
