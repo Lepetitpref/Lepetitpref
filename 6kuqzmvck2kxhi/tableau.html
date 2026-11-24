@@ -74,6 +74,20 @@
     <div class="pp-leg"><span><i data-draw="leg0"></i>Appareils différents (cumul des nouveaux)</span><span><i data-draw="leg1"></i>Visites (cumul)</span><span><i data-draw="leg2"></i>Revenus au moins une fois (depuis le 22/11)</span></div>
   </section>
 
+  <section class="pp-card" id="google">
+    <h2>Google (Search Console)</h2>
+    <p class="pp-sub" data-draw="g_sub">Ce que Google montre du site : affichages dans les résultats, clics, position moyenne (1 = premier résultat). Google publie avec 2 à 3 jours de retard ; relevé chaque matin.</p>
+    <section class="pp-tiles" aria-label="Google depuis le début">
+      <div class="pp-tile"><h3>Clics depuis Google</h3><b class="big" data-source="resume" data-field="google_clics" data-row="0">—</b><small data-draw="g_clics_s">—</small></div>
+      <div class="pp-tile"><h3>Affichages dans Google</h3><b class="big" data-source="resume" data-field="google_aff" data-row="0">—</b><small data-draw="g_ctr">—</small></div>
+      <div class="pp-tile"><h3>Position moyenne</h3><b class="big" data-draw="g_pos">—</b><small>1 à 10 : première page de Google ; 11 à 20 : deuxième page</small></div>
+    </section>
+    <div class="pp-two">
+      <div><h3 class="pp-h3">Pages montrées par Google (28 jours)</h3><div class="pp-bars" data-draw="g_pages" data-source="google"></div></div>
+      <div><h3 class="pp-h3">Recherches tapées (28 jours)</h3><div class="pp-bars" data-draw="g_rech" data-source="google"></div></div>
+    </div>
+  </section>
+
   <section class="pp-card" id="par-semaine">
     <h2>Par semaine et par mois</h2>
     <p class="pp-sub">« Différents » : chaque appareil compte une seule fois dans la semaine ou le mois (mesuré depuis le 18/11). « Visites » : appareils comptés une fois par jour.</p>
@@ -334,6 +348,12 @@ const bars = (el, id, lab, opts = {}) => {
 };
 dash.draw('sources', (el) => bars(el, 'sources7', 'source', { vide: 'Rien encore : la provenance est mesurée depuis le 18/11.' }));
 dash.draw('actions', (el) => bars(el, 'actions7', 'action', { vide: 'Aucune action encore : mesuré depuis le 18/11 (sauf les partages).' }));
+const gval = (r) => `${fmt(r.n)} affichage${N(r.n) > 1 ? 's' : ''} · ${fmt(r.clics)} clic${N(r.clics) > 1 ? 's' : ''} · position ${String(r.pos).replace('.', ',')}`;
+dash.draw('g_pages', (el) => bars(el, 'google', 'quoi', { filter: (r) => r.type === 'page', val: gval, vide: 'Pas encore de relevé Search Console.' }));
+dash.draw('g_rech', (el) => bars(el, 'google', 'quoi', { filter: (r) => r.type === 'recherche', val: gval, vide: 'Google masque les recherches tant qu’elles sont rares : elles apparaîtront avec plus de visites.' }));
+dash.draw('g_pos', (el) => { const x = R(); el.textContent = x && N(x.google_pos) ? String(x.google_pos).replace('.', ',') : '—'; });
+dash.draw('g_ctr', (el) => { const x = R(); el.textContent = x && N(x.google_aff) ? `${Math.round(100 * N(x.google_ctr))} % des affichages donnent un clic` : '—'; });
+dash.draw('g_clics_s', (el) => { const x = R(); el.textContent = x && x.google_dernier_jour ? `depuis le 1er novembre, données jusqu’au ${x.google_dernier_jour.split('-').reverse().slice(0, 2).join('/')}` : 'pas encore de relevé'; });
 dash.draw('seo', (el) => bars(el, 'seo7', 'page', { vide: 'Rien encore : compté depuis le 22/11 au soir.' }));
 dash.draw('retours', (el) => bars(el, 'retours7', 'quand', { vide: 'Rien encore : mesuré depuis le 18/11.' }));
 dash.draw('recherches', (el) => bars(el, 'recherches', 'trouve', { vide: 'Aucune recherche encore : mesuré depuis le 18/11.', col: (r) => (r.vide === true || r.vide === 'true' ? 'var(--color-bad)' : dash.colors[0]) }));

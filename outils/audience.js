@@ -3,7 +3,7 @@
 // Lit les totaux du compteur (clés « quiz-pp-… », écrites par app.js) et écrit des JSON HORS du dépôt ; le calcul est dans audience-calcul.js
 // (le même que la page en direct de l'éditeur).
 //   node outils/audience.js <dossier hors dépôt> [--cache <fichier>]
-// Écrit jours.json, pages.json, resume.json, semaines.json, cohortes.json, recherches.json.
+// Écrit jours.json, pages.json, resume.json, semaines.json, cohortes.json, recherches.json, google.json (Search Console).
 // Clé du compteur : variable PP_CLE (en-tête X-Pp-Key) si elle est définie ; sinon le proxy de la session l'ajoute s'il la connaît.
 // Lecture : d'abord tout d'un coup (/pp), sinon clé par clé (/get) avec un cache des jours de plus de 3 jours.
 var cp = require('child_process'), fs = require('fs'), path = require('path');
@@ -29,6 +29,19 @@ function lire(k) {
   var cache = {}; if (mode !== 'lot') { try { cache = JSON.parse(fs.readFileSync(CACHE, 'utf8')).jours || {}; } catch (x) {} }
   var r = await C.construire({ tout: tout, cache: cache, appjs: fs.readFileSync(path.join(__dirname, '..', 'app.js'), 'utf8') });
   if (mode !== 'lot') { try { fs.writeFileSync(CACHE, JSON.stringify({ maj: new Date().toISOString(), jours: r.cache })); } catch (x) {} }
+  // Google (Search Console) : relevé du matin par .github/workflows/gsc.yml → 6kuqzmvck2kxhi/gsc.json
+  try {
+    var g = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '6kuqzmvck2kxhi', 'gsc.json'), 'utf8')), rs = r.fichiers.resume[0];
+    var j7 = (g.jours || []).slice(-7), som = function (L, f) { return L.reduce(function (a, x) { return a + (x[f] || 0); }, 0); };
+    rs.google_maj = g.maj; rs.google_dernier_jour = (g.jours || []).length ? g.jours[g.jours.length - 1].d : null;
+    rs.google_clics = g.total.clics; rs.google_aff = g.total.aff; rs.google_ctr = g.total.ctr; rs.google_pos = g.total.pos;
+    rs.google_clics_7j = som(j7, 'clics'); rs.google_aff_7j = som(j7, 'aff');
+    var NOMS = { '/agenda/': 'Agenda', '/cinema/': 'Cinéma', '/marees/': 'Marées', '/restaurants/': 'Restaurants', '/marches/': 'Marchés', '/plages/': 'Plages', '/que-faire/': 'Que faire', '/pornic/': 'Pornic', '/saint-brevin/': 'Saint-Brevin', '/la-bernerie/': 'La Bernerie', '/la-plaine-sur-mer/': 'La Plaine-sur-Mer', '/saint-michel-chef-chef/': 'Saint-Michel-Chef-Chef', '/les-moutiers/': 'Les Moutiers' };
+    var nomP = function (p) { return NOMS[p] || (p === '/' ? "L'app (page d'accueil)" : p.replace(/^\/|\/$/g, '').replace(/-/g, ' ').replace(/^./, function (c) { return c.toUpperCase(); })); };
+    r.fichiers.google = (g.pages_28j || []).map(function (x) { return { k: 'p' + x.page, type: 'page', quoi: nomP(x.page), n: x.aff, clics: x.clics, pos: x.pos }; })
+      .concat((g.recherches_28j || []).map(function (x, i) { return { k: 'q' + i, type: 'recherche', quoi: x.q, n: x.aff, clics: x.clics, pos: x.pos }; }))
+      .concat((g.jours || []).map(function (x) { return { k: 'j' + x.d, type: 'jour', quoi: x.d, n: x.aff, clics: x.clics, pos: x.pos }; }));
+  } catch (x) { console.log('Search Console : pas de relevé (' + x.message + ')'); }
   Object.keys(r.fichiers).forEach(function (n) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(r.fichiers[n], null, 1)); });
   console.log('OK', out, 'appareils depuis le début :', r.fichiers.resume[0].appareils_depuis_debut, '· lecture', mode);
 })();
