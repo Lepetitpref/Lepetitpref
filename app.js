@@ -774,7 +774,7 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const ork=a=>{const o=openOn(a,od);return o?0:o===null?1:2;};
   const list=base.sort((p,q)=>ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
-  const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k));
+  const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k||(k==="bar"&&!!a.bar)));
   const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
   const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={bar:"bar",marche:"marché",produits:"adresse"};
   const slot=(o,m)=>{const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)],soir=/soir$/.test(m);const x=R.find(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5);});return x?x[0]:null;};
