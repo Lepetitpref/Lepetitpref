@@ -3,6 +3,8 @@
 # restaurant or crêperie open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
 # restaurants and crêperies with a sea view open for lunch tomorrow, nearest first. Hours are a guide only: call ahead.
+# restaurants and crêperies with a sea view: # open for lunch tomorrow, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead.
+# restaurants and crêperies: # open for lunch tomorrow, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead.
 # restaurants and crêperies: open first, then nearest first. Hours are a guide only: call ahead.
 # zones · #AUc, #AUL, #AUB, #AU
 # zones · Ne, Ns, Ngv, Np…
@@ -82,6 +84,7 @@ Département sports activities in Préfailles, #-#.
 Emergencies, health, bins, town hall and post office, local life in Préfailles.
 Ensuring that all doctors in the Pays de Retz take part in the organisation of healthcare
 Environmental education association of the Pays de Retz (based at Le Pas Renaud, Le Clion-sur-Mer), nature outings open to the public, # outings brochure on its website.
+Fermé le @J · rouvre tomorrow
 Football club of Préfailles, La Plaine and Saint-Michel.
 Four walking groups (Accro, Bon Pas, Cool, Douce); full-day walks one @J and one @J a month, trips and the mussels walk on the last @J in @M. #-# registrations closed, next at the @M # fair.
 From Préfailles
@@ -90,6 +93,7 @@ Gastronomic brotherhood (local produce of the Pays de Retz)
 Golf de Pornic sports association (avenue Scalby Newby): # competition calendar, seniors' trophy, golf school.
 Good tides over the coming weeks, calculated for Préfailles.
 Grande Plage de La Bernerie-en-Retz: « La-Bernerie-en-Retz (Loire-Atlantique) », Daniel Jolivet,
+Grande Plage et plan d'eau
 Group of childminders of La Plaine and Préfailles
 Géo'DAE ↗
 Health services around Préfailles
