@@ -1383,6 +1383,34 @@
  },
  "rules": [
   [
+   "^Fermé le lundi$",
+   "Closed on Mondays"
+  ],
+  [
+   "^Fermé le mardi$",
+   "Closed on Tuesdays"
+  ],
+  [
+   "^Fermé le mercredi$",
+   "Closed on Wednesdays"
+  ],
+  [
+   "^Fermé le jeudi$",
+   "Closed on Thursdays"
+  ],
+  [
+   "^Fermé le vendredi$",
+   "Closed on Fridays"
+  ],
+  [
+   "^Fermé le samedi$",
+   "Closed on Saturdays"
+  ],
+  [
+   "^Fermé le dimanche$",
+   "Closed on Sundays"
+  ],
+  [
    "^Fermé le lundi · rouvre demain$",
    "Closed on Mondays · open again tomorrow"
   ],
