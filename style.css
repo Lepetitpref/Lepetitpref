@@ -1593,4 +1593,4 @@ button.wk-c{cursor:pointer}
 .lphoto{flex:none;width:56px;height:56px;object-fit:cover;border-radius:10px;background:var(--bg);box-shadow:0 0 0 1px var(--line)}
 .lph{margin:0 0 10px}.lph img{display:block;width:100%;max-height:240px;object-fit:cover;border-radius:10px;background:var(--bg)}.lph figcaption{font-size:12px;color:var(--faint);margin-top:4px}
 @media (max-width:380px) and (min-width:341px){.brand{font-size:17px;gap:5px}.base-btn{max-width:104px}.base-btn span,.base-btn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
-/* version du site */:root{--pp-v:"20261124-2148"}
+/* version du site */:root{--pp-v:"20261124-2149"}
