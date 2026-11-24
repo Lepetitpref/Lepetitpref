@@ -35,6 +35,12 @@ LIEUX = {"prefailles", "pornic", "bernerie", "retz", "moutiers", "bourgneuf", "b
          "plaine", "mer", "clion", "chauve", "tharon", "sainte", "marie", "villeneuve", "centre", "port"}
 
 
+def genre(t):
+    """Plage, marché ou autre : une plage ne prend pas la photo du marché du même nom (« Marché de l'Ermitage »)."""
+    t = unicodedata.normalize("NFD", (t or "").lower()).encode("ascii", "ignore").decode()
+    return "plage" if re.search(r"\bplages?\b", t) else "marche" if re.search(r"\bmarches?\b", t) else ""
+
+
 def inclus(a, b):
     """Tous les mots du nom le plus court se retrouvent (à une lettre près) dans l'autre, et ce nom court
     n'est pas fait que de noms de lieux (« Marché de Pornic » ≠ « Patrimoine balnéaire de Pornic »)."""
@@ -67,7 +73,7 @@ def main():
             continue
         nm = f["name"].get("fr") if isinstance(f["name"], dict) else f["name"]
         lon, lat = g["coordinates"][:2]
-        cand.append((mots(nm), (lat, lon), ph[0]))
+        cand.append((mots(nm), (lat, lon), ph[0], genre(nm)))
     out = {}
     for a in acts:
         if not a.get("lat"):
@@ -76,7 +82,10 @@ def main():
         if not w:
             continue
         best = None
-        for cw, ll, ph in cand:
+        ga = genre(a["n"])
+        for cw, ll, ph, gc in cand:
+            if ga != gc:
+                continue
             if not cw:
                 continue
             d = km((a["lat"], a["lon"]), ll)
