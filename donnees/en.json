@@ -1378,7 +1378,8 @@
   "Le cinéma de Saint-Brevin, parc d'activités de la Guerche.": "Saint-Brevin's cinema, in the La Guerche business park.",
   "(accueil téléphonique du lundi au vendredi, 8h30–18h)": "(phone line Monday to Friday, 8h30–18h)",
   "Photo : office de tourisme": "Photo: tourist office",
-  "Photo office de tourisme": "Tourist office photo"
+  "Photo office de tourisme": "Tourist office photo",
+  "Tous": "All"
  },
  "rules": [
   [
@@ -3768,6 +3769,46 @@
   [
    "^(\\d+) en cours · toucher pour voir$",
    "$1 running · tap to see"
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open for lunch today, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? ce soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open tonight, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain midi, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open for lunch tomorrow, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+ [^:]+?) : (\\d+) ouverte?s? demain soir, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés\\. Horaires indicatifs, appelez avant\\.$",
+   "$1: $2 open tomorrow evening, listed first; then those with unconfirmed hours and those that are closed. Hours are a guide only: call ahead."
+  ],
+  [
+   "^Fermé ce midi$",
+   "Closed for lunch today"
+  ],
+  [
+   "^Fermé ce soir$",
+   "Closed tonight"
+  ],
+  [
+   "^Fermé demain midi$",
+   "Closed for lunch tomorrow"
+  ],
+  [
+   "^Fermé demain soir$",
+   "Closed tomorrow evening"
+  ],
+  [
+   "^Fermé le (\\p{L}+) · rouvre demain$",
+   "Closed on $1s · open again tomorrow"
+  ],
+  [
+   "^Fermé le (\\p{L}+) · rouvre (\\p{L}+)$",
+   "Closed on $1s · open again on $2"
   ],
   [
    "^(\\d+ [^:]+?) : ouverte?s? d'abord, (?:puis|then) du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
