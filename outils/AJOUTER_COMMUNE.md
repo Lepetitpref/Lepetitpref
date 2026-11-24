@@ -36,3 +36,4 @@ Le site part d'un point de départ, `BASE` (app.js, constante `BASES`) : Préfai
 ## 5. Vérifier
 `node --check app.js`, `python3 outils/verifier.py`, `node outils/anglais.js`, puis parcourir chaque rubrique avec la nouvelle commune (Playwright, iPhone 13), en clair et en sombre, et faire relire.
 - Cinéma : chercher les salles de la commune (Allociné), les ajouter à CINES, cinOK, CINF, cinName dans app.js, SALLES dans outils/bandes_annonces.py et la liste des salles de prompt_tache.md (section 2).
+- Spots de glisse : chercher les spots reconnus de la commune (FFVL, arrêtés municipaux de kite, écoles, office de tourisme) et les ajouter à SPOTSX (position sur la plage, orientation face, activités, dangers, interdictions KBAN), photo de plage dans SPOTPH.
