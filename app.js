@@ -222,8 +222,11 @@ function statusOf0(a,d){const o=openOn(a,d);
     return[inSeason?`Fermé le ${F(noon(d),{weekday:"long"})}`:`Fermé en cette saison${a.season?` · <span lang="fr">${esc(a.season)}</span>`:""}`,inSeason?"shut":"shut off"];}
   if(/Gratuit/.test(a.price||"")&&/^(nature|mer|culture|plage)$/.test(a.cat))return["Accès libre","ok"];
   return["Horaires à vérifier","chk"];}
+const photoOf=a=>{const p=(S.photos||{})[a.n];return p&&/^https:\/\/admin-rando\.loire-atlantique\.fr\/media\/[\w\/.-]+$/.test(p.u)?p:null;};
+const photoTh=a=>{const p=photoOf(a);return p?`<img class="lphoto" src="${esc(p.u)}" alt="" loading="lazy" decoding="async" width="56" height="56" onerror="this.remove()">`:"";};
 function placeMore(a){const sh=`${a.n} (${a.town})${a.tel?" · "+a.tel:""}`;
-  return `${a.d?`<p lang="fr">${esc(a.d)}</p>`:""}${a.price||a.season?`<span class="row-meta" lang="fr">${[a.price,a.season].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join(" · ")}</span>`:""}
+  const ph=photoOf(a);
+  return `${ph?`<figure class="lph"><img src="${esc(ph.u)}" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"><figcaption>${esc("Photo : "+(ph.a&&!/^DR$/i.test(ph.a)?ph.a+" (office de tourisme)":"office de tourisme"))}</figcaption></figure>`:""}${a.d?`<p lang="fr">${esc(a.d)}</p>`:""}${a.price||a.season?`<span class="row-meta" lang="fr">${[a.price,a.season].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join(" · ")}</span>`:""}
    ${telCall(a.tel)}<span class="row-links">${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">Site ↗</a>`:""}<a href="${esc(mapsUrl(a))}" target="_blank" rel="noopener">Itinéraire ↗</a><button type="button" data-share="${esc(sh)}" data-url="${esc(a.url||mapsUrl(a))}">Partager</button></span>`;}
 const MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
 function schedTxt(a){if(!a.open||!a.open.length)return "";const per=r=>r.from==="01-01"&&r.to==="12-31"?"":(()=>{const[m1,d1]=r.from.split("-").map(Number),[m2,d2]=r.to.split("-").map(Number);const md=(m,d,end)=>d===1&&!end?MOIS[m-1]:(end&&d>=28?MOIS[m-1]:d+" "+MOIS[m-1]);return m1===m2?md(m1,d1)+(d1===1&&d2>=28?"":"–"+d2):md(m1,d1)+" à "+md(m2,d2,true);})();
@@ -232,7 +235,7 @@ function schedTxt(a){if(!a.open||!a.open.length)return "";const per=r=>r.from===
 function placeRow(a,d,o={}){
   const m=o.metaH??(a.cat==="saveurs"?meta(KIND1[a.kind]||"",esc(townShort(a.town))+(isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)),isHere(a.dist,a.town)?"à pied":""):meta(esc(townShort(a.town)),kmTxt(a.dist,a.town),agesTxt(a),/^Gratuit/.test(a.price||"")?'<span class="ok">Gratuit</span>':""));
   const lines=o.lines||(a.cat==="marche"&&a.open?[statusOf(a,d),[esc(schedTxt(a)),"dim"]]:[statusOf(a,d)]);
-  return row({th:thumbOf(a),title:`<span lang="fr">${esc(a.n)}</span>`,metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
+  return row({th:photoTh(a)||thumbOf(a),title:`<span lang="fr">${esc(a.n)}</span>`,metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
 /* « Ajouter au calendrier » : fichier .ics construit sur le téléphone (rien n'est envoyé) */
 const icsV=o=>encodeURIComponent(JSON.stringify(o));
 const icsBtn=(o,l="Ajouter au calendrier")=>`<button type="button" class="ics-btn" data-act="ics" data-v="${icsV(o)}">${ic("cal","i-s")} ${l}</button>`;
@@ -2361,6 +2364,7 @@ render();
   const get=n=>fetch(`donnees/${n}.json`,{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error(n);return r.json();}).catch(e=>{if(navigator.onLine!==false)ppOnce("erreur-donnees");throw e;});
   const names=["events","cinema","assos","transports"];
   get("bandes-annonces").then(v=>{S.ba=v&&typeof v==="object"?v:{};if(curView()==="cine")render();}).catch(()=>{});
+  get("photos").then(v=>{S.photos=v&&typeof v==="object"?v:{};if(["manger","activites","soirees","agenda","sejour"].includes(curView()))render();}).catch(()=>{});
   get("affiches").then(v=>{S.aff=v&&typeof v==="object"?v:{};if(curView()==="cine")render();}).catch(()=>{});
   get("mer").then(v=>{S.mer=v;if(["mer","spots","naviguer"].includes(curView()))render();}).catch(()=>{});
   const res=await Promise.allSettled([...names.map(get),get("status")]);

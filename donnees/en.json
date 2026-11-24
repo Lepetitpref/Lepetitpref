@@ -1376,7 +1376,8 @@
   "Cinéma associatif d'une salle, tenu par des bénévoles ; ouvert du vendredi au lundi, tous les jours pendant les vacances (office de tourisme).": "One-screen community cinema run by volunteers; open Friday to Monday, every day during school holidays (tourist office).",
   "Cinéma associatif du village de Sainte-Marie-sur-Mer (Pornic). Car 303 et 315 : arrêt Sainte-Marie, place de la Marne.": "Community cinema in the village of Sainte-Marie-sur-Mer (Pornic). Bus 303 and 315: Sainte-Marie, place de la Marne stop.",
   "Le cinéma de Saint-Brevin, parc d'activités de la Guerche.": "Saint-Brevin's cinema, in the La Guerche business park.",
-  "(accueil téléphonique du lundi au vendredi, 8h30–18h)": "(phone line Monday to Friday, 8h30–18h)"
+  "(accueil téléphonique du lundi au vendredi, 8h30–18h)": "(phone line Monday to Friday, 8h30–18h)",
+  "Photo : office de tourisme": "Photo: tourist office"
  },
  "rules": [
   [
@@ -4486,6 +4487,10 @@
   [
    "^(.+?) : trop petit \\((\\d+),(\\d+) m, (\\d+)h-(\\d+)h\\)$",
    "$1: too small ($2.$3 m, $4h-$5h)"
+  ],
+  [
+   "^Photo : (.+) \\(office de tourisme\\)$",
+   "Photo: $1 (tourist office)"
   ]
  ],
  "words": {
