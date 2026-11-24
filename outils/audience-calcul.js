@@ -18,7 +18,7 @@ var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premier
   'visite-30s', 'visite-60s', 'visite-180s', 'visite-600s', 'rubriques-1', 'rubriques-2', 'rubriques-3-4', 'rubriques-5p',
   'retour-1', 'retour-2-7', 'retour-8-30', 'retour-31p', 'recherche', 'recherche-vide', 'langue-en', 'erreur-js', 'erreur-donnees',
   'choix-habitant', 'choix-visite', 'usage-spot', 'usage-trajet', 'usage-immo-adresse', 'usage-carte',
-  'type-iphone', 'type-android', 'type-tablette', 'type-ordi', 'lieu-prefailles', 'lieu-pornic',
+  'type-iphone', 'type-android', 'type-tablette', 'type-ordi', 'lieu-prefailles', 'lieu-pornic', 'lieu-brevin', 'lieu-bernerie',
   'installation-iphone', 'installation-android', 'installation-tablette', 'installation-ordi',
   'clic-installer-iphone', 'clic-installer-android', 'clic-installer-tablette', 'clic-installer-ordi',
   'page-installer-iphone', 'page-installer-android', 'page-installer-tablette', 'page-installer-ordi',
@@ -30,7 +30,6 @@ var CH = ['brut', 'appareils', 'appareils-nouveaux', 'vues', 'app', 'app-premier
 // Corrections : appareils de l'éditeur comptés avant leur exclusion (le compteur ne sait pas retirer).
 var CORR = { '2026-11-10': { appareils: -2, appareils_nouveaux: -2, app: -1 } }, CORR_TOTAL = -2;
 var ecrire = function (n, v) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(v, null, 1)); };
-var col = function (c) { return c.replace(/-/g, '_'); };
 var col = function (c) { return c.replace(/-/g, '_'); };
 async function construire(o) {
   var tout = o.tout, AUJ = paris(o.maintenant || Date.now());
@@ -67,7 +66,9 @@ async function construire(o) {
   // rubriques (7 jours complets et précédents ; entrées ; actions)
   var pv = await tout(VUES.map(function (x) { return 'vue-' + x; }));
   var p7ok = A.length === 7 && A[0].jour >= VUESJ, pAvOk = B.length === 7 && B[0].jour >= VUESJ;
-  var pages = VUES.map(function (x, i) { var k = col('vue-' + x); return { rubrique: NOMS[x], cle: x, vues_7j: p7ok ? S(A, k) : null, vues_7j_avant: pAvOk ? S(B, k) : null, vues_depuis_15_11: S(jours.filter(function (r) { return r.jour >= VUESJ && !r.en_cours; }), k), entrees_7j: S(A, col('entree-' + x)), actions_7j: S(A, col('actv-' + x)), vues_total: pv[i] || 0, page_arrivee: x === 'sejour' }; })
+  // 28 jours complets (jusqu'à hier), seulement quand ils sont tous comptés par rubrique (à partir du 15/11)
+  var A28 = jours.filter(function (r) { return r.jour > plus(hier, -28) && r.jour <= hier; }), p28ok = A28.length === 28 && A28[0].jour >= VUESJ;
+  var pages = VUES.map(function (x, i) { var k = col('vue-' + x); return { rubrique: NOMS[x], cle: x, vues_7j: p7ok ? S(A, k) : null, vues_7j_avant: pAvOk ? S(B, k) : null, vues_28j: p28ok ? S(A28, k) : null, vues_depuis_15_11: S(jours.filter(function (r) { return r.jour >= VUESJ && !r.en_cours; }), k), entrees_7j: S(A, col('entree-' + x)), actions_7j: S(A, col('actv-' + x)), vues_total: pv[i] || 0, page_arrivee: x === 'sejour' }; })
     .sort(function (a, b) { return ((b.vues_7j || 0) - (a.vues_7j || 0)) || (b.vues_total - a.vues_total); });
   // recherches : rubriques trouvées (liste RUB d'app.js)
   var rub = []; try { var src = o.appjs || '', m, re = /\["[^"]*","([^"]+)","([a-z]+\|[a-z0-9=|-]*)","[a-z]+"\]/g; while ((m = re.exec(src))) rub.push([m[1], m[2]]); } catch (x) {}
@@ -79,7 +80,7 @@ async function construire(o) {
   var tot = await tout(['appareils', 'installation', 'app-premiere', 'partage', 'chargements'].concat(ACTS.map(function (a) { return 'act-' + a; })));
   var fid = await tout(['revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10']);
   var total = tot[0] == null ? null : Math.max(0, tot[0] + CORR_TOTAL);
-  var installs = S(jours, 'installation');
+  var installs = S(jours, 'installation'), D12 = jours.filter(function (r) { return r.jour >= COMPARABLE; });
   var r0 = { maj: new Date().toISOString(), du: A.length ? A[0].jour : null, au: hier, du_avant: B.length ? B[0].jour : null, au_avant: B.length ? B[B.length - 1].jour : null,
     avant_ok: B.length === 7 && B[0].jour >= COMPARABLE, nouv_ok: A.length === 7 && A[0].jour >= MESURES2, nouv_avant_ok: B.length === 7 && B[0].jour >= MESURES2, nouv_comparable_le: plus(MESURES2, 14),
     // surdispersion : variance / moyenne des appareils par jour sur les 14 jours (à partir du 15/11) ; > 1 = les jours varient plus que le hasard seul
@@ -93,9 +94,14 @@ async function construire(o) {
     visites_depuis_debut: S(jours, 'appareils'), retours_jours_depuis_debut: S(jours, 'appareils_revenus'),
     revenus_uniques: Math.max(fid[0] || 0, S(jours, 'revenu_unique')), fideles_3: Math.max(fid[1] || 0, S(jours, 'fidele_3')), fideles_5: Math.max(fid[2] || 0, S(jours, 'fidele_5')), fideles_10: Math.max(fid[3] || 0, S(jours, 'fidele_10')), revenus_uniques_depuis: '2026-11-22',
     revenus_semaine_suivante_min: (function () { var m = {}; cohortes.forEach(function (c) { if (c.ecart > 0) m[c.premiere] = Math.max(m[c.premiere] || 0, c.appareils); }); return Object.keys(m).reduce(function (a, k) { return a + m[k]; }, 0); })(),
-    installations_depuis_debut: Math.max(installs, tot[1] || 0) + S(jours, 'app_premiere'), lancement: LANCEMENT, mesures_depuis: MESURES2 };
+    installations_depuis_debut: Math.max(installs, tot[1] || 0) + S(jours, 'app_premiere'),
+    // sans les 10 et 11/11 (essais de l'éditeur) : installations signalées (Android, ordinateur) + 1res ouvertures de l'app sur iPhone
+    installations_depuis_12: S(D12, 'installation') + S(D12, 'app_premiere'), installations_depuis_12_iphone: S(D12, 'app_premiere'), installations_depuis_12_autres: S(D12, 'installation'),
+    app_jours_depuis_debut: S(jours, 'app'), rubriques_28j_ok: p28ok, lancement: LANCEMENT, mesures_depuis: MESURES2 };
   [['appareils_jours', 'appareils'], ['nouveaux', 'appareils_nouveaux'], ['revenus', 'appareils_revenus'], ['vues', 'vues'], ['chargements', 'chargements'], ['actions', 'actions'], ['appels', 'act_appeler'], ['itineraires', 'act_itineraire'], ['calendrier', 'act_calendrier'], ['sites', 'act_site'],
-    ['partages', 'partage'], ['arrivees_partage', 'arrivee_partage'], ['app', 'app'], ['installations', 'installation'], ['app_premiere', 'app_premiere'], ['recherches', 'recherche'], ['recherches_vides', 'recherche_vide'], ['erreurs_js', 'erreur_js'], ['erreurs_donnees', 'erreur_donnees'], ['retours', 'retours'], ['seo', 'seo'], ['seo_vers_app', 'seo_vers_app']]
+    ['partages', 'partage'], ['arrivees_partage', 'arrivee_partage'], ['app', 'app'], ['installations', 'installation'], ['app_premiere', 'app_premiere'], ['recherches', 'recherche'], ['recherches_vides', 'recherche_vide'], ['erreurs_js', 'erreur_js'], ['erreurs_donnees', 'erreur_donnees'], ['retours', 'retours'], ['seo', 'seo'], ['seo_vers_app', 'seo_vers_app'],
+    ['bandes_annonces', 'act_bande_annonce'], ['moteur', 'source_moteur'], ['nouveaux_moteur', 'source_nouveau_moteur'], ['rubriques_1', 'rubriques_1'], ['rubriques_2', 'rubriques_2'], ['rubriques_3_4', 'rubriques_3_4'], ['rubriques_5p', 'rubriques_5p'],
+    ['lieu_prefailles', 'lieu_prefailles'], ['lieu_pornic', 'lieu_pornic'], ['lieu_brevin', 'lieu_brevin'], ['lieu_bernerie', 'lieu_bernerie']]
     .forEach(function (p) { r0[p[0] + '_7j'] = S(A, p[1]); r0[p[0] + '_7j_avant'] = S(B, p[1]); });
   var wPrev = semRows.filter(function (r) { return r.type === 'semaine' && r.complete; });
   r0.semaine = wPrev.length ? wPrev[wPrev.length - 1].periode : null; r0.appareils_semaine = wPrev.length ? wPrev[wPrev.length - 1].appareils_differents : null;
