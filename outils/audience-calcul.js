@@ -80,6 +80,8 @@ async function construire(o) {
   var tot = await tout(['appareils', 'installation', 'app-premiere', 'partage', 'chargements'].concat(ACTS.map(function (a) { return 'act-' + a; })));
   var fid = await tout(['revenu-unique', 'fidele-3', 'fidele-5', 'fidele-10']);
   var total = tot[0] == null ? null : Math.max(0, tot[0] + CORR_TOTAL);
+  // Android : l'événement « appinstalled » ne part pas toujours ; un « Installer » accepté dans la fenêtre compte aussi comme installation
+  jours.forEach(function (r) { var acc = (r.install_accepte_android || 0) + (r.install_accepte_ordi || 0) + (r.install_accepte_tablette || 0); if (acc > (r.installation || 0)) r.installation = acc; });
   var installs = S(jours, 'installation'), D12 = jours.filter(function (r) { return r.jour >= COMPARABLE; });
   var r0 = { maj: new Date().toISOString(), du: A.length ? A[0].jour : null, au: hier, du_avant: B.length ? B[0].jour : null, au_avant: B.length ? B[B.length - 1].jour : null,
     avant_ok: B.length === 7 && B[0].jour >= COMPARABLE, nouv_ok: A.length === 7 && A[0].jour >= MESURES2, nouv_avant_ok: B.length === 7 && B[0].jour >= MESURES2, nouv_comparable_le: plus(MESURES2, 14),
