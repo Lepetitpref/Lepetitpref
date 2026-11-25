@@ -1389,9 +1389,14 @@
   "Plage de sable fin bordée de dunes, de rochers et de pins, tournée vers le nord-ouest (entrée de l'estuaire), entre Tharon et la pointe Saint-Gildas. L'école Funglisse Kite Center (boulevard de la Mer) y enseigne le kite sur une étendue d'eau peu profonde et sans vagues, tous niveaux, structure d'accueil sur le spot ; elle dit être la seule école à utiliser cette plage. Voile (Optimist) et paddle aussi pratiqués.": "Fine sandy beach lined with dunes, rocks and pines, facing north-west (mouth of the estuary), between Tharon and the Pointe Saint-Gildas. The Funglisse Kite Center school (boulevard de la Mer) teaches kitesurfing here on shallow water without waves, all levels, with a base on the spot; it says it is the only school using this beach. Sailing (Optimist) and paddleboarding too.",
   "Rochers de part et d'autre de la plage. Baignade surveillée en juillet et août. Vent de sud-est : de terre. Aucun arrêté communal sur le kite trouvé (seulement chiens et pêche à pied) : se renseigner auprès de l'école en été.": "Rocks on both sides of the beach. Lifeguarded bathing in July and August. South-east wind: offshore. No municipal order on kitesurfing found (only dogs and shore fishing): check with the school in summer.",
   "Débutants avec l'école (eau peu profonde)": "Beginners with the school (shallow water)",
-  "Débutants à confirmés (écoles de surf sur la plage)": "Beginners to experienced (surf schools on the beach)"
+  "Débutants à confirmés (écoles de surf sur la plage)": "Beginners to experienced (surf schools on the beach)",
+  "Voir l'affiche en grand": "See the poster full size"
  },
  "rules": [
+  [
+   "^Affiche : (.+)$",
+   "Poster: $1"
+  ],
   [
    "^Fermé le lundi$",
    "Closed on Mondays"
