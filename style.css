@@ -1617,4 +1617,4 @@ button.wk-d{background:none;border:0;padding:0 2px;margin:0;font:inherit;font-si
 .wk-r.is-day{position:relative}
 .wk-r.is-day::before{content:"";position:absolute;left:-8px;top:2px;bottom:2px;width:3px;border-radius:2px;background:var(--accent)}
 .wk-r.is-day button.wk-d,.wk-r.is-day button.wk-d small{color:var(--accent)}
-/* version du site */:root{--pp-v:"20261124-2253"}
+/* version du site */:root{--pp-v:"20261125-0701"}

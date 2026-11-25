@@ -302,13 +302,14 @@
  {
   "id": "sourire-monasterien",
   "contact": "lesouriremonasterien@gmail.com",
-  "desc": "Association des Moutiers qui organise le marché de Noël « arts et saveurs ».",
+  "desc": "Association des Moutiers qui veut lutter contre l'isolement des seniors par ses activités ; elle organise aussi le marché de Noël.",
   "forWho": "Tous publics",
   "name": "Le Sourire Monastérien",
   "regular": "",
   "town": "Les Moutiers-en-Retz",
   "what": "Marché de Noël, animations",
-  "th": "loisirs"
+  "th": "loisirs",
+  "url": "https://www.mairie-lesmoutiersenretz.fr/contacts/le-sourire-monasterien/"
  },
  {
   "id": "surfrider-pays-de-retz",
@@ -1743,7 +1744,7 @@
   "name": "Coques en Bois",
   "town": "Pornic",
   "what": "Patrimoine maritime",
-  "desc": "",
+  "desc": "Association du patrimoine maritime de Pornic : restauration de bateaux anciens, ateliers, navigations et matelotage pour les adhérents.",
   "forWho": "",
   "regular": "",
   "contact": "asso-ceb@coquesenbois.com",
@@ -2103,7 +2104,7 @@
   "name": "Inséretz",
   "town": "Pornic",
   "what": "Insertion socio-professionnelle",
-  "desc": "",
+  "desc": "Entreprise associative d'insertion du Pays de Retz : mise à disposition de personnel, services aux particuliers (ménage, jardin…), chantier d'insertion, location de scooters et conseil en mobilité.",
   "forWho": "",
   "regular": "",
   "contact": "inseretz@wanadoo.fr",
@@ -2823,12 +2824,12 @@
   "name": "Les Retz Chauffeurs",
   "town": "Pornic",
   "what": "Transports accompagnés solidaires",
-  "desc": "",
+  "desc": "Chauffeurs bénévoles qui accompagnent en voiture les personnes sans autre moyen de déplacement (rendez-vous médicaux, courses, emploi, visites), de Pornic à Préfailles et dans le Pays de Retz.",
   "forWho": "",
   "regular": "",
   "contact": "lesretzchauffeurs@gmail.com",
   "url": "https://www.pornic.fr/fiche-annuaire/les-retz-chauffeurs/",
-  "th": "sport"
+  "th": "solidarite"
  },
  {
   "id": "les-roses-de-retz-pornic",

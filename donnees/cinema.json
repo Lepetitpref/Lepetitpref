@@ -1,223 +1,5 @@
 [
  {
-  "id": "2026-11-24-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-24",
-  "times": [
-   "17h30"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-24-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-24",
-  "times": [
-   "15h15"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-24-toiles-de-retz-irish-travellers",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Irish Travellers",
-  "date": "2026-11-24",
-  "times": [
-   "18h15"
-  ],
-  "version": "VOST",
-  "genre": "Documentaire",
-  "kids": false
- },
- {
-  "id": "2026-11-24-toiles-de-retz-jupiter",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Jupiter",
-  "date": "2026-11-24",
-  "times": [
-   "15h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-24-toiles-de-retz-l-affaire-marie-claire",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-24",
-  "times": [
-   "21h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-24-toiles-de-retz-wild-horse-nine",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Wild Horse Nine",
-  "date": "2026-11-24",
-  "times": [
-   "20h45"
-  ],
-  "version": "VOST",
-  "genre": "Thriller",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-camembert",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Camembert",
-  "date": "2026-11-24",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-24",
-  "times": [
-   "16h30",
-   "19h50"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-24",
-  "times": [
-   "20h40"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-jupiter",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Jupiter",
-  "date": "2026-11-24",
-  "times": [
-   "15h55",
-   "18h45"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-l-affaire-marie-claire",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'Affaire Marie-Claire",
-  "date": "2026-11-24",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Judiciaire, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-l-ile-des-souvenirs",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "L'île des souvenirs",
-  "date": "2026-11-24",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Animation",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-les-miserables",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Les Misérables",
-  "date": "2026-11-24",
-  "times": [
-   "15h25"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-24-cinejade-moulin",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Moulin",
-  "date": "2026-11-24",
-  "times": [
-   "17h50"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-24-jeanne-darc-portrait-de-femme",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Portrait de femme",
-  "date": "2026-11-24",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Drame, Romance",
-  "kids": false
- },
- {
-  "id": "2026-11-24-saint-joseph-la-gradiva",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "La Gradiva",
-  "date": "2026-11-24",
-  "times": [
-   "17h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-24-saint-joseph-le-fantome-de-l-opera",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Le Fantôme de l'Opéra",
-  "date": "2026-11-24",
-  "times": [
-   "15h"
-  ],
-  "version": "VF",
-  "genre": "Drame, Romance, Fantastique",
-  "kids": false
- },
- {
-  "id": "2026-11-24-saint-joseph-trois-adieux",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Trois adieux",
-  "date": "2026-11-24",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Drame · coup de cœur du cinéma",
-  "kids": false
- },
- {
   "id": "2026-11-25-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Hunger Games : Lever de soleil sur la moisson",
@@ -1937,6 +1719,42 @@
   ],
   "version": "VOST",
   "genre": "Biopic, Musical, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-jeanne-darc-wicker",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "Wicker",
+  "date": "2026-12-04",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Comédie, Drame, Fantastique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-saint-joseph-15-18",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "15/18",
+  "date": "2026-12-04",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-saint-michel-wild-horse-nine",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Wild Horse Nine",
+  "date": "2026-12-04",
+  "times": [
+   "20h30"
+  ],
+  "version": "VOST",
+  "genre": "Thriller",
   "kids": false
  }
 ]
