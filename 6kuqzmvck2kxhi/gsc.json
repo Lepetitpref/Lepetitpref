@@ -1,12 +1,12 @@
 {
- "maj": "2026-11-26T13:53:52+00:00",
+ "maj": "2026-11-26T14:25:27+00:00",
  "site": "https://lepetitpref.fr/",
  "depuis": "2026-11-01",
  "total": {
   "clics": 8,
-  "aff": 39,
-  "ctr": 0.205,
-  "pos": 17
+  "aff": 40,
+  "ctr": 0.2,
+  "pos": 16.9
  },
  "jours": [
   {
@@ -56,8 +56,8 @@
   {
    "page": "/agenda/",
    "clics": 1,
-   "aff": 23,
-   "pos": 14.4
+   "aff": 24,
+   "pos": 14.2
   },
   {
    "page": "/cinema/",
