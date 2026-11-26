@@ -1064,14 +1064,18 @@ function progSec(){const g=gActive();if(!g||S.events===null)return"";const d=tod
   return sec(`Votre ${wdName(d)}`,secLink("#activites","Autres idées"),body,`${K.length?`Pour ${K.length>1?listAnd(K.slice().sort((a,b)=>a-b).map(String))+" ans":K[0]+" ans"}`:"Pour adultes"}, ouvert aujourd'hui, ${zoneTxt()}.`);}
 /* accueil : ce qu'est Le Petit Préf, le temps qu'il fait, puis quatre portes */
 function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[sky,icn]=w?WMO(w.code):["",""];const H=x=>hm(new Date(x.ms));
+  /* heure de marée déjà passée (aujourd'hui) : en gris clair, barrée, pour que l'œil aille à la prochaine */
+  /* aujourd'hui : seulement les prochaines marées (celles déjà passées ne s'affichent plus) ; sinon toutes celles du jour */
+  const nx=k=>{if(d!==today())return null;const n=ts.find(x=>x.k===k&&x.ms>Date.now());return n?[n,0]:[tidesOfDay(addDays(d,1)).find(x=>x.k===k),1];};
+  const NX=k=>{const n=nx(k);return n?(n[0]?H(n[0]):"–"):ts.filter(x=>x.k===k).map(H).join("<br>")||"–";},NXd=k=>{const n=nx(k);return n&&n[1]?"demain":"";};
   const cell=(l,v,x,cls="")=>`<div class="hn-c ${cls}"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}</div>`;
   const WXNA=()=>WX.st==="load"||!WX.tried?`<span class="hn-na">…</span>`:`<span class="hn-na" aria-label="indisponible">—</span>`;
   return `<a class="home-now" href="#mer" aria-label="La mer en détail">
    ${cell("Météo",w?`${ic(icn,"i-s")} ${r0(w.tmin)}–${r0(w.tmax)}°`:WXNA(),w?sky:"","hn-wx")}
    ${cell("Vent",w?`${r0(w.w)} nds`:WXNA(),w?`${dirTxt(w.wd)}${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}`:"")}
    ${cell("Eau",e!=null?`${r1(e)}°`:WXNA(),e==null?"":e<13?"froide · combi 5/4":e<16?"fraîche · combi 4/3":e<19?"bonne · combi 3/2":"douce")}
-   ${cell("Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–","")}
-   ${cell("Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:"")}
+   ${cell("Basse mer",NX("BM"),NXd("BM"))}
+   ${cell("Pleine mer",NX("PM"),[NXd("PM"),c?`coef. ${c}`:""].filter(Boolean).join(" · "))}
    ${cell("Pluie",w?`${w.pp??0} %`:WXNA(),w&&w.pp>=60?"prévoir un abri":w?"":"")}
   </a>`;}
 /* prochains marchés à moins de 10 km (d'après les jours et heures des fiches) ; un marché déjà fini aujourd'hui ne compte pas */
