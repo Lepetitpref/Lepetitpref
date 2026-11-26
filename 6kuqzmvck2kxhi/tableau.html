@@ -314,7 +314,7 @@ dash.draw('auj', (el) => { const d = dash.data('jours'); el.replaceChildren(); i
   const inst = Math.max(N(t.installation), N(t.install_accepte_android) + N(t.install_accepte_ordi) + N(t.install_accepte_tablette)) + N(t.app_premiere);
   P(enc ? "Aujourd'hui (en cours) :" : `Le ${dmy(t.jour)} :`, `${pl(N(t.appareils), 'personne')}${N(t.appareils_nouveaux) ? `, dont ${fmt(t.appareils_nouveaux)} nouvelle${N(t.appareils_nouveaux) > 1 ? 's' : ''}` : ', aucune nouvelle'}${inst ? ` · ${pl(inst, 'installation')} de l'app` : ''}.`);
   const src = top('source_', { app: "l'app installée", direct: 'adresse tapée ou favori', moteur: 'Google', reseau: 'réseaux sociaux', site: 'lien sur un autre site', partage: 'lien partagé', campagne: 'affiche ou QR' });
-  P('Venus par :', (src || '—') + (N(t.seo) ? ` · pages pour Google : ${fmt(t.seo)}` : '') + '.');
+  P(`${pl(N(t.chargements), 'ouverture')} du site, par :`, (src || '—') + (N(t.seo) ? ` · pages pour Google : ${fmt(t.seo)}` : '') + '.');
   const vu = top('vue_', { sejour: 'Accueil', agenda: 'Agenda', activites: 'Activités', cine: 'Ciné', soirees: 'Soirées', mer: 'Mer', spots: 'Spots', naviguer: 'Naviguer', peche: 'Pêche', plages: 'Plages', manger: 'Restos', venir: 'Transports', pratique: 'Pratique', immobilier: 'Immobilier', recherche: 'Recherche', installer: 'Installer', apropos: 'À propos' });
   P('Ont regardé :', (vu || '—') + '.');
   const fait = top('act_', { appeler: 'appels', sms: 'SMS', itineraire: 'itinéraires', site: 'sites ouverts', calendrier: "ajouts à l'agenda", bande_annonce: 'bandes-annonces' });
