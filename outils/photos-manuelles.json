@@ -118,5 +118,35 @@
   "a": "Crêperie La Source (Tharon)",
   "logo": true,
   "source": "https://creperielasource.com/ (icône du site, 26/11/2026)"
+ },
+ "Les Gaillards d'Avant": {
+  "u": "images/logos/les-gaillards-d-avant.png",
+  "a": "Les Gaillards d'Avant",
+  "logo": true,
+  "source": "https://www.lesgaillardsdavant.com (icône du site, 26/11/2026)"
+ },
+ "Hirondelle": {
+  "u": "images/logos/hirondelle.png",
+  "a": "Hirondelle",
+  "logo": true,
+  "source": "https://www.associationhirondelle.fr (icône du site, 26/11/2026)"
+ },
+ "Pornicaf": {
+  "u": "images/logos/pornicaf.png",
+  "a": "Pornicaf",
+  "logo": true,
+  "source": "https://pornicaf.ffcam.fr/ (icône du site, 26/11/2026)"
+ },
+ "Réinventons-Nous": {
+  "u": "images/logos/reinventons-nous.png",
+  "a": "Réinventons-Nous",
+  "logo": true,
+  "source": "https://www.reinventonsnous.org/agenda/ (icône du site, 26/11/2026)"
+ },
+ "ASBTT – Tennis de table": {
+  "u": "images/logos/asbtt-tennis-de-table.png",
+  "a": "ASBTT – Tennis de table",
+  "logo": true,
+  "source": "https://clubtennisdetablebernerie.sportsregions.fr/ (icône du site, 26/11/2026)"
  }
 }

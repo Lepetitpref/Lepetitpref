@@ -4,7 +4,7 @@
   python3 outils/logos.py <liste.json>     liste = [{"n": nom ACTS, "url": site du lieu}]
 Télécharge dans images/logos/<slug>.png (carré, 180 px max) et ajoute l'entrée dans
 outils/photos-manuelles.json (logo:true, source). N'écrase jamais une entrée existante.
-À relire à l'œil avant publication (une planche de vignettes suffit). Écarte les icônes génériques (Wix, WordPress, Shopify…) et les images trop petites (< 96 px)."""
+À relire à l'œil avant publication (une planche de vignettes suffit). Écarte les icônes génériques (à vérifier à l'œil : WordPress, Footeo, clap de cinéma, balle…) et les images trop petites (< 96 px)."""
 import io, json, re, sys, hashlib, pathlib, unicodedata, urllib.parse, urllib.request, datetime
 from PIL import Image
 
@@ -45,7 +45,7 @@ def main():
         if x["n"] in man:
             continue
         # seulement le site du lieu lui-même : pas une mairie, un guide ou une plateforme
-        if re.search(r"visorando|atlantic-loire-valley|lefooding|pornic\.fr|villeneuvenretz|mairie|tripadvisor|google|facebook|instagram", x["url"], re.I):
+        if re.search(r"visorando|atlantic-loire-valley|lefooding|pornic\.fr|prefailles\.fr|villeneuvenretz|mairie|fest\.fr|jds\.fr|helloasso|tripadvisor|google|facebook|instagram", x["url"], re.I):
             rates.append((x["n"], "lien vers un autre site que le lieu")); continue
         try:
             html, base = get(x["url"])

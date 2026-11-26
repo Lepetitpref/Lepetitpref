@@ -1410,5 +1410,30 @@
   "u": "images/logos/creperie-la-source-tharon.png",
   "a": "Crêperie La Source (Tharon)",
   "logo": true
+ },
+ "Les Gaillards d'Avant": {
+  "u": "images/logos/les-gaillards-d-avant.png",
+  "a": "Les Gaillards d'Avant",
+  "logo": true
+ },
+ "Hirondelle": {
+  "u": "images/logos/hirondelle.png",
+  "a": "Hirondelle",
+  "logo": true
+ },
+ "Pornicaf": {
+  "u": "images/logos/pornicaf.png",
+  "a": "Pornicaf",
+  "logo": true
+ },
+ "Réinventons-Nous": {
+  "u": "images/logos/reinventons-nous.png",
+  "a": "Réinventons-Nous",
+  "logo": true
+ },
+ "ASBTT – Tennis de table": {
+  "u": "images/logos/asbtt-tennis-de-table.png",
+  "a": "ASBTT – Tennis de table",
+  "logo": true
  }
 }
