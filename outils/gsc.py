@@ -31,6 +31,7 @@ def jeton(cle):
 
 def requete(tok, site, corps):
     u = f"https://www.googleapis.com/webmasters/v3/sites/{urllib.parse.quote(site, safe='')}/searchAnalytics/query"
+    corps = dict(corps, dataState="all")  # données récentes (« fraîches ») comprises : Google les ajoute quelques heures après
     rq = urllib.request.Request(u, json.dumps(corps).encode(), {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"})
     with urllib.request.urlopen(rq, timeout=60) as r:
         return json.load(r).get("rows", [])
@@ -52,8 +53,13 @@ def main():
     if not site:
         sys.exit("Aucune propriété Search Console accessible (le compte de service est-il ajouté ?)")
     r2 = lambda x: round(x, 3)
-    jours = [{"d": r["keys"][0], "clics": r["clicks"], "aff": r["impressions"], "pos": round(r["position"], 1)}
-             for r in requete(tok, site, {"startDate": deb.isoformat(), "endDate": fin.isoformat(), "dimensions": ["date"], "rowLimit": 500})]
+    vus = {r["keys"][0]: r for r in requete(tok, site, {"startDate": deb.isoformat(), "endDate": fin.isoformat(), "dimensions": ["date"], "rowLimit": 500})}
+    # Google ne renvoie pas les jours sans aucun affichage : on les remet à 0 depuis le premier jour connu, jusqu'à avant-hier
+    jours, d = [], min([datetime.date.fromisoformat(k) for k in vus] or [fin])
+    while d <= fin - datetime.timedelta(days=1):
+        r = vus.get(d.isoformat())
+        jours.append({"d": d.isoformat(), "clics": r["clicks"] if r else 0, "aff": r["impressions"] if r else 0, "pos": round(r["position"], 1) if r else 0})
+        d += datetime.timedelta(days=1)
     pages = [{"page": urllib.parse.urlparse(r["keys"][0]).path or "/", "clics": r["clicks"], "aff": r["impressions"], "pos": round(r["position"], 1)}
              for r in requete(tok, site, {"startDate": d28, "endDate": fin.isoformat(), "dimensions": ["page"], "rowLimit": 100})]
     recs = [{"q": r["keys"][0], "clics": r["clicks"], "aff": r["impressions"], "pos": round(r["position"], 1)}
