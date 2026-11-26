@@ -41,7 +41,7 @@
 .pp-bar b{text-align:right;font-variant-numeric:tabular-nums;font-weight:var(--cds-font-weight-medium)}
 .pp-empty{color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);margin:6px 0 0}
 .pp-more{display:grid;gap:var(--cds-gap-lg)}
-.pp-more>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);color:var(--color-fg)}
+.pp-more>summary::before,.pp-notes>summary::before{content:"▸";display:inline-block;margin-right:8px;transition:transform .15s}.pp-more[open]>summary::before,.pp-notes[open]>summary::before{transform:rotate(90deg)}.pp-notes>summary{color:var(--color-accent,#2f78ab);font-weight:600}.pp-more>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);color:var(--color-fg)}
 .pp-more>.pp-card{margin-top:var(--cds-gap-md)}
 .pp-notes summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--color-fg-muted);font-size:var(--cds-font-size-body)}
 .pp-notes p,.pp-notes li,.pp-more li{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:6px 0 0}
@@ -111,17 +111,17 @@
     <h3 class="pp-h3">Retours, 7 jours</h3>
     <div class="pp-bars" data-draw="retours" data-source="retours7"></div>
     <section class="pp-tiles" style="margin-top:var(--cds-gap-md)" aria-label="L'app installée">
-      <div class="pp-tile"><h3>Installations de l'app</h3><b class="big" data-source="resume" data-field="installations_depuis_12" data-row="0" data-draw="t_inst">—</b><small data-draw="s_inst">—</small></div>
-      <div class="pp-tile"><h3>Jours d'usage de l'app</h3><b class="big" data-source="resume" data-field="app_jours_depuis_debut" data-row="0" data-draw="t_usage">—</b><small data-draw="s_usage">—</small></div>
+      <div class="pp-tile"><h3>Personnes qui ont installé l'app</h3><b class="big" data-source="resume" data-field="installations_depuis_12" data-row="0" data-draw="t_inst">—</b><small data-draw="s_inst">—</small></div>
+      <div class="pp-tile"><h3>Utilisations de l'app installée</h3><b class="big" data-source="resume" data-field="app_jours_depuis_debut" data-row="0" data-draw="t_usage">—</b><small data-draw="s_usage">—</small></div>
     </section>
     <details class="pp-notes">
-      <summary>Entonnoir d'installation, iPhone et Android</summary>
+      <summary>Où les gens s'arrêtent en installant l'app</summary>
       <div class="pp-bars" data-draw="appli" data-source="appli7"></div>
     </details>
   </section>
 
   <details class="pp-more" id="details">
-    <summary>Détails et méthode</summary>
+    <summary>Plus de détails (cumuls, appareils, méthode)</summary>
 
     <section class="pp-card" id="cumul">
       <h2>Depuis le lancement</h2>
@@ -369,10 +369,10 @@ dash.draw('cohu', (el) => { const c = dash.data('cohortes'), s = dash.data('sema
   const n = N(c.data.find((r) => r.premiere === cand && N(r.ecart) === 0).appareils), m = N((c.data.find((r) => r.premiere === cand && N(r.ecart) === 1) || {}).appareils), nx = W[P.indexOf(cand) + 1];
   el.textContent = `Des ${fmt(n)} nouveaux de la semaine du ${dmy(W[P.indexOf(cand)].du)}, ${fmt(m)} revu${m > 1 ? 's' : ''} la semaine suivante${T(nx.complete) || nx.jours === 7 && nx.au < (R() || {}).au ? '' : ' (semaine en cours, à suivre)'}.`; });
 dash.draw('s_inst', (el) => { const x = R(), j = J(); if (!x || !j) { el.textContent = '—'; return; } const e = sum(j.filter((r) => r.jour < APRES), 'installation', 'app_premiere');
-  el.textContent = `depuis le 12/11 : ${fmt(x.installations_depuis_12_iphone)} sur iPhone (1re ouverture), ${fmt(x.installations_depuis_12_autres)} sur Android ou ordinateur. Les ${fmt(e)} des 10–11/11 étaient des essais.`; });
+  el.textContent = `${fmt(x.installations_depuis_12_iphone)} sur iPhone, ${fmt(x.installations_depuis_12_autres)} sur Android, depuis le 12/11 (sans compter vos ${fmt(e)} essais du lancement).`; });
 dash.draw('t_inst', (el) => { const x = R(); el.textContent = x ? fmt(x.installations_depuis_12) : '—'; });
 dash.draw('t_usage', (el) => { const x = R(); el.textContent = x ? fmt(x.app_jours_depuis_debut) : '—'; });
-dash.draw('s_usage', (el) => { const x = R(); el.textContent = x ? `depuis le lancement, ${fmt(x.app_7j)} sur 7 jours : une fois par appareil et par jour, ce ne sont pas des installations` : '—'; });
+dash.draw('s_usage', (el) => { const x = R(); el.textContent = x ? `Nombre de fois où quelqu'un a ouvert l'app depuis son écran d'accueil (au plus une fois par jour et par téléphone), depuis le lancement. Cette semaine : ${fmt(x.app_7j)}.` : '—'; });
 
 /* ---------- barres ---------- */
 const bars = (el, id, lab, opts = {}) => {
