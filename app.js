@@ -774,10 +774,10 @@ function mGrid(base,od){const cur=MSECT.includes(S.mk)?null:S.mk,sec=cur?(MSECT.
   if(ks.length<2&&!cur)return"";
   const back=S.mkSec&&S.mkSec!==S.mk?S.mkSec:"tous";
   let kk=ks; /* toutes les vignettes restent ; la choisie est en bleu, sa liste suit dessous (#acsel) */
-  const fold=sec==="tous"&&!S.mgAll&&kk.length>4;if(fold){const pref=["restaurant","bar","marche","boulangerie","huitres"];kk=[...pref.map(k=>kk.find(x=>x[0]===k)).filter(Boolean),...kk.filter(x=>!pref.includes(x[0]))].slice(0,4);if(cur&&!kk.some(x=>x[0]===cur)){const c=ks.find(x=>x[0]===cur);if(c)kk[3]=c;}}
+  const fold=sec==="tous"&&S.mgFew&&kk.length>4;if(fold){const pref=["restaurant","bar","marche","boulangerie","huitres"];kk=[...pref.map(k=>kk.find(x=>x[0]===k)).filter(Boolean),...kk.filter(x=>!pref.includes(x[0]))].slice(0,4);if(cur&&!kk.some(x=>x[0]===cur)){const c=ks.find(x=>x[0]===cur);if(c)kk[3]=c;}}
   return `<div class="acgrid" role="group" aria-label="Types d'adresses">${kk.map(([k,l])=>{const R0=sec==="tous"&&k==="restaurant",L=R0?base.filter(isResto):of(k),o=L.filter(a=>openOn(a,od)).length;
     return `<button type="button" class="actile" data-act="mk" data-v="${R0?"tables":cur===k?back:k}" aria-pressed="${cur===k}" style="--c:var(--i-food)"><span class="actile-ic">${ic(MIC[k]||(CUIS.find(c=>"t:"+c[0]===k)||[])[3]||"fork")}</span><span class="actile-t"><b>${esc(k==="restaurant"&&sec==="tous"?"Restaurants et crêperies":l)}</b><small>${o?`${o} ouvert${o>1?"s":""} sur ${L.length}`:`${L.length} adresse${L.length>1?"s":""}`}</small></span></button>`;}).join("")}</div>
-  ${fold?`<button type="button" class="ac-more mg-all" data-act="mgall">Toutes les catégories (${ks.length}) ▾</button>`:sec==="tous"&&S.mgAll&&ks.length>4?`<button type="button" class="ac-more mg-all" data-act="mgall">Moins de catégories ▴</button>`:""}
+  ${fold?`<button type="button" class="ac-more mg-all" data-act="mgall">Toutes les catégories (${ks.length}) ▾</button>`:sec==="tous"&&!S.mgFew&&ks.length>4?`<button type="button" class="ac-more mg-all" data-act="mgall">Moins de catégories ▴</button>`:""}
   ${sec==="produits"&&!base.some(a=>a.kind==="poisson")?(()=>{const f=ACTS.filter(a=>a.cat==="saveurs"&&a.kind==="poisson").map(a=>[a,(a.dist??TOWN_KM[a.town])??99]).sort((x,y)=>x[1]-y[1])[0];return f?`<p class="group-note mg-fish">${ic("fish","i-s")} <span><b>Poissonnerie</b> : aucune ${S.mWhere==="ici"?"à "+esc(BASE.n):`à moins de ${S.mWhere} km`}. La plus proche : ${esc(f[0].n)}, ${esc(townShort(f[0].town))} (${Math.round(f[1])} km). Le poisson se trouve aussi sur les marchés.</span> <button type="button" class="lnk" data-act="mfish" data-v="${f[1]<=20?"20":"30"}">Voir</button></p>`:"";})():""}
 `;}
 function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?S.mMom:null,od=mom&&mom[0]==="d"?addDays(t,1):od0,momL=mom?(MMOM.find(x=>x[0]===mom)||[])[1]:"";
@@ -2214,7 +2214,7 @@ const ACT={
 
   trmap:(v,el)=>trMap(el),
   dpday:v=>{const [c,d]=v.split("|");if(CHG[c])CHG[c](d);render();},
-  mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},mmom:v=>{S.mMom=!v||S.mMom===v?null:v;if(S.mMom)S.openToday=false;render();},mgall:()=>{S.mgAll=!S.mgAll;render();},mfish:v=>{S.mWhere=v;sset("pp-mwhere",v);S.mk="poisson";S.mkSec="produits";render();requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
+  mcadre:v=>{S.mCadre=S.mCadre===v?null:v;render();},mmom:v=>{S.mMom=!v||S.mMom===v?null:v;if(S.mMom)S.openToday=false;render();},mgall:()=>{S.mgFew=!S.mgFew;render();},mfish:v=>{S.mWhere=v;sset("pp-mwhere",v);S.mk="poisson";S.mkSec="produits";render();requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
   where20:()=>{S.where="20";sset("cf-where","20");render();},
   mwhere20:()=>{const w=S.where==="ici"?"10":S.where;S.mWhere=w;S.openToday=true;sset("pp-mwhere",w);},
   mersel:v=>{S.merSel=S.merSel===v?null:v;render();},
