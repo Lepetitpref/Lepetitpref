@@ -1,250 +1,5 @@
 [
  {
-  "id": "2026-11-25-toiles-de-retz-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-25",
-  "times": [
-   "14h50"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
-  "kids": false
- },
- {
-  "id": "2026-11-25-toiles-de-retz-il-faut-bruler-maman",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-25",
-  "times": [
-   "21h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-25-toiles-de-retz-jupiter",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Jupiter",
-  "date": "2026-11-25",
-  "times": [
-   "15h30",
-   "18h05"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-toiles-de-retz-paper-tiger",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Paper Tiger",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Policier, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-toiles-de-retz-paper-tiger-vost",
-  "cinema": "Ciné Toiles de Retz (Pornic)",
-  "film": "Paper Tiger",
-  "date": "2026-11-25",
-  "times": [
-   "18h15"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Policier, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-billie-a-la-croisee-des-mondes",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Billie, à la croisée des mondes",
-  "date": "2026-11-25",
-  "times": [
-   "14h",
-   "16h15",
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Fantastique",
-  "kids": true
- },
- {
-  "id": "2026-11-25-cinejade-camembert",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Camembert",
-  "date": "2026-11-25",
-  "times": [
-   "16h15",
-   "18h30"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Hunger Games : Lever de soleil sur la moisson",
-  "date": "2026-11-25",
-  "times": [
-   "16h55",
-   "19h55"
-  ],
-  "version": "VF",
-  "genre": "Action, Aventure, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-il-faut-bruler-maman",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Il faut brûler Maman",
-  "date": "2026-11-25",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Comédie",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-jupiter",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Jupiter",
-  "date": "2026-11-25",
-  "times": [
-   "18h30"
-  ],
-  "version": "VF",
-  "genre": "Thriller, Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-le-merveilleux-hiver-de-tom-le-chat",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Le Merveilleux hiver de Tom le chat",
-  "date": "2026-11-25",
-  "times": [
-   "15h45"
-  ],
-  "version": "VF",
-  "genre": "Animation, Aventure, Comédie",
-  "kids": true
- },
- {
-  "id": "2026-11-25-cinejade-quelques-mots-d-amour",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Quelques mots d'amour",
-  "date": "2026-11-25",
-  "times": [
-   "14h"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-25-cinejade-wild-horse-nine",
-  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
-  "film": "Wild Horse Nine",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Thriller",
-  "kids": false
- },
- {
-  "id": "2026-11-25-jeanne-darc-olivia",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Olivia",
-  "date": "2026-11-25",
-  "times": [
-   "10h30"
-  ],
-  "version": "VF",
-  "genre": "Animation",
-  "kids": true
- },
- {
-  "id": "2026-11-25-jeanne-darc-pressure",
-  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
-  "film": "Pressure",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VOST",
-  "genre": "Thriller, Historique, Guerre",
-  "kids": false
- },
- {
-  "id": "2026-11-25-saint-joseph-l-arabe",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "L’Arabe",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame",
-  "kids": false
- },
- {
-  "id": "2026-11-25-saint-joseph-quelques-mots-d-amour",
-  "cinema": "Cinéma Saint-Joseph (Pornic)",
-  "film": "Quelques mots d'amour",
-  "date": "2026-11-25",
-  "times": [
-   "18h"
-  ],
-  "version": "VF",
-  "genre": "Comédie dramatique",
-  "kids": false
- },
- {
-  "id": "2026-11-25-saint-michel-le-mystere-lucy-lost",
-  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
-  "film": "Le Mystère Lucy Lost",
-  "date": "2026-11-25",
-  "times": [
-   "15h30"
-  ],
-  "version": "VF",
-  "genre": "Animation, Famille, Aventure",
-  "kids": true
- },
- {
-  "id": "2026-11-25-atlantique-moulin",
-  "cinema": "L'Atlantique (Préfailles)",
-  "film": "Moulin",
-  "date": "2026-11-25",
-  "times": [
-   "20h30"
-  ],
-  "version": "VF",
-  "genre": "Drame, Historique",
-  "kids": false
- },
- {
-  "id": "2026-11-25-atlantique-un-amour-d-epouvantail",
-  "cinema": "L'Atlantique (Préfailles)",
-  "film": "Un amour d’épouvantail",
-  "date": "2026-11-25",
-  "times": [
-   "16h"
-  ],
-  "version": "VF",
-  "genre": "Animation · dès 3 ans, Mois des Tout-Petits",
-  "kids": true
- },
- {
   "id": "2026-11-26-toiles-de-retz-club-kid",
   "cinema": "Ciné Toiles de Retz (Pornic)",
   "film": "Club Kid",
@@ -325,7 +80,7 @@
    "18h"
   ],
   "version": "VF",
-  "genre": "Animation, Famille, Fantastique",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
   "kids": true
  },
  {
@@ -350,7 +105,7 @@
    "17h10"
   ],
   "version": "VF",
-  "genre": "Action, Aventure, Drame",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
   "kids": false
  },
  {
@@ -531,7 +286,7 @@
    "18h"
   ],
   "version": "VF",
-  "genre": "Animation, Famille, Fantastique",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
   "kids": true
  },
  {
@@ -557,7 +312,7 @@
    "20h"
   ],
   "version": "VF",
-  "genre": "Action, Aventure, Drame",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
   "kids": false
  },
  {
@@ -594,7 +349,7 @@
    "17h10"
   ],
   "version": "VF",
-  "genre": "Thriller, Drame",
+  "genre": "Thriller, Drame · interdit aux moins de 12 ans",
   "kids": false
  },
  {
@@ -741,7 +496,7 @@
    "20h45"
   ],
   "version": "VF",
-  "genre": "Animation, Famille, Fantastique",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
   "kids": true
  },
  {
@@ -767,7 +522,7 @@
    "20h"
   ],
   "version": "VF",
-  "genre": "Action, Aventure, Drame",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
   "kids": false
  },
  {
@@ -978,7 +733,7 @@
    "16h15"
   ],
   "version": "VF",
-  "genre": "Animation, Famille, Fantastique",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
   "kids": true
  },
  {
@@ -1004,7 +759,7 @@
    "19h55"
   ],
   "version": "VF",
-  "genre": "Action, Aventure, Drame",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
   "kids": false
  },
  {
@@ -1626,6 +1381,106 @@
   "kids": false
  },
  {
+  "id": "2026-12-02-cinejade-asterix-le-royaume-de-nubie",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Astérix - Le Royaume de Nubie",
+  "date": "2026-12-02",
+  "times": [
+   "13h55",
+   "16h20",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-02-cinejade-billie-a-la-croisee-des-mondes",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Billie, à la croisée des mondes",
+  "date": "2026-12-02",
+  "times": [
+   "13h55",
+   "18h20"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-02-cinejade-camembert",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Camembert",
+  "date": "2026-12-02",
+  "times": [
+   "13h55"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-cinejade-claude",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Claude",
+  "date": "2026-12-02",
+  "times": [
+   "15h50",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-02",
+  "times": [
+   "17h45"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-cinejade-jupiter",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Jupiter",
+  "date": "2026-12-02",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-cinejade-les-braves-coward",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Braves (Coward)",
+  "date": "2026-12-02",
+  "times": [
+   "18h10"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-12-02-cinejade-scrooge",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Scrooge",
+  "date": "2026-12-02",
+  "times": [
+   "15h50"
+  ],
+  "version": "VF",
+  "genre": "Fantastique, Drame, Aventure",
+  "kids": false
+ },
+ {
   "id": "2026-12-02-jeanne-darc-esprit-s-rebelle-s",
   "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
   "film": "Esprit(s) rebelle(s)",
@@ -1686,6 +1541,139 @@
   "kids": true
  },
  {
+  "id": "2026-12-02-atlantique-quelques-mots-d-amour",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Quelques mots d'amour",
+  "date": "2026-12-02",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie dramatique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-asterix-le-royaume-de-nubie",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Astérix - Le Royaume de Nubie",
+  "date": "2026-12-03",
+  "times": [
+   "16h15"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-03-cinejade-billie-a-la-croisee-des-mondes",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Billie, à la croisée des mondes",
+  "date": "2026-12-03",
+  "times": [
+   "14h",
+   "17h50"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-03-cinejade-camembert",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Camembert",
+  "date": "2026-12-03",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-claude",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Claude",
+  "date": "2026-12-03",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-connaissance-du-monde-viva-argentina-des-chutes-d-iguazu-a-la-patagonie",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Connaissance du Monde : Viva Argentina ! Des chutes d'Iguazù à la Patagonie",
+  "date": "2026-12-03",
+  "times": [
+   "14h30"
+  ],
+  "version": "VF",
+  "genre": "Documentaire",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-03",
+  "times": [
+   "17h20"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-hunger-games-lever-de-soleil-sur-la-moisson-vost",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-03",
+  "times": [
+   "19h50"
+  ],
+  "version": "VOST",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-12-03",
+  "times": [
+   "18h05"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-jupiter",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Jupiter",
+  "date": "2026-12-03",
+  "times": [
+   "16h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-03-cinejade-les-braves-coward",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Braves (Coward)",
+  "date": "2026-12-03",
+  "times": [
+   "20h15"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique, Romance",
+  "kids": false
+ },
+ {
   "id": "2026-12-03-jeanne-darc-octobre-a-paris",
   "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
   "film": "Octobre à Paris",
@@ -1722,6 +1710,116 @@
   "kids": false
  },
  {
+  "id": "2026-12-04-cinejade-asterix-le-royaume-de-nubie",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Astérix - Le Royaume de Nubie",
+  "date": "2026-12-04",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-04-cinejade-billie-a-la-croisee-des-mondes",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Billie, à la croisée des mondes",
+  "date": "2026-12-04",
+  "times": [
+   "14h",
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-04-cinejade-camembert",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Camembert",
+  "date": "2026-12-04",
+  "times": [
+   "16h30",
+   "18h25"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-claude",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Claude",
+  "date": "2026-12-04",
+  "times": [
+   "16h30"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-04",
+  "times": [
+   "19h55"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-hunger-games-lever-de-soleil-sur-la-moisson-vost",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-04",
+  "times": [
+   "14h"
+  ],
+  "version": "VOST",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-12-04",
+  "times": [
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-les-braves-coward",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Braves (Coward)",
+  "date": "2026-12-04",
+  "times": [
+   "14h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-cinejade-scrooge",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Scrooge",
+  "date": "2026-12-04",
+  "times": [
+   "18h25"
+  ],
+  "version": "VF",
+  "genre": "Fantastique, Drame, Aventure",
+  "kids": false
+ },
+ {
   "id": "2026-12-04-jeanne-darc-wicker",
   "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
   "film": "Wicker",
@@ -1755,6 +1853,190 @@
   ],
   "version": "VOST",
   "genre": "Thriller",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-atlantique-l-affaire-marie-claire",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-12-04",
+  "times": [
+   "15h"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-04-atlantique-l-arabe",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "L’Arabe",
+  "date": "2026-12-04",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-asterix-le-royaume-de-nubie",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Astérix - Le Royaume de Nubie",
+  "date": "2026-12-05",
+  "times": [
+   "14h",
+   "16h25",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Aventure · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-05-cinejade-billie-a-la-croisee-des-mondes",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Billie, à la croisée des mondes",
+  "date": "2026-12-05",
+  "times": [
+   "14h",
+   "18h20"
+  ],
+  "version": "VF",
+  "genre": "Animation, Famille, Fantastique · dès 6 ans",
+  "kids": true
+ },
+ {
+  "id": "2026-12-05-cinejade-claude",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Claude",
+  "date": "2026-12-05",
+  "times": [
+   "14h",
+   "20h45"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-hunger-games-lever-de-soleil-sur-la-moisson",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Hunger Games : Lever de soleil sur la moisson",
+  "date": "2026-12-05",
+  "times": [
+   "17h40"
+  ],
+  "version": "VF",
+  "genre": "Action, Aventure, Drame · interdit aux moins de 12 ans",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-il-faut-bruler-maman",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Il faut brûler Maman",
+  "date": "2026-12-05",
+  "times": [
+   "15h50"
+  ],
+  "version": "VF",
+  "genre": "Comédie",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-jupiter",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Jupiter",
+  "date": "2026-12-05",
+  "times": [
+   "18h35"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-les-braves-coward",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Les Braves (Coward)",
+  "date": "2026-12-05",
+  "times": [
+   "16h"
+  ],
+  "version": "VF",
+  "genre": "Drame, Historique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-cinejade-scrooge",
+  "cinema": "Cinéjade (Saint-Brevin-les-Pins)",
+  "film": "Scrooge",
+  "date": "2026-12-05",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Fantastique, Drame, Aventure",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-jeanne-darc-l-affaire-marie-claire",
+  "cinema": "Cinéma Jeanne d'Arc (La Bernerie-en-Retz)",
+  "film": "L'Affaire Marie-Claire",
+  "date": "2026-12-05",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Thriller, Judiciaire, Historique",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-saint-joseph-samson-et-dalila-metropolitan-opera",
+  "cinema": "Cinéma Saint-Joseph (Pornic)",
+  "film": "Samson et Dalila (Metropolitan Opera)",
+  "date": "2026-12-05",
+  "times": [
+   "17h55"
+  ],
+  "version": "VOST",
+  "genre": "Opéra",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-saint-michel-billie-melody",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Billie Melody",
+  "date": "2026-12-05",
+  "times": [
+   "18h"
+  ],
+  "version": "VF",
+  "genre": "Drame",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-saint-michel-le-fantome-de-l-opera",
+  "cinema": "Cinéma Saint-Michel (Saint-Michel-Chef-Chef)",
+  "film": "Le Fantôme de l'Opéra",
+  "date": "2026-12-05",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Fantastique, Romance",
+  "kids": false
+ },
+ {
+  "id": "2026-12-05-atlantique-karma",
+  "cinema": "L'Atlantique (Préfailles)",
+  "film": "Karma",
+  "date": "2026-12-05",
+  "times": [
+   "20h30"
+  ],
+  "version": "VF",
+  "genre": "Drame, Thriller · interdit aux moins de 12 ans",
   "kids": false
  }
 ]

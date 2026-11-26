@@ -10,7 +10,7 @@
   "category": "Exposition sculpture",
   "org": "Office de tourisme de Paimbœuf",
   "desc": "Sculptures monumentales en métal recyclé de l'artiste paimblotin, à voir librement le long des quais, chaque œuvre avec un QR code vidéo ; gratuit.",
-  "url": "https://www.saint-brevin.com/expo-en-plein-air-christian-champin.html",
+  "url": "https://www.fest.fr/expo-en-plein-air-christian-champin-2534211.html",
   "free": true,
   "kids": true,
   "end": "2026-11-29"
@@ -348,36 +348,6 @@
   "url": "https://en.pornic.com/exposition-l-abbaye-notre-dame-de-buzay-une-histoire-cistercienne-en-pays-de-retz-la-bernerie-en-retz.html"
  },
  {
-  "id": "2026-11-23-ballet-cinema-histoire-manon-brevin",
-  "category": "Ballet au cinéma",
-  "date": "2026-11-23",
-  "desc": "Retransmission du ballet de Kenneth MacMillan sur la musique de Massenet, d'après l'Abbé Prévost, 15 € (7 € moins de 18 ans), billetterie en ligne, sur place ou au 02 40 39 39 39.",
-  "free": false,
-  "kids": false,
-  "org": "Cinéjade",
-  "place": "Cinéjade, 2 avenue des Frères-Lumière",
-  "time": "",
-  "title": "Ballet au cinéma : L'Histoire de Manon (Royal Ballet)",
-  "town": "Saint-Brevin-les-Pins",
-  "type": "spectacle",
-  "url": "https://www.saint-brevin.com/ballet-l-histoire-de-manon.html"
- },
- {
-  "id": "2026-11-23-bus-numerique-prefailles",
-  "title": "Bus du numérique",
-  "date": "2026-11-23",
-  "time": "",
-  "place": "Place du marché",
-  "town": "Préfailles",
-  "type": "atelier",
-  "category": "Aide numérique",
-  "org": "Le Numérique en Cœur",
-  "desc": "Accompagnement numérique individuel et gratuit d'une heure dans une caravane (e-mail, démarches en ligne, santé, CAF, arnaques sur Internet…), sur inscription.",
-  "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
-  "free": true,
-  "kids": false
- },
- {
   "id": "2026-11-23-espace-detente-aquacentre-pornic",
   "title": "Semaine découverte de l'espace détente de l'Aquacentre",
   "date": "2026-11-23",
@@ -392,68 +362,6 @@
   "free": false,
   "kids": false,
   "end": "2026-11-29"
- },
- {
-  "id": "2026-11-23-vada-pause-cafe-plaine",
-  "category": "Rencontre conviviale",
-  "date": "2026-11-23",
-  "desc": "Moment convivial gratuit de 10h à 12h au pôle associatif de l'Ormelette, proposé les 2e et 4e lundis du mois; renseignements en mairie au 02 40 21 50 14.",
-  "free": true,
-  "kids": false,
-  "org": "Commune de La Plaine-sur-Mer (VADA)",
-  "place": "Pôle associatif de l'Ormelette, 2 rue Jean Moulin",
-  "time": "10h00",
-  "title": "VADA : pause-café",
-  "town": "La Plaine-sur-Mer",
-  "type": "vielocale",
-  "url": "https://www.laplainesurmer.fr/agenda/vada-pause-cafe-3/"
- },
- {
-  "id": "2026-11-23-atelier-motricite-st-pere",
-  "title": "Atelier motricité (0-3 ans)",
-  "date": "2026-11-23",
-  "time": "10h30",
-  "place": "Dojo, 18 rue du Grand Fay",
-  "town": "Saint-Père-en-Retz",
-  "type": "atelier",
-  "category": "Mois des tout-petits",
-  "org": "Relais petite enfance",
-  "desc": "Atelier motricité d'1h pour les 0-3 ans, animé par le Relais petite enfance dans le cadre du Mois des tout-petits ; gratuit sur réservation auprès de la médiathèque.",
-  "url": "https://www.saint-brevin.com/atelier-motricite.html",
-  "free": true,
-  "kids": true,
-  "ageMin": 0,
-  "ageMax": 3
- },
- {
-  "id": "2026-11-23-reunion-fibre-moutiers",
-  "title": "Réunion d'information : fin du réseau cuivre et passage à la fibre",
-  "date": "2026-11-23",
-  "time": "18h",
-  "place": "Salle Jean Varnier, 31b rue de Prigny",
-  "town": "Les Moutiers-en-Retz",
-  "type": "vielocale",
-  "category": "Réunion publique",
-  "org": "Mairie des Moutiers-en-Retz",
-  "desc": "Rencontre avec Fibre44 sur la fermeture du réseau cuivre et ses effets sur le téléphone fixe, les alarmes et la téléassistance.",
-  "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/reunion-dinformation-deploiement-de-la-fibre-fin-du-reseau-cuivre/",
-  "free": true,
-  "kids": false
- },
- {
-  "id": "2026-11-23-soiree-ecrans-chaumes",
-  "title": "Soirée familles : les écrans, une question d'équilibre",
-  "date": "2026-11-23",
-  "time": "18h30–20h",
-  "place": "Salle Ellipse",
-  "town": "Chaumes-en-Retz",
-  "type": "atelier",
-  "category": "Conférence parents",
-  "org": "Pornic agglo Pays de Retz",
-  "desc": "Conférence pour les familles sur le temps d'écran et les addictions avec le champion de BMX Joris Bretagnolles, puis show de BMX freestyle ; gratuit, sur réservation.",
-  "url": "https://www.pornicagglo.fr/evenement/soiree-familles-les-ecrans-une-question-dequilibre/",
-  "free": true,
-  "kids": true
  },
  {
   "id": "2026-11-24-boite-lettres-pere-noel-ste-pazanne",
@@ -2444,6 +2352,21 @@
   "kids": false
  },
  {
+  "id": "2026-11-29-raid-pecheries-brevin",
+  "title": "Raid des pêcheries (char à voile)",
+  "date": "2026-11-29",
+  "time": "9h30–13h",
+  "place": "Plage de l'Océan",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "sport",
+  "category": "Char à voile",
+  "org": "Club brevinois de char à voile",
+  "desc": "Le raid annuel des chars à voile, épreuve loisir d'endurance entre la plage nord de Saint-Brevin et la plage voisine de Saint-Michel-Chef-Chef en passant par le Boivre, à regarder depuis la plage ; gratuit pour les spectateurs, pilotes licenciés FFCV.",
+  "url": "https://www.saint-brevin.com/raid-des-pecheries.html",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-11-29-vide-grenier-nondales-pornic",
   "title": "Vide-grenier de l'AIPE des Nondales",
   "date": "2026-11-29",
@@ -2487,6 +2410,21 @@
   "desc": "Pendant la Semaine pas Banale, un professeur de basse retrace l'évolution des musiques actuelles et amplifiées des années 50 à nos jours, écoutes à l'appui ; sur réservation obligatoire.",
   "url": "https://www.saint-brevin.com/histoire-des-musiques-actuelles.html",
   "free": false,
+  "kids": false
+ },
+ {
+  "id": "2026-11-30-conseil-municipal-vue",
+  "title": "Conseil municipal de Vue",
+  "date": "2026-11-30",
+  "time": "19h30",
+  "place": "Mairie, salle du conseil municipal, 3 place Sainte-Anne",
+  "town": "Vue",
+  "type": "vielocale",
+  "category": "Conseil municipal",
+  "org": "Mairie de Vue",
+  "desc": "Séance publique du conseil municipal ; convocation et ordre du jour à consulter sur le site de la mairie.",
+  "url": "https://www.mairie-vue.fr/agenda/conseil-municipal-le-30-novembre-2026/",
+  "free": true,
   "kids": false
  },
  {
@@ -2567,22 +2505,6 @@
   "url": "https://www.pornic.com/visite-de-la-distillerie-168-pornic.html"
  },
  {
-  "id": "2026-12-01-visite-interieur-chateau-pornic",
-  "title": "Visite guidée : dans l'intimité du château de Pornic",
-  "date": "2026-12-01",
-  "time": "15h",
-  "place": "Départ Office de tourisme, place de la Gare",
-  "town": "Pornic",
-  "type": "nature",
-  "category": "Visite guidée",
-  "org": "Office de tourisme intercommunal de Pornic",
-  "desc": "Visite d'1h15 à 1h30 des salons, de la bibliothèque et d'une chambre de la tour du château, dès 10 ans, une cinquantaine de marches ; 10 €, réservation obligatoire à l'office de tourisme (02 40 82 04 40).",
-  "url": "https://www.pornic.com/visite-guidee-dans-l-intimite-du-chateau-de-pornic-pornic.html",
-  "free": false,
-  "kids": true,
-  "ageMin": 10
- },
- {
   "id": "2026-12-01-cyclistes-brillez-gare-pornic",
   "title": "Cyclistes, brillez ! (place de la Gare)",
   "date": "2026-12-01",
@@ -2627,6 +2549,21 @@
   "url": "https://www.saint-brevin.com/la-jam-jazz.html",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2026-12-01-soiree-video-budapest-brevin",
+  "title": "Soirée vidéo : courts métrages et « Budapest côté ville »",
+  "date": "2026-12-01",
+  "time": "20h30",
+  "place": "Espace Boby Lapointe, 108 avenue du Maréchal Joffre",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "spectacle",
+  "category": "Projection vidéo",
+  "org": "",
+  "desc": "Projection de courts métrages de vidéastes amateurs et d'un film sur Budapest, tout public ; entrée libre, salle accessible PMR.",
+  "url": "https://www.saint-brevin.com/soiree-video-courts-metrages-et-budapest.html",
+  "free": true,
+  "kids": false
  },
  {
   "id": "2026-12-01-ateliers-habitat-senior-chaumes",
@@ -2692,16 +2629,16 @@
  },
  {
   "id": "2026-12-02-visite-eco-centre-chaumes",
-  "title": "Visite de l'Éco Centre",
+  "title": "Visite de l'Éco Centre (complet)",
   "date": "2026-12-02",
   "time": "10h–13h",
-  "place": "Éco Centre, route du Bignon",
+  "place": "Éco Centre, route du Bignon, La Sicaudais",
   "town": "Chaumes-en-Retz",
   "type": "nature",
   "category": "Visite guidée",
   "org": "Pornic Agglo Pays de Retz",
-  "desc": "Visite guidée de 3 heures de l'usine qui transforme les ordures ménagères en compost et en énergie, avec espace pédagogique sur la biodiversité ; gratuit sur réservation auprès de Pornic Agglo, dès 8 ans.",
-  "url": "https://www.pornic.com/visite-de-leco-centre-chaumes-en-retz.html",
+  "desc": "Visite guidée de l'usine qui transforme les ordures ménagères en compost et en énergie, avec espace pédagogique sur la biodiversité ; gratuit, la visite est annoncée complète par Pornic Agglo (02 51 74 28 10).",
+  "url": "https://www.pornicagglo.fr/evenement/visite-de-leco-centre-8/",
   "free": true,
   "kids": true,
   "ageMin": 8
@@ -2756,6 +2693,22 @@
   "kids": false
  },
  {
+  "id": "2026-12-02-atelier-deco-nature-clion-pornic",
+  "title": "Atelier : déco de Noël 100 % nature",
+  "date": "2026-12-02",
+  "time": "14h–15h",
+  "place": "Épicerie associative Le Court-Circuit, Le Clion-sur-Mer",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations de sapin avec des éléments de la nature (pommes de pin, oranges séchées, bois, houx…), dès 5 ans, 12 personnes au plus, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-100-nature-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
   "id": "2026-12-02-conf-generations-brevin",
   "category": "Conférence",
   "date": "2026-12-02",
@@ -2766,6 +2719,22 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "expo",
   "url": "https://www.fest.fr/conference-levolution-des-liens-entre-les-generations-2667255.html"
+ },
+ {
+  "id": "2026-12-02-visite-interieur-chateau-pornic",
+  "title": "Visite guidée : dans l'intimité du château de Pornic",
+  "date": "2026-12-02",
+  "time": "15h–16h30",
+  "place": "Départ Office de tourisme, place de la Gare",
+  "town": "Pornic",
+  "type": "nature",
+  "category": "Visite guidée",
+  "org": "Office de tourisme intercommunal de Pornic",
+  "desc": "Visite d'1h15 à 1h30 des salons, de la bibliothèque et d'une chambre de la tour du château, dès 10 ans, une cinquantaine de marches ; 10 €, réservation obligatoire à l'office de tourisme (02 40 82 04 40).",
+  "url": "https://www.pornic.com/visite-guidee-dans-l-intimite-du-chateau-de-pornic-pornic.html",
+  "kids": true,
+  "ageMin": 10,
+  "free": false
  },
  {
   "id": "2026-12-02-mercredi-bricole-cadeau-pornic",
@@ -3118,16 +3087,16 @@
   "id": "2026-12-04-atelier-ecritures-tricot-papier-brevin",
   "category": "Atelier d'écriture",
   "date": "2026-12-04",
-  "desc": "Atelier gratuit en entrée libre de 15h à 17h consacré au tricot de papier avec Frédérique Coquet; renseignements au 02 40 27 45 80.",
+  "desc": "Atelier gratuit, tout public, « Tricots et tissages de papier » avec Frédérique Coquet : tissage poétique de phrases tirées de livres et carnet créatif fait de pages de livres ; renseignements au 02 40 27 45 80.",
   "free": true,
   "kids": false,
   "org": "Médiathèque Jules Verne",
   "place": "Médiathèque Jules Verne, 30 avenue Jules Verne",
-  "time": "15h",
-  "title": "Atelier d'écritures : tricot de papier",
+  "time": "15h–17h",
+  "title": "Atelier des écritures : tissage poétique",
   "town": "Saint-Brevin-les-Pins",
   "type": "atelier",
-  "url": "https://www.saint-brevin.com/atelier-des-ecritures.html"
+  "url": "https://www.saint-brevin.com/atelier-des-ecritures-tissage-poetique.html"
  },
  {
   "id": "2026-12-04-rencontre-laure-manel-st-pere",
@@ -3357,6 +3326,21 @@
   "url": "https://en.pornic.com/christmas-at-pornic-castle-pornic.html"
  },
  {
+  "id": "2026-12-05-club-lecture-plaine",
+  "title": "Rencontre autour d'un livre",
+  "date": "2026-12-05",
+  "time": "10h30",
+  "place": "Médiathèque Joseph Rousse, 1 rue de la Libération",
+  "town": "La Plaine-sur-Mer",
+  "type": "vielocale",
+  "category": "Club de lecture",
+  "org": "Médiathèque Joseph Rousse",
+  "desc": "Rencontre du club de lecture de 10h30 à 12h : échanges et coups de cœur autour d'un ouvrage choisi par le club, ouverte aux lecteurs réguliers comme aux curieux; participation gratuite, renseignements au 02 51 74 81 92.",
+  "url": "https://www.pornic.com/rencontre-autour-d-un-livre-la-plaine-sur-mer-1.html",
+  "free": true,
+  "kids": false
+ },
+ {
   "id": "2026-12-05-decoration-nature-st-hilaire",
   "title": "Atelier décoration nature",
   "date": "2026-12-05",
@@ -3551,6 +3535,22 @@
   "town": "Pornic",
   "type": "nature",
   "url": "https://en.pornic.com/guided-tour-pornic-medieval-maritime-city-pornic.html"
+ },
+ {
+  "id": "2026-12-05-peinture-figurine-ste-pazanne",
+  "title": "Atelier de peinture sur figurine",
+  "date": "2026-12-05",
+  "time": "14h30–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Loisirs créatifs",
+  "org": "Maison citoyenne L'élémentaire",
+  "desc": "Atelier technique pour apprendre la peinture sur figurines avec l'association Brecto minis, matériel fourni, dès 10 ans (mineurs accompagnés d'un adulte) ; 5 € par figurine, réservé aux adhérents de la maison citoyenne (adhésion 12 à 24 €), sur inscription.",
+  "url": "https://www.pornic.com/peinture-sur-figurine-ste-pazanne.html",
+  "kids": true,
+  "ageMin": 10,
+  "free": false
  },
  {
   "id": "2026-12-05-marche-noel-residence-soleil-bernerie",
@@ -4360,6 +4360,22 @@
   "ageMax": 3
  },
  {
+  "id": "2026-12-09-atelier-cadeau-bois-clion-pornic",
+  "title": "Atelier : cadeau de Noël personnalisé en bois",
+  "date": "2026-12-09",
+  "time": "14h–15h",
+  "place": "Épicerie associative Le Court-Circuit, Le Clion-sur-Mer",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Mots croisés dessinés et décorés sur des carrés de bois de palette, à offrir pour Noël, boisson chaude offerte, dès 6 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-cadeau-de-noel-personnalise-en-bois-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 6
+ },
+ {
   "id": "2026-12-09-contes-musiques-gourmandes-pornic",
   "category": "Spectacle enfants",
   "date": "2026-12-09",
@@ -4482,6 +4498,21 @@
   "url": "https://en.pornic.com/conference-georges-guinguoin-le-tito-du-limousin-pornic.html"
  },
  {
+  "id": "2026-12-10-etoiles-du-sport-pornic",
+  "title": "4e cérémonie des Étoiles du Sport",
+  "date": "2026-12-10",
+  "time": "18h15",
+  "place": "Salle Joséphine Baker, rue Sainte-Victoire",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Cérémonie sportive",
+  "org": "Ville de Pornic",
+  "desc": "La Ville récompense 57 athlètes, 16 entraîneurs et un coup de cœur sportif des clubs pornicais pour la saison 2025-2026, remise des trophées à 18h15 puis soirée ; entrée libre dans la limite des places.",
+  "url": "https://www.pornic.fr/evenement/4e-ceremonie-des-etoiles-du-sport/",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-12-11-bien-vieillir-prefailles",
   "title": "Atelier Bien Vieillir : nutrition",
   "date": "2026-12-11",
@@ -4495,6 +4526,21 @@
   "url": "https://www.prefailles.fr/medias/2026/10/Prefinfos-novembre-decembre-2026.pdf",
   "free": true,
   "kids": false
+ },
+ {
+  "id": "2026-12-11-cyclistes-brillez-leclerc-pornic",
+  "title": "Cyclistes, brillez ! (Centre Leclerc)",
+  "date": "2026-12-11",
+  "time": "16h30–19h",
+  "place": "Centre Leclerc, rue du Traité d'Amsterdam",
+  "town": "Pornic",
+  "type": "vielocale",
+  "category": "Sécurité à vélo",
+  "org": "Pornic Agglo Pays de Retz",
+  "desc": "Stand sur l'éclairage des vélos : contrôle gratuit avec l'association Place aux Vélos en Retz, équipement offert contre l'engagement de rouler visible, conseils pour rouler de nuit ; gratuit, sans réservation.",
+  "url": "https://www.pornicagglo.fr/evenement/cyclistes-brillez-4/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-11-ecole-horizon-noel-st-michel",
@@ -4788,17 +4834,19 @@
  },
  {
   "id": "2026-12-12-marche-noel-halles-bernerie",
-  "category": "Marché de Noël",
-  "date": "2026-12-12",
-  "desc": "Une trentaine d'exposants gastronomie et artisanat fait main ou made in France. Tél. 02 40 82 70 56.",
-  "end": "2026-12-13",
-  "kids": true,
-  "place": "Les Halles",
-  "time": "10h30",
   "title": "Marché de Noël des Halles",
+  "date": "2026-12-12",
+  "end": "2026-12-13",
+  "time": "10h30",
+  "place": "Halle de La Bernerie",
   "town": "La Bernerie-en-Retz",
   "type": "fete",
-  "url": "https://www.fest.fr/marche-de-noel-2704879.html"
+  "category": "Marché de Noël",
+  "org": "Mairie de La Bernerie-en-Retz",
+  "desc": "Samedi 10h30–19h : spectacle « Père Noël où es-tu » (11h30), chorale Enchant'retz (14h30 et 15h30), batucada Oleado (17h30), feu d'artifice sur la grande plage à 18h30 ; dimanche 10h30–18h : Gangstar fanfare (11h30, 15h, 17h15) ; sculptrice de ballons, balades en calèche, restauration, buvette et bar à huîtres les deux jours.",
+  "url": "https://mairie-labernerie.fr/evenement/marche-de-noel-4/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-12-decoration-nature-st-hilaire",
@@ -4908,6 +4956,22 @@
   "url": "https://www.jds.fr/pornic/manifestations/sainte-barbe-des-pompiers-1441761_A"
  },
  {
+  "id": "2026-12-12-peinture-figurine-ste-pazanne",
+  "title": "Atelier de peinture sur figurine",
+  "date": "2026-12-12",
+  "time": "14h15–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Loisirs créatifs",
+  "org": "Maison citoyenne L'élémentaire",
+  "desc": "Atelier sur le thème de Noël avec l'association Brecto minis, trois séances de 45 minutes au choix, matériel fourni, dès 10 ans (mineurs accompagnés d'un adulte) ; 5 € par figurine, réservé aux adhérents de la maison citoyenne (adhésion 12 à 24 €), sur inscription.",
+  "url": "https://www.pornic.com/peinture-sur-figurine-ste-pazanne.html",
+  "kids": true,
+  "ageMin": 10,
+  "free": false
+ },
+ {
   "id": "2026-12-12-visite-cite-medievale-pornic",
   "category": "Visite guidée",
   "date": "2026-12-12",
@@ -4937,6 +5001,21 @@
   "free": false,
   "kids": false,
   "ageMin": 12
+ },
+ {
+  "id": "2026-12-12-atelier-couture-ste-pazanne",
+  "title": "Atelier couture",
+  "date": "2026-12-12",
+  "time": "14h–17h",
+  "place": "Maison citoyenne, 47 rue de l'Hôtel de Ville",
+  "town": "Sainte-Pazanne",
+  "type": "atelier",
+  "category": "Couture",
+  "org": "Maison citoyenne L'élémentaire",
+  "desc": "Atelier de 3 heures animé par Bobines deux filles pour se perfectionner et réaliser de nouvelles créations selon son niveau ; 45 €, places limitées, réservation obligatoire par courriel auprès de la maison citoyenne.",
+  "url": "https://www.pornic.com/atelier-couture-ste-pazanne.html",
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-12-marche-noel-corsept",
@@ -5043,6 +5122,21 @@
   "ageMin": 14
  },
  {
+  "id": "2026-12-12-grand-bal-3-brevin",
+  "title": "Le Grand Bal 3",
+  "date": "2026-12-12",
+  "time": "19h–2h",
+  "place": "Salle Étoile de Jade, parc d'activités de la Guerche",
+  "town": "Saint-Brevin-les-Pins",
+  "type": "fete",
+  "category": "Soirée dansante",
+  "org": "Libre Expression",
+  "desc": "Dîner-spectacle avec le groupe Ret'z d'hôtes et des danseurs, foodtrucks sur place, puis piste de danse avec DJ jusqu'à 2h ; 10 € en prévente en ligne, 15 € sur place.",
+  "url": "https://www.saint-brevin.com/le-grand-bal-3.html",
+  "free": false,
+  "kids": false
+ },
+ {
   "id": "2026-12-12-dinde-novembre-brevin",
   "title": "Théâtre : Une Dinde en Novembre",
   "date": "2026-12-12",
@@ -5118,6 +5212,21 @@
   "kids": true
  },
  {
+  "id": "2026-12-12-semaine-musicale-noel-pornic",
+  "title": "Semaine musicale de Noël : soirée jazz avec Marie Roche",
+  "date": "2026-12-12",
+  "time": "20h30",
+  "place": "Salle Belle-Île, École municipale de musique, place de la Marne",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert d'élèves",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Ouverture de la semaine musicale de l'École municipale de musique : Marie Roche, artiste pornicaise, en première partie, puis le Big Band et l'atelier d'improvisation ; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/la-semaine-musicale-de-noel/",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-12-12-telethon-renversant-moutiers",
   "title": "Un Téléthon renversant avec Voix pour Tous",
   "date": "2026-12-12",
@@ -5131,6 +5240,22 @@
   "url": "https://www.mairie-lesmoutiersenretz.fr/agenda/un-telethon-renversant/",
   "free": false,
   "kids": true
+ },
+ {
+  "id": "2026-12-12-triangle-des-bernes-ste-pazanne",
+  "title": "Théâtre : Le Triangle des Bernés",
+  "date": "2026-12-12",
+  "time": "20h30",
+  "place": "Théâtre municipal pazenais, 7 rue du Ballon",
+  "town": "Sainte-Pazanne",
+  "type": "spectacle",
+  "category": "Comédie",
+  "org": "Troupe Côté Scène",
+  "desc": "Comédie de Pascale Daumer avec trois comédiens professionnels (Calouss, Pascale Daumer, Christelle Guéry), séance unique, 1h15, dès 8 ans ; 13 €, réservation en ligne (vostickets) ou par courriel.",
+  "url": "https://www.sainte-pazanne.fr/agenda/le-triangle-des-bernes-cote-scene/",
+  "ageMin": 8,
+  "free": false,
+  "kids": false
  },
  {
   "id": "2026-12-12-tournoi-noel-bad-retz-villeneuve",
@@ -5251,6 +5376,21 @@
   "town": "Saint-Brevin-les-Pins",
   "type": "fete",
   "url": "https://www.le-canotier.net/évènement/2026-12-13-apres-midi-dansant-orchestre-emmanuel-rolland/"
+ },
+ {
+  "id": "2026-12-13-impro-retzplicants-st-michel",
+  "title": "Match d'improvisation théâtrale des Retzplicants",
+  "date": "2026-12-13",
+  "time": "14h30",
+  "place": "Cinéma St Michel, 20 rue du Redois",
+  "town": "Saint-Michel-Chef-Chef",
+  "type": "spectacle",
+  "category": "Théâtre d'improvisation",
+  "org": "Les Retzplicants",
+  "desc": "La troupe d'improvisation de Saint-Michel-Chef-Chef joue un match d'impro entièrement improvisé ; entrée 7 €, réservation sur HelloAsso, parking gratuit à proximité.",
+  "url": "https://www.pornic.com/theatre-d-improvisation-st-michel-chef-chef.html",
+  "free": false,
+  "kids": true
  },
  {
   "id": "2026-12-13-atelier-modelisme-brevin",
@@ -5494,6 +5634,21 @@
   "ageMin": 10
  },
  {
+  "id": "2026-12-15-semaine-musicale-noel-pornic",
+  "title": "Semaine musicale de Noël : accordéon, piano, flûte et percussions",
+  "date": "2026-12-15",
+  "time": "18h30",
+  "place": "Salle Belle-Île, École municipale de musique, place de la Marne",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert d'élèves",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Les élèves des classes d'accordéon, de piano, de flûte et de percussions jouent chants de Noël, musiques traditionnelles et folk ; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/la-semaine-musicale-de-noel/",
+  "free": true,
+  "kids": true
+ },
+ {
   "id": "2026-12-15-decoration-nature-st-hilaire",
   "title": "Atelier décoration nature",
   "date": "2026-12-15",
@@ -5556,6 +5711,22 @@
   "ageMin": 4
  },
  {
+  "id": "2026-12-16-atelier-origami-clion-pornic",
+  "title": "Atelier : déco de Noël et fleurs en origami",
+  "date": "2026-12-16",
+  "time": "14h–15h",
+  "place": "Épicerie associative Le Court-Circuit, Le Clion-sur-Mer",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations, petits cadeaux et fleurs en origami à partir de papiers anciens et de cartes routières recyclés, boisson chaude offerte, dès 7 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-et-fleurs-en-origami-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
+ },
+ {
   "id": "2026-12-16-mercredi-bricole-carte-planter-pornic",
   "title": "Atelier « Mon mercredi bricole » : carte à planter",
   "date": "2026-12-16",
@@ -5599,6 +5770,21 @@
   "org": "Résidence autonomie Les Sableaux",
   "desc": "Stands de créateurs locaux (broderie, tricot, vannerie, artisanat) et coin gourmand avec vin chaud et crêpes maison ; entrée libre, tél. 02 40 27 14 84.",
   "url": "https://www.saint-brevin.com/marche-de-noel-aux-sableaux.html",
+  "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-16-semaine-musicale-noel-pornic",
+  "title": "Semaine musicale de Noël : ensembles et Parcours Découverte",
+  "date": "2026-12-16",
+  "time": "18h",
+  "place": "Salle Belle-Île, École municipale de musique, place de la Marne",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert d'élèves",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Accordéons, ensemble traditionnel, orchestre, saxophones, flûtes et les plus jeunes élèves du Parcours Découverte ; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/la-semaine-musicale-de-noel/",
   "free": true,
   "kids": true
  },
@@ -5665,6 +5851,21 @@
   "town": "La Bernerie-en-Retz",
   "type": "atelier",
   "url": "https://mairie-labernerie.fr/evenement/atelier-decriture/2026-12-17/"
+ },
+ {
+  "id": "2026-12-17-semaine-musicale-noel-pornic",
+  "title": "Semaine musicale de Noël : chorales et pianos",
+  "date": "2026-12-17",
+  "time": "18h30",
+  "place": "Salle Belle-Île, École municipale de musique, place de la Marne",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert d'élèves",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Les chorales de l'École de musique et les élèves de piano dans un programme de chants traditionnels et d'airs de fête ; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/la-semaine-musicale-de-noel/",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-17-vannerie-noel-ste-pazanne",
@@ -5767,6 +5968,21 @@
   "org": "Mairie de Chaumes-en-Retz",
   "desc": "Le Père Noël vient rencontrer petits et grands sur le marché à l'occasion des fêtes.",
   "url": "https://www.chaumesenretz.fr/agenda/%f0%9f%8e%85-le-pere-noel-arrive-sur-les-marches/",
+  "free": true,
+  "kids": true
+ },
+ {
+  "id": "2026-12-18-semaine-musicale-noel-pornic",
+  "title": "Semaine musicale de Noël : vents et cuivres",
+  "date": "2026-12-18",
+  "time": "18h",
+  "place": "Salle Belle-Île, École municipale de musique, place de la Marne",
+  "town": "Pornic",
+  "type": "spectacle",
+  "category": "Concert d'élèves",
+  "org": "École municipale de musique de Pornic",
+  "desc": "Clôture avec les classes de clarinette, de trompette et de trombone, dans le cadre de la fête de Noël du bourg de Sainte-Marie ; entrée libre.",
+  "url": "https://www.pornic.fr/evenement/la-semaine-musicale-de-noel/",
   "free": true,
   "kids": true
  },
@@ -6328,6 +6544,22 @@
   "url": "https://www.pornic.com/rassemblement-de-voitures-retro-prefailles.html"
  },
  {
+  "id": "2026-12-21-atelier-deco-nature-biocoop-pornic",
+  "title": "Atelier : déco de Noël 100 % nature",
+  "date": "2026-12-21",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations de sapin avec des éléments de la nature (pommes de pin, oranges séchées, bois, houx…), dès 5 ans, 12 personnes au plus, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-100-nature-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
   "id": "2026-12-21-stage-cirque-noel-brevin",
   "title": "Stage d'initiation au cirque (Noël)",
   "date": "2026-12-21",
@@ -6380,6 +6612,38 @@
   "ageMax": 10
  },
  {
+  "id": "2026-12-21-atelier-cadeau-bois-ria-pornic",
+  "title": "Atelier : cadeau de Noël personnalisé en bois",
+  "date": "2026-12-21",
+  "time": "14h–17h30",
+  "place": "Village de Noël, esplanade de la Ria",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Mots croisés dessinés et décorés sur des carrés de bois de palette, à offrir pour Noël, boisson chaude offerte, dès 4 ans ; gratuit, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-cadeau-de-noel-personnalise-en-bois-pornic.html",
+  "free": true,
+  "kids": true,
+  "ageMin": 4
+ },
+ {
+  "id": "2026-12-21-atelier-origami-ria-pornic",
+  "title": "Atelier : déco de Noël et fleurs en origami",
+  "date": "2026-12-21",
+  "time": "14h–17h30",
+  "place": "Village de Noël, esplanade de la Ria",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations, petits cadeaux et fleurs en origami à partir de papiers anciens et de cartes routières recyclés, boisson chaude offerte, dès 4 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-et-fleurs-en-origami-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 4
+ },
+ {
   "id": "2026-12-21-expo-peinture-galerie-brevin",
   "title": "Exposition de peinture",
   "date": "2026-12-21",
@@ -6409,6 +6673,38 @@
   "url": "https://www.chaumesenretz.fr/agenda/%f0%9f%8e%85-le-pere-noel-arrive-sur-les-marches-2/",
   "free": true,
   "kids": true
+ },
+ {
+  "id": "2026-12-22-atelier-cadeau-bois-biocoop-pornic",
+  "title": "Atelier : cadeau de Noël personnalisé en bois",
+  "date": "2026-12-22",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Mots croisés dessinés et décorés sur des carrés de bois de palette, à offrir pour Noël, boisson chaude offerte, dès 6 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-cadeau-de-noel-personnalise-en-bois-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 6
+ },
+ {
+  "id": "2026-12-22-stage-pole-dance-plaine",
+  "title": "Stages de pole dance de Noël",
+  "date": "2026-12-22",
+  "time": "12h15",
+  "place": "Studio Air&Fitness, 8 impasse des Gateburières",
+  "town": "La Plaine-sur-Mer",
+  "type": "sport",
+  "category": "Stage de danse",
+  "org": "Studio Air&Fitness; Emotion Art Dance Studio",
+  "desc": "Stages de pole dance pour les vacances de Noël : tous niveaux de 12h15 à 13h30 et de 18h30 à 19h45, Pole Kids (dès 7 ans) de 16h30 à 17h30, Pole Flow de 20h à 21h15; 25 € la séance adulte (1h15), 20 € la séance enfant (1h), inscription en ligne sur Momoyoga (airetfitness).",
+  "url": "https://www.laplainesurmer.fr/agenda/%f0%9f%8e%84%e2%9c%a8-stages-de-pole-dance-22-23-decembre-2026-%e2%9c%a8/",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
  },
  {
   "id": "2026-12-22-apres-midi-dansant-clion",
@@ -6507,6 +6803,54 @@
   "ageMax": 10
  },
  {
+  "id": "2026-12-23-atelier-tableau-coquillages-pornic",
+  "title": "Atelier : tableau de coquillages",
+  "date": "2026-12-23",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Cadre décoré de coquillages collés et illustrés au feutre, dès 4 ans, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-creation-tableau-de-coquillages-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 4
+ },
+ {
+  "id": "2026-12-23-stage-pole-dance-plaine",
+  "title": "Stages de pole dance de Noël",
+  "date": "2026-12-23",
+  "time": "12h15",
+  "place": "Studio Air&Fitness, 8 impasse des Gateburières",
+  "town": "La Plaine-sur-Mer",
+  "type": "sport",
+  "category": "Stage de danse",
+  "org": "Studio Air&Fitness; Emotion Art Dance Studio",
+  "desc": "Stages de pole dance pour les vacances de Noël : tous niveaux de 12h15 à 13h30 et de 18h30 à 19h45, Pole Kids (dès 7 ans) de 16h30 à 17h30, Pole Flow de 20h à 21h15; 25 € la séance adulte (1h15), 20 € la séance enfant (1h), inscription en ligne sur Momoyoga (airetfitness).",
+  "url": "https://www.laplainesurmer.fr/agenda/%f0%9f%8e%84%e2%9c%a8-stages-de-pole-dance-22-23-decembre-2026-%e2%9c%a8/",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
+ },
+ {
+  "id": "2026-12-23-atelier-deco-nature-tambouille-pornic",
+  "title": "Atelier : déco de Noël 100 % nature",
+  "date": "2026-12-23",
+  "time": "14h–15h",
+  "place": "Épicerie La Tambouille, Vieux-Port",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations de sapin avec des éléments de la nature (pommes de pin, oranges séchées, bois, houx…), dès 5 ans, 12 personnes au plus, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-100-nature-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
   "id": "2026-12-23-le-marie-poche-pornic",
   "title": "Comédie : « Le marié »",
   "date": "2026-12-23",
@@ -6553,6 +6897,38 @@
   "url": "https://casino-pornic.partouche.com/agenda/13328/menus-de-noel-24--25---restaurant",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-24-atelier-carte-ensemencee-pornic",
+  "title": "Atelier : carte ensemencée pour la nouvelle année",
+  "date": "2026-12-24",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Carte de vœux en papier avec des graines, à planter après lecture, dès 4 ans, 12 personnes au plus, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-carte-ensemencee-pour-la-nouvelle-annee-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 4
+ },
+ {
+  "id": "2026-12-24-atelier-cadeau-bois-tambouille-pornic",
+  "title": "Atelier : cadeau de Noël personnalisé en bois",
+  "date": "2026-12-24",
+  "time": "14h–15h",
+  "place": "Épicerie La Tambouille, Vieux-Port",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Mots croisés dessinés et décorés sur des carrés de bois de palette, à offrir pour Noël, boisson chaude offerte, dès 6 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-cadeau-de-noel-personnalise-en-bois-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 6
  },
  {
   "id": "2026-12-24-baignade-noel-brevin",
@@ -6676,6 +7052,22 @@
   "kids": false
  },
  {
+  "id": "2026-12-28-atelier-art-therapie-pornic",
+  "title": "Atelier d'art-thérapie",
+  "date": "2026-12-28",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Parenthèse créative autour du dessin de mandala, sans compétence artistique, dès 7 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-d-art-therapie-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
+ },
+ {
   "id": "2026-12-28-atelier-petits-duo-brevin",
   "title": "Atelier des petits en duo : bijoux",
   "date": "2026-12-28",
@@ -6739,6 +7131,22 @@
   "url": "https://www.pornic.com/visite-guidee-pornic-cite-medievale-et-maritime-pornic.html"
  },
  {
+  "id": "2026-12-29-atelier-ecriture-carte-ensemencee-pornic",
+  "title": "Atelier : écriture poétique sur carte ensemencée",
+  "date": "2026-12-29",
+  "time": "14h–15h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Carte ensemencée à faire sécher chez soi et vœux poétiques composés de mots découpés dans de vieux livres, dès 7 ans ; 20 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-ecriture-poetique-sur-carte-ensemencee-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
+ },
+ {
   "id": "2026-12-29-dimanche-avec-toi-poche-pornic",
   "title": "Comédie : « Un dimanche avec toi »",
   "date": "2026-12-29",
@@ -6782,6 +7190,37 @@
   "url": "https://www.pornic.com/atelier-vannerie-fabrication-d-un-panier-a-anse-cuir-ste-pazanne.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-30-atelier-terrarium-pornic",
+  "title": "Atelier : terrarium entre terre et mer",
+  "date": "2026-12-30",
+  "time": "10h30–11h30",
+  "place": "Les Hameaux Bio (Biocoop), zone de l'Europe, 1 rue du Traité de Lisbonne",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Petit jardin en bocal avec terre, plantes sauvages et coquillages, dès 5 ans, boisson chaude offerte ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-creation-d-un-terrarium-entre-terre-et-mer-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 5
+ },
+ {
+  "id": "2026-12-30-plantons-27-arbres-bernerie",
+  "title": "Plantons 27 arbres pour 2027",
+  "date": "2026-12-30",
+  "time": "10h–16h",
+  "place": "Écolieu Ty Louët, 10 rue du Docteur Richelot",
+  "town": "La Bernerie-en-Retz",
+  "type": "nature",
+  "category": "Plantation",
+  "org": "Écolieu Ty Louët",
+  "desc": "Plantation de fruitiers et d'une haie brise-vent pour fêter la nouvelle année, moment pédagogique en plein air ; contribution libre, déjeuner en auberge espagnole.",
+  "url": "https://www.pornic.com/plantons-27-arbres-pour-2027-la-bernerie-en-retz.html",
+  "free": true,
+  "kids": true
  },
  {
   "id": "2026-12-30-atelier-bijou-brevin",
@@ -6860,6 +7299,22 @@
   "url": "https://www.saint-brevin.com/ensemble-pour-les-fetes.html",
   "free": false,
   "kids": false
+ },
+ {
+  "id": "2026-12-31-atelier-origami-tambouille-pornic",
+  "title": "Atelier : déco de Noël et fleurs en origami",
+  "date": "2026-12-31",
+  "time": "14h–15h",
+  "place": "Épicerie La Tambouille, Vieux-Port",
+  "town": "Pornic",
+  "type": "atelier",
+  "category": "Atelier créatif",
+  "org": "Les Ateliers de Maia",
+  "desc": "Décorations, petits cadeaux et fleurs en origami à partir de papiers anciens et de cartes routières recyclés, boisson chaude offerte, dès 7 ans ; 10 €, réservation obligatoire auprès des Ateliers de Maia (office de tourisme ou formulaire en ligne).",
+  "url": "https://www.pornic.com/atelier-deco-de-noel-et-fleurs-en-origami-pornic.html",
+  "free": false,
+  "kids": true,
+  "ageMin": 7
  },
  {
   "id": "2026-12-31-grain-2-curiosite-poche-pornic",
@@ -7306,21 +7761,6 @@
   "desc": "Loto de l'école : ouverture des portes à 13h15, début à 14h ; 4 € le carton, 10 € les 3, 15 € les 6.",
   "url": "https://agenda-loto.net/evenement/1039483",
   "free": false,
-  "kids": false
- },
- {
-  "id": "2027-01-11-vada-pause-cafe-plaine",
-  "title": "VADA : pause-café",
-  "date": "2027-01-11",
-  "time": "10h",
-  "place": "Pôle associatif de l'Ormelette, 2 rue Jean Moulin",
-  "town": "La Plaine-sur-Mer",
-  "type": "vielocale",
-  "category": "Rencontre",
-  "org": "Commune de La Plaine-sur-Mer (VADA)",
-  "desc": "Moment convivial gratuit de 10h à 12h au pôle associatif de l'Ormelette, proposé les 2e et 4e lundis du mois.",
-  "url": "https://www.laplainesurmer.fr/agenda/vada-pause-cafe/",
-  "free": true,
   "kids": false
  },
  {
@@ -7814,21 +8254,6 @@
   "town": "Pornic",
   "type": "brocante",
   "url": "https://brocabrac.fr/44/pornic/1416818-vide-grenier"
- },
- {
-  "id": "2027-01-25-vada-pause-cafe-plaine",
-  "title": "VADA : pause-café",
-  "date": "2027-01-25",
-  "time": "10h",
-  "place": "Pôle associatif de l'Ormelette, 2 rue Jean Moulin",
-  "town": "La Plaine-sur-Mer",
-  "type": "vielocale",
-  "category": "Rencontre",
-  "org": "Commune de La Plaine-sur-Mer (VADA)",
-  "desc": "Moment convivial gratuit de 10h à 12h au pôle associatif de l'Ormelette, proposé les 2e et 4e lundis du mois.",
-  "url": "https://www.laplainesurmer.fr/agenda/vada-pause-cafe-3/",
-  "free": true,
-  "kids": false
  },
  {
   "id": "2027-01-28-bebes-lecteurs-st-hilaire",
@@ -8328,21 +8753,6 @@
   "url": "https://www.pornic.com/spectacle-des-treteaux-de-pornic-la-vie-parisienne-pornic-1.html",
   "free": false,
   "kids": true
- },
- {
-  "id": "2027-02-08-vada-pause-cafe-plaine",
-  "title": "VADA : pause-café",
-  "date": "2027-02-08",
-  "time": "10h",
-  "place": "Pôle associatif de l'Ormelette, 2 rue Jean Moulin",
-  "town": "La Plaine-sur-Mer",
-  "type": "vielocale",
-  "category": "Rencontre",
-  "org": "Commune de La Plaine-sur-Mer (VADA)",
-  "desc": "Moment convivial gratuit de 10h à 12h au pôle associatif de l'Ormelette, proposé les 2e et 4e lundis du mois.",
-  "url": "https://www.laplainesurmer.fr/agenda/vada-pause-cafe/",
-  "free": true,
-  "kids": false
  },
  {
   "id": "2027-02-08-broderie-moutiers",
