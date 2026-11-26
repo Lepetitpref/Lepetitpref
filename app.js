@@ -1477,7 +1477,8 @@ function merTop(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)||sea
   const k=S.merSel,grp=x=>x==="raf"?"vent":x==="pm"?"bm":x;
   return `<div class="mer-top">${cells.map(([id,l,v,x])=>`<button type="button" class="mt-c${k&&grp(k)===grp(id)?" is-on":""}" data-act="mersel" data-v="${id}" aria-expanded="${!!k&&grp(k)===grp(id)}"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}<i class="mt-more" aria-hidden="true"></i></button>`).join("")}</div>
   ${k?`<div class="mer-panel">${merPanel(d,k)}<button type="button" class="lnk mp-close" data-act="mersel" data-v="${k}">Fermer le graphique</button></div>`:`<p class="mt-hint">Touchez une case pour voir la journée heure par heure.</p>`}`;}
-const merDay=()=>{const t=today();return S.merDay&&S.merDay>=t?S.merDay:glDay(t);};
+/* page Mer : aujourd'hui par défaut (marées et météo du jour) ; demain seulement après 21h */
+const merDay=()=>{const t=today();return S.merDay&&S.merDay>=t?S.merDay:new Date().getHours()>=21?addDays(t,1):t;};
 /* la seule barre de jours de la page Mer : collée sous les sous-rubriques, elle règle marée, météo, spots, fiches, navigation et pêche */
 function merDayBar(s){const t=today(),days=range(t,addDays(t,6));
   const b=d=>{const c=maxCoef(d);return `<button type="button" class="chip chip-q md-c" aria-pressed="${d===s}" data-act="tday" data-v="${d}"><b>${d===t?"Auj.":cap(dname(d))} ${+d.slice(8)}</b><small class="${c>=90?"gm":""}">coef. ${c??"–"}</small></button>`;};
