@@ -42,6 +42,29 @@ function lire(k) {
       .concat((g.recherches_28j || []).map(function (x, i) { return { k: 'q' + i, type: 'recherche', quoi: x.q, n: x.aff, clics: x.clics, pos: x.pos }; }))
       .concat((g.jours || []).map(function (x) { return { k: 'j' + x.d, type: 'jour', quoi: x.d, n: x.aff, clics: x.clics, pos: x.pos }; }));
   } catch (x) { console.log('Search Console : pas de relevé (' + x.message + ')'); }
+  // Ce qui intéresse : compteurs par fiche (app.js : fv = fiche ouverte, fa = ajout à l'agenda, fc = appel/itinéraire/site/partage), depuis le 27/11/2026.
+  // On relit fv pour toutes les fiches connues, puis fa et fc seulement pour celles qui ont été ouvertes (et pour les films).
+  try {
+    var slug = function (t) { return String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 48); };
+    var R0 = path.join(__dirname, '..'), lireJ = function (f) { try { return JSON.parse(fs.readFileSync(path.join(R0, f), 'utf8')); } catch (x) { return []; } };
+    var fiches = [], vus = {}, ajoute = function (it, quoi, type, quand) { if (!it || vus[it]) return; vus[it] = 1; fiches.push({ it: it, quoi: quoi, type: type, quand: quand || '' }); };
+    var lim = new Date(Date.now() - 45 * 864e5).toISOString().slice(0, 10);
+    lireJ('donnees/events.json').forEach(function (e) { if (/^[\w-]+$/.test(e.id) && (e.end || e.date) >= lim) ajoute('e-' + e.id, e.title, 'Événement', e.date + (e.town ? ' · ' + e.town : '')); });
+    var src = fs.readFileSync(path.join(R0, 'app.js'), 'utf8'), i0 = src.indexOf('ACTS=') + 5, acts = [];
+    try { var d = 0, q = false, j = i0; for (; j < src.length; j++) { var ch = src[j]; if (q) { if (ch === '\\') j++; else if (ch === '"') q = false; } else if (ch === '"') q = true; else if (ch === '[') d++; else if (ch === ']') { d--; if (!d) break; } } acts = JSON.parse(src.slice(i0, j + 1)); } catch (x) { acts = []; }
+    acts.forEach(function (a) { ajoute('l-' + slug(a.n), a.n, 'Lieu', a.town || ''); });
+    var films = {}; lireJ('donnees/cinema.json').forEach(function (c) { films[c.film] = 1; });
+    Object.keys(films).forEach(function (f) { ajoute('c-' + slug(f), f, 'Film', ''); });
+    var fv = await tout(fiches.map(function (f) { return 'fv-' + f.it; }));
+    var suite = fiches.filter(function (f, i) { return fv[i] || f.type === 'Film'; });
+    var fa = await tout(suite.map(function (f) { return 'fa-' + f.it; })), fc = await tout(suite.map(function (f) { return 'fc-' + f.it; }));
+    var V = {}; fiches.forEach(function (f, i) { V[f.it] = fv[i] || 0; });
+    r.fichiers.interets = suite.map(function (f, i) { return { k: f.it, quoi: f.quoi, type: f.type, detail: f.quand, ouvertures: V[f.it], agenda: fa[i] || 0, contacts: fc[i] || 0 }; })
+      .filter(function (x) { return x.ouvertures + x.agenda + x.contacts > 0; })
+      .sort(function (a, b) { return (b.ouvertures + 3 * b.agenda + 3 * b.contacts) - (a.ouvertures + 3 * a.agenda + 3 * a.contacts); });
+    if (!r.fichiers.interets.length) r.fichiers.interets = [{ k: 'vide', quoi: '', type: '', detail: '', ouvertures: 0, agenda: 0, contacts: 0 }];
+    console.log('Ce qui intéresse :', fiches.length, 'fiches relues,', r.fichiers.interets.length, 'avec au moins un geste');
+  } catch (x) { console.log('Ce qui intéresse : non calculé (' + x.message + ')'); }
   Object.keys(r.fichiers).forEach(function (n) { fs.writeFileSync(path.join(out, n + '.json'), JSON.stringify(r.fichiers[n], null, 1)); });
   console.log('OK', out, 'appareils depuis le début :', r.fichiers.resume[0].appareils_depuis_debut, '· lecture', mode);
 })();

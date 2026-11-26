@@ -14,6 +14,7 @@
 .pp-tile small{display:block;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption);margin-top:2px;line-height:1.35}
 .pp-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg)}
 .pp-card h2{margin:0 0 4px;font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium)}
+.pp-auj p{margin:3px 0 0}.pp-auj p:first-child{margin-top:0}
 .pp-alert{border-color:var(--color-bad)}
 .pp-alert h2{color:var(--color-bad)}
 .pp-sub{margin:0 0 var(--cds-gap-sm);color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
@@ -52,7 +53,7 @@
     <h1 class="pp-h1">Le Petit Préf, audience</h1>
     <p class="pp-verdict" data-draw="verdict">—</p>
     <p class="pp-mise"><b>Cette semaine, misez sur :</b> <span data-draw="mise">—</span></p>
-    <p class="pp-mise" data-draw="auj" data-source="jours">—</p>
+    <div class="pp-mise pp-auj" data-draw="auj" data-source="jours">—</div>
     <p class="pp-when" data-draw="quand">—</p>
   </header>
 
@@ -103,6 +104,13 @@
       <tbody data-draw="pages"></tbody>
     </table></div>
     <p class="pp-p" data-draw="actl">—</p>
+  </section>
+
+  <section class="pp-card" id="interets">
+    <h2>Ce qui intéresse</h2>
+    <p class="pp-sub">Fiches ouvertes, ajouts à l'agenda et contacts (appel, itinéraire, site, partage), par événement, lieu ou film. Totaux depuis le 27/11, sans rien qui identifie les visiteurs.</p>
+    <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Fiche</th><th>Ouvertes</th><th>Agenda</th><th>Contacts</th></tr></thead><tbody data-draw="interets" data-source="interets"></tbody></table></div>
+    <p class="pp-empty" data-draw="interets_v" data-source="interets">—</p>
   </section>
 
   <section class="pp-card" id="fidelite">
@@ -300,11 +308,22 @@ dash.draw('lanc', (el) => { const j = J(); if (!j) { el.textContent = '—'; ret
   el.textContent = a && b ? `Hors graphique, le lancement : 10/11 : ${fmt(a.appareils)} et 11/11 : ${fmt(b.appareils)}.` : ''; });
 
 /* ---------- d'où ils viennent ---------- */
-dash.draw('auj', (el) => { const d = dash.data('jours'); if (d.status !== 'ok' || !d.data.length) { el.textContent = '—'; return; } const t = d.data[d.data.length - 1]; if (!T(t.en_cours)) { el.textContent = ''; return; }
-  const inst = Math.max(N(t.installation), N(t.install_accepte_android) + N(t.install_accepte_ordi) + N(t.install_accepte_tablette)) + N(t.app_premiere), parts = [`${pl(N(t.appareils), 'personne')}`];
-  if (N(t.appareils_nouveaux)) parts.push(`dont ${fmt(t.appareils_nouveaux)} nouvelle${N(t.appareils_nouveaux) > 1 ? 's' : ''}`);
-  if (inst) parts.push(`${pl(inst, 'installation')} de l'app`); if (N(t.partage)) parts.push(pl(N(t.partage), 'partage')); if (N(t.source_moteur)) parts.push(`${fmt(t.source_moteur)} venu${N(t.source_moteur) > 1 ? 's' : ''} par Google`);
-  el.innerHTML = ''; const b = document.createElement('b'); b.textContent = "Aujourd'hui (en cours) : "; el.append(b, parts.join(' · ') + '.'); });
+dash.draw('auj', (el) => { const d = dash.data('jours'); el.replaceChildren(); if (d.status !== 'ok' || !d.data.length) { el.textContent = '—'; return; }
+  const t = d.data[d.data.length - 1], enc = T(t.en_cours), P = (lab, txt) => { const p = document.createElement('p'); const b = document.createElement('b'); b.textContent = lab + ' '; p.append(b, txt); el.appendChild(p); };
+  const top = (pre, noms) => Object.keys(noms).map((k) => [noms[k], N(t[pre + k])]).filter((x) => x[1]).sort((a, b) => b[1] - a[1]).map((x) => `${x[0]} ${fmt(x[1])}`).join(' · ');
+  const inst = Math.max(N(t.installation), N(t.install_accepte_android) + N(t.install_accepte_ordi) + N(t.install_accepte_tablette)) + N(t.app_premiere);
+  P(enc ? "Aujourd'hui (en cours) :" : `Le ${dmy(t.jour)} :`, `${pl(N(t.appareils), 'personne')}${N(t.appareils_nouveaux) ? `, dont ${fmt(t.appareils_nouveaux)} nouvelle${N(t.appareils_nouveaux) > 1 ? 's' : ''}` : ', aucune nouvelle'}${inst ? ` · ${pl(inst, 'installation')} de l'app` : ''}.`);
+  const src = top('source_', { app: "l'app installée", direct: 'adresse tapée ou favori', moteur: 'Google', reseau: 'réseaux sociaux', site: 'lien sur un autre site', partage: 'lien partagé', campagne: 'affiche ou QR' });
+  P('Venus par :', (src || '—') + (N(t.seo) ? ` · pages pour Google : ${fmt(t.seo)}` : '') + '.');
+  const vu = top('vue_', { sejour: 'Accueil', agenda: 'Agenda', activites: 'Activités', cine: 'Ciné', soirees: 'Soirées', mer: 'Mer', spots: 'Spots', naviguer: 'Naviguer', peche: 'Pêche', plages: 'Plages', manger: 'Restos', venir: 'Transports', pratique: 'Pratique', immobilier: 'Immobilier', recherche: 'Recherche', installer: 'Installer', apropos: 'À propos' });
+  P('Ont regardé :', (vu || '—') + '.');
+  const fait = top('act_', { appeler: 'appels', sms: 'SMS', itineraire: 'itinéraires', site: 'sites ouverts', calendrier: "ajouts à l'agenda", bande_annonce: 'bandes-annonces' });
+  P('Ont fait :', (fait || 'rien de plus que lire') + (N(t.partage) ? ` · ${pl(N(t.partage), 'partage')}` : '') + (N(t.recherche) ? ` · ${pl(N(t.recherche), 'recherche')}` : '') + '.');
+  P('Temps passé :', `${pl(N(t.visite_30s), 'visite')} de plus de 30 s, dont ${fmt(N(t.visite_180s))} de plus de 3 min · ${fmt(N(t.rubriques_1))} n'ont vu qu'une rubrique, ${fmt(N(t.rubriques_3_4) + N(t.rubriques_5p))} en ont vu 3 ou plus.`); });
+dash.draw('interets', (tb) => { const d = dash.data('interets'); tb.replaceChildren(); if (d.status !== 'ok') return;
+  d.data.filter((r) => r.k !== 'vide').slice(0, 20).forEach((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.k; const a = document.createElement('td'); a.textContent = r.quoi; const sm = document.createElement('small'); sm.textContent = [r.type, r.detail].filter(Boolean).join(' · '); a.appendChild(sm); tr.appendChild(a);
+    ['ouvertures', 'agenda', 'contacts'].forEach((f) => { const td = document.createElement('td'); td.textContent = N(r[f]) ? fmt(r[f]) : '·'; td.dataset.source = 'interets'; td.dataset.field = f; td.dataset.where = 'k=' + r.k; tr.appendChild(td); }); tb.appendChild(tr); }); });
+dash.draw('interets_v', (el) => { const d = dash.data('interets'); const n = d.status === 'ok' ? d.data.filter((r) => r.k !== 'vide').length : 0; el.hidden = n > 0; el.textContent = n ? '' : "Pas encore de fiche ouverte : le comptage a commencé le 27/11 au soir."; });
 dash.draw('sources', (tb) => { const d = dash.data('sources7'); tb.replaceChildren(); if (d.status !== 'ok') return;
   d.data.forEach((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.k; const a = document.createElement('td'); a.textContent = r.canal;
     if (r.k === 'campagne' && !N(r.n)) { const s = document.createElement('small'); s.textContent = '0 : aucune affiche ou QR posé'; a.appendChild(s); }

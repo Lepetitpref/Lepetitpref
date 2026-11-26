@@ -242,7 +242,7 @@ function schedTxt(a){if(!a.open||!a.open.length)return "";const per=r=>r.from===
 function placeRow(a,d,o={}){
   const m=o.metaH??(a.cat==="saveurs"?meta(KIND1[a.kind]||"",esc(townShort(a.town))+(isHere(a.dist,a.town)?"":", "+kmTxt(a.dist,a.town)),isHere(a.dist,a.town)?"à pied":""):meta(esc(townShort(a.town)),kmTxt(a.dist,a.town),agesTxt(a),/^Gratuit/.test(a.price||"")?'<span class="ok">Gratuit</span>':""));
   const lines=o.lines||(a.cat==="marche"&&a.open?[statusOf(a,d),[esc(schedTxt(a)),"dim"]]:[statusOf(a,d)]);
-  return row({th:photoTh(a)||thumbOf(a),title:`<span lang="fr">${esc(a.n)}</span>`,metaH:m,lines,more:placeMore(a),tag:o.tag||"li"});}
+  return row({th:photoTh(a)||thumbOf(a),title:`<span lang="fr">${esc(a.n)}</span>`,metaH:m,lines,more:placeMore(a),tag:o.tag||"li"}).replace('<details class="row-d">',`<details class="row-d" data-pp="l-${ppSlug(a.n)}">`);}
 /* « Ajouter au calendrier » : fichier .ics construit sur le téléphone (rien n'est envoyé) */
 const icsV=o=>encodeURIComponent(JSON.stringify(o));
 const icsBtn=(o,l="Ajouter au calendrier")=>`<button type="button" class="ics-btn" data-act="ics" data-v="${icsV(o)}">${ic("cal","i-s")} ${l}</button>`;
@@ -254,7 +254,7 @@ function icsFile(o){const p2=n=>String(n).padStart(2,"0"),D=d=>d.replace(/-/g,""
   else{const e=new Date((o.end||o.d)+"T12:00:00Z");e.setUTCDate(e.getUTCDate()+1);dt=`DTSTART;VALUE=DATE:${D(o.d)}\r\nDTEND;VALUE=DATE:${e.toISOString().slice(0,10).replace(/-/g,"")}`;}
   const now=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z";
   return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Le Petit Pref//FR","CALSCALE:GREGORIAN","BEGIN:VEVENT",`UID:${now}-${Math.random().toString(36).slice(2)}@lepetitpref.fr`,`DTSTAMP:${now}`,dt,`SUMMARY:${esc2(o.t)}`,o.loc?`LOCATION:${esc2(o.loc)}`:"",o.desc?`DESCRIPTION:${esc2(o.desc)}`:"",o.url?`URL:${o.url}`:"","END:VEVENT","END:VCALENDAR"].filter(Boolean).join("\r\n");}
-function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return;}ppHit2("act-calendrier");ppHit("actv-"+curView()+"-"+ppJour());
+function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return;}ppHit2("act-calendrier");{const t=String(o.t||""),f=t.match(/^Ciné : (.+)$/),ev=f?null:(S.events||[]).find(e=>e.title===t&&(!o.d||e.date<=o.d));ppF("fa",f?"c-"+ppSlug(f[1]):ev&&/^[\w-]+$/.test(ev.id)?"e-"+ev.id:"");}ppHit("actv-"+curView()+"-"+ppJour());
   const txt=icsFile(o),name=(o.t||"evenement").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w]+/g,"-").replace(/^-|-$/g,"").slice(0,40).toLowerCase()+".ics";
   const blob=new Blob([txt],{type:"text/calendar;charset=utf-8"});const u=URL.createObjectURL(blob);
   const a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),8000);
@@ -2151,7 +2151,7 @@ function themeNow(){const t=sget("pp-theme");return t==="light"||t==="dark"?t:"a
 function setTheme(v){const r=document.documentElement;if(v==="auto"){r.removeAttribute("data-theme");try{localStorage.removeItem("pp-theme")}catch(e){}}else{r.setAttribute("data-theme",v);sset("pp-theme",v);}}
 /* bande-annonce : lecteur Allociné dans une fenêtre du site ; fermer = l'iframe disparaît (la vidéo s'arrête), la suivante repart de zéro */
 /* affiche en grand : un toucher l'ouvre, « Fermer », Échap, le fond ou le geste retour la ferment */
-function posOpen(v){const[u,film]=String(v).split("|");if(!/^https:\/\/fr\.web\.img\d\.acsta\.net\/c_310_420\//.test(u))return;posClose(true);
+function posOpen(v){const[u,film]=String(v).split("|");ppF("fv","c-"+ppSlug(film));if(!/^https:\/\/fr\.web\.img\d\.acsta\.net\/c_310_420\//.test(u))return;posClose(true);
   const big=u.replace("/c_310_420/","/");const o=document.createElement("div");o.id="posov";o.className="ba-ov pos-ov";o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label","Affiche : "+film);
   o.innerHTML=`<div class="pos-box"><button type="button" class="btn pos-x" data-pos-x>${ic("close","i-s")} Fermer</button><img src="${esc(big)}" alt="Affiche : ${esc(film)}" onerror="this.src='${esc(u)}'"><p lang="fr">${esc(film)}</p></div>`;
   o.addEventListener("click",e=>{if(e.target===o||e.target.closest("[data-pos-x]"))posClose();});
@@ -2161,7 +2161,7 @@ function posClose(fromPop){const o=document.getElementById("posov");if(!o)return
 window.addEventListener("popstate",()=>posClose(true));
 function baClose(fromPop){const o=document.getElementById("baov");if(!o)return;o.remove();pageInert(false);document.removeEventListener("keydown",baKey);if(!fromPop&&history.state&&history.state.ba)history.back();const b=document.querySelector(".ba-lnk.last");if(b){b.classList.remove("last");b.focus();}}
 function baKey(e){if(e.key==="Escape")baClose();}
-function baOpen(v){ppHit2("act-bande-annonce");ppHit("actv-cine-"+ppJour());const[u,film]=String(v).split("|"),m=u.match(/player_gen_cmedia=(\d+)&cfilm=\d+\.html$/);if(!m){window.open(u,"_blank","noopener");return;}
+function baOpen(v){ppHit2("act-bande-annonce");ppF("fv","c-"+ppSlug(String(v).split("|")[1]));ppHit("actv-cine-"+ppJour());const[u,film]=String(v).split("|"),m=u.match(/player_gen_cmedia=(\d+)&cfilm=\d+\.html$/);if(!m){window.open(u,"_blank","noopener");return;}
   baClose(true);document.querySelectorAll(".ba-lnk.last").forEach(x=>x.classList.remove("last"));const a=document.activeElement;if(a&&a.classList)a.classList.add("last");
   const o=document.createElement("div");o.id="baov";o.className="ba-ov";o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label","Bande-annonce "+(film||""));
   o.innerHTML=`<div class="ba-box"><div class="ba-top"><b>${esc(film||"Bande-annonce")}</b><button type="button" class="ba-x">Fermer</button></div><div class="ba-fr"><iframe src="https://player.allocine.fr/${m[1]}.html" title="Bande-annonce ${esc(film||"")}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="ba-sound"><b>🔊 Pour avoir le son</b><ol><li>Touchez <b>la vidéo</b></li><li>Puis le <b>haut-parleur</b> en bas</li></ol></div><p class="ba-src">Vidéo Allociné · <a href="${esc(u)}" target="_blank" rel="noopener">ouvrir sur Allociné ↗</a></p></div>`;
@@ -2323,10 +2323,17 @@ function ppVue(v){if(!ppOn)return;if(!ppHumain){if(!PPV.includes(v))PPV.push(v);
     if(localStorage.getItem("pp-sem")!==sem){localStorage.setItem("pp-sem",sem);if(!appPrem){ppHit("appareils-sem-"+sem);ppHit("cohorte-"+ppSem((prem||j).replace(/^app-/,""))+"-"+sem);}}
     if(localStorage.getItem("pp-mois")!==mois){localStorage.setItem("pp-mois",mois);if(!appPrem)ppHit("appareils-mois-"+mois);}
     localStorage.setItem("pp-appareil",prem||(appPrem?"app-"+j:j));localStorage.setItem("pp-appareil-jour",j);}catch(e){}}
+/* intérêt par fiche (totaux depuis le début, jamais l'appareil) : fv = fiche ouverte, fa = ajout à l'agenda, fc = appel, itinéraire, site ou partage.
+   e-<id événement>, l-<lieu>, c-<film>. Une fois par fiche et par chargement. */
+const ppSlug=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,48);
+const ppItem=el=>{const d=el&&el.closest&&el.closest("[data-ev],[data-pp]");return d?(d.dataset.ev?"e-"+d.dataset.ev:d.dataset.pp):"";};
+const ppF=(k,it)=>{if(!it||ppUne["f:"+k+it])return;ppUne["f:"+k+it]=1;ppHit(k+"-"+it);};
+document.addEventListener("toggle",e=>{const d=e.target;if(d&&d.open&&d.matches&&d.matches("details[data-ev],details[data-pp]"))ppF("fv",ppItem(d));},true);
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-share]");if(b)ppF("fc",ppItem(b));},true);
 /* actions utiles : appeler, itinéraire, site d'un lieu (et la rubrique où l'action a eu lieu) */
 document.addEventListener("click",e=>{const a=e.target.closest("a[href]");if(!a)return;const h=a.getAttribute("href")||"";
   const k=/^tel:/.test(h)?"appeler":/^sms:/.test(h)?"sms":/google\.[a-z.]+\/maps|maps\.apple\.com|^geo:/.test(h)?"itineraire":(/^https?:/.test(h)&&!/lepetitpref\.fr/.test(h)&&a.closest("#main .row-links,#main .pop,#main details"))?"site":"";
-  if(k){ppHit2("act-"+k);ppHit("actv-"+curView()+"-"+ppJour());}},true);
+  if(k){ppHit2("act-"+k);ppHit("actv-"+curView()+"-"+ppJour());ppF("fc",ppItem(a));}},true);
 /* erreurs de la page (une fois par chargement) */
 window.addEventListener("error",()=>ppOnce("erreur-js"));
 document.addEventListener("click",e=>{if(e.target.closest("[data-share],.sh.wa")){ppHit("partage-"+ppJour());ppHit("partage");}},true);
