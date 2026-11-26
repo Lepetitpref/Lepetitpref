@@ -20,6 +20,7 @@
 , Théâtre St-Gilles · arrives in Nantes at #h#, Pirmil
 , Théâtre St-Gilles · arrives in Préfailles at #h#, Place de la Gare
 : none within # km. Nearest: Poiskaï Sud, Les Moutiers (# km). Fish is also sold at the markets.
+: what's on, the sea, places to eat and transport in Préfailles and around, updated every morning.
 @J #h#, #h and #h#; @J #h# chair yoga; multi-sports hall, rue de la Renaudière (#-# season)
 @J #h#-#h (CE# to CM#, # places), school playground and multi-sports hall, since # Sept #; price based on family income (€# to €#)
 @J #h-#h# at the Raymond Devos library in Les Moutiers
@@ -47,6 +48,7 @@ Association that organises the Jazz à Préf concerts at the Espace culturel.
 At night, on Sundays and public holidays: call # (Résogardes) for the nearest duty pharmacy
 Avenue du Jardin de Retz · # Jun #
 Baie de Bourgneuf
+Baie de Bourgneuf: not enough wind # kn
 Baie de Bourgneuf: onshore wind # kn towards the rocks
 Bibliothèque des Moutiers
 Bins and recycling in Préfailles
@@ -252,6 +254,7 @@ Things to do in La Plaine-sur-Mer
 Things to do in Les Moutiers-en-Retz
 Things to do in Préfailles
 This icon appears on your home screen. It opens Le Petit Préf full screen, straight onto your stay.
+This weekend in Préfailles
 Théâtre St-Gilles
 Tides in Préfailles
 Times taken from the official Aléop and TER timetables (Pays de la Loire region), as a guide only: strikes, engineering works and public holidays can change them.
@@ -283,4 +286,3 @@ to Pornic, Nantes, Saint-Nazaire, Saint-Brevin, La Bernerie
 © Le Petit Préf, all rights reserved.
 “Recreational shore fishing” size gauge from the Syndicat mixte de la Baie de Bourgneuf (valid in Loire-Atlantique and Vendée), @M #, and the Loire-Atlantique Département shore-fishing fact sheet. A guide only: the official regulations are what count (town hall, Affaires maritimes in Saint-Nazaire).
 €#.# per journey until # Jan #; €#.# to €#.# to Saint-Nazaire (Ycéo included) from # Jan #
-Baie de Bourgneuf: not enough wind # kn
