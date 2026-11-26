@@ -4144,6 +4144,10 @@
    "$1 running · tap to see"
   ],
   [
+   "^(\\d+ [^:,]+?), du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
    "^(\\d+ [^:]+?) : ouverte?s? d'abord, (?:puis|then) du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
    "$1: open first, then nearest first. Hours are a guide only: call ahead."
   ],

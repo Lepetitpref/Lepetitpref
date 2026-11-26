@@ -785,10 +785,11 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const all=ACTS.filter(a=>(a.cat==="saveurs"||a.cat==="marche")&&fitsWhere(a.dist??TOWN_KM[a.town],a.town,S.mWhere));
   const base=all.filter(a=>(!S.openToday||openOn(a,od))&&(!S.mCadre||(a.cadre||[]).includes(S.mCadre)));
   const CADRES=[["vue","Vue sur la mer"],["plage","Sur la plage"],["terrasse","Terrasse"]].map(([k,l])=>[k,l,all.filter(a=>(a.cadre||[]).includes(k)&&(S.mk==="tous"||mkOK(a))&&(!S.openToday||openOn(a,od))).length]).filter(x=>x[2]);
-  /* ouverts d'abord, puis « à vérifier » (horaires inconnus), puis fermés ; à rang égal, du plus proche au plus loin */
   const ork=a=>{const o=openOn(a,od);return o?0:o===null?1:2;};
   const mrk=a=>mom?(eatPlace(a)&&momOK(a,mom)?0:openOn(a,od)===null?1:2):0;
-  const list=base.sort((p,q)=>mrk(p)-mrk(q)||ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
+  /* le plus proche d'abord (par tranches d'un demi-kilomètre) ; à distance égale, ouverts puis « à vérifier » puis fermés */
+  const kmr=a=>Math.round(((a.dist??TOWN_KM[a.town])??99)*2);
+  const list=base.sort((p,q)=>mrk(p)-mrk(q)||kmr(p)-kmr(q)||ork(p)-ork(q)||((p.dist??TOWN_KM[p.town])??99)-((q.dist??TOWN_KM[q.town])??99));
   const tagSel=S.mk.startsWith("t:")?CUIS.find(c=>c[0]===S.mk.slice(2)):null;
   const groups=tagSel?[[S.mk,tagSel[1]]]:MKINDS.slice(1).filter(([k])=>list.some(a=>kindOf(a)===k||(k==="bar"&&!!a.bar)));
   const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
@@ -796,7 +797,7 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const slot=(o,m)=>{const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)],soir=/soir$/.test(m);const x=R.find(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5);});return x?x[0]:null;};
   const stat=a=>{const r=statusOf(a,od);if(mom&&!eatPlace(a))return r;if(mom&&eatPlace(a)&&!momOK(a,mom)&&openOn(a,od)!==null&&!(r&&/off/.test(r[1]||"")))return["Fermé "+momL.toLowerCase(),"shut"];if(!(mom&&r&&/^Ouvert/.test(r[0])))return r;const sl=slot(openOn(a,od),mom);return["Ouvert "+momL.toLowerCase()+(sl?" · "+esc(sl):""),r[1]];};
   const nw=SECL[S.mk]||(S.mk==="tables"?"restaurant":"adresse");
-  return `${pageHead("Restos",`${S.mk==="tables"?`${shown.length} restaurant${shown.length>1?"s":""} et crêperie${shown.length>1?"s":""}`:`${shown.length} ${nw}${shown.length>1?"s":""}`}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?(n=>` : ${n} ouvert${nw==="adresse"?"e":""}${n>1?"s":""} ${momL.toLowerCase()}, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés`)(shown.filter(a=>eatPlace(a)&&momOK(a,mom)).length):` : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
+  return `${pageHead("Restos",`${S.mk==="tables"?`${shown.length} restaurant${shown.length>1?"s":""} et crêperie${shown.length>1?"s":""}`:`${shown.length} ${nw}${shown.length>1?"s":""}`}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?(n=>` : ${n} ouvert${nw==="adresse"?"e":""}${n>1?"s":""} ${momL.toLowerCase()}, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés`)(shown.filter(a=>eatPlace(a)&&momOK(a,mom)).length):`, du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
   <div class="filters">${["tous","tables","bar"].includes(S.mk)||S.mk.startsWith("t:")?frow("frow","Quand",qchip("Tous",!mom,'data-act="mmom" data-v=""')+MMOM.map(([k,l])=>qchip(l,mom===k,`data-act="mmom" data-v="${k}"`)).join("")):""}${frow("frow","Filtres",`${zoneSel(S.mWhere,"mwhere","10")}${mom?"":chip(`Ouvert ${od0===t?"aujourd'hui":wdName(od0)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${CADRES.map(([k,l,c])=>chip(`${l} <span class="chip-count">${c}</span>`,S.mCadre===k,`data-act="mcadre" data-v="${k}"`)).join("")}`)}
 </div>
