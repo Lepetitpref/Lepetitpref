@@ -126,3 +126,4 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Affiche en grand (25/11) : toucher l'affiche d'un film (`.poster-b`, ACT `poster`) ouvre `posOpen()` (`#posov`, image Allociné sans `c_310_420`, bouton « Fermer », Échap, fond, geste retour).
 - Search Console : `dataState=all` (données fraîches) et jours sans affichage remis à 0 jusqu'à la veille.
 - Agenda (26/11) : chaque jour finit par une ligne « Au cinéma : N films » (`agCine`, 3 titres, toucher = séances de ce jour, ACT `cday`).
+- Ciné (26/11) : sous chaque film, sur une ligne `.film-acts` : « Bande-annonce » et « Dans mon agenda » (une séance = .ics direct ; plusieurs = volet `.cal-pick` « Quelle séance ? » avec un bouton par heure et salle).
