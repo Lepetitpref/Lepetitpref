@@ -216,6 +216,10 @@ function thumbOf(a){let[c,n]=TH[a.cat]||["t-act","spark"];
 function statusOf(a,d){const r=statusOf0(a,d),t=today();if(!r||d===t||typeof r[0]!=="string"||r[1]==="next")return r;const w=d===addDays(t,1)?"demain":dshort(d);return [r[0].replace(/^(Ouvert|Fermé)/,"$1 "+w),...r.slice(1)];}
 function statusOf0(a,d){const o=openOn(a,d);
   if(/Pêche à pied/.test(a.n)){const l=dayLows(d);return[`Accès libre${l.length?" · basse mer "+hm(new Date(l[0].ms)):""}`,"ok"];}
+  if(o&&d===today()&&typeof o==="string"){const R=[...o.replace(/\([^)]*en saison[^)]*\)/g,"").matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)].map(x=>{const a=+x[1]+(+x[2]||0)/60;let b=+x[3]+(+x[4]||0)/60;if(b<=a)b+=24;return[a,b];});
+    if(R.length){const n=new Date(),h=n.getHours()+n.getMinutes()/60;
+      if(h>=Math.max(...R.map(r=>r[1]))){for(let i=1;i<=14;i++){const x=addDays(d,i),hh=openOn(a,x);if(hh)return[`Terminé pour aujourd'hui · rouvre ${i===1?"demain":F(noon(x),{weekday:"long"})}`,"shut"];}return["Terminé pour aujourd'hui","shut"];}
+      if(h<Math.min(...R.map(r=>r[0]))){const m=/^(\d{1,2})h(\d{2})?/.exec(o);return[`Ouvre à ${m[1]}h${m[2]||""}${/^(ouvert|week-end)$/.test(o)?"":" · "+esc(o)}`,"next"];}}}
   if(o)return[`Ouvert${/^(ouvert|week-end)$/.test(o)?"":" · "+esc(o)}`,"ok"];
   if(o===false){const md=d.slice(5),inSeason=a.open.some(r=>r.from<=r.to?(md>=r.from&&md<=r.to):(md>=r.from||md<=r.to));
     if(inSeason&&a.cat==="marche"){for(let i=1;i<=14;i++){const x=addDays(d,i),h=openOn(a,x);if(h)return[`Prochain marché : ${F(noon(x),{weekday:"long",day:"numeric",month:"short"})}${/^(ouvert|week-end)$/.test(h)?"":" · "+esc(h)}`,"next"];}}
@@ -320,6 +324,7 @@ function mergeModels(j){if(!j)return j;for(const part of ["hourly","daily"]){con
   Object.keys(H).filter(k=>k.endsWith("_meteofrance_seamless")).forEach(k=>{const b=k.replace(/_meteofrance_seamless$/,""),alt=H[b+"_best_match"]||[];H[b]=H[k].map((v,i)=>v==null?(alt[i]??null):v);});}
   return j;}
 const WX={f:null,m:null,z:null,st:"idle",at:0};
+const WXNA=()=>WX.st==="load"||!WX.tried?"…":"indispo.";
 function wxLoad(){if(WX.st==="load"||(WX.tried&&Date.now()-WX.tried<5*6e4))return;WX.tried=Date.now();
   try{const c=JSON.parse(sget("pp-wx"+(BASE.k==="prefailles"?"":"-"+BASE.k))||"null");if(c&&Date.now()-c.at<36e5&&c.f&&c.m&&c.z){WX.f=c.f;WX.m=c.m;WX.z=c.z;WX.at=c.at;WX.st="ok";return;}if(c&&c.f){WX.f=c.f;WX.m=c.m;WX.z=c.z||null;WX.at=c.at;}}catch(e){}
   WX.st="load";
@@ -752,7 +757,7 @@ const MMOM=[["midi","Ce midi"],["soir","Ce soir"],["dmidi","Demain midi"],["dsoi
 const eatPlace=a=>a.cat==="saveurs"&&(["restaurant","creperie","bar"].includes(a.kind)||!!a.bar);
 function momOK(a,m){const d=m[0]==="d"?addDays(today(),1):today(),o=openOn(a,d);if(!o)return false;if(o===true||/^(ouvert|week-end)$/.test(o))return true;
   const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)].map(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return[s,e];});
-  if(!R.length)return true;const soir=/soir$/.test(m);return R.some(([s,e])=>soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5));}
+  if(!R.length)return false;const soir=/soir$/.test(m);return R.some(([s,e])=>soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5));}
 const CUISS={pizza:"Pizzas",mer:"Fruits de mer",snack:"Burgers",monde:"Cuisine du monde"},CADS={vue:"Vue mer",plage:"Sur la plage",terrasse:"Terrasse"};
 const BART=[["Bar à vins",/bar à vins?|cave à vins?|vins nature|bar à vin/i],["Cocktails",/cocktail|rhum/i],["Piano bar",/piano/i],["Bière",/brasserie artisanale|bières? (artisanale|pression)|pub\b/i]];
 const tagsOf=a=>[...(a.kind==="restaurant"?CUIS.filter(c=>hasCuis(a,c[0])).map(c=>CUISS[c[0]]):[]),...(a.kind==="bar"?BART.filter(([,r])=>r.test(a.n+" "+(a.d||""))).map(x=>x[0]):[]),...(a.cadre||[]).map(k=>CADS[k]).filter(Boolean)];
@@ -785,7 +790,7 @@ function vManger(){const t=today(),od0=S.openDay||t,mom=["tous","tables","bar"].
   const nOpen=all.filter(a=>openOn(a,od0)&&(S.mk==="tous"||mkOK(a))).length;
   const shown=list.filter(a=>S.mk==="tous"||mkOK(a)),SECL={bar:"bar",marche:"marché",produits:"adresse"};
   const slot=(o,m)=>{const R=[...String(o).matchAll(/(\d{1,2})h(\d{2})?\s*[–-]\s*(\d{1,2})h(\d{2})?/g)],soir=/soir$/.test(m);const x=R.find(x=>{const s=+x[1]+(+x[2]||0)/60;let e=+x[3]+(+x[4]||0)/60;if(e<=s)e+=24;return soir?(s<=19.75&&e>=20.5):(s<=12.5&&e>=13.5);});return x?x[0]:null;};
-  const stat=a=>{const r=statusOf(a,od);if(mom&&eatPlace(a)&&!momOK(a,mom)&&openOn(a,od)!==null&&!(r&&/off/.test(r[1]||"")))return["Fermé "+momL.toLowerCase(),"shut"];if(!(mom&&r&&/^Ouvert/.test(r[0])))return r;const sl=slot(openOn(a,od),mom);return["Ouvert "+momL.toLowerCase()+(sl?" · "+esc(sl):""),r[1]];};
+  const stat=a=>{const r=statusOf(a,od);if(mom&&!eatPlace(a))return r;if(mom&&eatPlace(a)&&!momOK(a,mom)&&openOn(a,od)!==null&&!(r&&/off/.test(r[1]||"")))return["Fermé "+momL.toLowerCase(),"shut"];if(!(mom&&r&&/^Ouvert/.test(r[0])))return r;const sl=slot(openOn(a,od),mom);return["Ouvert "+momL.toLowerCase()+(sl?" · "+esc(sl):""),r[1]];};
   const nw=SECL[S.mk]||(S.mk==="tables"?"restaurant":"adresse");
   return `${pageHead("Restos",`${S.mk==="tables"?`${shown.length} restaurant${shown.length>1?"s":""} et crêperie${shown.length>1?"s":""}`:`${shown.length} ${nw}${shown.length>1?"s":""}`}${S.mCadre?" "+({vue:"avec vue sur la mer",plage:"sur la plage",terrasse:"avec terrasse"})[S.mCadre]:""}${mom?(n=>` : ${n} ouvert${nw==="adresse"?"e":""}${n>1?"s":""} ${momL.toLowerCase()}, en tête de liste ; puis les horaires à vérifier et ceux qui sont fermés`)(shown.filter(a=>eatPlace(a)&&momOK(a,mom)).length):` : ouvert${nw==="adresse"?"e":""}s d'abord, puis du plus proche au plus loin`}. Horaires indicatifs, appelez avant.`)}
   ${segMg()}
@@ -1058,12 +1063,12 @@ function progSec(){const g=gActive();if(!g||S.events===null)return"";const d=tod
 function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[sky,icn]=w?WMO(w.code):["",""];const H=x=>hm(new Date(x.ms));
   const cell=(l,v,x,cls="")=>`<div class="hn-c ${cls}"><span>${l}</span><b>${v}</b>${x?`<small>${x}</small>`:""}</div>`;
   return `<a class="home-now" href="#mer" aria-label="La mer en détail">
-   ${cell("Météo",w?`${ic(icn,"i-s")} ${r0(w.tmin)}–${r0(w.tmax)}°`:"…",w?sky:"","hn-wx")}
-   ${cell("Vent",w?`${r0(w.w)} nds`:"…",w?`${dirTxt(w.wd)}${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}`:"")}
-   ${cell("Eau",e!=null?`${r1(e)}°`:"…",e==null?"":e<13?"froide · combi 5/4":e<16?"fraîche · combi 4/3":e<19?"bonne · combi 3/2":"douce")}
+   ${cell("Météo",w?`${ic(icn,"i-s")} ${r0(w.tmin)}–${r0(w.tmax)}°`:WXNA(),w?sky:"","hn-wx")}
+   ${cell("Vent",w?`${r0(w.w)} nds`:WXNA(),w?`${dirTxt(w.wd)}${w.g>=w.w+8?`, rafales ${r0(w.g)}`:""}`:"")}
+   ${cell("Eau",e!=null?`${r1(e)}°`:WXNA(),e==null?"":e<13?"froide · combi 5/4":e<16?"fraîche · combi 4/3":e<19?"bonne · combi 3/2":"douce")}
    ${cell("Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–","")}
    ${cell("Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:"")}
-   ${cell("Pluie",w?`${w.pp??0} %`:"…",w&&w.pp>=60?"prévoir un abri":w?"":"")}
+   ${cell("Pluie",w?`${w.pp??0} %`:WXNA(),w&&w.pp>=60?"prévoir un abri":w?"":"")}
   </a>`;}
 /* prochains marchés à moins de 10 km (d'après les jours et heures des fiches) ; un marché déjà fini aujourd'hui ne compte pas */
 function nextMarkets(n=3){const t=today(),now=hm(new Date()),out=[];
@@ -1099,7 +1104,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const v=(href,title,meta,icn,act="")=>`<a class="htile" href="${href}"${act}><span class="actile-ic">${ic(icn)}</span><span class="htile-t"><b>${title}</b>${meta?`<small>${meta}</small>`:""}</span></a>`;
   const sc=sget(secKey()),PC=PRX[BASE.k]?.dechets.collecte,om=PC?(sc?PC.ordures_menageres[sc]:null):BIN_PREF[0],emb=PC?(sc?PC.emballages[sc]:null):BIN_PREF[1];
   const bo=binNext(om),be=binNext(emb),mk=nextMarkets(1)[0],dd=x=>x===t?"aujourd'hui":x===addDays(t,1)?"demain":wdName(x)+" "+F(noon(x),{day:"numeric",month:"short"});
-  const low=dayLows(t).find(l=>l.ms>Date.now())||dayLows(addDays(t,1))[0];
+  const lowT=tidesOfDay(t).find(e=>e.k==="BM"&&e.ms>Date.now()),lowD=lowT?null:tidesOfDay(addDays(t,1)).find(e=>e.k==="BM"),low=lowT||lowD;
   return `<div class="hero"><img src="images/${BASE.img}" alt="${esc(BASE.alt)}" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">${BASE.n}</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1></div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
   ${baseBar()}
@@ -1113,7 +1118,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
     v("#soirees","Soirées",ld?"":`${nSoir?`${nSoir} ce soir`:"rien ce soir"} · ${wkP.filter(evSoir).length} en 7 jours`,"spark"),
     v("#cine","Ciné",film?`${film.d===t?"Aujourd'hui":cap(wdName(film.d))} ${esc((film.f.times||[])[0]||"")} : <span lang="fr">${esc(film.f.film)}</span>`:`le programme de ${BASE.n} et autour`,"film",` data-act="cin" data-v="tous"`)],"#agenda")}
   ${door("d-mer","--i-sea","La mer","Marées, météo de la mer, glisse, pêche à pied et plages.",[
-    v("#mer","Marées et météo",low?`basse mer ${hm(new Date(low.ms))}${maxCoef(t)?` · coef. ${maxCoef(t)}`:""}`:"vent, houle, eau","tide"),
+    v("#mer","Marées et météo",low?`basse mer ${lowD?"demain ":""}${hm(new Date(low.ms))}${maxCoef(lowD?addDays(t,1):t)?` · coef. ${maxCoef(lowD?addDays(t,1):t)}`:""}`:"vent, houle, eau","tide"),
     v("#spots","Glisse et spots",glisse?`${ACTL[glisse.a].replace(" et bateau","")} ${NOTE[glisse.b.j[0]].toLowerCase()} ${slotTxt(glisse.b)} · ${esc(glisse.sp.n)}`:wxDay(t)?"pas de bonnes conditions":"surf, kite, wing, voile","sail"),
     v("#peche","Pêche à pied",big?`grande marée ${big[0]===t?"aujourd'hui":dshort(big[0])}, coef. ${big[1]}`:"bonnes marées, sécurité","shell"),
     v("#plages","Plages","surveillées ou non, chiens","wave")],"#mer")}
@@ -1455,10 +1460,10 @@ function merShareTxt(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)
   return `La mer à Préfailles, ${dlong(d)} : ${WMO(w.code)[0].toLowerCase()}, vent ${r0(w.w)} nds ${DIRLONG[dirTxt(w.wd)]||""}${sm&&sm.hs!=null?`, houle ${r1(sm.hs)} m`:""}${e!=null?`, eau ${r1(e)}°`:""}${l?`, basse mer à ${hm(new Date(l.ms))}`:""}.`;}
 function merTop(d){const w=wxDay(d),e=sstNow(d),sm=seaAt(d,12)||seaAt(d,15)||seaAt(d,9),ts=tidesOfDay(d),c=maxCoef(d);
   const H=x=>hm(new Date(x.ms)),cells=[];
-  cells.push(["vent","Vent",w?`${r0(w.w)} nds`:"…",w?`${dirTxt(w.wd)} · force ${bft(w.w)}`:""]);
-  cells.push(["raf","Rafales",w?`${r0(w.g)} nds`:"…",w&&w.g>=34?"coup de vent":w&&w.g>=25?"ça souffle":""]);
-  cells.push(["houle","Houle",sm&&sm.hs!=null?`${r1(sm.hs)} m`:"…",sm&&sm.hs!=null?`${r0(sm.swp??sm.tp)} s`:""]);
-  cells.push(["eau","Eau",e!=null?`${r1(e)}°`:"…",e==null?"":e<13?"combi 5/4":e<16?"combi 4/3":e<19?"combi 3/2":"shorty"]);
+  cells.push(["vent","Vent",w?`${r0(w.w)} nds`:WXNA(),w?`${dirTxt(w.wd)} · force ${bft(w.w)}`:""]);
+  cells.push(["raf","Rafales",w?`${r0(w.g)} nds`:WXNA(),w&&w.g>=34?"coup de vent":w&&w.g>=25?"ça souffle":""]);
+  cells.push(["houle","Houle",sm&&sm.hs!=null?`${r1(sm.hs)} m`:WXNA(),sm&&sm.hs!=null?`${r0(sm.swp??sm.tp)} s`:""]);
+  cells.push(["eau","Eau",e!=null?`${r1(e)}°`:WXNA(),e==null?"":e<13?"combi 5/4":e<16?"combi 4/3":e<19?"combi 3/2":"shorty"]);
   cells.push(["bm","Basse mer",ts.filter(x=>x.k==="BM").map(H).join("<br>")||"–",""]);
   cells.push(["pm","Pleine mer",ts.filter(x=>x.k==="PM").map(H).join("<br>")||"–",c?`coef. ${c}`:""]);
   const k=S.merSel,grp=x=>x==="raf"?"vent":x==="pm"?"bm":x;
@@ -1953,7 +1958,7 @@ function vApropos(){return `<div class="vhead"><div><h1>À propos</h1><p class="
   <p><b>Contenus.</b> Les événements, séances de cinéma, horaires et adresses sont repris des sites des communes, offices de tourisme, cinémas, associations et transporteurs, qui restent la référence ; chaque fiche renvoie à sa source. Ils sont mis à jour automatiquement chaque matin et peuvent contenir des erreurs : vérifiez avant de vous déplacer.</p>
   <p><b>Marées.</b> Heures et hauteurs calculées à partir des tables de Pornic (SHOM), à titre indicatif (écart de l'ordre de 10 minutes). Ne pas utiliser pour la navigation.</p>
   <p><b>Photos et logo.</b> © Le Petit Préf, tous droits réservés.</p>
-  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, par semaine et par mois, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), la provenance par grande catégorie (moteur de recherche, réseau social, autre site, accès direct, jamais l'adresse de la page), les installations de l'app, les clics sur « Installer », les appels, itinéraires et ajouts au calendrier, et le nombre de recherches (sans le texte tapé). Votre navigateur garde seulement le jour, la semaine et le mois de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
+  <p><b>Données personnelles.</b> Le site ne collecte aucune donnée personnelle : ni compte, ni cookie. Le formulaire de contact n'envoie que ce que vous y écrivez. <b>Mesure d'audience :</b> le site compte seulement des totaux (pages ouvertes, nombre d'appareils par jour, par semaine et par mois, partages, durée des visites par tranches), sans rien qui vous identifie : ni cookie, ni adresse IP conservée, ni identifiant. Sont aussi comptés, toujours en totaux : le type d'appareil (iPhone, Android, tablette, ordinateur), la provenance par grande catégorie (moteur de recherche, réseau social, autre site, accès direct, jamais l'adresse de la page), les installations de l'app, les clics sur « Installer », les appels, itinéraires et ajouts au calendrier, et le nombre de recherches (sans le texte tapé). Votre navigateur garde seulement le jour, la semaine et le mois de votre dernière visite. Vos dates de séjour et vos filtres restent enregistrés dans votre navigateur, sur votre appareil uniquement.</p>
   <p><b>Photos.</b> Château et port de Pornic : « Chateau de Pornic (27) », Ibex73, <a href="https://commons.wikimedia.org/wiki/File:Chateau_de_Pornic_(27).jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 4.0</a> (image recadrée).</p>
   <p><b>Photos.</b> Grande Plage de La Bernerie-en-Retz : « La-Bernerie-en-Retz (Loire-Atlantique) », Daniel Jolivet, <a href="https://commons.wikimedia.org/wiki/File:La-Bernerie-en-Retz_(Loire-Atlantique)_(21327185688).jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, licence <a href="https://creativecommons.org/licenses/by/2.0/deed.fr" target="_blank" rel="noopener">CC BY 2.0</a> (image recadrée). Plage de Saint-Brevin-l'Océan : « Plage et chenal se jetant dans la mer à Saint-Brevin-l'Océan », DarkVador79-UA, <a href="https://commons.wikimedia.org/wiki/File:Plage_et_chenal_se_jetant_dans_la_mer_%C3%A0_Saint-Brevin-l%27Oc%C3%A9an.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 4.0</a> (image recadrée).</p>
   <p><b>Services utilisés par le site.</b> Pour afficher la météo, le vent, la houle et la température de l'eau, votre téléphone interroge directement Open-Meteo (open-meteo.com, données sous licence CC BY 4.0, modèles de Météo-France, du centre européen ECMWF, du service allemand DWD et de la NOAA américaine) : ce service voit donc votre adresse IP, comme tout site consulté. Les polices de caractères sont chargées depuis Google Fonts, qui voit aussi votre adresse IP. Les totaux d'audience sont envoyés à un compteur hébergé chez Cloudflare. La carte des restos est dessinée sur un fond OpenStreetMap (tile.openstreetmap.org), chargé seulement quand vous ouvrez la carte. Certains horaires d'ouverture viennent aussi d'OpenStreetMap (© les contributeurs OpenStreetMap, licence ODbL). Sur la carte Immobilier, l'adresse que vous tapez est envoyée au service d'adresses de l'État (api-adresse.data.gouv.fr), seulement quand vous lancez la recherche. Les couches Cadastre et Zonage PLU, la zone d'un endroit touché et le contour d'une parcelle viennent des services de l'IGN (data.geopf.fr, apicarto.ign.fr), appelés seulement quand vous les utilisez. Le bulletin météo marine est repris de Météo-France (meteofrance.com) et la houle mesurée de la bouée du Plateau du Four, réseau Candhis du Cerema (Licence Ouverte Etalab).</p>
@@ -2233,7 +2238,7 @@ const ACT={
     try{const u=URL.createObjectURL(new Blob([kml()],{type:"application/vnd.google-earth.kml+xml"}));const a=document.createElement("a");a.href=u;a.download="lepetitpref-carte.kml";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
       if(st)st.textContent="Fichier enregistré. Sur mymaps.google.com : Créer une carte → Importer → ce fichier. La carte apparaît ensuite dans Google Maps, onglet « Enregistrés ».";
     }catch(e){if(st)st.textContent="Téléchargement annulé.";}}};
-const CHG={base:v=>{ACT.base(v);},trA:v=>{if(!v)return;ppOnce("usage-trajet");const a=S.trA;S.trA=v;if(v===S.trB)S.trB=a&&a!==v?a:([ORIG,...TRDEST].find(x=>x!==v));},trB:v=>{if(v&&v!==S.trA)S.trB=v;},trto:v=>{if(TRDEST.includes(v))S.trTo=v;},trday:v=>{if(v)S.trDay=v;},trafter:v=>{const m=/^(\d{1,2}):(\d{2})/.exec(v||"");S.trAfter=m?m[1].padStart(2,"0")+"h"+m[2]:null;},imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)setFaire("jour",v);},agday:v=>{if(!v)return;setFaire("jour",v);render();},soirday:v=>{if(!v)return;setFaire("jour",v);render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},awhere:v=>{S.aWhere=v;sset("pp-awhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.merDay=v;}};
+const CHG={base:v=>{ACT.base(v);},trA:v=>{if(!v)return;ppOnce("usage-trajet");const a=S.trA;S.trA=v;if(v===S.trB)S.trB=a&&a!==v?a:([ORIG,...TRDEST].find(x=>x!==v));if(v!==ORIG&&S.trB!==ORIG)S.trB=ORIG;},trB:v=>{if(!v)return;const b=S.trB;if(v===S.trA)S.trA=b&&b!==v?b:ORIG;S.trB=v;if(v!==ORIG&&S.trA!==ORIG)S.trA=ORIG;},trto:v=>{if(TRDEST.includes(v))S.trTo=v;},trday:v=>{if(v)S.trDay=v;},trafter:v=>{const m=/^(\d{1,2}):(\d{2})/.exec(v||"");S.trAfter=m?m[1].padStart(2,"0")+"h"+m[2]:null;},imy:v=>{S.imY=v;S.imN=3;},cday:v=>{if(v)setFaire("jour",v);},agday:v=>{if(!v)return;setFaire("jour",v);render();},soirday:v=>{if(!v)return;setFaire("jour",v);render();},adu:v=>{S.du=v;if(S.au&&S.au<v)S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},aau:v=>{S.au=v;sset("pp-dates",JSON.stringify({du:S.du,au:S.au}));},mwhere:v=>{S.mWhere=v;sset("pp-mwhere",v);},awhere:v=>{S.aWhere=v;sset("pp-awhere",v);},etype:v=>{S.etype=v;},where:v=>{S.where=v;sset("cf-where",v);},who:v=>{S.who=v;},cat:v=>{S.cat=v;},tday:v=>{if(v)S.merDay=v;}};
 document.addEventListener("click",e=>{const el=e.target.closest("[data-act]");if(!el||!el.closest("#main"))return;
   const f=ACT[el.dataset.act];if(!f)return;if(el.tagName==="BUTTON")e.preventDefault();f(el.dataset.v,el,e);});
 document.addEventListener("change",e=>{const el=e.target.closest("[data-chg]");if(!el||!el.closest("#main"))return;const f=CHG[el.dataset.chg];if(f){f(el.value);render();}});

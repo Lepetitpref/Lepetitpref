@@ -569,7 +569,6 @@
   "Photos et logo.": "Photos and logo.",
   "© Le Petit Préf, tous droits réservés.": "© Le Petit Préf, all rights reserved.",
   "Données personnelles.": "Personal data.",
-  "Le site ne collecte aucune donnée personnelle : ni compte, ni formulaire, ni cookie.": "The site collects no personal data: no account, no sign-up, no cookies.",
   "Mesure d'audience :": "Audience measurement:",
   "Services utilisés par le site.": "Services used by the site.",
   "Liens.": "Links.",
@@ -1396,9 +1395,59 @@
   "Quelle séance ?": "Which showing?",
   "Mon agenda": "My calendar",
   "+ Agenda": "+ Calendar",
-  "Ajouter à l'agenda du téléphone": "Add to your phone's calendar"
+  "Ajouter à l'agenda du téléphone": "Add to your phone's calendar",
+  "indispo.": "unavailable",
+  "Le site ne collecte aucune donnée personnelle : ni compte, ni cookie. Le formulaire de contact n'envoie que ce que vous y écrivez.": "The site collects no personal data: no account, no cookies. The contact form only sends what you write in it."
  },
  "rules": [
+  [
+   "^Terminé pour aujourd'hui · rouvre demain$",
+   "Finished for today · open again tomorrow"
+  ],
+  [
+   "^Terminé pour aujourd'hui$",
+   "Finished for today"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre lundi$",
+   "Finished for today · open again on Monday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre mardi$",
+   "Finished for today · open again on Tuesday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre mercredi$",
+   "Finished for today · open again on Wednesday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre jeudi$",
+   "Finished for today · open again on Thursday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre vendredi$",
+   "Finished for today · open again on Friday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre samedi$",
+   "Finished for today · open again on Saturday"
+  ],
+  [
+   "^Terminé pour aujourd'hui · rouvre dimanche$",
+   "Finished for today · open again on Sunday"
+  ],
+  [
+   "^Ouvre à (\\d{1,2})h(\\d{0,2}) · (.+)$",
+   "Opens at $1h$2 · $3"
+  ],
+  [
+   "^Ouvre à (\\d{1,2})h(\\d{0,2})$",
+   "Opens at $1h$2"
+  ],
+  [
+   "^basse mer demain (\\d{1,2}h\\d{2})(.*)$",
+   "low tide tomorrow $1$2"
+  ],
   [
    "^Au cinéma : 1 film$",
    "At the cinema: 1 film"
