@@ -79,7 +79,7 @@
 
   <section class="pp-card" id="sources">
     <h2>D'où ils viennent</h2>
-    <p class="pp-sub">Arrivées sur les 7 derniers jours complets.</p>
+    <p class="pp-sub">Ici on compte les <b>ouvertures du site</b>, pas les personnes : quelqu'un qui ouvre le site 3 fois dans la journée compte 3. C'est pourquoi le total est plus grand que le nombre de personnes du graphique au-dessus. « nouv. » = ouvertures par une personne venue pour la première fois.</p>
     <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Par où</th><th>Hier</th><th>7 jours</th><th>30 jours</th><th>Depuis le 17/11</th></tr></thead><tbody data-draw="sources" data-source="sources7"></tbody></table></div>
     <p class="pp-p" data-draw="seo_l">—</p>
     <h3 class="pp-h3">Google</h3>
@@ -311,7 +311,7 @@ dash.draw('sources', (tb) => { const d = dash.data('sources7'); tb.replaceChildr
     const cell = (v, f, nv) => { const td = document.createElement('td'); td.textContent = fmt(v); td.dataset.source = 'sources7'; td.dataset.field = f; td.dataset.where = 'k=' + r.k; if (f === 'n') td.style.fontWeight = '600';
       if (nv) { const sm = document.createElement('small'); sm.textContent = `dont ${fmt(nv)} nouv.`; sm.style.display = 'block'; sm.style.fontWeight = '400'; td.appendChild(sm); } return td; };
     tr.append(a, cell(r.h, 'h'), cell(r.n, 'n', r.nouveaux), cell(r.m, 'm'), cell(r.tot, 'tot', r.totn)); tb.appendChild(tr); });
-  const tt = document.createElement('tr'); tt.style.borderTop = '2px solid var(--color-border-line)'; const th = document.createElement('td'); th.textContent = 'Total'; th.style.fontWeight = '600'; tt.appendChild(th);
+  const tt = document.createElement('tr'); tt.style.borderTop = '2px solid var(--color-border-line)'; const th = document.createElement('td'); th.textContent = 'Total des ouvertures'; th.style.fontWeight = '600'; tt.appendChild(th);
   [['h'], ['n', 'nouveaux'], ['m'], ['tot', 'totn']].forEach(([f, g]) => { const td = document.createElement('td'); td.style.fontWeight = '600'; td.textContent = fmt(d.data.reduce((a, r) => a + N(r[f]), 0));
     if (g) { const sm = document.createElement('small'); sm.style.display = 'block'; sm.style.fontWeight = '400'; sm.textContent = `dont ${fmt(d.data.reduce((a, r) => a + N(r[g]), 0))} nouv.`; td.appendChild(sm); } tt.appendChild(td); }); tb.appendChild(tt); });
 dash.draw('seo_l', (el) => { const d = dash.data('seo7'); if (d.status !== 'ok') { el.textContent = '—'; return; } const v = N((d.data.find((r) => r.k === 'seo') || {}).n), a = N((d.data.find((r) => r.k === 'seo_vers_app') || {}).n);
