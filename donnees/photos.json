@@ -1310,5 +1310,10 @@
  "Pizzeria Le Roma (Tharon)": {
   "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/178647/tharon-plage-le-roma-146569-7190_KxbZgot.jpg.400x0_q85.jpg",
   "a": "linternaute.com"
+ },
+ "Club de Voile de Préfailles (CVP)": {
+  "u": "images/logos/cvp.png",
+  "a": "Club de Voile de Préfailles",
+  "logo": true
  }
 }

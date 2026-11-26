@@ -100,6 +100,11 @@ def main():
             ph = best[2]
             if re.match(r"^https://admin-rando\.loire-atlantique\.fr/media/[\w/.-]+$", ph["thumbnail"]):
                 out[a["n"]] = {"u": ph["thumbnail"], "a": (ph.get("author") or "").strip()[:80]}
+    # logos ou photos donnés par le lieu lui-même (outils/photos-manuelles.json), prioritaires
+    man = R / "outils" / "photos-manuelles.json"
+    if man.exists():
+        for k, v in json.loads(man.read_text(encoding="utf-8")).items():
+            out[k] = {x: v[x] for x in ("u", "a", "logo") if x in v}
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(out)} photos sur {len(acts)} lieux ({len(cand)} fiches de l'office de tourisme avec photo)")
 

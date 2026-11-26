@@ -1393,7 +1393,8 @@
   "Voir l'affiche en grand": "See the poster full size",
   "Touchez une heure : la séance s'ajoute à l'agenda de votre téléphone.": "Tap a time to add the showing to your phone's calendar.",
   "Dans mon agenda": "Add to my calendar",
-  "Quelle séance ?": "Which showing?"
+  "Quelle séance ?": "Which showing?",
+  "Mon agenda": "My calendar"
  },
  "rules": [
   [
