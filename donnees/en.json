@@ -118,6 +118,7 @@
   "aujourd'hui": "today",
   "Demain": "Tomorrow",
   "demain": "tomorrow",
+  "ce week-end": "this weekend",
   "Ce week-end": "This weekend",
   "Toutes les sorties": "All events",
   "Fêtes & marchés": "Festivals & markets",
@@ -1455,6 +1456,14 @@
   [
    "^Au cinéma : (\\d+) films$",
    "At the cinema: $1 films"
+  ],
+  [
+   "^rafaleux, confirmés · foil seulement après (\\d+)h$",
+   "gusty, experienced only · foil only after $1h"
+  ],
+  [
+   "^vent faible · petit temps vers les rochers après (\\d+)h$",
+   "light wind · light wind towards the rocks after $1h"
   ],
   [
    "^rafaleux, confirmés · petit temps vers les rochers après (\\d+)h$",
