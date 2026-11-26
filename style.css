@@ -28,7 +28,7 @@
   --warm:#a3542e; --warm-ink:#ffffff;
   --mint:#e6f0ec;           /* vert d'eau : bloc météo de la page Mer */
   --seagreen:#2d6e63; --seagreen-ink:#ffffff; /* vert de mer : sélections « Où » / « Temps », badge TER */
-  --i-sea:#245f86; --i-food:#a0522d; --i-act:#4a4f9a; --i-nat:#3d6b43; --i-cine:#8a3d6b;
+  --i-sea:#245f86; --i-food:#a0522d; --i-act:#4a4f9a; --i-nat:#3d6b43; --i-cine:#8a3d6b; --i-prat:#b03a48;
   --c-sea:var(--accent); --c-food:#c0714a; --c-act:#6a6fb8; --c-market:#5c8a5f; --taupe:#8a7f72;
 
   --font-text:"Inter Tight",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -47,7 +47,7 @@
     --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631; --sel2:#356b8f; --sel2-ink:#ffffff;
     --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
     --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
-    --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
+    --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8; --i-prat:#f2a1ab;
     --c-food:#e0a07a; --c-act:#9ea3e6; --c-market:#8fc193; --taupe:#b3a898;
     color-scheme:dark;
   }
@@ -58,7 +58,7 @@
   --accent:#86bce0; --accent-ink:#0e1a24; --accent-soft:#162631; --sel2:#356b8f; --sel2-ink:#ffffff;
   --sky:#162631; --peach:#2a2019; --lavender:#1d2132;
   --ok:#7fc49c; --warn:#e0a86a; --scrim:rgba(0,0,0,.6);
-  --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8;
+  --nat:#1b2a1d; --warm:#eba57c; --warm-ink:#24150c; --mint:#15241f; --seagreen:#86c9b8; --seagreen-ink:#0d1f1a; --i-sea:#8fc0e2; --i-food:#f0b48a; --i-act:#aab0f0; --i-nat:#9fd0a5; --i-cine:#e3a6c8; --i-prat:#f2a1ab;
   --c-food:#e0a07a; --c-act:#9ea3e6; --c-market:#8fc193; --taupe:#b3a898;
   color-scheme:dark;
 }
@@ -1645,4 +1645,4 @@ button.cal-lnk{background:none;border:0;padding:0;font:inherit;font-size:14px;fo
 .ev-long,.day{--lc:var(--i-act)}
 .actile[aria-pressed="true"]{border-left-color:var(--accent)}
 .im-top{--lc:var(--i-food)}
-/* version du site */:root{--pp-v:"20261126-1631"}
+/* version du site */:root{--pp-v:"20261126-1634"}

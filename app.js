@@ -282,7 +282,7 @@ function card({c="",ic:icn="",title,meta:m="",desc="",extra="",href="",right=""}
   return row({th,title,metaH:m,lines:desc?[[desc,""]]:[],tag:"div"});}
 /* couleur du liseré d'un bloc, d'après son titre */
 const secCol=t=>{t=String(t).replace(/<[^>]+>/g,"").toLowerCase();
-  return /ciné|film|séance/.test(t)?"--i-cine":/manger|déjeuner|dîner|resto|table|marché|huître|saveur|boulang/.test(t)?"--i-food":/transport|trajet|ligne|car |cars|train/.test(t)?"--seagreen":/urgence|sécurité|numéro|santé|pratique|attention|vigilance/.test(t)?"--warn":/nature|balade|sentier|vélo/.test(t)?"--i-nat":/mer|marée|glisse|spot|surf|pêche|plage|bateau|voile/.test(t)?"--i-sea":"--i-act";};
+  return /ciné|film|séance/.test(t)?"--i-cine":/manger|déjeuner|dîner|resto|table|marché|huître|saveur|boulang/.test(t)?"--i-food":/transport|trajet|ligne|car |cars|train/.test(t)?"--seagreen":/urgence|sécurité|attention|vigilance/.test(t)?"--warn":/numéro|santé|pratique|mairie|poubelle|déchet|conseil/.test(t)?"--i-prat":/nature|balade|sentier|vélo/.test(t)?"--i-nat":/mer|marée|glisse|spot|surf|pêche|plage|bateau|voile/.test(t)?"--i-sea":"--i-act";};
 const sec=(title,link="",body="",note="")=>`<section class="sec blk" style="--c:var(${secCol(title)})"><div class="sec-head"><h2 class="sec-title">${title}</h2>${link}</div>${note?`<p class="sec-note">${note}</p>`:""}${body}</section>`;
 const secLink=(href,txt,act="")=>`<a class="sec-link" href="${href}"${act}>${txt}</a>`;
 const chip=(label,pressed,attrs)=>`<button type="button" class="chip" aria-pressed="${!!pressed}" ${attrs}>${label}</button>`;
@@ -1133,7 +1133,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   ${door("d-transports","--seagreen","Transports",`Cars et trains, correspondances comprises.`,[
     v("#venir","Depuis "+BASE.n,go?`prochain départ ${go[1].dep.replace(/^0/,"")} pour ${esc(go[0])}`:`vers ${TRDEST.join(", ")}`,"bus",' data-act="trdir" data-v="0"'),
     v("#venir","Vers "+BASE.n,come?`prochain départ de ${esc(come[0])} à ${come[1].dep.replace(/^0/,"")}`:`depuis ${TRDEST.join(", ")}`,"train",' data-act="trdir" data-v="1"')],"#venir")}
-  ${door("d-pratique","--warn","Pratique","Urgences, santé, poubelles, mairie, poste et immobilier.",[
+  ${door("d-pratique","--i-prat","Pratique","Urgences, santé, poubelles, mairie, poste et immobilier.",[
     v("#pratique","Poubelles",om?`ordures ${dd(bo)}${be?` · jaune ${be===bo?"le même jour":dd(be)}`:""}`:"choisissez votre secteur","basket",' data-act="go2" data-v="pratique|p-dechets"'),
     v("tel:3237","Pharmacie de garde","appelez le 3237 (nuit, dimanche, fériés)","plus"),
     v("#pratique","Santé","pharmacies, médecins, dentistes","people",' data-act="go2" data-v="pratique|p-sante"'),
@@ -2165,7 +2165,7 @@ const pageInert=on=>{["header.topbar","#rail","#main",".site-foot"].forEach(q=>{
 function closeOverlays(){const m=$("#menu");if(m)m.remove();const w=$("#who");if(w)w.remove();pageInert(false);document.body.classList.remove("locked");document.removeEventListener("keydown",escKey);}
 function escKey(e){if(e.key==="Escape"){const had=$("#menu");closeOverlays();if(had){const mb=$("#menuBtn");if(mb)mb.focus({preventScroll:true});}}}
 function openMenu(){closeOverlays();const c=curView(),g=gActive();
-  const COL={plages:"--i-sea",soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--warn",installer:"--accent",immobilier:"--i-food",recherche:"--muted",apropos:"--muted"};
+  const COL={plages:"--i-sea",soirees:"--i-cine",sejour:"--i-sea",agenda:"--i-act",activites:"--i-act",cine:"--i-cine",mer:"--i-sea",spots:"--i-sea",peche:"--i-sea",manger:"--i-food",venir:"--seagreen",pratique:"--i-prat",installer:"--accent",immobilier:"--i-food",recherche:"--muted",apropos:"--muted"};
   const it=([h,l,t,i])=>`<li><a class="menu-item" href="#${h}" style="--c:var(${COL[h]||"--accent"})" ${h===c?'aria-current="page"':""}><span class="menu-ic">${ic(i)}</span><span><b>${l}</b>${t||h===c?`<small>${h===c?'<em class="menu-here">Vous êtes ici</em>'+(t?" · ":""):""}${t}</small>`:""}</span></a></li>`;
   const v=document.createElement("div");v.id="menu";v.className="menu";v.setAttribute("role","dialog");v.setAttribute("aria-modal","true");v.setAttribute("aria-label","Menu");
   v.innerHTML=`<div class="menu-in"><div class="menu-head"><a class="menu-title" href="#sejour">Le Petit Préf</a><button type="button" class="menu-close" data-m="close">Fermer ${ic("close","i-s")}</button></div>
