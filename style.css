@@ -1658,4 +1658,13 @@ button.cal-lnk{background:none;border:0;padding:0;font:inherit;font-size:14px;fo
 .base-bar .base-line .base-l{color:var(--ink)}.base-bar .base-line .base-l .i{color:var(--accent)}
 .base-bar .base-line select{flex:none;color:var(--accent);font-size:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5 6 6l4.5-4.5' fill='none' stroke='%232f78ab' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 4px center/12px 8px}
 .base-bar{margin-top:12px}
-/* version du site */:root{--pp-v:"20261126-1648"}
+
+/* accueil, cases du jour : chiffres en Inter gras (plus « reçu »), donnée absente = petit tiret gris */
+.hn-c b{font:600 20px/1.2 "Inter Tight",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.hn-na{font-weight:400;font-size:16px;color:var(--faint)}
+
+/* icônes des vignettes : plus grandes et plus épaisses (Pêche, Plages, Marchés se lisaient mal) */
+.actile-ic .i{width:22px;height:22px;stroke-width:1.9}
+.htile .actile-ic{width:38px;height:38px;border-radius:11px}
+.htile .actile-ic .i{width:24px;height:24px}
+/* version du site */:root{--pp-v:"20261126-1655"}
