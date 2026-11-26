@@ -1394,7 +1394,9 @@
   "Touchez une heure : la séance s'ajoute à l'agenda de votre téléphone.": "Tap a time to add the showing to your phone's calendar.",
   "Dans mon agenda": "Add to my calendar",
   "Quelle séance ?": "Which showing?",
-  "Mon agenda": "My calendar"
+  "Mon agenda": "My calendar",
+  "+ Agenda": "+ Calendar",
+  "Ajouter à l'agenda du téléphone": "Add to your phone's calendar"
  },
  "rules": [
   [
