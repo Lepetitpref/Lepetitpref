@@ -669,7 +669,7 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":(()=>{const fd=faireDay(),nd=list.length-longs.length,dT=fd?(fd===t?"aujourd'hui":fd===addDays(t,1)?"demain":dlong(fd)):"";return S.when==="we"?`Agenda, ce week-end : ${nd?`${nd} sortie${nd>1?"s":""}`:"aucune sortie datée"} ${zoneTxt()}`:fd?`Agenda, ${esc(dT)} : ${nd?`${nd} sortie${nd>1?"s":""}`:"aucune sortie datée"} ${zoneTxt()}`:`Agenda : ${nd} sortie${nd>1?"s":""} à venir ${zoneTxt()}`;})())}
   ${segAC("agenda")}
-  <div class="filters">${frow("frow","Quand",W.map(([k,l])=>k==="jour"?dayPick(S.when,"agday"):qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
+  <div class="filters">${frow("frow","Quand",W.filter(([k])=>k!=="we"||dow(t)!==0||S.when==="we").map(([k,l])=>k==="jour"?dayPick(S.when,"agday"):qchip(l,S.when===k,`data-act="when" data-v="${k}"`)).join(""))}
    ${S.when==="jour"?`<p class="ag-dates-n">Le ${esc(dlong(S.agDay))}. <button type="button" class="lnk" data-act="agweek">Voir aussi les 7 jours suivants</button></p>`:S.when==="dates"?datesRow():""}
    ${frow("frow","Filtres",`${chipSel(S.etype==="tous"?"Toutes les sorties":(ETL[S.etype]||"Toutes les sorties"),S.etype,types.map(([k,l])=>[k,k==="tous"?"Toutes les sorties":l]),"etype","tous")}${zoneSel()}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   <section class="sec" id="s-agenda" style="padding-top:8px">${S.err?`<p class="empty">${esc(S.err)}</p>`:S.events===null?loadingTxt:list.length?(longs.length?`<details class="ev-long"><summary><span class="ev-long-ic">${ic("cal","i-s")}</span><span class="ev-long-t"><b>En ce moment : expos et rendez-vous sur plusieurs semaines</b><small>${longs.length} en cours · toucher pour voir</small></span></summary><ul class="list">${longs.sort((x,y)=>(x.end||"").localeCompare(y.end||"")).map(e=>evRow(e,{lead:"none"})).join("")}</ul></details>`:"")
@@ -1108,10 +1108,10 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   return `<div class="hero"><img src="images/${BASE.img}" alt="${esc(BASE.alt)}" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">${BASE.n}</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1></div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
   ${baseBar()}
-  <p class="home-intro"><b>Le Petit Préf</b> rassemble ce qu'il y a à faire à ${BASE.n} et autour : les sorties, les activités et le ciné, la mer et ses spots, où déjeuner, dîner ou boire un verre, comment venir. Tout est mis à jour chaque matin.</p>
   <h2 class="home-h">Aujourd'hui à ${BASE.n} et aux alentours</h2>
   ${homeNow(t)}
   ${quickRow()}
+  <p class="home-intro"><b>Le Petit Préf</b> : sorties, mer, restos et transports à ${BASE.n} et autour, mis à jour chaque matin.</p>
   ${door("d-faire","--i-act","À faire",`Sorties, activités, soirées et cinéma ${HZ}.`,[
     v("#agenda","Agenda",ld?"":`${evT.length?`${evT.length} sortie${evT.length>1?"s":""} aujourd'hui`:"rien de daté aujourd'hui"} · ${wkP.length} en 7 jours`,"cal"),
     v("#activites","Activités",`${nAct} lieu${nAct>1?"x":""} ouvert${nAct>1?"s":""} aujourd'hui${S.aWhere==="ici"?"":` à moins de ${S.aWhere} km`}`,"compass"),
