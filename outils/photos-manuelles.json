@@ -1,3 +1,122 @@
 {
- "Club de Voile de Préfailles (CVP)": {"u": "images/logos/cvp.png", "a": "Club de Voile de Préfailles", "logo": true, "source": "https://www.clubdevoileprefailles.fr (icône du site, 26/11/2026)"}
+ "Club de Voile de Préfailles (CVP)": {
+  "u": "images/logos/cvp.png",
+  "a": "Club de Voile de Préfailles",
+  "logo": true,
+  "source": "https://www.clubdevoileprefailles.fr (icône du site, 26/11/2026)"
+ },
+ "Exitime Escape Game": {
+  "u": "images/logos/exitime-escape-game.png",
+  "a": "Exitime Escape Game",
+  "logo": true,
+  "source": "https://exitime.fr (icône du site, 26/11/2026)"
+ },
+ "Bloc Session Loire Estuaire": {
+  "u": "images/logos/bloc-session-loire-estuaire.png",
+  "a": "Bloc Session Loire Estuaire",
+  "logo": true,
+  "source": "https://www.blocsession.com/salle-escalade/loire-estuaire/ (icône du site, 26/11/2026)"
+ },
+ "Planète Sauvage": {
+  "u": "images/logos/planete-sauvage.png",
+  "a": "Planète Sauvage",
+  "logo": true,
+  "source": "http://www.planetesauvage.com (icône du site, 26/11/2026)"
+ },
+ "Paris-Pornic Pâtisserie": {
+  "u": "images/logos/paris-pornic-patisserie.png",
+  "a": "Paris-Pornic Pâtisserie",
+  "logo": true,
+  "source": "https://www.paris-pornic.fr (icône du site, 26/11/2026)"
+ },
+ "La Fraiseraie": {
+  "u": "images/logos/la-fraiseraie.png",
+  "a": "La Fraiseraie",
+  "logo": true,
+  "source": "https://www.lafraiseraie.com/ (icône du site, 26/11/2026)"
+ },
+ "Cave de la Ria": {
+  "u": "images/logos/cave-de-la-ria.png",
+  "a": "Cave de la Ria",
+  "logo": true,
+  "source": "https://www.cave-de-la-ria.fr/ (icône du site, 26/11/2026)"
+ },
+ "Thé Caramel & Chocolat": {
+  "u": "images/logos/the-caramel-chocolat.png",
+  "a": "Thé Caramel & Chocolat",
+  "logo": true,
+  "source": "http://www.thecarameletchocolat.fr (icône du site, 26/11/2026)"
+ },
+ "Retz Surf Club": {
+  "u": "images/logos/retz-surf-club.png",
+  "a": "Retz Surf Club",
+  "logo": true,
+  "source": "https://www.retz-surf-club.com/ (icône du site, 26/11/2026)"
+ },
+ "LINE UP Kiteschool": {
+  "u": "images/logos/line-up-kiteschool.png",
+  "a": "LINE UP Kiteschool",
+  "logo": true,
+  "source": "https://www.ecolelineup.com/ (icône du site, 26/11/2026)"
+ },
+ "Le Canotier": {
+  "u": "images/logos/le-canotier.png",
+  "a": "Le Canotier",
+  "logo": true,
+  "source": "https://www.le-canotier.net/ (icône du site, 26/11/2026)"
+ },
+ "La Casa del Papou": {
+  "u": "images/logos/la-casa-del-papou.png",
+  "a": "La Casa del Papou",
+  "logo": true,
+  "source": "https://www.lacasadelpapou.fr/ (icône du site, 26/11/2026)"
+ },
+ "Café du Port": {
+  "u": "images/logos/cafe-du-port.png",
+  "a": "Café du Port",
+  "logo": true,
+  "source": "https://www.cafeduport-pornic.fr/ (icône du site, 26/11/2026)"
+ },
+ "Le Retz": {
+  "u": "images/logos/le-retz.png",
+  "a": "Le Retz",
+  "logo": true,
+  "source": "http://LeRetz.com (icône du site, 26/11/2026)"
+ },
+ "Mission Aventure – escape game en plein air": {
+  "u": "images/logos/mission-aventure-escape-game-en-plein-ai.png",
+  "a": "Mission Aventure – escape game en plein air",
+  "logo": true,
+  "source": "https://missionaventure.fr/escape-pornic/ (icône du site, 26/11/2026)"
+ },
+ "La belle-iloise": {
+  "u": "images/logos/la-belle-iloise.png",
+  "a": "La belle-iloise",
+  "logo": true,
+  "source": "http://www.labelleiloise.fr (icône du site, 26/11/2026)"
+ },
+ "La Cave Nature": {
+  "u": "images/logos/la-cave-nature.png",
+  "a": "La Cave Nature",
+  "logo": true,
+  "source": "https://www.lacavenature.com/ (icône du site, 26/11/2026)"
+ },
+ "VF Company – Mega Drift et trottinettes électriques": {
+  "u": "images/logos/vf-company-mega-drift-et-trottinettes-el.png",
+  "a": "VF Company – Mega Drift et trottinettes électriques",
+  "logo": true,
+  "source": "https://vfcompany.fr/ (icône du site, 26/11/2026)"
+ },
+ "Les Terrasses du Golf": {
+  "u": "images/logos/les-terrasses-du-golf.png",
+  "a": "Les Terrasses du Golf",
+  "logo": true,
+  "source": "http://www.lesterrassesdugolfpornic.fr (icône du site, 26/11/2026)"
+ },
+ "Crêperie La Source (Tharon)": {
+  "u": "images/logos/creperie-la-source-tharon.png",
+  "a": "Crêperie La Source (Tharon)",
+  "logo": true,
+  "source": "https://creperielasource.com/ (icône du site, 26/11/2026)"
+ }
 }

@@ -128,3 +128,4 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Agenda (26/11) : chaque jour finit par une ligne « Au cinéma : N films » (`agCine`, 3 titres, toucher = séances de ce jour, ACT `cday`).
 - Ciné (26/11) : sous chaque film, sur une ligne `.film-acts` : « Bande-annonce » et « Mon agenda » (une séance = .ics direct ; plusieurs = volet `.cal-pick` « Quelle séance ? » avec un bouton par heure et salle).
 - Logos fournis par le lieu (26/11) : `outils/photos-manuelles.json` {nom ACTS: {u: "images/logos/…png", a, logo:true, source}} fusionné par photos.py ; `.lphoto.logo`/`.lph.logo` en contain sur blanc. Club de Voile de Préfailles = icône de son site.
+- Logos (26/11) : `outils/logos.py <liste>` récupère l'icône du site du lieu (apple-touch-icon ≥ 96 px) dans images/logos et l'ajoute à photos-manuelles.json ; relire chaque logo (le lien doit être le site du lieu, pas une mairie ou un guide).
