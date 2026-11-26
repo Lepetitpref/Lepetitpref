@@ -1108,7 +1108,7 @@ function vSejour(){wxLoad();const t=today(),ld=S.events===null;
   const sc=sget(secKey()),PC=PRX[BASE.k]?.dechets.collecte,om=PC?(sc?PC.ordures_menageres[sc]:null):BIN_PREF[0],emb=PC?(sc?PC.emballages[sc]:null):BIN_PREF[1];
   const bo=binNext(om),be=binNext(emb),mk=nextMarkets(1)[0],dd=x=>x===t?"aujourd'hui":x===addDays(t,1)?"demain":wdName(x)+" "+F(noon(x),{day:"numeric",month:"short"});
   const lowT=tidesOfDay(t).find(e=>e.k==="BM"&&e.ms>Date.now()),lowD=lowT?null:tidesOfDay(addDays(t,1)).find(e=>e.k==="BM"),low=lowT||lowD;
-  return `<div class="hero"><img src="images/${BASE.img}" alt="${esc(BASE.alt)}" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">${BASE.n}</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1></div>
+  return `<div class="hero"><img src="images/${BASE.img}" alt="${esc(BASE.alt)}" width="1000" height="400"><div class="hero-txt"><div class="hero-kicker">${BASE.n}</div><h1 class="hero-date">${esc(cap(dlong(t)))}</h1>${(()=>{const c=maxCoef(t);return low?`<p class="hero-line">${c>=90?"Grande marée · ":""}${c?`coef. ${c} · `:""}basse mer ${lowD?"demain ":""}${hm(new Date(low.ms))}</p>`:"";})()}</div>
    <button type="button" class="hero-share" data-share="${esc(SHARE_TXT)}" data-url="${SITE}" aria-label="Partager Le Petit Préf">${ic("share","i-s")}Partager</button></div>
   ${baseBar()}
   <h2 class="home-h">Aujourd'hui à ${BASE.n} et aux alentours</h2>

@@ -1468,6 +1468,22 @@
    "At the cinema: $1 films"
   ],
   [
+   "^Grande marée · coef\\. (\\d+) · basse mer (\\d+h\\d+)$",
+   "Spring tide · coef. $1 · low tide $2"
+  ],
+  [
+   "^Grande marée · coef\\. (\\d+) · basse mer demain (\\d+h\\d+)$",
+   "Spring tide · coef. $1 · low tide tomorrow $2"
+  ],
+  [
+   "^coef\\. (\\d+) · basse mer (\\d+h\\d+)$",
+   "coef. $1 · low tide $2"
+  ],
+  [
+   "^coef\\. (\\d+) · basse mer demain (\\d+h\\d+)$",
+   "coef. $1 · low tide tomorrow $2"
+  ],
+  [
    "^rafaleux, confirmés · foil seulement après (\\d+)h$",
    "gusty, experienced only · foil only after $1h"
   ],
