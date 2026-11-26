@@ -1,12 +1,12 @@
 {
- "maj": "2026-11-25T14:55:05+00:00",
+ "maj": "2026-11-26T13:53:52+00:00",
  "site": "https://lepetitpref.fr/",
  "depuis": "2026-11-01",
  "total": {
-  "clics": 6,
-  "aff": 21,
-  "ctr": 0.286,
-  "pos": 15.4
+  "clics": 8,
+  "aff": 39,
+  "ctr": 0.205,
+  "pos": 17
  },
  "jours": [
   {
@@ -32,26 +32,50 @@
    "clics": 0,
    "aff": 2,
    "pos": 55.5
+  },
+  {
+   "d": "2026-11-24",
+   "clics": 0,
+   "aff": 7,
+   "pos": 7.3
+  },
+  {
+   "d": "2026-11-25",
+   "clics": 2,
+   "aff": 11,
+   "pos": 26.2
   }
  ],
  "pages_28j": [
   {
    "page": "/",
-   "clics": 5,
-   "aff": 8,
-   "pos": 2
+   "clics": 7,
+   "aff": 10,
+   "pos": 1.9
   },
   {
    "page": "/agenda/",
    "clics": 1,
-   "aff": 14,
-   "pos": 19
+   "aff": 23,
+   "pos": 14.4
+  },
+  {
+   "page": "/cinema/",
+   "clics": 0,
+   "aff": 6,
+   "pos": 18.8
   },
   {
    "page": "/marees/",
    "clics": 0,
+   "aff": 6,
+   "pos": 33.5
+  },
+  {
+   "page": "/que-faire/",
+   "clics": 0,
    "aff": 3,
-   "pos": 18.3
+   "pos": 10.7
   }
  ],
  "recherches_28j": []
