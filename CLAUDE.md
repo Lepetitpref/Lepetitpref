@@ -125,3 +125,4 @@ Sobre, dans l'esprit de Concret : chaque section est un **bloc** (`sec()` → `.
 - Spots ajoutés (24/11) : Plage de Gohaud (surf, Saint-Michel, arrêté 108-2023) et Plage du Cormier (kite/voile/paddle, école Funglisse) ; vignettes : photo `SPOTPH` en bandeau, nom sans la commune.
 - Affiche en grand (25/11) : toucher l'affiche d'un film (`.poster-b`, ACT `poster`) ouvre `posOpen()` (`#posov`, image Allociné sans `c_310_420`, bouton « Fermer », Échap, fond, geste retour).
 - Search Console : `dataState=all` (données fraîches) et jours sans affichage remis à 0 jusqu'à la veille.
+- Agenda (26/11) : chaque jour finit par une ligne « Au cinéma : N films » (`agCine`, 3 titres, toucher = séances de ce jour, ACT `cday`).

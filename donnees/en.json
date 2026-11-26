@@ -1394,6 +1394,14 @@
  },
  "rules": [
   [
+   "^Au cinéma : 1 film$",
+   "At the cinema: 1 film"
+  ],
+  [
+   "^Au cinéma : (\\d+) films$",
+   "At the cinema: $1 films"
+  ],
+  [
    "^rafaleux, confirmés · petit temps vers les rochers après (\\d+)h$",
    "gusty, experienced only · light wind towards the rocks after $1h"
   ],

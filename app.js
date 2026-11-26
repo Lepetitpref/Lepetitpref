@@ -648,6 +648,9 @@ const segBtns=(label,items,cur,act)=>`<div class="seg-wrap subnav"><div class="s
 const segMg=()=>segBtns("Rubriques de Restos",[["tous","Tout"],["tables","Restaurants"],["bar","Bars"],["marche","Marchés"],["produits","Produits"]],["tous","tables","bar","marche","produits"].includes(S.mk)?S.mk:"",`mk`);
 const segTr=()=>segBtns("Destinations",TRDEST.map(x=>[x,x]),TRDEST.includes(S.trTo)?S.trTo:TRDEST[0],"trto");
 const segAC=v=>`<div class="seg-wrap subnav"><div class="seg" role="group" aria-label="Agenda, activités ou ciné"><a class="seg-a" href="#agenda" data-spy="s-agenda" aria-current="${v==="agenda"}">Agenda</a><a class="seg-a" href="#activites" data-spy="s-activites" aria-current="${v==="activites"}">Activités</a><a class="seg-a" href="#cine" data-spy="s-cine" aria-current="${v==="cine"}">Ciné</a><a class="seg-a" href="#soirees" data-spy="s-soirees" aria-current="${v==="soirees"}">Soirées</a></div></div>`;
+/* Agenda : une ligne « Au cinéma » par jour, vers les séances de ce jour-là */
+function agCine(d){const F=[...new Set(filmsOn(d,"tous").map(f=>f.film))];if(!F.length)return "";
+  return row({th:`<span class="thumb t-cine">${ic("film")}</span>`,title:`Au cinéma : ${F.length} film${F.length>1?"s":""}`,metaH:`<span lang="fr">${esc(F.slice(0,3).join(", "))}${F.length>3?"…":""}</span>`,href:"#cine",act:` data-act="cday" data-v="${d}"`});}
 function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-12-31";
   const base=(S.events||[]).filter(e=>(e.end||e.date)>=t&&!evDead(e)&&evOK(e)&&fitsWhere(evKm(e),e.town)&&(!S.free||e.free)&&e.date<=b&&(e.end||e.date)>=a&&evStart(e,a>t?a:t,b));
   const list=base.filter(e=>S.etype==="tous"||etype(e)===S.etype);
@@ -657,7 +660,7 @@ function vAgenda(){const t=today(),rg=whenRange(),a=rg?rg[0]:t,b=rg?rg[1]:"9999-
   const W=[["tout","Tout"],["jour",""],["dem","Demain"],["sem","7 jours"]];
   const types=[["tous","Toutes"],...ETYPES.filter(([k])=>base.some(e=>etype(e)===k))];
   const dayBlocks=keys.map(k=>{if(shown>=lim)return"";const band=e=>{const k=evKm(e);return isHere(k,e.town)?0:k!=null&&k<=10?1:2;};const es=days[k].sort((x,y)=>byTime(x,y)||band(x)-band(y));shown+=es.length;
-    return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}</ul></div>`;}).join("");
+    return `<div class="day"><div class="datecol">${dateLead(k,k===t)}</div><ul class="list">${es.map(e=>evRow(e)).join("")}${agCine(k)}</ul></div>`;}).join("");
   const hiddenN=list.length-longs.length-shown;
   return `${pageHead("À faire",S.events===null?"":(()=>{const fd=faireDay(),nd=list.length-longs.length,dT=fd?(fd===t?"aujourd'hui":fd===addDays(t,1)?"demain":dlong(fd)):"";return fd?`Agenda, ${esc(dT)} : ${nd?`${nd} sortie${nd>1?"s":""}`:"aucune sortie datée"} ${zoneTxt()}`:`Agenda : ${nd} sortie${nd>1?"s":""} à venir ${zoneTxt()}`;})())}
   ${segAC("agenda")}
