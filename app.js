@@ -184,7 +184,9 @@ if(!ZONES.some(w=>w[0]===S.where))S.where="10";if(!WHO.some(w=>w[0]===S.who))S.w
 if(!sget("pp-dist10")){sset("pp-dist10","1");sset("cf-where","10");sset("pp-mwhere","10");}
 const WHO2=()=>[["tous","Tout public"],["petits","Tout-petits (0–5)"],["enfants","Enfants (6–11)"],["ados","Ados"],["adultes","Adultes"]];
 function evOK(e){if(S.who==="groupe"){const g=gActive();return !g||fitAges(evRange(e),g)!=="none";}return evFits(e,S.who==="groupe"?"tous":S.who);}
-function actOK(a){if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
+/* enfants et ados : pas de spa, de bar, de cave ni de comedy club (fiches sans âge) */
+const ADULTE=a=>a.cat==="bienetre"||/^(bar|nuit|cave)$/.test(a.kind||"")||/comedy|stand-?up|casino/i.test(a.n||"");
+function actOK(a){if(/^(petits|enfants|ados)$/.test(S.who)&&ADULTE(a))return false;if(S.who==="groupe"){const g=gActive();return !g||fitAges(a.ages||[0,99],g)!=="none";}return fitsWho(a,S.who);}
 function defaultStay(){const t=today();let d=t;if(dow(t)===6||dow(t)===0)return[t,dow(t)===6?addDays(t,1):t];while(dow(d)!==5)d=addDays(d,1);return[d,addDays(d,2)];}
 
 /* ---------- partage et copie ---------- */
@@ -827,13 +829,13 @@ function vActs(){const t=today(),od=S.openDay||t;
   const cats=[["tous","Tous les thèmes"],...Object.keys(CATS).filter(k=>k!=="saveurs"&&k!=="marche"&&pre.some(a=>a.cat===k)).map(k=>[k,CATS[k]]),["assos","Associations"]];
   return `${pageHead("À faire",`Activités : ${list.length} lieu${list.length>1?"x":""}, du plus proche au plus loin`)}
   ${segAC("activites")}
-  <div class="filters">${frow("frow","Filtres",`${zoneSel(S.aWhere,"awhere","20")}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert ${od===t?"aujourd'hui":wdName(od)} <span class="chip-count">${nOpen}</span>`,S.openToday,'data-act="openT"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
+  <div class="filters">${frow("frow","Filtres",`${zoneSel(S.aWhere,"awhere","20")}${chipSel((WHO2().find(w=>w[0]===S.who)||WHO2()[0])[1],S.who,WHO2(),"who","tous")}${chip(`Ouvert aujourd'hui${S.openToday&&od===t?` <span class="chip-count">${nOpen}</span>`:""}`,S.openToday&&od===t,'data-act="openD" data-v="0"')}${chip(`Ouvert demain${S.openToday&&od===addDays(t,1)?` <span class="chip-count">${nOpen}</span>`:""}`,S.openToday&&od===addDays(t,1),'data-act="openD" data-v="1"')}${chip(`${ic("umb")}S'il pleut <span class="chip-count">${nRain}</span>`,S.rain,'data-act="rainT"')}${chip("Gratuit",S.free,'data-act="free"')}`)}</div>
   ${actGrid(base,od)}
   <div class="seg-wrap"><div class="seg seg-s" role="group" aria-label="Affichage"><button type="button" aria-pressed="${S.actView!=="carte"}" data-act="av" data-v="liste">Liste</button><button type="button" aria-pressed="${S.actView==="carte"}" data-act="av" data-v="carte">Carte</button></div></div>
   ${S.actView==="carte"?`<section class="sec" style="padding-top:4px">${mapSvg(list)}<button type="button" class="btn btn-quiet" data-act="kml">Exporter vers Google Maps</button><p class="status" id="kmlStatus" aria-live="polite"></p></section>`:""}
-  <section class="sec grps" style="padding-top:0">${S.cat==="assos"?"":list.length?ACORD.filter(k=>g[k]).map(k=>{const c=`--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})`,all=S.cat!=="tous",L=all?g[k]:g[k].slice(0,4);
+  <section class="sec grps" style="padding-top:0">${S.cat==="tous"&&S.actView!=="carte"?`<p class="ac-hint">Touchez un type pour voir les lieux.</p>`:S.cat==="assos"?"":list.length?ACORD.filter(k=>g[k]).map(k=>{const c=`--c:var(--i-${CATK[k]==="ink"?"act":CATK[k]||"act"})`,all=S.cat!=="tous",L=all?g[k]:g[k].slice(0,4);
     return `<div class="group" style="${c}"><h2 class="group-title">${ACLBL[k]||CATS[k]}</h2><span class="group-count">${g[k].length}</span></div><ul style="${c}" class="list">${L.map(a=>placeRow(a,t)).join("")}</ul>${!all&&g[k].length>4?`<button type="button" class="ac-more" data-act="catgo" data-v="${k}">Voir les ${g[k].length-4} autres · ${esc(ACLBL[k]||CATS[k])}${ic("chev","i-s")}</button>`:""}`;}).join(""):`<p class="empty">Rien pour ces filtres. <button type="button" class="lnk" data-act="reset">Tout afficher</button></p>`}
-  ${S.cat==="tous"||S.cat==="assos"?assosBlock():""}</section>
+  ${S.cat==="assos"?assosBlock():""}</section>
   <p class="foot">Une info à corriger ? Écrivez à <a href="mailto:contact@lepetitpref.fr">contact@lepetitpref.fr</a>.</p>`;}
 const ATH=[["tous","Tout"],["sport","Sport"],["culture","Culture"],["loisirs","Loisirs"],["nature","Nature"],["solidarite","Solidarité"],["enfance","Enfance et parents"],["vie","Vie locale"]];
 /* contact d'association : téléphones, e-mails et sites deviennent des liens (appeler, écrire, ouvrir) */
@@ -2226,7 +2228,7 @@ const ACT={
   grp:()=>{S.who="groupe";S.cat="tous";},
   eat:v=>{S.openToday=true;S.openDay=v||today();S.mk="tables";},
   free:()=>{S.free=!S.free;render();},
-  openT:()=>{S.openToday=!S.openToday;if(!S.openToday)S.openDay=null;render();},
+  openT:()=>{S.openToday=!S.openToday;if(!S.openToday)S.openDay=null;render();},openD:v=>{const d=addDays(today(),+v);if(S.openToday&&(S.openDay||today())===d){S.openToday=false;S.openDay=null;}else{S.openToday=true;S.openDay=d;}render();},
   rainT:()=>{S.rain=!S.rain;render();},
   mk:v=>{if(MSECT.includes(v)||v==="bar"||v==="marche")S.mkSec=v;S.mk=v;render();requestAnimationFrame(()=>scrollUnder(document.getElementById("acsel")));},
   mkgo:v=>{S.mk=v;render();requestAnimationFrame(()=>{const el=document.querySelector(".grps");if(el)el.scrollIntoView({behavior:"smooth",block:"start"});});},
