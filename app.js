@@ -262,14 +262,15 @@ function icsGo(v){let o;try{o=JSON.parse(decodeURIComponent(v));}catch(e){return
 function evMore(e){const when=e.end&&e.end!==e.date?`Du ${dshort(e.date)} au ${dshort(e.end)}`:cap(dlong(e.date));
   const sh=`${e.title}\n${when}${e.time?" · "+e.time:""} · ${[e.place,e.town].filter(Boolean).join(", ")}`;
   return `${e.desc?`<p lang="fr">${esc(e.desc)}</p>`:""}<span class="row-meta">${meta(esc(when),esc(e.time||""),e.place?`<span lang="fr">${esc(e.place)}</span>`:"")}</span>
-   <span class="row-links">${icsBtn({t:e.title,d:e.date,end:e.end&&e.end!==e.date?e.end:null,h:e.time,loc:[e.place,e.town].filter(Boolean).join(", "),desc:e.desc,url:e.url})}${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:""}<button type="button" data-share="${esc(sh)}" data-url="${esc(e.url||"")}">Partager</button></span>`;}
+   <span class="row-links">${icsBtn({t:e.title,d:e.date,end:e.end&&e.end!==e.date?e.end:null,h:e.time,loc:[e.place,e.town].filter(Boolean).join(", "),desc:e.desc,url:e.url})}${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">Source ↗</a>`:""}<button type="button" data-share="${esc(sh)}" data-url="${e.id&&/^[\w-]+$/.test(e.id)?`https://lepetitpref.fr/#ev-${e.id}`:esc(e.url||"")}">Partager</button></span>`;}
 function evRow(e,o={}){const g=o.g,K=kidsAges(g);
   const place=esc(townShort(e.town)||e.place||""),km=kmTxt(evKm(e),e.town);
   const lead=o.lead==="day"?dateLead(o.day||e.date):o.lead==="none"?"":(tShort(e.time)||(evIsLong(e)?"Expo":"—"));
   const until=evIsLong(e)||(e.end&&e.end!==e.date&&o.lead!=="day")?`jusqu'au ${dshort(e.end)}`:"";
   const m=meta(o.lead==="day"?esc(tShort(e.time).replace(/h00$/,"h")):"",place,km,until,evAges(e),e.free?'<span class="ok">Gratuit</span>':"");
   const lines=[];if(g&&K.length){const f=fitAges(evRange(e),g);if(f==="all"||f==="some")lines.push(fitText(f,evRange(e),K));}
-  return row({lead,leadCls:o.lead==="day"?"lead-date":o.lead==="none"||tShort(e.time)?"":"is-muted",title:`<span lang="fr">${esc(e.title)}</span>`,metaH:m,lines,more:evMore(e),tag:o.tag||"li"});}
+  const h=row({lead,leadCls:o.lead==="day"?"lead-date":o.lead==="none"||tShort(e.time)?"":"is-muted",title:`<span lang="fr">${esc(e.title)}</span>`,metaH:m,lines,more:evMore(e),tag:o.tag||"li"});
+  return e.id&&/^[\w-]+$/.test(e.id)?h.replace('<details class="row-d">',`<details class="row-d" data-ev="${e.id}">`):h;}
 /* compatibilité avec les vues reprises (recherche, venir, à propos) */
 const eventCard=e=>evRow(e,{tag:"div",lead:"day"});
 const actCard=a=>placeRow(a,today(),{tag:"div"});
@@ -2340,7 +2341,7 @@ function render(){if(MAPFULL){S.renderLater=true;return;}rail();const v=curView(
   if(fo){const el=document.getElementById(fo);if(el&&(el.closest("form")||el.id==="q"))el.focus({preventScroll:true});}
   window.scrollTo({top:sy,behavior:"instant"});
   after[v]&&after[v]();requestAnimationFrame(spyTick);
-  $$("#main .filters .chips, #main .mday").forEach(r=>{const c=r.querySelector('[aria-pressed="true"]');if(c&&(c.offsetLeft+c.offsetWidth>r.scrollLeft+r.clientWidth-8||c.offsetLeft<r.scrollLeft))r.scrollLeft=Math.max(0,c.offsetLeft-24);});if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>ACT.pjump(j),80);}if(S.spotOpen){const id=S.spotOpen;S.spotOpen=null;S.pOpen.spot=id;setTimeout(()=>ACT.spot(id),700);}VPREV=v;}
+  $$("#main .filters .chips, #main .mday").forEach(r=>{const c=r.querySelector('[aria-pressed="true"]');if(c&&(c.offsetLeft+c.offsetWidth>r.scrollLeft+r.clientWidth-8||c.offsetLeft<r.scrollLeft))r.scrollLeft=Math.max(0,c.offsetLeft-24);});if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>ACT.pjump(j),80);}if(S.evOpen&&S.events){const d=document.querySelector(`details[data-ev="${S.evOpen}"]`);S.evOpen=null;if(d){d.open=true;setTimeout(()=>scrollUnder(d),120);}else toast("Cet événement est passé ou n'est plus annoncé");}if(S.spotOpen){const id=S.spotOpen;S.spotOpen=null;S.pOpen.spot=id;setTimeout(()=>ACT.spot(id),700);}VPREV=v;}
 after.sejour=()=>bindInstall();
 /* arrivée sur #spots ou #peche : la page Mer s'ouvre sur la bonne partie (une fois par changement d'adresse) */
 const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",naviguer:"s-nav",peche:"s-peche"}[h];if(!id||S.jumped===h)return;S.jumped=h;
@@ -2350,6 +2351,8 @@ const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",naviguer:
 function hashAlias(){const h=location.hash.slice(1);let m;
   if(h==="plages"){S.cat="plage";history.replaceState(null,"","#activites");return;}
   if(h==="marees"){history.replaceState(null,"","#mer");return;}
+  /* lien partagé d'un événement : l'Agenda s'ouvre sur sa fiche */
+  if((m=h.match(/^ev-([\w-]+)$/))){S.evOpen=m[1];setFaire("tout");S.more={agenda:true};history.replaceState(null,"",location.search+"#agenda");return;}
   if((m=h.match(/^spot-([\w-]+)$/))&&SPOTSX.some(x=>x.id===m[1])&&curViewRaw()!=="mer"&&curViewRaw()!=="spots"){S.spotOpen=m[1];history.replaceState(null,"","#spots");}}
 let VPREV="";const curViewRaw=()=>VPREV;
 after.mer=after.spots=after.naviguer=after.peche=partJump;
