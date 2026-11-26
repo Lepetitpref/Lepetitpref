@@ -2351,6 +2351,7 @@ const partJump=()=>{const h=location.hash.slice(1),id={spots:"s-spots",naviguer:
 function hashAlias(){const h=location.hash.slice(1);let m;
   if(h==="plages"){S.cat="plage";history.replaceState(null,"","#activites");return;}
   if(h==="marees"){history.replaceState(null,"","#mer");return;}
+  if(h==="ce-week-end"){setFaire("we");history.replaceState(null,"",location.search+"#agenda");return;}
   /* lien partagé d'un événement : l'Agenda s'ouvre sur sa fiche */
   if((m=h.match(/^ev-([\w-]+)$/))){S.evOpen=m[1];setFaire("tout");S.more={agenda:true};history.replaceState(null,"",location.search+"#agenda");return;}
   if((m=h.match(/^spot-([\w-]+)$/))&&SPOTSX.some(x=>x.id===m[1])&&curViewRaw()!=="mer"&&curViewRaw()!=="spots"){S.spotOpen=m[1];history.replaceState(null,"","#spots");}}

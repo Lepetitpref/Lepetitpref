@@ -62,7 +62,7 @@ var CSS = ':root{--bg:#f6f6f3;--card:#fff;--ink:#1c1d22;--muted:#5d6068;--line:#
   'table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;font-variant-numeric:tabular-nums}' +
   'th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px}th{color:var(--muted);font-weight:500;font-size:14px}' +
   '.maj{color:var(--muted);font-size:14px;margin-top:28px}.autres{font-size:15px;margin:16px 0 32px;line-height:2}.autres a{color:var(--accent)}a{color:var(--accent)}';
-var PAGES_LIENS = [['pornic', 'Que faire à Pornic'], ['saint-brevin', 'Que faire à Saint-Brevin'], ['la-bernerie', 'Que faire à La Bernerie'], ['agenda', 'Agenda de Préfailles et Pornic'], ['cinema', 'Cinéma à Préfailles et Pornic'], ['marees', 'Marées à Préfailles'], ['restaurants', 'Restaurants à Préfailles'], ['marches', 'Marchés de Pornic et alentours'], ['plages', 'Plages de Préfailles'], ['que-faire', 'Que faire à Préfailles']];
+var PAGES_LIENS = [['ce-week-end', 'Ce week-end à Préfailles'], ['pornic', 'Que faire à Pornic'], ['saint-brevin', 'Que faire à Saint-Brevin'], ['la-bernerie', 'Que faire à La Bernerie'], ['agenda', 'Agenda de Préfailles et Pornic'], ['cinema', 'Cinéma à Préfailles et Pornic'], ['marees', 'Marées à Préfailles'], ['restaurants', 'Restaurants à Préfailles'], ['marches', 'Marchés de Pornic et alentours'], ['plages', 'Plages de Préfailles'], ['que-faire', 'Que faire à Préfailles']];
 
 // ---------- Agenda ----------
 var EV = J('donnees/events.json').filter(function (e) { return (e.end || e.date) >= auj && e.date <= plus(auj, 30); });
@@ -165,6 +165,40 @@ page({ chemin: 'que-faire', titre: 'Que faire à Préfailles ? Sorties, activit�
   desc: 'Idées de sorties à Préfailles et autour : les événements de la semaine, activités, balades, sports nautiques, visites, sorties en famille et adresses pour les jours de pluie.',
   intro: 'Ce qui se passe cette semaine à Préfailles et autour, et les activités pour toute l\'année : nature et balades, mer et glisse, culture et visites, sorties pour les enfants.',
   corps: corpsQF, app: '#activites', bouton: 'Voir les activités dans l\'app' });
+
+// ---------- Ce week-end (vendredi → dimanche ; le samedi et le dimanche : à partir d'aujourd'hui) ----------
+(function () {
+  var dw = new Date(auj + 'T12:00:00Z').getUTCDay(), we = [];
+  if (dw === 6) we = [auj, plus(auj, 1)]; else if (dw === 0) we = [auj]; else { var v = plus(auj, (5 - dw + 7) % 7); we = [v, plus(v, 1), plus(v, 2)]; }
+  var d0 = we[0], d1 = we[we.length - 1], jc = function (j) { return new Date(j + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', timeZone: 'UTC' }); };
+  var periode = we.length > 1 ? 'du ' + jc(d0) + ' au ' + jourL(d1) : jourL(d0);
+  var prio = function (e) { var i = PROCHE.indexOf(e.town); return i < 0 ? 9 : i; };
+  var corps = '', nEv = 0, ldW = [];
+  we.forEach(function (j) {
+    var L = evDuJour(j).filter(function (e) { return !e.end || e.date === j; }).sort(function (a, b) { return prio(a) - prio(b) || String(a.time).localeCompare(String(b.time)); });
+    nEv += L.length;
+    var dwj = new Date(j + 'T12:00:00Z').getUTCDay(), md = j.slice(5);
+    var mar = MARCHES.filter(function (a) { return (a.open || []).some(function (o) { return String(o.days).indexOf(String(dwj)) >= 0 && (o.from <= o.to ? md >= o.from && md <= o.to : md >= o.from || md <= o.to); }); });
+    var films = {}; CI.filter(function (c) { return c.date === j; }).forEach(function (c) { (films[c.film] = films[c.film] || []).push(nomCine(c.cinema).replace(/ \(.*\)$/, '') + ' ' + (c.times || []).join(', ')); });
+    var T = A.tidesOfDay(j), mx = A.maxCoef(j);
+    corps += '<h2>' + esc(cap(jourL(j))) + '</h2>\n' +
+      (L.length ? '<ul class="liste">' + L.map(evLi).join('') + '</ul>\n' : '<p>Pas de sortie annoncée ce jour-là.</p>\n') +
+      (mar.length ? '<p><b>Marchés</b> : ' + mar.map(function (a) { var o = (a.open || []).find(function (o) { return String(o.days).indexOf(String(dwj)) >= 0; }); return esc(a.n) + (o ? ' (' + esc(o.hours) + ')' : ''); }).join(' · ') + '</p>\n' : '') +
+      (Object.keys(films).length ? '<p><b>Cinéma</b> : ' + Object.keys(films).sort().map(function (f) { return esc(f) + ' (' + esc(films[f].join(' ; ')) + ')'; }).join(' · ') + '</p>\n' : '') +
+      '<p><b>Marée</b> : basse mer ' + T.filter(function (e) { return e.k === 'BM'; }).map(function (e) { return heure(e.ms); }).join(' et ') + ', pleine mer ' + T.filter(function (e) { return e.k === 'PM'; }).map(function (e) { return heure(e.ms); }).join(' et ') + (mx ? ', coefficient ' + mx : '') + '.</p>\n';
+    L.filter(function (e) { return e.place && e.place !== e.town && CP[e.town]; }).slice(0, 25).forEach(function (e) {
+      var m = /^(\d{1,2})h(\d{2})?/.exec(e.time || ''), o = { '@context': 'https://schema.org', '@type': 'Event', name: e.title, startDate: e.date + (m ? 'T' + ('0' + m[1]).slice(-2) + ':' + (m[2] || '00') + ':00' + decal(e.date) : ''), eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: { '@type': 'Place', name: e.place, address: { '@type': 'PostalAddress', streetAddress: e.place, postalCode: CP[e.town], addressLocality: e.town, addressRegion: 'Loire-Atlantique', addressCountry: 'FR' } }, image: SITE + '/images/partage.jpg', url: SITE + '/ce-week-end/' };
+      if (e.end) o.endDate = e.end; if (e.desc) o.description = e.desc; if (e.url) o.sameAs = e.url; if (e.org) o.organizer = { '@type': 'Organization', name: e.org }; ldW.push(o); });
+  });
+  var expos = EV.filter(function (e) { return e.end && e.date < d1 && e.end >= d0 && PROCHE.indexOf(e.town) >= 0; });
+  if (expos.length) corps += '<h2>Expositions et rendez-vous sur plusieurs jours</h2>\n<ul class="liste">' + expos.slice(0, 10).map(evLi).join('') + '</ul>\n';
+  corps += '<p><a href="/agenda/">L\'agenda des 14 prochains jours</a> · <a href="/marees/">Les marées</a> · <a href="/restaurants/">Les restaurants</a></p>';
+  var court = we.length > 1 ? new Date(d0 + 'T12:00:00Z').getUTCDate() + '-' + new Date(d1 + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' }) : new Date(d0 + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+  page({ chemin: 'ce-week-end', titre: 'Que faire ce week-end à Préfailles et Pornic ? (' + court + ')', h1: 'Ce week-end à Préfailles et autour',
+    desc: 'Le week-end ' + periode + ' à Préfailles, Pornic, La Plaine-sur-Mer et autour : ' + nEv + ' sorties (concerts, marchés de Noël, spectacles, sorties en famille), les marchés, le cinéma et les marées. Mis à jour chaque matin.',
+    intro: 'Le week-end ' + esc(periode) + ' : ' + nEv + ' sorties annoncées à Préfailles et autour, jour par jour, avec les marchés, les séances de cinéma et les marées. Repris chaque matin des sites des communes, de l\'office de tourisme, des cinémas et des associations.',
+    corps: corps, app: '#ce-week-end', bouton: 'Voir le week-end dans l\'app', ld: ldW });
+})();
 
 // ---------- Une page par commune : « Que faire à Pornic », etc. ----------
 // Même contenu que l'app (agenda, cinéma, marchés, restos, plages, activités), filtré sur la commune. Pas de page si trop peu de contenu.
