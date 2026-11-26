@@ -1394,6 +1394,14 @@
  },
  "rules": [
   [
+   "^(.+?) · petit temps vers les rochers après (\\d+)h$",
+   "$1 · light wind towards the rocks after $2h"
+  ],
+  [
+   "^rafaleux, confirmés · petit temps vers les rochers après (\\d+)h$",
+   "gusty, experienced only · light wind towards the rocks after $1h"
+  ],
+  [
    "^Affiche : (.+)$",
    "Poster: $1"
   ],
