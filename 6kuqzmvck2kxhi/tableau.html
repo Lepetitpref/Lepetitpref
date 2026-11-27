@@ -82,6 +82,7 @@
     <h2>D'où ils viennent</h2>
     <p class="pp-sub">Ici on compte les <b>ouvertures du site</b>, pas les personnes : quelqu'un qui ouvre le site 3 fois dans la journée compte 3. C'est pourquoi le total est plus grand que le nombre de personnes du graphique au-dessus. « nouv. » = ouvertures par une personne venue pour la première fois.</p>
     <div class="pp-scroll"><table class="pp-table"><thead><tr><th>Par où</th><th>Hier</th><th>7 jours</th><th>30 jours</th><th>Depuis le 17/11</th></tr></thead><tbody data-draw="sources" data-source="sources7"></tbody></table></div>
+    <p class="pp-p" data-draw="origines" data-source="resume">—</p>
     <p class="pp-p" data-draw="seo_l">—</p>
     <h3 class="pp-h3">Google</h3>
     <p class="pp-sub" data-draw="g_tot">—</p>
@@ -327,6 +328,8 @@ dash.draw('interets', (tb) => { const d = dash.data('interets'); tb.replaceChild
   d.data.filter((r) => r.k !== 'vide').slice(0, 20).forEach((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.k; const a = document.createElement('td'); a.textContent = r.quoi; const sm = document.createElement('small'); sm.textContent = [r.type, r.detail].filter(Boolean).join(' · '); a.appendChild(sm); tr.appendChild(a);
     ['ouvertures', 'agenda', 'contacts'].forEach((f) => { const td = document.createElement('td'); td.textContent = N(r[f]) ? fmt(r[f]) : '·'; td.dataset.source = 'interets'; td.dataset.field = f; td.dataset.where = 'k=' + r.k; tr.appendChild(td); }); tb.appendChild(tr); }); });
 dash.draw('interets_v', (el) => { const d = dash.data('interets'); const n = d.status === 'ok' ? d.data.filter((r) => r.k !== 'vide').length : 0; el.hidden = n > 0; el.textContent = n ? '' : "Pas encore de fiche ouverte : le comptage a commencé le 27/11 au soir."; });
+dash.draw('origines', (el) => { const x = R(); el.replaceChildren(); if (!x) { el.textContent = '—'; return; } const P = (lab, v) => { const p = document.createElement('div'); const b = document.createElement('b'); b.textContent = lab + ' '; p.append(b, v || 'aucune arrivée comptée pour l\'instant'); el.appendChild(p); };
+  P('Autres sites (depuis le 27/11) :', x.origines_site); P('Réseaux sociaux (depuis le 27/11) :', x.origines_reseau); });
 dash.draw('sources', (tb) => { const d = dash.data('sources7'); tb.replaceChildren(); if (d.status !== 'ok') return;
   d.data.forEach((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.k; const a = document.createElement('td'); a.textContent = r.canal;
     if (r.k === 'campagne' && !N(r.n)) { const s = document.createElement('small'); s.textContent = '0 : aucune affiche ou QR posé'; a.appendChild(s); }

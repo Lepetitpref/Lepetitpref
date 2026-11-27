@@ -42,6 +42,15 @@ function lire(k) {
       .concat((g.recherches_28j || []).map(function (x, i) { return { k: 'q' + i, type: 'recherche', quoi: x.q, n: x.aff, clics: x.clics, pos: x.pos }; }))
       .concat((g.jours || []).map(function (x) { return { k: 'j' + x.d, type: 'jour', quoi: x.d, n: x.aff, clics: x.clics, pos: x.pos }; }));
   } catch (x) { console.log('Search Console : pas de relevé (' + x.message + ')'); }
+  // D'où viennent les arrivées « autre site » et « réseaux » (nom du site seulement, liste fermée d'app.js, depuis le 27/11/2026)
+  try {
+    var appsrc = fs.readFileSync(path.join(__dirname, '..', 'app.js'), 'utf8');
+    var sites = JSON.parse(appsrc.match(/const PPSITES=(\[[^\]]*\]);/)[1]).map(function (d) { return d.replace(/[^a-z0-9]+/g, '-'); }).concat(['autre']);
+    var res = (appsrc.match(/const PPRES=\[(.*?)\];\n/)[1].match(/\["([a-z]+)"/g) || []).map(function (x) { return x.slice(2, -1); }).concat(['autre']);
+    var vs = await tout(sites.map(function (d) { return 'origine-site-' + d; })), vr = await tout(res.map(function (d) { return 'origine-reseau-' + d; }));
+    var txt = function (L, V) { return L.map(function (d, i) { return [d === 'autre' ? 'autres' : d.replace(/-(com|fr|org|ai|net)$/, '.$1'), V[i] || 0]; }).filter(function (x) { return x[1]; }).sort(function (a, b) { return b[1] - a[1]; }).map(function (x) { return x[0] + ' ' + x[1]; }).join(' · '); };
+    r.fichiers.resume[0].origines_site = txt(sites, vs); r.fichiers.resume[0].origines_reseau = txt(res, vr);
+  } catch (x) { console.log('Origines : non calculées (' + x.message + ')'); }
   // Ce qui intéresse : compteurs par fiche (app.js : fv = fiche ouverte, fa = ajout à l'agenda, fc = appel/itinéraire/site/partage), depuis le 27/11/2026.
   // On relit fv pour toutes les fiches connues, puis fa et fc seulement pour celles qui ont été ouvertes (et pour les films).
   try {

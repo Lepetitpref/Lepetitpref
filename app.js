@@ -2293,6 +2293,11 @@ const ppUne={};const ppOnce=k=>{if(ppUne[k])return;ppUne[k]=1;ppHit2(k);};
 const ppSource=()=>{if(STANDALONE())return"app";const r=document.referrer||"";let h="";try{h=new URL(r).hostname;}catch(e){}
   if(!h)return"direct";if(/(^|\.)lepetitpref\.fr$/.test(h))return"interne";if(/google\.|bing\.|qwant\.|duckduckgo\.|ecosia\.|yahoo\.|startpage\.|brave\.com|lilo\.|search\./.test(h))return"moteur";
   if(/facebook\.|fb\.|instagram\.|t\.co$|twitter\.|x\.com|linkedin\.|lnkd\.|threads\.|bsky\.|whatsapp\.|messenger\.|snapchat\.|tiktok\.|pinterest\./.test(h))return"reseau";return"site";};
+/* nom du site ou du réseau d'origine (domaine seul, jamais la page) : liste fermée, le reste = « autre » ; lu par outils/audience.js */
+const PPSITES=["pornic.com","prefailles.fr","laplainesurmer.fr","saint-brevin.com","saint-brevin.fr","pornic.fr","pornicagglo.fr","labernerieenretz.fr","stmichelchefchef.fr","lesmoutiersenretz.fr","loire-atlantique.fr","ouest-france.fr","presse-ocean.fr","actu.fr","leboncoin.fr","tripadvisor.fr","wikipedia.org","pagesjaunes.fr","clubdesamisdeprefailles.com","clubdevoileprefailles.fr","ecoledevoileprefailles.fr","helloasso.com","allocine.fr","chatgpt.com","openai.com","perplexity.ai","claude.ai","copilot.microsoft.com","outlook.live.com","mail.yahoo.com","orange.fr","free.fr","sfr.fr","laposte.net","concret2027.fr"];
+const PPRES=[["facebook","facebook|fb\\."],["instagram","instagram"],["whatsapp","whatsapp"],["messenger","messenger"],["x","t\\.co$|twitter|x\\.com"],["linkedin","linkedin|lnkd"],["tiktok","tiktok"],["pinterest","pinterest"],["snapchat","snapchat"]];
+const ppOrigine=src=>{try{const h=new URL(document.referrer).hostname.replace(/^www\./,"");if(src==="site"){const m=PPSITES.find(d=>h===d||h.endsWith("."+d));return m?m.replace(/[^a-z0-9]+/g,"-"):"autre";}
+  if(src==="reseau"){const m=PPRES.find(([,r])=>new RegExp(r).test(h));return m?m[0]:"autre";}}catch(e){}return"";};
 /* durée et rubriques d'une visite : remis à zéro à chaque nouveau jour (l'app ou l'onglet peuvent rester ouverts plusieurs jours) */
 const PPT={j:null,t:0,d:0,faits:{},fin:false};
 const ppQuitte=()=>{if(PPT.fin||!PPT.j)return;PPT.fin=true;const n=Object.keys(ppVu).filter(k=>k[0]!=="_").length;ppHit("rubriques-"+(n<=1?"1":n===2?"2":n<=4?"3-4":"5p")+"-"+PPT.j);};
@@ -2307,7 +2312,7 @@ function ppVue(v){if(!ppOn)return;if(!ppHumain){if(!PPV.includes(v))PPV.push(v);
   if(ppVu._jour)return;ppVu._jour=1;Object.assign(PPT,{j,t:0,d:document.visibilityState==="visible"?Date.now():0,faits:{},fin:false});
   try{const prem=localStorage.getItem("pp-appareil"),der=localStorage.getItem("pp-appareil-jour"),app=STANDALONE(),sem=ppSem(j),mois=j.slice(0,7),appPrem=!prem&&app&&IS_IOS;
     /* chargement : dénominateur des durées et des rubriques ; page d'entrée ; source (un retour dans l'app ou l'onglet resté ouvert : « app » ou « direct ») */
-    ppHit2("chargements");ppHit("entree-"+v+"-"+j);const src=ppVu._via||(ppVu._retour?(app?"app":"direct"):ppSource());ppHit("source-"+src+"-"+j);ppHit("source-"+src);
+    ppHit2("chargements");ppHit("entree-"+v+"-"+j);const src=ppVu._via||(ppVu._retour?(app?"app":"direct"):ppSource());ppHit("source-"+src+"-"+j);ppHit("source-"+src);{const o=(src==="site"||src==="reseau")&&!ppVu._via&&!ppVu._retour?ppOrigine(src):"";if(o)ppHit("origine-"+src+"-"+o);}
     /* nouvel appareil ; sur iPhone, la 1re ouverture de l'app installée a sa propre mémoire : comptée à part (= installation), pas comme nouvel appareil */
     if(!prem){if(appPrem){ppHit2("app-premiere");}else{ppHit("appareils");ppHit("appareils-nouveaux-"+j);ppHit("source-nouveau-"+src+"-"+j);}}
     if(der!==j){ppHit("appareils-"+j);ppHit("type-"+ppType()+"-"+j);ppHit("lieu-"+BASE.k+"-"+j);if(app)ppHit("app-"+j);if(LANG==="en")ppHit("langue-en-"+j);
