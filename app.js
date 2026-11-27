@@ -1077,7 +1077,9 @@ function homeNow(d){const w=wxDay(d),e=sstNow(d),ts=tidesOfDay(d),c=maxCoef(d),[
    ${cell("Eau",e!=null?`${r1(e)}°`:WXNA(),e==null?"":e<13?"froide · combi 5/4":e<16?"fraîche · combi 4/3":e<19?"bonne · combi 3/2":"douce")}
    ${cell("Basse mer",NX("BM"),NXd("BM"))}
    ${cell("Pleine mer",NX("PM"),[NXd("PM"),c?`coef. ${c}`:""].filter(Boolean).join(" · "))}
-   ${cell("Pluie",w?`${w.pp??0} %`:WXNA(),w&&w.pp>=60?"prévoir un abri":w?"":"")}
+   ${(()=>{/* pluie : millimètres prévus (même source que le ciel), plus de pourcentage qui contredit « Bruine » */
+     if(!w)return cell("Pluie",WXNA(),"");const ps=w.ps??0,rc=/^(5[1-7]|6[1-7]|8[0-2]|9[5-9])$/.test(String(w.code));
+     return cell("Pluie",ps>=0.1?`${r1(ps)} mm`:rc?"faible risque":"aucune",ps>=5?"prévoir un abri":ps>=0.1?"faible":"");})()}
   </a>`;}
 /* prochains marchés à moins de 10 km (d'après les jours et heures des fiches) ; un marché déjà fini aujourd'hui ne compte pas */
 function nextMarkets(n=3){const t=today(),now=hm(new Date()),out=[];
