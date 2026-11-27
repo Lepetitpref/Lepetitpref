@@ -1052,7 +1052,8 @@ const SHARE_TXT=`Le Petit Préf : la mer et les marées, les sorties, le ciné, 
 /* « Je suis à » : Préfailles ou Pornic ; le choix recharge la page */
 const baseSeg=()=>`<div class="base-grid" role="group" aria-label="Je suis à">${Object.values(BASES).map(b=>`<button type="button" aria-pressed="${BASE_SET&&b.k===BASE.k}" data-act="base" data-v="${b.k}">${b.n}</button>`).join("")}</div>`;
 const baseSel=()=>`<label class="base-line"><span class="base-l">${ic("pin","i-s")}Je suis à</span><select data-chg="base" aria-label="Je suis à">${Object.values(BASES).map(b=>`<option value="${b.k}"${b.k===BASE.k?" selected":""}>${b.n}</option>`).join("")}</select></label>`;
-const baseBar=()=>BASE_SET?`<div class="base-bar">${baseSel()}</div>`:`<div class="base-first"><p class="base-q">Où êtes-vous ?</p>${baseSeg()}<p class="base-why">Pour calculer les distances, les transports et l'agenda près de vous.</p></div>`;
+/* toujours la pastille « Je suis à … ▾ » (plus de grande question « Où êtes-vous ? » à la première visite) */
+const baseBar=()=>`<div class="base-bar">${baseSel()}</div>`;
 function whoBar(){const g=gActive();
   if(g)return `<div class="whobar"><div class="who-card"><span class="who-ic">${ic("people")}</span><div class="who-txt"><span class="who-k">Vous êtes en visite</span><b>${esc(gWho(g,GR.actif))}</b><span>${esc(gWhen())}</span></div></div>
    <div class="who-acts"><button type="button" class="who-btn is-main" data-act="who">${ic("people","i-s")}Modifier qui vient</button><button type="button" class="who-btn" data-act="local">${ic("home","i-s")}J'habite ici</button></div></div>`;
