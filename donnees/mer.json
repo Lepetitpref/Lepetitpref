@@ -1,46 +1,46 @@
 {
- "maj": "2026-11-27T01:48:54.114Z",
+ "maj": "2026-11-27T05:44:06.804Z",
  "bulletin": {
-  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" soir",
-  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du jeudi 26 novembre 2026 à 18H15 légales.",
+  "titre": "Bulletin côte \"Penmarc'h – Aiguillon\" matin",
+  "emis": "Bulletin côtier pour la bande des 20 milles, de la pointe de Penmarc'h à l'anse de l'Aiguillon, du vendredi 27 novembre 2026 à 06H15 légales.",
   "avis": "Pas d'avis de vent fort en cours ni prévu.",
   "sections": [
    {
-    "t": "Situation générale le jeudi 26 novembre 2026 à 12H00 UTC, et évolution",
+    "t": "Situation générale le vendredi 27 novembre 2026 à 00H00 UTC, et évolution",
     "l": [
-     "Thalweg du nord-ouest des îles Britanniques à l'ouest de la Corogne se décalant lentement vers l'est et atteignant la Bretagne en soirée. Dans ce thalweg, un minimum se creuse autour de 1015 hPa demain après-midi sur l'ouest de la Manche. Dorsale de la Scandinavie à la mer du Nord s'étendant sur le nord-est de la France."
+     "Thalweg du nord-ouest des îles Hébrides à l'ouest de la Corogne se décalant lentement vers l'est en Manche en journée. Dépression relative se creusant 1014 hPa cet après-midi sur l'ouest de la Manche. Nouveau talweg atteignant la Bretagne demain en journée."
     ]
    },
    {
-    "t": "Observations le jeudi 26 novembre 2026 à 15H00 UTC",
+    "t": "Observations le vendredi 27 novembre 2026 à 03H00 UTC",
     "l": [
-     "Pointe de Penmarc'h : vent Ouest-Sud-Ouest 2 nœuds, nuageux avec éclaircies, visibilité 8 milles. Belle Ile : vent Ouest-Nord-Ouest 6 nœuds, nuageux avec éclaircies, visibilité 10 milles. Ile d'Yeu : vent Nord 4 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 12 milles. Groix : vent Ouest-Nord-Ouest 4 nœuds, mer peu agitée, clair ou peu nuageux, visibilité 10 milles. Pointe de Chemoulin : vent Ouest-Nord-Ouest 8 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 13 milles."
-    ]
-   },
-   {
-    "t": "Prévisions pour la nuit du jeudi 26 novembre au vendredi 27 novembre",
-    "l": [
-     "VENT : Variable 1 à 3, s'orientant Sud à Sud-Est 3 à 4 par l'ouest en fin de soirée puis fraîchissant 4 à 5 de Penmarc'h à Belle-Ile en seconde partie de nuit.",
-     "MER : peu agitée, devenant agitée de Penmarc'h à Belle-Ile en fin de nuit.",
-     "HOULE : Ouest 0.5 à 1, localement 1.5 m de Penmarc'h à Belle-Ile en fin de nuit.",
-     "TEMPS : ciel très nuageux se couvrant en fin de nuit avec quelques pluies.",
-     "VISIBILITE : bonne puis moyenne sous pluie."
+     "Belle Ile : vent Sud 10 nœuds. Ile d'Yeu : vent Sud-Est 8 nœuds, mer peu agitée, nuageux avec éclaircies, visibilité 13 milles. Groix : vent Sud 10 nœuds. Pointe de Chemoulin : vent Est-Sud-Est 8 nœuds, mer calme, clair ou peu nuageux, visibilité 10 milles."
     ]
    },
    {
     "t": "Prévisions pour la journée du vendredi 27 novembre",
     "l": [
-     "VENT : Sud à Sud-Est 4 à 5, mollissant Sud à Sud-Ouest 2 à 4 par l'ouest l'après-midi.",
-     "MER : devenant agitée, localement forte vers Penmarc'h en fin de journée.",
+     "VENT : Sud à Sud-Est 4 à 5, mollissant Sud à Sud-Ouest 2 à 4 par l'ouest l'après-midi, mais virant localement Nord 4 à 5 aux parages de Penmarc'h à la fin.",
+     "MER : devenant agitée, localement forte de Penmarc'h à Groix par longue houle en fin de journée.",
      "HOULE : Ouest 1.5 à 2 m, s'amplifiant longue de Nord-Ouest 2.5 m vers Penmarc'h en fin de journée.",
      "TEMPS : très nuageux à couvert avec quelques pluies éparses.",
      "VISIBILITE : moyenne sous pluie."
     ]
    },
    {
-    "t": "Tendance pour la nuit du 27 au 28, et la journée du samedi 28 novembre",
+    "t": "Prévisions pour la nuit du vendredi 27 novembre au samedi 28 novembre",
     "l": [
-     "VENT : Sud à Sud-Est 3 à 4, fraîchissant 4 à 5 la nuit puis fraîchissant localement Sud-Ouest 5 à 6 de Penmarc'h à Belle-Ile en journée.",
+     "VENT : Sud à Sud-Est 3 à 4, parfois 5 de Belle-Île à Chemoulin, localement secteur Nord vers Penmarc'h au début, fraîchissant 4 à 5 la nuit.",
+     "MER : agitée à forte.",
+     "HOULE : longue d'Ouest à Nord-Ouest 1.5 à 2.5 m, parfois 3 m vers le large, jusqu'à 3.5 m aux parages de Penmarc'h en première partie de nuit.",
+     "TEMPS : ciel très nuageux à couvert avec quelques pluies.",
+     "VISIBILITE : moyenne sous pluie."
+    ]
+   },
+   {
+    "t": "Tendance pour la journée du samedi 28 novembre",
+    "l": [
+     "VENT : Sud à Sud-Est 4 à 5, fraîchissant localement Sud-Ouest 5 à 6 de Penmarc'h à Belle-Ile le matin.",
      "MER : agitée à forte, parfois croisée en journée.",
      "HOULE : longue d'Ouest à Nord-Ouest 1.5 à 2.5 m, parfois 3 m vers le large, s'amortissant 1 à 2 m en journée.",
      "TEMPS : ciel très nuageux à couvert avec pluie.",
@@ -48,13 +48,13 @@
     ]
    }
   ],
-  "prochain": "Prochain bulletin le vendredi 27 novembre 2026, vers 06H15 légales",
+  "prochain": "Prochain bulletin le vendredi 27 novembre 2026, vers 12H30 légales",
   "source": "https://meteofrance.com/meteo-marine/penmarc-h-anse-de-l-aiguillon/BMSCOTE-01-04",
-  "lu": "2026-11-27T01:49:03.935Z"
+  "lu": "2026-11-27T05:44:16.380Z"
  },
  "bouee": {
   "nom": "Bouée du Plateau du Four (Candhis, Cerema)",
-  "heure": "2026-11-27 02:00",
+  "heure": "2026-11-27 06:00",
   "h13": null,
   "hmax": null,
   "t13": null,

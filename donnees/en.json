@@ -4144,8 +4144,68 @@
    "$1 running · tap to see"
   ],
   [
-   "^(\\d+ [^:,]+?), du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
-   "$1, nearest first. Hours are a guide only: call ahead."
+   "^(\\d+) adresses?, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 places, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) adresses? avec vue sur la mer, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 places with a sea view, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) adresses? sur la plage, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 places on the beach, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) adresses? avec terrasse, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 places with a terrace, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) restaurants? et crêperies?, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 restaurants and crêperies, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) restaurants? et crêperies? avec vue sur la mer, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 restaurants and crêperies with a sea view, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) restaurants? et crêperies? sur la plage, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 restaurants and crêperies on the beach, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) restaurants? et crêperies? avec terrasse, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 restaurants and crêperies with a terrace, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) bars?, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 bars, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) bars? avec vue sur la mer, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 bars with a sea view, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) bars? sur la plage, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 bars on the beach, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) bars? avec terrasse, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 bars with a terrace, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) marchés?, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 markets, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) marchés? avec vue sur la mer, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 markets with a sea view, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) marchés? sur la plage, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 markets on the beach, nearest first. Hours are a guide only: call ahead."
+  ],
+  [
+   "^(\\d+) marchés? avec terrasse, du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",
+   "$1 markets with a terrace, nearest first. Hours are a guide only: call ahead."
   ],
   [
    "^(\\d+ [^:]+?) : ouverte?s? d'abord, (?:puis|then) du plus proche au plus loin\\. Horaires indicatifs, appelez avant\\.$",

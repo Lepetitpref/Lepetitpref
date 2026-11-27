@@ -184,7 +184,7 @@
   "a": "Anne-Emmanuelle THION"
  },
  "La Guinguette de la Plaine": {
-  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/178676/la-guinguette-de-la-plaine-la-plaine-sur-mer-28207.jpg.400x0_q85.jpg",
+  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/189397/la-guinguette-de-la-plaine-28213.jpg.400x0_q85.jpg",
   "a": "Claudia Cassano Dromain"
  },
  "Le Petit Mousse": {
@@ -304,7 +304,7 @@
   "a": "DR"
  },
  "La Paillote de Tharon": {
-  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/190462/2-ok-31401.jpg.400x0_q85.jpg",
+  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/187508/3-29346.jpg.400x0_q85.jpg",
   "a": "DR"
  },
  "Le Garde Manger, bar": {
@@ -437,10 +437,6 @@
  },
  "Centre équestre de la Colinerie": {
   "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/175479/centre-equestre-la-colinerie-2468-8c8076546aa1441d803b74ab97c7b08c.jpg.400x0_q85.jpg",
-  "a": "DR"
- },
- "Tennis du Golf": {
-  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/188766/tennis-du-golf-9174.jpeg.400x0_q85.jpg",
   "a": "DR"
  },
  "Club de Tennis de Pornic": {
@@ -772,7 +768,7 @@
   "a": "DR"
  },
  "La Source (Alliance Pornic)": {
-  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/190130/restaurant-la-source-19621-31513.jpg.400x0_q85.jpg",
+  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/190404/restaurant-la-source-19621.jpg.400x0_q85.jpg",
   "a": "Restaurant la Source"
  },
  "La Boucherie": {
@@ -1179,6 +1175,11 @@
   "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/182974/le-moulin-de-la-touche-16938.jpg.400x0_q85.jpg",
   "a": "Le photographe du dimanche"
  },
+ "Les Terrasses du Golf": {
+  "u": "images/logos/les-terrasses-du-golf.png",
+  "a": "Les Terrasses du Golf",
+  "logo": true
+ },
  "Domino's Pizza Pornic": {
   "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/185892/pizza-sur-la-plage-19952.jpg.400x0_q85.jpg",
   "a": "DR"
@@ -1288,7 +1289,7 @@
   "a": "Ot-St-Brevin"
  },
  "Moorea (Saint-Brevin)": {
-  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/190123/709487223-122324916980207097-5353224206964474702-n-11485.jpg.400x0_q85.jpg",
+  "u": "https://admin-rando.loire-atlantique.fr/media/paperclip/tourism_touristiccontent/190169/img-0689-11372.jpg.400x0_q85.jpg",
   "a": "DR"
  },
  "L'Alplaya": {
@@ -1399,11 +1400,6 @@
  "VF Company – Mega Drift et trottinettes électriques": {
   "u": "images/logos/vf-company-mega-drift-et-trottinettes-el.png",
   "a": "VF Company – Mega Drift et trottinettes électriques",
-  "logo": true
- },
- "Les Terrasses du Golf": {
-  "u": "images/logos/les-terrasses-du-golf.png",
-  "a": "Les Terrasses du Golf",
   "logo": true
  },
  "Crêperie La Source (Tharon)": {
