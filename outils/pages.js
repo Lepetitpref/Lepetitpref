@@ -203,7 +203,7 @@ page({ chemin: 'que-faire', titre: 'Que faire à Préfailles ? Sorties, activit�
 // ---------- Une page par commune : « Que faire à Pornic », etc. ----------
 // Même contenu que l'app (agenda, cinéma, marchés, restos, plages, activités), filtré sur la commune. Pas de page si trop peu de contenu.
 var COMMUNES = [['pornic', 'Pornic', 'Pornic', '?ici=pornic'], ['saint-brevin', 'Saint-Brevin-les-Pins', 'Saint-Brevin', '?ici=brevin'], ['la-bernerie', 'La Bernerie-en-Retz', 'La Bernerie', '?ici=bernerie'],
-  ['la-plaine-sur-mer', 'La Plaine-sur-Mer', 'La Plaine-sur-Mer', ''], ['saint-michel-chef-chef', 'Saint-Michel-Chef-Chef', 'Saint-Michel-Chef-Chef et Tharon', ''], ['les-moutiers', 'Les Moutiers-en-Retz', 'Les Moutiers-en-Retz', '']];
+  ['la-plaine-sur-mer', 'La Plaine-sur-Mer', 'La Plaine-sur-Mer', ''], ['saint-michel-chef-chef', 'Saint-Michel-Chef-Chef', 'Saint-Michel-Chef-Chef et Tharon', '?ici=tharon'], ['les-moutiers', 'Les Moutiers-en-Retz', 'Les Moutiers-en-Retz', '']];
 var a14 = plus(auj, 13), COMM_LIENS = [];
 COMMUNES.forEach(function (c) {
   var ville = c[1], nom = c[2], app = '/' + c[3];

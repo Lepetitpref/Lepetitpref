@@ -64,7 +64,7 @@ def ter_leg(cols,frm,to):
         k=json.dumps(x,sort_keys=True)
         if k not in seen:seen.add(k);res.append(x)
     return res
-P=("Préfailles","Place de la Gare");TH=("Pornic","Théâtre St Gilles");PI=("Nantes","Pirmil");SN=("Saint-Nazaire","Gare SNCF");SB=("Saint-Brevin-les-Pins","Pôle de Bresse")
+P=("Préfailles","Place de la Gare");TH=("Pornic","Théâtre St Gilles");PI=("Nantes","Pirmil");SN=("Saint-Nazaire","Gare SNCF");SB=("Saint-Brevin-les-Pins","Pôle de Bresse");TM=("Saint-Michel-Chef-Chef","Tharon")
 legs=[
  {"id":"303-pref-pornic","ligne":"303","mode":"car","de":"Préfailles","a":"Pornic","arret_de":"Préfailles, Place de la Gare","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c303,"Nantes","","",P,TH)},
  {"id":"303-pref-nantes","ligne":"303","mode":"car","de":"Préfailles","a":"Nantes","arret_de":"Préfailles, Place de la Gare","arret_a":"Nantes, Pirmil (tram 2 et 3)","departs":car_leg(c303,"Nantes","","",P,PI)},
@@ -90,6 +90,14 @@ legs=[
  {"id":"315-pornic-brevin","ligne":"315","mode":"car","de":"Pornic","a":"Saint-Brevin","arret_de":"Pornic, Théâtre St-Gilles","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Saint-Nazaire","","",TH,SB)},
  {"id":"315-brevin-pref","ligne":"315","mode":"car","de":"Saint-Brevin","a":"Préfailles","arret_de":"Saint-Brevin, Pôle de Bresse","arret_a":"Préfailles, Place de la Gare","departs":car_leg(c315,"Préfailles","","",SB,P)},
  {"id":"315-pref-brevin","ligne":"315","mode":"car","de":"Préfailles","a":"Saint-Brevin","arret_de":"Préfailles, Place de la Gare","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Saint-Nazaire","","",P,SB)},
+ {"id":"315-tharon-stnaz","ligne":"315","mode":"car","de":"Saint-Michel","a":"Saint-Nazaire","arret_de":"Saint-Michel-Chef-Chef, Tharon","arret_a":"Saint-Nazaire, gare SNCF","departs":car_leg(c315,"Saint-Nazaire","","",TM,SN)},
+ {"id":"315-stnaz-tharon","ligne":"315","mode":"car","de":"Saint-Nazaire","a":"Saint-Michel","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Saint-Michel-Chef-Chef, Tharon","departs":car_leg(c315,"Préfailles","","",SN,TM)},
+ {"id":"315-tharon-pornic","ligne":"315","mode":"car","de":"Saint-Michel","a":"Pornic","arret_de":"Saint-Michel-Chef-Chef, Tharon","arret_a":"Pornic, Théâtre St-Gilles","departs":car_leg(c315,"Préfailles","","",TM,TH)},
+ {"id":"315-pornic-tharon","ligne":"315","mode":"car","de":"Pornic","a":"Saint-Michel","arret_de":"Pornic, Théâtre St-Gilles","arret_a":"Saint-Michel-Chef-Chef, Tharon","departs":car_leg(c315,"Saint-Nazaire","","",TH,TM)},
+ {"id":"315-tharon-pref","ligne":"315","mode":"car","de":"Saint-Michel","a":"Préfailles","arret_de":"Saint-Michel-Chef-Chef, Tharon","arret_a":"Préfailles, Place de la Gare","departs":car_leg(c315,"Préfailles","","",TM,P)},
+ {"id":"315-pref-tharon","ligne":"315","mode":"car","de":"Préfailles","a":"Saint-Michel","arret_de":"Préfailles, Place de la Gare","arret_a":"Saint-Michel-Chef-Chef, Tharon","departs":car_leg(c315,"Saint-Nazaire","","",P,TM)},
+ {"id":"315-tharon-brevin","ligne":"315","mode":"car","de":"Saint-Michel","a":"Saint-Brevin","arret_de":"Saint-Michel-Chef-Chef, Tharon","arret_a":"Saint-Brevin, Pôle de Bresse","departs":car_leg(c315,"Saint-Nazaire","","",TM,SB)},
+ {"id":"315-brevin-tharon","ligne":"315","mode":"car","de":"Saint-Brevin","a":"Saint-Michel","arret_de":"Saint-Brevin, Pôle de Bresse","arret_a":"Saint-Michel-Chef-Chef, Tharon","departs":car_leg(c315,"Préfailles","","",SB,TM)},
  {"id":"ter1-stnaz-nantes","ligne":"TER 1","mode":"train","de":"Saint-Nazaire","a":"Nantes","arret_de":"Saint-Nazaire, gare SNCF","arret_a":"Nantes, gare SNCF","departs":ter_leg(cl1,"ST-NAZAIRE","NANTES")},
  {"id":"ter1-nantes-stnaz","ligne":"TER 1","mode":"train","de":"Nantes","a":"Saint-Nazaire","arret_de":"Nantes, gare SNCF","arret_a":"Saint-Nazaire, gare SNCF","departs":ter_leg(cl1,"NANTES","ST-NAZAIRE")},
 ]

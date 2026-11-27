@@ -13,7 +13,7 @@ Usage : python3 outils/urbanisme.py
 """
 import csv, io, json, os, re, sys, urllib.request, urllib.parse, datetime
 
-COMMUNES = {"prefailles": "44136", "pornic": "44131", "brevin": "44154", "bernerie": "44012"}
+COMMUNES = {"prefailles": "44136", "pornic": "44131", "brevin": "44154", "bernerie": "44012", "tharon": "44182"}
 ICI = os.path.dirname(os.path.abspath(__file__))
 SORTIE = os.path.join(ICI, "..", "donnees", "urbanisme.json")
 DIDO = "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/8b35affb-55fc-4c1f-915b-7750f974446a/csv?COMM=eq:{c}"
@@ -46,7 +46,15 @@ def rue(s):
         else:
             out.append(w.capitalize())
     t = " ".join(out)
+    t = demojibake(t)
     return t[:1].upper() + t[1:]
+
+
+def demojibake(t):
+    """Les adresses Sitadel arrivent parfois avec les accents abîmés (« Allaã\x82â\x89e » pour « Allée ») : on les répare."""
+    t = re.sub("[aA]\u00e3\u0082\u00e2\u0080[aA]?\u00e3\u0082\u00e2\u0099", "\u2019", t)
+    t = re.sub("[aA]\u00e3\u0082\u00e2([\u0080-\u009f])", lambda m: chr(ord(m.group(1)) + 0x60), t)
+    return t
 
 
 def permis(c):

@@ -8,7 +8,7 @@ Usage : python3 outils/adresses.py   (à relancer de temps en temps, par exemple
 import csv, gzip, io, json, os, urllib.request
 
 URL = "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-44.csv.gz"
-COMMUNES = {"44136": "prefailles", "44131": "pornic", "44154": "brevin", "44012": "bernerie"}
+COMMUNES = {"44136": "prefailles", "44131": "pornic", "44154": "brevin", "44012": "bernerie", "44182": "tharon"}
 SORTIE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "donnees", "adresses.json")
 
 

@@ -8,7 +8,7 @@ rd = lambda f: csv.DictReader(open(G / f, encoding="utf-8"))
 S = {r["stop_id"]: r for r in rd("stops.txt")}
 par = lambda sid: S[sid]["parent_station"] or sid
 # arrêts des extrémités (station parente du GTFS)
-END = {"Préfailles, Place de la Gare": "44PREFgare", "Pornic, Théâtre St-Gilles": "44PORNgill", "Saint-Brevin, Pôle de Bresse": "44BREVbres",
+END = {"Saint-Michel-Chef-Chef, Tharon": "44MICHthar", "Préfailles, Place de la Gare": "44PREFgare", "Pornic, Théâtre St-Gilles": "44PORNgill", "Saint-Brevin, Pôle de Bresse": "44BREVbres",
        "Saint-Nazaire, gare SNCF": "44NAZAsncf", "Nantes, Pirmil": "44NANTpirm"}
 key = lambda a: a.split(" (")[0]
 T = json.load(open(R / "donnees/transports.json", encoding="utf-8"))
