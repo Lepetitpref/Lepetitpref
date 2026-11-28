@@ -1930,15 +1930,15 @@
    "Distances, transport and practical info now worked out from $1"
   ],
   [
-   "^Office de tourisme de (Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Office de tourisme de (Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "$1 tourist office"
   ],
   [
-   "^Poubelles et tri à (Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Poubelles et tri à (Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "Bins and recycling in $1"
   ],
   [
-   "^Santé autour de (Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Santé autour de (Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "Health services around $1"
   ],
   [
@@ -2550,7 +2550,7 @@
    "spring tide $1, coef. $2"
   ],
   [
-   "^(\\d+) à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) · (\\d+) à moins de (\\d+) km$",
+   "^(\\d+) à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) · (\\d+) à moins de (\\d+) km$",
    "$1 in $2 · $3 within $4 km"
   ],
   [
@@ -2614,15 +2614,15 @@
    "(it depends on the street, "
   ],
   [
-   "^Depuis (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Depuis (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "From $1"
   ],
   [
-   "^Vers (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Vers (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "To $1"
   ],
   [
-   "^(Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) et les cinémas voisins$",
+   "^(Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) et les cinémas voisins$",
    "$1 and nearby cinemas"
   ],
   [
@@ -2674,7 +2674,7 @@
    " Half of the houses sold for between $1 and $2 per m²."
   ],
   [
-   " À (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) : maison (.+?), appartement (.+?) le m²\\.",
+   " À (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) : maison (.+?), appartement (.+?) le m²\\.",
    " In $1: house $2, flat $3 per m²."
   ],
   [
@@ -2686,7 +2686,7 @@
    "Slide your finger along the curve to read each year. $1: current year (hollow dot)."
   ],
   [
-   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) se vendait$",
+   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) se vendait$",
    "A house in $1 sold for"
   ],
   [
@@ -2698,11 +2698,11 @@
    "A sale shows up here about six months after it is signed. Latest known: $1."
   ],
   [
-   "^Permis de construire qui créent ou agrandissent des logements à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) \\(base Sitadel de l'État, mise à jour chaque mois, jusqu'en (.+?)\\)\\. Ni déclarations de travaux, ni piscines seules, ni démolitions : voir l'affichage en mairie\\. Le nom n'est donné que pour les sociétés\\.$",
+   "^Permis de construire qui créent ou agrandissent des logements à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) \\(base Sitadel de l'État, mise à jour chaque mois, jusqu'en (.+?)\\)\\. Ni déclarations de travaux, ni piscines seules, ni démolitions : voir l'affichage en mairie\\. Le nom n'est donné que pour les sociétés\\.$",
    "Building permits that create or enlarge homes in $1 (State Sitadel database, updated monthly, up to $2). No prior declarations, pools alone or demolitions: see the notices at the town hall. Names are only given for companies."
   ],
   [
-   "^Plan local d'urbanisme \\(PLU\\) de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), approuvé le (.+?)\\. Touchez une zone : ce qu'on peut y construire, la zone sur la carte, sa page du règlement\\.$",
+   "^Plan local d'urbanisme \\(PLU\\) de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), approuvé le (.+?)\\. Touchez une zone : ce qu'on peut y construire, la zone sur la carte, sa page du règlement\\.$",
    "Local zoning plan (PLU) of $1, approved on $2. Tap a zone: what can be built there, the zone on the map, its page of the regulations."
   ],
   [
@@ -2730,7 +2730,7 @@
    "$1% over a year (few sales)"
   ],
   [
-   "^Aller à une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Aller à une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "Go to an address in $1"
   ],
   [
@@ -2746,7 +2746,7 @@
    "$1 (so far)"
   ],
   [
-   "^Votre adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Votre adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "Your address in $1"
   ],
   [
@@ -2782,15 +2782,15 @@
    "Permits, last 3 years"
   ],
   [
-   "^Ce qui se vend et se construit à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), d'après les données publiques$",
+   "^Ce qui se vend et se construit à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), d'après les données publiques$",
    "What sells and gets built in $1, from public data"
   ],
   [
-   "^Une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "An address in $1"
   ],
   [
-   "^Votre adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Votre adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "Your address in $1"
   ],
   [
@@ -2818,11 +2818,11 @@
    "$1 zones"
   ],
   [
-   "^À (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), d'après les données publiques de l'État\\.$",
+   "^À (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), d'après les données publiques de l'État\\.$",
    "In $1, from the State's public data."
   ],
   [
-   "^Plan local d'urbanisme de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), approuvé le (.+)\\. Touchez une zone pour savoir ce qu'on peut y construire, la voir sur la carte et lire sa page du règlement\\.$",
+   "^Plan local d'urbanisme de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), approuvé le (.+)\\. Touchez une zone pour savoir ce qu'on peut y construire, la voir sur la carte et lire sa page du règlement\\.$",
    "Local zoning plan of $1, approved on $2. Tap a zone to see what can be built there, view it on the map and read its page of the regulations."
   ],
   [
@@ -2878,7 +2878,7 @@
    "Permits $1"
   ],
   [
-   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) se vendait (.+) le m² en (\\d{4}), (.+) en (\\d{4}) \\(prix médians\\)\\.$",
+   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) se vendait (.+) le m² en (\\d{4}), (.+) en (\\d{4}) \\(prix médians\\)\\.$",
    "A house in $1 sold for $2 per m² in $3, $4 in $5 (median prices)."
   ],
   [
@@ -2886,7 +2886,7 @@
    "Median prices: half of sales are above, half below. 2010-2020: Cerema (DV3F, actual sales); since 2021: our DVF sales."
   ],
   [
-   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) se vendait environ (.+) le m² en (\\d{4}) \\(estimation\\), (.+) en (\\d{4}), (.+) en (\\d{4})\\.$",
+   "^Une maison à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) se vendait environ (.+) le m² en (\\d{4}) \\(estimation\\), (.+) en (\\d{4}), (.+) en (\\d{4})\\.$",
    "A house in $1 sold for about $2 per m² in $3 (estimate), $4 in $5, $6 in $7."
   ],
   [
@@ -2902,7 +2902,7 @@
    "$1 post offices and relay points"
   ],
   [
-   "^(\\d+) autour de (Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^(\\d+) autour de (Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "$1 around $2"
   ],
   [
@@ -2926,15 +2926,15 @@
    "Permit: $1 homes"
   ],
   [
-   "^Permis qui créent des logements à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), d'après la base Sitadel de l'État \\(mise à jour chaque mois\\)\\. Le nom n'est donné que pour les sociétés\\.$",
+   "^Permis qui créent des logements à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), d'après la base Sitadel de l'État \\(mise à jour chaque mois\\)\\. Le nom n'est donné que pour les sociétés\\.$",
    "Permits creating homes in $1, from the State's Sitadel database (updated monthly). Names are only given for companies."
   ],
   [
-   "^Diagnostics de performance énergétique faits à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) depuis juillet 2021 \\(ADEME\\)\\. F et G : les « passoires thermiques », bientôt interdites à la location\\.$",
+   "^Diagnostics de performance énergétique faits à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) depuis juillet 2021 \\(ADEME\\)\\. F et G : les « passoires thermiques », bientôt interdites à la location\\.$",
    "Energy performance certificates issued in $1 since July 2021 (ADEME). F and G: poorly insulated homes, soon banned from being let."
   ],
   [
-   "^Plan local d'urbanisme de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), approuvé le (.+)\\.$",
+   "^Plan local d'urbanisme de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), approuvé le (.+)\\.$",
    "Local zoning plan of $1, approved on $2."
   ],
   [
@@ -2982,7 +2982,7 @@
    "$1 · nearest within walking distance"
   ],
   [
-   "^Une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Une adresse à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "An address in $1"
   ],
   [
@@ -3006,7 +3006,7 @@
    "$1 · $2 sales"
   ],
   [
-   "^En (\\d{4}) à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) : maison (.+) le m², appartement (.+) le m² \\(prix médians, (\\d+) ventes\\)\\.$",
+   "^En (\\d{4}) à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) : maison (.+) le m², appartement (.+) le m² \\(prix médians, (\\d+) ventes\\)\\.$",
    "In $1 in $2: houses $3 per m², flats $4 per m² (median prices, $5 sales)."
   ],
   [
@@ -3014,7 +3014,7 @@
    "Sales from 2021 to $1."
   ],
   [
-   "^Les ventes réelles à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel), d'après les actes enregistrés par l'État$",
+   "^Les ventes réelles à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel), d'après les actes enregistrés par l'État$",
    "Actual property sales in $1, from deeds registered by the State"
   ],
   [
@@ -3070,11 +3070,11 @@
    "$1 · new build (off plan)"
   ],
   [
-   "^(\\d+) sorties? à venir autour de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^(\\d+) sorties? à venir autour de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "$1 upcoming events around $2"
   ],
   [
-   "^Agenda : (\\d+) sorties? à venir autour de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda : (\\d+) sorties? à venir autour de (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on: $1 upcoming events around $2"
   ],
   [
@@ -4486,7 +4486,7 @@
    ": none $1. Nearest: $2 ($3 km). Fish is also sold at the markets."
   ],
   [
-   "^: aucune (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\. La plus proche : (.+) \\((\\d+) km\\)\\. Le poisson se trouve aussi sur les marchés\\.$",
+   "^: aucune (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\. La plus proche : (.+) \\((\\d+) km\\)\\. Le poisson se trouve aussi sur les marchés\\.$",
    ": none in $1. Nearest: $2 ($3 km). Fish is also sold at the markets."
   ],
   [
@@ -4498,11 +4498,11 @@
    "What's on: $1 upcoming events within $2 km"
   ],
   [
-   "^Agenda : 1 sortie à venir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda : 1 sortie à venir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on: 1 upcoming event in $1"
   ],
   [
-   "^Agenda : (\\d+) sorties à venir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda : (\\d+) sorties à venir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on: $1 upcoming events in $2"
   ],
   [
@@ -4510,7 +4510,7 @@
    "What's on, $1: no dated events $2"
   ],
   [
-   "^Agenda, (.+?) : aucune sortie datée (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda, (.+?) : aucune sortie datée (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on, $1: no dated events in $2"
   ],
   [
@@ -4518,7 +4518,7 @@
    "What's on, $1: 1 event $2"
   ],
   [
-   "^Agenda, (.+?) : 1 sortie (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda, (.+?) : 1 sortie (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on, $1: 1 event in $2"
   ],
   [
@@ -4526,7 +4526,7 @@
    "What's on, $1: $2 events $3"
   ],
   [
-   "^Agenda, (.+?) : (\\d+) sorties (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)$",
+   "^Agenda, (.+?) : (\\d+) sorties (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)$",
    "What's on, $1: $2 events in $3"
   ],
   [
@@ -4534,7 +4534,7 @@
    "Nothing announced $1 $2."
   ],
   [
-   "^Rien d'annoncé (aujourd'hui|demain) (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Rien d'annoncé (aujourd'hui|demain) (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "Nothing announced $1 in $2."
   ],
   [
@@ -4542,7 +4542,7 @@
    "Nothing announced on $1 $2."
   ],
   [
-   "^Rien d'annoncé le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Rien d'annoncé le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "Nothing announced on $1 in $2."
   ],
   [
@@ -4582,11 +4582,11 @@
    "$1 places · $2 open on $3"
   ],
   [
-   "^Les séances (demain|aujourd'hui), à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) et dans les salles voisines\\.$",
+   "^Les séances (demain|aujourd'hui), à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) et dans les salles voisines\\.$",
    "Screenings $1, in $2 and at nearby cinemas."
   ],
   [
-   "^Les séances le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+), à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel) et dans les salles voisines\\.$",
+   "^Les séances le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+), à (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel) et dans les salles voisines\\.$",
    "Screenings on $1, in $2 and at nearby cinemas."
   ],
   [
@@ -4618,7 +4618,7 @@
    "Tonight, $1."
   ],
   [
-   "^Ce soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Ce soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "Tonight, in $1."
   ],
   [
@@ -4626,7 +4626,7 @@
    "Tomorrow evening, $1."
   ],
   [
-   "^Demain soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Demain soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "Tomorrow evening, in $1."
   ],
   [
@@ -4634,7 +4634,7 @@
    "On the evening of $1, $2."
   ],
   [
-   "^Le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) au soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) au soir, (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "On the evening of $1, in $2."
   ],
   [
@@ -4642,7 +4642,7 @@
    "No evening events announced tonight $1."
   ],
   [
-   "^Pas de soirée annoncée ce soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Pas de soirée annoncée ce soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "No evening events announced tonight in $1."
   ],
   [
@@ -4650,7 +4650,7 @@
    "No evening events announced tomorrow evening $1."
   ],
   [
-   "^Pas de soirée annoncée demain soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Pas de soirée annoncée demain soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "No evening events announced tomorrow evening in $1."
   ],
   [
@@ -4658,7 +4658,7 @@
    "No evening events announced on the evening of $1 $2."
   ],
   [
-   "^Pas de soirée annoncée le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) au soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Pas de soirée annoncée le (\\p{Lu}\\p{Ll}+ \\d{1,2} \\p{Lu}\\p{Ll}+) au soir (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "No evening events announced on the evening of $1 in $2."
   ],
   [
@@ -4666,7 +4666,7 @@
    "No evening events announced for this period $1."
   ],
   [
-   "^Pas de soirée annoncée sur cette période (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel)\\.$",
+   "^Pas de soirée annoncée sur cette période (?:à|in) (Préfailles|Pornic|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)\\.$",
    "No evening events announced for this period in $1."
   ],
   [
@@ -4742,7 +4742,7 @@
    "Coming back the same day: last departure from $1 at"
   ],
   [
-   "^, (.+?) · arrivée à ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel)) (\\d{1,2}h\\d\\d), (.+)$",
+   "^, (.+?) · arrivée à ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)) (\\d{1,2}h\\d\\d), (.+)$",
    ", $1 · arrives in $2 at $3, $4"
   ],
   [
@@ -4774,15 +4774,15 @@
    "Day: $1. Tap to change"
   ],
   [
-   "^Cars et trains entre (.+) et ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel)), correspondances comprises\\.$",
+   "^Cars et trains entre (.+) et ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)), correspondances comprises\\.$",
    "Coaches and trains between $1 and $2, connections included."
   ],
   [
-   "^depuis ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel))*)$",
+   "^depuis ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel))*)$",
    "from $1"
   ],
   [
-   "^vers ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel))*)$",
+   "^vers ((?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel)(?:, (?:Préfailles|Pornic|Nantes|Saint-Nazaire|Saint-Brevin|La Bernerie|Saint-Michel / Tharon|Saint-Michel))*)$",
    "to $1"
   ],
   [
