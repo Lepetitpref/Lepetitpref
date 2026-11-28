@@ -1,12 +1,12 @@
 {
- "maj": "2026-11-28T06:21:18+00:00",
+ "maj": "2026-11-28T13:34:45+00:00",
  "site": "https://lepetitpref.fr/",
  "depuis": "2026-11-01",
  "total": {
-  "clics": 12,
-  "aff": 85,
-  "ctr": 0.141,
-  "pos": 21.8
+  "clics": 14,
+  "aff": 94,
+  "ctr": 0.149,
+  "pos": 24.0
  },
  "jours": [
   {
@@ -53,35 +53,35 @@
   },
   {
    "d": "2026-11-27",
-   "clics": 3,
-   "aff": 27,
-   "pos": 25.3
+   "clics": 4,
+   "aff": 35,
+   "pos": 30.9
   }
  ],
  "pages_28j": [
   {
    "page": "/",
-   "clics": 9,
-   "aff": 12,
+   "clics": 10,
+   "aff": 14,
    "pos": 2
   },
   {
    "page": "/agenda/",
    "clics": 3,
-   "aff": 36,
+   "aff": 37,
    "pos": 12.3
   },
   {
    "page": "/cinema/",
-   "clics": 0,
-   "aff": 22,
-   "pos": 18.4
+   "clics": 1,
+   "aff": 23,
+   "pos": 17.7
   },
   {
    "page": "/marees/",
    "clics": 0,
-   "aff": 17,
-   "pos": 52.6
+   "aff": 22,
+   "pos": 58.1
   },
   {
    "page": "/que-faire/",
@@ -91,6 +91,12 @@
   }
  ],
  "recherches_28j": [
+  {
+   "q": "horaires des marées la plaine sur mer",
+   "clics": 0,
+   "aff": 4,
+   "pos": 82.5
+  },
   {
    "q": "que faire à préfailles",
    "clics": 0,
