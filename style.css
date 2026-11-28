@@ -1678,4 +1678,4 @@ button.cal-lnk{background:none;border:0;padding:0;font:inherit;font-size:14px;fo
 .times .t-h{align-items:center}
 /* ciné : nom de la salle au-dessus de ses horaires, pour que les horaires tiennent côte à côte sur téléphone */
 @media (max-width:520px){.times{grid-template-columns:1fr;gap:2px 0;margin-top:8px}.times .t-cin{font-size:14px}}
-/* version du site */:root{--pp-v:"20261128-0036"}
+/* version du site */:root{--pp-v:"20261128-0658"}

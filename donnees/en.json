@@ -1498,6 +1498,14 @@
    "gusty, experienced only · foil only after $1h"
   ],
   [
+   "^vent faible et rafaleux · petit temps vers les rochers après (\\d+)h$",
+   "light, gusty wind · light wind towards the rocks after $1h"
+  ],
+  [
+   "^Wing bon de (\\d+)h à (\\d+)h · (.+)$",
+   "Wing good from $1h to $2h · $3"
+  ],
+  [
    "^vent faible · petit temps vers les rochers après (\\d+)h$",
    "light wind · light wind towards the rocks after $1h"
   ],

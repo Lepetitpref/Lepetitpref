@@ -345,7 +345,7 @@
   "town": "Préfailles",
   "url": "https://www.prefailles.fr/associations-de-loisirs/",
   "what": "Couture, peinture, tricot, cartonnage ; ateliers créatifs pour enfants ponctuels ; marché de Noël et expositions-ventes l'été",
-  "th": "sport"
+  "th": "loisirs"
  },
  {
   "id": "yoga-harmonie-cote-de-jade",
@@ -1065,7 +1065,7 @@
   "regular": "",
   "contact": "",
   "url": "https://www.pornic.fr/fiche-annuaire/association-de-defense-du-quartier-de-la-mossardiere/",
-  "th": "culture"
+  "th": "vie"
  },
  {
   "id": "association-de-don-dorganes-adot-44-pornic",
@@ -1420,7 +1420,7 @@
   "name": "Centre de Soins Infirmiers",
   "town": "Pornic",
   "what": "Soins infirmiers à domicile",
-  "desc": "",
+  "desc": "Centre de soins infirmiers, 1 bis rue Jean Sarment ; tél. 02 40 82 22 87.",
   "forWho": "",
   "regular": "",
   "contact": "cdspornic@wanadoo.fr",
@@ -2145,7 +2145,7 @@
   "regular": "",
   "contact": "presidentjdo@gmail.com",
   "url": "https://www.pornic.fr/fiche-annuaire/jade-darts-ocean/",
-  "th": "culture"
+  "th": "sport"
  },
  {
   "id": "jade-fm-pornic",
@@ -3940,7 +3940,7 @@
   "name": "Amis de la Boule Bernerienne",
   "town": "La Bernerie-en-Retz",
   "what": "Boule",
-  "desc": "",
+  "desc": "Association sportive de boule, square Thibault.",
   "forWho": "",
   "regular": "",
   "contact": "boulebernerie@orange.fr",
