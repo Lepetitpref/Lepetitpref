@@ -329,7 +329,6 @@
   " en bas": " at the bottom",
   "🔇 La vidéo démarre sans le son : touchez le haut-parleur en bas du lecteur pour l'entendre.": "🔇 The video starts muted: tap the speaker at the bottom of the player to hear it.",
   "VF et VO selon la salle": "French or original version, depending on the cinema",
-  "Touchez un type pour voir les lieux.": "Tap a type to see the places.",
   "Lire tout le bulletin météo": "Read the full weather bulletin",
   "Calculée sur le port de Pornic (SHOM) : à Préfailles, la mer monte et descend à quelques minutes près.": "Calculated for the port of Pornic (SHOM): in Préfailles the tide rises and falls within a few minutes of it.",
   "Auj.": "Today",
@@ -1421,6 +1420,10 @@
   "Le site ne collecte aucune donnée personnelle : ni compte, ni cookie. Le formulaire de contact n'envoie que ce que vous y écrivez.": "The site collects no personal data: no account, no cookies. The contact form only sends what you write in it."
  },
  "rules": [
+  [
+   "^Les horaires des trains après le (\\d{1,2} [A-Za-zéû]+) ne sont pas encore publiés : seuls les cars sont proposés ici\\. Vérifiez sur SNCF Connect ou au 09 69 39 14 14 \\(Aléop\\)\\.$",
+   "Train times after $1 have not been published yet: only coaches are shown here. Check SNCF Connect or call 09 69 39 14 14 (Aléop)."
+  ],
   [
    "^Terminé pour aujourd'hui · rouvre demain$",
    "Finished for today · open again tomorrow"
