@@ -1,12 +1,12 @@
 {
- "maj": "2026-11-27T14:18:59+00:00",
+ "maj": "2026-11-28T06:21:18+00:00",
  "site": "https://lepetitpref.fr/",
  "depuis": "2026-11-01",
  "total": {
-  "clics": 9,
-  "aff": 57,
-  "ctr": 0.158,
-  "pos": 20.3
+  "clics": 12,
+  "aff": 85,
+  "ctr": 0.141,
+  "pos": 21.8
  },
  "jours": [
   {
@@ -48,48 +48,54 @@
   {
    "d": "2026-11-26",
    "clics": 1,
-   "aff": 18,
-   "pos": 27.6
+   "aff": 19,
+   "pos": 26.7
+  },
+  {
+   "d": "2026-11-27",
+   "clics": 3,
+   "aff": 27,
+   "pos": 25.3
   }
  ],
  "pages_28j": [
   {
    "page": "/",
-   "clics": 7,
-   "aff": 10,
-   "pos": 1.9
+   "clics": 9,
+   "aff": 12,
+   "pos": 2
   },
   {
    "page": "/agenda/",
-   "clics": 2,
-   "aff": 30,
-   "pos": 12.7
+   "clics": 3,
+   "aff": 36,
+   "pos": 12.3
   },
   {
    "page": "/cinema/",
    "clics": 0,
-   "aff": 9,
-   "pos": 20.9
+   "aff": 22,
+   "pos": 18.4
   },
   {
    "page": "/marees/",
    "clics": 0,
-   "aff": 12,
-   "pos": 44.8
+   "aff": 17,
+   "pos": 52.6
   },
   {
    "page": "/que-faire/",
    "clics": 0,
-   "aff": 5,
-   "pos": 13.2
+   "aff": 7,
+   "pos": 17.1
   }
  ],
  "recherches_28j": [
   {
    "q": "que faire à préfailles",
    "clics": 0,
-   "aff": 2,
-   "pos": 28
+   "aff": 4,
+   "pos": 27.5
   }
  ]
 }
